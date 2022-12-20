@@ -1,0 +1,659 @@
+.nav {
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+    background: #333;
+}
+
+.top {
+    min-width: 1200px;
+    background: #333;
+
+}
+
+.top .left {
+    float: left;
+    display: flex;
+}
+
+.top a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: #b0b0b0;
+}
+
+.top .left a {
+    margin-right: 20px;
+}
+
+.top .left a:last-child {
+    margin: 0;
+}
+
+.top .right {
+    float: right;
+    display: flex;
+    margin-right: 0;
+    position: relative;
+}
+
+.top .right a {
+    padding: 0 5px;
+}
+
+.top .right span {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #424242;
+    color: #b0b0b0;
+}
+
+.top .right span.active {
+    background: #fff;
+    color: #ff6700;
+}
+
+.iconfont-cart {
+    width: 20px;
+    height: 20px;
+    font-family: iconfont !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+}
+
+.cart-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 316px;
+    height: 80px;
+    background: #fff;
+    border: 1px solid #333;
+    text-align: center;
+    line-height: 80px;
+    display: none;
+    z-index: 99;
+}
+
+.cart-menu.active {
+    height: 88px;
+    display: block;
+}
+
+.header {
+    width: 100%;
+    position: relative;
+}
+
+.header .list {
+    display: flex;
+}
+
+.header .list .logo {
+    width: 56px;
+    height: 56px;
+    margin-top: 22px;
+    text-indent: -999px;
+    position: relative;
+}
+
+.header .list .logo::before {
+    content: "";
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    left: 0;
+    top: 0;
+    background: url(../img/logo-mi2.png) no-repeat;
+    background-size: contain;
+
+}
+
+.header .list span {
+    display: block;
+    width: 157px;
+    height: 88px;
+    text-align: center;
+    line-height: 88px;
+    padding-top: 6px;
+    text-indent: -9999px;
+}
+
+.header .list ul {
+    position: relative;
+    width: 1100px;
+    height: 88px;
+    padding: 12px 0 0 30px;
+    list-style-type: none;
+    font-size: 16px;
+    display: flex;
+}
+
+.header .list ul a {
+    display: block;
+    padding: 26px 10px 38px;
+    color: #333;
+}
+
+.header .list ul a.on {
+    color: #ff6700;
+}
+
+.header .list .search {
+    float: right;
+    width: 296px;
+    height: 50px;
+    margin-top: 25px;
+    position: relative;
+}
+
+.header .list .search input {
+    position: absolute;
+    outline: 0;
+    border: 1px solid #e0e0e0;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 48px;
+}
+
+.search-txt {
+    width: 223px;
+    height: 48px;
+    right: 51px;
+}
+
+.header .list .search-btn {
+    right: 0;
+    z-index: 2;
+    width: 52px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 24px;
+    background: #fff;
+    color: #616161;
+}
+
+.header-item {
+    width: 100%;
+    position: absolute;
+    height: 258px;
+    left: 0;
+    top: 100px;
+    border-left: 0;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 18%);
+    z-index: 999;
+    display: none;
+
+}
+
+.header-item.active {
+    display: block;
+}
+
+.header-item ul {
+
+    display: flex;
+    justify-content: left;
+    padding-top: 35px;
+}
+
+.children {
+    width: 1200px;
+    margin: auto;
+    height: 100%;
+    display: none;
+}
+
+.header-item .children.on {
+    display: block;
+}
+
+.header-item ul li {
+    width: 200px;
+    height: 76px;
+    text-align: center;
+}
+
+
+.header-item ul li span {
+    display: block;
+    width: 200px;
+    height: 110px;
+    border-right: 1px solid #333;
+    margin-bottom: 16px;
+}
+
+
+.header-item ul li:last-child span {
+    border-right: 0;
+}
+
+.header-item ul li span img {
+    text-align: center;
+    height: 110px;
+}
+
+.header-item ul li p {
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0 10px
+}
+
+.header-item ul li p:last-child {
+    color: #ff6700;
+    white-space: nowrap;
+}
+
+.swiper {
+    width: 1200px;
+    height: 450px;
+    position: relative;
+
+}
+
+.swiper .slide {
+    width: 1200px;
+
+}
+
+.swiper .slide img {
+    width: 1200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -99;
+
+}
+
+.swiper .category {
+    width: 234px;
+    height: 450px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+
+}
+
+.swiper .category .title {
+    width: 234px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(105, 101, 101, .6);
+
+}
+
+.swiper .category .title li {
+    width: 234px;
+    height: 42px;
+    line-height: 42px;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 0 30px;
+    position: relative;
+}
+
+.swiper .category .title li.on {
+    background: #ff6700;
+}
+
+.swiper .category li span {
+    position: absolute;
+    width: 14px;
+    height: 42px;
+    line-height: 42px;
+    right: 30px;
+    top: 0;
+    color: #fff;
+}
+
+.swiper .category-item {
+    position: absolute;
+    left: 234px;
+    top: 0;
+    display: none;
+    box-sizing: border-box;
+    background: #fff;
+    padding-left: 10px;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 18%);
+}
+
+.swiper .category-item.active {
+    display: block;
+}
+
+.swiper .category-item .item {
+    display: flex;
+    justify-content: left;
+}
+
+
+.swiper .category-item .item .col {
+    width: 240px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.swiper .category-item .item .col a {
+    display: block;
+    width: 240px;
+    height: 76px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.swiper .category-item .item .col a:hover {
+    color: #ff6700;
+}
+
+.swiper .category-item .item .col a span {
+    height: 50px;
+    display: block;
+    float: left;
+}
+
+.swiper .category-item .item .col a span:last-child {
+    width: 172px;
+    line-height: 50px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.service {
+    margin-top: 40px;
+}
+
+.service .category {
+    width: 234px;
+    height: 164px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 3px;
+    background: rgba(105, 101, 101, .8);
+    float: left;
+}
+
+.service .category a {
+    display: block;
+    width: 76px;
+    height: 82px;
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    opacity: .7;
+}
+
+.service .category a:hover {
+    opacity: 1;
+}
+
+.service .category a::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 1px;
+    height: 70px;
+    background: #665e57;
+}
+
+.service .category a span {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 4px;
+}
+
+.service .category a span img {
+    width: 100%;
+}
+
+.service ul {
+    display: flex;
+    justify-content: space-between;
+    width: 966px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+.service li {
+    height: 164px;
+}
+
+.service li img {
+    height: 100%;
+}
+
+.service li:hover {
+    box-shadow: 0 8px 16px rgb(0 0 0 / 18%);
+}
+
+.goods {
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+    padding-bottom: 100px;
+}
+
+.goods .banner {
+    padding-top: 40px;
+}
+
+.goods .banner img {
+    width: 100%;
+
+}
+
+.goods .list {
+    margin-top: 20px;
+}
+
+.goods p.link > span {
+    line-height: 58px;
+    font-size: 22px;
+    color: #333;
+
+}
+
+.goods p.link a {
+    display: block;
+    padding: 16px 0;
+
+}
+
+.goods p.link a,
+.goods p.link a span {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 200;
+    color: #424242;
+
+}
+
+.goods p.link a:hover {
+    color: #ff6700;
+}
+
+.goods p.link a span {
+    margin-left: 30px;
+    border-bottom: 2px solid transparent;
+}
+
+.goods p.link a span:hover,
+.goods p.link a span.on {
+    color: #ff6700;
+    border-bottom-color: #ff6700;
+}
+
+.goods .item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.goods .item .col {
+    width: 234px;
+    height: 614px;
+}
+
+.goods .item .col:first-child,
+.goods .item .col:first-child li {
+    padding: 0;
+}
+
+
+.goods .item .col img {
+    width: 100%;
+}
+
+.goods .item .col li {
+    width: 234px;
+    height: 300px;
+    text-align: center;
+    background: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.goods .item .col li:nth-child(2) {
+    margin-top: 14px;
+}
+
+.goods .item .col li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgb(0 0 0 / 18%);
+}
+
+.goods .item .col li > span {
+    display: block;
+    width: 160px;
+    height: 160px;
+    margin: 0px auto 18px;
+}
+
+
+.goods .item p,
+.goods .item h4 {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.goods .item p {
+    line-height: 18px;
+    margin: 0 10px 2px;
+    font-size: 14px;
+    color: #333;
+
+}
+
+.goods .item h4,
+.goods .item a h4 {
+
+    color: #333;
+    font-weight: normal;
+
+}
+
+.goods .item p.small {
+    margin: 0px 10px 10px;
+    font-size: 12px;
+    color: #b0b0b0;
+}
+
+.goods .item .col p:last-child {
+    color: #ff6700;
+}
+
+.goods .item .col p span {
+    display: inline-block;
+}
+
+.goods .item .col p del {
+    margin-left: 5px;
+    color: #b0b0b0;
+    text-decoration: line-through;
+}
+
+.goods .item .col p del span {
+    text-decoration: line-through;
+}
+
+.goods .video .item li {
+    width: 290px;
+    height: 176px;
+}
+
+.goods .video .item li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.goods .video .item li a img {
+    width: 100%;
+}
+
+.goods .video .item li a h4 {
+    margin: 20px 10px 5px;
+}
+
+.goods .video .item li .play {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    width: 32px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+}
+
+.service .tigs {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.service .tigs a {
+    display: block;
+    width: 20%;
+    height: 100%;
+    line-height: 80px;
+    position: relative;
+    color: #616161;
+}
+
+.service .tigs a::after {
+    content: "";
+    width: 1px;
+    height: 20px;
+    background: #e0e0e0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+

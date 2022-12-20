@@ -1,0 +1,315 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    z-index: 999;
+}
+
+
+img {
+    width: 100%;
+}
+
+.w1002 {
+    width: 1002px;
+    margin: auto;
+
+}
+
+.header .w1002 {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .logo {
+    width: 140px;
+    height: 50px;
+    margin: 15px 0;
+}
+
+
+
+.header .rnav {
+    float: right;
+    display: flex;
+}
+
+.header .rnav a {
+    color: #000a1f;
+    display: block;
+    line-height: 80px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.header .rnav a.on,
+.header .rnav a:hover {
+    font-weight: bold;
+}
+
+.header .rnav a.on .line {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+    background: rgb(17, 110, 255);
+}
+
+.main {
+    padding-top: 80px;
+    width: 100%;
+}
+
+.banner {
+    width: 100%;
+    height: 490px;
+    overflow: hidden;
+    position: relative;
+    background: url(../star-img/top-banner.3daf51a.png) no-repeat;
+    background-size: 600%;
+}
+
+.showbanner {
+    position: relative;
+}
+
+.showbanner img {
+    width: 100%;
+    height: auto;
+}
+
+.banner .bg {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 50px;
+    z-index: 99;
+    background: #fff;
+}
+
+.banner .lbg {
+    left: 0;
+    border-top-right-radius: 50px;
+}
+
+.banner .rbg {
+    right: 0;
+    border-top-left-radius: 50px;
+}
+
+.showbanner .txt {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    width: 1002px;
+    height: auto;
+    text-align: center;
+    font-size: 54px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4em;
+}
+
+.introduce {
+    padding: 50px;
+}
+
+.introduce p {
+    text-indent: 2rem;
+    line-height: 1.6rem;
+    font-size: 16px;
+    letter-spacing: .2rem;
+}
+
+.service {
+
+    height: auto;
+    background: #f7fbff;
+    padding: 90px 0 60px;
+}
+
+.service .title p {
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: .1rem;
+}
+
+.service .produce {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service .produce .col {
+    width: 495px;
+    height: 260px;
+    margin-top: 12px;
+}
+
+.service .produce .col:nth-child(2n+1) {
+    margin-right: 12px;
+}
+
+.col1 {
+    background: url(../star-img/box-chain.1264a7c.png) no-repeat;
+    background-size: 100%;
+}
+
+.col3 {
+    background: url(../star-img/box-finance.332c2ae.png) no-repeat;
+    background-size: 100%;
+}
+
+.col2 {
+    background: url(../star-img/box-fintech.a950588.png) no-repeat;
+    background-size: 100%;
+}
+
+.col4 {
+    background: url(../star-img/box-insurance.9bfeded.png) no-repeat;
+    background-size: 100%;
+}
+
+.col5 {
+    background: url(../star-img/box-wallet.322e8da.png) no-repeat;
+    background-size: 100%;
+}
+
+.service .produce .col .tigs {
+    width: 300px;
+    letter-spacing: .1rem;
+    margin: 36px 0 0 26px;
+    color: #374161;
+}
+
+.service .produce .col h4 {
+    margin: 5px 0;
+}
+
+.goal {
+    margin: 80px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.goal .col {
+    width: 241px;
+    height: 224px;
+    background: #eef5ff;
+    color: #333;
+}
+
+.goal .col .icon {
+    width: 72px;
+    height: 72px;
+    margin: 30px auto 10px;
+}
+
+
+.goal .col h2,
+.goal .col p {
+    text-align: center;
+    line-height: 2em;
+}
+
+.bank {
+    padding: 80px 0;
+}
+
+.bank .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.bank h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: .1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.bank .list .item {
+    width: 190px;
+    height: 84px;
+    margin-bottom: 12px;
+}
+
+.footer {
+    background: #1f222c;
+    padding: 80px 0;
+}
+
+.footer .w1002 {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .fleft {
+    width: 700px;
+}
+
+.footer .contact p {
+    font-size: 28px;
+    color: #fff;
+
+}
+
+.footer .contact .line {
+    width: 50px;
+    height: 3px;
+    background: #fff;
+    margin: 20px 0;
+}
+
+.footer .contact small {
+    font-size: 14px;
+}
+
+.footer .address {
+    margin: 30px 0;
+    color: #fff;
+    font-size: 16px;
+}
+
+.footer .fright {
+    width: 300px;
+    color: #fff;
+}
+
+.footer .fright a {
+    display: block;
+    padding: 0 9px;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+.footer .fright a:last-child {
+    border: 0;
+}
+
+.wchat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wchat .col {
+    width: 120px;
+    text-align: center;
+}
+
+.wchat .col p {
+    margin-top: 10px;
+}

@@ -1,0 +1,18 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.m10 {
+    margin-bottom: 10px;
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+}
+
+.slide img {
+    width: 100%;
+}
+
