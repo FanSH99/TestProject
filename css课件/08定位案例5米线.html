@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .food {
+            width: 1010px;
+            height: 430px;
+            border: 1px solid #333;
+            margin: 20px 10px;
+            margin: 20px auto;
+        }
+
+        .food ul li {
+            width: 310px;
+            float: left;
+            margin: 20px 10px;
+            text-align: center;
+        }
+
+        .food ul li .pic {
+            position: relative;
+            border-bottom: 3px solid orange;
+        }
+
+        .food ul li .pic img {
+            width: 100%;
+            display: block;
+        }
+
+        .food ul li .pic .numb {
+            width: 60px;
+            height: 60px;
+            background: orange;
+            line-height: 60px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 50%);
+        }
+
+        .food ul li h3 {
+            padding-top: 30px;
+
+        }
+
+        .food ul li hr {
+            width: 40px;
+            height: 1px;
+            margin: 20px auto;
+            border: none;
+            border-bottom: 1px solid #666;
+        }
+
+        /* 设置下划线，多种写法，
+        第一种，设置一个Div 高度为1 之后设置背景颜色即可。
+        第二种，设置hr 导读为1border为none 之后设置上边框或者下边框。
+        */
+
+        /*  */
+        .box2 {
+            width: 0;
+            height: 0;
+            border-top: 10px solid red;
+            border-bottom: 10px solid green;
+            border-left: 10px solid blue;
+            border-right: 10px solid purple;
+
+            /* 宽高是0的时候，设置不同的border则可以挤压成三角形。
+            注意，四个border都要设置，只不过其他三个border设置成透明
+            透明单词为transprent
+            朝下设置上top有颜色，超右设置left有颜色，以此类推
+            */
+        }
+
+        /* 朝下的三角形 */
+
+        .box3 {
+            width: 0;
+            height: 0;
+            border-top: 10px solid red;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+
+            /* 宽高是0的时候，设置不同的border则可以挤压成三角形。
+            注意，四个border都要设置，只不过其他三个border设置成透明 */
+        }
+
+        .box4 {
+            width: 0;
+            height: 0;
+            border-top: 10px solid green;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            top: 0;
+
+
+
+            /* 宽高是0的时候，设置不同的border则可以挤压成三角形。
+            注意，四个border都要设置，只不过其他三个border设置成透明 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="food">
+        <ul>
+            <li>
+                <div class="pic">
+                    <img src="img/pic6.jpg">
+                    <div class="numb">01</div>
+                </div>
+
+                <h3>麻辣米线</h3>
+                <hr>
+                <p>麻辣米线麻辣米线麻辣米线</p>
+
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="img/pic6.jpg">
+                    <div class="numb">01</div>
+                </div>
+
+                <h3>麻辣米线</h3>
+                <hr>
+                <p>麻辣米线麻辣米线麻辣米线</p>
+
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="img/pic6.jpg">
+                    <div class="numb">01</div>
+                </div>
+
+                <h3>麻辣米线</h3>
+                <hr>
+                <p>麻辣米线麻辣米线麻辣米线</p>
+
+            </li>
+
+        </ul>
+    </div>
+    <div class="box2"></div><br><br>
+    <div class="box3">
+        <div class="box4"></div>
+    </div>
+
+</body>
+
+</html>

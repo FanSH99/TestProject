@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月9日09:02:55
+        jQuery入口函数可以写多个。而window.onload入口函数最多写一个（多个时以后面的为主）
+        jQuery入口函数比原生的更慢一点（版本3.6）
+        当参数传递的是一个匿名函数时，相当于入口函数，window.onload
+        如果参数传递的是一个选择器，相当于
+     -->
+    <div id="box"></div>
+    <div class="nav"></div>
+    <script>
+
+        $(function () {
+            console.log('我是jQuery入口函数2');
+        })
+        window.onload = function () {
+            console.log('我是window入口函数');
+        }
+        $(function () {
+            console.log('我是jQuery入口函数3');
+        })
+        window.onload = function () {
+            console.log('我是window入口函数4');
+        }
+
+        // $---jQuery
+
+        var box = $('#box');
+        console.log(box);//S.fn.init [div#box]
+        var p = $('<p>我是一个段落<span>我是一段文本</span>');
+        console.log(p);// S.fn.init[p]
+        // 追加p
+        box.append(p);
+        var body = document.body;
+        console.log(body);//body
+        // 原生dom转为jQuery ---直接$(元素)即可转换
+        console.log($(body));//S.fn.init [body]
+
+    </script>
+</body>
+
+</html>

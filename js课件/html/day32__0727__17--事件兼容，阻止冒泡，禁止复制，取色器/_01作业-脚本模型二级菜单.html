@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px #333 solid;
+        }
+
+        nav {
+            width: 1200px;
+            height: 50px;
+            background-color: #000;
+            color: #fff;
+            margin: 40px auto;
+        }
+
+        nav ul>li {
+            width: 120px;
+            height: 50px;
+            text-align: center;
+            float: left;
+            line-height: 50px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul>li>ol {
+            width: 100px;
+            background: rosybrown;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            display: none;
+        }
+
+        nav ul>li>a {
+            color: #fff;
+        }
+
+        nav ul>li:hover,
+        nav ul>li.on {
+            color: yellow;
+            background: #f30;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <ul>
+            <li class="on"><a href='javascript:;'>AAA</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li><a href='javascript:;'>BBB</a>
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+
+            </li>
+            <li><a href='javascript:;'>CCC</a>
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+            <li><a href='javascript:;'>DDD</a>
+                <ol>
+                    <li>ddd</li>
+                    <li>ddd</li>
+                    <li>ddd</li>
+                    <li>ddd</li>
+                </ol>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        var lis = document.querySelectorAll('nav>ul>li');
+        console.log(lis);
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseenter = function () {
+
+                this.children[1].style.display = 'block';
+            }
+            lis[i].onmouseleave = function () {
+                this.children[1].style.display = 'none';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

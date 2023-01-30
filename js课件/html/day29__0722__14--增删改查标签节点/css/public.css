@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.clear {
+    clear: both;
+}
+
+.top {
+    width: 1200px;
+    padding-top: 30px;
+    margin: auto;
+}
+
+.top_shadow {
+    box-shadow: 0 10px 10px #ccc;
+    position: relative;
+    /* 直接加z-index不起作用，需要先相对定位之后在层级上调。 */
+    z-index: 999;
+}
+
+.top .logo {
+    float: left;
+}
+
+.top .top_r {
+    float: right;
+
+}
+
+.top .top_r .top_rt ul li {
+    float: right;
+    position: relative;
+    margin-left: 20px;
+}
+
+.top .top_r .top_rt ul li input {
+    width: 130px;
+    height: 24px;
+    border: 1px solid #666;
+    padding-left: 10px;
+    outline: none;
+}
+
+.top .top_r .top_rt ul li button {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.top .top_r .top_rt ul li a {
+    color: #666;
+    text-decoration: none;
+    background: url(../img/header_icon01.png) no-repeat left center;
+    padding-left: 24px;
+}
+
+.top .top_r .top_rt ul li a:hover {
+    color: #d7000f;
+    background-image: url(../img/header_icon01H.png);
+}
+
+.top .top_r .top_rt ul li:nth-child(3) a {
+    padding-left: 20px;
+    background-image: url(../img/header_icon04.png);
+    border-right: 1px solid #eee;
+    padding-right: 20px;
+
+}
+
+.top .top_r .top_rt ul li:nth-child(3) a:hover {
+    background-image: url(../img/header_icon04H.png);
+}
+
+.nav {
+    padding-top: 25px;
+}
+
+.nav dl {
+    float: right;
+    padding: 0 20px 15px;
+    position: relative;
+    z-index: 2;
+}
+
+/* .nav dl:first-child{
+    padding: 0 0 0 20px;
+} */
+.nav dl dt a {
+    color: #666;
+    text-decoration: none;
+}
+
+.nav dl dt a:hover {
+    color: #d7000f;
+}
+
+.nav dl dd {
+    display: none;
+    border: 1px solid #ddd;
+    padding: 10px;
+    top: 34px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+
+}
+
+.nav dl:hover dd {
+    display: block;
+}
+
+.nav dl dd a {
+    display: inline-block;
+    white-space: nowrap;
+    color: #666;
+    text-decoration: none;
+    line-height: 32px;
+    border-bottom: 1px solid transparent;
+}
+
+.nav dl dd a:hover {
+    color: #d7000f;
+    border-bottom: 1px solid #d7000f;
+}
+
+.but_pub {
+    width: 180px;
+    height: 36px;
+    display: block;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 36px;
+    color: #fff;
+    text-decoration: none;
+    float: left;
+}
+
+
+.foot_bg {
+    background: url(../img/ft_bg.jpg);
+    min-width: 1200px;
+    padding-top: 100px;
+    border-top: 1px solid #dfdfdf;
+}
+
+.foot_nav {
+    width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.foot_nav dl {
+    float: left;
+    width: 200px;
+    text-align: center;
+}
+
+.foot_nav dl dd a {
+    display: block;
+}
+
+.foot_bg p {
+    border-top: 1px solid #dfdfdf;
+    text-align: center;
+    padding: 20px 0;
+}

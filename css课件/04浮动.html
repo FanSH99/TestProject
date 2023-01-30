@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    /* height: 100px; */
+    /* .content {
+        width: 300px;
+        
+        background: 1px double #333;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+    }
+ */
+
+    /*  background: red; */
+    /*  .box1 {
+        
+        float: left;
+        border: 1px solid red;
+    }
+
+    .box2 {
+        background: green;
+        float: left;
+
+    } */
+    /*  background: red; */
+    /* .box3 {
+     
+        float: right;
+        border: 1px solid red;
+    }
+
+    .box4 {
+        float: right;
+        background: green;
+
+    } */
+
+    /* 清除浮动需要放在块状元素标签中。 */
+    /*  .clear {
+        
+        clear: both;
+    } */
+    * {
+        text-decoration: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .star {
+        width: 466px;
+        height: 323px;
+        margin: 20px auto;
+        /*  border: 1px solid rgb(53, 53, 50); */
+
+    }
+
+    .star .li1 {
+        height: 120px;
+        width: 460px;
+        margin: 18px 0 20px 10px;
+        /*  border: 1px solid red; */
+
+        /*   background-color: red; */
+
+    }
+
+    .star .li2 {
+        height: 140px;
+        width: 460px;
+        margin: 20px 0 20px 10px;
+        /* border: 1px solid red; */
+        padding-top: 20px;
+        border-top: 1px dotted #333;
+
+        /*   background-color: red; */
+
+    }
+
+
+
+
+    /*  伪类选择器 */
+    /*  .li2 {
+        background: green;
+        border-top: 1px dotted #333;
+        height: 120px;
+        margin: 18px 0 20px 10px;
+       
+
+    } */
+
+    .star li img {
+        width: 180px;
+        height: 120px;
+        /*  border: 1px solid red; */
+        float: left;
+        margin: 20 auto;
+        /* margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 5px; */
+
+    }
+
+    .text {
+        float: left;
+        height: 120px;
+        width: 270px;
+        margin: 0;
+        /*  padding: 2px 10px 2px 0; */
+        /* border: 1px green solid; */
+    }
+
+
+    .text h6 {
+        font-size: 14px;
+        line-height: 2;
+        font-weight: 400;
+        width: 120px;
+        padding-left: 30px;
+        color: #b58d4f;
+        background-color: #f0f0f0;
+
+    }
+
+    .text h3 {
+        font-size: 18px;
+        height: 26px;
+        height: 40px;
+        margin-left: 8px;
+        line-height: 2;
+        font-weight: 400;
+        color: #2d2d2d;
+
+    }
+
+    .text p {
+        font-size: 12px;
+        margin-left: 8px;
+        line-height: 2;
+        font-weight: 200;
+        color: #696969;
+
+    }
+
+
+
+    /*  .box3 p {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+
+    .box3 p:nth-child(2) {
+        background: green;
+    } */
+</style>
+
+<body>
+
+    <!-- 浮动，float 应用在块状元素中。
+    块状元素：一组标签排不满一行，另外一组自动往后排。
+加了浮动后会往上浮动，盖住其他前面盒子的部分内容。
+float:left; 左浮动
+float：right 有浮动  块状元素需要水平排列时。
+float： none 不浮动。
+float：center 最好不要用，没有这种用法。
+class="clear" 块状元素没有加高度，需要清除浮动将盒子撑开。
+具体应用见作业.html
+加了浮动的块状元素，如果没有设置固定宽度，其宽度是由内容来决定的。
+不加浮动的块状元素会自己占一整行。
+    -->
+
+    <!-- <div class="content">
+        <div class="box1 box"></div>
+        <div class="box2 box"></div>
+          <div class="clear"></div> -->
+    <!-- </div> -->
+    <!-- <div class="content">
+        <div class="box3 box"></div>
+        <div class="box4 box"></div>
+    </div>
+ -->
+    <!-- 清除浮动，class="clear"
+            父级元素没有设置高度，要撑开盒子需要清除浮动。 -->
+
+    <!-- 伪类选择器，后代选择器 
+    注意，所有标签都要数，针对同一种标签的时候，第几个数字就用几，否则数一下在第几个位置。-->
+    <ul class="star">
+        <li class="li1">
+            <img src="img/pic03_03.jpg" alt="">
+            <div class="text">
+                <h6>减肥瘦身</h6>
+                <h3>身材“胖不胖”关键看腰围</h3>
+                <p>[笑起来很甜的唐艺昕还有一双美腿]<br>
+                    [什么样的身材适合穿深V]
+                </p>
+            </div>
+        </li>
+
+        <li class="li2">
+            <img src="img/pic03_09.jpg" alt="">
+            <div class="text">
+                <h6>尚品生活</h6>
+                <h3>从骑车姿势看自行车发展简史</h3>
+                <p>[事务的神秘色彩 被河豚每位击中的那一秒]<br>
+                    [这些老厂房居然也能改建成豪华酒店！]
+                </p>
+            </div>
+        </li>
+
+        <!--  <div class="box3">
+
+            <h1></h1>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div> -->
+    </ul>
+
+</body>
+
+</html>

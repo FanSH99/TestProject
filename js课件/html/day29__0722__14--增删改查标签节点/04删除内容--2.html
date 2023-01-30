@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        table {
+            border: 1px solid #333;
+            border-collapse: collapse;
+
+        }
+
+        table tr td {
+            border: 1px solid #333;
+            width: 100px;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        parentNode.removeChild
+     -->
+    <table>
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>操作</td>
+        </tr>
+
+        <tr>
+            <td>1001</td>
+            <td>海绵宝宝</td>
+            <td>18</td>
+            <td>男</td>
+            <td><a href="#">删除</a></td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>派大星</td>
+            <td>17</td>
+            <td>男</td>
+            <td><a href="#">删除</a></td>
+
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>章鱼哥</td>
+            <td>19</td>
+            <td>男</td>
+            <td><a href="#">删除</a></td>
+
+        </tr>
+    </table>
+
+
+
+    <script>
+        var links = document.links;
+        console.log(links);//HTMLCollection(2) [a, a]
+        for (var i = 0; i < links.length; i++) {
+            links[i].onclick = function () {
+                console.log(this);//<a href="#">删除</a>
+                console.log(this.parentNode.parentNode);
+                this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

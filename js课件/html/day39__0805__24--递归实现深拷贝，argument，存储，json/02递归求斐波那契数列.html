@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月5日09:38:18
+        0 1 1 2 3 5 8 13 21……
+        fn(n)=fn(n-1)+fn(n-1)
+        第三个数是前两个数的和。
+     -->
+
+    <script>
+
+        //  原生的
+
+        function fn1(n) {
+            var num1 = 0;
+            var num2 = 1;
+            var max = 1;
+            if (n == 1) {
+                return 0;
+            } else if (n == 2) {
+                return 1;
+            } else {
+                for (var i = 2; i < n; i++) {
+                    num3 = num1 + num2;
+                    num1 = num2;
+                    num2 = num3;
+                    max += num3
+                }
+                console.log(num3, max);
+                return num3;
+            }
+        }
+        fn1(38);//24157817 63245985
+        fn1(8)//13 33 ----0+1+1+2+3+5+8+13=33
+
+
+        function fn2(n) {
+            if (n == 1) {
+                return 0;
+            } else if (n == 2) {
+                return 1;
+            } else {
+                return fn2(n - 2) + fn2(n - 1)
+            }
+
+        }
+        var num2 = fn2(8);
+        console.log(num2);//13  
+    </script>
+</body>
+
+</html>

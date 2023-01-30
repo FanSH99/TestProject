@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月8日14:33:55
+        
+        量词
+       
+        n+ 	匹配任何包含至少一个 n 的字符串。 出现1次或多次，最少出现1次。
+        n* 	匹配任何包含零个或多个 n 的字符串。 出现0次或多次，
+        n? 	匹配任何包含零个或一个 n 的字符串。 出现0次或1次。
+        n(X)  包含x个n的序列的字符串。
+        n{X,Y}  最少X个，最多Y个
+        n{X,}  最少X次，x或更多次。
+
+     -->
+
+    <script>
+        // 密码为6位，全部都是数字。
+
+        var patt = /([0-9]){6,}/;
+        console.log('123456', patt.test('123456'));
+        console.log('1234568gf', patt.test('1234567gcb'));
+        var patt1 = /^ [0 - 9] * $/;
+        console.log('123456h', patt1.test('123456h'));
+    </script>
+</body>
+
+</html>

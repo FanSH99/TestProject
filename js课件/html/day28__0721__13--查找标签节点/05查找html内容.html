@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        查找        方法
+        （1）通过id来查找   id具有唯一性        document.getElementById('box');  找到返回节点，找不到返回null
+        （2）通过class来查找    document.getElementByClassName['']  哪怕只有一项也要通过索引号来查找，nodes[0]
+        （3)通过标签名查找  document.getElementsByTagName[''] 哪怕只有一项也要通过索引号来查找，nodes[0]
+        
+
+     -->
+    <div id="box" class="cbox" name="cdiv">
+
+        <nav id="nav">
+            <ul>
+                <li>导航1</li>
+                <li>导航2</li>
+                <li>导航3</li>
+                <li>导航4</li>
+            </ul>
+        </nav>
+        <p class="txt">我是段落</p>
+        <h2 class="txt">我是标题</h2>
+        <div id="box_c2">
+            <input type="text" id="input1" class="in_txt" value="请输入数字">
+            <input type="text" id="input2" class="in_txt2" value="请输入密码" placeholder="请输入密码" pattern="[a-z]{4,8}">
+        </div>
+        <div>盒子3</div>
+    </div>
+    <script>
+        var box = document.getElementById('box')
+        console.log(box);
+        var input1 = document.getElementById('input1');
+        console.log(input1);// <input type="text" id="txt1" class="in_txt" value="请输入密码">
+        var input_1 = document.getElementById('input1').value;
+        console.log(input_1);//请输入数字
+        var nav = document.getElementById('nav');
+        console.log(nav);
+        var ul = nav.children;//<nav id='nav'>...</nav>
+        console.log(ul);//HTMLCollection(3) [nav#nav, div#box_c2, div, nav: nav#nav, box_c2: div#box_c2]
+        console.log(ul[0]);//<ul></ul>
+        var li2 = ul[0].children[1];
+        console.log(li2);//<li>导航2</li>
+        li2.style.color = 'red';
+        console.log(li2);//<li style='color:red'>导航2</li>
+        var intxt2 = document.getElementsByClassName('in_txt2');
+        console.log(intxt2);
+        // //HTMLCollection [input#input2.in_txt2, input2: input#input2.in_txt2]
+        var in_txt2 = document.getElementsByClassName('in_txt2').value;
+        console.log(in_txt2);//undefined
+        var in_txt20 = intxt2[0];
+        console.log(in_txt20);
+        in_txt20.value = '请输入密码：4-8位'
+        var txt = document.getElementsByClassName('txt')
+        console.log(txt);//HTMLCollection(2) [p.txt, h2.txt]
+        txt[1].style.color = 'pink';
+        console.log(txt);////HTMLCollection(2) [p.txt, h2.txt]
+        var p1 = document.getElementsByTagName('p');
+        console.log(p1);//HTMLCollection [p.txt]
+        p1[0].style.color = 'purple';
+        // p1.style.color = 'yellow'; //Cannot set property 'color' of undefined
+        // p1[1].style.color = 'yellow'//Cannot read property 'style' of undefined
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月5日11:47:00
+
+        arguments 隐式参数  ---本身也叫对象
+        在函数内部，是以实参的形式来用。
+        对象里面有length属性 ---记录实参的个数
+        callee指向函数本身
+     -->
+    <script>
+        function show(a, b) {
+            console.log(a, b);
+            console.log(arguments);
+            console.log(arguments.length, arguments.callee);
+        }
+
+        show();
+        /* 
+        undefined undefined
+        Arguments(0)
+        0 ƒ show(a, b) {
+            console.log(a, b);
+            console.log(arguments);
+            console.log(arguments.length, arguments.callee);
+        }
+        */
+        show(10);
+
+        /* 
+        10 undefined
+        Arguments(1)
+        0: 10
+        1 ƒ show(a, b) {
+            console.log(a, b);
+            console.log(arguments);
+            console.log(arguments.length, arguments.callee);
+        }
+        */
+        show(10, 20);
+        /* 
+        10 20
+        Arguments(2)
+        0: 10
+        1: 20
+
+        2 ƒ show(a, b) {
+            console.log(a, b);
+            console.log(arguments);
+            console.log(arguments.length, arguments.callee);
+        }
+        */
+        show(10, 20, 30);
+
+        /*
+                Arguments(3)
+            0: 10
+            1: 20
+            2: 30
+            3 ƒ show(a, b) {
+            console.log(a, b);
+            console.log(arguments);
+            console.log(arguments.length, arguments.callee);
+        }
+        */
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- 
+        参军0年，为平民级别。
+        1年--列兵
+        2年---上等兵
+        3-5年----一级士官
+        6-8年----二级士官
+        8年以上----中高级士官。
+        输入参军年限，求可参选的称号。
+     -->
+
+    <script>
+        var year = prompt('请输入参军年限');
+        if (year < 0) {
+            console.log('请输入大于0的数');
+        } else if (year < 1) {
+            console.log('平民');
+        } else if (year < 2) {
+            console.log('列兵');
+        } else if (year < 3) {
+            console.log('上等兵');
+        } else if (year < 6) {
+            console.log('一级士官');
+        } else if (year < 8) {
+            console.log('二级士官');
+        } else if (year > 8) {
+            console.log('中高级士官');
+        }
+
+
+
+       
+
+        /* 判断闰年。 */
+        var year = prompt('请输入一个年份：如2020');
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            console.log(year + '是闰年');
+        } else {
+            console.log(year + '不是闰年');
+        }
+
+       
+        
+
+    </script>
+</body>
+
+</html>

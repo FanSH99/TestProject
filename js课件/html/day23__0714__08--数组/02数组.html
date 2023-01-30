@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        （1）数组定义
+        在一个变量中存在一组数据。
+       （2） 声明数组：
+        var arr=new Array()
+        var arrr=[];---字面量的方法声明数组
+
+        （3）添加数组
+        数组[索引号]=值;索引号从0起步
+
+        （4）获取数组 访问数据
+        数组名[索引号]
+        （5） 遍历数组
+        for (var i = 0; i < arr.length; i++) {
+            /* console.log(i); */
+            console.log(i + ':' + arr[i]);
+        }
+
+        for(var i in arr){
+             /* console.log(i); */
+            onsole.log(i + ':' + arr[i]);
+        }
+        （6）数组长度，
+        注意长度永远比索引号大1
+        数组名.length--获取数组长度
+         console.log(arr.length);
+
+         （7） 删除数据
+         delete arr[索引号]  --变现空值，长度没有修改。
+         arr.length=4  删除尾部的数据
+         后面要学习更好的内置方法。
+
+         （8）如何检测数组类型
+         基本数据类型 5种---typeof
+         引用类型  ---Array   ---instanceof
+         arr instanceof Array
+     -->
+
+    <script>
+        //定义数组
+        var arr = new Array();
+        console.log(arr);
+        var arr1 = [];
+        console.log(arr1);
+        //添加数据
+        arr[0] = 10;
+        arr[1] = 20;
+        arr[5] = 60;
+        arr1[1] = 'hello';
+        //取出数据
+        console.log(arr);
+        console.log(arr[0]);//10
+        console.log(arr[5]);//60
+        console.log(arr[3]);//undefined
+        console.log(arr.length);
+        console.log(arr1);
+        console.log(arr1[1]);
+        console.log(arr[3]);
+        console.log(arr.length);
+        //遍历数组
+        for (var i = 0; i < arr.length; i++) {
+            /* console.log(i); */
+            console.log(i + ':' + arr[i]);
+        }
+        //修改数据
+        arr[5] = 50;
+        console.log(arr);
+        console.log(arr[5]);
+        //删除数据
+        delete arr[5];
+        console.log(arr);
+
+        arr.length = 4;
+        console.log(arr);
+
+        //检测数据类型。
+        var arr2 = 34;
+        console.log(arr, arr instanceof Array);
+        console.log(arr2, arr2 instanceof Array);
+        console.log(arr, typeof arr1);
+        console.log(arr2, typeof arr2);
+
+
+
+    </script>
+</body>
+
+</html>

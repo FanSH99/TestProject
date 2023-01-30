@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #wall_r {
+            width: 1px;
+            height: 600px;
+            background: black;
+            position: absolute;
+            left: 1000px;
+            top: 0;
+        }
+
+        #btn1 {
+            margin-top: 100px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box"></div>
+    <div id="wall_r"></div>
+    <button id="btn1">向右运行</button>
+    <button id="btn2">向左运行</button>
+
+    <!-- 
+        2022年8月2日17:11:11
+        小球缓慢运动就是让元素运动速度有多变化，最常见的是让速度慢慢停下来。
+        思路：
+        让盒子每次移动的距离慢慢变小，速度就会慢慢落下来。
+
+        核心算法：公式 header=header+(end-header)/10
+
+        1.速度：（目标值-现在的位置）/10为每次移动的距离布长
+        2.停止的条件：让当前盒子位置等于目标位置就停止定时器
+        注意，步长值要取整
+     -->
+
+    <script>
+        var box = document.querySelector('#box');
+        var btn1 = document.querySelector('#btn1');
+        var btn2 = document.querySelector('#btn2');
+
+        btn1.onclick = function () {
+            move(box, 1000);
+        }
+        btn2.onclick = function () {
+            move(box, 0);
+        }
+        var timer;
+
+        function move(obj, end) {
+            clearInterval(timer)
+            timer = setInterval(function () {
+                var header = obj.offsetLeft;
+                var speed = (end - header) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                console.log(speed);
+                if (header == end) {
+                    clearInterval(timer);
+                }
+                var newL = header + speed;
+                obj.style.left = newL + 'px';
+            }, 15)
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            height: 0;
+        }
+
+        .block {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: url(img/clockface.jpg) no-repeat;
+            background-size: 100%;
+            position: relative;
+        }
+
+        .block img {
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="block">
+        <img src="img/hourhand.png" alt="" id="h">
+        <img src="img/minhand.png" alt="" id="m">
+        <img src="img/sechand.png" alt="" id="s">
+    </div>
+
+    <script>
+
+        var h = document.getElementById("h");//定位时针
+        var m = document.getElementById("m");//定位分针
+        var s = document.getElementById("s");//定位秒针
+
+        var clock = function () {
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            s.style.transform = 'translateX(-50%) rotate(' + second * 6 + 'deg)';
+            m.style.transform = 'translateX(-50%) rotate(' + (minute * 6 + second / 10) + 'deg)';
+            h.style.transform = 'translateX(-50%) rotate(' + (hour * 30 + minute / 2) + 'deg)';
+        }
+        setInterval(clock, 1000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月1日11:26:39
+        location.assign()  ---和location.href用法一样，可以跳转页面
+        location.replace() --替换当前页面
+        location.reload() 重新加载页面，
+        location.reload(true)//强制刷新页面f5
+     -->
+    <button class="btn1">单击1</button>
+    <button class="btn2">单击2</button>
+    <button class="btn3">单击3</button>
+    <button class="btn4">单击4</button>
+    <script>
+        var btn1 = document.querySelector('.btn1');
+        var btn2 = document.querySelector('.btn2');
+        var btn3 = document.querySelector('.btn3');
+        var btn4 = document.querySelector('.btn4');
+        btn1.onclick = function () {
+            location.assign('http://www.baidu.com');
+        }
+
+        btn2.onclick = function () {
+            location.replace('http://www.baidu.com');//不能回退，不记录历史
+        }
+
+        btn3.onclick = function () {
+            location.reload(true);
+        }
+        btn4.onclick = function () {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

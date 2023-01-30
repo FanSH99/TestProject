@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        //1.设a和b均为数值型变量,且a=5,b=7,则表达式1.0+a/b的值为
+
+        var a = 5, b = 7;
+        var c = 1.0 + a / b;
+        console.log(c.toFixed(2));//取两位小数
+
+        //2.设a、b、c为数值型数, 且a = 3, b = 5, c = 2, 则执行完以下语句: a *= 16 + (b++) - (++c); 后, a的值是 
+
+        var a = 3, b = 5, c = 2;
+        a *= 16 + (b++) - (++c);
+        /* 
+        a*= 16 + 5 -3   a*=18  a=a*18=3*18=54  b=6 c=3
+        */
+
+        console.log(a, b, c);
+        //  3.设有下面的程序段 var x= 0,y=0,t;t=x&&++y; 执行语句后y的值为
+
+        var x = 0, y = 0, t;
+        t = x && ++y;
+        /*  x=0为假，所以直接短路，后面不会执行。 则x,y,t都为0*/
+
+        // 4.若a是数值型变量,则执行表达式"a=25/3%3"后,a的值为
+
+        var a;
+        a = 25 / 3 % 3
+        console.log(a);
+        console.log(parseInt(a));//取整
+        console.log(a.toFixed(2));//取两位小数
+        //5.若a=1,b=4,c=3,则表达式a&&b+c||b-c的值为
+
+        var a = 1, b = 4, c = 3;
+        console.log(a && b + c || b - c);
+        /*
+         1&&4+3||4-3
+        1&&7||1
+        7
+        */
+        //  6.若a=1,b=2;运算a+b+(a++== b)+(--a === b)
+        var a = 1, b = 2;
+        console.log(a + b + (a++ == b) + (--a === b));
+      /*
+        1+2+(1==2)+(1===2)
+          1 +2+false+false
+          1+2+0+0
+          3
+          false在加减运算中自动转换成0，true在加减运算中自动转换成1
+  
+          */
+
+
+        /*  var a=10,b=2
+         a=a++ + --a -b +a++ + ++b - --a -a-- +a++ + --b; */
+        /* 10 +10 -2 +10 + 3 - 10 -10 +10 + 2 */
+    </script>
+
+
+
+</body>
+
+</html>

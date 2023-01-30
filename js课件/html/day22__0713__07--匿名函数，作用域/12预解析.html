@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        预解析--又叫做预编译。
+        js解析器在运行js代码时会分两步来走，先预解析在执行代码。
+
+        预解析：var和function声明的变量会提前声明或者定义。
+        代码执行：从上到下按照顺序来执行。上面代码没有结束不会执行下面的。另外，如果报错，后面代码君不悔执行。
+     -->
+
+    <script>
+
+        /* 变量预解析---又叫变量提升  
+        --变量会提升，赋值不会提升。变量的声明会被提升到当前作用域的最上面。
+        */
+
+        console.log(num);//undefined;
+        var num = 10;
+
+        /* 上面代码等同于  var num; console.log(num); num=10; */
+        var num;
+        var b;
+        console.log(num);//10  先来后到，上面已经有声明了
+        num = 20;
+        b = 20;
+        console.log(num);//20 重新赋值了，
+
+
+        show1();//good nice
+        show();//hello world
+        function show() {
+            console.log('hello world');
+        }
+        function show1() {
+            console.log('good nice');
+        }
+        show1();
+        /* 上述三个 打印结果， good nice; hello world; hello world; */
+
+        /* 等同于 function show(){} show(); */
+
+        /*   fn();   ---函数表达式的调用不能放到前面，会报错。*/
+        var fn = function () {
+            console.log('very good');
+        }
+        fn();
+
+
+    </script>
+
+
+</body>
+
+</html>

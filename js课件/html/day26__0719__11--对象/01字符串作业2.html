@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        /*  去掉字符出汗中的空格
+        1.replace +遍历
+        2.遇到非空格，拼接字符串。
+ */
+
+
+        var str = '   he   ll   0  o   ';
+        console.log(str);
+        console.log(str.length);
+        demo1(str);
+        function demo1(str) {
+            var j = str.length;
+            for (var i = 0; i < j; i++) {
+                str = str.replace(' ', '');
+            }
+            console.log(str);
+            console.log(str.length);
+        }
+
+        var str1_1 = '   he    ll    0     0    9    999    '
+        demo1_1(str1_1);
+        console.log(str1_1);
+        console.log(str1_1.length);
+        function demo1_1(str) {
+            for (var i = 0; i < str.length; i++) {
+                str = str.replace(' ', '');
+            }
+            console.log(str);
+            console.log(str.length);
+        }
+
+        demo1_2(str);
+        function demo1_2(str) {
+            str = str.replaceAll(' ', '')
+            console.log(str);
+            console.log(str.length);
+        }
+
+        demo1_3(str);
+        function demo1_3(str) {
+            var str0 = '';
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] != ' ') {
+                    str0 += str[i];
+                }
+            }
+            console.log(str0);
+            console.log(str0.length);
+        }
+
+
+        /*  首字母大写 
+        1.取首字母
+        2.该大写
+        3.拼接
+        */
+        var str2 = 'hello'
+        demo2(str2);
+        function demo2(str) {
+            var char = str.charAt(0).toUpperCase();
+            // console.log(char);
+            var str = '';
+            for (var i = 0; i < str.length; i++) {
+                if (i = 0) {
+                    str0 += char;
+                } else {
+                    str0 += str[i]
+                }
+            }
+        }
+
+        demo2_2(str2);
+        function demo2_2(str) {
+            var str0 = '';
+            var char = str.charAt(0).toUpperCase();
+            var str1 = str.substring(1);
+            var str0 = char + str1;
+            console.log(str0);
+        }
+
+        demo2_3(str2);
+        function demo2_3(str) {
+            var str0 = '';
+            var char = str.charAt(0).toUpperCase();
+            var str1 = str.slice(1);
+            var str0 = char.concat(str1);
+            console.log(str0);
+        }
+
+        //6. 去掉头尾空格
+
+        var str3 = '   he   ll   o     ';
+        demo3(str3);
+        function demo3(str) {
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] !== ' ') {
+                    str = str.slice(i);
+                    break;
+                }
+            }
+            for (var i = str.length - 1; i >= 0; i--) {
+                if (str[i] !== ' ') {
+                    str = str.slice(0, i + 1);
+                    break;
+                }
+            }
+            console.log(str);
+            console.log(str.length);
+        }
+
+        demo3_2(str3);
+        function demo3_2(str) {
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] !== ' ') {
+                    str = str.substring(i);
+                    break;
+                }
+            }
+            for (var i = str.length - 1; i >= 0; i--) {
+                if (str[i] !== ' ') {
+                    str = str.substring(i + 1, 0);
+                    break;
+                }
+            }
+            console.log(str);
+            console.log(str.length);
+        }
+
+        // 尽量封装函数，分开封装，头部封装一个，尾部封装一个。
+        function demo3_trimHead(str) {
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] !== ' ') {
+                    str = str.substring(i);
+                    break;
+                }
+            }
+            return str;
+        }
+        str0 = demo3_trimHead(str3);
+        // console.log(str0);
+        str0 = str0.split('').reverse().join('');
+        // console.log(str0);
+        str0 = demo3_trimHead(str0);
+        // console.log(str0);
+        str0 = str0.split('').reverse().join('');
+        console.log(str0);
+
+
+        //8. 反转字符串
+        var str4 = 'hello';
+        function demo4(str) {
+            str4 = str4.split('').reverse().join('');
+            console.log(str4);
+        }
+
+        function demo4_2(str) {
+            var str0 = '';
+            for (var i = str.length - 1; i >= 0; i--) {
+                str0 += str[i];
+            }
+            console.log(str4);
+        }
+        demo4(str4);
+        demo4_2(str4);
+
+        // 7.删除字符串中所有的数字（用原生和不原生（内置方法）两种方法来做）
+
+        // 方法1：
+        var str5 = 'afjasoeigjs123sgdhedhhe456osddhnofd789';
+        function demo5(str) {
+            str = str.replace(/\d+/g, '');
+            console.log(str);
+        }
+        demo5(str5);
+
+        demo5_2(str5);
+        function demo5_2(str) {
+            str0 = '';
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] >= 0 && str[i] <= 9) {
+                    continue;
+                }
+                str0 += str[i];
+            }
+            console.log(str0);
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

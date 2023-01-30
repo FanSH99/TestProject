@@ -1,0 +1,111 @@
+<!DOCTYPE html><!-- 声明这是html文件 -->
+<html lang="en">
+<!-- 中文 -->
+
+<head>
+    <meta charset="UTF-8"><!-- 字符编码,国际标准 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 针对IE浏览器,以最高版本预览 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一个网页</title><!-- 选项卡上方的网页标题 -->
+
+    <style>
+        /*  .box {
+
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 10px;
+        } */
+    </style>
+
+</head>
+
+<body>
+
+    <!-- 标签结构:包含关系,并列关系
+    包含关系又称为父子关系,并列关系又称为兄弟关系 -->
+
+    <!-- <div class="box"></div> -->
+
+
+    <!-- F12 调试工具。
+     Element标签，   点下选中会变色，左键单击标签，箭头放在标签上有宽高。
+     styles样式      会显示CSS属性，-->
+
+
+    <!-- 网页内容标题:hn(n:1~6)  双标签:有开始，有结束，结束时前面有斜杠。
+        
+        <!-- 标题标签默认条件下字体加粗。
+        块状元素特点：一组标签排不满一行时另外一组不会自动往后排。同时给标签设置宽高可以起作用。 -->
+    <!-- 不存在h7,标题标签只有h1--h6 -->
+
+
+    <h1 style="width: 200px;height: 40px;background-color: pink;">标题标签</h1>
+    <h2 style="width: 200px;height: 40px;background-color: goldenrod;">标题标签</h2>
+    <h3 style="">标题标签</h3>
+    <h4>标题标签</h4>
+    <h5>标题标签</h5>
+    <h6>标题标签</h6>
+    <h7>标题标签</h7>
+    <!-- 不存在h7,标题标签只有h1--h6
+
+    <!-- 段落标签，p标签，同样是双标签，块状元素。
+            一组标签排不满一行时另外一组不会自动往后排。同时给标签设置宽高可以起作用。
+            默认不加粗正常 -->
+    <p style="width: 200px;height: 40px;background-color: pink;">这是一个段落</p>
+    <p style="width: 200px;height: 40px;background-color: goldenrod;">这是另一个段落</p>
+
+
+    <!-- img 图片标签，单标签  必须加src（图片的路径）
+            
+            1、绝对路径 
+            
+            不允许使用。因为项目完成时也要打包图片。图片要放到项目中。
+            2、相对路径。 相对项目而言。  
+                同一文件夹同级，直接引用文件名(图片名字)   01.img。
+                同一文件夹不同级，文件夹名/文件名  img/02.jpg。
+                不同文件夹  ../文件夹名/文件名   ../img/03.jpg。
+    
+    
+                ../ 返回上一级  如果要返回多级的话，继续加../
+                ./ 当前目录
+
+            alt="" 图片不能正常显示的时候（要么路径错了，要么文件名错了，要么后缀错了，用来显示的信息，提示这是一张图片。
+            title=“” 无论图片是否正常显示，都会显示的信息，用来描述图片。
+
+            
+            img 行内元素，会自动往后排，但可以设置宽高等样式。
+                只设置宽高中的一个属性，会等比例缩放，不变形。
+            所以说img 既有块状元素特点，又有行内元素特点，属于行内块元素。
+            -->
+
+    <div>
+        <h4> 1天前更新轮到特朗普被收拾了，日本突然“临时变卦”，但拜登却高兴不起来</h4>
+        <img style=" width: 200px;" src="01.jpg" alt="图片1" title="">
+        <img style=" width: 200px;" src="02.jpg" alt="图片1" title="">
+        <img style=" width: 200px;" src="03.jpg" alt="图片1" title="">
+        <div style=" width:200px;height:132px;background-color: grey;"> 点击查看更多</div>
+
+    </div>
+
+    <div>
+        <h4>应对气候变化，中国在行动。</h4>
+        <img style=" width: 200px;" src="img/1.jpg" alt="图片1" title="">
+        <img style=" width: 200px;" src="img/2.jpg" alt="图片1" title="">
+        <img style=" width: 200px;" src="img/3.jpg" alt="图片1" title="">
+        <div> 点击查看更多</div>
+    </div>
+
+    <div>
+        <img style=" width: 200px;" src="img/1.jpg" alt="图片1" title="">
+        <h4>史上首次！美国海军航空母舰将迎来一位女性舰长
+            据美军《星条旗报》12月9日报道，美国海军航空兵发言人哈勒尔中校 表示，美国海军首次推荐一名女性担任美国航空母舰的舰长。据报道，艾米·鲍恩施密特 上校曾是一名海军直升机飞行员，担任...
+        </h4>
+        <span>环球时报 </span>&emsp;<span>5天前更新。</span>
+    </div>
+    <div></div>
+
+
+</body>
+
+</html>

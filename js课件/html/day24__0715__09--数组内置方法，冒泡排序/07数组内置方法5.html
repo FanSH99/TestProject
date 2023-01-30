@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        .14.some()  arr.some(回调函数)   返回值是true或者false   不修改原数组
+            只要有一个元素符合条件就返回真。
+        
+        .15 every()  arr.every(回调函数) 返回值是true或者false   不修改原数组
+            只有所有都符合才为真，否则返回假。
+        
+        .16 filter() arr.filter(回调函数)    返回值是符合条件的所有元素组成的新数组。    不修改原数组
+
+        .17.map()    arr.map(回调函数)   常用    通过函数来处理数组，返回处理后的数值。
+            如果没有return返回值，相当于forEach()遍历数组。
+            如果有return返回值，返回处理后的数组
+            注意： map() 不会对空数组进行检测。
+            注意： map() 不会改变原始数组。
+
+            检测值，如果有，返回处理后的结果，如果没有返回undefined
+
+        .18.find  arr.find(回调函数）返回第一个符合条件的元素，没有符合，返回undefineded
+       . 19.includes  arr.includes(item) 如果包含返回true
+        if(arr.includes(ele)){
+        }
+        if(arr.indexOf(ele)!=-1)
+       . arr.isArray(对象) 返回真或假。
+        对象 instanceof Array   返回true或false
+     -->
+    <script>
+
+        // some()
+        var arr = [10, 20, 60, 80, 10];
+        var flag = arr.some(function (item, index) {
+            return item > 60
+        })
+        console.log(flag);//true
+        var flag2 = arr.some(function (item, index) {
+            return item > 100
+        })
+        console.log(flag2);//false
+        var flag3 = arr.every(function (item) {
+            return item > 5
+        })
+        console.log(flag3);//true
+        var flag4 = arr.every(function (item, index) {
+            return item > 10
+        })
+        console.log(flag4);//false
+
+        //filter
+        var newArr = arr.filter(function (item, index) {
+            return item >= 60
+        })
+        console.log(newArr);//[60,80]
+        console.log(arr);
+
+        arr.map(function (item, index) {
+            if (item > 20) {
+                console.log(item);
+            }
+        })
+        var arr_map = arr.map(function (item, index) {
+            return item * index
+        })
+        console.log(arr);
+        console.log(arr_map);
+
+        var arr_map1 = arr.map(function (item, index) {
+            if (item > 17) {
+                return item + 2;
+            }
+        })
+        console.log(arr);
+        console.log(arr_map1);//[undefined, 22, 62, 82, undefined]
+        var arr_map2 = arr.map(function (item, index) {
+
+            return item > 17
+        })
+        console.log(arr);
+        console.log(arr_map2);//[false, true, true, true, false]
+
+        var ele = arr.find(function (item, index) {
+            return item > 10
+        });
+        console.log(ele);//20
+
+        var flag_i = arr.includes(80);
+        console.log(flag_i);//true
+        if (arr.indexOf(80) != -1) {
+            console.log('hhhhh');
+        } else {
+            console.log('ddddd');
+        }//hhhhh
+
+        var type1 = Array.isArray(flag_i);
+        console.log(type1);//false
+        var type2 = Array.isArray(arr);
+        console.log(type2);//true
+
+    </script>
+</body>
+
+</html>

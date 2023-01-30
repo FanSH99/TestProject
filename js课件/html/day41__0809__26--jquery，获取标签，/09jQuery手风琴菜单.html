@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月9日14:31:48
+     -->
+
+    <div class="wraper">
+        <ul class="parentWrap">
+            <li class="menuGroup">
+                <h2>标题1</h2>
+                <div style="display: block;">我是弹出的div1</div>
+            </li>
+            <li class="menuGroup">
+                <h2>标题2</h2>
+                <div style="">我是弹出的div2</div>
+            </li>
+            <li class="menuGroup">
+                <h2>标题3</h2>
+                <div style="">我是弹出的div3</div>
+            </li>
+            <li class="menuGroup">
+                <h2>标题4</h2>
+                <div style="">我是弹出的div4</div>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="./js/jquery-3.6.0.min.js"> </script>
+    <script>
+        $(function () {
+            $('.parentWrap>.menuGroup').on('click', function () {
+                // $(this).children('div').css('display','block');
+                $(this).children('div').show().parent().siblings('li').children('div').hide();
+            })
+        })
+    </script>
+</body>
+
+</html>

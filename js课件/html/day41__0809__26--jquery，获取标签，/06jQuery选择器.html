@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu {
+            width: 1200px;
+            height: 48px;
+            background: #ae5790;
+            color: #333;
+            margin-bottom: 200px;
+        }
+
+        .munu ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu ul>li {
+            display: block;
+            width: 120px;
+            height: 48px;
+            float: left;
+            line-height: 48px;
+            text-align: center;
+            position: relative;
+            border: 1px solid #fff;
+        }
+
+        .menu ul>li>ol {
+            width: 120px;
+            background: #7c59c5;
+            position: absolute;
+            left: 0;
+            top: 48px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月9日09:58:02
+
+        基本选择器  id class 标签  .box  #btn1  <p>
+        层次选择器  后代  (div p)   子选择器 div>p
+        过滤选择器 odd(奇数)  even(偶数)  li:odd  li:even
+        find()  查找后代 div p
+        children()  查找儿子  div>p
+     -->
+
+    <div class="menu" id="menu">
+        <ul>
+            <li>display</li>
+            <li>AAA
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li>BBB
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+            </li>
+            <li>CCC
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="nav menu">
+        <ul>
+            <li>show,hide</li>
+            <li>AAA
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li>BBB
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+            </li>
+            <li>CCC
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="header menu">
+        <ul>
+            <li>fadeIn,fadeOut</li>
+            <li>AAA
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li>BBB
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+            </li>
+            <li>CCC
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+
+        </ul>
+    </div>
+    <p>fadeToggle function is only available in jQuery 1.4.4 and above.</p>
+    <div class="header2 menu">
+        <ul>
+
+            <li>fadeIoggle</li>
+            <li>AAA
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li>BBB
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+            </li>
+            <li>CCC
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="top menu">
+        <ul>
+            <li>slideDown,slideUp</li>
+            <li>AAA
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li>BBB
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+            </li>
+            <li>CCC
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+
+        </ul>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // 1.经过和离开  mouseenter mouseover   ||   mouseleave mouseout
+
+            /* $('menu>ul>li').mouseenter(function(){
+        
+            }) */
+
+            $('#menu>ul>li').on('mouseenter', function () {
+                $(this).children('ol').css('display', 'block');
+            })
+            $('#menu>ul>li').on('mouseleave', function () {
+                $(this).children('ol').css('display', 'none');
+            })
+
+            $('.nav>ul>li').on('mouseenter', function () {
+                $(this).find('ol').show()
+            })
+            $('.nav>ul>li').on('mouseleave', function () {
+                $(this).find('ol').hide();
+            })
+            $('#menu>ul>li').hover(function () {
+                $(this).css({
+                    'color': '#fff',
+                    'font-weight': 'bold'
+                })
+            }, function () {
+                $(this).css({
+                    'color': '#333',
+                    'font-weight': 'normal'
+                })
+            })
+
+            $('.header>ul>li').on('mouseenter', function () {
+                $(this).find('ol').fadeIn(1000);
+            })
+            $('.header>ul>li').on('mouseleave', function () {
+                $(this).find('ol').fadeOut();
+            })
+
+            $('.header2>ul>li').on('mouseenter', function () {
+                console.log($(this));
+                $(this).find('ol').fadeIoggle('slow');
+            })
+            /*  $('.header2>ul>li').on('mouseleave', function () {
+                 $(this).find('ol').fadeToggle();
+             }) */
+
+            $('.top>ul>li:first').css('width', '180px');
+            $('.top>ul>li').on('mouseenter', function () {
+                $(this).find('ol').slideDown(1000);
+            })
+            $('.top>ul>li').on('mouseleave', function () {
+                $(this).find('ol').slideUp();
+            })
+
+        })
+    </script>
+
+    <script>
+        /*
+ 一、注意大小写，fadeIn()   fadeOut()   fadeToggle()   fadeTo()  大小写不能变。
+
+二、fadeTo()  没有默认参数，必须加上  slow/fast/Time  
+        */
+    </script>
+</body>
+
+</html>

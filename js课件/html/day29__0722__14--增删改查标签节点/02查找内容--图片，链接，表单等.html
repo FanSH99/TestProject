@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="img/role-xn.png" alt="">
+    <img src="img/role-y.png" alt="">
+    <div>
+        <img src="img/role-xn.png" alt="">
+        <a href=""></a>
+    </div>
+    <a href="">百度一下你就知道</a>
+    <form action=""></form>
+    <form action=""></form>
+    <script>
+        var body = document.body;
+        console.log(body);
+        /* <body style='background-color:pink>...</body> */
+        body.style.backgroundColor = 'pink';
+        var html = document.documentElement;
+        console.log(html);
+        html.style.fontSize = '14px';
+        /* <html lang='en style='font-size:14px;>
+        <head>...</head>
+        <body style='background-color:pink>...</body>
+        </html'
+        */
+        var images = document.images;
+        console.log(images);//HTMLCollection(3) [img, img, img]
+        var img0 = images[0];
+        console.log(img0);//<img src="img/role-xn.png" alt="">   ---下面修改上面这个也要修改
+        img0.style.width = '400px';
+        img0.alt = '这是一张图片';
+        console.log(img0);////<img src="img/role-xn.png" alt="这是一张图片" style='width:400px'>
+        var links = document.links;
+        console.log(links);//HTMLCollection(2) [a, a]
+        var forms = document.forms
+        console.log(forms);//HTMLCollection(2) [form, form]
+        var form1 = forms[0];
+        console.log(form1);//<form action="01查找内容.html" metnod='post'></form>
+        form1.action = '01查找内容.html';
+        form1.method = 'post';
+        var url = document.URL;
+        console.log(url);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day29--7.22(14)/02.html
+        console.log(URL);//ƒ URL() { [native code] }
+    </script>
+</body>
+
+</html>

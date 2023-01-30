@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #wall_r {
+            width: 1px;
+            height: 600px;
+            background: black;
+            position: absolute;
+            left: 1000px;
+            top: 0;
+        }
+
+        #btn1 {
+            margin-top: 100px
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+2022年8月2日14:58:42
+点击按钮，让小球向右运动。
+     -->
+
+    <button id="btn1">向右运行</button>
+    <button id="btn2">向左运行</button>
+    <div id="box"></div>
+    <div id="wall_r"></div>
+
+    <script>
+        var box = document.querySelector('#box');
+        var btn1 = document.querySelector('#btn1');
+        var timer;
+        btn1.onclick = function () {
+            moveRight();
+        }
+        btn2.onclick = function () {
+            moveLeft();
+        }
+        function moveRight() {
+            var speed = 10;
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var l = box.offsetLeft;
+                console.log(box.offsetLeft);
+                var newL = l + speed;
+                if (newL >= 900) {
+                    newL = 900;
+                    clearInterval(timer);
+                }
+                box.style.left = newL + 'px';
+            }, 15)
+        }
+        function moveLeft() {
+            var speed = 10;
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var l = box.offsetLeft;
+                console.log(box.offsetLeft);
+                var newL = l - speed;
+                if (newL <= 0) {
+                    newL = 0;
+                    clearInterval(timer);
+
+                }
+                box.style.left = newL + 'px';
+            }, 15)
+        }
+    </script>
+</body>
+
+</html>

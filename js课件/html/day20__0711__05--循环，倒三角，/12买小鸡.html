@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>一共有<span class="count" id="count"></span>种组合</div>
+    <script>
+        var count = 0;
+        for (var gj = 0; gj <= 33; gj++) {
+            for (var mj = 0; mj <= 50; mj++) {
+                for (var xj = 0; xj <= 200; xj++) {
+                    if (gj * 3 + mj * 2 + xj * 0.5 == 100) {
+                        document.write('公鸡' + gj + '只&emsp;&emsp;', '母鸡' + mj + '只&emsp;&emsp;', '小鸡' + xj + '只<br>');
+                        count++;
+                    }
+                }
+            }
+        }
+        console.log(count);
+        document.getElementById('count').innerHTML = count;
+    </script>
+</body>
+
+</html>

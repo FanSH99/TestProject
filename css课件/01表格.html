@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 目前不用表格，因为，网页需要先打开表格网页彩绘显示，网卡的时候体验不好 -->
+    <!--table 表格标签，双标签，
+        cellspacing="0" 把单元格与单元格之间的间距设置为0
+    cellpadding="0" 可以去掉单元格与内容之间的间距-->
+    <!-- tr代表行 td代表列 一组tr代表一行。每组Tr四个td代表四列
+            td按照内容自适应宽度。-->
+    <table border="1" style="width: 300px; height:200px" cellspacing="0">
+
+        <tr>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>31</td>
+            <td>32</td>
+            <td>33</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>41</td>
+            <td>42</td>
+            <td>43</td>
+            <td>44</td>
+        </tr>
+    </table><br>
+    <p></p>
+
+    <table border="1" cellpadding="0">
+
+        <tr>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>31</td>
+            <td>32</td>
+            <td>33</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>41</td>
+            <td>42</td>
+            <td>43</td>
+            <td>44</td>
+        </tr>
+    </table>
+    <p></p>
+    <p></p>
+
+    <table border="1" style="width: 300px;" cellspacing="0" cellspacing="0">
+
+        <!-- 合并同一行里面的单元格 用colspan， 几个合到一起数值就是几-->
+        <!-- <tr>
+            <td colspan="4">6月份成绩单</td>
+        </tr> -->
+        <!-- <tr>
+            <td colspan="2">第一组成绩</td>
+
+            <td colspan="2">第二组成绩</td>
+
+        </tr> -->
+
+        <caption>
+            <!-- <td colspan="4">6月份成绩单</td> -->
+            205班级 6月份成绩单
+        </caption>
+        <tr>
+            <!-- 将td换成th可以有加粗效果 -->
+            <th rowspan="2">姓名</th>
+            <th colspan="2">成绩</th>
+            <th rowspan="2">总分</th>
+        </tr>
+        <tr>
+            <!--  <td>姓名</td>
+            <td>计试</td>
+            <td>笔试</td>
+            <td>总分</td> -->
+
+            <td>机试</td>
+            <td>笔试</td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+
+     -->
+
+    <input type="text" id="id"> <input type="text" id="user"> <input type="text" id="age"> <button id="btn">添加</button>
+    <table>
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年䶖</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            //数据添加在这里，增加删除按钮，单击删除，可以删除当前行
+        </tbody>
+    </table>
+    <script>
+
+        var ths = document.querySelectorAll('th');
+        var tbody = document.querySelector('tbody');
+        var add = document.querySelector('#btn');
+        add.onclick = function () {
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            var id = document.querySelector('#id').value;
+            var user = document.querySelector('#user').value;
+            var age = document.querySelector('#age').value;
+            var arr = [];
+            arr = [id, user, age, '<a href="javascript:;">删除</a>'];
+            console.log(arr);
+            for (var i = 0; i < ths.length; i++) {
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                td.innerHTML = arr[i];
+            }
+            var links = document.links;
+            for (var j = 0; j < links.length; j++) {
+                links[j].onclick = function () {
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

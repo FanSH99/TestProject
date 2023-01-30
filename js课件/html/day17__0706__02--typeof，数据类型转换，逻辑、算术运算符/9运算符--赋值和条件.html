@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- 
+
+        赋值运算符
+     -->
+
+    <script>
+
+        var a = 10;
+        console.log("a+=10", a += 10);//20
+        console.log("a-=10", a -= 10);//10
+        console.log("a*=10", a *= 10);//100
+        console.log("a/=10", a /= 10);//10
+        console.log("a%=10", a %= 10);//0
+
+
+        if (10 > 20) {
+            console.log('hello');
+        }
+        else {
+            console.log('world');
+        }
+
+        10 > 20 ? console.log('hello') : console.log('world');
+
+        var c = true ? 10 : 20;
+        console.log(c);
+
+
+        console.log("4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true", 4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true);
+
+
+        var num = 10;
+        console.log("5 == num / 2 && (2 + 2 * num).toString() === '22'", 5 == num / 2 && (2 + 2 * num).toString() === '22');
+
+
+        //1.
+        var a = 3 > 5 && 2 < 7 && 3 == 4;  //false  && true  && flase  ----false
+        console.log("a=3 > 5 && 2 < 7 && 3 == 4 ", a);
+        //2. 
+        var b = 3 <= 4 || 3 > 1 || 3 != 2;   //  true  || true  || true   ----true
+        console.log("b=3 <= 4 || 3 > 1 || 3 != 2", b);
+        //3.
+        var c = 2 === "2";   //false
+        console.log('c=2 === "2"', c);
+        //4.
+        var d = !c || b && a;   //true || true && flase  ---true   ---注意，这里出错了，应该先并后或。 
+        console.log('d=!c || b && a', d);
+
+        var a = 10, b = 2;
+        a = a++ + --a - b-- + a++ + ++b - --a - a-- + a++ + --b;
+        // a= 10 + 10 -2 + 10 + 2 - 1-1+9+1---20
+        console.log(a, b) // b=1
+
+
+        var a = 5;
+        var b = 7;
+        var c = 1.0 + a / b;
+        console.log(c);
+
+        var a = 3, b = 5, c = 2;
+        a *= 16 + (b++) - (++c);
+        console.log(a, b, c);
+
+        var x = 0, y = 0;
+        var t = x && ++y;
+        console.log(x, y, t);
+
+        var a = 25 / 3 % 3;
+        console.log(a);
+
+        var a = 1, b = 4, c = 3;
+        console.log(a && b + c || b - c);
+
+        var a = 1, b = 2;
+        console.log(a + b + (a++ == b) + (--a === b));
+
+        var num = 0;
+        console.log(123 || num++) //123||0 ----后面不再计算，所以num++被短路了，num值不变。 123
+        console.log(num); //num=0
+
+
+        var num = 7;
+        var str = "我爱你~中国";
+        console.log(num > 5 && str.length >= num);  // 7>5  && 6>=7    true && false  ---false
+        console.log(num < 5 && str.length >= num);   // 7<5 && 6>=7  false && true  ---false
+        console.log(!(num < 10));               //! (7<10>)  !true  ---false
+        console.log(!(num < 10 || str.length == num));//  !(7<10 ||6==7)  !(true || false)  !true  ---false
+
+        var num1 = 10;
+        var num2 = 100;
+        var res1 = num1 > num2;   //resl=10>100=false
+        var res2 = num1 == 11;   //res2=10==11=false
+        var res3 = num1 != num2; //false!=false  ---true
+        console.log(res1);
+        console.log(res2);
+        console.log(res3);
+        console.log(res1 + res2 + res3);   //1
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

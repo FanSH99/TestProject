@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        function show(x, y) {
+            return function () {
+                console.log(x * y);
+            }
+        }
+        show(20, 30)();
+
+
+        //1.赋值再执行
+        var area = function () {
+            var x = 10;
+            var y = 5;
+            return function () {
+                return x * y;
+            }
+        }
+        console.log(area);
+        var area1 = area();
+        console.log(area1);//匿名函数，本是不会执行
+        var area2 = area1();
+        console.log(area2);
+
+        //2.自我执行。
+        var area3 = (function () {
+            var x = 10;
+            var y = 5;
+            return function () {
+                return x * y;
+            }
+        })()();
+
+        console.log('自我执行：' + area3);
+
+
+    </script>
+
+</body>
+
+</html>

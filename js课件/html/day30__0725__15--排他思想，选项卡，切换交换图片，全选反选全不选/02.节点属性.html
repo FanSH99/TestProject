@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .pic1 {
+            width: 300px;
+            border: 2px solid red;
+        }
+
+        .pic2 {
+            width: 500px;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/role-ty.png" alt="" class="">
+    <img src="img/role-nk.png" alt="" class="" date-name="nk">
+
+    <script>
+
+        // 查
+        var img = document.querySelector('img');
+        console.log(img);
+
+        img.className = 'pic1';
+
+        var img1 = document.querySelectorAll('img')[1];
+        img1['className'] = 'pic1';
+
+        console.log(img1.className);//pic2
+        console.log(img['className']);//pic1
+
+        img.setAttribute('class', 'pic2');
+        console.log(img.getAttribute('class'));//pic2
+
+        img1._index = '1';//可以生效，但是不直观，在页面中不显示，但是还可以取出来。
+        console.log(img1._index);//1
+
+
+        img.setAttribute('index', 0);//自定义属性  ---date-*
+        img.setAttribute('date-name', 'ty')
+
+        // 获取自定义属性
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

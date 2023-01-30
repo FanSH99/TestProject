@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <base target="_blank">
+
+    <!-- 使用次数比较多的单独列到一页，调用即可。 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .top {
+            width: 1200px;
+            padding-top: 30px;
+            margin: auto;
+        }
+
+        .top .logo {
+            float: left;
+        }
+
+        .top .top_r {
+            float: right;
+
+        }
+
+        .top .top_r .top_rt ul li {
+            float: right;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .top .top_r .top_rt ul li input {
+            width: 130px;
+            height: 24px;
+            border: 1px solid #666;
+            padding-left: 10px;
+            outline: none;
+        }
+
+        .top .top_r .top_rt ul li button {
+            position: absolute;
+            right: 5px;
+            top: 7px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .top .top_r .top_rt ul li a {
+            color: #666;
+            text-decoration: none;
+            background: url(../img/header_icon01.png) no-repeat left center;
+            padding-left: 24px;
+        }
+
+        .top .top_r .top_rt ul li a:hover {
+            color: #d7000f;
+            background-image: url(../img/header_icon01H.png);
+        }
+
+        .top .top_r .top_rt ul li:nth-child(3) a {
+            padding-left: 20px;
+            background-image: url(../img/header_icon04.png);
+            border-right: 1px solid #eee;
+            padding-right: 20px;
+
+        }
+
+        .top .top_r .top_rt ul li:nth-child(3) a:hover {
+            background-image: url(../img/header_icon04H.png);
+        }
+
+        .nav {
+            padding-top: 25px;
+        }
+
+        .nav dl {
+            float: right;
+            padding: 0 20px 15px;
+            position: relative;
+            /* z-index: 2; */
+        }
+
+        /* .nav dl:first-child{
+    padding: 0 0 0 20px;
+} */
+        .nav dl dt a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .nav dl dt a:hover {
+            color: #d7000f;
+        }
+
+        .nav dl dd {
+            display: none;
+            border: 1px solid #ddd;
+            padding: 10px;
+            top: 34px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+
+        }
+
+        .nav dl:hover dd {
+            display: block;
+        }
+
+        .nav dl dd a {
+            display: inline-block;
+            white-space: nowrap;
+            color: #666;
+            text-decoration: none;
+            line-height: 32px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav dl dd a:hover {
+            color: #d7000f;
+            border-bottom: 1px solid #d7000f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 头部开始 -->
+    <div class="top">
+        <!-- 左边logo开始 -->
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <!-- 左边logo结束 -->
+        <!-- 右边板块开始 -->
+        <div class="top_r">
+            <!-- 右边板块--上部分开始 -->
+            <div class="top_rt">
+                <ul>
+                    <li>
+                        <input type="text" placeholder="全站搜索">
+                        <button>
+                            <img src="img/glass.png" alt="">
+                        </button>
+                    </li>
+                    <li>
+                        <a href="#">人员查询</a>
+                    </li>
+                    <li>
+                        <a href="#">友情链接</a>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <!-- 右边板块--上部分开始 -->
+            <!-- 导航开始 -->
+            <div class="nav">
+                <dl>
+                    <dt>
+                        <a href="#">人才招聘</a>
+                    </dt>
+                    <dd>
+                        <a href="#">职位招聘</a>
+                        <a href="#">联系我们</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">企业文化</a>
+                    </dt>
+                    <dd>
+                        <a href="#">职位招聘</a>
+                        <a href="#">联系我们</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">新闻动态</a>
+                    </dt>
+                    <dd>
+                        <a href="#">职位招聘</a>
+                        <a href="#">联系我们</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">投资项目</a>
+                    </dt>
+                    <dd>
+                        <a href="#">职位招聘</a>
+                        <a href="#">联系我们</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">业务领域</a>
+                    </dt>
+                    <dd>
+                        <a href="#">项目管理与运营</a>
+                        <a href="#">联系我们</a>
+                        <a href="#">项目管理</a>
+                        <a href="#">矿泉水业务</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">关于正业</a>
+                    </dt>
+                    <dd>
+                        <a href="#">职位招聘</a>
+                        <a href="#">联系我们</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">首页</a>
+                    </dt>
+                    <!-- <dd>
+                        <a href="#">职位招聘</a>
+                        <a href="#">联系我们</a>
+                    </dd> -->
+                </dl>
+                <div class="clear"></div>
+            </div>
+            <!-- 导航结束 -->
+        </div>
+        <!-- 右边板块结束 -->
+        <div class="clear"></div>
+    </div>
+    <!-- 头部结束 -->
+
+</body>
+
+</html>

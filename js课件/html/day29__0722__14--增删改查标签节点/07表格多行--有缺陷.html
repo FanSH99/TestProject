@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        table {
+            width: 800px;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table caption {
+            font-size: 24px;
+        }
+
+        table th,
+        table td {
+            text-align: center;
+            width: 150px;
+            height: 30px;
+            border: 1px solid #333;
+        }
+
+        a {
+            color: cadetblue
+        }
+
+        a:hover {
+            color: crimson;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var tab = document.createElement('table');
+        var cap = document.createElement('caption');
+        cap.innerHTML = '学生信息表2'
+        tab.appendChild(cap);
+        var thead = document.createElement('thead');
+        thead_tr = document.createElement('tr');
+        var arr = [];
+        for (var i = 0; i < 5; i++) {
+            arr[i] = document.createElement('th');
+            thead_tr.appendChild(arr[i]);
+        }
+        arr[0].innerHTML = '学号';
+        arr[1].innerHTML = '姓名';
+        arr[2].innerHTML = '性别';
+        arr[3].innerHTML = '年龄';
+        arr[4].innerHTML = '操作';
+        console.log(arr);
+        thead.append(thead_tr);
+        tab.append(thead);
+        var tbody = document.createElement('tbody');
+        var tr = document.createElement('tr');
+        var arr1 = [];
+        for (var i = 0; i < 5; i++) {
+            arr1[i] = document.createElement('td');
+            tr.appendChild(arr1[i]);
+        }
+        arr1[0].innerHTML = '1001';
+        arr1[1].innerHTML = '海绵宝宝';
+        arr1[2].innerHTML = '18';
+        arr1[3].innerHTML = '男'
+        arr1[4].innerHTML = '<a hred="#">删除</a>'
+        console.log(arr1);
+        tbody.appendChild(tr);
+        tab.appendChild(tbody);
+        document.body.appendChild(tab);
+        var clones = document.querySelectorAll('tr')[1];
+        console.log(clones);
+        console.log(cloneTr);
+        for (var i = 0; i < 10; i++) {
+            /*  tbody.appendChild(clonesTr); */
+            var cloneTr = clones.cloneNode(true);
+            tbody.appendChild(cloneTr);
+        }
+        var link = document.getElementsByTagName('a');
+        console.log(link);//HTMLCollection(2) [a, a]
+        console.log(link[0]);
+        console.log(link[0].parentNode.parentNode);
+        for (var i = 0; i < link.length; i++) {
+            link[i].onclick = function () {
+                console.log(this);//<a href="#">删除</a>
+                console.log(this.parentNode.parentNode);
+                this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+        var theads = document.querySelectorAll('tr');
+        console.log(theads);
+
+
+
+    </script>
+</body>
+
+</html>

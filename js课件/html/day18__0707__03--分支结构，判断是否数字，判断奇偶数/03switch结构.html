@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    （4）Switch结构（和多分支结构可以互相转换）
+        有固定的值得话，建议用Switch。
+        如果是条件的话，建议用多分支。
+        注意，表达式的值和case的值一定是全等比较。
+        表达式的值===值1
+
+        switch(表达式的值){
+            case 值1:
+                代码块1;
+                break;
+            case 值2:
+                代码块2;
+                break;
+            case 值3:
+                代码块3;
+                 break;
+            case 值4:
+                代码块4;
+                break;
+                ……
+            case 值n:
+                代码块n;
+                break;
+            default:
+                以上代码都不成立的话，执行此代码。
+                如果前面条件走完，可以不写。即为可选项。
+        } -->
+
+    <script>
+
+        /*  一年有十二个月，
+           3月，4月，5月为春季。 
+            6月 7月 8月为夏季。
+            9月 10月 11月为秋季。
+            12月 1月 2月为冬季。
+             */
+
+        var month = prompt('请输入一个月份，如：1');
+        switch (month) {
+            case '1':
+                alert(month + '月是冬季');
+                break;
+            case '2':
+                alert(month + '月是冬季');
+                break;
+            case '3':
+                alert(month + '月是春季');
+                break;
+            case '4':
+                alert(month + '月是春季');
+                break;
+            case '5':
+                alert(month + '月是春季');
+                break;
+            case '6':
+                alert(month + '月是夏季');
+                break;
+            case '7':
+                alert(month + '月是夏季');
+                break;
+            case '8':
+                alert(month + '月是夏季');
+                break;
+            case '9':
+                alert(month + '月是秋季');
+                break;
+            case '10':
+                alert(month + '月是秋季');
+                break;
+            case '11':
+                alert(month + '月是秋季');
+                break;
+            case '12':
+                alert(month + '月是冬季');
+                break;
+            default:
+                alert('请输入正确的月份');
+                break;
+        }
+
+
+        var month1 = prompt('请输入月份：如1月');
+        switch (month) {
+            case '12月':
+            case '1月':
+            case "2月":
+                alert(month + '是冬季');
+                break;
+            case '3月':
+            case '4月':
+            case "5月":
+                alert(month + '是春季');
+                break;
+            case '6月':
+            case '7月':
+            case "8月":
+                alert(month + '是夏季');
+                break;
+            case '9月':
+            case '10月':
+            case "11月":
+                alert(month + '是秋季');
+                break;
+            default:
+                alert('请输入正确的月份');
+                break;
+
+        }
+
+
+        /*  if (month === '1' || month === '2' || month === '12') {
+ 
+         } */
+    </script>
+</body>
+
+</html>

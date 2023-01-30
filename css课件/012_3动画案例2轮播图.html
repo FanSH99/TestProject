@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+
+    <style>
+        @keyframes picture {
+            0% {
+                transform: translateX(-150px) rotate(0deg);
+                opacity: 0;
+            }
+
+            30% {
+                transform: translateX(500px) rotate(360deg);
+                opacity: 1;
+            }
+
+            70% {
+                transform: translateX(500px) rotate(360deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-150px) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        .banner {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #333;
+            margin: auto;
+            /* 溢出隐藏 */
+            overflow: hidden;
+        }
+
+        .banner ul {
+            width: 500%;
+            animation: banner 5s infinite;
+        }
+
+        .banner ul li {
+            float: left;
+            width: 20%;
+        }
+
+
+        @keyframes banner {
+            0% {
+                transform: translate(0);
+
+            }
+
+            25% {
+                transform: translate(-20%);
+            }
+
+            50% {
+                transform: translate(-40%);
+            }
+
+            75% {
+                transform: translate(-60%);
+            }
+
+            100% {
+                transform: translate(-80%);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="banner">
+        <ul>
+            <li>
+                <img src="img/hot-1.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/hot-3.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/hot-4.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/hot-6.jpg" alt="">
+            </li>
+            <!-- 最后 -->
+            <li>
+                <img src="img/hot-1.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

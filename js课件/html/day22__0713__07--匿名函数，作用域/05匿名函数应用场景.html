@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 应用场景。
+    1.单击事件的后面。
+    2.定时器
+    setInterval(回调函数，时间) 时间按毫秒计算。
+    回调函数一般都是匿名函数。
+    -->
+    <button>请点击我</button>
+    <input type="button" id="btn2" value="点击此处">
+
+    <script>
+        var btn1 = document.querySelector('button');
+        console.log(btn1);
+        btn1.onclick = function () {
+            console.log('run');
+        }
+
+        btn2 = document.querySelector('#btn2');
+        /*   btn2.onclick = show();   错误，没有反应*/
+        btn2.onclick = show;
+        function show() {
+            console.log('hello world');
+        }
+
+         setInterval(function () {
+ 
+             console.log('nice');  //----每隔1秒输出nice，延迟1秒。
+         }, 1000)
+ 
+         function callback() {
+             console.log('good');
+         }
+        setInterval(callback, 1000);//----常用。
+        /* setInterval('callback()', 1000); */
+
+
+
+        function getDate() {
+            var date = new Date();
+            /*  console.log(date); */
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            month = month < 9 ? '0' + month : month
+            day = day < 9 ? '0' + day : day;
+            var time = year + '-' + month + '-' + day;
+            /* console.log(time); */
+            return time;
+        }
+        var time = getDate();
+        document.write(time);
+
+    </script>
+</body>
+
+</html>

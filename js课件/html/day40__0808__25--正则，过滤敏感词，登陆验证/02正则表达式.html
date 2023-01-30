@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月8日10:55:44
+        
+        正则表达式也是一个对象，通常用来检索、替换一些符合某个规则的文本，例如验证表单数据是否合法，
+
+        正则表达式特点：
+        1.灵活性、逻辑性和功能性非常强
+        2.可以迅速地用极其简单的方式达到字符串的复杂控制。
+        3，对于出入门的人比较晦涩难懂。要求一定要认识，可以不会写，
+
+        创建正则表达式的两种方式。
+        1.构造函数。 
+        function RegExp() ---new RegExp()
+        var patt=new RegExp(patten,modifiers)
+        pattern--规则  modifiers---修饰符
+        2.字面量方式   ---用的比较多。
+        /pattern/modifiers  ---不带引号，不分前后顺序。
+        /正则表达式主体/修饰符(可选)
+
+        校验的方法：
+        test()  
+
+        
+     -->
+    <script>
+        var patt = new RegExp('a', 'gi');//是否存在a字符，不区分大小写，全局搜索。
+        console.log(patt);//   /a/gi
+        var patt1 = /a/gi;
+        console.log(patt1);//  /a/gi
+        var str = '234abc';
+        var flag = patt.test(str);
+        console.log(flag);//true
+        var str1 = '134ghf';
+        var flag1 = patt1.test(str1);
+        console.log(flag1);//false
+
+        var rg = /123/;
+        console.log(rg.test('123'));//true
+        console.log(rg.test('abc'));//false
+    </script>
+
+
+
+    <script>
+
+        /*
+        
+    正则表达式修饰符
+     
+     修饰符 可以在全局搜索中不区分大小写:
+     修饰符 	描述
+     i 	执行对大小写不敏感的匹配。
+     g 	执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+     m 	执行多行匹配。
+     
+
+     正则表达式模式
+     
+             方括号用于查找某个范围内的字符：
+     表达式 	描述
+             [abc] 	查找方括号之间的任何字符。
+             [0 - 9] 	查找任何从 0 至 9 的数字。
+             (x | y) 	查找任何以 | 分隔的选项。
+     
+             元字符是拥有特殊含义的字符：
+     元字符 	描述
+             \d 	查找数字。
+             \s 	查找空白字符。
+             \b 	匹配单词边界。
+             \uxxxx 	查找以十六进制数 xxxx 规定的 Unicode 字符。
+     
+             量词:
+     量词 	描述
+             n + 匹配任何包含至少一个 n 的字符串。
+             n * 匹配任何包含零个或多个 n 的字符串。
+             n ? 匹配任何包含零个或一个 n 的字符串。 */
+    </script>
+
+</body>
+
+</html>

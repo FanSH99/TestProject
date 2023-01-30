@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        table {
+            width: 800px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 40px auto;
+        }
+
+        table caption {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        table th,
+        table td {
+            text-align: center;
+            width: 150px;
+            height: 40px;
+            border: 1px solid #333;
+        }
+
+        table thead {
+            background: rgb(80, 246, 235);
+        }
+
+        table tbody tr:nth-child(2n) {
+            background: rgb(185, 234, 241);
+        }
+
+        a {
+            padding: 3px 10px;
+            line-height: 30px;
+            background: rgb(43, 96, 100);
+            color: #fff;
+            border: 1px solid;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #f30;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        var datas = [
+            {
+                学号: '1001',
+                姓名: '白浅',
+                性别: '女',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1002',
+                姓名: '白子画',
+                性别: '男',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1003',
+                姓名: '花千骨',
+                性别: '女',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1004',
+                姓名: '紫萱',
+                性别: '女',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1005',
+                姓名: '南陈',
+                性别: '男',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1006',
+                姓名: '忘羡',
+                性别: '男',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1007',
+                姓名: '君拂',
+                性别: '女',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1008',
+                姓名: '安生',
+                性别: '男',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1009',
+                姓名: '临夏',
+                性别: '女',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            },
+            {
+                学号: '1010',
+                姓名: '东升',
+                性别: '男',
+                年龄: 18,
+                操作: '<a href="javascript:;">删除</a>'
+
+            }
+        ]
+        var tab = document.createElement('table');
+        var cap = document.createElement('caption');
+        cap.innerHTML = '学生信息表2'
+        tab.appendChild(cap);
+        var thead = document.createElement('thead');
+        thead_tr = document.createElement('tr');
+        for (var j in datas[0]) {
+            console.log(j);
+            var th = document.createElement('th');
+            thead_tr.appendChild(th);
+            th.innerHTML = j;
+        }
+        thead.append(thead_tr);
+        tab.append(thead);
+        var tbody = document.createElement('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr');
+            for (var k in datas[i]) {
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                td.innerHTML = datas[i][k];
+            }
+            tbody.appendChild(tr);
+        }
+
+        tab.appendChild(tbody);
+        document.body.appendChild(tab);
+
+        var link = document.querySelectorAll('a');
+        console.log(link);
+        for (var i = 0; i < link.length; i++) {
+            link[i].onclick = function () {
+                this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+       2. 查找字符串中出现最多的字符和个数。
+       字符和个数有联系。   
+       {
+        a:个数
+        b:个数
+        c:个数
+        ……
+        key  ---字母
+        obj[key]  ——个数
+        最后求最大值。
+       }
+        
+
+       for...in  和for...of的区别
+       遍历对象用for ...in
+       遍历数组  用普通for循环遍历    
+        for ...of  遍历数组 大多数情况没问题，有个别时候不太合适
+
+     -->
+    <script>
+        var str = 'adfghjkgdshdjsfdlkgfdskd5trddddff';//随意打得字符串
+        var obj = {};
+        for (var i = 0; i < str.length; i++) {
+            //    每一个字符
+            var char = str[i];
+            // 向空对象中添加数据 ，属性名，char是对象
+            // obj[char]属性不存在 输出undefined--假。则
+            if (obj[char]) {
+                obj[char]++;//obj[char]开始值是1，如果存在加1.
+            }
+            else {
+                obj[char] = 1;
+            }
+        }
+        console.log(obj);
+
+
+        var str0 = '';
+        var max = 0;//假设0为最大值
+        for (var key in obj) {
+            // console.log(key);
+            // console.log(obj[key]);
+            if (max < obj[key]) {
+                max = obj[key]
+                str0 = key;
+            }
+        }
+        console.log(str0, max);
+
+        var stu = { age: 19 };
+        if (stu['age1']) {
+            console.log('属性不存在');
+        } else {
+            console.log('属性存在');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    p::first-letter {
+        font-size: 30px;
+    }
+
+    h1::first-line {
+        color: goldenrod;
+    }
+
+    .box {
+
+        color: red;
+    }
+
+
+    .box::before {
+        content: "00000-";
+    }
+
+    .box::after {
+        content: "-4566";
+    }
+
+    .box1 {
+        width: 300px;
+        /*  height: 300px; */
+        border: 1px solid #333;
+    }
+
+    .box2,
+    .box3 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #f30;
+        float: left;
+
+
+    }
+
+    
+
+</style>
+
+<body>
+
+    <!-- 为对象选择符
+    E:first-letter  设置第一个字符
+    E:first-line 第一行
+    
+    E:before   设置在对象前，一句对象的逻辑结构来发生。
+    E:after  
+    E:placeholder
+    E:selection
+
+    -->
+
+
+    <p>今天，阳光明媚，隔空万里，天得高高的更好的</p>
+
+    <h2>今天，阳光明媚，隔空万里，天得高高的更好的</h2>
+
+
+    <div class="box">123</div>
+
+
+    <div class="box1">
+
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+
+
+    <div class="border">
+        <img src="img/ab_bg.jpg" alt="">
+    </div>
+</body>
+
+</html>

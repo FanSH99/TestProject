@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        程序结构，也叫流程控制。 主要用来控制流程及程序执行顺序。
+
+        主要有三大类，
+        .1.顺序结构。
+
+        从上往下来逐句运行。
+        .2.分支结构。-----重点
+        ----判断条件会自动转为布尔值（真假）
+
+        （1）单分支
+        if(判断条件){
+            代码块
+        }   
+
+        执行规则，当判断条件成立是（为true）时，执行{}中的代码块。
+        不管括号里面是否成立，后面的按顺序执行。
+        （2）双分支
+        if(判断条件){
+            代码块1；
+        }else{
+            代码块2
+        }
+
+        执行规则，当判断条件成立（为true）时，执行代码块1，
+        条件不成立是，执行代码块2.
+    
+        （3） 多分支结构
+        if(判断条件1){
+            代码块1;
+        }else if(判断条件2){
+            代码块2;
+        }else if(判断条件3){
+
+            代码块3;
+        }
+        ……
+        else if(判断条件n){
+            代码块n;
+        } else{
+
+            以上条件都不成立，执行此代码块。
+            可以不写
+        }
+
+        如果判断条件有大于(> >=)号，从大往小写。
+        if(score>=90) 
+
+        如果判断条件有小于(< <=)号，从小往大写。
+        if(score>=90)
+
+        这样不会出问题。
+
+
+        如果不遵循此规则，则要写精确。大于和小于多少的范围都要写出来。
+
+        if(80<=score<=90) 这种写法是错误的,必须用&&来连接。
+        if(score<=90&&score>=80)这种写法是正确的
+
+
+        （4）Switch结构（和多分支结构可以互相转换）
+        有固定的值得话，建议用Switch。
+        如果是条件的话，建议用多分支。
+        注意，表达式的值和case的值一定是全等比较。
+        表达式的值===值1
+
+        switch(表达式的值){
+            case 值1:
+                代码块1;
+                break;
+            case 值2:
+                代码块2;
+                break;
+            case 值3:
+                代码块3;
+                 break;
+            case 值4:
+                代码块4;
+                break;
+                ……
+            case 值n:
+                代码块n;
+                break;
+            default:
+                以上代码都不成立的话，执行此代码。
+                如果前面条件走完，可以不写。即为可选项。
+        }
+
+        3.循环结构。
+
+     -->
+
+    <script>
+        console.log('good');
+        alert('nice');
+        var userName = prompt('请输入你的名字');
+        console.log(userName);
+
+
+        //1.大于80分继续学习，---单分支
+        var score = 79;
+        if (score > 80) {
+            alert('继续学习！');
+        }
+        console.log('run');
+
+        //2.大于等于80分继续学习，其他补考。
+        var score1 = prompt('请输入你的成绩');
+        if (score1 >= 80) {
+            alert('继续学习！');
+            console.log('继续学习');
+        }
+        else {
+            alert('补考！！！');
+            console.log('补考！！！');
+        }
+
+
+
+        //3.大于等于90Fenix去看电影，大于等于80分继续学习，其他挨揍。
+
+        var score2 = prompt('请输入你的成绩');
+        if (score2 >= 90) {
+            alert('请你看电影！！！');
+        } else if (score2 >= 80) {
+            alert('继续学习！！！')
+        }
+        else {
+            alert('挨揍！！！')
+        }
+
+        /*
+        下面的和上面的效果一样。
+        */
+
+        
+
+        var score3=prompt('情书如你的成绩3');
+        if(score3>=80&&score3<90){
+            alert('继续学习！！')
+        }else if(score>=90){
+            alert('请你看电影');
+        }else{
+            alert('挨揍！！！！')
+        }
+
+    </script>
+</body>
+
+</html>

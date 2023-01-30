@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月4日11:41:52
+
+        ?什么是纯函数
+        纯函数是所有函数式编程语言中使用的概念，这是一个非常重要的概念，因为它是函数式编程的基础，它允许你创建简单和复杂的组合模式。
+        （1）它应始终返回相同的值。不管调用该函数多少次，无论今天、明天还是将来某个时候调用它。
+        （2）自包含（不使用全局变量）。
+        （3）它不应修改程序的状态或引起副作用（修改全局变量）。
+
+        简单来说，一个函数的返回结果只依赖于它的参数，并且在执行过程里面没有副作用，我们就把这个函数叫做纯函数。这么说肯定比较抽象，我们把它掰开来看：
+
+        （1）函数的返回结果只依赖于它的参数。
+        （2）函数执行过程里面没有副作用。
+        
+        什么是高阶函数？
+        高阶函数时对其他函数进行操作的函数，参数中有函数，返回值中也有函数
+
+        
+        注: 如果纯函数调用纯函数，则不产生副作用依旧是纯函数。
+
+副作用来自，但不限于：
+
+进行一个 HTTP 请求
+
+Mutating data
+
+输出数据到屏幕或者控制台
+
+DOM 查询/操作
+
+Math.random()
+
+获取的当前时间
+
+     -->
+
+    <script>
+        var flag = 0;
+        function fn(a, b, callback) {
+            console.log(a + b);
+            callback && callback();
+        }
+        if (flag) {
+            fn(10, 20);//不执行
+        }
+
+        fn(20, 20)//40
+        fn(30, 40, function () {
+            flag = 1;
+        })//70
+        console.log(flag);//1
+        if (flag) {
+            fn(10, 20, function () {
+                flag = 1;
+            })//30
+        }
+    </script>
+</body>
+
+</html>

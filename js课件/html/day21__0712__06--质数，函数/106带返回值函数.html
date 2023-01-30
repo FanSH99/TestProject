@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 求圆的面积和长方形的面积，求和。 */
+        function getSum1(r, w, h) {
+            var area1 = Math.PI * r * r;
+            var area2 = w * h;
+            return area1 + area2;
+            var sum = area1 + area2;
+            return sum;
+        }
+        var sum = getSum1(10, 20, 30);
+        console.log(sum);
+        console.log(getSum1(10, 20, 30));
+
+        /* 按功能来封装函数 */
+
+        function getAreaCir(r) {
+            var area1 = Math.PI * r * r;
+            return area1;//圆的面积
+        }
+        function getAreaRec(w, h) {
+            var area2 = w * h;
+            return area2;//长方形--圆柱体的面积
+        }
+        function getSum(a, b) {
+            var sum = a + b;
+            return sum;
+        }
+        var area1 = getAreaCir(10);//圆面积
+        var area2 = getAreaRec(10, 20)//长方形面积
+        var sum = getSum(area1, area2);//求和
+        console.log(sum);
+    </script>
+</body>
+
+</html>

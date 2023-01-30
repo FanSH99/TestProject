@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            /* 事件穿透 */
+            pointer-events: none;
+        }
+
+        button {
+            display: block;
+            margin: 20px;
+            padding: 3px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn">单击1</button>
+    <button id="btn2">单击2</button>
+    <button id="btn3">单击3</button>
+
+    <script>
+        var btn = document.querySelector('#btn');
+        var btn2 = document.querySelector('#btn2');
+        var btn3 = document.querySelector('#btn3');
+        btn.onclick = function () {
+            console.log('上午好');
+        }
+        btn.onclick = function () {
+            console.log('中午好');
+        }
+        // 注册事件具有唯一性，同一个对象只能绑定一次，如果绑定多个事件，，则执行最后面的事件。
+        // 单击事件是回调函数，表现是匿名函数。
+
+        function show() {
+            console.log('nice');
+        }
+        btn.onclick = show;//nice  ---注意：单击事件不能加括号，否则没有单击便会执行。
+        btn2.onclick = show();//错误的，单击没有反应。
+
+        /* // 方法监听注册方式  ---btn.addEventListener('click',function(){},false)
+        ---默认后面是false（false也可以不写)   false--冒泡机制  true--捕获机制   ---现在用的基本都是冒泡机制，
+        兼容性有要求，ie9之前不支持此方法。优点是同一个时间可以注册多个监听器，按照顺序来执行。
+        */
+
+        console.log('-------------------');
+        btn3.onclick = show;
+        btn3.addEventListener('click', function () {
+            console.log('very good!!!!!');
+        })
+        // eventTarget.addEventListener()  ---事件监听
+        //  attachEvent ---Ie9所有都支持。
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 9、获取第38次斐波那契数列的值，以及 前38次值的总和; (数列规律是：0   1   1   2   3   5   8   13      .....
+            分析规律是：第三个数 = 第一个数 + 第二个数) */
+        var one = 0;
+        var two = 1;
+        var three;
+        var sum=1;
+        /* 
+        不断交换顺序。
+        已经有0和1，所以循环36轮就可以。*/
+        for (var i = 0; i < 36; i++) {
+            three = one + two;
+            one = two;
+            two = three;
+        }
+        console.log(three);//i<36时，24157817  
+        var one = 0;
+        var two = 1;
+        var three;
+        /* 用到 */
+        var sum = 1;
+        for (var i = 0; i < 6; i++) {
+            three = one + two;
+            sum += three;
+            one = two;
+            two = three;
+        }
+        console.log(three);//13
+        console.log(sum);//0+1+1+2+3+5+8+13=33
+
+    </script>
+</body>
+
+</html>

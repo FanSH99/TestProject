@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月1日14:38:11
+        历史记录对象 ：history对象 ---与浏览器历史记录进行交互。
+        window.history  ---对象
+
+        history.forward();  ---前进
+        history.back(); ---后退
+        history.go();   ---前进或后退
+            history.go(1)   --前进
+            history.go(-1)  ---后退
+     -->
+
+    <a href="07list.html">点我去往列表页</a>
+    <button class="btn">前进</button>
+    <button class="go1">前进1</button>
+
+    <script>
+        console.log(history);
+
+        /*
+length: 2
+scrollRestoration: "auto"
+state: null
+__proto__: History
+__proto:
+back: ƒ back()
+forward: ƒ forward()
+go: ƒ go()
+length: (...)
+pushState: ƒ pushState()
+replaceState: ƒ replaceState()
+scrollRestoration: (...)
+state: (...)
+constructor: ƒ History()
+Symbol(Symbol.toStringTag): "History"
+get length: ƒ length()
+get scrollRestoration: ƒ scrollRestoration()
+set scrollRestoration: ƒ scrollRestoration()
+get state: ƒ state()
+__proto__: Object
+        */
+
+        var btn = document.querySelector('.btn');
+        btn.onclick = function () {
+            history.forward();
+        }
+
+        var go1 = document.querySelector('.go1');
+        go1.onclick = function () {
+            history.go(1);
+        }
+
+    </script>
+</body>
+
+</html>

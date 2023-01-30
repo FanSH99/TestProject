@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1,
+        .box2 {
+            width: 500px;
+            height: 200px;
+        }
+
+        .box1 div,
+        .box2 div {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: #eee;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月8日17:31:13
+        jquery 是一个js函数库，不考虑兼容性，原生js封装的轻量级库。
+        1.jquery引入通常写在body后面。
+        2.jquery下载地址:https://jquery.com/  
+        3.jquery安装方法 官网--download--Download the compressed, production jQuery 3.6.0--右键--另存为-指定地址。
+        4.直接另存为文档同文件夹或同级的另一文件夹下面，然后引入时<script src='./地址'></script>即可。
+     -->
+    <!-- 点击按钮，给三个div设置边框和文本 -->
+    <div class="box1">
+        <button id="btn1">添加边框</button>
+        <button id="btn2">添加文本</button><br>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="box2">
+        <p>jquery</p>
+        <button id="btn3">添加边框</button>
+        <button id="btn4">添加文本</button><br>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <script>
+
+        var btn1 = document.querySelector('.box1 #btn1');
+        var btn2 = document.querySelector('.box1 #btn2');
+        var divs = document.querySelectorAll('.box1 div');
+        var divs2 = document.querySelectorAll('.box2 div');
+        btn1.onclick = function () {
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].style.border = '1px solid red';
+            }
+        }
+        btn2.onclick = function () {
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].innerHTML = '我是文本';
+            }
+        }
+    </script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        /* $(document).ready(function(){
+            // 代码
+        }) */
+
+        $(function () {
+            $('#btn3').click(function () {
+                $(divs2).css('border', '1px solid #333');
+            })
+            $('#btn4').click(function () {
+                $(divs2).text('我是文本2');
+            })
+
+        })
+        $(function () {
+            console.log('我是另一个入口函数');
+        })
+
+        /*
+            jquery语法：
+            1.用美元符号来定义jQuery
+            2.可以用选择符来查询和查找html中的元素。不需要另外查找了，
+            3.可以写多条jQuery语句。
+    
+            例如，如果有一个btn添加点击事件。
+            法一：
+            var btn=...
+            $(function(){
+                &(btn).click(function(){});
+            })
+            法二:
+            $(function(){
+                &("#btn").click(function(){});
+            })
+    
+            原生：
+            var btn=...
+            btn.onclick=function(){};
+    
+            jQuery选择器： 
+            $('*') ---选择所有  $(this)---选择当前  
+            $("ul li:first") 	选取第一个 <ul> 元素的第一个 <li> 元素 
+            $("ul li:first-child") 	选取每个 <ul> 元素的第一个 <li> 元素 
+            $("#p")---选择id   $(".p")---选择类   $("p")---选择标签
+            $(":button") 	选取所有 type="button" 的 <input> 元素 和 <button> 元素
+            $("a[target='_blank']") 	选取所有 target 属性值等于 "_blank" 的 <a> 元素
+            $("a[target!='_blank']") 	选取所有 target 属性值不等于 "_blank" 的 <a> 元素
+            $("tr:even") 	选取偶数位置的 <tr> 元素
+            $("tr:odd") 	选取奇数位置的 <tr> 元素
+            */
+    </script>
+</body>
+
+</html>

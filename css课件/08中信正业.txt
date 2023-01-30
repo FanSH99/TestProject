@@ -1,0 +1,6 @@
+
+引用文件，在title后面写。
+ <link rel="stylesheet" href="CSS/public.CSS">
+    <link rel="stylesheet" href="CSS/index.CSS"
+引用文件，越靠下优先级越高。
+当不同文件夹对同一个盒子的样式不同时，遵循靠后的文件中的样式。

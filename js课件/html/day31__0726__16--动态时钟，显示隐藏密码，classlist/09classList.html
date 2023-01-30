@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #333;
+            float: left;
+        }
+
+        .one {
+            color: purple;
+        }
+
+        .two {
+            color: blueviolet;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- node.classList 
+    node.classList.add('one','two')
+    
+    -->
+    <div class="box"> 盒子1111</div>
+    <div class="box box1 box2"> 盒子2222</div>
+    <div class="box box1 box2"> 盒子3333</div>
+    <div class="box lll"> 盒子4444</div>
+    <div class="box two"> 盒子5555</div>
+
+
+    <script>
+        var box = document.querySelectorAll('.box');
+        box[0].classList.add('one', 'two');//添加
+        box[1].classList.remove('box1', 'box2');//删除
+        box[2].classList.replace('box1', 'red');//替换
+        box[3].classList.toggle('blue')//没有的话添加
+        box[4].classList.toggle('one');//有的话删除
+
+        document.documentElement.onclick = function () {
+            box[0].classList.toggle('red');
+        }
+    </script>
+</body>
+
+</html>

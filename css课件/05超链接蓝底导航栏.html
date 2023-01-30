@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏</title>
+
+    <style>
+        * {
+            list-style: none;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav {
+            width: 640px;
+            height: 40px;
+            margin: 20px;
+            background: #0155a4;
+
+        }
+
+        /* 
+        a或者a:link 超链接一开始的样式
+        a:visited 鼠标点击之后即访问之后的样式
+        a:hover  悬浮，鼠标移上去的样式
+        a:active 鼠标点击时样式
+        四个样式如果全部想要显示则要按照顺序： l v h a   LV(love) HA(hate)
+        */
+
+
+        .nav a {
+            color: #fff;
+            /* 想要垂直居中，可以设置设置相同的行高 */
+            width: 80px;
+            line-height: 40px;
+            padding: 0 20px;
+            /* 撑满，行内元素转换成块，会占满一整行，之后在浮动即可 */
+            display: block;
+            float: left;
+            /* 文字水平居中 */
+            text-align: center;
+            /* a中height不生效 */
+        }
+
+        a:hover {
+            background: #eb1d4e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+
+        <a href="#">首页</a>
+        <a href="#">品牌知识</a>
+        <a href="#">客户案例</a>
+        <a href="#">行业新闻</a>
+        <a href="#">关于我们</a>
+    </div><br>
+
+
+
+</body>
+
+</html>

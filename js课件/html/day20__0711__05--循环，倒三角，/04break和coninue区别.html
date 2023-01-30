@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        break 中断。
+        （1）switch中。中断，中止，相当于结束条件。
+        （2）for循环中。 结束当前循环。如果是双层循环，只能结束内循环。跳出循环，执行循环外的代码。
+            break后面的代码不再执行。
+        
+        continue:
+        结束档次循环，继续下次循环，（循环迭代）
+        执行continue后面的代码。
+        
+        如果想结束大循环，在大循环外面加一个名字，例如labelName
+        break labelName
+     -->
+    <script>
+        /* 求0-20偶数的和 */
+        var sum = 0;
+        //方法1：if条件：if(i%2==0)
+        //方法2：条件3i++设置为i+=2
+        for (var i = 0; i < 20; i += 2) {
+            sum += i;
+        }
+        console.log(sum);
+
+        //方法3:排除奇数。
+        var sum = 0;
+        for (var i = 0; i < 20; i++) {
+            if (i % 2 == 1) {
+                continue;
+                /* 如果continue换成break，则后面不会执行，打印出来的sum=0 */
+            }
+            sum += i;
+        }
+        console.log(sum);
+
+        for (var i = 0; i < 10; i++) {
+            if (i == 2) {
+                break
+            }
+            console.log(i);//0 ,1
+        }
+        console.log('i=' + i);//2
+
+        for (var i = 0; i < 10; i++) {
+            if (i == 2) {
+                continue;
+            }
+            console.log(i);//0,1,3,4,5,6,7,8,9
+        }
+        console.log('i=' + i);//10 ----走到10循环不成立，所以i=10；
+
+        /* 双重循环，外层循环一次，内层循环完毕。 */
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                console.log('i=' + i, 'j=' + j);
+            }
+        }
+        console.log(i, j);//i=5 j=5
+
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                if (j == 2) {
+                    break;
+                }
+                console.log('i=' + i, 'j=' + j);
+            }
+        }
+        console.log(i, j);//i=5 j=2
+
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                if (j == 2) {
+                    continue;
+                }
+                console.log('i=' + i, 'j=' + j);
+            }
+        }
+        console.log(i, j);//i=5 j=5
+
+
+        /* 注意，结束大循环 */
+        labelName:
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                if (j == 2) {
+                    break labelName;
+                }
+                console.log('i=' + i, 'j=' + j);//i=0 j=0 j=1
+            }
+        }
+        console.log(i, j);//i=0 j=2
+
+    </script>
+</body>
+
+</html>

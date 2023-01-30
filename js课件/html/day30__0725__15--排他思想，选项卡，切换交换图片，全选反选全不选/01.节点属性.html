@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 节点
+    标签    ----js中叫节点（元素
+    html    ----js中叫dom节点属性
+
+    src     src
+    alt     alt
+    href    href
+
+    ...
+    特例：
+    class   className
+    for     htmlfor
+
+
+    属性的修改
+    1.设置属性（三种方法）
+
+    (1)node.属性名=属性值;(修改，绝对路径和相对路径都可以)
+    (2)node['属性名']=属性值        ---更实用，可以放变量，也可以放属性值。
+    (3) 自定义属性---没有特例情况，class---class    for---for
+    node.setAttribute('属性名','属性值')
+
+
+    2.获取属性（三种方法）
+
+    (1)node.属性名      -----绝对路径
+    (2)node['属性名']       ---绝对路径
+    前两种方法可以混用，但是最好还是和设置里面相对应。
+    (3)node.getAttribute('属性名')  ---相对路径
+
+
+
+    -->
+
+
+
+    <label for="user"></label>
+    <input type="text" id="user">
+    <label for="user2"></label>
+    <input type="text" name="" id="user1">
+
+    <img src="img/role-nk.png" alt="" title="" id="" class="">
+    <img src="img/role-ty.png" alt="">
+
+    <img src="img/role-y.png" alt="">
+
+    <script>
+        var img = document.getElementsByTagName('img')[0];
+        console.log(img);
+
+        var img2 = document.getElementsByTagName('img')[1];
+        console.log(img2);
+
+
+        var img3 = document.getElementsByTagName('img')[2]
+
+        // 修改
+        img.src = 'img/role-ty.png';
+        img2['src'] = 'img/role-xl.png'
+
+        img3.setAttribute('src', 'img/role-xn.png');
+
+
+
+        // 获取---绝对零
+        var url = img.src;
+        console.log(url);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day30--7.25(15)/img/role-ty.png
+
+        var url2 = img2['src'];
+        console.log(url2);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day30--7.25(15)/img/role-xl.png
+
+        var url3 = img3.getAttribute('src');
+        console.log(url3);//img/role-xn.png  ----相对路径
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 表格默认两个像素边框。 
+        第一种方法，设置table的上左边框，td的左下边框
+        第二种方法，border-collapse:collapse;之后在设置table和td的线即可。*/
+        .table1 {
+            /*  border: 1px solid #333; */
+            /* border-top: 1px solid #333;
+            border-left: 1px solid #333; */
+            width: 300px;
+            height: 100px;
+            /* 上下20px 左右自动 */
+            margin: 20px auto;
+            /* 让单元格中间没有间距。 */
+            border-spacing: 0;
+            text-align: center;
+            /* 合并边框 */
+            border-collapse: collapse;
+        }
+
+        /* 在没有合并边框之前，线不能加到tr里面，而要加到td里面。 */
+
+        .table1 tr td {
+            /* border-bottom: 1px solid #333;
+            border-right: 1px solid #333; */
+            /* border:  1px solid #333;*/
+            border-bottom: 1px dashed #333;
+
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table1">
+        <tr>
+            <td>充话费</td>
+            <td>旅行</td>
+            <td>车险</td>
+            <td>游戏</td>
+        </tr>
+        <tr>
+            <td>彩票</td>
+            <td>电影</td>
+            <td>酒店</td>
+            <td>理财</td>
+        </tr>
+    </table>
+</body>
+
+</html>

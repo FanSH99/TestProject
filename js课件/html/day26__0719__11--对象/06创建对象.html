@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        {} 和new Object() 都是一次只能创建一个对象。  
+        另外还有一个缺陷是只能判断 出object 具体是哪一个类不清楚。
+        
+        构造函数，定义一类。
+        函数名要求：1.函数名首字母大写。
+
+     -->
+    <script>
+        function Person(name, age, gender) {
+            //绑定属性
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            //方法
+            this.say = function () {
+                console.log(this.name + 'is saying');
+            };
+            this.walk = function () {
+                console.log(this.name + 'is walking');
+            };
+        }
+
+        // 生成对象  用new 来调用   实例化对象。
+        var p1 = new Person('南街', '18', '女');
+        var p2 = new Person('顾文', '19', '男');
+
+        // 查看属性
+        console.log(p1);//Person {name: "南街", age: "18", gender: "女", say: ƒ, walk: ƒ}
+        console.log(p2);//Person {name: "顾文", age: "19", gender: "男", say: ƒ, walk: ƒ}
+
+        console.log(p1.name, p1.age, p1.gender);//南街 18 女
+        console.log(p2.name, p2.age, p2.gender);//顾文 19 男
+        p1.say();//南街is saying
+        p1.walk();//南街is walking
+        p2.say();//顾文is saying
+        p2.walk();//顾文is walking
+
+        console.log(p1 instanceof Person);//true
+        console.log(p1 instanceof Object);//true
+
+        // 不足之处，只要造一个人，就会有自己的行为方法。，有时候一样的话会浪费资源。
+        console.log(p1.say === p2.say);//false
+        console.log(p1.walk === p2.walk);//false
+
+
+
+    </script>
+</body>
+
+</html>

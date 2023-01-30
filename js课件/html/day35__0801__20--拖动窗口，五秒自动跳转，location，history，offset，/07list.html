@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  -->
+    <a href="07History对象.html">点我回去</a>
+    <button class="btn">后退</button>
+    <button class="go2">后退2</button>
+    <script>
+        var btn = document.querySelector('.btn');
+        btn.onclick = function () {
+            history.back();
+        }
+
+        var go2 = document.querySelector('.go2');
+        go2.onclick = function () {
+            history.go(-1);
+        }
+    </script>
+</body>
+
+</html>

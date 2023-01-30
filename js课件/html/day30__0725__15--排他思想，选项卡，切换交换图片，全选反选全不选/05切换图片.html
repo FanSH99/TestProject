@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="img/role-ty.png" alt="">
+    <button>交换</button>
+
+    <script>
+        var pic = document.querySelector('img');
+        var btn = document.querySelector('button');
+        var flag = 1;
+        btn.onclick = function () {
+            if (flag) {
+                pic.src = 'img/role-nk.png';
+                flag = 0;
+            }
+            else {
+                pic.src = 'img/role-ty.png';
+                flag = 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

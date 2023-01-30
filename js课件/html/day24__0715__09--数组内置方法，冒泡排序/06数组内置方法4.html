@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="numbers.forEach(myFunction)">点我</button>
+    <p id="demo"></p>
+    <!-- 
+        其他方法 
+        .10.join(spe)        把数组元素分割成字符串（把数组中的所有元素放入一个字符串）          不修改原数组。
+        （1） join()        默认分隔后以逗号隔开。
+        （2）join('')       直接连到一起，不隔开。
+        （3）join('&')      
+        
+        .11.indexOf(item,start)    搜索数组中的元素，并返回它所在的位置，位置指的是索引号，如果元素存在，返回对应的索引号。
+            注意，返回的是第一次出现的位置的索引号。如果不存在返回-1
+        .12.lastIndexOf(item,start)    搜索数组中的元素，并返回最后一次出现的位置，从后网线搜索，返回正常的索引号，如果不存在，返回-1
+
+        .13.forEach(回调函数)    回调函数都是匿名函数，遍历数组，数组中每个元素都执行一遍。
+        arr.forEach(function(item,index,arr){
+            函数体;;
+        })
+        第一个参数代表数组中元素，第二个参数代表索引号。
+        注意：回调函数里面，不能用break和continue 
+         可以用return,这里return相当于continue,跳出当前循环，继续下面操作。
+
+    -->
+
+    <script>
+        var arr = [10, 20, 'apple', 'orange'];
+        var str = arr.join();
+        console.log(str, arr);
+        var str2 = arr.join('');
+        console.log(str2, arr);
+        var str3 = arr.join('&');
+        console.log(str3, arr);
+
+        var arr2 = [10, 20, 30, 'hello', 'good', 'hello'];
+        var index = arr2.indexOf('hello');
+        console.log(arr2, 'hello', index);//[10, 20, 30, "hello", "good", "hello"] "hello" 3
+        var index2 = arr2.indexOf('hello,3')
+        console.log(arr2, 'hello', index2);//[10, 20, 30, "hello", "good", "hello"] "hello" -1
+        var index3 = arr2.indexOf('hello', 3)
+        console.log(arr2, 'hello', index3);//[10, 20, 30, "hello", "good", "hello"] "hello" 3
+        var index4 = arr2.indexOf('hello', 4);
+        console.log(arr2, 'hello', index4);//[10, 20, 30, "hello", "good", "hello"] "hello" 5
+
+        console.log('--------------------------------');
+        var lastIndex = arr2.lastIndexOf('hello');
+        console.log(arr2, 'hello', lastIndex);
+        var lastIndex2 = arr2.indexOf('hello,3')
+        console.log(arr2, 'hello', lastIndex2);//[10, 20, 30, "hello", "good", "hello"] "hello" -1
+        var lastIndex3 = arr2.indexOf('hello', 3)
+        console.log(arr2, 'hello', lastIndex3);//[10, 20, 30, "hello", "good", "hello"] "hello" 3
+        var lastIndex4 = arr2.indexOf('hello', 4);
+        console.log(arr2, 'hello', lastIndex4);//[10, 20, 30, "hello", "good", "hello"] "hello" 5
+
+
+        arr2.forEach(function (item, index, arr) {
+            console.log(item, index, arr);
+        })
+        arr2.forEach(function (item, index, arr) {
+            if (typeof item == 'string') {
+                console.log(item, index);
+            }
+        })
+
+        var arr3 = [];
+        var arr4 = '999'
+        var type = arr3.constructor;//ƒ Array() { [native code] }
+        var type2 = arr4.constructor;//ƒ String() { [native code] }
+        console.log(type);
+        if (type == Array) {
+            console.log('type-arr3', true);
+        }
+        console.log(type2);
+        if (type2 == Array) {
+            console.log('type-arr4', true);
+        } else {
+            console.log(false);
+        }
+
+
+        demoP = document.getElementById("demo");
+        var numbers = [4, 9, 16, 25];
+        var numbers = [4, 9, 16, 25];
+
+        function myFunction(item, index) {
+            demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>";
+        }
+
+
+
+    </script>
+</body>
+
+</html>
