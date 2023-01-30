@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 80%;
+            height: 50px;
+            margin: auto;
+            background: #f70;
+        }
+
+        nav ul li {
+            float: left;
+            border: 1px solid #fff;
+        }
+
+        nav ul li a {
+            color: #fff;
+            display: block;
+            padding: 0 100px;
+            line-height: 50px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.on {
+            color: #444;
+            background: #f50;
+        }
+
+
+        .work2 {
+            width: 80%;
+            padding-top: 40px;
+            margin: auto;
+        }
+
+        .work2>p {
+            width: 80%;
+            height: 100px;
+            margin: auto;
+        }
+
+        #txt {
+            width: 400px;
+            height: 40px;
+            border: transparent;
+            border-bottom: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="多图自动切换.html">多图自动切换</a>
+            </li>
+            <li>
+                <a href="获取颜色.html">获取颜色</a>
+            </li>
+            <li>
+                <a href="计算生日.html" class="on">计算生日</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="work2">
+        <p>2、创建一个文本框，在一个文本框中，让用户输入他的出生月份，第二个文本框中输入月份中的日期，编写一个JavaScript程序，在第三个文本框中打印距离用户生日还有多少天。
+        </p><br>
+
+        请输入出生月份： <input type="text" name="" id="" value="7"><br>
+        请输入出生日期：<input type="text" name="" id="" value="27"><br>
+        <button class="btn">计算：</button><input type="text" name="" id="txt">
+    </div>
+
+</body>
+<script>
+    var ipts = document.querySelectorAll('input');
+    var btn = document.querySelector('.btn');
+    btn.onclick = function () {
+        function Time() {
+            // console.log(year, month, day);
+            birth_m = ipts[0].value;
+            birth_d = ipts[1].value;
+            if (birth_d == new Date().getDate()) {
+                /*  birth_d = birth_d + 1; */
+                var time = birthFree(birth_m, birth_d);
+                ipts[2].value = '今天正巧是你的生日呦,今天还剩' + time;
+            } else {
+                var time = birthFree(birth_m, birth_d);
+                ipts[2].value = '距离你的生日还剩' + time;
+            }
+        }
+        Time();
+        setInterval(Time, 1000);
+    }
+
+    function birthFree(birth_m, birth_d) {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+
+        var date1 = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+        birth_m < month ? year = year + 1 : year;
+        birth_m == month && birth_d < day ? year = year + 1 : year;
+        if (birth_d == day) {
+            var birth = year + '-' + birth_m + '-' + birth_d + ' ' + 23 + ':' + 59 + ':' + 59;
+        }
+        else {
+            var birth = year + '-' + birth_m + '-' + birth_d + ' ' + 0 + ':' + 0 + ':' + 0;
+        }
+        // console.log(date1);
+        // console.log(birth);
+        var date0 = +new Date();
+        var birth0 = +new Date(birth);
+        // console.log(date0);
+        // console.log(birth0);
+        var free = (birth0 - date0) / 1000;
+        // console.log(free);
+        var s = parseInt(free % 60);
+        var m = parseInt((free / 60) % 60);
+        var h = parseInt((free / 60 / 60) % 24);
+        var d = parseInt(free / 60 / 60 / 24);
+        time = d + '天' + h + '小时' + m + '分钟' + s + '秒';
+        return time;
+    }
+
+</script>
+
+</html>

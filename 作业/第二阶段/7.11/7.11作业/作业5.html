@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业5--石头剪刀布</title>
+    <link rel="icon" href="img/work.png" type="image/x-icon">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    nav {
+
+        width: 100%;
+        height: 40px;
+        margin: auto;
+        margin-bottom: 40px;
+        background: rgb(3, 91, 111);
+    }
+
+
+    ul li a {
+        float: left;
+        color: #fff;
+        height: 40px;
+        padding: 0 20px;
+        line-height: 40px;
+    }
+
+
+    .active {
+        background: rgb(249, 61, 174);
+        /* color: #333; */
+    }
+
+    ul li a:hover {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    p {
+        margin-left: 40px;
+    }
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="作业1.html">作业1</a></li>
+            <li><a href="作业2.html">作业2</a></li>
+            <li><a href="作业3.html">作业3</a></li>
+            <li><a href="作业4.html">作业4</a></li>
+            <li><a href="作业5.html" class="active">作业5</a></li>
+            <li><a href="作业6.html">作业6</a></li>
+            <li><a href="作业7.html">作业7</a></li>
+            <li><a href="作业8.html">作业8</a></li>
+            <li><a href="作业9.html">作业9</a></li>
+            <li><a href="作业10.html">作业10</a></li>
+            <li><a href="作业11.html">作业11</a></li>
+            <li><a href="作业12.html">作业12</a></li>
+            <li><a href="作业13.html">作业13</a></li>
+            <li><a href="作业14.html">作业14</a></li>
+            <li><a href="作业15.html">作业15</a></li>
+        </ul>
+    </nav>
+    <p>5、石头、剪刀、布 小游戏， 三局两胜制，有一方累计胜利两次，则游戏结束 （每次开始，玩家和电脑都要出拳）<br>
+
+        随机数 0 1 2 Math.floor( Math.random()*3) 电脑<br>
+
+        parseInt( Math.random()*10 ) %3 0 1 2 3 ...9<br>
+
+        0 代表 石头<br>
+        1代表 剪刀<br>
+        2代表 布</p><br><br>
+    <script>
+        var playerGame;
+        var AIGame;
+        var AICount = 0;
+        var playerCount = 0;
+        for (i = 1; i <= 3; i++) {
+            var player = prompt('请出拳：0 代表石头，1 代表剪刀，2 代表布');
+            var AI = parseInt(Math.random() * 3);
+            console.log(player);
+            console.log(AI);
+            switch (player) {
+                case '0':
+                    playerGame = '石头';
+                    break;
+                case '1':
+                    playerGame = '剪刀';
+                    break;
+                case '2':
+                    playerGame = '布';
+                    break;
+            }
+            switch (AI) {
+                case 0:
+                    AIGame = '石头';
+                    break;
+                case 1:
+                    AIGame = '剪刀';
+                    break;
+                case 2:
+                    AIGame = '布';
+                    break;
+            }
+            document.write('<p>玩家出的是' + '<font color="red" size="5">' + playerGame + '</font>' + '</p>');
+            document.write('<p>电脑出的是' + '<font color="blue" size="5">' + AIGame + '</font>' + '</p>');
+            if (player == 0 && AI == 1 || player == 1 && AI == 2 || player == 2 && AI == 0) {
+                playerCount++;
+                console.log('玩家胜一局');
+                document.write('<p><font color="orange" size="6">玩家胜一局</font></p><br>')
+            }
+            if (AI == 0 && player == 1 || AI == 1 && player == 2 || AI == 2 && player == 0) {
+                AICount++;
+                console.log('电脑胜一局');
+                document.write('<p><font color="purple" size="6">电脑胜一局</font></p><br>')
+            }
+            if (AI == player) {
+                console.log('平局');
+                document.write('<p><font color="yellow" size="6">平局</font></p><br>')
+                i--;
+            }
+            if (playerCount == 2 || AICount == 2) {
+                break;
+            }
+        }
+        if (playerCount == 2) {
+            console.log('玩家胜利！！！');
+            document.write('<p><font color="green" size="7">玩家胜利</font></p>')
+        }
+        else if (AICount == 2) {
+
+            console.log('电脑胜利！！！');
+            document.write('<p><font color="green" size="7">电脑胜利！！！</font></p>');
+        }
+
+    </script>
+</body>
+
+</html>

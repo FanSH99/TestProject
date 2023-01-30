@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+                  2、超市迎国庆，回馈新老客户，消费满1000元，商品打9.5折；满500元，打9.8折，根据用户消费金额，计算找零信息(用函数实现)
+            
+            //思考   一种商品    单价  数量      花费的钱数    封装
+            //       多种 商品  （循环 ，合适结循环的条件）   不断调用  一种花的钱数    累加      最后总共花多钱  和1000     请付钱数，找零（调用）
+            //找零  减法   封装函数 */
+        (function () {
+            var user = prompt('请输入你支付的钱数');
+            console.log('支付钱数：' + user);
+            var type = prompt('请输入购买商品的种类');
+            console.log('数量：' + type);
+            document.write('您一共购买了<span>' + type + '</span>件商品<br>');
+            var sum = 0;
+            var arr = [];
+            for (i = 0; i < type; i++) {
+                var name = prompt('请输入商品的名称')
+                var money = +prompt('请输入商品' + name + '的价格');
+                console.log(name, money);
+                var num = +prompt('请输入商品' + name + '的数量');
+                console.log(name, num);
+                document.write('商品' + name + '单价:<span>' + money + '</span><br>');
+                document.write('商品' + name + '数量:<span>' + num + '</span><br>');
+                var price = money * num;
+                document.write('商品' + name + '价格:<span>' + num + '</span><br>');
+                arr[i] = price;
+                console.log(price);
+                sum += arr[i];
+            }
+            console.log(sum);
+            if (user >= sum) {
+                if (sum > 1000) {
+                    free = user - 0.95 * sum;
+                    console.log(free);
+                    /* sum *= 0.95;
+                    console.log(sum); */
+                    document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                    document.write('商品打9.5折,返还你<span>' + free + '</span>元<br>');
+                } else if (sum > 500) {
+                    free = user - 0.98 * sum;
+                    /*  sum *= 0.98;
+                     console.log(sum); */
+                    document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                    document.write('商品打9.8折,返还你<span>' + free + '</span>元<br>');
+                } else {
+                    /* console.log(sum); */
+                    free = user - sum;
+                    document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                    document.write('您不符合打折条件' + free);
+
+                }
+            }
+            if (user < sum) {
+                if (sum > 1000) {
+                    free = 0.95 * sum - user;
+                    console.log(free);
+                    /* sum *= 0.95;
+                    console.log(sum); */
+                    document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                    document.write('商品打9.5折,应付<span>' + 0.95 * sum + '</span>元' + '还要支付<span>' + free + '</span>元<br>');
+                } else if (sum > 500) {
+                    free = 0.98 * sum - user;
+                    /*  sum *= 0.98;
+                     console.log(sum); */
+                    document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                    document.write('商品打9.5折,应付<span>' + 0.98 * sum + '</span>元' + '还要支付<span>' + free + '</span>元<br>');
+                } else {
+                    /* console.log(sum); */
+                    free = sum - user;
+                    document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                    document.write('您不符合打折条件' + '还要支付<span>' + free + '</span>元<br>');
+
+                }
+
+            }
+
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转换数据类型</title>
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <base href="" target="_blank">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: #2b3341;
+        }
+
+        .navbar a {
+            color: #fff;
+        }
+
+        .navbar a:hover {
+            background: transparent;
+            color: crimson;
+        }
+
+        .navbar ul li {
+            padding: 5px 15px;
+            position: relative;
+        }
+
+        .navbar ul li a:hover {
+            display: block;
+            background: transparent !important;
+            font-weight: bold;
+        }
+
+        .line {
+            width: 30px;
+            height: 2px;
+            background: crimson;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .button {
+            margin: 100px auto;
+            width: 300px;
+            height: 40px;
+            background: #2b3341;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-fixed-top navbar-center">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <a class="navbar-brand" href="#">导航栏</a>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-center">
+                    <li class="nav-item nav-item-1">
+                        <a href="百度日志.html"> 百度日志 </a>
+                    </li>
+                    <li class=" nav-item">
+                        <a href="知乎日志.html"> 知乎日志 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="交换数据.html">交换数据 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="收集打印用户信息.html"> 打印信息 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="转换数据类型.html" style="color: crimson;" target="_self"> 转换数据类型 </a>
+                        <div class=" line hidden-xs"> </div>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <input type="submit" value="点击打印信息--5年后年龄（F12查看）" onclick="post()" class="button" />
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function post() {
+            var age = prompt('请输入您的年龄');
+            age = +age;
+            ageL = age + 5;
+            alert('据我估计，五年后你可能' + ageL + '岁了。')
+            console.log('age=' + age);
+            console.log("ageL=age+5=" + ageL);
+            console.log('据我估计，五年后你可能' + ageL + '岁了。');
+        }
+
+    </script>
+</body>
+
+</html>

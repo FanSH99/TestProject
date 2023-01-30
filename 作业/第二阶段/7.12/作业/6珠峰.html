@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1--面积</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        form {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        form>p {
+            color: #666;
+            margin: 40px 0;
+        }
+
+        .setting span {
+            display: block;
+            float: left;
+            width: 140px;
+            height: 24px;
+            line-height: 24px;
+            /* border: 1px solid #333; */
+            color: #bbb;
+        }
+
+        .setting input {
+            float: left;
+            margin-left: 10px;
+            height: 24px;
+            width: 145px;
+            padding: 0 5px;
+        }
+
+        #btn {
+            width: 80px;
+            height: 30px;
+            background-image: -webkit-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+            background-image: -o-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+            background-image: -moz-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+        }
+
+        #btn:hover {
+            cursor: pointer;
+            background: rgb(214, 47, 5);
+        }
+
+        .area {
+            margin-top: 40px;
+        }
+
+        .area input {
+            border: 2px solid transparent;
+            border-bottom-color: #333;
+            color: red;
+            padding: 0 5px;
+        }
+
+        nav {
+            width: 80%;
+            height: 40px;
+            margin: auto;
+            margin-bottom: 40px;
+            background: rgb(3, 91, 111);
+        }
+
+
+        ul li a {
+            float: left;
+            color: #fff;
+            height: 40px;
+            padding: 0 20px;
+            line-height: 40px;
+        }
+
+
+        .active {
+            background: rgb(249, 61, 174);
+            /* color: #333; */
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="1面积.html">面积</a></li>
+            <li><a href="2成绩.html">成绩</a></li>
+            <li><a href="3奇偶.html">奇偶</a></li>
+            <li><a href="4日期.html">日期</a></li>
+            <li><a href="5奇数和.html">奇数和</a></li>
+            <li><a href="6珠峰.html" class="active">珠峰</a></li>
+            <li><a href="7象棋.html">象棋</a></li>
+        </ul>
+    </nav>
+    <form>
+        <p>9、一张纸的厚度是0.07毫米，假设这张纸可以限次对折，问对折几次可以超过珠峰，珠峰是8848米（用函数实现）</p>
+
+        <!-- <input type="text" name="" id="week_user" value="2017/7/15"><br><br>
+        <input type="button" name="" id="btn" value="请点击我" onclick="post()"><br> -->
+        <div class="area">
+            <p>需要折纸的次数为<input type="text" name="" id="count"><br></p>
+        </div>
+
+    </form>
+    <script>
+        var count = 0;
+        var sum = 0.01;
+
+        function getNum(count, sum) {
+            while (true) {
+
+                sum *= 2;
+                count++;
+                if (sum > 8848) {
+                    break;
+                }
+            }
+            console.log('count=' + count);
+            return count;
+        }
+        var count = getNum(count, sum);
+        document.querySelector('#count').value = count;
+
+    </script>
+</body>
+
+</html>

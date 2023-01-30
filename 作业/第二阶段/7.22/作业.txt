@@ -1,0 +1,57 @@
+1、查找并删除节点，单击删除，把当前行移除
+<ul>
+        <li>ID</li>
+        <li>姓名</li>
+        <li>年龄</li>
+        <li><span>操作</span></li>
+    </ul>
+    <ul>
+        <li>1000</li>
+        <li>小明</li>
+        <li>18</li>
+        <li ><a href="#" id="btn">删除</a></li>
+    </ul>
+
+
+2、通过createElement()  和 appendChild()  及 innerHTML，创建如下一个表格
+//document
+ <table>
+        <caption>员工信息表</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th><span>操作</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1000</td>
+                <td>小明</td>
+                <td>18</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>1001</td>
+                <td>小红</td>
+                <td>20</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>1002</td>
+                <td>小红</td>
+                <td>30</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>1003</td>
+                <td>小红</td>
+                <td>30</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+3、

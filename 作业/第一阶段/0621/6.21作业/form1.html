@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form1</title>
+    <base target="_blank">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+
+        }
+
+        .form1 {
+            width: 640px;
+            height: 40px;
+            border: 1px solid #333;
+            margin: auto;
+            padding: 15px;
+        }
+
+        .form1 input {
+            width: 538px;
+            height: 38px;
+            border-top: 1px solid #b2b4be;
+            border-bottom: 1px solid #b9b4be;
+            border-left: 1px solid #b6b8c2;
+            border-right: 1px solid #b9b4be;
+
+            /* b9bbc4 b2b4be    b6b8c2   下，上 左 */
+            /* 去掉黑色的轮廓线，如果不去掉，点击颜色就是黑色，变不了别的颜色 */
+            outline: none;
+            display: block;
+            float: left;
+        }
+
+        .form1 input:focus {
+            width: 536px;
+            height: 36px;
+            border: 2px solid rgb(36, 130, 238);
+        }
+
+        .form1 button {
+
+
+            width: 100px;
+            height: 40px;
+            float: left;
+            border: none;
+            color: #fff;
+            background: #4e6ef2;
+            font-size: 16px;
+
+        }
+
+        .form1 button:hover {
+            cursor: pointer;
+            background-color: #4662d9;
+        }
+
+        .form1 input:hover {
+
+            border-color: #9DA1AD;
+        }
+
+        a {
+            color: #000;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 2;
+            margin-left: 40%;
+        }
+
+        a:hover {
+            color: rgb(240, 107, 107);
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
+
+        /* button和input不一样，input加边框后，外观变化，盒子会变大，
+        而button不一样，加边框之后盒子大小不变，相当于加的是内边框 */
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" class="form1">
+
+        <input type="text" name="" id="">
+        <button>百度一下</button>
+    </form><br>
+
+    <a href="form2.html">点击此处跳转到form2</a><br>
+    <a href="table1.html">点击此处跳转到table1</a><br>
+    <a href="table2.html">点击此处跳转到table2</a><br>
+</body>
+
+</html>

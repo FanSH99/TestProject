@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .diff,
+        .add {
+            background: red;
+        }
+
+        table {
+            border: 1px solid #333;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+            width: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <table>
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in goodsList" :key="index">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>
+                        <button class="diff" @click="item.num--" :disabled="item.num==0">-</button>
+                        {{item.num}}
+                        <button class="add" @click="item.num++" :disabled="item.num==10">+</button>
+                    </td>
+                    <td><button @click="del(index)">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>总价格:{{sum()}}</h1>
+    </div>
+
+</body>
+<!-- 2022年9月2日19:57:46 -->
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            total: "",
+            goodsList: [
+                {
+                    name: "辣条",
+                    price: 5,
+                    num: 2
+                }, {
+                    name: "巧克力",
+                    price: 35,
+                    num: 1
+                }, {
+                    name: "奶茶",
+                    price: 15,
+                    num: 1
+                }, {
+                    name: "烤箱",
+                    price: 2099,
+                    num: 1
+                },
+            ]
+        },
+        methods: {
+            sum() {
+                let total = 0;
+                this.goodsList.forEach((item, index) => {
+                    let money = item.price * item.num;
+                    total += money;
+                });
+                return total;
+            },
+            del(index) {
+                console.log(index);
+                this.goodsList.splice(index, 1);
+                this.goodsList = this.goodsList;
+            }
+        }
+
+    })
+</script>
+
+</html>

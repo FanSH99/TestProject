@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family: "微软雅黑";
+        }
+
+        .life {
+            width: 750px;
+            /* 弹性布局 */
+            display: flex;
+            display: -webkit-flex;
+            /* 垂直分布 */
+            flex-direction: column;
+            /* justify-content: center; */
+            margin: 20px auto;
+            /* 垂直方向上居中 */
+            align-items: center;
+            /* 文本居中 */
+            text-align: center;
+            background: #fff;
+            border: 1px solid #333;
+
+        }
+
+        .title {
+
+            width: 100%;
+            background: #f8f8f8;
+            padding: 30px 0;
+            /* line-height: 2; */
+            /* font-size: 36px;
+            line-height: 1.5;
+            font-weight: bold; */
+        }
+
+        .banner {
+            width: 100%;
+            position: relative;
+        }
+
+        .banner img {
+            /* 750*269 */
+            width: 100%;
+        }
+
+        .circle {
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+        }
+
+        .circle li {
+
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            float: left;
+
+
+        }
+
+        .circle :nth-child(2) {
+            margin: 0 10px;
+        }
+
+        .circle li:hover {
+            background: #ec8da5;
+        }
+
+
+        .nav ul {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+
+        }
+
+        .nav ul li {
+            float: left;
+            margin: 22px 40px;
+            font-size: 24px;
+            /* width: 25%; */
+
+
+        }
+
+        .line_bg {
+            width: 100%;
+            height: 20px;
+            background: #f8f8f8;
+        }
+
+        .goods {
+            margin: 13px 21px;
+            justify-content: flex-start;
+        }
+
+        .goods ul li {
+            background: #f0f0f0;
+            width: 350px;
+            height: 152px;
+            float: left;
+            margin-bottom: 8px;
+            position: relative;
+
+        }
+
+        .goods ul :nth-child(2n+1) {
+            margin-right: 8px;
+        }
+
+        .goods ul li .left {
+            float: left;
+            text-align: left;
+            margin: 32px 18px;
+            line-height: 1.5;
+        }
+
+        .goods ul li .left p {
+            color: #f22134;
+            font-size: 18px;
+        }
+
+        .goods ul li img {
+            float: right;
+
+            position: absolute;
+            top: 50%;
+            right: 32px;
+            transform: translatey(-50%);
+        }
+
+        .goods ul :nth-child(2) .left p {
+            color: #48b4e3;
+        }
+
+        .goods ul :nth-child(3) .left p {
+            color: #fb9540;
+        }
+
+        .goods ul :nth-child(4) .left p {
+            color: #44be8b;
+        }
+
+        .recommend {
+            justify-content: flex-start;
+
+            width: 100%;
+            /* height: 130px; */
+            font-size: 30px;
+            margin: 30px 20px;
+        }
+
+        .recommend .re_left {
+            width: 4rem;
+            line-height: 1.2;
+            float: left;
+            text-align: left;
+            word-wrap: break-word;
+            color: #d62d26;
+        }
+
+        .recommend .re_main {
+            float: left;
+            text-align: left;
+            margin-left: 18px;
+        }
+
+        .recommend .re_main span {
+            color: #ff5901;
+        }
+
+        .recommend .re_main del {
+            text-decoration: line-through;
+            margin-left: 5px;
+            font-size: 24px;
+            color: #7f7f7f;
+        }
+
+        .cinema {
+            width: 100%;
+            /* position: relative; */
+
+        }
+
+        .p_all {
+            margin: 31px auto;
+            font-size: 30px;
+            color: #010101;
+            font-weight: 200;
+        }
+
+        .cinema p span {
+            display: block;
+            width: 37px;
+            height: 1px;
+            background: #808080;
+        }
+
+        .cinema p .s_left {
+            float: right;
+        }
+
+        .cinema .bottom {
+
+            position: relative;
+            width: 96px;
+            height: 10px;
+            margin: 12px auto;
+        }
+
+        .cinema .bottom li {
+
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d3d3d3;
+            border: 1px solid transparent;
+            float: left;
+            margin: 0 10px;
+        }
+
+        .cinema .bottom li:hover {
+            background: #31c287;
+            padding: 0 10px;
+            border-radius: 3px;
+            margin: 0;
+        }
+
+        .store {
+            width: 100%;
+            justify-content: flex-start;
+            float: left;
+        }
+
+
+        .store .store_main {
+            border-top: 1px solid #ededed;
+            border-bottom: 1px solid #ededed;
+            padding: 34px 0;
+            width: 100%;
+            height: 117px;
+
+        }
+
+        .store .store_main .left {
+            width: 112px;
+            height: 84px;
+            border: 1px solid #ededef;
+            justify-content: flex-start;
+            float: left;
+            margin: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .store .store_main .left img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .store .store_main .right {
+            float: left;
+            text-align: left;
+
+        }
+
+        .store_main .right :nth-child(1) {
+
+            font-size: 30px;
+            margin-bottom: 19px;
+        }
+
+        .store_main .right :nth-child(2) span {
+            font-size: 18px;
+            color: #959595;
+            border: 1px solid #b4b4b4;
+
+        }
+
+        .store_main .right :nth-child(3) {
+            font-size: 18px;
+            font-weight: normal;
+            color: #6c6c6c;
+            margin-top: 25px;
+
+        }
+
+        .line_bottom {
+            width: 100%;
+            height: 37px;
+            background: #f3f3f3;
+            border-bottom: 1px solid #ececec;
+        }
+
+        footer {
+            width: 100%;
+            padding: 21px 0 14px 0;
+            background: #f8f8f8;
+        }
+
+        footer ul li {
+            float: left;
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="life">
+
+        <!-- 首页标题 -->
+        <div class="title">
+
+            <h1>生活</h1>
+        </div>
+
+        <!-- banner图 -->
+
+        <div class="banner">
+            <ul>
+                <li>
+                    <img src="img/life_02.png" alt="">
+                </li>
+            </ul>
+            <div class="circle">
+
+                <li></li>
+                <li></li>
+                <li></li>
+            </div>
+
+        </div>
+
+        <!-- 导航 -->
+
+        <div class="nav">
+            <ul>
+                <li>
+                    <img src="img/life_05.png" alt="">
+                    <p>餐饮美食</p>
+                </li>
+                <li>
+                    <img src="img/life_07.png" alt="">
+                    <p>社区商城</p>
+                </li>
+                <li>
+                    <img src="img/life_09.png" alt="">
+                    <p>服务预订</p>
+                </li>
+                <li>
+                    <img src="img/life_11.png" alt="">
+                    <p>课程培训</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 分界线 -->
+
+        <div class="line_bg"></div>
+
+        <!-- 好物推荐 -->
+        <div class="goods">
+            <ul>
+                <li>
+
+                    <div class="left">
+                        <h1>爱鲜蜂</h1>
+                        <p>消费满100元送100元</p>
+                    </div>
+                    <img src="img/life_18.png" alt="">
+                </li>
+                <li>
+
+                    <div class="left">
+                        <h1>璟瑚城食店</h1>
+                        <p>消费满88元送20元</p>
+
+                    </div>
+                    <img src="img/life_21.png" alt="">
+                </li>
+                <li>
+
+                    <div class="left">
+
+                        <h1>伊耐净洗衣</h1>
+                        <p>消费满88元送20元</p>
+
+                    </div>
+                    <img src="img/life_26.png" alt="">
+                </li>
+                <li>
+
+                    <div class="left">
+
+                        <h1>家家乐超市</h1>
+                        <p>消费满100元送50元</p>
+
+                    </div>
+                    <img src="img/life_29.png" alt="">
+                </li>
+            </ul>
+        </div>
+
+        <!-- 分界线 -->
+
+        <div class="line_bg"></div>
+
+        <!-- 精品推荐 -->
+        <div class="recommend">
+            <div class="re_left">
+
+                <em>精品团购</em>
+            </div>
+
+            <div class="re_main">
+                <p>超值1元换购麦当劳（限一个）</p>
+                <span>￥1.00</span>
+                <del>￥12.00</del>
+            </div>
+
+        </div>
+        <!-- 分界线 -->
+        <div class="line_bg"></div>
+
+        <div class="cinema">
+            <p class="p_all">—— 社区影院 —— </p>
+            <img src="img/life_34.png" alt="">
+            <div class="bottom">
+                <li></li>
+                <li></li>
+                <li></li>
+            </div>
+
+        </div>
+
+        <!-- 分界线 -->
+
+        <div class="line_bg"></div>
+
+        <div class="store">
+            <p class="p_all"> —— 推荐商家—— </p>
+            <div class="store_main">
+                <div class="left">
+                    <img src="img/life_37.png" alt="">
+                </div>
+
+                <div class="right">
+                    <p> 璟湖城便利店 </p>
+                    <p>
+                        <span>日用百货</span>
+                        <span>粮油</span>
+                    </p>
+                    <p>免配送</p>
+
+                </div>
+
+
+            </div>
+            <div class="store_main">
+                <div class="left">
+                    <img src="img/life_40.png" alt="">
+                </div>
+
+                <div class="right">
+                    <p> 鲜果时光</p>
+                    <p>
+                        <span>水果</span>
+                        <!--   <span>粮油</span> -->
+                    </p>
+                    <p>配送费：￥5.00</p>
+
+                </div>
+
+
+            </div>
+            <div class="store_main">
+                <div class="left">
+                    <img src="img/life_42.png" alt="">
+                </div>
+
+                <div class="right">
+                    <p> 物美超市 </p>
+                    <p>
+                        <span>超市</span>
+                        <!--  <span>粮油</span> -->
+                    </p>
+                    <p>配送费：￥5.00</p>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="line_bottom"></div>
+
+
+        <footer>
+            <ul>
+                <li>
+
+                    <img src="img/life_51.png" alt="">
+                    <p>首页</p>
+                </li>
+                <li>
+
+                    <img src="img/life_48.png" alt="">
+                    <p>社区</p>
+                </li>
+                <li>
+
+                    <img src="img/life_54.png" alt="">
+                    <p>生活</p>
+                </li>
+                <li>
+
+                    <img src="img/life_45.png" alt="">
+                    <p>我的</p>
+                </li>
+            </ul>
+
+        </footer>
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

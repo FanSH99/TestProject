@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 80%;
+            height: 50px;
+            margin: auto;
+            background: #f70;
+        }
+
+        nav ul li {
+            float: left;
+            border: 1px solid #fff;
+        }
+
+        nav ul li a {
+            color: #fff;
+            display: block;
+            padding: 0 100px;
+            line-height: 50px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.on {
+            color: #444;
+            background: #f50;
+        }
+
+
+        .work3 {
+            width: 80%;
+            margin: 80px auto;
+        }
+
+
+        #txt {
+            width: 400px;
+            height: 40px;
+            border: transparent;
+            border-bottom: 1px solid #333;
+        }
+
+        img {
+            width: 400px;
+            height: 400px;
+        }
+
+        .work3 button {
+            width: 100px;
+            height: 38px;
+            background: orchid;
+        }
+
+        .work3 button:hover {
+            cursor: pointer;
+            background: orangered;
+        }
+
+        .work3 .show {
+            width: 300px;
+            height: 50px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="多图自动切换.html" class="on">多图自动切换</a>
+            </li>
+            <li>
+                <a href="获取颜色.html">获取颜色</a>
+            </li>
+            <li>
+                <a href="计算生日.html">计算生日</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="work3">
+        <p>创建一段带有幻灯片效果的JavaScript代码，要包含一个有4幅图片，<br>设置定时器，每隔5秒切换一次图片，<br>如果用户单击开始按钮，定时器启动，并开始进行图片切换，<br>如果用户单击停止按钮，则停止定时器。
+        </p><br>
+        <img src="img/role-jnl.png" alt="">
+        <p class="show"></p><br>
+        <button class="start">开始</button>&emsp13;&emsp14;
+        <button class="end">结束</button><br>
+
+    </div>
+
+    <script>
+        var img = document.querySelector('.work3>img');
+        var start = document.querySelector('.work3>.start');
+        var end = document.querySelector('.work3>.end');
+        var show = document.querySelector('.work3>.show');
+        var index = 0;
+        var imgArr = ["img/role-jnl.png", "img/role-nk.png", "img/role-ty.png", "img/role-xl.png", "img/role-xn.png"];
+        var change = function () {
+            count = index + 1;
+            index++;
+            if (index >= imgArr.length) {
+                index = 0;
+            }
+            img.src = imgArr[index];
+            show.innerHTML = '图片' + count + ':' + imgArr[index];
+        }
+        start.onclick = function () {
+            changeImg = setInterval(change, 1000);
+        }
+
+        end.onclick = function () {
+            clearInterval(changeImg);
+        }
+
+    </script>
+</body>
+
+</html>

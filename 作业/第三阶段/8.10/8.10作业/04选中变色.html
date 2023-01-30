@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li {
+            height: 60px;
+            line-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月10日19:05:27
+     -->
+    <ul>
+        <li>特价，苹果2块钱一斤</li>
+        <li>大卖，香蕉,3块钱一斤</li>
+        <li>葡萄6块钱一斤</li>
+        <li>混搭5块钱4斤</li>
+    </ul>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(function () {
+            $('ul>li').on('click', function () {
+                $(this).siblings().css({
+                    'background-color': '#fff',
+                    'color': '#000'
+                })
+                $(this).css({
+                    'backgroundColor': 'pink',
+                    'color': '#fff'
+                })
+
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

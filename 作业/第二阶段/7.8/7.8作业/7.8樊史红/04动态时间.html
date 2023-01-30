@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #timer {
+            background: #333;
+            color: #fff;
+            width: 500px;
+            height: 50px;
+            margin: 50px auto;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="timer">
+
+    </div>
+
+    <a href="02计算器.html"></a>
+    <a href="03日期对象.html"></a>
+    <a href="04动态时间.html"></a>
+    <a href="05倒计时.html"></a>
+
+    <script>
+
+        /* 让时间动起来，用定时器
+          两种定时器，一种是周期调用。一种是延迟调用。
+          周期调用动画使用频率比较高。  延迟调用ES6
+  
+          周期调用  setInterval(回调函数，1000)
+              回调函数可以写成函数名。时间的单位是毫秒。
+              1s之后调用第一次函数，以后没1s都会调用一次。
+  
+          延迟调用setTimeOut(回调函数，1000)
+              回调函数可以写成函数名。时间的单位是毫秒。
+              1s之后只调用一次，意思是延迟1s调用。
+  
+          */
+
+        function showTime() {
+
+            var date1 = new Date();
+            var year = date1.getFullYear();
+            var month = date1.getMonth() + 1;
+            var day = date1.getDate();
+            var week = date1.getDay();
+            var hours = date1.getHours();
+            var minutes = date1.getMinutes();
+            var seconds = date1.getSeconds();
+
+            switch (week) {
+                case 1:
+                    week = '一';
+                    break;
+                case 2:
+                    week = '二';
+                    break;
+                case 3:
+                    week = '三';
+                    break;
+                case 4:
+                    week = '四';
+                    break;
+                case 5:
+                    week = '五';
+                    break;
+                case 6:
+                    week = '六';
+                    break;
+                case 0:
+                    week = '日';
+                    break;
+
+            }
+
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            month = month < 10 ? '0' + month : month;
+            day = day < 10 ? '0' + day : day;
+
+
+            var time = year + '-' + month + '-' + day + "  " + '星期' + week + "  " + hours + ":" + minutes + ":" + seconds;
+            /* document.querySelector('#timer').innerHTML = time; */
+            document.getElementById('timer').innerHTML = time;
+        }
+        showTime();
+        //调用函数，函数不调用不执行。
+        //定时器
+        setInterval(showTime, 1000);
+
+
+
+
+    </script>
+
+</body>
+
+</html>

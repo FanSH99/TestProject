@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid #333;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2022年9月2日21:36:26 -->
+    <div id="box">
+        姓名：<input type="text" name="" id="name"><br>
+        年龄： <input type="text" name="" id="age"><br>
+        性别：<input type="text" name="" id="sex"><br>
+        <button @click="add">添加</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in user" :key="index">
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.sex}}</td>
+                    <td><button @click="del(index)">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            user: [
+                {
+                    name: '梅长苏',
+                    age: '28',
+                    sex: '男'
+                },
+                {
+                    name: '萧景琰',
+                    age: '26',
+                    sex: '男'
+                },
+                {
+                    name: '珊迪',
+                    age: '15',
+                    sex: '女'
+                },
+                {
+                    name: '苏大强',
+                    age: '32',
+                    sex: '男'
+                },
+                {
+                    name: '白浅',
+                    age: "17",
+                    sex: '女'
+                }
+            ]
+        },
+        methods: {
+            add() {
+                let name = document.querySelector("#name").value;
+                let age = document.querySelector("#age").value;
+                let sex = document.querySelector("#sex").value;
+                if (name != '' && age != '' && sex != '') {
+                    let obj = {
+                        name,
+                        age,
+                        sex
+                    }
+                    this.user.push(obj)
+                } else {
+                    alert('请补全信息')
+                }
+            },
+            del(index) {
+                console.log(index);
+                this.user.splice(index, 1);
+            }
+        }
+    })
+</script>
+
+</html>

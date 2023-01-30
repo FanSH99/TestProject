@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        .main {
+            width: 800px;
+            margin: 100px auto;
+        }
+
+        form {
+            border: 1px solid #333;
+            width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        form>div {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        input {
+            width: 180px;
+            height: 26px;
+        }
+
+        label {
+            float: left;
+            width: 100px;
+            text-align: right;
+            font-size: 18px;
+            line-height: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月23日15:52:43 登录页面
+     -->
+    <div class="main">
+        <form action="http://localhost:8080/login/user" method="get" submit="return oncheck()">
+            <h2>用户登录</h2>
+            <div>
+                <label for="uname">用户名：</label>
+                <input type="text" name="uname" id="uname"><br>
+            </div>
+            <div>
+                <label for="pwd">密码：</label>
+                <input type="password" name="pwd" id="pwd">
+            </div>
+            <div>
+                <input type="submit" name="" id="" value="提交">
+            </div>
+
+        </form>
+    </div>
+
+</body>
+<script>
+    
+</script>
+
+</html>

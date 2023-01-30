@@ -1,0 +1,237 @@
+一、选择题（每题2分，共20分）
+1）下面哪一个选项不是js 的原始类型？() D
+  A）string			B）number
+  C）boolean		D）character
+
+2）分析如下的JavaScript代码段, 则运行后在页面上输出( ) (选择一项) var c="10",d=10;  document.write(c+d);          C 
+ A.  10    B.  20       C.  1010        D.  页面报错
+3)下列的哪一个表达式将返回假 () B
+A.!(3<=1)                                B.(4>=4)&&(5<=2)   
+C.(“a”==“a”)&&(“c”!=”d”)          D.(2<3)||(3<2)
+
+4) JS语句 var a1=10; var a2=20;  alert(“a1+a2=”+a1+a2)  将显示()结果   B
+ A.a1+a2=30    B.a1+a2=1020              C.a1+a2=a1+a2
+ D.a1+a2=a1+a2 
+5）产生当前日期的方法是()  C
+A.Now();              B.Date()         C.new Date()         D.new Now()
+
+6) 对于getDay()+getMonth() 的结果，下列哪个范围内表示的最精确？()  B
+A.0-11				B.0-17
+C.0-22				D.0-31
+
+7)  在JS中，’1555’+3的运行结果是：() C
+A  1558     B  1552  C  15553  D1553
+
+8)  以下代码运行后弹出的结果是：()  C
+	var	a=888;
+	a++; 
+	var	b=++a;
+	alert(a);
+A   888   B  889   C  890   D 891
+
+9)  以下哪种变量定义方式不正确？()   B
+A.var _str=””;			 	B.var *str=“”;
+ C.var string=“”; 	 	D.var str=“”;
+
+10) setTimeout(“alert(‘welcome’)”,1000);这段代码的意思是：()  B
+A  等待1000秒后，再弹出一个对话框
+B  等待1秒后弹出一个对话框
+C  语句报错，语法有问题
+D  每隔一秒钟弹出一个对话框
+二、 填空题(共20分)
+1.定义了一个变量，但没有为该变量赋值，如果alert该变量，javascript 弹出的对话框中显示__________(2分) undefined
+2.typeof  “hello”，typeof  NaN的结果分别是__ string__，_number___。(4分)
+3.Javascript中, 如果已知HTML页面中的某标签对象的id=”username”，用 ________ 方法获得该标签对象。(2分)document.querySelector(“#username”) 别的方法也可以
+4.Math.random()的作用是___________(1分) 返回[0 ~1)之间的随机数
+5. Javascript弹出对话框的三个命令______、_______、_______ alert   prompt  confirm
+                                                       警告框   输入框   确认框
+(3分)
+6. Date对象中， __getMonth()_方法可以获得月份值，_getDay()_ _方法可以获得星期值，其中日期是从_ 1__ (0/1)开始的，星期值是从_0___(0/1)开始的.（8分）
+三、  简答题（25分）
+1. javascript由几部分组成？    （3分）
+三部分： ECMAScript(JavaScript核心语法)    DOM （document object model）  BOM(browser object model)
+2、javascript中有哪几种基本数据类型？（4分）
+ 五种：  数值类型Number  字符串类型String   布尔类型Boolean   Undefined  Null
+3. javascript中==和===的区别是什么？举例说明。（4分）
+  ==数值相等即可 数据类型会转换     ===数值和类型两项都相等  数据类型不会转换
+‘5’==5   true    ‘5’===5 false
+4、写出4种强制类型转换和2种隐式转换？    （6分）
+   toString    String    Number  parseInt   parseFloat  Boolean
+数值转字符串   5+ 空字符串   （数值拼 上空串）
+‘5‘-0   ’5‘*1 （减 乘 除 去模）或  +’数值‘
+5. 请简述setTimeout和setInterval的区别（4分）
+setTimeout 延迟调用，指定时间后只调用一次
+setInterval 按指定周期来调用函数
+6、变量的命名可以包含哪些内容？有什么规定？  （4）
+   字母 数字  $ _          
+不能以数字开头（包含字母 数字  $ _  ）
+区分大小写
+不能使用关键字和保留字
+见名知意
+下划线命名法和驼峰命名法
+四.   编程题（25分）
+1.用代码实现输出日期，日期格式为：yyyy-MM-dd （5分）
+ <script>
+var date= new Date();
+ var year=date.getFullYear();
+var month=date.getMonth()+1;
+var day=date.getDate();
+month=month<10?“0“+month:month
+day=day<10?“0“+day:day
+var time= year+‘-’+ month+‘-’+ day
+console.log(time)
+</script>
+2. 求取某个日期是星期几(例如：2022/9/25) （5分）
+ <script>
+ var date=   new Date(“2022/9/25”);
+var week= date.getDay();//0 –6
+switch(week){
+  case 0:
+week=’星期日’;
+break;
+case 1:
+week=’星期一’;
+break;
+
+case2:
+week=’星期二’;
+break;
+
+case 3:
+week=’星期三’;
+break;
+
+case 4:
+week=’星期四’;
+break;
+case 5:
+week=’星期五’;
+break;
+
+case 6:
+week=’星期日六’;
+break;
+
+
+}
+console.log(week)
+</script>
+3. 输入三个数，求三个数的最大值？（编程来实现)  （5分）
+var num1=+prompt(‘请输入第一个数’);
+var num2=+prompt(‘请输入第二个数’);
+var num3=+prompt(‘请输入第三个数’);
+var max=num1; //假设num1最大
+if(num1<num2){
+max=num2;
+}
+   if(max<num3){
+max=num3;
+
+}
+Console.log(‘最大值‘+max)
+
+4、看下面的两幅图，运行结果是什么？    （5分）
+
+左边：
+var number = 1;
+        number %= (10 % 4);
+        switch (number) {
+
+            case 1:
+                console.log(1);
+	      break;
+            case 2:
+                console.log(2);
+	      break;
+            case 3:
+                console.log(3);
+	      break;
+        }
+
+右边
+var number = 1;
+        number %= (10 % 4);
+        switch (number) {
+
+            case 1:
+                console.log(1);
+            case 2:
+                console.log(2);
+            case 3:
+                console.log(3);
+        }
+
+
+上面的代码从左到右 分别会输出什么结果？ 左 1        右 123
+5、国际象棋64格，第一个放一粒，后面每一格都放上一格的2倍，问第64格上会放多少粒（5分）
+  Var count=1;//保存每格里的值
+   for(var i=1;i<64;i++){
+    count*=2
+   }
+    console.log(count);
+6.编一个简单的计算器   (10分)
+
+
+
+ 第一个数：<input type="text" id="txt1">
+    <select id="slt">
+        <option value="+" selected>+</option>
+        <option value="-" >-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    第二个数：<input type="text" id="txt2">
+    <button id="btn">=</button>
+    结果：<input type="text" id="txt3">
+    <script>
+        //1.查找元素  选择器来查找    找到，返回元素 ，没找到为null
+        var txt1 = document.querySelector('#txt1');
+        console.log(txt1);
+        var txt2 = document.querySelector('#txt2');
+        var txt3 = document.querySelector('#txt3');
+        var slt = document.querySelector('#slt');
+        var btn = document.querySelector('#btn');
+        //2.加单击事件
+        btn.onclick = function () {
+            //2.1 取值  第一个数   第二数   运算符号
+            // value 属性
+            var v1 = txt1.value;
+            console.log(v1, typeof v1);
+            var v2 = txt2.value;
+            var v3 = slt.value;
+            console.log(v3);
+            var res;//存运算结果
+            //   具体取是 +  -  *   需要判断
+            switch (v3) {
+                case '+':
+                    res = parseFloat(v1) + parseFloat(v2);
+                    break;
+                case '-':
+                    res = v1 - v2;
+                    break;
+                case '*':
+                    res = v1* v2;
+                    break;
+                case '/':
+                    res = v1/v2;
+                    break;
+                case '%':
+                    res = v1 % v2;
+                    break;
+                default:
+                    res = parseFloat(v1) + parseFloat(v2);
+                    break; 
+
+            }
+            // console.log(res);
+            // 2.2 赋值
+            txt3.value=res;
+
+
+        }
+
+    </script>
+
+
+

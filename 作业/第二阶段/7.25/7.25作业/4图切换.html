@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/role-ty.png" alt="">
+    <button>交换</button>
+
+    <script>
+        var pic = document.querySelector('img');
+        var btn = document.querySelector('button');
+        var flag = 1;
+        pic.title = '图片1';
+        btn.onclick = function () {
+            if (flag == 1) {
+                pic.src = 'img/role-nk.png';
+                pic.title = '图片2'
+                flag = 2;
+            }
+            else if (flag == 2) {
+                pic.src = 'img/role-jnl.png';
+                pic.title = '图片3'
+                flag = 3;
+            } else if (flag == 3) {
+                pic.src = 'img/role-xl.png';
+                pic.title = '图片4'
+                flag = 4;
+            } else if (flag == 4) {
+                pic.src = 'img/role-ty.png';
+                pic.title = '图片1'
+                flag = 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日19:40:00 -->
+    <div id="run">
+        <h1>{{msg}}</h1>
+        <button @click="start()">开始</button>
+        <button @click="end()">暂停</button>
+    </div>
+
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+
+    let timer = null;
+    new Vue({
+        el: "#run",
+        data: {
+            msg: '奔跑吧少年！！！！！',
+        },
+        methods: {
+            start() {
+                timer = setInterval(() => {
+                    let msg0 = this.msg;
+                    let str1 = msg0.slice(0, 1);
+                    let str2 = msg0.slice(1);
+                    let msg1 = str2.concat(str1);
+                    this.msg = msg1;
+                }, 300)
+
+            },
+            end() {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04百度一下</title>
+    <base href="" target="_blank">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+
+        }
+
+        .form1 {
+            width: 640px;
+            height: 40px;
+            border: 1px solid #333;
+            margin: auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        .form1 input {
+            width: 538px;
+            height: 38px;
+            border-top: 1px solid #b2b4be;
+            border-bottom: 1px solid #b9b4be;
+            border-left: 1px solid #b6b8c2;
+            border-right: 1px solid #b9b4be;
+
+            /* b9bbc4 b2b4be    b6b8c2   下，上 左 */
+            /* 去掉黑色的轮廓线，如果不去掉，点击颜色就是黑色，变不了别的颜色 */
+            outline: none;
+            display: block;
+            float: left;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+        }
+
+        .form1 input::-webkit-input-placeholder {
+            color: blue;
+            padding: 20px;
+        }
+
+        /* 兼容火狐浏览器 */
+        .form1 input::-moz-input-placeholder {
+            color: blue;
+            padding: 20px;
+        }
+
+        .form1 input::-o-input-placeholder {
+            color: blue;
+            padding: 20px;
+        }
+
+
+        .form1 input:focus {
+            width: 536px;
+            height: 36px;
+            border: 2px solid rgb(36, 130, 238);
+        }
+
+        .form1 input:hover {
+
+            border-color: rgb(36, 130, 238);
+
+        }
+
+        .form1 button {
+
+
+            width: 100px;
+            height: 40px;
+            float: left;
+            border: none;
+            color: #fff;
+            background: #4e6ef2;
+            font-size: 16px;
+
+        }
+
+        .form1 button:hover {
+            cursor: pointer;
+            background-color: #4662d9;
+        }
+
+        img {
+            position: absolute;
+            top: 24px;
+            right: 128px;
+        }
+
+
+        .box_link {
+            margin: 20px 200px;
+        }
+
+        .box_link a {
+            color: darkslategray;
+        }
+
+        .box_link a:hover {
+            color: darkred;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" class="form1">
+
+
+        <input type="text" name="" id="" placeholder="百度一下">
+        <button>百度一下</button>
+        <a href="02购物车.html"><img src="img/表单控件1_03.png" alt="图片"></a>
+
+    </form><br>
+
+    <div class="box_link">
+    <a href="01战略咨询.html">01战略咨询</a><br>
+        <a href="02购物车.html">02购物车</a><br>
+        <a href="03教研团队.html">03教研团队</a><br>
+        <a href="#" target="_self">04百度一下</a><br>
+        <a href="05考试.html">05考试</a><br>
+        <a href="07刘诗诗.html">07刘诗诗</a><br>
+        <a href="08精品推荐.html">08精品推荐</a><br>
+        <a href="09美食.html">09美食</a><br>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+                  2、超市迎国庆，回馈新老客户，消费满1000元，商品打9.5折；满500元，打9.8折，根据用户消费金额，计算找零信息(用函数实现)
+            
+            //思考   一种商品    单价  数量      花费的钱数    封装
+            //       多种 商品  （循环 ，合适结循环的条件）   不断调用  一种花的钱数    累加      最后总共花多钱  和1000     请付钱数，找零（调用）
+            //找零  减法   封装函数 */
+        (function () {
+            var num = prompt('请输入购买商品的数量');
+            console.log('数量：' + num);
+            document.write('您一共购买了<span>' + num + '</span>件商品<br>');
+            var sum = 0;
+            var arr = [];
+            for (i = 0; i < num; i++) {
+                var j = i + 1;
+                var money = +prompt('请输入商品' + j + '的价格');
+                console.log(j, money);
+                document.write('商品' + j + '价格:<span>' + money + '</span><br>');
+                arr[i] = money;
+                sum += arr[i];
+            }
+            console.log(sum);
+            if (sum > 1000) {
+                free = 0.05 * sum;
+                console.log(free);
+                /* sum *= 0.95;
+                console.log(sum); */
+                document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                document.write('商品打9.5折,返还你<span>' + free + '</span>元<br>');
+            } else if (sum > 500) {
+                free = 0.02 * sum;
+                /*  sum *= 0.98;
+                 console.log(sum); */
+                document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                document.write('商品打9.8折,返还你<span>' + free + '</span>元<br>');
+            } else {
+                console.log(sum);
+                document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                document.write('您不符合打折条件');
+
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 300px;
+            height: 80px;
+            margin: 100px;
+            position: relative;
+        }
+
+        .txt {
+            margin-top: 30px;
+            width: 180px;
+            height: 28px;
+        }
+
+        span {
+            width: 80px;
+            text-align: right;
+        }
+
+        .box {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 340px;
+            height: 50px;
+            font-size: 20px;
+            border: 1px solid #333;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2022年8月10日18:44:42 -->
+    <div class="main">
+        <input type="text" class="box">
+        <span>请输入内容：</span><input type="text" class="txt" value="学习是我快乐">
+
+    </div>
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(function () {
+            /* var msg = $('txt').val()
+            $(',box').val(msg); */
+            $('.txt').on('input', function () {
+                var txt1 = $(this).val();
+                $('.box').show();
+                $('.box').val(txt1);
+
+            })
+
+
+            $('.box').on('input', function () {
+                var txt2 = $(this).val();
+                $('.txt').val(txt2);
+            })
+
+            $('.main').on('mouseleave', function () {
+                $('.box').hide()
+            })
+        })
+    </script>
+</body>
+
+</html>

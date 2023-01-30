@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main,
+        img {
+            width: 600px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        #main>div {
+            width: 100%;
+        }
+
+
+        .box input {
+            width: 180px;
+            height: 28px;
+            margin-left: 80px;
+        }
+
+        button {
+            padding: 5px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2022年9月2日20:30:17 -->
+
+    <div id="main">
+        <div class="box"> <input type="text" name="search" id="search" placeholder="请输入搜索内容" v-module="newlist"><button
+                @click="search">搜索</button>
+        </div>
+        <div v-for="(item,index) in newlist">
+            <div><img :src="item.img_url" alt=""></div>
+        </div>
+    </div>
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    let vue = new Vue({
+        el: '#main',
+        data: {
+            newlist: '',
+            imglist: [
+                {
+                    img_url: './img/shuiping.png',
+                    title: '水瓶座',
+                    date: '1月20日-2月18日',
+                    msg: '水瓶座的人，极富革新精神，具有独特的个性，有着超前的思想，是新思想的开拓者.聪颖脱俗，常有奇异的想法，不按牌理出牌.'
+                },
+                {
+                    img_url: './img/shuangyu.png',
+                    title: '双鱼座',
+                    date: '2月19日-3月20日',
+                    msg: '双鱼座的人，内向害羞，有着浓厚的艺术气息.柔情似水，浪漫多情，天真烂漫，会有许多梦幻般的想法，只是有时显得不切实际.'
+                },
+                {
+                    img_url: './img/baiyang.png',
+                    title: '白羊座',
+                    date: '3月21日-4月9日',
+                    msg: '白羊座的人乐观活泼、敢做敢当，干劲十足，属于剑及履及的行动派，是急行侠、探险家.但有时显得没有耐性，冲动易怒，太过冒险.'
+                },
+                {
+                    img_url: './img/jinniu.png',
+                    title: '金牛座',
+                    date: '4月20日-5月20日',
+                    msg: '金牛座的人给人的感觉稳重、务实，追求稳定与和谐，害怕变动，属于享受派.喜欢安定，最怕没有安全感.但有时显得固执己见，对钱财看得很重.'
+                },
+                {
+                    img_url: './img/shuangzi.png',
+                    title: '双子座',
+                    date: '5月21日-6月21日',
+                    msg: '双子座的人，思维跳跃，口才怜俐，鬼点子多，常语出惊人，但有三心二意的倾向，情绪起伏多变，难以专心.'
+                },
+                {
+                    img_url: './img/juxie.png',
+                    title: '巨蟹座',
+                    date: '6月22日-7月22日',
+                    msg: '巨蟹座的人，亲切有礼，感情丰富、细腻，有很强的感受力，具有母性的博爱之心，属于居家派的.但情绪起伏，有逃避倾向.'
+                },
+                {
+                    img_url: './img/shizi.png',
+                    title: '狮子座',
+                    date: '7月23日-8月22日',
+                    msg: '狮子座的人，自信自强，气度非凡，极具领导统御能力，永不服输，是天生的贵族、王者.只是有时过度追求利，甚至有些自负，莽撞、以自我为中心.'
+                },
+                {
+                    img_url: './img/chunv.png',
+                    title: '处女座',
+                    date: '8月23日-9月22日',
+                    msg: '处女座的人，思虑周全，非常谦虚，谨慎保守，很有耐心，擅长分析，凡事要求做到尽善尽美，是个完美主义者.但易给人较大的压力，较被动严肃.'
+                },
+                {
+                    img_url: './img/tiancheng.png',
+                    title: '天秤座',
+                    date: '9月23日-10月23日',
+                    msg: '天秤座的人很有气质，谈吐应对得体，善于与人沟通协调，是绝佳的谈判人才，属于迷人优雅派人物.只不过，思想易左右摇摆；追求外表光鲜，易失去自我.'
+                },
+                {
+                    img_url: './img/tianxie.png',
+                    title: '天蝎座',
+                    date: '10月24日-11月22日',
+                    msg: '天蝎座的人，外表低调，实则企图心旺盛，充满神秘感，不会轻易地与人互动.对自我要求很高，极具竞争力与战斗力，有洞悉他人心思的能力.'
+                },
+                {
+                    img_url: './img/sheshou.png',
+                    title: '射手座',
+                    date: '11月23日-12月21日',
+                    msg: '射手座的人，生性乐观开朗，热情奔放，崇尚自由，反应灵敏，极具创造力.待人友善又极具豪气，作风非常海派，人缘颇佳.'
+                },
+                {
+                    img_url: './img/moxie.png',
+                    title: '摩羯座',
+                    date: '12月22日-1月19日',
+                    msg: '摩羯座的人，很有自己的想法，很注重实际，耐力十足，意志坚定，有很强的时间观念，重视权威和名声，有不错的组织领导能力，是值得依赖的人.'
+                },
+            ]
+        },
+        methods: {
+            search() {
+                let content = document.querySelector("#search").value;
+                console.log(content);
+                if (content == '') {
+                    this.newlist = this.imglist;
+                }
+                this.newlist = this.imglist.filter((item, index) => {
+                    return item.title.includes(content) || item.date[0].includes(content) || item.date[6].includes(content) || item.msg.includes(content);
+                })
+                return newlist;
+                // this.imglist = newlist;
+            }
+        }
+    })
+    vue.search();
+
+
+</script>
+
+</html>

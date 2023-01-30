@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业10--打印图形进阶</title>
+    <link rel="icon" href="img/work.png" type="image/x-icon">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    nav {
+
+        width: 100%;
+        height: 40px;
+        margin: auto;
+        margin-bottom: 40px;
+        background: rgb(3, 91, 111);
+    }
+
+
+    ul li a {
+        float: left;
+        color: #fff;
+        height: 40px;
+        padding: 0 20px;
+        line-height: 40px;
+    }
+
+
+    .active {
+        background: rgb(249, 61, 174);
+        /* color: #333; */
+    }
+
+    ul li a:hover {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    p {
+        margin-left: 40px;
+    }
+
+    span {
+        color: red;
+    }
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="作业1.html">作业1</a></li>
+            <li><a href="作业2.html">作业2</a></li>
+            <li><a href="作业3.html">作业3</a></li>
+            <li><a href="作业4.html">作业4</a></li>
+            <li><a href="作业5.html">作业5</a></li>
+            <li><a href="作业6.html">作业6</a></li>
+            <li><a href="作业7.html">作业7</a></li>
+            <li><a href="作业8.html">作业8</a></li>
+            <li><a href="作业9.html">作业9</a></li>
+            <li><a href="作业10.html" class="active">作业10</a></li>
+            <li><a href="作业11.html">作业11</a></li>
+            <li><a href="作业12.html">作业12</a></li>
+            <li><a href="作业13.html">作业13</a></li>
+            <li><a href="作业14.html">作业14</a></li>
+            <li><a href="作业15.html">作业15</a></li>
+        </ul>
+    </nav>
+    <p>
+        5.等腰三角形，菱形、九九乘法口诀表 、空心的等腰三角形 &ensp;&nbsp; ★<br>
+        &ensp;&ensp;&ensp;&ensp;*<br>
+        &ensp;&ensp;&ensp;* * *<br>
+        &ensp;&ensp;* * * * *<br>
+        &ensp;* * * * * * *<br>
+        * * * * * * * * *<br>
+
+
+
+    </p><br><br>
+    <script>
+        document.write('<hr><br>');
+        document.write('<span>等腰三角形</span><br>');
+
+        for (var i = 1; i <= 5; i++) {
+            for (var m = 1; m <= 5 - i; m++) {
+                document.write('&ensp;');
+            }
+            for (var j = 1; j <= 2 * i - 1; j++) {
+
+                document.write(' * ');
+            }
+            document.write("<br>")
+        }
+        document.write('<hr><br>');
+        document.write('<span>菱形</span><br>')
+        for (var i = 1; i <= 5; i++) {
+            for (var m = 1; m <= 5 - i; m++) {
+                document.write('&ensp;');
+            }
+            for (var j = 1; j <= 2 * i - 1; j++) {
+
+                document.write(' * ');
+            }
+            document.write("<br>")
+        }
+        for (var i = 4; i >= 1; i--) {
+            for (var m = 1; m <= 5 - i; m++) {
+                document.write('&ensp;');
+            }
+            for (var j = 1; j <= 2 * i - 1; j++) {
+
+                document.write(' * ');
+            }
+            document.write("<br>")
+        }
+
+        document.write('<hr><br>');
+        document.write('<span>空心三角形</span><br>');
+        for (var i = 1; i <= 5; i++) {
+            for (m = 1; m <= 5 - i; m++) {
+                document.write('&ensp;&ensp;');
+            }
+            for (j = 1; j <= 2 * i - 1; j++) {
+                if (i == 5) {
+                    document.write('*&ensp;');
+                }
+                else if (j == 2 * i - 1 || j == 1) {
+                    document.write('* ');
+                } else {
+                    document.write('&ensp;&ensp;')
+                }
+            }
+            document.write("<br>")
+        }
+
+        var sum = 1;
+        document.write('<hr><br>')
+        document.write('<span>乘法口诀表</span><br>')
+        for (var i = 1; i <= 9; i++) {
+            for (j = 1; j <= i; j++) {
+                document.write(i + '*' + j + '=' + sum + '&emsp;');
+            }
+            document.write('<br>')
+        }
+
+        document.write('<hr><br><br>')
+
+    </script>
+</body>
+
+</html>

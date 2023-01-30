@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .main {
+            width: 1200px;
+            height: auto;
+            margin: 80px auto;
+        }
+
+        form {
+            width: 500px;
+            height: auto;
+            margin: auto;
+        }
+
+        form input {
+            width: 200px;
+            height: 28px;
+            margin: 5px;
+            outline: none;
+        }
+
+        form>span {
+            display: block;
+            float: left;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            margin: 5px;
+        }
+
+        form button {
+            padding: 4px 28px;
+            margin: 15px 5px;
+            /* 兼容谷歌 */
+            background-image: -webkit-radial-gradient(#a79, #a89);
+            /* 兼容火狐 */
+            border: 2px solid #666;
+            border-bottom: 4px solid #333;
+            border-left: 2px solid #333;
+            box-shadow: 3px 5px rgba(0, 0, 0, 0.3);
+            color: #fff;
+
+        }
+
+        form p {
+            width: 200px;
+            min-height: 30px;
+            color: red;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            border-spacing: 0;
+
+        }
+
+        table th {
+            background: #f1a
+        }
+
+        table tbody tr:nth-child(2n) {
+            background: #f9c;
+        }
+
+        table tbody tr:nth-child(2n+1) {
+            background: #eaeaea;
+        }
+
+        table th,
+        table td {
+            width: 120px;
+            height: 30px;
+            border: 1px solid #333;
+            text-align: center;
+
+        }
+
+        table a {
+            color: #6af;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日17:39:10
+     -->
+    <div class="main">
+        <form action="" onsubmit="return false">
+
+            <span><label for="name">请输入姓名:</label></span> <input type="text" name="" id="name" placeholder=""><br>
+            <span><label for="sex">请输入性别:</label></span><input type="text" name="" id="sex" placeholder=""><br>
+            <span><label for="age">请输入年龄:</label></span><input type="text" name="" id="age" placeholder=""><br>
+            <span><label for="seach">请输入搜索内容:</label></span> <input type="text" name="" id="seach"
+                placeholder="支持序号、姓名、性别、年龄等"><br>
+            <button class="add">添加</button>
+            <button class="search">搜索</button>
+            <button class="replace">更改data.js</button>
+            <p></p>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+
+
+    $(".replace").on("click", function () {
+
+    })
+    let data = [
+        {
+            index: 1,
+            name: "海绵宝宝",
+            sex: "男",
+            age: 18,
+        },
+        {
+            index: 2,
+            name: "派大星",
+            sex: "男",
+            age: 16,
+        },
+        {
+            index: 3,
+            name: "珊迪",
+            sex: "女",
+            age: 16,
+        },
+        {
+            index: 4,
+            name: "蟹老板",
+            sex: "男",
+            age: 37,
+        },
+        {
+            index: 5,
+            name: "章鱼哥",
+            sex: "男",
+            age: 46,
+        },
+        {
+            index: 6,
+            name: "白浅",
+            sex: "女",
+            age: 18,
+        },
+        {
+            index: 7,
+            name: "白子画",
+            sex: "男",
+            age: 34,
+        },
+        {
+            index: 8,
+            name: "白凤九",
+            sex: "女",
+            age: 16,
+        },
+        {
+            index: 9,
+            name: "白笙",
+            sex: "女",
+            age: 37,
+        },
+        {
+            index: 10,
+            name: "小贱",
+            sex: "男",
+            age: 26,
+        },
+        {
+            index: 11,
+            name: "花千骨",
+            sex: "女",
+            age: 16,
+        },
+        {
+            index: 12,
+            name: "花晨宇",
+            sex: "男",
+            age: 35,
+        },
+    ]
+
+    // console.log(data.length);
+    $(".add").on("click", function () {
+        let obj = {};
+        obj.index = data.length + 1;
+        obj.name = $("#name").val();
+        obj.sex = $("#sex").val();
+        obj.age = $("#age").val();
+        console.log(obj.name, obj.sex, obj.age);
+        if (obj.name == "" || obj.age == "" || obj.sex == "") {
+            $('p').text("数据不能为空");
+        } else {
+            data.push(obj);
+            $("tbody>tr").remove();
+            appendData(data);
+        }
+    })
+    function appendData(data) {
+        for (let i = 0; i < data.length; i++) {
+            let trs = `<tr><td>${data[i].index}</td><td>${data[i].name}</td><td>${data[i].sex}</td><td>${data[i].age}</td><td><a href="javascript:;">删除</a></td></tr>`;
+            $("tbody").append(trs);
+        }
+    }
+    appendData(data);
+    $(".search").on("click", function () {
+        let str = $("#seach").val();
+        if (str == "") {
+            $("tbody>tr").remove();
+            appendData(data);
+        } else {
+            var newData = data.filter((item, index) => {
+                var str0 = item.name + item.age + item.sex;
+                if (str0.includes(str)) {
+                    return item;
+                }
+            })
+            console.log(newData, newData.length);
+            if (newData.length == 0) {
+                $("tbody tr").remove();
+                var td = $("tbody").append("<tr><td colSpan='5'style='font-size:14px;color:red'>未找到任何符合条件的元素</td></tr>");
+                $("tbody").append(td);
+            } else {
+                $("tbody>tr").remove();
+                appendData(newData)
+            }
+        }
+    })
+    $("tbody a").on("click", function () {
+        console.log($(this).parent().parent());
+        $(this).parent().parent().remove();
+    })
+
+
+
+</script>
+
+</html>

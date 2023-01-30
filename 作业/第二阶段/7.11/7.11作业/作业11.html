@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业11--买小鸡</title>
+    <link rel="icon" href="img/work.png" type="image/x-icon">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    nav {
+
+        width: 100%;
+        height: 40px;
+        margin: auto;
+        margin-bottom: 40px;
+        background: rgb(3, 91, 111);
+    }
+
+
+    ul li a {
+        float: left;
+        color: #fff;
+        height: 40px;
+        padding: 0 20px;
+        line-height: 40px;
+    }
+
+
+    .active {
+        background: rgb(249, 61, 174);
+        /* color: #333; */
+    }
+
+    ul li a:hover {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    p {
+        margin-left: 40px;
+
+    }
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="作业1.html">作业1</a></li>
+            <li><a href="作业2.html">作业2</a></li>
+            <li><a href="作业3.html">作业3</a></li>
+            <li><a href="作业4.html">作业4</a></li>
+            <li><a href="作业5.html">作业5</a></li>
+            <li><a href="作业6.html">作业6</a></li>
+            <li><a href="作业7.html">作业7</a></li>
+            <li><a href="作业8.html">作业8</a></li>
+            <li><a href="作业9.html">作业9</a></li>
+            <li><a href="作业10.html">作业10</a></li>
+            <li><a href="作业11.html" class="active">作业11</a></li>
+            <li><a href="作业12.html">作业12</a></li>
+            <li><a href="作业13.html">作业13</a></li>
+            <li><a href="作业14.html">作业14</a></li>
+            <li><a href="作业15.html">作业15</a></li>
+        </ul>
+    </nav>
+    <p>
+        6、穷举的例子
+        公鸡3块钱一只，母鸡2块钱一只，小鸡5毛一只，小明有100块钱，问：花光所有的钱，有多少种购买组合。
+    </p><br><br>
+    <p>一共<span class="count" id="count" style="color: red;"></span>种组合</p><br><br>
+    <script>
+
+        var count = 0;
+        for (var gj = 0; gj <= 33; gj++) {
+            for (var mj = 0; mj <= 50; mj++) {
+                for (var xj = 0; xj <= 200; xj++) {
+                    if (3 * gj + 2 * mj + 0.5 * xj == 100) {
+                        count++;
+                        document.write('公鸡' + gj + '只&emsp;' + '母鸡' + mj + '只&emsp;' + '小鸡' + xj + '只<br>');
+                    }
+                }
+
+            }
+        }
+
+        document.getElementById('count').innerHTML = count;
+
+    </script>
+</body>
+
+</html>

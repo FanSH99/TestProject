@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钟表</title>
+    <style>
+        #clock {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            background-image: url("img/clockface.jpg");
+            background-size: 100%;
+            position: relative;
+        }
+
+        #clock div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-origin: center;
+        }
+
+        #clock img {
+            margin: 0 49%;
+            width: 2%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="h"><img src="img/hourhand.png"></div>
+        <div id="m"><img src="img/minhand.png"></div>
+        <div id="s"><img src="img/sechand.png"></div>
+    </div>
+    <script>
+        window.onload = function () {
+            var h = document.getElementById("h");
+            var m = document.getElementById("m");
+            var s = document.getElementById("s");
+            var clock = function () {
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                s.style.transform = 'rotate(' + second * 6 + 'deg)';
+                m.style.transform = 'rotate(' + minute * 6 + 'deg)';
+                h.style.transform = 'rotate(' + hour * 30 + 'deg)';
+            }
+            setInterval(clock, 1000);
+        }
+    </script>
+</body>
+
+</html>

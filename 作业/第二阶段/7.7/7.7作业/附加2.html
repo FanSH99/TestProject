@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html">附加1</a></li>
+                <li><a href="附加2.html" class="active">附加2</a></li>
+                <li><a href="附加3.html">附加3</a></li>
+                <li><a href="附加4.html">附加4</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+            <h1>附加题2:</h1>
+            <h4>
+                2、会员卡四位数(开头不为0)求和，会员卡四位数求和大于20时将返利50元，否则不返利。 根据用户输入的会员卡卡号(四位数)，判断是否返利<br>
+            </h4>
+            <p>您输入的会员卡号为<span class="num" id="num"></span></p>
+            <p>提示：<span class="message" id="message"></span></p><br>
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+            <button onclick="post()">开始判断</button>
+        </div>
+    </div>
+    <script>
+
+        function post() {
+            var num, message;
+            num = prompt('请输入会员卡号（四位数，开头不为空');
+            document.getElementById('num').innerHTML = num;
+            var result = parseFloat(num) && Number(num);
+            console.log('你的会员卡号为：' + num);
+
+            if (sum > 20) {
+                console.log('返利50');
+            } else {
+                console.log('不返利');
+            }
+            if (isNaN(result)) {
+                alert('格式错误，请输入四位数字');
+                console.log('格式错误，请输入四位数字');
+                document.getElementById('message').innerHTML = '格式错误，请输入四位数字';
+            } else {
+                var a = parseInt(num / 1000);//千位
+                var b = parseInt(num / 100) % 10;//百位
+                var c = parseInt(num / 10) % 10;//十位
+                var d = num % 10;//个位
+                var sum = a + b + c + d;
+                console.log(a, b, c, d, sum);
+                if (sum > 20) {
+                    alert('返利');
+                    console.log('返利');
+                    document.getElementById('message').innerHTML = '返利';
+                } else {
+                    alert('不返利');
+                    console.log('不返利');
+                    document.getElementById('message').innerHTML = '不返利';
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

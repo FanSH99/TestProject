@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            display: flex;
+            width: 1000px;
+            margin: auto;
+        }
+
+        .header {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            display: flex;
+            background: #673466;
+            border-radius: 5px;
+        }
+
+        .header>div {
+            margin: 0 15px;
+            color: #fff;
+        }
+
+        .bottom {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .bottom>div {
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <parentcomponent> </parentcomponent>
+    </div>
+    <template id="headerlist">
+        <div>
+            <div class="header">
+                <div v-for="(item,index) in navList">
+                    <input type="radio" name="hreoclass" :value="item.type" v-model="type">{{item.name}}
+                </div>
+            </div>
+            <soncomponent :mytype="type" :mylist="list"></soncomponent>
+        </div>
+
+
+    </template>
+    <template id="herolist">
+        <div class="bottom">
+            <div v-for="(item,index) in getList" class="listimg" :key="index">
+                <img :src="item.alias | getImg" @click="listen(item.alias)"></img>
+                <p>{{item.title}}</p>
+            </div>
+            <audio :src="audioUrl" :autoplay="isTrue"></audio>
+        </div>
+    </template>
+
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月7日20:20:20 */
+
+    let soncomponent = {
+        template: "#herolist",
+        props: ["mytype", "mylist"],
+        data() {
+            return {
+                type: "",
+                list: "",
+                isTrue: false,
+                audioUrl: '',
+            }
+        },
+        filters: {
+            getImg(name) {
+                return `https://game.gtimg.cn/images/lol/act/img/champion/${name}.png`;
+            }
+        },
+
+        methods: {
+            listen(name) {
+                let index = this.mylist.findIndex(item => {
+                    return item.alias == name;
+                })
+                console.log(index);
+                this.audioUrl = this.mylist[index].selectAudio;
+                this.isTrue = true;
+            }
+        },
+        computed: {
+            getList() {
+                if (this.mytype == "all") {
+                    return this.mylist;
+                }
+                else {
+                    let newArr = this.mylist.filter(item => item.roles.includes(this.mytype));
+                    return newArr;
+                }
+
+            },
+        }
+
+
+
+    }
+    let parentcomponent = {
+        template: "#headerlist",
+        components: {
+            soncomponent
+        },
+        data() {
+            return {
+                list: '',
+                imgArr: [],
+                audioUrl: "",
+                isTrue: false,
+                type: 'all',
+                navList: [
+                    {
+                        name: "所有英雄",
+                        type: "all",
+                    }, {
+                        name: "法师",
+                        type: "mage"
+                    }, {
+                        name: "战士",
+                        type: "fighter"
+                    }, {
+                        name: "坦克",
+                        type: "tank"
+                    }, {
+                        name: "刺客",
+                        type: "assassin"
+                    }, {
+                        name: "射手",
+                        type: "marksman"
+                    }, {
+                        name: "辅助",
+                        type: "support"
+                    }
+                ],
+            }
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            // 箭头函数没有this指向。
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    // console.log(xhr.response);
+                    let res = JSON.parse(xhr.response);
+                    // console.log(res.hero);
+                    this.list = res.hero;
+                }
+            }
+        },
+
+    }
+
+    new Vue({
+        el: "#app",
+        components: {
+            parentcomponent
+        },
+
+    })
+</script>
+
+</html>

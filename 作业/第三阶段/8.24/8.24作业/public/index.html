@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/马卡龙.png" type="image/x-icon">
+    <title>添加学生</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .main {
+            width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-around;
+            height: auto;
+            min-height: 400px;
+            border: 2px solid #eb747c;
+            border-radius: 5px;
+            padding: 10px 0;
+
+        }
+
+        .left {
+            width: 300px;
+        }
+
+        .left p,
+        .left i {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .left i {
+            display: none;
+        }
+
+        .left i.err,
+        .left i.pass {
+            display: block;
+        }
+
+
+        .left p:first-child {
+            background: #52a7cc;
+            color: #fff;
+            text-align: center;
+        }
+
+        .left span {
+            font-size: 12px;
+            display: block;
+            height: 30px;
+            text-indent: 2rem;
+
+            position: relative;
+            /*  display: none; */
+
+        }
+
+        .left i.err span {
+            color: red;
+        }
+
+        .left i.pass span {
+            color: green;
+        }
+
+        .left i span::before {
+            content: "";
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .left i.err span::before {
+            background: url(./img/err.png) left no-repeat;
+            background-size: contain;
+        }
+
+        .left i.pass span::before {
+            background: url(./img/pass.png) left no-repeat;
+            background-size: contain;
+        }
+
+        .left input {
+            outline: none;
+            width: 300px;
+            border: transparent;
+            height: 35px;
+            border-bottom: 1px solid #52a7cc;
+        }
+
+        .left button {
+            display: block;
+            width: 300px;
+            height: 30px;
+            border-radius: 5px;
+            background: #52a7cc;
+            color: #fff;
+            border: none;
+            margin-top: 10px;
+        }
+
+        table {
+            border: 1px solid #52a7cc;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        table caption {
+            height: 30px;
+            line-height: 30px;
+            background: #cc52ae;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #cc52ae;
+            width: 150px;
+            height: 30px;
+        }
+
+        b {
+            margin: 10px 0;
+        }
+
+        .del {
+            padding: 2px 10px;
+            background: #f84c88;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="left">
+            <p>添加学生</p>
+            <input type="text" placeholder="请输入姓名" name="uname" id="uname">
+            <i class="txt1"><span></span></i>
+            <input type="text" placeholder="请输入年龄" name="age" id="age">
+            <i class="txt2"><span></span></i>
+            <input type="text" placeholder="请输入性别" name="sex" id="sex">
+            <i class="txt3"><span></span></i>
+            <input type="text" placeholder="请输入联系方式" name="phone" id="phone">
+            <i class="txt4"><span></span></i>
+            <button class="send">确认添加</button>
+            <b></b>
+        </div>
+        <div class="right">
+            <table>
+                <caption>用户信息</caption>
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>性别</th>
+                        <th>联系方式</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+<script src="./bin/jquery-3.6.0.min.js"></script>
+<script src="./bin/template.js"></script>
+<script id="add" type="text/html">
+    <tr><td>{{uname}}</td><td>{{age}}</td><td>{{sex}}</td><td>{{phone}}</td><td><button class="del">删除</button></td></tr>
+</script>
+
+<script>
+    $.post("/register", { type: 0 }, (res) => {
+        if (res == "-1") {
+            $("b").html("暂时没有数据")
+        } else {
+            // console.log(res, typeof res);
+            str = "";
+            res.map(item => {
+                let trs = item;
+                // console.log(trs);
+                let html = template("add", trs);
+                // console.log(html);
+                str += html;
+            })
+            // console.log(str);
+            $("tbody").html(str);
+        }
+        // res = JSON.parse(res);
+        $(".del").on("click", function () {
+            console.log(this.parentNode.parentNode);
+            console.log($(this).parent().parent().index());
+            let index = $(this).parent().parent().index()
+            let type = 2;
+            $(this).parent().parent().remove();
+            $.post("/register", { index, type }, (res) => {
+                // console.log(res);
+            })
+        })
+    })
+    $(".send").on("click", () => {
+        let uname = $("#uname").val();
+        let age = $("#age").val();
+        let sex = $("#sex").val();
+        let phone = $("#phone").val();
+        let txt1 = $(".txt1 span").text();
+        let txt2 = $(".txt2 span").text();
+        let txt3 = $(".txt3 span").text();
+        let txt4 = $(".txt4 span").text();
+        let type = 1;
+        if (txt1 == "校验通过" & txt2 == "校验通过" & txt3 == "校验通过" & txt4 == "校验通过") {
+            /* console.log("添加成功"); */
+            $.post("/register", { uname, age, sex, phone, type }, (res) => {
+                // res = JSON.parse(res);
+                // console.log(res, typeof res);
+                let str = "";
+                res.map(item => {
+                    let trs = item;
+                    // console.log(trs);
+                    let html = template("add", trs);
+                    // console.log(html);
+                    str += html;
+                })
+                // console.log(str);
+                $("tbody").children().remove();
+                $("tbody").append(str);
+                $("b").html("添加数据成功！！")
+                $(".txt1").removeClass("pass").removeClass("err");
+                $(".txt2").removeClass("pass").removeClass("err");
+                $(".txt3").removeClass("pass").removeClass("err");
+                $(".txt4").removeClass("pass").removeClass("err");
+            })
+        }
+        else {
+            $("b").html("需要全部数据审核通过才能添加！！！")
+        }
+    })
+    let flag1 = 0, flag2 = 0, flag3 = 0; flag4 = 0;
+    console.log(flag1, flag2, flag3, flag4);
+
+
+    $("#uname").on("blur", () => {
+        let uname = $("#uname").val();
+        console.log(uname);
+        if (uname == "") {
+            $(".txt1 span").text("姓名不能为空");
+            $(".txt1").addClass("err").removeClass("pass");
+
+        }
+        else if (uname.length < 2 || uname.length > 10) {
+            $(".txt1 span").text("姓名必须为2-10位");
+            $(".txt1").addClass("err").removeClass("pass");
+
+        } else {
+            $(".txt1 span").text("校验通过");
+            $(".txt1").addClass("pass").removeClass("err");
+            flag1 = 1;
+        }
+
+    })
+    console.log(flag1);
+
+    let check2 = $("#age").on("blur", () => {
+        let age = $("#age").val();
+        console.log(age);
+        if (age == "") {
+            $(".txt2 span").text("年龄不能为空");
+            $(".txt2").addClass("err").removeClass("pass");
+
+        }
+        else if (age < 3 || age > 50) {
+            $(".txt2 span").text("年龄必须为3-50岁");
+            $(".txt2").addClass("err").removeClass("pass");
+
+        } else {
+            $(".txt2 span").text("校验通过");
+            $(".txt2").addClass("pass").removeClass("err");
+            flag2 = 1;
+        }
+    })
+    $("#sex").on("blur", () => {
+        let sex = $("#sex").val();
+        console.log(sex);
+        if (sex == "") {
+            $(".txt3 span").text("性别不能为空");
+            $(".txt3").addClass("err").removeClass("pass");
+
+        }
+        else if (sex != "男" && sex != "女") {
+            $(".txt3 span").text("性别必须为男或者女");
+            $(".txt3").addClass("err").removeClass("pass");
+
+        } else {
+            $(".txt3 span").text("校验通过");
+            $(".txt3").addClass("pass").removeClass("err");
+            flag3 = 1;
+        }
+    })
+
+    $("#phone").on("blur", () => {
+        let phone = $("#phone").val();
+        console.log(uname);
+        if (phone == "") {
+            $(".txt4 span").text("手机号不能为空");
+            $(".txt4").addClass("err").removeClass("pass");
+        }
+        else if (phone.length != 11) {
+            $(".txt4 span").text("手机号必须为11位的合法号码");
+            $(".txt4").addClass("err").removeClass("pass");
+        } else {
+            $(".txt4 span").text("校验通过");
+            $(".txt4").addClass("pass").removeClass("err");
+            flag4 = 1;
+        }
+    })
+</script>
+
+</html>

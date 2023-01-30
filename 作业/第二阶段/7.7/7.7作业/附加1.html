@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html" class="active">附加1</a></li>
+                <li><a href="附加2.html">附加2</a></li>
+                <li><a href="附加3.html">附加3</a></li>
+                <li><a href="附加4.html">附加4</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+            <h1>附加1:</h1>
+            <h4>
+                1.根据BMI(身体质量指数)显示一个人的体型。BMI是指身高体重的一个计算公式。<br>
+                BMI = 体重 / 身高的平方; 体重单位 kg 身高单位是 m<br>
+                -指数- -说明-<br>
+                低于18.5 过轻<br>
+                18.5~24.9999 正常<br>
+                25~27.9999 过重<br>
+                28~32 肥胖<br>
+                高于32 非常肥胖<br>
+                编程输入身高和体重，计算BMI, 输出身体状况。<br>
+            </h4>
+            <p>您输入的身高为<span class="num1" id="num1"></span>(m)</p>
+            <p>您输入的体重为<span class="num2" id="num2"></span>(kg)</p>
+            <p>您的BMI为<span class="BMI" id="BMI"></span></p>
+            <p>提示：<span class="message" id="message"></span></p><br>
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+            <button onclick="post()">开始判断</button>
+        </div>
+    </div>
+    <script>
+
+        function post() {
+            var num1, num2, BMI, message;
+            num1 = prompt('请输入你的身高(单位为m)');
+            num2 = prompt('请输入你的体重(单位为kg');
+            /* var result = parseFloat(num) && Number(num); */
+            document.getElementById('num1').innerHTML = num1;
+            document.getElementById('num2').innerHTML = num2;
+            var result1 = parseFloat(num1) && Number(num1);
+            var result2 = parseFloat(num2) && Number(num2);
+            console.log('身高：' + num1 + 'm');
+            console.log('体重：' + num2 + 'kg');
+            if (isNaN(result1) || isNaN(result2)) {
+                alert('格式错误，请输入数字');
+                console.log('格式错误，请输入数字');
+                document.getElementById('message').innerHTML = '格式错误，请输入数字';
+            } else {
+                BMI = num2 / (num1 * num1);
+                document.getElementById('BMI').innerHTML = BMI;
+                console.log('BMI=' + BMI);
+                if (BMI < 18.5) {
+                    alert('过轻');
+                    console.log('过轻');
+                    document.getElementById('message').innerHTML = '过轻';
+                } else if (BMI < 25) {
+                    alert('正常');
+                    console.log('正常');
+                    document.getElementById('message').innerHTML = '正常';
+                } else if (BMI < 28) {
+                    alert('过重');
+                    console.log('过重');
+                    document.getElementById('message').innerHTML = '过重';
+                } else if (BMI < 32) {
+                    alert('肥胖');
+                    console.log('肥胖');
+                    document.getElementById('message').innerHTML = '肥胖';
+                } else {
+                    alert('非常肥胖');
+                    console.log('非常肥胖');
+                    document.getElementById('message').innerHTML = '非常肥胖';
+                }
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

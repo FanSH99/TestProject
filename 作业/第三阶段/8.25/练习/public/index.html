@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!--  2022年8月25日20:49:28 -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <h1>表单上传数据 </h1>
+        <input type="file" name="myfile" id="myfile" accept="*">
+        <button>上传</button><br>
+
+        <!-- 自动播放，需要添加autoplay,并且 x-webkit-airplay=" true" webkit-playsinline="true" 才可以，
+         -->
+        <video src="./file/video1.mp4" controls autoplay height="400" " x-webkit-airplay=" true"
+            webkit-playsinline="true" muted="" id="video1"> Your browser does not support the video
+            tag.</video>
+        <video src="./file/video1.mp4" controls autoplay height="400" " x-webkit-airplay=" true"
+            webkit-playsinline="true" muted="" id="video2" playbackRate=2;> Your browser does not support the video
+            tag.</video>
+        <button class="speed2">2倍速</button><br>
+        <video controls="controls" autoplay="autoplay" height="400" x-webkit-airplay=" true" webkit-playsinline="true"
+            playbackRate=2;>
+            <source src="./file/video1.mp4" type="video/mp4" height="400" />
+            <param name="autoplay" value="true">
+            Your browser does not support the video tag.
+        </video>
+
+
+        <embed src="./file/1.mp4" height="400" />
+
+        <object data="./file/1.mp4" height="400" />
+
+
+        <video width="320" height="240" controls="controls">
+            <source src="movie.mp4" type="video/mp4" />
+            <source src="movie.ogg" type="video/ogg" />
+            <source src="movie.webm" type="video/webm" />
+            <object data="movie.mp4" width="320" height="240">
+                <embed src="movie.swf" width="320" height="240" />
+            </object>
+        </video>
+        <!-- 上例中使用了 4 中不同的视频格式。HTML 5 <video> 元素会尝试播放以 mp4、ogg 或 webm 格式中的一种来播放视频。如果均失败，则回退到 <embed> 元素。 -->
+
+
+        <object classid="" id="Slider1" width="400" height="50">
+            <param name="BorderStyle" value="1" />
+            <param name="MousePointer" value="0" />
+            <param name="Enabled" value="1" />
+            <param name="Min" value="0" />
+            <param name="Max" value="10" />
+        </object>
+    </form>
+</body>
+
+<script>
+    var speed2 = document.querySelector("#speed2");
+    speed2.onclick = function () {
+        document.querySelector("#video1").defaultPlaybackRate = 2.0;
+    }
+</script>
+
+</html>
+
+<!-- 
+
+application/x-www-form-urlencoded：默认的编码方式。但是在用文本的传输和MP3等大型文件的时候，使用这种编码就显得 效率低下。
+multipart/form-data：指定传输数据为二进制类型，比如图片、mp3、文件。
+text/plain：纯文体的传输。空格转换为 “+” 加号，但不对特殊字符编码。
+
+ -->

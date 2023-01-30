@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+</head>
+
+<body>
+
+    <p>1、接收用户输入的数据，若接收到数据，则在页面上显示接收到了数据，否则显示无数据（用函数实现）</p>
+    <input type="text" value="" id='question1' class="question"><input type="button" value="请点击我" id="btn1" class="btn">
+    <input type="text" name="" id="work1" readonly class="work">
+
+    <script>
+        //1.接收用户输入的数据，若接收到数据，则在页面上显示接收到了数据，否则显示无数据（用函数实现）
+        var btn1 = document.querySelector('#btn1');
+        btn1.onclick = getWork1;
+        function getWork1() {
+            /*  var num = prompt('请输入数据'); */
+            var num = document.querySelector('#question1').value;
+            console.log(num);
+            var message;
+            if (num == '' || num == null || Int16Array) {
+                message = '无数据'
+            } else {
+                message = '接收到了数据';
+            }
+            document.querySelector('#work1').value = message;
+            return message;
+        };
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

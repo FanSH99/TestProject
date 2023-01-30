@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 380px;
+            height: 520px;
+            background: #e1e1e1;
+            margin: 20px auto;
+        }
+
+        p {
+            margin: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h3 {
+
+            margin: 10px;
+        }
+
+        .out {
+            background: red;
+            width: 320px;
+            height: 50px;
+            text-align: left;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 80px;
+            padding: 0 20px;
+        }
+
+        input {
+            float: left;
+            box-sizing: content-box;
+            width: 80px;
+            height: 42px;
+            margin: 5px;
+        }
+
+        .txt {
+            width: 320px;
+            height: 40px;
+            text-align: left;
+            font-size: 12px;
+            color: #fff;
+            background: #333;
+            padding: 0 20px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h3>简易计算器：</h3>
+        <p>提示，两数之间必须输入算术符号，否则出错。</p>
+        <!-- 内容 -->
+        <div class="txt" id="txt"></div>
+        <input type="text" id="out" class='out' value="" readonly>
+        <!-- 第一行 -->
+        <input type='button' onclick="Tnumber(this.value)" value="%">
+        <input type='button' onclick="Clear()" value="CE">
+        <input type='button' onclick="Clear()" value="clear">
+        <input type='button' onclick="Baskspace()" value="baskspace">
+        <!-- 第二行 -->
+        <input type='button' onclick="TNumber1()" value="1/x">
+        <input type='button' onclick="TNumber2()" value="x²">
+        <input type='button' onclick="TNumber3()" value="²√x">
+        <input type='button' onclick="Tnumber(this.value)" value="/"><!-- 除法有问题 -->
+        <!-- 第三行 -->
+        <input type='button' onclick="Tnumber(this.value)" value="7">
+        <input type='button' onclick="Tnumber(this.value)" value="8">
+        <input type='button' onclick="Tnumber(this.value)" value="9">
+        <input type='button' onclick="Tnumber(this.value)" value="*">
+        <!-- 第四行 -->
+        <input type='button' onclick="Tnumber(this.value)" value="4">
+        <input type='button' onclick="Tnumber(this.value)" value="5">
+        <input type='button' onclick="Tnumber(this.value)" value="6">
+        <input type='button' onclick="Tnumber(this.value)" value="-">
+        <!-- 第五行 -->
+        <input type='button' onclick="Tnumber(this.value)" value="1">
+        <input type='button' onclick="Tnumber(this.value)" value="2">
+        <input type='button' onclick="Tnumber(this.value)" value="3">
+        <input type='button' onclick="Tnumber(this.value)" value="+">
+        <!-- 第六行 -->
+        <input type='button' onclick="TNumber4()" value="+/-">
+        <input type='button' onclick="Tnumber(this.value)" value="0">
+        <input type='button' onclick="Tnumber(this.value)" value=".">
+        <input type='button' onclick="Calculator()" value="=">
+
+    </div>
+
+
+    <script>
+        var sum = "";
+        function Tnumber(value) {
+            document.getElementById("out").value += value;
+            sum = sum + value;
+            document.getElementById('txt').innerHTML = sum;
+        }
+
+        function TNumber1() {
+            document.getElementById("out").value = 1 + '/' + document.getElementById("out").value;
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+
+        }
+        function TNumber2() {
+            document.getElementById("out").value = document.getElementById("out").value + '*' + document.getElementById("out").value;
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+        }
+        function TNumber3() {
+            document.getElementById("out").value = Math.sqrt(document.getElementById('out').value);
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+
+        }
+
+        function TNumber4() {
+            document.getElementById("out").value = 0 - document.getElementById('out').value;
+            sum = document.getElementById('out').value;
+            document.getElementById('txt').innerHTML = sum;
+        }
+
+        function Calculator() {
+            document.getElementById('txt').innerHTML = sum;
+            sum = eval(sum);
+            document.getElementById("out").value = sum;
+        }
+        function Clear() {
+            document.getElementById("out").value = '';
+            document.getElementById('txt').innerHTML = '';
+            sum = '';
+        }
+
+        function Baskspace() {
+            var out1 = document.getElementById("out").value;
+            console.log(out1);
+            out = out1.slice(0, -1);
+            document.getElementById('out').value = out;
+            document.getElementById('txt').innerHTML = out;
+            sum = out;
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

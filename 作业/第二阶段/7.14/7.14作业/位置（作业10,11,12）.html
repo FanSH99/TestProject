@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 10、查找数组中数值大于18对象的位置  arr0=[5,19,21,83,10]   (用函数实现) */
+        (function demo10() {
+            var arr = [5, 19, 21, 83, 10];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] > 18) {
+                    console.log(i, arr[i]);
+                    console.log('所在的位置是', arr.indexOf(arr[i]));
+                }
+            }
+        })();
+
+
+        /*11 将数组中数字内容求和  arr=[5,"张三"，9，80，true,28] */
+        (function demo11() {
+            var sum = 0;
+            var arr = [5, "张三", 9, 80, true, 28];
+            for (var i = 0; i < arr.length; i++) {
+                var result = parseFloat(arr[i]) && Number(arr[i]);
+                if (result) {
+                    console.log(arr[i]);
+                    sum += arr[i];
+                }
+            }
+            console.log(sum);
+        })();
+
+        /*  12、找出数组中“5”的位置（用函数实现）  arr = ["4", "5", "6", "jack", true] */
+
+        (function demo12() {
+            var arr = ["4", "5", "6", "jack", true];
+            var num = arr.indexOf("5");
+            console.log('“5”的位置是：', num);
+        })();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://7npmedia.w3cschool.cn/w3.css"> -->
+    <title>梦华录百科</title>
+    <!-- 
+        base设置所有页面中的超链接打开方式。
+        添加target之后，只要有超链接都会新窗口打开 
+    如果有部分连接需要在原有页面打开，则另外在超链接中设置_self-->
+    <base target="_self">
+
+    <style>
+        /* body {
+            background-color: pink;
+        } */
+
+        * {
+            /* 清除浏览器自带格式 */
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .mhl {
+            /* body部分设置绝对定位，左右两边留10%距离，
+            另外设置左浮动使其能沾满一行 */
+            width: 1000px;
+            padding-left: 10%;
+            padding-right: 20%;
+            position: absolute;
+            float: left;
+
+        }
+
+        aside {
+            /* 侧边导航栏固定不动 */
+            position: fixed;
+            margin: 10px;
+            width: 150px;
+            /* 设置背景颜色和边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+            border-right: 2px dashed gray;
+            font-family: 'Times New Roman', Times, serif;
+
+
+        }
+
+        aside {}
+
+        aside ol li a {
+            color: rgb(99, 6, 249);
+            font-weight: bold;
+        }
+
+        aside a:hover {
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+            color: red;
+        }
+
+
+        .mhl_main {
+            margin-left: 180px;
+        }
+
+
+        header {
+            weight: 825px;
+            height: 50px;
+            /* 设置边框，方便更改盒子大小 */
+            /*  border: 2px red solid; */
+            background-color: rgb(23, 47, 39);
+        }
+
+        header ul li {
+            text-decoration: none;
+            weight: 100px;
+            float: left;
+            padding: 10px;
+            left: 0;
+            /* 设置背景颜色和边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+            /*  background-color: pink; */
+            /* 设置字体的颜色，color不起作用，不知道为什么 */
+            /* color: yellow; */
+
+        }
+
+        header ul li a {
+            color: white;
+        }
+
+
+        header ul li:hover {
+            font-weight: bolder;
+            /* 效果不好看，删除了 */
+            /* background-image: url(img/gray.jpg); */
+            text-decoration: underline;
+        }
+
+
+
+
+
+        .mhl_title {
+            width: 825px;
+            height: 90px;
+            /* 设置边框，方便更改盒子大小 */
+            /*  border: 2px red solid; */
+        }
+
+        .mhl_title h1,
+        h3 {
+            float: left;
+            width: fit-content;
+            /* 设置边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+            padding-top: 0;
+        }
+
+
+        /* 音乐表 */
+        .mhl_yyb {
+            width: 825px;
+            height: 650px;
+            margin-top: 5px;
+            float: none;
+            /* 设置边框，方便更改盒子大小 */
+            /* border: 2px red solid;*/
+        }
+
+        .yyb {
+            width: 200px;
+            height: 100px;
+            /* border: 2px yellow solid; */
+            float: left;
+            margin: 20px;
+        }
+
+        /* 音乐表左边图片 */
+        .yyb_left img {
+            /* background-image: url(img/刘亦菲.jpg); */
+            width: 100px;
+            height: 100px;
+            float: left;
+            border: 2px red solid;
+        }
+
+
+        /* 音乐表右边的演员 */
+        .yyb_right {
+            /* border: 2px green solid; */
+            float: left;
+            margin: 10px;
+            text-align: center;
+        }
+
+
+
+
+
+        /* 幕后制作 */
+        .mhl_mhzz {
+            width: 825px;
+            margin-top: 5px;
+            /* 设置边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+        }
+
+        /* 音乐制作 */
+
+        .mhl_yyys {
+            width: 825px;
+            height: 360px;
+            /* 设置边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+        }
+
+        .yyys_table {
+            /* margin-left: 40px;
+            margin-right: 40px; */
+            width: 600px;
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+
+        /* 简介1，梦华录是有杨阳指导……*/
+        .mhl_jj1 {
+            width: 825px;
+            height: 180px;
+            /* 设置边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+            float: none;
+
+        }
+
+        /* 简介2，中文名梦华录，…… */
+        .mhl_jj2 {
+            width: 825px;
+            height: 200px;
+            /* 设置边框，方便更改盒子大小 */
+            /* border: 2px red solid; */
+            float: none;
+            padding-left: 20px;
+        }
+
+        /* 简介2里的表格 */
+        dl,
+        dd,
+        dt {
+            /* 设置浮动使其居于一行 */
+            float: left;
+
+        }
+
+        dl {
+            width: 400px;
+        }
+
+        dt {
+            color: #999;
+            font-weight: 700;
+            width: 90px;
+            font-size: 14;
+            /* 字体为总体，间隔一个字符 */
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .dd_1 {
+            padding-left: 90px;
+        }
+
+
+        /* 目录 */
+        .mhl_catalog table {
+            width: 600px;
+            /* 上方和下方添加下划线 */
+            border-top: 1px black dashed;
+            border-bottom: 1px black dashed;
+            margin-left: 25px;
+            /* 文字居中 */
+            text-align: center;
+            /* 设置边框，方便更改盒子大小 */
+            /*  border: 1px red solid; */
+        }
+
+
+        .mhl_catalog a {
+            /* 去掉下划线 */
+            text-decoration: none;
+            /* 改变颜色 */
+            color: darkcyan;
+        }
+
+        .mhl_catalog a:hover {
+            /* 悬浮加粗 */
+            font-weight: bold;
+            /* 悬浮添加下划线 */
+            text-decoration: underline;
+
+        }
+
+
+
+        tr,
+        th,
+        td {
+            width: 200px;
+            height: 40px;
+        }
+
+
+        /* 开头视频的外围设置背景 */
+        .mhl_video {
+            height: 200px;
+            background-color: rgb(49, 99, 82);
+        }
+
+        /* 开头视频设置居中 */
+        .mhl_video video {
+            height: 200px;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+
+        /* 角色介绍的大框 */
+        .mhl_jsjs {
+            /* 设置边框容易修改样式看出错误 */
+            /* border: 2px green solid; */
+            width: 825px;
+            height: 900px;
+        }
+
+        /* 角色介绍每一大块，即一个角色
+        与其他框设置上下间隔10px，高150宽800 */
+
+        .jsjs {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 800px;
+            height: 150px;
+            /* 设置边框容易修改样式看出错误 */
+            /*  border: 2px red solid; */
+            padding-left: 20px;
+        }
+
+        /* 角色介绍左边的图片 左浮动 */
+
+        .jsjs_img {
+            width: 150px;
+            height: 150px;
+            /* 设置边框容易修改样式看出错误 */
+            /*  border: 2px red solid; */
+            /* 左浮动，使得图片和说明居于一行 */
+            float: left;
+        }
+
+        /* 角色介绍右边的说明 ，右浮动 */
+        .jsjs_right {
+            /* margin-right: 40px; */
+            /* 设置边框容易修改样式看出错误 */
+            /* border: 2px yellow solid; */
+            width: 620px;
+            height: 130px;
+            margin-left: 10px;
+            float: right;
+        }
+
+        /* 角色介绍李曼的角色名如赵盼儿 */
+        .jsjs_span1 {
+            font-weight: bolder;
+            color: black;
+
+        }
+
+        /* 角色介绍里面的演员 */
+
+        .jsjs_span2 {
+            font-weight: small;
+            color: gray;
+
+        }
+
+        /* 角色介绍里面的演员名字，如刘亦菲 */
+        .jsjs_span3 {
+            font-weight: small;
+            color: blueviolet;
+
+        }
+
+        /* 角色介绍文字 */
+        .jsjs_span4 {
+            font-size: 14;
+            color: black;
+
+        }
+
+        .mhl_ckxx p {
+            font-size: small;
+            color: #999;
+            padding-left: 10px;
+            border-bottom: 1px dashed #999;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- <aside class="mhl_aside"> -->
+    <!-- 用aside固定到侧边栏之后不能点击超链接，不知道为什么哎 -->
+    <!-- <ul>
+            <li><a href="#mhl_jqjj">剧情简介</a></li>
+            <li><a href="#mhl_jsjs">角色介绍</a></li>
+            <li><a href="#mhl_fjjq">分集剧情</a></li>
+            <li><a href="#mhl_yyb">演员表</a></li>
+            <li><a href="#mhl_yyys">音乐原声</a></li>
+            <li><a href="#mhl_jqpj">剧集评价</a></li>
+            <li><a href="#mhl_mhzz">幕后制作</a></li>
+            <li><a href="#mhl_ckxx">参考信息</a></li>
+        </ul> -->
+
+    <!-- </aside> -->
+    <div class="mhl">
+        <aside class="mhl_aside">
+            <!-- 用aside固定到侧边栏之后不能点击超链接，不知道为什么哎 
+            aside要和main主体放一个div里面，我之前没放一个div里，所以出错了-->
+
+            <!-- 
+                TODO: ! 这里用了ol还是不自动排序，所以里面添加了序号，需要解决，
+             -->
+            <ol type="1">
+                <li><a href="#mhl_title">梦华录</a></li>
+                <li><a href="#mhl_jqjj">1、剧情简介</a></li>
+                <li><a href="#mhl_fjjq">2、分集剧情</a></li>
+                <li><a href="#mhl_yyb">3、演员表</a></li>
+                <li><a href="#mhl_jsjs">4、角色介绍</a></li>
+                <li><a href="#mhl_yyys">5、音乐原声</a></li>
+                <li><a href="#mhl_mhzz">6、幕后制作</a></li>
+                <li><a href="#mhl_jqpj">7、剧集评价</a></li>
+                <li><a href="#mhl_ckxx">8、参考信息</a></li><br>
+                <a href="01新闻.html" target="_blank">点此查看新闻</a>
+                <a href="01表格简历.html" target="_blank">点此查看表格简历</a>
+
+            </ol>
+
+
+        </aside>
+        <div class="mhl_main">
+
+            <header class="mhl_header">
+
+                <ul>
+                    <li><a href="#mhl_jqjj">剧情简介</a></li>
+                    <li><a href="#mhl_jsjs">角色介绍</a></li>
+                    <li><a href="#mhl_fjjq">分集剧情</a></li>
+                    <li><a href="#mhl_yyb">演员表</a></li>
+                    <li><a href="#mhl_yyys">音乐原声</a></li>
+                    <li><a href="#mhl_jqpj">剧集评价</a></li>
+                    <li><a href="#mhl_mhzz">幕后制作</a></li>
+                    <li><a href="#mhl_ckxx">参考信息</a></li>
+                </ul>
+            </header>
+
+            <div class="mhl_video">
+                <video controls>
+                    <source src="img/梦华录.mp4" type="video/mp4">
+
+                    您的浏览器不支持 HTML5 video 标签。
+                </video>
+            </div>
+            <div class="mhl_title">
+                <p>
+                <h1 id="mhl_title">梦华录</h1>
+                <h3>(2022年杨阳执导的电视剧)</h3>
+                </p>
+            </div>
+            <p class="mhl_jj1">
+                &emsp;&emsp;《梦华录》是由杨阳执导，刘亦菲、陈晓、柳岩、林允领衔主演，
+                徐海乔、代旭、张晓谦主演，王洛勇、保剑锋特邀主演，姚安濂、杜玉明、刘亚津、刘伟等联合出演的女性古装励志轻喜剧 [16] 。
+                <br><br>
+                &emsp;&emsp;该剧根据关汉卿元杂剧《赵盼儿风月救风尘》改编，
+                讲述了三个女人经历各种困境，携手勇闯汴京，并在皇城司指挥使顾千帆的帮助下，最终姐妹齐心，通过自己的努力将永安楼变成汴京最大酒楼的故事[16] 。
+                <br><br>&emsp;&emsp;该剧于2022年6月2日在腾讯视频播出
+            </p>
+
+            <div class="mhl_jj2">
+                <dl>
+                    <dt>中文名</dt>
+                    <dd>梦华录</dd><br>
+                    <dt>别名</dt>
+                    <dd>汴京梦华图</dd><br>
+                    <dt>类型</dt>
+                    <dd>古装、女性、励志、轻喜</dd><br>
+                    <dt>出品公司</dt>
+                    <dd>企鹅影视、金色传媒、远曦影视</dd><br>
+                    <dt>制片地区</dt>
+                    <dd>中国大陆</dd><br>
+                    <dt>拍摄地点</dt>
+                    <dd>横店、象山、襄阳</dd><br>
+                    <dt>首播时间</dt>
+                    <dd>2022年6月2日</dd><br>
+                    <dt>导演</dt>
+                    <dd>杨阳</dd><br>
+                    <dt>编剧</dt>
+                    <dd>张巍</dd><br>
+
+                </dl>
+
+                <dl>
+                    <dt>纸片人</dt>
+                    <dd class="dd">张志炜（总）</dd><br>
+                    <dd class="dd_1">闫立严（总）</dd><br>
+                    <dd class="dd_1">吴卓谦</dd><br>
+                    <dt>主演</dt>
+                    <dd>刘亦菲、陈晓、柳岩、林允、徐海乔</dd><br>
+                    <dt>集数</dt>
+                    <dd>40集</dd><br>
+                    <dt>每集长度</dt>
+                    <dd>45分钟</dd><br>
+                    <dt>播放平台</dt>
+                    <dd>腾讯视频</dd><br>
+                    <dt>拍摄日期</dt>
+                    <dd>2021年2月16日到2021年7月5日</dd><br>
+                </dl>
+
+            </div><br>
+
+            <div class="mhl_catalog">
+
+                <table border="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="3">目录</td>
+                        <td><a href="#mhl_jqjj">1 剧情简介</a></td>
+                        <td><a href="#mhl_jsjs">4 角色介绍</a></td>
+                        <td><a href="#mhl_bcxx">7 播出信息</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#mhl_fjjq">2 分集剧情</a></td>
+                        <td><a href="#mhl_yyys">5 音乐原声</a></td>
+                        <td><a href="#mhl_jjpj">8 剧集评价</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#mhl_yyb">3 演职员表</a></td>
+                        <td><a href="#mhl_mhzz">6 幕后制作</a></td>
+                        <td><a href="#mhl_ckxx">9 参考信息</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- <h4><a href="#mhl_jqjs">剧情介绍</a></h4>
+        <h4><a href="#mhl_yyb">演员表</a></h4>
+        <h4><a href="#mhl_mhzz">幕后制作</a></h4>
+        <h4><a href="#mhl_yyys">音乐原声</a></h4>
+        id具有唯一性， -->
+
+            <div class="mhl_jqjj">
+                <p>
+                <h2 id="mhl_jqjj">剧情简介</h2>
+                </p>
+                <p>&emsp;在钱塘开茶铺的赵盼儿（刘亦菲 饰）惊闻未婚夫、新科探花欧阳旭（徐海乔 饰）要另娶当朝高官之女，
+                    不甘命运的她誓要上京讨个公道。在途中她遇到了出自权门但生性正直的皇城司指挥顾千帆（陈晓饰），并卷入江南一场大案，两人不打不相识从而结缘。
+                    赵盼儿凭借智慧解救了被骗婚而惨遭虐待的“江南第一琵琶高手”宋引章（林允 饰）与被苛刻家人逼得离家出走的豪爽厨娘孙三娘（柳岩饰），
+                    三位姐妹从此结伴同行，终抵汴京，见识世间繁华。
+                    为了不被另攀高枝的欧阳旭从汴京赶走，赵盼儿与宋引章、孙三娘一起历经艰辛，
+                    将小小茶坊一步步发展为汴京最大的酒楼，揭露了负心人的真面目，收获了各自的真挚感情和人生感悟，也为无数平凡女子推开了一扇平等救赎之门。
+                </p>
+                <img src="img/梦华录.jpg"><br>
+                <h2 id="mhl_fjjq">分集剧情</h2>
+                <h4>第1集</h4>
+                &emsp;北宋年间东京城内，流传着关于皇后失贞的谣言，
+                皇城司指挥使顾千帆不得不把相关人抓回皇城司严刑逼供，终于得知这是仁和知县卫英指使的，
+                而且还有一幅画为凭，而这幅画就在钱塘。
+                顾千帆得到消息，马上就要赶去钱塘时，司使雷敬出现了，特意提醒他，一定要把画带回东京，要把知情官员一律除掉。
+                赵氏茶铺娘子赵盼儿在钱塘开茶铺，正等着欧阳旭高中，把她接去东京，在钱塘开心地等消息。
+                赵盼儿怕欧阳旭高中后，会担心她抛头露面的事情，于是提前在邓州买好了房子，
+                等欧阳旭接她去东京后，她便谎称自己是邓州来的赵娘子，不让东京的人知道她的来历。
+                顾千帆到钱塘查画的事情，在茶铺休息了一下，便被赵盼儿给吸引住了，
+                这时茶铺来了一群私盐贩子找麻烦。老贾看到情况，正想出手时，顾千帆拦下了他，不想惹麻烦上身。
+                赵盼儿和孙三娘配合，一下子就把私盐贩子给解决了，顾千帆则在赵盼儿打斗遇险时，出手救了赵盼儿。
+                衙门的人带走了私盐贩子，顾千帆这才亮明了身份，拿出了皇城司的腰牌，让本对他感恩的赵盼儿，一下子就把谢恩的茶给倒了。
+                赵盼儿倒了茶，找各种理由不给顾千帆茶喝，可顾千帆不答应，非要喝她泡的茶不可。
+                赵盼儿拒绝不了顾千帆，便想在茶点上动手脚，让顾千帆喝下后遭一点罪，没想到被顾千帆给识破了。
+                顾千帆识破赵盼儿之后，便把赵盼儿之前表现的种种都说出来，证明赵盼儿之前肯定是卖艺女子，绝不是什么良人。
+                赵盼儿不想说出自己的过去，可顾千帆却对她了如指掌，对查她的底细也是轻而易举，让她不得不坦白自己的过去。
+                顾千帆在赵盼儿说道自己脱籍之后，便没有让她多说，只当给她一点教训，就直接离开了，也不想再为难赵盼儿。
+                顾千帆从赵盼儿的言行举止中，明白赵盼儿当年家里遭难，可能是皇城司所为，于是理解了赵盼儿的行为。
+                赵盼儿因为顾千帆，想起了当年的往事，为她被逼成为卖艺女子的心酸落泪，这时孙三娘的儿子傅子方砸来一个东西，把她给叫醒了。
+                宋引章来找赵盼儿，想让赵盼儿看一下周舍，看她是否能嫁。
+                赵盼儿一看周舍，就知道周舍是一个出入烟花之地的酒色之徒，而且还是一个赌徒，所以她坚决不同意宋引章嫁给周舍。
+                周舍被赵盼儿看穿，生气地起身要离开，还向宋引章发了火，宋引章这才去找赵盼儿再说情。
+                赵盼儿态度非常坚决，绝不让宋引章嫁给周舍，并让宋引章别听信周舍的谎言，以为嫁给周舍就能脱去乐籍，可宋引章就是不听。
+                赵盼儿劝不动宋引章，只得威胁不还宋引章留在她这里经营的银钱，让周舍明媒正娶把宋引章接近门，才肯归还银钱。
+                宋引章不听赵盼儿的，直接就跟周舍私奔了，赵盼儿知道后，马上划船去追，可没想到没有追上。
+                赵盼儿没有追上宋引章，只得带着重礼去找通判杨知远，看能否帮宋引章脱去乐籍。
+                赵盼儿刚进杨知远的家门，顾千帆就带人闯进来了，为了拿到杨知远手中的夜宴图。
+                杨知远得知顾千帆的来意，目标也不是他是卫英，便要把图交给顾千帆，没想到这时杨夫人来闹事了。
+                顾千帆在杨夫人闹事时，发现夜宴图是假的，要求杨知远给一个交代。
+                </p>
+                <p><br>
+                <h4>第2集</h4>
+                &emsp;顾千帆撕掉了假画，正逼问杨知远真画时，雨蛇突然出现，想要暗杀杨知远。
+                顾千帆救下了杨知远，跟来人打斗了起来，他这才发现那些人都是禁军。
+                顾千帆得知禁军来灭口，正想办法周旋时，禁军放了炸药，让现场一片混乱，他为此也被毒烟熏得浑身无力。
+                在顾千帆头晕眼花之时，老贾发现禁军向顾千帆放暗箭，他只得上前替顾千帆挡这一箭，结果身亡了。
+                顾千帆在老贾死后，想办法逃走之时，看到了逃跑的赵盼儿。顾千帆看不清赵盼儿的脸，只能扔一只飞镖过去，谎称飞镖有毒，逼赵盼儿救他离开。
+                赵盼儿受伤之后，不得不扶着顾千帆，从后池塘离开，之后才跟顾千帆要解药。
+                赵盼儿在要解药时，不小心说漏了嘴，把她看出来人出自官府的事情说出来，想知道顾千帆如何解决此事。
+                赵盼儿认为，来人是为了灭杨知远的口而来，正好顾千帆在杨府，才被牵连进来了，所以一直跟顾千帆打听情况。
+                顾千帆一再提醒赵盼儿，对此事别再打听，免得受牵连，然后便用很粗鲁地方法，帮赵盼儿把飞镖拔出来，给赵盼儿提个醒。
+                顾千帆离开后，赵盼儿这才狼狈地回茶铺，没想到在茶铺外碰到了德叔。
+                德叔把欧阳旭高中探花的事情告诉赵盼儿，赵盼儿开心极了，以为德叔是来接她去东京的，没想到德叔送来的并不是好消息。
+                德叔告诉赵盼儿，欧阳旭被高官高鹄看中选为女婿，由贤妃亲自赐婚，而他是帮欧阳旭前来，跟赵盼儿取消婚约的。
+                孙三娘得知欧阳旭背信弃义，对赵盼儿悔婚不娶，生气地跟德叔理论了起来，赵盼儿也不肯罢休，想要去东京找欧阳旭理论。
+                德叔看赵盼儿始终不肯罢手，只得把赵盼儿当过官伎的事情说出来，借此逼赵盼儿放弃。
+                德叔给赵盼儿八十两黄金，想要了断了欧阳旭和赵盼儿的婚约，可没想到赵盼儿不答应。
+                赵盼儿说明，她当年替欧阳旭置办了田产，才让欧阳旭得了民籍，可以再次参加科考，
+                没想到他们三年的恩情却抵不过八十两黄金，所以她不答应，坚持要欧阳旭拿五百两黄金前来，了断他们的感情。
+                德叔走后，赵盼儿躲起来伤了很久，然后便决定去东京找欧阳旭，查清楚究竟是欧阳旭要抛弃她，还是别人瞒着欧阳旭来骗她的同心佩，好逼欧阳旭就范。
+                顾千帆去停尸房，拔走了老贾身上的箭头和皇城司腰牌，想要查清灭杨知远口的幕后之人，没想到被郑青田知道了。
+                郑青田怕他灭口的事情，被皇城司查出来，于是将顾千帆的画像贴出去，全城缉捕顾千帆，想要杀了顾千帆灭口，以免皇城司查到他的头上来。
+                赵盼儿关了茶铺，假装自己为退婚之事伤心欲绝，悄悄地去东京找欧阳旭，没想到在路上碰到了顾千帆。
+                顾千帆找赵盼儿帮忙，赵盼儿于是去找船头郑爷行贿，让她搭船离开钱塘，让顾千帆趁机混上船。
+                顾千帆混上船之后，赵盼儿数落了顾千帆几句，看顾千帆实在伤得重，便不再跟顾千帆计较，替他处理伤口。
+                顾千帆在赵盼儿处理伤口时晕了过去，赵盼儿这才发现了顾千帆身上，顾千帆调查杨知远一事的奏报，于是悄悄地放回顾千帆的怀里，假装没有看到过。
+                孙三娘在洗衣服的时候，得知祠堂正在办傅子方过继的仪式，她马上不顾一切地冲进祠堂，把儿子抢了回来，不让傅新贵卖了自己的儿子。
+                顾千帆睡了一觉，梦到了小时候不开心的事情，之后便被吓醒了。顾千帆醒来后，赵盼儿让他去喝粥，又继续问夜宴图的事情。
+                顾千帆不让赵盼儿多问，赵盼儿则因为心情不好，把骂欧阳旭的话，全部骂了出来，借此发泄一番。
+                顾千帆在跟赵盼儿开了玩笑之后，等赵盼儿宣泄了之后，才跟赵盼儿讲道理，让她不要为负心的欧阳旭难过。
+                赵盼儿不接受顾千帆的说词，正跟顾千帆理论时，发现水里有人，于是通知船上的人来救人。
+                船上的人被赵盼儿惊动后，赵盼儿发现水里的人是孙三娘，她激动得想要跳下去救人，这让躲起来的顾千帆实在忍不住，只能自己跳下去。
+
+                <!--  -->
+                </p>
+            </div><br>
+            <div class="mhl_yyb">
+                <h2 id="mhl_yyb">演员表</h2>
+
+                <div class="yyb yyb1">
+                    <div class=" yyb_left yyb1_1">
+                        <img src="img/刘亦菲.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">刘亦菲<br>饰 <br>赵盼儿 </span>
+                </div>
+                <div class="yyb yyb2">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/陈晓.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">陈晓<br>饰 <br>顾千帆</span>
+                </div>
+                <div class="yyb yyb3">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/柳岩.jpg" alt="图片">
+                    </div>
+
+                    <span class="yyb_right yyb1_2">柳岩<br> 饰 <br>孙三娘</span>
+                </div>
+                <div class="yyb yyb4">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/林允.jpg" alt="图片">
+                    </div>
+
+                    <span class="yyb_right yyb1_2">林允 <br>饰 <br>宋引章<br> </span>
+                </div>
+                <div class="yyb yyb5">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/徐海乔.jpg" alt="图片">
+                    </div>
+
+                    <span class="yyb_right yyb1_2">徐海乔 <br>饰 <br>欧阳旭<br> </span>
+                </div>
+                <div class="yyb yyb6">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/代旭.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">代旭 <br>饰<br> 池衙内<br></span>
+                </div>
+                <div class="yyb yyb7">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/张晓谦.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">张晓谦 <br>饰 <br>杜长风<br> </span>
+                </div>
+                <div class="yyb yyb8">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/管云鹏.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">管云鹏 <br>饰 <br>陈廉<br></span>
+                </div>
+                <div class="yyb yyb9">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/李沐宸.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">李沐宸 <br>饰 <br>葛招娣<br></span>
+                </div>
+                <div class="yyb yyb10">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/王洛勇.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">王洛勇 <br>饰 <br>萧钦言<br></span>
+                </div>
+                <div class="yyb yyb11">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/保剑锋.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">保剑锋<br> 饰 <br>皇帝<br></span>
+                </div>
+                <div class="yyb yyb12">
+                    <div class="yyb_left yyb2_1">
+                        <img src="img/张翔.jpg" alt="图片">
+                    </div>
+                    <span class="yyb_right yyb1_2">张翔 <br>饰<br> 周舍<br> </span>
+                </div><br>
+            </div>
+
+            <div class="mhl_mhzz">
+                <h2 id="mhl_mhzz">幕后制作</h2>
+                <p>
+                <h4>创作背景</h4>
+                &emsp;&emsp;编剧张巍表示，在读大学时接触到元杂剧、宋元南戏的剧本，被其优美的文字和充沛的人情味深深吸引和打动。尤其是关汉卿笔下的女性人物，她们身上所呈现出的侠义、善良、勇敢、聪慧，极具现代精神。
+                <br><br>&emsp;&emsp;张巍想传达的理念就是女性之间的友谊。无论在多么艰难的环境下，女性之间彼此扶持、互相欣赏，为了同一个理想和目标奋斗。这种精神是一种了不起的能量，这种友谊的力量甚至比爱情还要可贵。
+                <br><br>&emsp;&emsp;在剧中，孙三娘被设定为是个很会做菜、做点心的女厨子角色，但这方面张巍并不擅长，后来有幸认识了《宋宴》的两位作者徐鲤、卢冉，请他们担任了剧本茶艺、菜品方面的顾问，获得了很多建议。此外，宋代的官职制度非常复杂，在给男性角色设计官职履历时很费功夫，要与历史顾问常或参详很久。
+                <br><br>&emsp;&emsp;导演杨阳表示这是一个非常有烟火气的市井戏，从场景、服饰到人物表情都极具生活感，剧中人物有很多虽着古装，但表达的是有现代思想的故事，还能看到‘北漂’女孩的缩影。制片方希望该剧给观众一些共情点，告诉现代女性，当自己想要放弃时，要坚强地站起来，不要向命运低头。
+                <br><br>&emsp;&emsp;杨阳透露剧集主创团队到开封以及无锡等江南一带的水乡古镇做了很多的考察和采风。在拍摄中，整体色彩清淡素雅，希望演员穿上戏服站到布景里，可以浑然一体，成为一幅幅画面。
+                </p>
+
+            </div><br>
+            <div class="mhl_yyys">
+                <h2 id="mhl_yyys">音乐原声</h2>
+                <table id="yyys_table" border="1" cellspacing="0">
+                    <tr>
+                        <th>歌曲名称</th>
+                        <th>作词</th>
+                        <th>作曲</th>
+                        <th>演唱</th>
+                        <th>备注</th>
+                    </tr>
+                    <tr>
+                        <td>《不惜时光》</td>
+                        <td>江珂、代岳东、闫立严</td>
+                        <td>逢博</td>
+                        <td>张靓颖</td>
+                        <td>主题曲/片尾曲</td>
+                    </tr>
+                    <tr>
+                        <td>《梦华》</td>
+                        <td>代岳东、闫立严</td>
+                        <td>代岳东</td>
+                        <td>刘宇宁</td>
+                        <td>片头曲</td>
+                    </tr>
+                    <tr>
+                        <td>《今夕是何年》</td>
+                        <td>代岳东</td>
+                        <td>代岳东、岑思源</td>
+                        <td>杨芸晴</td>
+                        <td>插曲</td>
+                    </tr>
+
+                    <tr>
+                        <td>《红杏枝头春意闹》</td>
+                        <td>张巍</td>
+                        <td>吕亮、代岳东</td>
+                        <td>银临</td>
+                        <td>插曲</td>
+                    </tr>
+                    <tr>
+                        <td>《念念》</td>
+                        <td>张巍</td>
+                        <td>代岳东、闫立严</td>
+                        <td>魏奇奇</td>
+                        <td>插曲</td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <!-- 某点链接 针对单页面，页面中内容很多时， -->
+
+            <div class="mhl_jsjs">
+                <p>
+                <h1 id="mhl_jsjs">角色介绍</h1>
+                </p>
+                <div class="jsjs">
+
+                    <img src="img/赵盼儿.jpg" class="jsjs_img" alt="图片">
+                    <div class="jsjs_right">
+                        <p><span class="jsjs_span1">赵盼儿</span><br>
+                            <span class="jsjs_span2">演员</span>
+                            <span class="jsjs_span3">&emsp;&emsp;刘亦菲</span><br>
+                            <span
+                                class="jsjs_span4">&emsp;&emsp;演员小茶坊的掌柜，从杭州到京城来的小女子，她是来京城寻找解除婚姻的未婚夫报仇的，她把杭州的小茶坊开到了汴京，做成了汴京最大的酒楼。
+                                她和宋引章、孙三娘结伴，带着她们一起脱离了困境，并且在汴京有了一席之地。</span>
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="jsjs">
+
+                    <img src="img/顾千帆.jpg" class="jsjs_img" alt="图片">
+                    <div class="jsjs_right">
+                        <p><span class="jsjs_span1">顾千帆</span><br>
+                            <span class="jsjs_span2">演员</span>
+                            <span class="jsjs_span3">&emsp;&emsp;陈晓</span><br>
+                            <span class="jsjs_span4">&emsp;&emsp;皇城司副使，有身手、有颜值、有智慧，身为权臣之子，本可享受父辈荫蔽，却靠自己杀出一条血路。
+                                对己狠心，御下严苛，“一任主官一条鞭，勿敷衍，勿贪生。
+                                ”铁面无私、雷厉风行的行事风格使他在百姓间拥有“活阎罗”一名。他在一桩公案中与赵盼儿相识，
+                                面对赵盼儿，他心思细腻，温柔呵护，“什么身份地位，从来都不在乎。</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="jsjs">
+
+                    <img src="img/孙三娘.jpg" class="jsjs_img" alt="图片">
+                    <div class="jsjs_right">
+                        <p><span class="jsjs_span1">孙三娘</span><br>
+                            <span class="jsjs_span2">演员</span>
+                            <span class="jsjs_span3">&emsp;&emsp;柳岩</span><br>
+                            <span class="jsjs_span4">&emsp;&emsp;
+                                因为婚姻生活不幸导致落水自杀，被赵盼儿所救，之后成为了永安楼的主厨，她厨艺精湛，手巧心灵，馔美刀快。</span>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="jsjs">
+
+                    <img src="img/宋引章.jpg" class="jsjs_img" alt="图片">
+                    <div class="jsjs_right">
+
+                        <p><span class="jsjs_span1">宋引章</span><br>
+                            <span class="jsjs_span2">演员</span>
+                            <span class="jsjs_span3">&emsp;&emsp;林允</span><br>
+                            <span
+                                class="jsjs_span4">&emsp;&emsp;演员小茶坊的掌柜，从杭州到京城来的小女子，她是来京城寻找解除婚姻的未婚夫报仇的，她把杭州的小茶坊开到了汴京，做成了汴京最大的酒楼。
+                                她和宋引章、孙三娘结伴，带着她们一起脱离了困境，并且在汴京有了一席之地。</span>
+                        </p>
+
+
+                    </div>
+
+                </div>
+                <div class="jsjs">
+
+                    <img src="img/欧阳旭.jpg" class="jsjs_img" alt="图片">
+                    <div class="jsjs_right">
+
+                        <p><span class="jsjs_span1">欧阳旭</span><br>
+                            <span class="jsjs_span2">演员</span>
+                            <span class="jsjs_span3">&emsp;&emsp;徐海乔</span><br>
+                            <span class="jsjs_span4">&emsp;&emsp;翰林学士，空有一副深情，荣辱成空，情深憾负，既是他的选择也是他的遗憾，
+                                为了仕途可以放弃感情，到头来一场空。</span>
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+            </div><br><br>
+
+            <div class="mhl_jqpj">
+                <p>
+                <h1 id="mhl_jqpj">剧情评价</h1>
+
+                </p>
+
+                <p>&emsp;&emsp;在该剧里看到了很多现代意识的女孩，用古装剧去表现“现代”生活，把这两方面做到了一个很好的结合。摆脱个人出身，靠自己的努力前进是这部剧探讨的重要内核。赵盼儿可以说是剧中最大的亮点，同时也是故事的源头和驱动者。她美丽、大方、果敢、智慧、坚强，但是最重要的一个品质就是她的自爱和自强。她自幼因父获罪沦为官奴，虽后来被赦免脱籍归良，但是这件事却无法从别人的记忆中抹去，这也就成了她最不愿提及的“污点”。剧中的赵盼儿为对抗“不公”和歧视，不断奋斗，不屈不挠，她的内心无比强大，而这份强大的内驱力就是她的自爱、自强和无悔。只要相信自己，不卑不亢就不会被他人定义。剧中另外两个主要角色：人在乐籍的宋引章和受家人排挤的孙三娘，与曾为官奴的赵盼儿一样，出身“卑微”，在前几集的内容中，虽然她们的不幸似乎都源于“负心人”，但是归其源头，罪魁祸首是那个封建的社会。
+                </p>
+
+                <p>&emsp;&emsp;在该剧里看到了很多现代意识的女孩，用古装剧去表现“现代”生活，把这两方面做到了一个很好的结合。摆脱个人出身，靠自己的努力前进是这部剧探讨的重要内核。赵盼儿可以说是剧中最大的亮点，同时也是故事的源头和驱动者。她美丽、大方、果敢、智慧、坚强，但是最重要的一个品质就是她的自爱和自强。她自幼因父获罪沦为官奴，虽后来被赦免脱籍归良，但是这件事却无法从别人的记忆中抹去，这也就成了她最不愿提及的“污点”。剧中的赵盼儿为对抗“不公”和歧视，不断奋斗，不屈不挠，她的内心无比强大，而这份强大的内驱力就是她的自爱、自强和无悔。只要相信自己，不卑不亢就不会被他人定义。剧中另外两个主要角色：人在乐籍的宋引章和受家人排挤的孙三娘，与曾为官奴的赵盼儿一样，出身“卑微”，在前几集的内容中，虽然她们的不幸似乎都源于“负心人”，但是归其源头，罪魁祸首是那个封建的社会。
+                </p>
+
+                <p>&emsp;&emsp;在该剧里看到了很多现代意识的女孩，用古装剧去表现“现代”生活，把这两方面做到了一个很好的结合。摆脱个人出身，靠自己的努力前进是这部剧探讨的重要内核。赵盼儿可以说是剧中最大的亮点，同时也是故事的源头和驱动者。她美丽、大方、果敢、智慧、坚强，但是最重要的一个品质就是她的自爱和自强。她自幼因父获罪沦为官奴，虽后来被赦免脱籍归良，但是这件事却无法从别人的记忆中抹去，这也就成了她最不愿提及的“污点”。剧中的赵盼儿为对抗“不公”和歧视，不断奋斗，不屈不挠，她的内心无比强大，而这份强大的内驱力就是她的自爱、自强和无悔。只要相信自己，不卑不亢就不会被他人定义。剧中另外两个主要角色：人在乐籍的宋引章和受家人排挤的孙三娘，与曾为官奴的赵盼儿一样，出身“卑微”，在前几集的内容中，虽然她们的不幸似乎都源于“负心人”，但是归其源头，罪魁祸首是那个封建的社会。
+                </p>
+                <p>&emsp;&emsp;这部剧巧妙的设立了一个曲折的爱情故事作为开端，但是实际上却是对抗封建思想的故事。导演没有让三个可怜的女人自艾自怜，而是展现只有爱自己、努力生活才是最好的生活方式这样的理念。剧中赵盼儿、孙三娘、宋引章从逃避出身，到接受出身，最后打破出身对自己的枷锁（人民网评）
+                    [26] 。</p>
+
+            </div>
+
+            <div class="mhl_ckxx">
+                <h1 id="mhl_ckxx">参考信息</h1>
+
+
+                <p>&emsp;&emsp;1. ::电视剧拍摄制作备案公示表:: ．广电总局[引用日期2021-02-17]</p>
+                <p> &emsp;&emsp;2. 组图：刘亦菲新剧《梦华录》路透曝光 皮肤白皙侧颜精致真天仙 ．新浪网[引用日期2021-02-18]</p>
+                <p>&emsp;&emsp; 3. 梦华录 (2022) ．豆瓣网[引用日期2021-02-19]</p>
+                <p> &emsp;&emsp;4. 组图:《梦华录》曝剪影海报官宣 刘亦菲陈晓回归古装柳岩林允加盟 ．新浪网[引用日期2021-06-24]</p>
+                <p> &emsp;&emsp;5. 《梦华录》圆满杀青 陈晓帅出新高度 汴京街头“飞天打斗” ．人民资讯．2021-07-05[引用日期2021-07-05]</p>
+                <p> &emsp;&emsp;6. 《梦华录》 ．猫眼[引用日期2021-09-04]</p>
+                <p>&emsp;&emsp; 7. 《梦华录》杀青全阵容剧照曝光 刘亦菲、陈晓主演 ．新浪网[引用日期2021-09-04]</p>
+                <p> &emsp;&emsp;8. 组图：刘亦菲晒《梦华录》配音照 发丝轻垂侧颜清秀 ．新浪图片[引用日期2022-02-10]</p>
+                <p> &emsp;&emsp;9. 刘亦菲陈晓新剧《梦华录》已过审 集数缩减为40集 ．网易首页[引用日期2022-02-24]</p>
+                <p> &emsp;&emsp;10. 《梦华录》取得发行许可证 刘亦菲陈晓联袂出演|刘亦菲|陈晓|梦华录 ．新浪娱乐[引用日期2022-02-25]</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

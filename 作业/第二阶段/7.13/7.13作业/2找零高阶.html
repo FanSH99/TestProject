@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        (function question() {
+            var askYes = confirm('是否要购买商品？');
+            if (askYes == true) {
+                GetTotalMoney();
+            }
+        })();
+        /* 一种商品 */
+        function OneTypeMoney(price, num, name) {
+
+            var money = price * num;
+            console.log(name + '总价', money);
+            document.write(name + '总价:<span>' + money + '</span><br>');
+            return money;
+        }
+
+        function GetTotalMoney() {
+            var sum = 0;
+            var message = '(exit退出购买 )';
+            var count = 0;
+            while (true) {
+                count++;
+                var name = prompt('请输入商品' + count + '的名称' + message);
+                console.log('商品' + count + "名称:" + name);
+                document.write('商品' + count + '名称：<span>' + name + '</span><br>');
+                if (name == 'exit') {
+                    count--;
+                    EndShopping(count, sum);
+                    return 0;
+                }
+                var price = +prompt('请输入' + name + '的价格');
+                document.write(name + '单价：' + price + '<br>')
+                console.log(name + '单价：' + price);
+                var flag = confirm('是否确定要购买' + name);
+                if (flag == false) {
+                    count--;
+                    if (count > 0) {
+                        var flag = confirm('提示：你已经购买了' + count + '件商品，是否继续购买');
+                        if (flag == true) {
+                            continue;
+                        } else {
+                            EndShopping(count, sum);
+                        }
+                    } else {
+                        return 0;
+                    }
+
+                }
+                var num = prompt('请输入要购买商品' + name + '的数量');
+                console.log(name + '数量：' + num);
+                document.write(name + '数量：' + num + '<br>');
+                sum += OneTypeMoney(price, num, name);
+                /* console.log('总价' + sum);
+                document.write('总价<span>' + sum + "</span><br>"); */
+                var flag2 = confirm('你已经购买了' + count + '件商品，是否继续购买');
+                if (flag2 == false) {
+                    /* var discount = GetDiscount(sum);
+                    GetFree(discount); */
+                    EndShopping(count, sum);
+                    break;
+                }
+
+            }
+            return sum;
+        }
+        function EndShopping(count, sum) {
+
+            if (count > 0) {
+                console.log(sum);
+                var discount = GetDiscount(sum);
+                /* document.write('折后价格：' + discount); */
+                var free = GetFree(discount);
+                /* console.log('找零：' + free);
+                document.write('找零：' + free); */
+            }
+            return 0;
+        }
+        function GetDiscount(sum) {
+            /* var sum = GetTotalMoney(); */
+            console.log('总价：' + sum);
+            var discount;
+
+            if (sum > 1000) {
+                discount = 0.95 * sum;
+                console.log('折后:' + discount);
+                /* sum *= 0.95;
+                console.log(sum); */
+                document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                document.write('商品打9.5折,折后价格<span>' + discount + '</span>元<br>');
+            } else if (sum > 500) {
+                discount = 0.98 * sum;
+                /*  sum *= 0.98;
+                 console.log(sum); */
+                document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                document.write('商品打9.8折,折后价格<span>' + discount + '</span>元<br>');
+            } else {
+                /* console.log(sum); */
+                discount = sum;
+                document.write('您一共消费了<span>' + sum + '</span>元<br>');
+                document.write('您不符合打折条件,应该支付<span>' + sum + '</span>元<br>');
+
+            }
+            return discount;
+        }
+
+        function GetFree(discount) {
+            var pay = prompt('请输入你支付的钱数');
+            console.log('支付：' + pay);
+            document.write('您支付的钱为<span>' + pay + '</span>元<br>')
+            var free = pay - discount;
+            if (free > 0) {
+                console.log('应该找你' + free + '钱<br>');
+                document.write('应该找你<span>' + free + '</span>钱<br>')
+            }
+            if (free < 0) {
+                console.log('您带的钱不够，还差' + Math.abs(free) + '元<br>');
+                document.write('您带的钱不够，还差<span>' + Math.abs(free) + '</span>元<br>');
+            }
+            return free;
+
+        }
+    </script>
+</body>
+
+</html>

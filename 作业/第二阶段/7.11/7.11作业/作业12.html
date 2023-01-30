@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业12--鸡兔同笼</title>
+    <link rel="icon" href="img/work.png" type="image/x-icon">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    nav {
+
+        width: 100%;
+        height: 40px;
+        margin: auto;
+        margin-bottom: 40px;
+        background: rgb(3, 91, 111);
+    }
+
+
+    ul li a {
+        float: left;
+        color: #fff;
+        height: 40px;
+        padding: 0 20px;
+        line-height: 40px;
+    }
+
+
+    .active {
+        background: rgb(249, 61, 174);
+        /* color: #333; */
+    }
+
+    ul li a:hover {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    p {
+        margin-left: 40px;
+
+    }
+
+    span {
+        color: red;
+    }
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="作业1.html">作业1</a></li>
+            <li><a href="作业2.html">作业2</a></li>
+            <li><a href="作业3.html">作业3</a></li>
+            <li><a href="作业4.html">作业4</a></li>
+            <li><a href="作业5.html">作业5</a></li>
+            <li><a href="作业6.html">作业6</a></li>
+            <li><a href="作业7.html">作业7</a></li>
+            <li><a href="作业8.html">作业8</a></li>
+            <li><a href="作业9.html">作业9</a></li>
+            <li><a href="作业10.html">作业10</a></li>
+            <li><a href="作业11.html">作业11</a></li>
+            <li><a href="作业12.html" class="active">作业12</a></li>
+            <li><a href="作业13.html">作业13</a></li>
+            <li><a href="作业14.html">作业14</a></li>
+            <li><a href="作业15.html">作业15</a></li>
+        </ul>
+    </nav>
+    <p>
+        7、现在鸡兔同笼，共36个，腿有92条，问各有鸡兔几只？
+    </p><br><br>
+    <p>小鸡有<span id="xj"></span>只</p>
+    <p>小兔有<span id="xt"></span>只</p>
+    <script>
+
+        for (var xj = 0; xj <= 46; xj++) {
+            for (var xt = 0; xt <= 23; xt++) {
+                if (2 * xj + 4 * xt == 92 && xj + xt == 36) {
+                    console.log('小鸡：' + xj, '兔子：' + xt);
+                    document.getElementById('xj').innerHTML = xj;
+                    document.getElementById('xt').innerHTML = xt;
+                    break;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

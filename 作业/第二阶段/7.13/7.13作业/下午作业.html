@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1、function show(x,y){
+           return function( ){
+
+                console.log(x*y);
+
+
+              };
+
+   }
+
+如果 x=20;y=30; 怎么做，可以得到一个600
+
+        */
+
+        function show(x, y) {
+            return function () {
+                console.log(x * y);
+            }
+        };
+
+        //方法一。调用函数传参并在后面加一个括号，自执行。
+        show(20, 30)();
+        //方法二。自执行，整体加括号，传参后再加一个括号。
+        (function show(x, y) {
+            return function () {
+                console.log(x * y);
+            }
+        })(20, 30)();
+
+        /* 
+        
+        2、var a=(function(){
+          var x=10;
+           var y=5;
+           return  function(){
+                         return x*y
+
+
+          };
+
+    })(  )(  );
+
+console.log(a);
+
+a的结果是什么？
+        */
+
+        /* 
+        一个括号自执行一次， 内外一共两个函数，要加两个括号，均会自执行，所以a=x*y=50
+        */
+
+        var a = (function () {
+            var x = 10;
+            var y = 5;
+            return function () {
+                return x * y
+            };
+
+        })()();
+
+        console.log(a);
+
+        /*
+1. 以下表达式的运行结果是： 
+var val = 'value';
+console.info('Value id '+(val === 'value')?'Something':'Nothing');
+A.Something
+B.Nothing
+C.NaN
+D.其他
+        */
+
+        /* 
+        onsole.log()、console.info()、console.debug()的作用都是在浏览器控制台打印信息的。
+使用最多的是console.log()。console.info()和console.debug()本质上与console.log()没有区别。是console.log()的另一个名字而以，可以理解为它们三个其实就是同一个，只不过名字不一样。
+其中，console.info()打印出的信息，在控制显示的时候信息前面会出现一个小图标，而且谷歌浏览器和opera不支持console.debug()。*/
+        /*
+                console.info() 方法用于在控制台输出信息。
+                先判断val==='value'  'value'==='value' --成立---成立后返回的值为？后面的值，不成立返回：后面的值。
+                这里成立返回'Something'  
+                输出结果为’ Value id Something------这里错误，应该输出结果为Something
+                */
+
+        var val = 'value';
+        console.info('Value id ' + (val === 'value') ? 'Something' : 'Nothing');
+
+        /* 2.以下表达式的运行结果是：
+        var name = 'World';
+        (function () {
+            if (typeof name === 'undefined') {
+                var name = "Jack";
+                console.info('Goodbye ' + name);
+            } else {
+                console.info('Hello ' + name);
+            }
+        })();
+        A.Goodbye Jack
+        B.Hello Jack
+        C.Goodbye undefined
+        D.Hello undefined */
+
+        /* 
+        下面的函数为自执行函数，所以会先运行，
+        里面name没有声明变量也没有赋值，所以应该走上面if的分支。
+        所以运行结果为 Goodbye Jack  ---B
+        */
+
+        var name = 'World';
+        (function () {
+            if (typeof name === 'undefined') {
+                var name = "Jack";
+                console.info('Goodbye ' + name);
+            } else {
+                console.info('Hello ' + name);
+            }
+        })();
+
+
+        /* 
+        
+3.以下表达式的运行结果是： 
+function showCase(value){
+switch(value){
+case 'A':
+console.info('Case A');
+break;
+case 'B':
+console.info('Case B');
+break;
+case undefined :
+console.info('undefined');
+break;
+default:
+console.info('Do not know!');
+}
+}
+showCase(new String('A'));
+A.Case A
+B.Case B
+C.Do not know
+D.undefined
+        */
+
+        /* 
+        ;
+传递的实参为 new String('A')
+---value=new Strinig('A')
+---走default分支。---Do not know  ---选C
+*/
+        function showCase(value) {
+            switch (value) {
+                case 'A':
+                    console.info('Case A');
+                    break;
+                case 'B':
+                    console.info('Case B');
+                    break;
+                case undefined:
+                    console.info('undefined');
+                    break;
+                default:
+                    console.info('Do not know!');
+            }
+        }
+        showCase(new String('A'));
+
+        /* 
+        4.以下表达式的运行结果是： 
+        function isOdd(num){
+        return num % 2 == 1;
+        }
+        function isEven(num){
+        return num % 2 == 0;
+        }
+        function isSane(num){
+        return isEven(num)||isOdd(num);
+        }
+        var values = [7,4,'13',-9,Infinity];
+        values.map(isSane);
+        A.[true, true, true, true, true]
+        B.[true, true, true, true, false]
+        C.[true, true, true, false, false]
+        D.[true, true, false, false, false]
+        */
+
+        /* 
+        values=[7,4,'13',-9,Infinity]
+        ---数组----map---遍历数组走第三个函数isSane(num)
+        7---flase||true  ---true
+        4---true||false ---true
+        '13' --自动转化成13 ---false||true ---true
+        -9   ---  -9/2=-4.5  余数为5  不为0也不为1  --false||false   ---false
+        Infinity  ---无穷大，   ---false ||false
+
+        true true true false false
+        选c 
+        */
+
+        function isOdd(num) {
+            return num % 2 == 1;
+        }
+        function isEven(num) {
+            return num % 2 == 0;
+        }
+        function isSane(num) {
+            return isEven(num) || isOdd(num);
+        }
+        var values = [7, 4, '13', -9, Infinity];
+        values.map(isSane);   //不运行？
+
+        /*  5.以下表达式的运行结果是：
+             [] == []
+             A.true
+             B.false
+             C.报错
+             D.其他
+  */
+
+        /* 
+        []代表数组，数组中的数据不确定，所以[] 不等于[] ---false  选B
+        */
+        console.log([] == []);
+
+        /*   6.以下表达式的运行结果是：
+              1 + -1++ - +1
+              A.true
+              B.false
+              C.报错
+              D.其他 */
+
+        /* 
+        1+ -1++ -+1  ---1-1 - +1 
+         -+1 
+        -和+号紧挨着会出错的。  
+        ---报错 选C
+        */
+
+        /*  console.log(1 + -1++ - +1); */
+
+        /*  7.以下表达式的运行结果是：
+          Number.MIN_VALUE > 0
+          A.true
+          B.false
+          C.报错
+          D.其他 */
+
+        /* 
+        Number.MIN_VALUE 属性表示在 JavaScript 中所能表示的最小的正值。
+        MIN_VALUE 属性是 JavaScript 里最接近 0 的正值，而不是最小的负值。
+        所以Number.MIN_VALUE>0 成立 --true  选A
+        */
+
+        console.log(Number.MIN_VALUE);
+        console.log(Number.MIN_VALUE > 0);
+
+        /*  8.以下表达式的运行结果是：
+             [1 < 2 < 3, 3 < 2 < 1]
+             A.[true, true]
+             B.[true, false]
+             C.报错
+             D.其他 */
+
+        /* 
+        任意非空字符串和非零数字都会转换为true 所以1<2<3 和3<2<!都会转换为true
+        []是数组，上面自动转换为[true,true]
+        */
+        console.log(3 < 2 < 1);
+        console.log([1 < 2 < 3, 3 < 2 < 1]);
+
+        /* 
+        9.以下表达式的运行结果是：
+(function(){
+var x1 =y1 =1;
+})();
+console.info(y1);
+console.info(x1);
+A.1，1
+B.error，error
+C.1，error
+D.其他
+        */
+
+
+        /* 
+        var x1=y1=1;等同于var x1=1;y1=1
+        在函数内部用var声明的变量为局部变量，不能被外部直接访问输出，
+        y1=1；---没有用var声明为全局变量，可以直接访问输出，
+        所以y1能打印出来  x1直接打会报错。 ---选C
+        */
+
+
+        /* 10 求y和z的值是多少？
+            var x = 1;
+            var y = 0;
+            var z = 0;
+            function add(n) { n = n + 1; }
+            y = add(x);
+            function add(n) { n = n + 3; }
+            z = add(x); */
+
+        /* 
+
+*/
+        /*  
+        add(x)--调用函数  ，用变量来接，所以这里的y不等同与上面的y 只是可以用到上面y的声明，--就相当于重新赋值了。
+        y=add(x)---将函数赋值给y  因为函数没有返回值，所以y结果为undefined  同理z的结果也是undefined
+        同理，里面的x
+        */
+
+
+        var x = 1;
+        var y = 0;
+        var z = 0;
+        function add(n) { n = n + 1; }
+        y = add(x);
+        function add(n) { n = n + 3; }
+        z = add(x);
+        console.log(y);
+        console.log(z);
+
+        /* var x = 1;
+        var y = 0;
+        var z = 0;
+        function add(n) { n = n + 1; return n; }  
+        y = add(x);
+        function add(n) { n = n + 3; return n; }
+        z = add(x);
+        console.log(y);//4   
+        //---有返回值 两个变量名一样时后面的覆盖前面的，运行后面那个，所以 两个都为4 
+        //并且由于函数提升也就是函数预解析，函数可以提升到对应声明后面，对应输出前面执行，所以每个都会有执行结果。
+        console.log(z);//4
+ */
+
+        /* 
+        写出函数DateDemo的返回结果，系统时间假定为今天
+       
+       function DateDemo(){
+       
+         var d, s="今天日期是：";
+       
+         d = new Date();
+       
+         s += d.getMonth() + "/";
+       
+         s += d.getDate() + "/";
+       
+         s += d.getFullYear();
+       
+         return s;
+       
+       }
+        */
+
+        /* 
+        字符串相加。s+=m 就等同于s=s+m;
+          s=上月月份 +'/'  
+          ---s=上月月份+'/'+今天日期+'/'
+          ---s=上月月份+'/'+今天日期+'/'+年份
+            月份默认得到的会小一个月的。
+          ----所以输出：6/13/2022
+        */
+
+        function DateDemo() {
+
+            var d, s = "今天日期是：";
+
+            d = new Date();
+
+            s += d.getMonth() + "/";
+
+            s += d.getDate() + "/";
+
+            s += d.getFullYear();
+
+            return s;
+
+        }
+        var time = DateDemo();
+        console.log(time);
+
+        /* 
+        12.
+解释下列代码的输出
+
+console.log("0 || 1 = "+(0 || 1));  
+console.log("1 || 2 = "+(1 || 2));
+console.log("0 && 1 = "+(0 && 1));
+console.log("1 && 2 = "+(1 && 2));
+
+        */
+
+        /* 
+         ‘’字符串会鸳鸯输出  没有字符串的会自动计算。
+         ||  ---有一个为真即为真 第一个为假看后面，输出的是后面的值。
+          0 --自动转换为false  1自动转换为true
+         0||1---1
+         所以console.log("0 || 1 = " + (0 || 1));  --输出0 || 1 =1
+
+         ||只要有一个为真即为真，则第一个为真时会输出第一个，不会往后走，造成短路现象。
+         所以console.log("1 || 2 = "+ (1 || 2));  --输出1 || 2 =1
+
+         &&---只要有一个为假即为假，第一个数未假就会输出第一个不会往后走，短路现象。
+         所以console.log("0 && 1 = "+(0 && 1));  ---输出0 && 1 =0
+
+         &&---全真才为真。第一个数为真时不能确定是否为真，会后走，输出第二个数。
+         所以console.log("1 && 2 = "+(1 && 2));  ---输出1 && 2 =2
+      
+        */
+        console.log("0 || 1 = " + (0 || 1));
+        console.log("1 || 2 = " + (1 || 2));
+        console.log("0 && 1 = " + (0 && 1));
+        console.log("1 && 2 = " + (1 && 2));
+        /* 
+        
+                13.
+                    解释下面代码的输出
+                    console.log(false == '0');
+         */
+
+        /* 
+        '0' --全是数字的字符串会转换为数字， 所以'0' 会转换为0
+        数字0做判断时又会自动转换为false, 所以false ==0  成立，输出true
+        */
+
+        console.log(false == '0');
+
+        /*  14.下面的代码输出结果为:
+             (function (x) {
+                 return (function (y) {
+                     console.log(x);
+                 })(2)
+             })(1); */
+
+        /* 
+        带括号自执行，外面先自执行  里面也带有括号会自执行。
+        变量遵循就近原则，现在本作用域找，最后外面一层找，所以最里面的x=1 ---因为里面的y不是x不能使用，要找外层的函数，外层的函数赋值的是x=1
+        */
+
+        (function (x) {
+            return (function (y) {
+                console.log(x);
+            })(2)
+        })(1);
+
+
+        /* (function (y) {
+            return (function (x) {
+                console.log(x);
+            })(2)
+        })(1); */
+
+
+    </script>
+</body>
+
+</html>

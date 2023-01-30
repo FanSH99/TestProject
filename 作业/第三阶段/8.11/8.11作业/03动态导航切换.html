@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 360px;
+            height: 40px;
+            position: relative;
+            margin: 30px;
+        }
+
+        ul {
+            display: flex;
+            background: #eee;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        ul li {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: relative;
+            z-index: 99;
+        }
+
+        ul li.on {
+            color: #fff;
+        }
+
+        .bg {
+            width: 120px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #f30;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li class="on">听音乐</li>
+            <li>看电影</li>
+            <li>写代码</li>
+        </ul>
+        <div class="bg"></div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+
+
+            $('ul li').on('mouseenter', function () {
+                var liW = $('ul li').width();
+                var idx = $(this).index();
+
+                $('.bg').animate({ left: liW * idx + 'px' }, 400, function () {
+                    $('ul li').eq(idx).addClass('on').siblings().removeClass('on')
+                });
+
+            })
+        })
+    </script>
+
+</body>
+
+</html>

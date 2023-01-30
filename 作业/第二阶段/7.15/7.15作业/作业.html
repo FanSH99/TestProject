@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 5px 10px;
+            margin-left: 20px;
+            background-image: -webkit-linear-gradient(left, rgb(214, 241, 137), rgb(253, 110, 75));
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-image: -webkit-linear-gradient(left, rgb(137, 180, 241), rgb(139, 240, 131));
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <p> 1：查找数组中数值大于18对象的位置 ，arr=[5,19,21,9,83,10];<button id="btn1">第1题</button></p>
+    <p>2.改变传入的数组，将数组中第 n(从 0 开始算 ) 个元素放到数组的开头 (用函数实现)<button id="btn2">第2题</button></p>
+    <p>4.将数组中重复的元素去掉,其中数组元素均为基本类性 arr1=[1,2,2,3,4,4,4,4]; arr2=[1,2,'M','e','r', 'r', 'y']; <button
+            id="btn4">第4题</button> </p>
+    <p>5.找出数组中元素"5"的位置（用函数实现）。arr=["4","5","6","jack",true]; <button id="btn5">第5题</button> </p>
+    <p>6.在数组 arr 末尾添加元素 item。不要直接修改数组 arr=['jack','lucy','merry','tom','mike'];
+        <button id="btn6">第6题</button>
+    </p>
+    <p>7.删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组
+        <button id="btn7">第7题</button>
+    </p>
+    <p>8.在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组
+        <button id="btn8">第8题</button>
+    </p>
+    <p>9.删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组
+        <button id="btn9">第9题</button>
+    </p>
+    <p>10.合并数组 arr1 和数组 arr2。不要直接修改数组 arr，结果返回新的数组
+        <button id="btn10">第10题</button>
+    </p>
+    <p>11. 查找数组元素第一次出现的位置 , 如果存在返回位置,不存在返回-1(写成函数形式)
+        <button id="btn11">第11题</button>
+    </p>
+
+    <script>
+
+
+        // 1：查找数组中数值大于18对象的位置 ，arr=[5,19,21,9,83,10];
+        var btn1 = document.querySelector('#btn1');
+        btn1.onclick = demo1;
+        function demo1() {
+            var arr = [5, 19, 21, 9, 83, 10];
+            console.log(arr);
+            // 方法1.forEach()
+            console.log('%c方法1：foreach()方法', 'color: red;font-size:16px');
+            arr.forEach(function (item, index) {
+                if (item > 18) {
+                    console.log('元素:', item, '位置：', index);
+                }
+            })
+            //方法2：map()
+            console.log('%c方法2：map()方法', 'color:blue;font-size:16px');
+            arr.map(function (item, index) {
+                if (item > 18) {
+                    console.log('元素:', item, '位置：', index);
+                }
+            })
+            //方法3：原生方法
+            console.log('%c方法3：原生方法', 'color:orange;font-size:16px');
+            for (var i in arr) {
+                if (arr[i] > 18) {
+                    console.log('元素：', arr[i], '位置：', i);
+                }
+            }
+            //，fifter
+            console.log('%c方法4：filter()方法', 'color:pink;font-size:16px');
+            arr.filter(function (item, index) {
+                if (item > 18) {
+                    console.log('元素:', item, '位置：', index);
+                }
+            })
+            //some()
+            console.log('%c方法5：some()方法', 'color:pink;font-size:16px');
+            arr.some(function (item, index) {
+                if (item > 18) {
+                    console.log('元素:', item, '位置：', index);
+                }
+                /*  return index; */
+            })
+            //find
+            console.log('%c方法6：find()方法', 'color:pink;font-size:16px');
+            arr.find(function (item, index) {
+                if (item > 18) {
+                    console.log('元素:', item, '位置：', index);
+                }
+                /*  return index; */
+            })
+        }
+        // 2.改变传入的数组，将数组中第 n(从 0 开始算 ) 个元素放到数组的开头 (用函数实现)
+        var btn2 = document.querySelector('#btn2');
+        btn2.onclick = demo2;
+        function demo2() {
+            var arr = [];
+            while (true) {
+                var item_user = prompt('请输入要添加的数据（exit退出');
+                if (item_user === 'exit') {
+                    demo2_change(arr)
+                    break;
+                }
+                arr[arr.length] = item_user;
+            }
+            console.log(arr);
+        }
+        function demo2_change(arr_old) {
+            var num = +prompt('请输入添加至开头的元素的位置（0-' + arr_old.length + '的整数)');
+            if (typeof num !== 'number' || num >= arr_old.length || num < 0) {
+                console.log('格式不正确或数据不存在');
+            }
+            //方法1：splice()+unshift()
+            var arr2 = arr_old.concat();
+            var item = arr2.splice(num, 1);
+            item = item[0]
+            console.log(item);
+            console.log('方法1：splice() + unshift()方法');
+            arr2.unshift(item);
+            //这里可以在用一次splice()方法
+            //arr2.splice(0,item)
+            console.log('你输入的原数组为:', arr_old);
+            console.log('你修改的元素本来位置为：' + num);
+            console.log('修改后为：', arr2);
+            //方法2：slice()+原生方法
+            console.log('splice()+原生方法');
+            var arr3_1 = arr_old.slice();
+            var item2 = arr3_1.splice(num, 1);
+            item2 = item2[0];
+            var arr3 = [];
+            arr3[0] = item2;
+            for (var i in arr3_1) {
+                arr3[arr3.length] = arr3_1[i];
+            }
+            console.log(arr3);
+            //方法3： 原生方法--双循环暴力换位----方法不好，
+            // var arr4 = arr_old.concat();
+            // for (var i in arr4) {
+            //     if (i == num) {
+            //         for (var j = 1; j < arr4.length; j++) {
+            //             arr4[j] = arr[j - 1];
+            //         }
+            //     }
+            //     arr4[0] = item;
+            // }
+            //方法4，原生方法
+            var arr4 = [];
+            arr4[0] = arr_old[num];
+            for (var i in arr_old) {
+                if (i != 4) {
+                    arr4[arr4.length] = arr_old[i];
+                }
+
+            }
+            console.log(arr4);
+        }
+
+
+
+        // 4.将数组中重复的元素去掉,其中数组元素均为基本类性 arr1=[1,2,2,3,4,4,4,4]; arr2=[1,2,'M','e','r', 'r', 'y'];
+        var btn4 = document.querySelector('#btn4');
+        btn4.onclick = demo4_start;
+        function demo4_start() {
+            var arr1 = [1, 2, 2, 3, 4, 4, 4, 4];
+            var arr2 = [1, 2, 'M', 'e', 'r', 'r', 'y'];
+            demo4(arr1);
+            demo4(arr2);
+        };
+        function demo4(arr) {
+            arr_old = arr.concat();
+            console.log('修改前：', arr_old);
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr.length; j++) {
+                    if (arr[i] == arr[j]) {
+                        arr.splice(j, 1);
+                    }
+                }
+            }
+            console.log('修改后：', arr);
+        }
+
+        // 5.找出数组中元素"5"的位置（用函数实现）。arr=["4","5","6","jack",true];
+
+        var btn5 = document.querySelector('#btn5');
+        btn5.onclick = demo5;
+        function demo5() {
+
+            //方法1：原生方法：
+            var arr = ["4", "5", "6", "jack", true];
+            console.log(arr);
+            for (var i in arr) {
+                if (arr[i] === "5") {
+                    console.log('位置', i);
+                }
+            }
+            //方法2：forEach()
+            arr.forEach(function (item, index) {
+                if (item === "5") {
+                    console.log('位置', index);
+                }
+            })
+            //方法3：map()
+            arr.map(function (item, index) {
+                if (item === "5") {
+                    console.log('位置', index);
+                }
+            })
+            //方法4，some  方法5 find 方法6：fifter 原理同第一题，懒得写了，就改个名。
+        }
+
+        // 6.在数组 arr 末尾添加元素 item。不要直接修改数组 arr=['jack','lucy','merry','tom','mike'];
+        var btn6 = document.querySelector('#btn6');
+        btn6.onclick = demo6;
+        function demo6() {
+            var arr = ['jack', 'lucy', 'merry', 'tom', 'mike'];
+            var arr2 = [];
+            // 方法1：原生方法
+            for (var i in arr) {
+                arr2[i] = arr[i];
+            }
+            arr2[arr2.length] = 'item';
+            console.log(arr2, arr);
+            //方法2：contact
+            var arr3 = arr.concat('item');
+            console.log(arr3, arr);
+            //方法3：contact splice
+
+            //方法4：slice splice
+
+        }
+
+        // 7.删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组
+
+        var btn7 = document.querySelector('#btn7');
+        btn7.onclick = demo7;
+        function demo7() {
+            var arr = ['jack', 'lucy', 'merry', 'tom', 'mike'];
+            //原生方法 
+            var arr1 = [];
+            for (var i = 0; i < arr.length - 1; i++) {
+                arr1[arr1.length] = arr[i];
+            }
+            console.log(arr1, arr);
+
+            //方法2 concat pop
+            var arr2 = arr.concat();
+            arr2.pop();
+            console.log(arr2, arr);
+
+            //方法3，concat splice
+            var arr3 = arr.concat();
+            arr3.splice(-1, 1);
+            console.log(arr3, arr);
+            //方法4，slice
+            var arr4 = arr.slice(0, arr.length - 1);
+            console.log(arr4, arr);
+
+            //注意，也可以用slice来拷贝数组，作用和concat一样,那样也有2中方法
+            //方法5 slice pop
+            var arr5 = arr.slice();//slice()里面不用写数据单独使用就相当于concat，拷贝数据，想写的话，写slice(0,arr.length)
+            arr5.pop();
+            console.log(arr5, arr);
+            //方法6 slice splice  不写了
+
+        }
+
+        // 8.在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组
+        var btn8 = document.querySelector('#btn8');
+        btn8.onclick = demo8;
+        function demo8() {
+            var arr = ['jack', 'lucy', 'merry', 'tom', 'mike'];
+            //方法1：原生方法
+            var arr2 = ['item'];
+            for (var i in arr) {
+                arr2[arr2.length] = arr[i];
+            }
+            console.log(arr2, arr);
+            //方法2：contact unshift
+            var arr3 = arr.concat();
+            arr3.unshift('item');
+            console.log(arr3, arr);
+            //方法3：contact splice
+            var arr4 = arr.concat();
+            arr4.splice(0, 0, 'item');
+            console.log(arr4, arr);
+            //方法4， slice unshift
+            var arr5 = arr.slice();
+            arr5.unshift('item');
+            console.log(arr5, arr);
+            //方法5， slice splice
+            var arr6 = arr.slice();
+            arr6.splice(0, 0, 'item');
+            console.log(arr4, arr);
+
+        }
+        // 9.删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组 
+        var btn9 = document.querySelector('#btn9');
+        btn9.onclick = demo9;
+        function demo9() {
+            arr = ['jack', 'lucy', 'merry', 'tom', 'mike'];
+            //方法1，slice splice
+            var arr1 = arr.slice();
+            arr1.splice(0, 1);
+            console.log(arr1, arr);
+            //方法2，slice shift
+            var arr2 = arr.slice();
+            arr2.shift();
+            console.log(arr2, arr);
+            //方法3，concat splice 
+            var arr3 = arr.concat();
+            arr3.splice(0, 1);
+            console.log(arr3, arr);
+            //方法4，concat splice
+            var arr4 = arr.slice();
+            arr4.shift();
+            console.log(arr2, arr);
+
+        }
+        // 10合并数组 arr1 和数组 arr2。不要直接修改数组 arr，结果返回新的数组 
+        var btn10 = document.querySelector('#btn10');
+        btn10.onclick = demo10;
+        function demo10() {
+            //方法1 concat
+            var arr1 = ['jack', 'lucy', 'merry', 'tom', 'mike'];
+            var arr2 = ["4", "5", "6", "jack", true];
+            var arr3 = arr1.concat(arr2);
+            console.log(arr3, arr1, arr2);
+            //方法2 原生方法
+            var arr4 = [];
+
+
+            for (var i in arr1) {
+                arr4[arr4.length] = arr1[i];
+            }
+
+            for (var j = 0; j < arr2.length; j++) {
+
+                arr4[arr4.length] = arr2[j];
+            }
+            console.log(arr4, arr1, arr2);
+
+        }
+
+
+
+
+        // 11. 查找数组元素第一次出现的位置, 如果存在返回位置, 不存在返回 - 1(写成函数形式) 
+        var btn11 = document.querySelector('#btn11');
+        btn11.onclick = demo11;
+        function demo11() {
+            var arr1 = ['jack', 'lucy', 'merry', 'tom', 'mike'];
+            var num = prompt('请输入要查找的元素');
+            //方法1：find
+            arr1.find(function (item, index) {
+                if (item === num) {
+                    console.log(index);
+                }
+
+            })
+            //方法2：原生方法
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

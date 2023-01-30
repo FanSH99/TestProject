@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业15--斐波那契数列</title>
+    <link rel="icon" href="img/work.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        nav {
+
+            width: 100%;
+            height: 40px;
+            margin: auto;
+            margin-bottom: 40px;
+            background: rgb(3, 91, 111);
+        }
+
+
+        ul li a {
+            float: left;
+            color: #fff;
+            height: 40px;
+            padding: 0 20px;
+            line-height: 40px;
+        }
+
+
+        .active {
+            background: rgb(249, 61, 174);
+            /* color: #333; */
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        p {
+            margin-left: 40px;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="作业1.html">作业1</a></li>
+            <li><a href="作业2.html">作业2</a></li>
+            <li><a href="作业3.html">作业3</a></li>
+            <li><a href="作业4.html">作业4</a></li>
+            <li><a href="作业5.html">作业5</a></li>
+            <li><a href="作业6.html">作业6</a></li>
+            <li><a href="作业7.html">作业7</a></li>
+            <li><a href="作业8.html">作业8</a></li>
+            <li><a href="作业9.html">作业9</a></li>
+            <li><a href="作业10.html">作业10</a></li>
+            <li><a href="作业11.html">作业11</a></li>
+            <li><a href="作业12.html">作业12</a></li>
+            <li><a href="作业13.html">作业13</a></li>
+            <li><a href="作业14.html">作业14</a></li>
+            <li><a href="作业15.html" class="active">作业15</a></li>
+        </ul>
+    </nav>
+    <p>
+        9、获取第38次斐波那契数列的值，以及 前38次值的总和; (数列规律是：0 1 1 2 3 5 8 13 .....<br>
+        分析规律是：第三个数=第一个数+第二个数)
+    </p><br><br>
+    <script>
+        var one = 0;
+        var two = 1;
+        var three;
+        var sum = 1;
+        document.write(0 + '&emsp;' + 1 + '&emsp;')
+        for (var i = 0; i < 36; i++) {
+            three = one + two;
+            sum += three;
+            one = two;
+            two = three;
+            console.log(three);
+            document.write(three + '&emsp;')
+        }
+        document.write('<p>sum=' + sum + '</p>');
+
+    </script>
+</body>
+
+</html>

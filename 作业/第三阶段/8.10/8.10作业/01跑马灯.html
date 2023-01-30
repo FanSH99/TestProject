@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .run {
+            width: 200px;
+            font-size: 20px;
+            height: 50px;
+            border: 1px solid #333;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 2022年8月10日18:09:15 -->
+
+    <div class="run">奔跑吧少年！！！！！</div>
+    <button class="start">开始</button><button class="end">暂停</button>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(function () {
+            function change() {
+                var text = $('.run').text();
+                var t1 = text.slice(0, 1);
+                var t2 = text.slice(1);
+                text = t2 + t1;
+                $('.run').text(text);
+            }
+
+            var timer;
+            $('.start').on('click', function () {
+                /*  clearInterval(timer); */
+                if (timer) {
+                    return
+                }
+                timer = setInterval(change, 250);
+            })
+
+            $('.end').on('click', function () {
+                clearInterval(timer);
+            })
+
+        })
+    </script>
+</body>
+
+</html>

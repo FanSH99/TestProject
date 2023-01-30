@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        1、生成3个学生实例，调用学生实例的showInfo方法（注：showInfo方法打印出学生的学号，姓名，年龄，年级，宿舍编号）<button id="btn1" onclick="demo1()">第1题</button>
+    </p>
+
+
+    <p>2、生成三台笔记本电脑实现，调用电脑的开始和关闭方法<button id="btn2" onclick="demo2()">第2题</button></p>
+
+
+    <p>3、生成一个point对象，调用point对象的cal函数，计算两点之间的距离（横线和竖线）<button id="btn3" onclick="demo3()">第3题</button></p>
+
+    <p>4、录入班级学生信息（比如 姓名 年龄 性别）<br>
+        提示： 每一个学生都是一个对象<br>
+        再把所有的学生，放入一个数组 要用循环<br>
+
+        是否结束录入？判断条件confirm('是否结束录入') 单击确定按钮，是true ,结束录入<br>
+        取消 false 继续录入<br><button id="btn4" onclick="demo4()">第4题</button>
+
+    </p>
+
+
+
+    <p> 5、用构造函数来完成<br>
+
+        // 相亲交友:<br>
+        // 有个男的叫古天乐，有个女的叫迪丽热巴，现在他们要相亲<br>
+        // 男方要求:<br>
+        // 1.女方的身高不能低于170<br>
+        // 2.女方的体重不能超过90<br>
+        // 3.女方的年龄不能比自己大<br>
+        // 4.女方的年龄不能大于25<br>
+        // 5.女方必须是女的<br>
+        // 女方要求:<br>
+        // 1.男的必须比自己大<br>
+        // 2.男的身高必须比自己高7CM以上<br>
+        // 3.男方的税后工资必须大于2万<br>
+        // 4.男方的存款必须大于200w<br>
+        // 5.男方的房子面积必须大于140<br>
+        // 6.对方必须是男的<br><button id="btn5" onclick="demo5()">第5题</button>
+    </p>
+    </p>
+    <script>
+        // 1、生成3个学生实例，调用学生实例的showInfo方法（注：showInfo方法打印出学生的学号，姓名，年龄，年级，宿舍编号）
+
+        /*  var btn1 = document.querySelector('#btn1');
+         btn1.onclick = demo1(); */
+        function Student(name, age, sno, grade, dorm) {
+            this.name = name;
+            this.age = age;
+            this.sno = sno;
+            this.grade = grade;
+            this.dorm = dorm;
+        }
+        Student.prototype.showInfo = function () {
+            console.log(stu1);
+            console.log(stu2);
+            console.log(stu3);
+        }
+        function demo1() {
+            var stu1 = new Student('顾南衣', 18, '10001', '18级', '5-507');
+            var stu2 = new Student('白浅', 19, '10002', '18级', '5-304');
+            var stu3 = new Student('花千骨', 18, '10003', '19级', '3-209');
+            Student.showInfo();
+        }
+
+
+        // 2、生成三台笔记本电脑实现，调用电脑的开始和关闭方法
+
+        function Computer(name, color, price) {
+            this.name = name;
+            this.color = color;
+            this.price = price;
+        }
+        Computer.prototype.start = function () {
+            console.log(this.name + ':点击启动电脑');
+        }
+        Computer.prototype.end = function () {
+            console.log(this.name + ':点击关机');
+        }
+        /* var btn2 = document.querySelector('#btn2');
+        btn2.onclick = demo2(); */
+        function demo2() {
+            var compu1 = new Computer('苹果', 'white', 7800);
+            var compu2 = new Computer('红旗', 'black', 5600);
+            var compu3 = new Computer('联想', 'pink', 4200);
+            console.log(compu1);
+            compu1.start();
+            compu1.end();
+            console.log(compu2);
+            compu2.start();
+            compu2.end();
+            console.log(compu3);
+            compu3.start();
+            compu3.end();
+        }
+
+
+
+        // 3、生成一个point对象，调用point对象的cal函数，计算两点之间的距离（横线和竖线）
+
+        // 方法1，
+        function Distance(point1, point2) {
+            this.point1 = point1;
+            this.point2 = point2;
+        }
+
+        Distance.prototype.CalDistance = function () {
+            var x1 = this.point1[0];
+            var x2 = this.point2[0];
+            var y1 = this.point1[1];
+            var y2 = this.point2[1];
+            var distance = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+            return distance;
+        }
+        /*  var btn3 = document.querySelector('#btn3');
+         btn3.onclick = demo3(); */
+        function demo3() {
+            var distance = new Distance([10, 20], [30, 40]);
+            console.log(distance);
+            var result = distance.CalDistance();
+            console.log(result.toFixed(2));
+        }
+
+        /* // 4、录入班级学生信息（比如 姓名  年龄 性别）
+
+            提示： 每一个学生都是一个对象
+            再把所有的学生，放入一个数组     要用循环
+
+            是否结束录入？判断条件confirm('是否结束录入')     单击确定按钮，是true, 结束录入
+                                                                                            取消            false 继续录入
+ */
+        function Student2(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        /*  function Register(stu) {
+             this.arr0 = [];
+             this.collect(stu);
+         }
+         Register.prototype.collect = function (arr) {
+             for (var i in arr) {
+                 this.arr0.push(arr[i])
+             }
+         }
+         Register.prototype.show = function (stu) {
+             this.arr0.forEach(function (item) {
+                 console.log(item.name, item.age, item.sex);
+             });
+         }
+  */
+        /*  demo4(); */
+        /*  var btn4 = document.querySelector('#btn4');
+           btn4.onclick = demo4(); */
+        function demo4() {
+            var arr = [];
+            var count = 0;
+            while (confirm('是否继续录入学生信息?')) {
+                count++;
+                var name = prompt('请输入学生' + count + '姓名： ');
+                var age = prompt('请输入学生' + count + '年龄： ');
+                var sex = prompt('请输入学生' + count + '性别： ');
+                var stu = new Student2(name, age, sex);//创建学生对象
+                arr.push(stu);
+            }
+            console.log('学生信息', arr);
+            /* var reg = new Register(arr);
+            reg.show(); */
+        }
+
+
+        // 第5题，没写完，写不出来。
+        function People(name, sex, height, weight, age, money, free, home) {
+            this.name = name;
+            this.sex = sex;
+            this.height = height;
+            this.weight = weight;
+            this.age = age;
+            this.money = money;
+            this.free = free;
+            this.home = home;
+        }
+
+        People.prototype.confirm = function () {
+
+        }
+
+        function demo5() {
+            var arr = [];
+            message = confirm('是否要相亲');
+            while (message = true) {
+                var name = prompt('请输入你的姓名')
+                var sex = prompt('请输入你的性别（男或女）');
+                var height = prompt('请输入身高');
+                var weight = prompt('请输入体重');
+                var age = prompt('请输入年龄');
+                var money = prompt('请输入工资');
+                var free = prompt('请输入存款');
+                var home = prompt('请输入房子面积');
+                var person = new People(name, sex, height, weight, age, money, free, home);
+                arr.push(person);
+            }
+            console.log(arr);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

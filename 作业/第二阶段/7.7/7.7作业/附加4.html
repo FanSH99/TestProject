@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html">作业7</a></li>
+                <li><a href="附加2.html">作业5</a></li>
+                <li><a href="附加3.html">作业6</a></li>
+                <li><a href="附加4.html" class="active">作业7</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+            <h1>附加题4:</h1>
+            <h4>
+                4、工资所得税工资超过1000的部分需要缴纳个人所有税（税率0.05），根据用户输入的工资，输出税后工资。<br>
+            </h4>
+            <p>您的工资为
+                <span class="num" id="num"></span>
+            </p>
+            <p><span class="message" id="message"></span></p><br>
+            <!-- <p>需要缴税<span class="tax" id="tax"></span>元</p><br>
+                <p>税后收入<span class="sum_f" id="sum_f"></span>元</p><br> -->
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+            <button onclick="post()">开始判断</button>
+        </div>
+    </div>
+    <script>
+
+        function post() {
+            var num, tax;
+            num = prompt('请输入你的工资');
+            document.getElementById('num').innerHTML = num;
+            var result = parseFloat(num) && Number(num);
+
+            if (isNaN(result)) {
+                alert('格式错误，请输入数字');
+                console.log('格式错误，请输入数字');
+                document.getElementById('message').innerHTML = '格式错误，请输入数字';
+
+            } else {
+                num = Number(num);
+
+                if (num > 1000) {
+                    tax = (num - 1000) * 0.05;
+                    num_f = num - tax;
+                    /*  document.getElementById('tax').innerHTML = tax; */
+                    console.log(num, tax, num_f);
+                    alert('需要交税' + tax + "元\n" + '税后收入' + num_f);
+                    console.log('需要交税' + tax + "元\n" + '税后收入' + num_f);
+                    document.getElementById('message').innerHTML = '需要交税' + tax + "元\n" + '税后收入' + num_f;
+                } else {
+                    alert('不用缴税');
+                    console.log('不用缴税');
+                    document.getElementById('message').innerHTML = '不用缴税';
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form2</title>
+    <base target="_blank">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .main {
+
+            width: 640px;
+            height: 1155px;
+            margin: 20px auto;
+            border: 1px green solid;
+            background: url(img/bg1.jpg);
+
+
+        }
+
+
+
+        /*  /* 表单整体样式 */
+        .login {
+
+            width: 400px;
+            height: 650px;
+            /* border: 1px green solid; */
+
+            /* background: url(img/bg1.jpg); */
+            margin: 280px 120px 0 120px;
+        }
+
+
+
+        /* 头像 样式*/
+        .div_img {
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            /* background: #0955ad; */
+            margin: 0 100px 75px 100px;
+            background: url(img/刘亦菲.jpg) no-repeat;
+
+        }
+
+        /* 账号 和密码*/
+        .ipt {
+            /* background: #9bd8c9; */
+            background: #9cd4cb;
+            color: #f4ffff;
+            display: block;
+            float: left;
+            /* width: 400px; */
+            width: 350px;
+            height: 57px;
+            border: 1px solid #e1e7e7;
+            outline: none;
+            border-radius: 38px;
+            margin-bottom: 32px;
+            padding-left: 50px;
+            font-size: 16px;
+            border-bottom: 2px solid #e1e7e7;
+        }
+
+
+
+        /* 登录框 */
+        .ipt3 {
+
+            background: #e1e7e7;
+            margin: 0;
+            color: #333;
+            font-size: 16px;
+            line-height: 60px;
+            padding: 0;
+            width: 400px;
+            border-bottom: 4px solid #eed4d7;
+
+        }
+
+        .ipt3:hover {
+            cursor: pointer;
+            background: #eed4d7;
+        }
+
+        /* 验证码 输入*/
+        .vcode {
+            width: 190px;
+
+        }
+
+
+
+        /*验证码显示  */
+        .code {
+            width: 80px;
+            display: block;
+            float: right;
+            line-height: 60px;
+            font-size: 16px;
+            border-bottom: 3px solid #eed4d7;
+
+        }
+
+        /* 注意，.code:hover 冒号左右不要有空格，否则，会出错。 */
+        .code:hover {
+            cursor: pointer;
+            width: 80px;
+            background: #eed4d7;
+        }
+
+
+
+        a {
+            margin: 0;
+            padding: 0;
+            float: left;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        a:hover {
+            color: rgb(240, 107, 107);
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
+
+        .span1 {
+            float: left;
+            margin-left: 10px;
+
+
+        }
+
+        .span2 {
+            float: right;
+            margin-right: 10px;
+        }
+
+        .ipt1_1 {
+            background: url(img/表单控件2_03.png) no-repeat left 26px center;
+        }
+
+        .ipt1_2 {
+
+            background: url(img/表单控件2_06.png) no-repeat left 26px center;
+        }
+
+        .ipt1_3 {
+            background: url(img/表单控件2_08.png) no-repeat left 26px center;
+        }
+
+        .div_a {
+            padding: 20px;
+            width: 400px;
+            height: 100px;
+            margin: 20px 100px;
+        }
+
+        /* a {
+            display: absolute;
+            color: #000;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 2;
+            margin: 100px 0 0 100px;
+            float: none;
+
+        } */
+
+
+
+
+        .login input::-webkit-input-placeholder {
+            color: #fff;
+
+        }
+
+        /* 兼容火狐浏览器 */
+        .login input::-moz-input-placeholder {
+            color: #fff;
+
+        }
+
+        .login input::-o-input-placeholder {
+            color: #fff;
+
+        }
+    </style>
+
+
+</head>
+
+<body leftmargin="0" onload="changeImg()">
+    <div class="main">
+
+        <form action="table1.html" class="login" onsubmit="return check()">
+            <div class="div_img"></div>
+            <input type="text" class="ipt ipt1  ipt1_1" placeholder="账号" value="账号" required="true" id="name"
+                pattern="^[a-zA-Z0-9_-]{4,16}$" title="4到16位（字母，数字，下划线，减号）" onfocus="this.value=''"
+                onblur="if(this.value=='')this.value='账号'"><br>
+            <!--  <input type="password" class="ipt ipt1  ipt1_2" placeholder="密码" value="密码" required="true" id="password"
+                pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$" title="密码必须包含字母和数字且长度为6-18位"
+                onfocus="this.value=''" onblur="if(this.value=='')this.value='密码'"><br> -->
+            <input type="password" class="ipt ipt1  ipt1_2" placeholder="密码" required="true" id="password"
+                pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$" title="密码必须包含字母和数字且长度为6-18位"><br>
+
+            <input type="text" id="vcode" placeholder="验证码" value="验证码" class="vcode ipt ipt1_3" onfocus="this.value=''"
+                onblur="if(this.value=='')this.value='验证码'" required>
+            <div id="code" title="看不清，换一张" class="code ipt"></div>
+
+            <button class="ipt ipt3">登录</button><br>
+            <div class="div_span">
+                <span class="span1"><a href="#">登录须知</a></span>
+                <span class="span2"><a href="#">忘记密码?</a></span><br>
+                <!--  <a href="#">登录须知</a>
+                <a href="#">忘记密码?</a> -->
+            </div>
+
+        </form><br>
+        <div class="div_a">
+            <a href="table1.html">点击此处跳转到table1</a><br>
+            <a href="table2.html">点击此处跳转到table2</a><br>
+            <a href="form1.html">点击此处跳转到form1</a><br>
+        </div>
+    </div><br>
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        var code; //声明一个变量用于存储生成的验证码
+        document.getElementById("code").onclick = changeImg;
+
+        function changeImg() {
+            var arrays = new Array(
+                '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                'u', 'v', 'w', 'x', 'y', 'z',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                'U', 'V', 'W', 'X', 'Y', 'Z'
+            );
+            code = ''; //重新初始化验证码
+            //alert(arrays.length);
+            //随机从数组中获取四个元素组成验证码
+            for (var i = 0; i < 4; i++) {
+                //随机获取一个数组的下标
+                var r = parseInt(Math.random() * arrays.length);
+                code += arrays[r];
+            }
+            document.getElementById('code').innerHTML = code; //将验证码写入指定区域
+        }
+
+        //效验验证码(表单被提交时触发)
+        function check() {
+            //获取用户输入的验证码
+            var input_code = document.getElementById('vcode').value;
+            var name = document.getElementById('name').value;
+            var password = document.getElementById('password').value;
+            if (input_code.toLowerCase() == code.toLowerCase()) {
+
+                var gnl = confirm("确定要提交?\n" + "你的账号是:" + name + "\n你的密码是:" + password);
+
+                if (gnl == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+                /*  //验证码正确(表单提交)
+ 
+ 
+                 return true; */
+            }
+            alert("请输入正确的验证码!");
+            //验证码不正确,表单不允许提交
+            return false;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

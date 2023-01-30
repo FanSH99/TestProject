@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sendmsg,
+        .sendmsg label,
+        .sendmsg input,
+        .sendmsg textarea,
+        .sendmsg button {
+            width: 100%;
+        }
+
+        .sendmsg input,
+        .sendmsg textarea {
+            box-sizing: border-box;
+            padding: 5px 10px;
+        }
+
+        .sendmsg>div {
+            margin: 20px 0;
+        }
+
+        .sendmsg button {
+            background: #464667;
+            border-radius: 5px;
+            border: none;
+            padding: 3px 0;
+            color: #fff;
+        }
+
+        .showmsg h1 {
+            margin: 40px 0;
+        }
+
+        .showmsg>div {
+            margin-bottom: 20px;
+            padding: 5px 0;
+            border-bottom: 1px dotted #333;
+        }
+
+        .showmsg button {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <template id="sendmsg">
+        <div class="sendmsg">
+            <div>
+                <label for="">评论人:</label>
+                <input type="text" v-model="author">
+            </div>
+            <div>
+                <label for="">评论内容:</label>
+                <textarea v-model="msg" cols="30" rows="10"></textarea>
+            </div>
+            <button @click="addmsg">发表</button>
+        </div>
+    </template>
+    <template id="showmsg">
+        <div>
+            <child @getmsg="getmsg"></child>
+            <div class="showmsg">
+                <h1>留言板</h1>
+                <div v-for="(item,index) in msgList" class="">
+                    <p>作者：{{item.author}}</p>
+                    <p>内容：{{item.msg}} <button @click="delmsg(index)">删除</button></p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</body>
+
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+
+
+
+
+    let threshold = 160; // 打开控制台的宽或高阈值
+    // 每秒检查一次
+    let check = setInterval(function () {
+        if (window.outerWidth - window.innerWidth > threshold ||
+            window.outerHeight - window.innerHeight > threshold) {
+            // 如果打开控制台，则刷新页面
+            window.location.reload();
+        }
+    }, 1000);
+
+    let child = {
+        template: "#sendmsg",
+        data() {
+            return {
+                author: "",
+                msg: "",
+                msgList: [
+                    {
+                        author: "南方",
+                        msg: "我只是祈祷这样的相遇能够给你带来好运",
+                    },
+                    {
+                        author: "黎璃",
+                        msg: "人生就像一辆列车，进了站，有人要上车，有人就必须要下车。",
+                    }
+                ]
+
+            }
+        },
+        created() {
+            this.$emit("getmsg", this.msgList);
+        },
+        methods: {
+            addmsg() {
+                let obj = {
+                    author: this.author,
+                    msg: this.msg,
+                }
+                this.msgList.push(obj);
+            }
+        },
+    }
+    let parent = {
+        template: "#showmsg",
+        components: {
+            child,
+        },
+        data() {
+            return {
+                msgList: "",
+            }
+        },
+        methods: {
+            getmsg(value) {
+                console.log(value);
+                this.msgList = value;
+            },
+            delmsg(index) {
+                this.msgList.splice(index, 1);
+            },
+        },
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            parent,
+        }
+    })
+
+    window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+        // 判断是否按下F12，F12键码为123
+        if (event.keyCode == 123) {
+            event.preventDefault(); // 阻止默认事件行为
+            window.event.returnValue = false;
+        }
+    }
+    document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+    })
+    document.addEventListenter('contextmenu', function (e) {
+        e.preventDefault();
+    })
+    /* 我只是祈祷这样的相遇能够给你带来好运  (e)*/
+</script>
+
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .work-title {
+            width: 90%;
+            height: 50px;
+            margin: auto;
+            /*  background: #f70; */
+        }
+
+        .work-title ul li {
+            width: 80px;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px solid #9cef9c;
+        }
+
+        .work-title ul li.on {
+            font-weight: bold;
+            color: brown
+        }
+
+        .work-answer {
+            width: 90%;
+            margin: 40px auto;
+        }
+
+        .work1 ul li {
+            height: 600px;
+            float: left;
+        }
+
+        .work1 img {
+            width: 600px;
+            height: 600px;
+        }
+
+        button {
+            width: 120px;
+            height: 50px;
+            border-radius: 10px;
+            background: #f70;
+            margin: 275px auto;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: #f40;
+        }
+
+        .work-answer .answer {
+            margin-top: 60px;
+            display: none;
+        }
+
+        .work-answer .answer.dis {
+            display: block;
+        }
+
+        .work4 .box {
+            width: 380px;
+            height: 520px;
+            background: #e1e1e1;
+            margin: 20px auto;
+        }
+
+        .work4 p {
+            margin: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .work4 h3 {
+
+            margin: 10px;
+        }
+
+        .work4 .out {
+            background: red;
+            width: 320px;
+            height: 50px;
+            text-align: left;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 80px;
+            padding: 0 20px;
+        }
+
+        .work4 input {
+            float: left;
+            box-sizing: content-box;
+            width: 80px;
+            height: 42px;
+            margin: 5px;
+        }
+
+        .work4 input:hover {
+            cursor: pointer;
+        }
+
+        .work4 .txt {
+            width: 320px;
+            height: 40px;
+            text-align: left;
+            font-size: 12px;
+            color: #fff;
+            background: #333;
+            padding: 0 20px;
+            margin: auto;
+        }
+
+        .work5 span {
+            display: block;
+            float: left;
+            width: 70px;
+            margin: 10px 0;
+            line-height: 40px;
+        }
+
+        .work5 input[type='text'] {
+            width: 180px;
+            height: 40px;
+            margin: 10px 0;
+        }
+
+        .work5 input[type='button'] {
+            display: block;
+            width: 80px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f80;
+        }
+
+        .work5 input[type='button']:hover {
+            background: #f60;
+            cursor: pointer;
+        }
+
+        .work5 {
+            width: 90%;
+
+        }
+
+        .work5 table {
+            width: 500px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: center;
+
+        }
+
+        .work5 table td,
+        .work5 table th {
+            width: 100px;
+            height: 30px;
+            border: 1px solid #333;
+            line-height: 30px;
+        }
+
+        /*  .work5 table th:last-child{
+            
+        } */
+
+
+
+        .work5 tbody tr:nth-child(2n) {
+            background: #9cef9c;
+        }
+
+        .work6 img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .work7 {
+            width: 300px;
+            height: 300px;
+            background: url(img/clockface.jpg) no-repeat;
+            background-size: cover;
+        }
+
+
+
+        .work7 {
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            background-image: url("img/clockface.jpg");
+            background-size: 100%;
+            position: relative;
+        }
+
+        .work7 #h,
+        .work7 #m,
+        .work7 #s {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-origin: center;
+        }
+
+        .work7 #h {
+            left: 1px;
+        }
+
+        .work7 #m {
+            left: 2px;
+
+        }
+
+        .work7 #s {
+            left: 1px;
+        }
+
+        .work7 img {
+            position: relative;
+            margin: 0 49%;
+            width: 2%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="work-title">
+
+        <ul>
+            <li class="item on">作业1</li>
+            <li class="item">作业2</li>
+            <li class="item">作业3</li>
+            <li class="item">作业4</li>
+            <li class="item">作业5</li>
+            <li class="item">作业6</li>
+            <li class="item">作业7</li>
+        </ul>
+    </div>
+    <div class="work-answer">
+        <div class="answer dis work1">
+            <ul>
+                <li><img src="img/role-ty.png" alt=""></li>
+                <li><button class="btn1">交换图片</button></li>
+                <li><img src="img/role-nk.png" alt=""></li>
+            </ul>
+        </div>
+        <div class="answer work2">
+            <img src="img/role-jnl.png" alt="" class="">
+            <button class="btn2">切换图片</button>
+        </div>
+        <div class="answer work3">
+
+            <input type="checkbox" name="" id="selAll">全选/全不选&emsp;&emsp13;
+            <input type="checkbox" name="" id="selReverse">反选
+            <br><br>
+            <span>项目：</span>
+            <input type="checkbox" name="interst" id="">游泳
+            <input type="checkbox" name="interst" id="">爬山
+            <input type="checkbox" name="interst" id="">看书
+        </div>
+        <div class="answer work4">
+
+            <div class="box">
+                <h3>简易计算器：</h3>
+                <p>提示，两数之间必须输入算术符号，否则出错。</p>
+                <!-- 内容 -->
+                <div class="txt" id="txt"></div>
+                <input type="text" id="out" class='out' value="" readonly>
+                <!-- 第一行 -->
+                <input type='button' onclick="Tnumber(this.value)" value="%">
+                <input type='button' onclick="Clear()" value="CE">
+                <input type='button' onclick="Clear()" value="clear">
+                <input type='button' onclick="Baskspace()" value="baskspace">
+                <!-- 第二行 -->
+                <input type='button' onclick="TNumber1()" value="1/x">
+                <input type='button' onclick="TNumber2()" value="x²">
+                <input type='button' onclick="TNumber3(this.value)" value="²√x">
+                <input type='button' onclick="Tnumber(this.value)" value="/"><!-- 除法有问题 -->
+                <!-- 第三行 -->
+                <input type='button' onclick="Tnumber(this.value)" value="7">
+                <input type='button' onclick="Tnumber(this.value)" value="8">
+                <input type='button' onclick="Tnumber(this.value)" value="9">
+                <input type='button' onclick="Tnumber(this.value)" value="*">
+                <!-- 第四行 -->
+                <input type='button' onclick="Tnumber(this.value)" value="4">
+                <input type='button' onclick="Tnumber(this.value)" value="5">
+                <input type='button' onclick="Tnumber(this.value)" value="6">
+                <input type='button' onclick="Tnumber(this.value)" value="-">
+                <!-- 第五行 -->
+                <input type='button' onclick="Tnumber(this.value)" value="1">
+                <input type='button' onclick="Tnumber(this.value)" value="2">
+                <input type='button' onclick="Tnumber(this.value)" value="3">
+                <input type='button' onclick="Tnumber(this.value)" value="+">
+                <!-- 第六行 -->
+                <input type='button' onclick="TNumber4()" value="+/-">
+                <input type='button' onclick="Tnumber(this.value)" value="0">
+                <input type='button' onclick="Tnumber(this.value)" value=".">
+                <input type='button' onclick="Calculator()" value="=">
+            </div>
+        </div>
+        <div class="answer work5">
+            <span>ID：</span><input type="text" id="id" value="1111"><br>
+            <span>姓名：</span><input type="text" id="username" value="派大星"><br>
+            <span>年龄：</span><input type="text" id="age" value="18"><br>
+            <input type="button" value="添加" id="btn"><br><br>
+            <div class="box"></div>
+        </div>
+        <div class="answer work6">
+            <img src="img/0.png" alt="">
+            <img src="img/0.png" alt="">
+            <img src="img/second1.png" alt="">
+            <img src="img/0.png" alt="">
+            <img src="img/0.png" alt="">
+            <img src="img/second1.png" alt="">
+            <img src="img/0.png" alt="">
+            <img src="img/0.png" alt="">
+        </div>
+        <div class="answer work7 clock">
+            <div id="h"><img src="img/hourhand.png"></div>
+            <div id="m"><img src="img/minhand.png"></div>
+            <div id="s"><img src="img/sechand.png"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function workChange() {
+
+            var items = document.querySelectorAll('.work-title>ul>li.item');
+            var answers = document.querySelectorAll('.work-answer>.answer');
+            for (var i = 0; i < items.length; i++) {
+                items[i].setAttribute('index', i);
+                items[i].onmouseover = function () {
+                    for (var i = 0; i < answers.length; i++) {
+                        items[i].className = 'item';
+                        /* answers[i].className = 'answer'; */
+                        answers[i].classList.remove('dis');
+                    }
+                    this.className = 'item on';
+                    var index = this.getAttribute('index');
+                    answers[index].classList.add('dis');
+                }
+            }
+        }
+        workChange();
+
+        function work1() {
+            var pics = document.querySelectorAll('.work1>ul>li>img');
+            var btn = document.querySelector('.btn1');
+            var url1 = pics[0].src;
+            var url2 = pics[1].src;
+            btn.onclick = function () {
+                if (pics[0].src == url1) {
+                    pics[0].src = url2;
+                    pics[1].src = url1;
+                } else {
+                    pics[0].src = url1;
+                    pics[1].src = url2;
+                }
+            }
+        }
+        work1();
+
+        function work2() {
+
+            var pic = document.querySelector('.work2>img');
+            var btn = document.querySelector('.btn2');
+            var url1 = pic.src;
+            var url2 = 'img/role-xl.png'
+            var flag = 1;
+            btn.onclick = function () {
+                if (flag) {
+                    pic.src = url2;
+                    flag = 0;
+                } else {
+                    pic.src = url1;
+                    flag = 1;
+                }
+            }
+        }
+        work2();
+
+        function work3() {
+            var selAll = document.querySelector('.work3>#selAll');
+            var selReverse = document.querySelector('.work3>#selReverse');
+            var ipts = document.getElementsByName('interst');
+            selAll.onchange = function () {
+                for (var i = 0; i < ipts.length; i++) {
+                    ipts[i].checked = selAll.checked;
+                }
+            }
+
+            selReverse.onchange = function () {
+                for (var i = 0; i < ipts.length; i++) {
+                    ipts[i].checked = !ipts[i].checked;
+                }
+            }
+            for (var i = 0; i < ipts.length; i++) {
+                ipts[i].onchange = function () {
+                    var flag = 1;
+                    for (var i = 0; i < ipts.length; i++) {
+                        if (!ipts[[i]].checked) {
+                            var flag = 0;
+                            break;
+                        }
+                    }
+                    selAll.checked = flag;
+                }
+            }
+        }
+        work3();
+
+
+        var sum = "";
+        function Tnumber(value) {
+            document.getElementById("out").value += value;
+            sum = sum + value;
+            document.getElementById('txt').innerHTML = sum;
+        }
+        function TNumber1() {
+            document.getElementById("out").value = 1 + '/' + document.getElementById("out").value;
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+
+        }
+        function TNumber2() {
+            document.getElementById("out").value = document.getElementById("out").value + '*' + document.getElementById("out").value;
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+
+        }
+        function TNumber3() {
+            document.getElementById("out").value = Math.sqrt(document.getElementById('out').value);
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+
+        }
+
+        function TNumber4() {
+            document.getElementById("out").value = 0 - document.getElementById('out').value;
+            sum = document.getElementById("out").value;
+            document.getElementById('txt').innerHTML = sum;
+
+        }
+        function Calculator() {
+            document.getElementById('txt').innerHTML = sum;
+            sum = eval(sum);
+            document.getElementById("out").value = sum;
+        }
+        function Clear() {
+            document.getElementById("out").value = '';
+            document.getElementById('txt').innerHTML = '';
+            sum = '';
+        }
+
+        function Baskspace() {
+            var out1 = document.getElementById("out").value;
+            console.log(out1);
+            out = out1.slice(0, -1);
+            document.getElementById('out').value = out;
+            document.getElementById('txt').innerHTML = out;
+            sum = out;
+        }
+
+
+
+        function demo5() {
+            var obj = data();
+            var box = document.querySelector('.work5>.box');
+            var tab = document.createElement('table');
+            var cap = document.createElement('caption');
+            cap.innerHTML = '员工信息表';
+            tab.appendChild(cap);
+            var thead = document.createElement('thead');
+            var thead_tr = document.createElement('tr');
+            thead.appendChild(thead_tr);
+
+            for (var key in obj) {
+                var th = document.createElement('th');
+                th.innerHTML = key;
+                thead_tr.appendChild(th);
+            }
+            var th4 = document.createElement('th');
+            th4.colSpan = '2';
+            th4.innerHTML = '操作';
+            thead_tr.appendChild(th4);
+            tab.appendChild(thead);
+            var tbody = document.createElement('tbody');
+            tab.appendChild(tbody)
+            box.appendChild(tab);
+            var btn = document.querySelector('#btn');
+            btn.onclick = function () {
+                var obj = data();
+                var tr = document.createElement('tr');
+                for (var key in obj) {
+                    if (obj[key] == '' || obj[key] == ' ') {
+                        alert('不能为空');
+                    } else {
+                        var td = document.createElement('td');
+                        td.innerHTML = obj[key];
+                        tr.appendChild(td);
+                    }
+                }
+                var td4 = document.createElement('td');
+                var td5 = document.createElement('td');
+                td4.innerHTML = '<a href="javascript:;" class="upt">修改</a>';
+                td5.innerHTML = '<a href="javascript:;" class="del">删除</a>';
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tbody.appendChild(tr);
+                var del = document.querySelectorAll('.del');
+                delData(del);
+                var upt = document.querySelectorAll('.upt');
+                uptData(upt);
+            }
+
+
+        }
+
+        function delData(del) {
+            console.log(del);
+            for (var i = 0; i < del.length; i++) {
+                del[i].onclick = function () {
+                    if (confirm('确定要删除吗')) {
+                        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+                    }
+
+                }
+            }
+        }
+
+        function uptData(upt) {
+            console.log(upt);
+            for (var i = 0; i < upt.length; i++) {
+                upt[i].onclick = function () {
+                    var obj = data();
+                    var i = 0;
+                    if (confirm('确定要修改吗？')) {
+                        for (var key in obj) {
+                            this.parentNode.parentNode.childNodes[i].innerHTML = obj[key];
+                            i++;
+                        }
+                    }
+                }
+            }
+        }
+        demo5();
+        function data() {
+            var obj = {}
+            obj['ID'] = document.querySelector('#id').value;
+            obj['姓名'] = document.querySelector('#username').value;
+            obj['年龄'] = document.querySelector('#age').value;
+            return obj;
+            console.log(obj);
+        }
+
+
+
+        function work6() {
+            var imgs = document.querySelectorAll('.work6>img');
+            // console.log(imgs);//NodeList(8) [img, img, img, img, img, img, img, img]
+            var date = new Date();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            var h1 = parseInt(hour / 10);
+            var h2 = hour % 10;
+            var m1 = parseInt(minutes / 10);
+            var m2 = minutes % 10;
+            var s1 = parseInt(seconds / 10);
+            var s2 = seconds % 10;
+            /*  console.log(h1, h2, m1, m2, s1, s2);//1 7 2 0 3 7 */
+            imgs[0].src = 'img/' + h1 + '.png';
+            imgs[1].src = 'img/' + h2 + '.png';
+            imgs[3].src = 'img/' + m1 + '.png';
+            imgs[4].src = 'img/' + m2 + '.png';
+            imgs[6].src = 'img/' + s1 + '.png';
+            imgs[7].src = 'img/' + s2 + '.png';
+        }
+
+        work6();
+        setInterval('work6()', 1000);
+
+
+
+
+
+        function work7() {
+            var h = document.getElementById("h");//定位时针
+            var m = document.getElementById("m");//定位分针
+            var s = document.getElementById("s");//定位秒针
+
+            var clock = function () {
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                s.style.transform = 'rotate(' + second * 6 + 'deg)';
+                m.style.transform = 'rotate(' + minute * 6 + 'deg)';
+                h.style.transform = 'rotate(' + hour * 30 + 'deg)';
+            }
+            setInterval(clock, 1000);
+        }
+
+        work7();
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

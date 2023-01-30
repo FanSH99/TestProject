@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            background: rgb(226, 128, 104);
+            width: 500px;
+            height: 600px;
+            margin: 50px auto;
+            box-sizing: border-box;
+            padding-top: 60px;
+        }
+
+        .regist {
+            margin-left: 50px;
+            box-sizing: border-box;
+        }
+
+        input {
+            width: 220px;
+            height: 30px;
+        }
+
+        span {
+            float: left;
+            display: block;
+            text-align: right;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            color: #444;
+        }
+
+        .ipt {
+            margin: 20px;
+
+        }
+
+        button {
+            margin-left: 40px;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-image: -webkit-linear-gradient(left, #ae73ae, #ef9999);
+            color: #fff;
+        }
+
+        a:hover {
+            color: #f30;
+        }
+
+        a {
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  <form action=""> -->
+    <div class="regist">
+
+        <div class="ipt1 ipt">
+            <span>请输入学号：</span><input type="text" name="sno" id="sno">
+        </div>
+
+        <div class="ipt2 ipt">
+            <span>请输入密码：</span><input type="password" name="pwd" id="pwd">
+        </div>
+        <div class="ipt2 ipt">
+            <span>请输入年龄：</span><input type="text" name="age" id="age">
+        </div>
+        <div class="ipt2 ipt">
+            <span>请输入姓名：</span><input type="text" name="name" id="name">
+        </div>
+        <button>点击注册</button>&emsp;&emsp;<a href="login.html">已有账号？点击登录</a>
+    </div>
+
+    <!--  </form> -->
+
+    <script>
+        var sno = document.querySelector('#sno');
+        var pwd = document.querySelector('#pwd');
+        var sname = document.querySelector('#name');
+        var age = document.querySelector('#age');
+        var btn = document.querySelector('button');
+
+
+
+        /*   localStorage.clear("pwd");
+          localStorage.clear("sno");
+          localStorage.clear("name");
+          localStorage.clear("age"); */
+        console.log(localStorage.getItem("sno"), localStorage.getItem("pwd"), localStorage.getItem("name"), localStorage.getItem("age"));
+        btn.onclick = function () {
+            if ((sno.value == "") || (pwd.value == "")) {
+                alert('学号和密码不能为空！！！');
+            }
+
+            else {
+                if (localStorage.getItem("sno") == sno.value) {
+                    alert('你已经注册过该账号 ');
+                } else if (localStorage.getItem("sno") != "" && localStorage.getItem("sno") != null) {
+                    var message = confirm('你已经注册过一个账号了是否重新注册？原来的账号将会注销');
+                    console.log(message);
+                    if (message == true) {
+                        localStorage.clear("pwd");
+                        localStorage.clear("sno");
+                        localStorage.clear("name");
+                        localStorage.clear("age");
+                        localStorage.setItem("sno", sno.value);
+                        localStorage.setItem("pwd", pwd.value);
+                        localStorage.setItem("name", sname.value);
+                        localStorage.setItem("age", age.value);
+                    }
+                } else {
+                    localStorage.setItem("sno", sno.value);
+                    localStorage.setItem("pwd", pwd.value);
+                    localStorage.setItem("name", sname.value);
+                    localStorage.setItem("age", age.value);
+                    if ((localStorage.getItem("sno") != "") && (localStorage.getItem("pwd") != "")) {
+                        alert('注册成功');
+                        console.log(localStorage.getItem("sno"), localStorage.getItem("pwd"), localStorage.getItem("name"), localStorage.getItem("age"));
+                    }
+
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

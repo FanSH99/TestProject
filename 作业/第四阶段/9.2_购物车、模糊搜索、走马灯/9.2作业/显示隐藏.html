@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日20:24:47 -->
+    <div id="box">
+        <h1 v-show="isTrue">{{msg}}</h1>
+        <button @click="change">切换</button>
+    </div>
+
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            msg: "好好学习天天向上",
+            isTrue: true,
+        },
+        methods: {
+            change() {
+                this.isTrue = this.isTrue == true ? false : true;
+            }
+        }
+
+    })
+</script>
+
+</html>

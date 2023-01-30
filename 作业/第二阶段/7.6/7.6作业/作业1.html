@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <base href="" target="_blank">
+    <link rel="icon" href="photo.png" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 700px;
+            margin: auto;
+        }
+
+        nav {
+            width: 100%;
+            height: 52px;
+            background: rgb(195, 199, 233);
+            padding: 0 40px;
+        }
+
+        ul li {
+            display: block;
+            padding: 0 30px;
+            float: left;
+            height: 52px;
+            text-align: center;
+
+        }
+
+        ul li a {
+            display: block;
+            height: 30px;
+            margin: 10px 0;
+            padding: 0 30px;
+            color: #fff;
+            line-height: 30px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+        }
+
+        ul li a:hover {
+            /* color: rgb(249, 69, 123); */
+            background: rgb(249, 69, 123);
+            text-decoration: underline;
+        }
+
+        span {
+            color: red;
+        }
+
+        button {
+            display: block;
+            padding: 5px 20px;
+            background: rgb(82, 103, 237);
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: rgb(29, 50, 187);
+            ;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="作业1.html" style="background: rgb(249, 69, 123);" target="_self">作业1</a>
+                </li>
+                <li>
+                    <a href="作业2.html">作业2</a>
+                </li>
+                <li>
+                    <a href="作业3.html">作业3</a>
+                </li>
+                <li>
+                    <a href="作业4.html">作业4</a>
+                </li>
+            </ul>
+        </nav>
+
+        <p>
+        <h2>作业1：</h2><br>
+        <h4>第一题<br>console.log( 4 >= 6 || 'A'!='阿凡达'&& ! (12 * 2 == 144) && true);</h4><br>
+
+        <h4>第二题<br>var num = 10;
+            console.log ( 5 == num / 2&& (2 + 2* num) .toString() === '22');</h4><br>
+
+        </p>
+
+        <p>
+            解题思路：<br>
+            1.<br>
+            4>=6||'A'!='阿凡达'&&!(12*2==144)&&true<br>
+            false || true && true && true<br>
+            false ||true<br>
+            <font color="blue">true</font><br>
+
+            2.<br>
+            5==10/2 && (2+2*10).toString()==='22'<br>
+            true && true<br>
+            <font color="blue">true</font><br>
+        </p><br><br>
+        <button onclick="post()">点击验证</button><br><br>
+        <span>注意：F12可查看控制台日志结果</span><br><br>
+        <p>第一题答案是：<span class="answer1" id="answer1"></span></p>
+        <p>第二题答案是：<span class="answer2" id="answer2"></span></p><br><br>
+    </div>
+
+
+
+    <script>
+        console.log("4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true的计算结果为：", 4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true);
+
+        var num = 10;
+        console.log("5 == num / 2 && (2 + 2 * num).toString() === '22'的计算结果为", 5 == num / 2 && (2 + 2 * num).toString() === '22');
+
+        function post() {
+            /*  alert("4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true的计算结果为："+4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true);
+             alert("5 == num / 2 && (2 + 2 * num).toString() === '22'的计算结果为", 5 == num / 2 && (2 + 2 * num).toString() === '22'); */
+            /*   document.write("4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true的计算结果为：", 4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true) */
+
+            document.getElementById("answer1").innerHTML = 4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true;
+            document.getElementById("answer2").innerHTML = 5 == num / 2 && (2 + 2 * num).toString() === '22';
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 2、计算数组中奇数的和（数组自己定义） */
+        var sum = 0;
+        var arr2 = [1, 5, 10, -7, 23, 'hello', '77', 99, true];
+        for (var i = 0; i < arr2.length; i++) {
+            var result = parseFloat(arr2[i]) && Number(arr2[i])
+            if (!isNaN(result)) {
+                if (arr2[i] % 2 == 1) {
+                    console.log(arr2[i]);
+                    sum += +arr2[i];
+                }
+            }
+
+        }
+        console.log('奇数和：', sum);
+
+        /* 3、将数组中所有的字符串输出 */
+        var arr3 = [2, 67, 'hello world', false, '小凡凡'];
+        for (var i = 0; i < arr3.length; i++) {
+            if (typeof arr3[i] == 'string') {
+                console.log(arr3[i]);
+            }
+        }
+
+        /*  4、在数组的末尾添加一个数据（修改原数组） */
+        var arr = [3, 'hello', '小小', true];
+        var arr4 = arr;
+        arr4[arr.length] = 'gogo';
+        console.log(arr4, arr);
+        /*  5、在数组的末尾添加一个数据（不修改原数组） */
+        var arr5 = [];
+        for (var i = 0; i < arr.length; i++) {
+            arr5[arr5.length] = arr[i];
+        }
+        arr5[arr5.length] = 'help';
+        console.log(arr5, arr);
+
+        /* 6、在数组的头部插入一个数据，不修改原数组 */
+        var arr6 = [4444];
+        for (var i = 0; i < arr.length; i++) {
+            arr6[arr6.length] = arr[i];
+        }
+        console.log(arr6, arr);
+
+        /* 7、查找数组元素第一次出现的位置，如果存在返回位置，不存在返回 - 1（写成函数形式） */
+        // 方法1：
+        //var arr7 = [1, 2, 3, 4, 5, 'hello', '小小', true];
+        // var item = prompt('请输入要查找的数据');
+        // console.log(IndexOf(arr7, item));
+        // function IndexOf(arr, item) {
+        //     if (Array.prototype.indexOf) {
+        //         return arr.indexOf(item);
+        //     } else {
+        //         for (var i = 0; i < arr.length; i++) {
+        //             if (arr[i] === item) {
+        //                 return i;
+        //             }
+        //         }
+        //     }
+        //     return -1;
+        // }
+
+        //方法2：
+        var arr7 = [1, 2, 3, 4, 5, 'hello', '小小', true];
+        console.log(arr7);
+        var item = prompt('请输入要查找的数据');
+
+        for (var i = 0; i < arr7.length; i++) {
+            var flag = 0;
+            if (arr7[i] == item) {
+                console.log(item, '在数组中的位置为' + i);
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) {
+            console.log('数组中没有这个数据');
+            console.log(-1);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

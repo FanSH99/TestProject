@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历</title>
+    <base target="_blank">
+    <style>
+        body {
+            background-color: darkcyan;
+
+
+        }
+
+        .resume {
+            text-align: center;
+            font-weight: bold;
+            height: 30pt;
+            vertical-align: baseline;
+            background-color: antiquewhite;
+        }
+
+        table {
+            /* 
+            border-collapse是table标签的一个属性，有两个取值：
+            seperate 边框之间分离
+            collapse 两两相临边框合并
+            */
+            border-collapse: collapse;
+            border: 1px solid black;
+            table-layout: fixed;
+
+        }
+
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            vertical-align: baseline;
+        }
+
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+            vertical-align: baseline;
+
+        }
+
+        td {
+            padding-left: 5pt;
+            background-color: beige;
+        }
+
+        .th_top {
+            background-color: peachpuff;
+            height: 28px;
+
+        }
+
+        .th1 {
+            background-color: peachpuff;
+            width: 90px;
+            height: 28px;
+            table-layout: fixed;
+
+        }
+
+        .th2 {
+            width: 112px;
+            height: 112px;
+            table-layout: fixed;
+            /* 用img标签放入图片表格一直动，就换成了背景图片。 */
+            background-image: url("img/刘亦菲.jpg");
+
+            /* 用background-size可以实现图片自动缩放填充盒子 */
+            background-size: 100% 100%;
+
+        }
+
+
+
+        #img {
+            /* 图片不能固定放到盒子里面，为什么呢
+            试过了设置max-width,设置position为绝对和相对定位
+            也试过了调整整行整列宽度*/
+            height: 100%;
+            width: 100pt;
+        }
+
+        .major {
+            /* padding-top: 32pt; */
+            vertical-align: middle;
+        }
+
+        .td2 {
+            height: 20pt;
+        }
+
+        /* 其他栏的高度 */
+        .tr1 {
+            height: 100pt;
+        }
+
+
+
+
+        /* 
+        设置动画，从左边渐入，只播放一次 
+        如果设置为bounceInLeft infinite 1s 则为循坏播放动画。
+        要更改滑入的方向只需要更改下面3d里面的参数
+
+        */
+        .box {
+            animation: bounceInLeft 1s cubic-bezier(0.215, 0.610, 0.355, 1.000)
+        }
+
+        @keyframes bounceInLeft {
+            0% {
+                opacity: 0;
+                transform: translate3d(-3000px, 0, 0);
+            }
+
+            60% {
+                opacity: 1;
+                transform: translate3d(25px, 0, 0);
+            }
+
+            75% {
+                transform: translate3d(-10px, 0, 0);
+            }
+
+            90% {
+                transform: translate3d(5px, 0, 0);
+            }
+
+            100% {
+                transform: none;
+            }
+        }
+
+        @keyframes bounceInRight {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 0, -3000px);
+            }
+
+            60% {
+                opacity: 1;
+                transform: translate3d(0, 0, 25px);
+            }
+
+            75% {
+                transform: translate3d(0, 0, -10px);
+            }
+
+            90% {
+                transform: translate3d(0, 0, 5px);
+            }
+
+            100% {
+                transform: none;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="box" align="center">
+        <table>
+            <th class="th resume" colspan="7" align="center">
+                <h2>个人简历</h2>
+            </th>
+            <tr>
+                <th class="th th1 th1-1">姓名：</th>
+                <td>樊史红</td>
+                <th class="th th1 th2-1">性别：</th>
+                <td>女</td>
+                <th class="th th1 th3-1">年龄：</th>
+                <td>23</td>
+                <th class="th th2 th4-1" rowspan="4">
+                    <!-- <img src="../img/头像4漫画.jpg" class="img"> -->
+                    <!-- <img src="" class="img"> -->
+
+                </th>
+
+            </tr>
+
+            <tr>
+                <th class="th th1 th1-1">籍贯：</th>
+                <td>河南南阳</td>
+                <th class="th th1 th2-1">现居地址：</th>
+                <td>河南郑州</td>
+                <th class="th th1 th3-1">出生年月：</th>
+                <td>1999.11</td>
+            </tr>
+
+            <tr>
+                <th class="th th1 th1-1">手机：</th>
+                <td>15138607803</td>
+                <th class="th th1 th2-1">邮箱：</th>
+                <td>2931085467@qq.com</td>
+                <th class="th th1 th3-1">微信：</th>
+                <td>F7803F</td>
+            </tr>
+            <tr>
+                <th class="th th1 th1-1">政治面貌：</th>
+                <td class="td3-1">团员</td>
+                <th class="th th1 th2-1">婚姻状况：</th>
+                <td>未婚</td>
+                <th class="th th1 th3-1">目标岗位：</th>
+                <td>web前端开发</td>
+            </tr>
+            <th class="th th_top intention" colspan="7">求职意向</th>
+            <tr>
+                <th class="th th1 th1-2">目标行业：</th>
+                <td>信息科技</td>
+                <th class="th th1 th2-2">目标岗位：</th>
+                <td>web前端开发</td>
+                <th class="th th1 th3-2">目标薪资：</th>
+                <td colspan="2">6000+</td>
+            </tr>
+            <tr>
+                <th class="th th1 th1-2">目标城市：</th>
+                <td>郑州</td>
+                <th class="th th1 th2-2">工作性质：</th>
+                <td>全职</td>
+                <th class="th th1 th3-2">到岗时间：</th>
+                <td colspan="2">两周内</td>
+            </tr>
+
+            <th class="th th_top education" colspan="7">教育背景</th>
+            <tr align="center">
+                <td colspan="2">河南财政金融学院</td>
+                <td colspan="2">2018.09-2022.07</th>
+                <td colspan="1">本科</th>
+                <td colspan="2">计算机科学与技术</th>
+            </tr>
+            <tr>
+
+            </tr>
+            <th class="th th_top education" colspan="7">工作经验</th>
+            <tr>
+                <th class="th th1">1</th>
+                <td class="td td2" colspan="6">
+                    2022.07-2022.12 在培训班学习前端课程。
+                </td>
+            </tr>
+            <tr>
+                <th class="th th1">2</th>
+                <td class="td td2" colspan="6">
+                    2020.09-2021.05 在餐厅兼职收银员
+                </td>
+            </tr>
+            <tr>
+                <th class="th th1">3</th>
+                <td class="td td2" colspan="6">
+                    2018.12-2020.06 在学校网络安全中心办公室勤工俭学
+                </td>
+            </tr>
+            <tr>
+                <th class="th th1">4</th>
+                <td class="td td2" colspan="6">
+                    <span><a href="01梦华录百科.html">点此跳转到梦华录百科</a></span>&emsp;&emsp;
+                    <span><a href="01新闻.html">点此跳转到新闻</a></sp>
+                </td>
+            </tr>
+            <!-- <tr>
+            <th class="th th1 major" rowspan="5" colspan="1">专业技能</th>
+
+            <td class="td td2 major2"  colspan="6"></td>
+            
+        </tr>
+
+        <tr>
+            <td class="td td2" colspan="6"></td>
+        </tr>
+        <tr>
+            <td class="td td2" colspan="6"></td>
+        </tr>
+        <tr>
+            <td class="td td2" colspan="6"></td>
+        </tr>
+        <tr>
+            <td class="td td2" colspan="6"></td>
+        </tr>
+    </th> -->
+
+            <tr class="tr1">
+                <th class="th th_top major" colspan="1" align="center">专业技能</th>
+
+                <td class="td td2 major2" colspan="6">
+                    <span>word 熟练掌握</span><br>
+                    <span>Excel 熟练掌握</span><br>
+                    <span>PPT 熟练掌握</span><br>
+                    <span>PS 一般掌握</span><br>
+                    <span>html 熟练掌握</span><br>
+                    <span>CSS 熟练掌握</span><br>
+                    <span>js 大致掌握</span><br>
+                    <span>java 大致掌握</span><br>
+                    <span>vue 基本掌握</span><br>
+                    <span>react 基本掌握</span><br>
+                    <span>angular 大致了解</span><br>
+                </td>
+
+            </tr>
+
+
+            <th class="th th_top education" colspan="7">其他</th>
+            <tr class="tr1">
+                <td colspan="7">
+                    <p>1、接受加班（恶意高强度除外）</p>
+                    <p>2、未婚，5年内不考虑有小孩</p>
+                    <p>3、了解一点ps基础</p>
+                    <p>4、接受调剂，可以尽快入职</p>
+
+
+                </td>
+
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>

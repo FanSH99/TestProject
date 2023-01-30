@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="color.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        nav {
+            width: 80%;
+            height: 50px;
+            margin: auto;
+            background: #f70;
+        }
+
+        nav ul li {
+            float: left;
+            border: 1px solid #fff;
+        }
+
+        nav ul li a {
+            color: #fff;
+            display: block;
+            padding: 0 100px;
+            line-height: 50px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.on {
+            color: #444;
+            background: #f50;
+        }
+
+
+        #color-box {
+            width: 100%;
+            height: 200px;
+            margin: 80px;
+        }
+
+        #show-box {
+            width: 80%;
+            height: 80px;
+            margin: 10px auto;
+            border: 1px solid #333;
+        }
+
+        #txt {
+            width: 400px;
+            height: 40px;
+            border: transparent;
+            border-bottom: 1px solid #333;
+        }
+
+        #color-box>div {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            border: 1px salmon solid;
+            float: left;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .purple {
+            background: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="多图自动切换.html">多图自动切换</a>
+            </li>
+            <li>
+                <a href="获取颜色.html" class="on">获取颜色</a>
+            </li>
+            <li>
+                <a href="计算生日.html">计算生日</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="color-box">
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div><br>
+    <div id="show-box">
+        点击上面不同的div,这里 显示对应的颜色
+
+    </div>
+
+    <script>
+        var boxs = document.querySelectorAll('#color-box>div');
+        console.log(boxs);
+        boxs[0].className = 'red';
+        boxs[1].style.backgroundColor = 'blue';
+        boxs[2]['className'] = 'purple';
+        boxs[3].style = 'background:green;';
+
+        var showcolor = document.getElementById('show-box');
+        console.log(showcolor);
+
+        for (var i = 0; i < boxs.length; i++) {
+            boxs[i].onclick = function () {
+                var bg = window.getComputedStyle(this, null).backgroundColor;
+                console.log(bg);
+                var hex = colorRGBtoHex(bg);
+                /* showcolor.innerHTML = bg + '<br>' + hex */
+                console.log(arrColor);
+                for (var j in arrColor) {
+                    for (var key in arrColor[j]) {
+                        if (arrColor[j][key] == bg) {
+                            arr = arrColor[j];
+                            console.log(arr);
+                        }
+                    }
+                }
+                var str = '';
+                for (var m in arr) {
+                    console.log(m, arr[m]);
+                    str += m + ':' + arr[m] + '<br>';
+                }
+                showcolor.innerHTML = str;
+            }
+        }
+
+        function colorRGBtoHex(color) {
+            var rgb = color.split(',');
+            var r = parseInt(rgb[0].split('(')[1]);
+            var g = parseInt(rgb[1]);
+            var b = parseInt(rgb[2].split(')')[0]);
+            var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+            return hex;
+        }
+
+        function HhtmlColorToRGB(color) {
+            var str = "0x" + color.substring(1, color.length);
+            var r = str & 0x0000FF;
+            var g = (str & 0x00FF00) >> 8;
+            var b = (str & 0xFF0000) >> 16;
+            return b + "," + g + "," + r;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

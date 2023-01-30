@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <p>1. 把一个字符串转化为驼峰写法（例如：margin-left=>marginLeft）<button id="btn1">第1题</button></p>
+
+    <p>2. 查找字符串出现最多的字符和个数<button id="btn2">第2题</button></p>
+
+    <p>3.返回一个只包含数字类型的数组（例如：afjasoeigjs123sgdhedhhe456osddhnofd789=>[123,456,789]）（用原生和不原生两种方法来做）<button
+            id="btn3">第3题</button></p>
+
+    <p> 4.去掉字符串中的空格<button id="btn4">第4题</button></p>
+
+    <p>5.字符串首字母改大写 <button id="btn5">第5题</button></p>
+    <p>6.去字符串头尾空格 （用原生和不原生（内置方法）两种方法来做）<button id="btn6">第6题</button></p>
+
+    <p>7.删除字符串中所有的数字（用原生和不原生（内置方法）两种方法来做）<button id="btn7">第7题</button></p>
+
+    <p> 8.反转字符串<button id="btn8">第8题</button></p>
+    <script>
+        // 1. 把一个字符串转化为驼峰写法（例如：margin-left=>marginLeft）
+        // 方法1.  ---此方法只适用于两个单词连接。
+        var btn1 = document.querySelector('#btn1');
+        btn1.onclick = function () {
+            var str1 = 'margin-left';
+            demo1(str1);
+            var str1_2 = 'stu-select-class';
+            demo1_2(str1_2);
+        }
+
+        function demo1(str) {
+
+            var newStr = '';
+            //找到-的下标位置
+            var index = str.indexOf('-');
+            //  console.log(index);
+            str = str.replace('-', '');
+            //  console.log(str);
+            var str1 = str.slice(index, index + 1);
+            // console.log(str1);
+            var str2 = str1.toUpperCase();
+            // console.log(str2);
+            // console.log(str);
+            for (var i = 0; i < str.length; i++) {
+                if (i != index) {
+                    newStr += str[i];
+                } else {
+                    newStr += str2;
+                }
+            }
+            console.log(newStr);
+        }
+
+        // 方法2，---此方法适用于多个单词连接的情况。
+
+        function demo1_2(str) {
+            var arr = str.split('-');
+            // console.log(arr);
+            var newStr = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                var str = arr[i];
+                // console.log(str);
+                var str2 = str.slice(1)
+                var str1 = str[0].toUpperCase();
+                // console.log(str1);
+                newStr += str1 + str2;
+            }
+            console.log(newStr);
+        }
+
+
+        var btn2 = document.querySelector('#btn2');
+        btn2.onclick = function () {
+            var str2 = 'stu-select-class';
+            demo2(str2);
+        }
+        // 2. 查找字符串出现最多的字符和个数
+
+        function demo2(str) {
+            var arr = str.split("");
+            var newStr = {};
+            arr.forEach(function (item) {
+                if (newStr[item]) {
+                    newStr[item]++;
+                } else {
+                    newStr[item] = 1;
+                }
+            })
+            var max = 0;
+            var strkey = null;
+            for (var key in newStr) {
+                if (newStr[key] > max) {
+                    max = newStr[key];
+                    strkey = key;
+                }
+            }
+            console.log("最多的字符是" + strkey);
+            console.log("出现的次数是" + max);
+        }
+        var btn3 = document.querySelector('#btn3');
+        btn3.onclick = function () {
+            var str3 = 'afjasoeigjs123sgdhedhhe456osddhnofd789';
+            demo3(str3);
+            demo3_2(str3);
+        }
+        // 3返回一个只包含数字类型的数组（例如：afjasoeigjs123sgdhedhhe456osddhnofd789=>[123,456,789]）（用原生和不原生两种方法来做）
+
+        //方法1，原生方法
+        // var str3 = 'afjasoeigjs123sgdhedhhe456osddhnofd789';
+        // demo3(str3);
+        // 方法1，原生方法。
+        function demo3(str) {
+            var str0 = '';
+            var arr0 = [];
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] <= 9 && str[i] >= 0) {
+                    str0 += str[i];
+                } else {
+
+                    if (str0 != '') {
+                        arr0.push(+str0);//如果想转成数组，在str0前面加一个加号
+                    }//推入数组之后，情况那个str0的内容，重新拼接新串。
+                    str0 = '';
+                }
+            }
+            if (str != '') {
+                arr0.push(+str0); //如果想转成数组，在str0前面加一个加号
+            }
+            console.log(arr0);
+        }
+
+        // 方法2，match()方法
+        // demo3_2(str3);
+        function demo3_2(str) {
+            var arr = str.match(/\d+/g);  //  \d表示数字， +表示1个或多个数字
+            //  console.log(arr);
+            for (var i in arr) {
+                arr[i] = +arr[i];//将字符串转换成数字
+            }
+            console.log(arr);
+        }
+
+        var btn4 = document.querySelector('#btn4');
+        btn4.onclick = function () {
+            var str4 = '   hello world jin      hhh    '
+            demo4(str4);
+            demo4_2(str4);
+        }
+
+        // 4.去掉字符串中的空格
+        // 方法1  
+
+        function demo4(str) {
+            var str2 = str.replace(/\s*/g, "");
+            console.log(str2);
+        }
+        // 方法2
+
+        function demo4_2(str) {
+            var arr = str.split(' ');
+            // console.log(arr);
+            var str2 = '';
+            for (var i in arr) {
+                if (arr[i] != '') {
+                    str2 += arr[i];
+                }
+            }
+            console.log(str2);
+        }
+
+        // 5.字符串首字母改大写
+        var btn5 = document.querySelector('#btn5');
+        btn5.onclick = function () {
+            var str5 = 'afjasoeigjs123sgdhe';
+            demo5(str5);
+            demo5_2(str5);
+        }
+
+        //方法1
+
+        function demo5(str) {
+            var str2 = str.slice(1);
+            var str1 = str[0].toUpperCase();
+            str3 = str1 + str2;
+            console.log(str3);
+        }
+
+        //方法2
+
+        function demo5_2(str) {
+            var item1 = str[0];
+            var item2 = item1.toUpperCase();
+            var str1 = str.replace(item1, item2);
+            console.log(str1);
+        }
+
+        // 6 去字符串头尾空格  
+        var btn6 = document.querySelector('#btn6');
+        btn6.onclick = function () {
+            var str6 = '   hello  world   '
+            demo6(str6);
+            demo6_2(str6);
+        }
+        // 方法1
+
+
+        function demo6(str) {
+            var str1 = str.trim();
+            console.log(str1);
+            // console.log(str1.length);
+        }
+
+        // 方法2
+
+        function demo6_2(str) {
+            var str1 = str.replace(/(^\s*)|(\s*$)/g, "");
+            console.log(str1);
+            // console.log(str1.length);
+        }
+        // 方法3
+
+
+        // 7 删除字符串中所有的数字（用原生和不原生（内置方法）两种方法来做）
+        var btn7 = document.querySelector('#btn7');
+        btn7.onclick = function () {
+            var str7 = 'afjasoeigjs123sgdhedhhe456osddhnofd789';
+            demo7(str7);
+            demo7_2(str7);
+            demo7_3(str7);
+        }
+
+
+        // 原生方法
+
+        function demo7(str) {
+            var str1 = ''
+            for (var i = 0; i < str.length; i++) {
+
+                if (str[i] >= 0 && str[i] <= 9) {
+                    continue;
+                }
+                str1 += str[i];
+            }
+            console.log(str1);
+        }
+
+        //方法2---replace
+
+        function demo7_2(str) {
+            var str1 = str.replace(/\d+/g, '');
+            console.log(str1);
+        }
+        //方法3---replace
+
+        function demo7_3(str) {
+            var str1 = str.replaceAll(/\d/g, '');
+            console.log(str1);
+        }
+
+        // 8.反转字符串
+        var btn8 = document.querySelector('#btn8');
+        btn8.onclick = function () {
+            var str8 = 'orangeblue';
+            demo8(str8);
+            demo8_2(str8);
+        }
+
+        // 方法1  ---reverse+数组
+
+        function demo8(str) {
+            var arr = str.split('');
+            arr = arr.reverse();
+            var str1 = arr.join('');
+            console.log(str1);
+        }
+        // 方法2  ---原生方法
+
+        function demo8_2(str) {
+            var str1 = '';
+            var j = str.length;
+            for (var i = 0; i < j; i++) {
+                str1 += str.slice(-1);
+                str = str.slice(0, -1);
+            }
+            console.log(str1);
+        }
+    </script>
+</body>
+
+</html>

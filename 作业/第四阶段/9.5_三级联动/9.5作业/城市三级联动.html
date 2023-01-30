@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <div>
+            <select id="" v-model="province">
+                <option v-for="(item,index) in provinceArr" :value="item.provinceName" name="province">
+                    {{item.provinceName}}
+                </option>
+            </select>
+            <select name="" id="" v-model="city">
+                <option v-for="(item2,index2) in cityArr" :value="item2.cityName" name="city">{{item2.cityName}}
+                </option>
+            </select>
+            <select name="" id="" v-model="area">
+                <option v-for="(item3,index3) in areaArr" :value="item3" name="area">{{item3}}</option>
+            </select>
+        </div>
+
+    </div>
+
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月5日21:02:29 */
+    new Vue({
+        el: "#box",
+        data: {
+            province: "河南省",
+            city: "",
+            area: "",
+            cityArr: [],
+            areaArr: [],
+            provinceArr: [
+                {
+                    provinceName: "河南省",
+                    cityList: [
+                        {
+                            cityName: "郑州市",
+                            areaList: ["高新区", "中原区", "金水区", "二七区"]
+                        }, {
+                            cityName: "安阳市",
+                            areaList: ["文峰区", "北关区", "开发区", "汤阴县", "安阳县"]
+                        }, {
+                            cityName: "新乡市",
+                            areaList: ["红旗区", "原阳县", "新乡新区"]
+                        }
+                    ]
+                },
+                {
+                    provinceName: "山东省",
+                    cityList: [
+                        {
+                            cityName: "济南市",
+                            areaList: ["历下区", "槐荫区", "天桥区", "历城区"],
+                        }, {
+                            cityName: "青岛市",
+                            areaList: ["市南区", "崂山区", "城阳区", "即墨区"]
+                        }, {
+                            cityName: "烟台市",
+                            areaList: ["牟平区", "威海区", "莱山区", "福山区"]
+                        }
+                    ]
+                },
+                {
+                    provinceName: "浙江省",
+                    cityList: [
+                        {
+                            cityName: "杭州市",
+                            areaList: ["历上城区", "滨江区", "萧山区", "余杭区"],
+                        }, {
+                            cityName: "湖州市",
+                            areaList: ["南浔区", "吴兴区", "长兴县"]
+                        }, {
+                            cityName: "绍兴市",
+                            areaList: ["悦城区", "柯桥区", "上虞区"]
+                        }
+                    ]
+                }
+            ],
+        },
+        watch: {
+            province: {
+                handler(newVal) {
+                    let newProvice = this.provinceArr.filter(item => item.provinceName == newVal);//[{}]
+                    let newCityArr = newProvice[0].cityList;//{}
+                    this.city = newCityArr[0].cityName;//河南省
+                    this.cityArr = newCityArr;//{}
+                    let newAreaArr = newProvice[0].cityList[0].areaList;
+                    this.area = newAreaArr[0];
+                    this.areaArr = newAreaArr;
+                },
+                deep: true,
+                immediate: true,
+            },
+            city: {
+                handler(newVal) {
+                    let newCity = this.cityArr.filter(item => item.cityName == newVal);
+                    let newAreaArr = newCity[0].areaList;
+                    this.area = newAreaArr[0]
+                    this.areaArr = newAreaArr;
+                },
+                deep: true,
+                immediate: true,
+            },
+        },
+    })
+
+</script>
+
+</html>

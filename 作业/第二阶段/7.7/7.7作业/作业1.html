@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html" class="active">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html">附加1</a></li>
+                <li><a href="附加2.html">附加2</a></li>
+                <li><a href="附加3.html">附加3</a></li>
+                <li><a href="附加4.html">附加4</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+
+            <h1>作业1:</h1>
+
+            <h4>
+                ① 1. 根据当前的时间，提示用户要做的事情<br>
+                5-7点 早上好<br>
+                7-11点 上午好，祝您心情愉快<br>
+                11-13点 中午好<br>
+                13-17点 下午好<br>
+                17-21点 晚上好<br>
+                21-23点 夜深了，注意身体哟<br>
+                其它情况 凌晨了，该休息了<br>
+            </h4>
+
+            <p>当前 国际标准时间为：<span class="time1" id="time1"></span></p>
+            <p>当前 你电脑系统时间为：<span class="time2" id="time2"></span></p>
+            <p>现在<span class="times" id="times"></span>了</p>
+            <p>提示：<span class="message" id="message"></span></p><br>
+
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+
+            <button onclick="post()"> 是否想要自定义时间</button>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script>
+
+        var time1 = new Date();
+        var time2 = new Date().toLocaleString();
+        var hour = new Date().getHours();
+        var minute = new Date().getMinutes();
+        var seconds = new Date().getSeconds();
+        var message;
+        if (minute > 9) {
+            minute = minute;
+        }
+        else {
+            minute = '0' + minute;
+        }
+        if (seconds > 9) {
+            seconds = seconds;
+        } else {
+            seconds = '0' + seconds;
+        }
+        console.log("当前 国际标准时间为：", time1);//动态
+        console.log("当前你电脑系统时间为：", time2);//动态
+        console.log("现在" + hour + ":" + minute + ":" + seconds + "了");
+        setInterval(function () {
+            var time1 = new Date();
+            var time2 = new Date().toLocaleString();
+            var hour = new Date().getHours();
+            var minute = new Date().getMinutes();
+            var seconds = new Date().getSeconds();
+            if (minute > 9) {
+                minute = minute;
+            }
+            else {
+                minute = '0' + minute;
+            }
+            if (seconds > 9) {
+                seconds = seconds;
+            } else {
+                seconds = '0' + seconds;
+            }
+            var hour_m = hour + ':' + minute + ':' + seconds;
+
+            document.getElementById('time1').innerHTML = time1;//动态
+            document.getElementById('time2').innerHTML = time2;//动态
+            document.getElementById('times').innerHTML = hour_m;//动态
+        }, 1000);
+
+        var message1 = '早上好';
+        var message2 = '上午好，祝您心情愉快';
+        var message3 = '中午好';
+        var message4 = '下午好';
+        var message5 = '晚上好';
+        var message6 = '夜深了，注意身体哟';
+        var message7 = '早凌晨了，该休息了';
+
+
+        if (hour < 7 && hour >= 5) {
+
+            document.getElementById('message').innerHTML = message1;
+            console.log(message1);
+        } else if (hour < 11 && hour >= 7) {
+            document.getElementById('message').innerHTML = message2;
+            console.log(message2);
+        } else if (hour < 13 && hour >= 11) {
+            document.getElementById('message').innerHTML = message3;
+            console.log(message3);
+        } else if (hour >= 13 && hour < 17) {
+            document.getElementById('message').innerHTML = message4;
+            console.log(message4);
+
+        } else if (hour >= 17 && hour < 21) {
+            document.getElementById('message').innerHTML = message5;
+            console.log(message5);
+
+        } else if (hour >= 21 && hour < 23) {
+            document.getElementById('message').innerHTML = message6;
+            console.log(message6);
+
+        } else {
+            document.getElementById('message').innerHTML = message7;
+            console.log(message7);
+        }
+
+        function post() {
+
+            var time = prompt('请输入一个时间数字,如13 或13.34');
+
+            if (time >= 0 && time < 5) {
+                console.log('凌晨了，该休息了');
+                alert('凌晨了，该休息了');
+            } else if (time < 7 && time >= 5) {
+                console.log('早上好');
+                alert('早上好');
+            } else if (time < 11) {
+                console.log('上午好，祝你心情愉快');
+                alert('上午好，祝你心情愉快');
+            } else if (time < 13) {
+                console.log('中午好');
+                alert('中午好');
+            } else if (time < 17) {
+                console.log('下午好');
+                alert('下午好');
+            } else if (time < 21) {
+                console.log('晚上好');
+                alert('晚上好');
+            } else if (time < 24) {
+                console.log('夜深了，注意身体呦');
+                alert('夜深了，注意身体呦');
+            } else {
+                console.log('请输入正确的时间');
+                alert('请输入正确的时间');
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

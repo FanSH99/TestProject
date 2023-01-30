@@ -1,0 +1,228 @@
+﻿1、接收用户输入的数据，若接收到数据，则在页面上显示接收到了数据，否则显示无数据（用函数实现）
+
+2、超市迎国庆，回馈新老客户，消费满1000元，商品打9.5折；满500元，打9.8折，根据用户消费金额，计算找零信息( 用函数实现)
+
+//思考   一种商品    单价  数量      花费的钱数    封装
+//       多种 商品  （循环 ，合适结循环的条件）   不断调用  一种花的钱数    累加      最后总共花多钱  和1000     请付钱数，找零（调用）
+//找零  减法   封装函数
+ 
+
+
+下午作业：
+
+1、function show(x,y){
+           return function( ){
+
+                console.log(x*y);
+
+
+              };
+
+   }
+
+如果 x=20;y=30; 怎么做，可以得到一个600
+
+
+
+2、var a=（function(){
+          var x=10;
+           var y=5;
+           return  function(){
+                         return x*y
+
+
+          };
+
+    }）(  )(  );
+
+console.log(a);
+
+a的结果是什么？
+
+
+
+另外：上面完成后，可以看看下面的选择题（个别的有点超纲）
+
+
+ 1. 以下表达式的运行结果是： 
+var val = 'value';
+console.info('Value id '+(val === 'value')?'Something':'Nothing');
+A.Something
+B.Nothing
+C.NaN
+D.其他
+//----A
+
+
+
+2.以下表达式的运行结果是：
+var name = 'World';
+(function(){
+if(typeof name === 'undefined'){
+var name = "Jack";
+console.info('Goodbye '+ name);
+}else{
+console.info('Hello ' + name);
+}
+})();
+A.Goodbye Jack
+B.Hello Jack
+C.Goodbye undefined
+D.Hello undefined
+
+//----A
+
+3.以下表达式的运行结果是： 
+function showCase(value){
+switch(value){
+case 'A':
+console.info('Case A');
+break;
+case 'B':
+console.info('Case B');
+break;
+case undefined :
+console.info('undefined');
+break;
+default:
+console.info('Do not know!');
+}
+}
+showCase(new String('A'));
+A.Case A
+B.Case B
+C.Do not know
+D.undefined
+
+//----C
+
+4.以下表达式的运行结果是： 
+function isOdd(num){
+return num % 2 == 1;  //奇数--true ;不是奇数返回false
+}
+function isEven(num){
+return num % 2 == 0;  //是偶数 --true ; 不是偶数返回false
+}
+function isSane(num){
+return isEven(num)||isOdd(num);
+}
+var values = [7,4,'13',-9,Infinity]; //Infinity--无穷大，负数既不是奇数也不是偶数。另外，小数即不是奇数也不是偶数。
+values.map(isSane);  //map遍历
+A.[true, true, true, true, true]
+B.[true, true, true, true, false]
+C.[true, true, true, false, false]
+D.[true, true, false, false, false]
+
+//---C
+
+
+5.以下表达式的运行结果是：  
+[]==[] //数组， 会开辟空间，地址不一样，大小也不一样。
+A.true
+B.false
+C.报错
+D.其他
+
+//---A
+
+6.以下表达式的运行结果是：   
+1+-1++-+1
+A.true
+B.false
+C.报错
+D.其他
+
+//---C   ---只有变量++，没有数字的++
+
+7.以下表达式的运行结果是：
+Number.MIN_VALUE>0//最小的正数，不可能小于0.
+A.true
+B.false
+C.报错
+D.其他
+
+//---A 
+
+8.以下表达式的运行结果是：
+[1<2<3,3<2<1]
+A.[true,true]
+B.[true,false]
+C.报错
+D.其他
+
+// 1<2 <3  ---true &&true
+//3<2<1  ---
+
+9.以下表达式的运行结果是：
+(function(){
+var x1 =y1 =1;
+})();
+console.info(y1);
+console.info(x1);
+A.1，1
+B.error，error
+C.1，error
+D.其他
+
+//var x1=y1=1---var x1=1 y1=1.  x1局部变量。 y1全局变量。
+//----C
+
+
+10 求y和z的值是多少？ 
+var x = 1;
+var y = 0;
+var z = 0;
+function add(n){n=n+1;}
+y = add(x);
+function add(n){n=n+3;}
+z = add(x);
+// 没有return，返回的是undefined
+//----undefined undefined
+
+11.
+写出函数DateDemo的返回结果，系统时间假定为今天
+
+function DateDemo(){
+  var d, s="今天日期是：";
+  d = new Date();
+  s += d.getMonth() + "/";
+  s += d.getDate() + "/";
+  s += d.getFullYear();
+  return s;
+}
+
+//----今天日期是：6/14/2022
+
+
+12.
+解释下列代码的输出
+
+console.log("0 || 1 = "+(0 || 1));  
+console.log("1 || 2 = "+(1 || 2));
+console.log("0 && 1 = "+(0 && 1));
+console.log("1 && 2 = "+(1 && 2));
+//字符串原样输出  逻辑运算符自动转换为真假（0或者1）
+//----0||1=1
+//----1||2=1
+//----0&1=0
+//----1&&2=2
+
+
+13.
+解释下面代码的输出	
+console.log(false == '0');
+//两个等号会自动转换。
+//null==0 
+
+14.下面的代码输出结果为:   
+(function(x) {
+ return (function(y) {
+ console.log(x);
+ })(2)
+})(1);
+
+
+
+
+
+

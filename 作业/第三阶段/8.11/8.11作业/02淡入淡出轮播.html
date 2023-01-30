@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 1000px;
+            height: 374px;
+            margin: 30px auto;
+            display: flex;
+            border: 4px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            /*   transition: 2s; */
+        }
+
+
+        .imgs {
+            width: 100%;
+            display: flex;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 50%;
+            line-height: 50px;
+            text-align: center;
+            font-size: 28px;
+            color: #fff;
+            transform: translateY(-50%);
+        }
+
+        .lbtn {
+            left: -10px;
+        }
+
+        .rbtn {
+            right: -10px;
+        }
+
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            right: 40px;
+        }
+
+        .circle ul li {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+            text-indent: -999px;
+            opacity: 0.6;
+        }
+
+        .circle ul li.active {
+            background: #f30;
+
+        }
+
+        .circle ul li:last-child {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="box">
+        <div class="imgs">
+            <img src="./img/pic1.jpg" alt="" class="on">
+        </div>
+        <div class="lbtn btn">&lt;</div>
+        <div class="rbtn btn">&gt;</div>
+        <div class="circle">
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            var imgArr = [
+                './img/pic1.jpg',
+                './img/pic2.webp',
+                './img/pic3.webp',
+                './img/pic4.webp',
+                './img/pic5.webp',
+            ];
+
+            var index = 0;
+            var timer = null;
+            // console.log($('.circle ul li').length);
+            var length = $('.circle ul li').length;
+            $('.circle ul li').on('click', function () {
+                $('img').stop();
+                var idx = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                $('img').attr({
+                    src: imgArr[idx],
+                    opacity: 1,
+                });
+                index = $(this).index();
+            })
+
+            $('.rbtn').on('click', function () {
+                $('img').stop();
+                index++;
+                if (index >= length) {
+                    index = 0;
+                }
+                $('img').attr({
+                    src: imgArr[index],
+                    opacity: 1,
+                });
+
+                $('.circle ul li').eq(index).addClass('active').siblings().removeClass('active');
+            })
+            $('.lbtn').on('click', function () {
+                console.log(111);
+                $('img').stop();
+                index--;
+                if (index < 0) {
+                    index = length - 1;
+                }
+                $('img').attr({
+                    src: imgArr[index],
+                    opacity: 1,
+                });
+                $('.circle ul li').eq(index).addClass('active').siblings().removeClass('active');
+
+            })
+            if (timer) {
+                return null;
+            }
+            timer = setInterval(change, 4000);
+            function change() {
+                var outidx = index;
+                index++;
+                if (index >= 5) {
+                    index = 0;
+                }
+                $('img').animate(
+                    { opacity: 0.6 },
+                    500, function () {
+                        $('.circle ul li').eq(index).addClass('active').siblings().removeClass('active');
+                        $('img').attr('src', imgArr[index]);
+                        $('img').animate(
+                            { opacity: 1 },
+                            800, function () {
+                            })
+                    })
+
+
+            }
+
+
+        })
+    </script>
+
+</body>
+
+</html>

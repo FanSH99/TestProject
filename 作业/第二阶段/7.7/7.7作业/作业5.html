@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html" class="active">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html">附加1</a></li>
+                <li><a href="附加2.html">附加2</a></li>
+                <li><a href="附加3.html">附加3</a></li>
+                <li><a href="附加4.html">附加4</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+
+            <h1>作业5:</h1>
+
+            <h4>
+                ⑤ 5.
+                接收班长口袋里的钱数？若大于等于2000，请大家吃西餐。若小于2000，大于等于1500，请大家吃快餐。若小于1500，大于等于1000，请大家喝饮料。若小于1000，大于等于500，请大家吃棒棒糖。否则提醒班长下次把钱带够<br>
+            </h4>
+
+            <p>您输入的值为<span class="num" id="num"></span></p>
+            <p>提示：<span class="message" id="message"></span></p><br>
+
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+
+            <button onclick="post()">开始判断</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        function post() {
+            var num, message;
+            num = prompt('请输入你带了多少钱');
+            /* var result = parseFloat(num) && Number(num); */
+            document.getElementById('num').innerHTML = num;
+
+            var result = parseFloat(num) && Number(num);
+            if (isNaN(result)) {
+                alert('格式错误，请输入数字');
+                console.log('格式错误，请输入数字');
+                document.getElementById('message').innerHTML = '格式错误，请输入数字';
+            } else {
+
+                if (num >= 1000) {
+
+                    alert('请大家吃西餐');
+                    console.log('请大家吃西餐');
+                    document.getElementById('message').innerHTML = '请大家吃西餐';
+                } else if (num >= 1500) {
+                    alert('请大家吃快餐');
+                    console.log('请大家吃快餐');
+                    document.getElementById('message').innerHTML = '请大家吃快餐';
+                } else if (num >= 1000) {
+                    alert('请大家喝饮料');
+                    console.log('请大家喝饮料');
+                    document.getElementById('message').innerHTML = '请大家喝饮料';
+                } else if (num >= 500) {
+                    alert('请大家吃棒棒糖');
+                    console.log('请大家吃棒棒糖');
+                    document.getElementById('message').innerHTML = '请大家吃棒棒糖';
+                } else {
+                    alert('下次把钱带够');
+                    console.log('下次把钱带够');
+                    document.getElementById('message').innerHTML = '下次把钱带够';
+                }
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

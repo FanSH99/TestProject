@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table2</title>
+    <base target="_blank">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .main {
+            margin: 20px auto;
+            /* border: 1px red solid; */
+            border-spacing: 0;
+            background: #fff;
+            text-align: center;
+            width: 320px;
+            height: 190px;
+        }
+
+        table {
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px #ececec solid;
+            border-bottom: 1px #ececec solid;
+            border-collapse: collapse;
+
+        }
+
+        td {
+            display: block;
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            text-align: left;
+        }
+
+
+        td:nth-child(1) {
+            width: 100px;
+
+
+        }
+
+        td:nth-child(2) {
+            width: 60px;
+
+        }
+
+        td:nth-child(3) {
+            width: 75px;
+
+        }
+
+
+        td:nth-child(4) {
+            width: 10px;
+
+        }
+
+        td:nth-child(5) {
+            width: 60px;
+            text-align: center;
+            /* background: url(img/表格2_02.png) no-repeat right 60px top; */
+        }
+
+        .img_down {
+            margin-left: 8px;
+        }
+
+        .td_down {
+            color: #35a91e;
+        }
+
+        .td_up {
+            color: #ff6e00;
+        }
+
+        a {
+            display: absolute;
+            color: #000;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 2;
+            margin-left: 30%;
+            float: none;
+
+
+        }
+
+        a:hover {
+            color: rgb(240, 107, 107);
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <table>
+            <tr class="tr1">
+                <td>天通苑</td>
+                <td>昌平区</td>
+                <td>34954元/平</td>
+                <td><img src="img/表格2_03.png"></td>
+                <td>0%</td>
+            </tr>
+
+            <tr class="tr2">
+                <td>世纪城</td>
+                <td>海淀区</td>
+                <td>55059元/平</td>
+                <td><img src="img/表格2_07.png" class="img_down"></td>
+                <td class="td_down">48.9%</td>
+            </tr>
+            <tr class="tr3">
+                <td>桃源新都孔雀城</td>
+                <td>北京周边</td>
+                <td>11000元/平</td>
+                <td><img src="img/表格2_03.png"></td>
+                <td>0%</td>
+            </tr>
+            <tr class="tr4">
+                <td>富力城</td>
+                <td>朝阳区</td>
+                <td>107123元/平</td>
+                <td><img src="img/表格2_03.png"></td>
+                <td class="td_down">0%</td>
+            </tr>
+            <tr class="tr5">
+                <td>远洋山水</td>
+                <td>石景山区</td>
+                <td>71669元/平</td>
+                <td><img src="img/表格2_10.png" class="img_up"></td>
+                <td class="td_up">0.3%</td>
+            </tr>
+            <tr class="tr6" border="0">
+                <td>北苑家园</td>
+                <td>朝阳区</td>
+                <td>54443元/平</td>
+                <td><img src="img/表格2_07.png" class="img_down"></td>
+                <td class="td_down">2.5%</td>
+            </tr>
+        </table><br><br>
+
+        <a href="table1.html">点击此处跳转到table1</a><br>
+        <a href="form1.html">点击此处跳转到form1</a><br>
+        <a href="form2.html">点击此处跳转到form2</a><br>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">
+		<div>AAA</div>
+		<div>BBBB</div>
+	</div>
+
+	<script type="text/javascript">
+		var o=document.getElementById('box');
+		o.lastChild.previousSibling.innerHTML='bbb';
+		o.firstChild.nextSibling.innerHTML='aaa';
+
+		o.firstChild.nextSibling.nextSibling.nextSibling.innerHTML='ccc';
+
+		o.lastChild.previousSibling.previousSibling.previousSibling.innerHTML='JDLKJDFLKFD';
+	</script>
+</body>
+</html>

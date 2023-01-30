@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html" class="active">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html">附加1</a></li>
+                <li><a href="附加2.html">附加2</a></li>
+                <li><a href="附加3.html">附加3</a></li>
+                <li><a href="附加4.html">附加4</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+
+            <h1>作业3:</h1>
+
+            <h4>
+                ③ 3. 用户输入一个数，来判断是奇数还是偶数<br>
+            </h4>
+
+            <p>您输入的值为<span class="num" id="num"></span></p>
+            <p>提示：<span class="message" id="message"></span></p><br>
+
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+
+            <button onclick="post()">开始判断</button>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script>
+
+        function post() {
+            var num, message;
+            num = prompt('请输入一个值');
+            var result = parseFloat(num) && Number(num);
+            document.getElementById('num').innerHTML = num;
+            if (isNaN(result)) {
+                console.log(num + '不是一个数字');
+                alert(num + '不是数字');
+                document.getElementById('message').innerHTML = '不是一个数字';
+            } else {
+
+                if (num % 2 == 0) {
+                    console.log(num + '是偶数');
+                    document.getElementById('message').innerHTML = '是偶数';
+                } else if (num % 2 == 1) {
+                    console.log(num + '是奇数');
+                    document.getElementById('message').innerHTML = '是奇数';
+                } else {
+                    console.log(num + '不是自然数');
+                    document.getElementById('message').innerHTML = '不是自然数';
+                }
+
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

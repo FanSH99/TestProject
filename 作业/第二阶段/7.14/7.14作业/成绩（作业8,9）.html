@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+8、数组：录入学生成绩，当遇到‘exit’时结束录入，求班级学生成绩的和以及平均分（写成函数形式）
+     -->
+
+    <script>
+
+        (function () {
+            var message = confirm('开始录入成绩,按exit退出');
+            if (message == true) {
+                getUserScore();
+            }
+
+        })();
+        function getUserScore() {
+            var arr = [];
+            var sum = 0;
+            var average = 0;
+            var count = 0;
+            while (true) {
+                count++;
+                var score = prompt('请录入学生' + count + '的成绩(按exit退出）');
+                if (score == 'exit' || score == 'EXIT') {
+                    getSumScore(arr);
+                    getMaxscore(arr);
+                    return 0;
+                }
+                arr[arr.length] = +score;
+
+            }
+
+        }
+        function getSumScore(arr) {
+            console.log(arr);
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                var j = i + 1;
+                console.log('学生' + j, arr[i]);
+                sum += arr[i];
+            }
+            average = sum / arr.length;
+            console.log('总分：', sum);
+            console.log('平均分：', average);
+        }
+
+        function getMaxscore(arr) {
+            console.log(arr);
+            var max = arr[0];
+            var min = arr[0];
+            for (var i = 0; i < arr.length; i++) {
+                var j = i + 1;
+                console.log('学生' + j, arr[i]);
+                max > arr[i] ? max = max : max = arr[i];
+                min < arr[i] ? min = min : min = arr[i];
+            }
+            console.log('最大值：', max);
+            console.log('最小值', min);
+        }
+
+    </script>
+</body>
+
+</html>

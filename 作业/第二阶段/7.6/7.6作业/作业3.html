@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业3</title>
+    <base href="" target="_blank">
+    <link rel="icon" href="photo.png" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 700px;
+            margin: auto;
+        }
+
+        nav {
+            width: 100%;
+            height: 52px;
+            background: rgb(195, 199, 233);
+            padding: 0 40px;
+        }
+
+        ul li {
+            display: block;
+            padding: 0 30px;
+            float: left;
+            height: 52px;
+            text-align: center;
+
+        }
+
+        ul li a {
+            display: block;
+            height: 30px;
+            margin: 10px 0;
+            padding: 0 30px;
+            color: #fff;
+            line-height: 30px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+        }
+
+        ul li a:hover {
+            /* color: rgb(249, 69, 123); */
+            background: rgb(249, 69, 123);
+            text-decoration: underline;
+        }
+
+        span {
+            color: red;
+        }
+
+        button {
+            display: block;
+            padding: 5px 20px;
+            background: rgb(82, 103, 237);
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: rgb(29, 50, 187);
+            ;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="作业1.html">作业1</a>
+                </li>
+                <li>
+                    <a href="作业2.html">作业2</a>
+                </li>
+                <li>
+                    <a href="作业3.html" style="background: rgb(249, 69, 123);" target="_self">作业3</a>
+                </li>
+                <li>
+                    <a href="作业4.html">作业4</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <h2>作业3：</h2><br>
+        <h4>获取a,b的最终结果<br>
+            var a = 10,b=2;  <br>
+             a= a++ + --a - b-- + a++ + ++b - --a - a-- + a++ + -- b<br>
+            console.log(a,b)
+        </h4><br><br>
+
+
+
+        <p>
+            解题思路：<br>
+            a=10 b=2<br>
+            a++ + --a -b-- + a++ + ++b - --a -a-- +a++ + --b<br>
+            10 (a=11了) + 10 (a=10 了) -2(b=1了) + 10(a=11了) +2(b=2了) - 10(a=10了) -10(a=9了) +9(a=10了) + 1(b=1了)<br>
+            a=10+10-2+10+2-10-10+9+1<br>
+            b=1<br>
+            所以答案为<font color="blue">a=20&emsp;&emsp;b=1</font><br>
+
+        </p><br><br>
+        <button onclick="post()">点击验证</button><br><br>
+        <span>注意：F12可查看控制台日志结果</span><br><br>
+        <p>a的值是：<span class="answer1" id="answer1"></span></p>
+        <p>b的值是：<span class="answer2" id="answer2"></span></p><br><br>
+
+    </div>
+
+    <script>
+
+        var a = 10, b = 2;
+        a = a++ + --a - b-- + a++ + ++b - --a - a-- + a++ + --b
+        console.log("var a = 10, b = 2;\na = a++ + --a - b-- + a++ + ++b - --a - a-- + a++ + --b的 结果为");
+        console.log(a, b);
+
+        function post() {
+            /*  alert("4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true的计算结果为："+4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true);
+             alert("5 == num / 2 && (2 + 2 * num).toString() === '22'的计算结果为", 5 == num / 2 && (2 + 2 * num).toString() === '22'); */
+            /*  document.write("4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true的计算结果为：", 4 >= 6 || 'A' != '阿凡达' && !(12 * 2 == 144) && true) */
+
+
+            document.getElementById("answer1").innerHTML = a;
+            document.getElementById("answer2").innerHTML = b;
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

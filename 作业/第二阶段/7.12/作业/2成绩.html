@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2--成绩</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        form {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        form>p {
+            color: #666;
+            margin: 40px 0;
+        }
+
+        .setting span {
+            display: block;
+            float: left;
+            width: 140px;
+            height: 24px;
+            line-height: 24px;
+            /* border: 1px solid #333; */
+        }
+
+        .setting input {
+            float: left;
+            margin-left: 10px;
+            height: 24px;
+            width: 145px;
+            padding: 0 5px;
+            color: #bbb;
+        }
+
+        #btn {
+            width: 80px;
+            height: 30px;
+            background-image: -webkit-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+            background-image: -o-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+            background-image: -moz-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+        }
+
+        #btn:hover {
+            cursor: pointer;
+            background: rgb(214, 47, 5);
+        }
+
+        .area {
+            margin-top: 40px;
+        }
+
+        .area input {
+            border: 2px solid transparent;
+            border-bottom-color: #333;
+            color: red;
+            padding: 0 5px;
+        }
+
+        nav {
+            width: 80%;
+            height: 40px;
+            margin: auto;
+            margin-bottom: 40px;
+            background: rgb(3, 91, 111);
+        }
+
+
+        ul li a {
+            float: left;
+            color: #fff;
+            height: 40px;
+            padding: 0 20px;
+            line-height: 40px;
+        }
+
+
+        .active {
+            background: rgb(249, 61, 174);
+            /* color: #333; */
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="1面积.html">面积</a></li>
+            <li><a href="2成绩.html" class="active">成绩</a></li>
+            <li><a href="3奇偶.html">奇偶</a></li>
+            <li><a href="4日期.html">日期</a></li>
+            <li><a href="5奇数和.html">奇数和</a></li>
+            <li><a href="6珠峰.html">珠峰</a></li>
+            <li><a href="7象棋.html">象棋</a></li>
+        </ul>
+    </nav>
+    <form>
+        <p>4、录入五个学生的成绩，输出其中的最高分（用函数实现）</p>
+        <div class="setting">
+            <span>请输入学生1成绩:</span> <input type="text" name="" id="stu1" value="88"
+                pattern="(?!^0\.0?0$)^[0-9][0-9]?(\.[0-9]{1,2})?$|^100$" title="请输入0-100的数字" spellcheck="true"><br><br>
+            <span>请输入学生2成绩:</span> <input type="text" name="" id="stu2" value="87"
+                pattern="(?!^0\.0?0$)^[0-9][0-9]?(\.[0-9]{1,2})?$|^100$" title="请输入0-100的数字" spellcheck="true"><br><br>
+            <span>请输入学生3成绩:</span> <input type="text" name="" id="stu3" value="84"
+                pattern="(?!^0\.0?0$)^[0-9][0-9]?(\.[0-9]{1,2})?$|^100$" title="请输入0-100的数字" spellcheck="true"><br><br>
+            <span>请输入学生4成绩:</span> <input type="text" name="" id="stu4" value="69"
+                pattern="(?!^0\.0?0$)^[0-9][0-9]?(\.[0-9]{1,2})?$|^100$" title="请输入0-100的数字" spellcheck="true"><br><br>
+            <span>请输入学生5成绩:</span> <input type="text" name="" id="stu5" value="92"
+                pattern="(?!^0\.0?0$)^[0-9][0-9]?(\.[0-9]{1,2})?$|^100$" title="请输入0-100的数字" spellcheck="true"><br><br>
+        </div>
+        <input type="button" name="" id="btn" value="点击计算" onclick="post()"><br>
+        <div class="area">
+            <p><span>最高分为:</span><input type="text" name="" id="max"><br></p>
+        </div>
+
+    </form>
+    <script>
+        function post() {
+            var score1 = +document.querySelector('#stu1').value;
+            var score2 = +document.querySelector('#stu2').value;
+            var score3 = +document.querySelector('#stu3').value;
+            var score4 = +document.querySelector('#stu4').value;
+            var score5 = +document.querySelector('#stu5').value;
+            console.log(score1, score2, score3, score4, score5);
+            function getScoreMax(score1, score2, score3, score4, score5) {
+                var max = Math.max(score1, score2, score3, score4, score5);
+                console.log(max);
+                return max;
+            }
+            var max = getScoreMax(score1, score2, score3, score4, score5);
+            document.querySelector('#max').value = max;
+        }
+        post();
+
+
+    </script>
+</body>
+
+</html>

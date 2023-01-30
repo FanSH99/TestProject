@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            background: rgb(226, 128, 104);
+            width: 500px;
+            height: 600px;
+            margin: 50px auto;
+            box-sizing: border-box;
+            padding-top: 60px;
+        }
+
+        .regist {
+            margin-left: 50px;
+            box-sizing: border-box;
+        }
+
+        input {
+            width: 220px;
+            height: 30px;
+        }
+
+        span {
+            float: left;
+            display: block;
+            text-align: right;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+        }
+
+        .ipt {
+            margin: 20px;
+
+        }
+
+        button {
+            margin-left: 40px;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-image: -webkit-linear-gradient(left, #ae73ae, #ef9999);
+            color: #fff;
+        }
+
+        a:hover {
+            color: #f30;
+        }
+
+        a {
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  -->
+    <form action="success.html" method="post" onsubmit="return check()">
+        <div class="login">
+
+            <div class="ipt1 ipt">
+                <span>请输入学号：</span><input type="text" name="sno" id="sno">
+            </div>
+
+            <div class="ipt2 ipt">
+                <span>请输入密码：</span><input type="password" name="pwd" id="pwd">
+            </div>
+            <!-- <div class="ipt2 ipt">
+                <span>请输入年龄：</span><input type="text" name="age" id="age">
+            </div>
+            <div class="ipt2 ipt">
+                <span>请输入姓名：</span><input type="text" name="name" id="name">
+            </div> -->
+            <button>点击登录</button>&emsp;&emsp;<a href="regist.html">没有账号？点击注册</a>
+        </div>
+
+    </form>
+
+    <script>
+
+        function check() {
+            var sno = document.querySelector('#sno');
+            var pwd = document.querySelector('#pwd');
+            var btn = document.querySelector('button');
+            var form = document.querySelector('form');
+            console.log(localStorage.getItem("sno"), localStorage.getItem("pwd"), localStorage.getItem("name"), localStorage.getItem("age"));
+            btn.onclick = function () {
+                if ((sno.value == "") || (pwd.value == "")) {
+                    alert('学号和密码不能为空！！！');
+                    return false;
+                }
+                else {
+                    if (localStorage.getItem("sno") != sno.value) {
+                        alert('您输入的账号有误');
+                        return false;
+                    } else if (localStorage.getItem("pwd") != pwd.value) {
+                        alert('您输入的密码有误！');
+                        return false;
+                    } else {
+                        console.log('welcome!!!');
+                        return true;
+
+                    }
+                }
+            }
+            return btn.onclick();
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

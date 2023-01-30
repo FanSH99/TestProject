@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="作业1.html">作业1</a></li>
+                <li><a href="作业2.html">作业2</a></li>
+                <li><a href="作业3.html">作业3</a></li>
+                <li><a href="作业4.html">作业4</a></li>
+                <li><a href="作业5.html">作业5</a></li>
+                <li><a href="作业6.html">作业6</a></li>
+                <li><a href="附加1.html">附加1</a></li>
+                <li><a href="附加2.html">附加2</a></li>
+                <li><a href="附加3.html" class="active">附加3</a></li>
+                <li><a href="附加4.html">附加4</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+            <h1>附加题3:</h1>
+            <h4>
+                3、用户购买商品，三个商品中有一个超过50元，或者总价超过100元，即可打八折，否则不打折。<br>
+            </h4>
+            <p>您购买的商品原价格分别为
+                <span class="num1" id="num1"></span>&emsp;
+                <span class="num2" id="num2"></span>&emsp;
+                <span class="num3" id="num3"></span>
+            </p>
+            <p>总价<span class="sum" id="sum"></span>元</p><br>
+            <p><span class="message" id="message"></span></p><br>
+            <h3>注意：F12可查看控制台日志结果</h3><br>
+            <button onclick="post()">开始判断</button>
+
+        </div>
+    </div>
+    <script>
+
+        function post() {
+            var num1, num2, num3, sum, sum_f;
+            sum = 0;
+            num1 = prompt('请输入第一个商品价格');
+            num2 = prompt('请输入第二个商品价格');
+            num3 = prompt('请输入第三个商品价格');
+            document.getElementById('num1').innerHTML = num1;
+            document.getElementById('num2').innerHTML = num2;
+            document.getElementById('num3').innerHTML = num3;
+            var result1 = parseFloat(num1) && Number(num1);
+            var result2 = parseFloat(num2) && Number(num2);
+            var result3 = parseFloat(num3) && Number(num2);
+
+            if (isNaN(result1) || isNaN(result2) || isNaN(result3)) {
+                alert('格式错误，请输入数字');
+                console.log('格式错误，请输入数字');
+                document.getElementById('message').innerHTML = '格式错误，请输入数字';
+                document.getElementById('sum').innerHTML = '';
+
+            } else {
+                num1 = Number(num1);
+                num2 = Number(num2);
+                num3 = Number(num3);
+
+                sum = num1 + num2 + num3;
+                document.getElementById('sum').innerHTML = sum;
+                console.log(num1, num2, num3, sum);
+                if (sum > 100 || num1 > 50 || num2 > 50 || num3 > 50) {
+                    sum_f = (sum * 0.8).toFixed(2);
+                    alert('可打八折，优惠至' + sum_f + "元");
+                    console.log('可打八折，优惠至' + sum_f + "元");
+                    document.getElementById('message').innerHTML = '可打八折，优惠至' + sum_f + "元";
+                } else {
+                    alert('不打折,应付' + sum + '元');
+                    console.log('不打折,应付' + sum + '元');
+                    document.getElementById('message').innerHTML = '不打折,应付' + sum + '元';
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

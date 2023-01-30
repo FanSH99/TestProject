@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            width: 1200px;
+            height: auto;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .main>div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .city {
+            margin-bottom: 20px;
+        }
+
+        .main .header {
+            margin: 20px 0;
+            background: #5299c5;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding-left: 15px;
+
+        }
+
+        .main .header div {
+            margin: 0 10px;
+        }
+
+        .listimg {
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <mycomponent></mycomponent>
+    </div>
+    <template id="listcity">
+        <p class="city">
+            <select v-model="provinceIndex">
+                <option v-for="(item,index) in provinceArr" :key="index" :value="index">{{item.provinceName}}
+                </option>
+            </select>
+            <select v-model="cityIndex">
+                <option v-for="(item,index) in provinceArr[provinceIndex].cityList" :key="index" :value="index">
+                    {{item.cityName}}
+                </option>
+            </select>
+            <select v-model="areaIndex">
+                <option v-for="(item,index) in provinceArr[provinceIndex].cityList[cityIndex].areaList" :key="index"
+                    :value="index">
+                    {{item}}
+                </option>
+            </select>
+        </p>
+
+    </template>
+    <template id="listcom">
+        <div class="main">
+            <citycomponent></citycomponent>
+            <div class="header">
+                <div v-for="(item,index) in navList">
+                    <input type="radio" name="hreoclass" :value="item.type" v-model="type">{{item.name}}
+                </div>
+
+            </div>
+            <div class="bottom">
+                <div v-for="(item,index) in getList" class="listimg" :key="index">
+                    <img :src="item.alias | getImg" @click="listen(item.alias)"></img>
+                    <p>{{item.title}}</p>
+                </div>
+            </div>
+            <audio :src="audioUrl" :autoplay="isTrue"></audio>
+
+        </div>
+    </template>
+
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+
+    let citycomponent = {
+        template: "#listcity",
+        data() {
+            return {
+                provinceIndex: 0,
+                cityIndex: 0,
+                areaIndex: 0,
+                provinceArr: [
+                    {
+                        provinceName: "河南省",
+                        cityList: [
+                            {
+                                cityName: "郑州市",
+                                areaList: ["高新区", "中原区", "金水区", "二七区"]
+                            }, {
+                                cityName: "安阳市",
+                                areaList: ["文峰区", "北关区", "开发区", "汤阴县", "安阳县"]
+                            }, {
+                                cityName: "新乡市",
+                                areaList: ["红旗区", "原阳县", "新乡新区"]
+                            }
+                        ]
+                    },
+                    {
+                        provinceName: "山东省",
+                        cityList: [
+                            {
+                                cityName: "济南市",
+                                areaList: ["历下区", "槐荫区", "天桥区", "历城区"],
+                            }, {
+                                cityName: "青岛市",
+                                areaList: ["市南区", "崂山区", "城阳区5″543", "即墨区"]
+                            }, {
+                                cityName: "烟台市",
+                                areaList: ["牟平区", "威海区", "莱山区", "福山区"]
+                            }
+                        ]
+                    },
+                    {
+                        provinceName: "浙江省",
+                        cityList: [
+                            {
+                                cityName: "杭州市",
+                                areaList: ["历上城区", "滨江区", "萧山区", "余杭区"],
+                            }, {
+                                cityName: "湖州市",
+                                areaList: ["南浔区", "吴兴区", "长兴县"]
+                            }, {
+                                cityName: "绍兴市",
+                                areaList: ["悦城区", "柯桥区", "上虞区"]
+                            }
+                        ]
+                    }
+                ],
+            }
+        },
+        watch: {
+            provinceIndex() {
+                this.cityIndex = 0;
+                this.areaIndex = 0;
+            },
+            cityIndex() {
+                this.areaIndex = 0;
+            }
+        }
+    }
+    let mycomponent = {
+        template: "#listcom",
+        data() {
+            return {
+                list: '',
+                imgArr: [],
+                audioUrl: "",
+                isTrue: false,
+                type: 'all',
+                navList: [
+                    {
+                        name: "所有英雄",
+                        type: "all",
+                    }, {
+                        name: "法师",
+                        type: "mage"
+                    }, {
+                        name: "战士",
+                        type: "fighter"
+                    }, {
+                        name: "坦克",
+                        type: "tank"
+                    }, {
+                        name: "刺客",
+                        type: "assassin"
+                    }, {
+                        name: "射手",
+                        type: "marksman"
+                    }, {
+                        name: "辅助",
+                        type: "support"
+                    }
+                ],
+            }
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            // 箭头函数没有this指向。
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    // console.log(xhr.response);
+                    let res = JSON.parse(xhr.response);
+                    // console.log(res.hero);
+                    this.list = res.hero;
+                }
+            }
+        },
+        methods: {
+            listen(name) {
+                let index = this.list.findIndex(item => {
+                    return item.alias == name;
+                })
+                console.log(index);
+                this.audioUrl = this.list[index].selectAudio;
+                this.isTrue = true;
+            }
+        },
+        filters: {
+            getImg(name) {
+                return `https://game.gtimg.cn/images/lol/act/img/champion/${name}.png`;
+            }
+        },
+        computed: {
+            getList() {
+                console.log(this.list, this.type, typeof this.list);
+                if (this.type == "all") {
+                    return this.list;
+                }
+                else {
+                    let newArr = this.list.filter(item => item.roles.includes(this.type));
+                    return newArr;
+                }
+
+            },
+        },
+        components: {
+            citycomponent,
+        }
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            // citycomponent,
+            mycomponent
+        }
+
+    })
+
+</script>
+
+</html>

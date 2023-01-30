@@ -1,0 +1,79 @@
+选择题（每题2分，共20分）
+1）下面哪一个选项不是js 的原始类型？()
+  A）string			B）number
+  C）boolean		D）character
+
+2）分析如下的JavaScript代码段, 则运行后在页面上输出( ) (选择一项) var c="10",d=10;  document.write(c+d);          
+ A.  10    B.  20       C.  1010        D.  页面报错
+3)下列的哪一个表达式将返回假 () 
+A.!(3<=1)                                B.(4>=4)&&(5<=2)   
+C.(“a”==”a”)&&(“c”!=”d”)          D.(2<3)||(3<2)
+
+4) JS语句 var a1=10; var a2=20;  alert(“a1+a2=”+a1+a2)  将显示()结果 
+ A.a1+a2=30    B.a1+a2=1020              C.a1+a2=a1+a2
+ D.a1+a2=a1+a2 
+5）产生当前日期的方法是()  
+A.Now();              B.Date()         C.new Date()         D.new Now()
+
+6) 对于getDay()+getMonth() 的结果，下列哪个范围内表示的最精确？()
+A.0-11				B.0-17
+C.0-22				D.0-31
+
+7)  在JS中，’1555’+3的运行结果是：()
+A  1558     B  1552  C  15553  D1553
+
+8)  以下代码运行后弹出的结果是：()
+	var	a=888;
+	a++; 
+	var	b=++a;
+	alert(a);
+A   888   B  889   C  890   D 891
+
+9)  以下哪种变量定义方式不正确？()
+A.var _str=””;			 	B.var *str=“”;
+ C.var string=“”; 	 	D.var str=“”;
+
+10) setTimeout(“alert(‘welcome’)”,1000);这段代码的意思是：()
+A  等待1000秒后，再弹出一个对话框
+B  等待1秒后弹出一个对话框
+C  语句报错，语法有问题
+D  每隔一秒钟弹出一个对话框
+
+二、 填空题(共20分)
+1.定义了一个变量，但没有为该变量赋值，如果alert该变量，javascript 弹出的对话框中显示__________(2分)
+2.typeof  “hello”，typeof  NaN的结果分别是       ，       。(4分)
+3.Javascript中, 如果已知HTML页面中的某标签对象的id=”username”，用 ________ 方法获得该标签对象。(2分)
+4.Math.random()的作用是___________(1分)
+5. Javascript弹出对话框的三个命令______、_______、_______(3分)
+6. Date对象中，      方法可以获得月份值，      方法可以获得星期值，其中日期是从___(0/1)开始的，星期值是从____(0/1)开始的.（8分）
+
+三、  简答题（25分）
+1. javascript由几部分组成？    （3分）
+2、javascript中有哪几种基本数据类型？（4分）
+3. javascript中==和===的区别是什么？举例说明。（3分）
+4、写出5种强制类型转换和2种隐式转换？    （4分） 
+5. 请简述setTimeout和setInterval的区别（4分）
+6、变量的命名可以包含哪些内容？有什么规定？  （4）
+7、简述一下break和continue的区别(3)
+四.   编程题（25分）
+1.用代码实现输出日期，日期格式为：yyyy-mm-dd （5分）
+2. 求取某个日期是星期几(例如：2022/9/25) （5分）
+3. 输入三个数，求三个数的最大值？（编程来实现)  （5分）
+4、看下面的两幅图，运行结果是什么？    （5分）
+
+
+上面的代码从左到右 分别会输出什么结果？
+5.国际象棋64格，第一个放一粒，后面每一格都放上一格的2倍，问第64格上会放多少粒（5分）
+6.编一个简单的计算器   (10分)
+
+ 第一个数：<input type="text" id="txt1">
+    <select id="slt">
+        <option value="+" selected>+</option>
+        <option value="-" >-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    第二个数：<input type="text" id="txt2">
+    <button id="btn">=</button>
+    结果：<input type="text" id="txt3">

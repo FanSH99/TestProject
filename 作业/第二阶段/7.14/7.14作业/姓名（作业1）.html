@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        (function startDemo1() {
+            var flag = confirm('开始录入学生姓名(exit退出)');
+            if (flag == true) {
+                getName();
+            }
+        })();
+        function getName() {
+            var count = 0;
+            var arr = [];
+            while (true) {
+                count++;
+                var name = prompt('请输入学生' + count + '姓名');
+                if (name == 'exit') {
+                    count--;
+                    printName(arr);
+                    break;
+                }
+                arr[count - 1] = name;
+            }
+            /* console.log(arr); */
+            return arr;
+        };
+        function printName(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                var j = i + 1;
+                console.log('学生' + j + '姓名：', arr[i]);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

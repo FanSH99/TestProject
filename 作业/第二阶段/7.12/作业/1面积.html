@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1--面积</title>
+    <link rel="icon" href="work.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        form {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        form>p {
+            color: #666;
+            margin: 40px 0;
+        }
+
+        .setting span {
+            display: block;
+            float: left;
+            width: 140px;
+            height: 24px;
+            line-height: 24px;
+            /* border: 1px solid #333; */
+        }
+
+        .setting input {
+            float: left;
+            margin-left: 10px;
+            height: 24px;
+            width: 145px;
+            padding: 0 5px;
+            color: #bbb;
+        }
+
+        #btn {
+            width: 80px;
+            height: 30px;
+            background-image: -webkit-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+            background-image: -o-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+            background-image: -moz-linear-gradient(top, rgb(209, 152, 138), rgb(245, 71, 27));
+        }
+
+        #btn:hover {
+            cursor: pointer;
+            background: rgb(214, 47, 5);
+        }
+
+        .area {
+            margin-top: 40px;
+        }
+
+        .area input {
+            border: 2px solid transparent;
+            border-bottom-color: #333;
+            color: red;
+            padding: 0 5px;
+        }
+
+        nav {
+            width: 80%;
+            height: 40px;
+            margin: auto;
+            margin-bottom: 40px;
+            background: rgb(3, 91, 111);
+        }
+
+
+        ul li a {
+            float: left;
+            color: #fff;
+            height: 40px;
+            padding: 0 20px;
+            line-height: 40px;
+        }
+
+
+        .active {
+            background: rgb(249, 61, 174);
+            /* color: #333; */
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="1面积.html" class="active">面积</a></li>
+            <li><a href="2成绩.html">成绩</a></li>
+            <li><a href="3奇偶.html">奇偶</a></li>
+            <li><a href="4日期.html">日期</a></li>
+            <li><a href="5奇数和.html">奇数和</a></li>
+            <li><a href="6珠峰.html">珠峰</a></li>
+            <li><a href="7象棋.html">象棋</a></li>
+        </ul>
+    </nav>
+    <form>
+        <p>1、计算圆的面积（用函数实现）<br>
+            2、计算长方形的面积（用函数实现）<br>
+            3、求圆的面积和长方形的面积的和（用函数实现）</p>
+        <div class="setting">
+            <span>请输入圆的半径:</span> <input type="text" name="" id="r" value="5"><br><br>
+            <span>请输入长方形的长:</span> <input type="text" name="" id="w" value="6"><br><br>
+            <span>请输入长方形的宽:</span> <input type="text" name="" id="h" value="6"><br><br>
+        </div>
+        <input type="button" name="" id="btn" value="点击计算" onclick="post()"><br>
+        <div class="area">
+            <p><span>圆的面积为:</span><input type="text" name="" id="areaCir"><br></p>
+            <p><span>长方形的面积为：</span><input type="text" name="" id="areaRec"><br></p>
+            <p><span>圆和长方形的面积和为：</span><input type="text" name="" id="areaSum"><br></p>
+        </div>
+
+    </form>
+    <script>
+        function post() {
+            var r = document.querySelector('#r').value;
+            var w = document.querySelector('#w').value;
+            var h = document.querySelector('#h').value;
+            console.log('r=' + r);
+            console.log('width=' + w);
+            console.log('height=' + h);
+            function getAreaCir(r) {
+                areaCir = +(Math.PI * r * r).toFixed(2);
+                console.log('areaCir=' + areaCir);
+                return areaCir;
+            }
+            function getAreaRec(w, h) {
+                areaRec = w * h;
+                console.log('areaRec=' + areaRec);
+                return areaRec;
+            }
+            function getAreaSum(areaCir, areaRec) {
+                var areaSum = areaCir + areaRec;
+                console.log('areaSum=' + areaSum);
+                return areaSum;
+            }
+            var areaCir = getAreaCir(r);
+            var areaRec = getAreaRec(w, h);
+            var areaSum = getAreaSum(areaCir, areaRec);
+            document.querySelector('#areaCir').value = areaCir;
+            document.querySelector('#areaRec').value = areaRec;
+            document.querySelector('#areaSum').value = areaSum;
+        }
+
+    </script>
+</body>
+
+</html>

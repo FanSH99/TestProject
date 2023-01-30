@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top {
+            width: 80%;
+            margin: 0 auto;
+            border: 1px solid #0AB6B2;
+            padding-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        p {
+            margin: 20px 0;
+            background: #0AB6B2;
+            padding: 7px 0;
+            font-size: 14px;
+            text-indent: 1em;
+            color: #fff
+        }
+
+        .top>div {
+            margin: 0 40px;
+        }
+
+        .add {
+            background: #0AB6B2;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        input {
+            width: 180px;
+            height: 28px;
+        }
+
+        table {
+            border: 1px solid #0AB6B2;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #0AB6B2;
+            width: 200px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="top">
+            <p>添加品牌</p>
+            <div>Id: <input type="text" name="" id="" disabled placeholder="此ID为自动生成禁止输入">
+                Name: <input type="text" name="" id="" v-model="Name">
+                <button class="add" @click="brand.push(Name)">添加</button>
+                搜索关键字: <input type="text" name="" id="" placeholder="请输入关键字" v-model="search">
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Ctime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in list">
+                    <td>{{item.Id}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Ctime}}</td>
+                    <td><button @click="brand.splice(index,1)">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+<script src="../../bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            Name: "",
+            search: "",
+            newBrand: [],
+            brand: ["奔驰", "宝马", "法拉利", "劳斯莱斯"],
+        },
+        computed: {
+            list() {
+                let date = new Date();
+                let yy = date.getFullYear();
+                let mm = date.getMonth();
+                let dd = date.getDate();
+                let h = date.getHours();
+                let m = date.getMinutes();
+                let s = date.getSeconds();
+                mm = mm > 9 ? mm : '0' + mm
+                dd = dd > 9 ? dd : '0' + dd
+                h = h > 9 ? h : '0' + h
+                m = m > 9 ? m : '0' + m
+                s = s > 9 ? s : '0' + s;
+                let time = yy + "年" + mm + "月" + dd + "日" + " " + h + ":" + m + ":" + s;
+                let brandList = [];
+                this.brand.forEach((item, index) => {
+                    let obj = {};
+                    obj.Id = index + 1;
+                    obj.Name = item;
+                    obj.Ctime = time;
+                    brandList.push(obj)
+
+                });
+                let newBrand = brandList.filter(item => {
+                    return item.Name.includes(this.search);
+                });
+                return newBrand;
+
+            },
+        }
+
+    })
+</script>
+
+</html>

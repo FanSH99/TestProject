@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>back3</title>
+    <base target="_blank">
+
+    <!--
+         
+         DEBUG: 
+         .这里需要优化，具体见zzz文件夹中的背景附加案例。
+    -->
+    <Style>
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        .nav {
+            width: 1098px;
+            height: 72px;
+            margin: 20px auto;
+            border: 1px #333 solid;
+            text-align: center;
+            color: #fcfcfc;
+            background: url(img/dh01.gif) no-repeat 36px center;
+        }
+
+
+
+        ul {
+            /* border: 1px solid green; */
+            height: 70px;
+            background: url(img/导航_21.png) no-repeat right 36px center;
+
+        }
+
+        .nav ul li {
+            float: left;
+            display: block;
+            color: #666;
+            height: 32px;
+            padding: 0px 10px 0px 20px;
+            margin: 20px 0 20px 0;
+            /*  border: 1px yellow solid; */
+            font-size: 12px;
+            font-weight: bold;
+            background: url(img/dh02.gif) no-repeat left center;
+        }
+
+        .nav ul li a {
+            color: #666;
+            float: left;
+            display: block;
+            /* border: 1px solid lightcoral; */
+        }
+
+        .nav ul li a:hover {
+            font-weight: bolder;
+            text-decoration: underline;
+            color: red;
+            background: url(img/dh021.gif) no-repeat left center;
+        }
+
+        .top .nav ul li a:hover {
+            color: #aaeaff;
+        }
+
+        .nav ul li:nth-child(1) {
+
+            margin-left: 220px;
+            background: none;
+
+        }
+
+        .nav ul li:nth-child(7) {
+
+            margin-right: 220px;
+
+        }
+
+
+
+        /* .nav ul li:nth-child(1) {
+
+            margin-left: 220px;
+            background: url(img/导航_03.png) no-repeat center 16px;
+
+        }
+
+        .nav ul li:nth-child(2) {
+            background: url(img/导航_05.png) no-repeat center 16px;
+
+        }
+
+        .nav ul li:nth-child(3) {
+
+
+            background: url(img/导航_07.png) no-repeat center 16px;
+
+        }
+
+        .nav ul li:nth-child(4) {
+
+            background: url(img/导航_09.png) no-repeat center 14px;
+
+        }
+
+        .nav ul li:nth-child(5) {
+            background: url(img/导航_11.png) no-repeat center 16px;
+
+        }
+
+
+        .nav ul li:nth-child(6) {
+            background: url(img/导航_13.png) no-repeat center 16px;
+
+        }
+
+        .nav ul li:nth-child(7) {
+            margin-right: 220px;
+            background: url(img/导航_15.png) no-repeat center 16px;
+
+        } */
+
+
+
+
+        /*  .nav ul li:nth-child(2) {
+            background: url(img/导航_15.png) no-repeat;
+        } */
+
+        /*  .nav ul li span {
+            color: #d5c4c4;
+            font-weight: normal;
+        } */
+
+
+
+        .img {
+            background: no-repeat;
+            padding-top: 0;
+
+        }
+
+        .link {
+            margin: 20px auto;
+            width: 1098px;
+            padding-left: 40px;
+        }
+
+        .link a {
+            color: darkcyan;
+        }
+
+        .link a:hover {
+
+            font-weight: bold;
+            color: #eb1d4e;
+            text-decoration: underline;
+        }
+    </Style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="#">网站首页</a><br>
+                    <img class="span2" src="img/导航_03.png"></img>
+                </li>
+                <li><a href="#">特色内景</a><br>
+                    <img class="span2" src="img/导航_05.png"></img>
+                </li>
+                <li><a href="#">特色外景</a><br>
+                    <img class="span2" src="img/导航_07.png"></img>
+                </li>
+                <li><a href="#">客片欣赏</a><br>
+                    <img class="span2" src="img/导航_09.png"></img>
+                </li>
+                <li><a href="#">优惠活动</a><br>
+                    <img class="span2" src="img/导航_11.png"></img>
+                </li>
+                <li><a href="#">关于苏菲雅</a><br>
+                    <img class="span2" src="img/导航_13.png"></img>
+                </li>
+                <li><a href="#">联系我们</a><br>
+                    <img class="span2" src="img/导航_15.png" align="center"></img>
+                </li>
+            </ul>
+        </div>
+        <div class="link">
+
+            <a href="back1.html">点此跳转到back1</a><br>
+            <a href="back2.html">点此跳转到back2</a><br>
+            <a href="nav1.html">点此跳转到nav1</a><br>
+            <a href="nav2.html">点此跳转到nav2</a><br>
+            <a href="nav3.html">点此跳转到nav3</a>
+        </div>
+    </div>
+</body>
+
+</html>

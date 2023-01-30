@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度日志</title>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+
+        .baidu {
+            margin: 100px auto;
+            display: flex;
+            width: 800px;
+        }
+
+        .search {
+            width: 590px;
+            height: 40px;
+            border: 2px solid #c4c7ce;
+            border-radius: 10px 0 0 10px;
+            /* border-right: 0; */
+            overflow: visible;
+            font: 16px/18px arial;
+            background: transparent;
+            outline: 0;
+            float: left;
+
+        }
+
+        .button {
+            float: left;
+            width: 100px;
+            height: 40px;
+            /* background: #4e6ef2; */
+            border: 2px solid transparent;
+            background: #3385ff;
+            outline: medium;
+            letter-spacing: 1px;
+            color: #fff;
+            border-radius: 0 10px 10px 0;
+        }
+
+
+        .search::-webkit-input-placeholder {
+            padding: 10px;
+            color: #666;
+        }
+
+        .search:hover {
+            border-color: #afb7cc;
+        }
+
+        .search:focus {
+            border-color: #3385ff;
+        }
+
+
+        .button:hover {
+            background: #1a70f1;
+        }
+
+        .navbar {
+            background: #2b3341;
+        }
+
+        .navbar a {
+            color: #fff;
+        }
+
+        .navbar a:hover {
+            background: transparent;
+            color: crimson;
+        }
+
+        .navbar ul li {
+            padding: 5px 15px;
+            position: relative;
+        }
+
+        .navbar ul li a:hover {
+            display: block;
+            background: transparent !important;
+            font-weight: bold;
+        }
+
+        .line {
+            width: 30px;
+            height: 2px;
+            background: crimson;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-fixed-top navbar-center">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <a class="navbar-brand" href="#">导航栏</a>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-center">
+                    <li class="nav-item nav-item-1">
+                        <a href="百度日志.html" style="color: crimson;" target="_self"> 百度日志
+                            <div class="line hidden-xs"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="知乎日志.html"> 知乎日志 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="交换数据.html">交换数据 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="收集打印用户信息.html"> 打印信息 </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="转换数据类型.html"> 转换数据类型 </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="baidu container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <form action="知乎日志.html" method="post" onclick="post()">
+                    <label for="search">
+                        <input type="text" class="search" id="search" placeholder="悬浮打印信息（F12查看）">
+                        <span>
+                            <input type="submit" class="button" id="button" placeholder="百度一下" value="百度一下">
+                        </span>
+
+                    </label>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- %c添加到字符串前面可以改变文字的颜色。 -->
+    <script>
+
+        document.write("每一个星球都有一个驱动核心，<br>" + "每一种思想都有影响力的种子。<br>" +
+            "感受世界的温度，<br>" + "年轻的你也能成为改变世界的动力，<br>" +
+            "百度珍惜你所有的潜力。<br>" + "你的潜力，是改变世界的动力！<br>" + "<br>");
+        document.write("<font style='color:red;'>百度2022校园招聘简历投递：</font>http://talent.baidu.com/external/baidu/campus.htmln ");
+        function post() {
+
+            console.log("每一个星球都有一个驱动核心，\n" + "每一种思想都有影响力的种子。\n" +
+                "感受世界的温度，\n" + "年轻的你也能成为改变世界的动力，\n" +
+                "百度珍惜你所有的潜力。\n" + "你的潜力，是改变世界的动力！\n" + "\n");
+            console.log("%c百度2022校园招聘简历投递：https://talent.baidu.com/external/baidu/campus.html\n\n", "color:red");
+            alert("每一个星球都有一个驱动核心，\n" + "每一种思想都有影响力的种子。\n" +
+                "感受世界的温度，\n" + "年轻的你也能成为改变世界的动力，\n" +
+                "百度珍惜你所有的潜力。\n" + "你的潜力，是改变世界的动力！\n" + "\n");
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
