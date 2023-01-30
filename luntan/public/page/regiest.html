@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+<body>
+       <!-- 页面头部内容 -->
+   <header>
+    <div class="header_main">
+        <div class="header_left">
+            北游论坛
+        </div>
+         <div class="header_right">
+                <!-- <div>
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div> -->
+                <div class="login">
+                    <span class="glyphicon glyphicon-user"></span> 登录
+                </div>
+         </div>
+    </div>
+</header>
+<div class="biaodan">
+    <div class="form-group">
+        <label for="name">账号</label>
+        <input type="text" class="form-control" placeholder="请输入用户名" id="username">
+    </div>
+    <div class="form-group">
+        <label for="name">密码</label>
+        <input type="password" class="form-control" placeholder="请输入密码" id="password">
+    </div>
+    <div class="form-group">
+        <label for="name">确认密码</label>
+        <input type="password" class="form-control" placeholder="请再次输入密码" id="agin">
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-success btn-block" id="regiest">注册</button>
+    </div>
+</div>
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(".login").click(()=>{
+        window.location.href =  './login.html'
+    })
+    $(".header_left").click(()=>{
+        window.location.href =  '/'
+    })
+    $("#regiest").click(async ()=>{
+        // 获取输入框内容
+        let username = $("#username").val();
+        let password = $("#password").val();
+        let agin = $("#agin").val();
+        // 判断是否都有值
+        if(!username || !password ||!agin){
+            alert("请您先补充完整信息")
+            return
+        }
+        if(password !== agin){
+            alert("两次密码输入的不一致")
+            return
+        }
+        // 发送请求 用户注册
+        let res = await request("/user/regiest","post",{username,password});
+        console.log(res)
+        if(res.code == 0){
+            window.location.href = './login.html'
+        }else{
+            alert(res.msg)
+        }
+    })
+</script>
+</html>

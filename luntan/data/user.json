@@ -1,0 +1,17 @@
+[
+    {
+        "username": "海绵宝宝",
+        "password": "123456",
+        "img_url": "./img/user/海绵宝宝.png"
+    },
+    {
+        "username": "admin",
+        "password": "admin",
+        "img_url": "./img/user/admin.png"
+    },
+    {
+        "username": "派大星",
+        "password": "123456",
+        "img_url": "./img/user/派大星.png"
+    }
+]

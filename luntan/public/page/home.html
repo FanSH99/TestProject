@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+    <!-- 页面头部内容 -->
+    <header>
+        <div class="header_main">
+            <div class="header_left">
+                北游论坛
+            </div>
+            <div class="header_right">
+                <div class="toMsg">
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div>
+                <div class="login">
+                    <span class="glyphicon glyphicon-user"></span> 登录
+                </div>
+                <div class="user">
+                    <span class="glyphicon glyphicon-user"></span> <span class="username"></span>
+                    <div class="mtbtn">
+                        <div class="toPhoto">上传头像</div>
+                        <div class="outlogin">退出</div>
+                    </div>
+                </div>
+                <div class="myphoto">
+                    <img src="../img/default.png" alt="" class="photo">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main homeMain">
+        <div class="left">
+            <div class="img"><img src="" alt=""></div>
+            <p class="name"></p>
+            <p class="msg"></p>
+            <p><button class="searchdelMsg">查看删除记录</button></p>
+        </div>
+        <div class="right">
+            <p class="delTitle" style="display: none;">删除信息如下:<span class="msg"></span></p>
+            <div class="list"></div>
+
+        </div>
+    </div>
+
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/time.js"></script>
+<script src="../js/template.js"></script>
+
+<script id="setHomeMsg" type="text/html">
+
+<div class="addMsg" data-name="{{connect.username}}">
+    <div class="title">
+        <p> <img src=".{{connect.img_url}}" alt="">
+            <span class="uname">{{connect.username}}</span>
+            <span class="time">{{connect.time}}</span>
+        </p>
+    </div>
+    <div class="talk">
+        <p>{{connect.talk}}</p>
+        {{if connect.comment.length>0}}
+        <div class="comments">
+            <p>评论列表</p>
+        {{each connect.comment item index}}
+            <div class="commain">
+                 <div class="left">
+                     <img src=".{{item.commentImgUrl}}" alt="">
+                 </div>
+                 <div class="right">
+                     <p class="cname">{{item.commentName }}</p>
+                    <p class="cmsg">{{item.commentTalk }}</p>
+                    <p class="ctime">{{item.commentTime }}</p>
+                 </div>
+             </div>
+        {{/each}}
+        </div>
+        {{/if}}
+        {{if uname==connect.username}}
+        {{if !del}}
+        <p ><div class="delMsg" onclick="delCom(`{{connect.dataIndex}}`)"><span class="glyphicon glyphicon-trash"></span>删除</div></p>
+        {{/if}}
+        {{/if}}
+    </div>
+ </div>
+
+</script>
+
+
+<script>
+    // 判断用户是否登录
+    // 退出登录
+    $(".header_left").click(() => {
+        window.location.href = '/'
+    })
+    $(".outlogin").click(() => {
+        request("/outLogin", "get").then(res => {
+            if (res.code == 0) {
+                localStorage.clear();
+                alert("退出成功");
+                isLogin();
+            }
+        })
+    })
+    $(".toPhoto").click(() => {
+        window.location.href = './upload.html'
+    })
+
+    $(".toMsg").click(() => {
+        window.location.href = "./adMsg.html"
+    })
+
+
+    let userInfo = localStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    if (!userInfo) {
+        alert("请你先去登录");
+    } else {
+        let username = decodeURI(location.search.split("=")[1]);
+        if (userInfo.username == username) {
+            $(".searchdelMsg").show();
+        }
+    }
+
+    function getHomeMsg() {
+        let username = decodeURI(location.search.split("=")[1]);
+        $(".homeMain .left .name").text(username);
+        request("/homeMsg", "post", { username }).then(res => {
+            if (res.homeData.length == 0) {
+                $(".right").html("<p style='color:#666,font-size:18px'>暂无论坛记录</p>");
+                return;
+            }
+            $(".homeMain .left img").attr("src", '.' + res.img_url);
+            $(".homeMain .left .msg").text(res.msg);
+            let str = "";
+            let str1 = ""
+            for (let i in res.homeData) {
+                let connect = res.homeData[i];
+                let html;
+                if (userInfo) {
+                    let uname = userInfo.username;
+                    html = template("setHomeMsg", { uname, connect });
+                }
+                else {
+                    html = template("setHomeMsg", { connect });
+                }
+                str += html;
+            }
+            $(".homeMain .right .list").html(str);
+        })
+    }
+    getHomeMsg();
+    function delCom(index) {
+        console.log(index);
+        let res = request("/delMsg", 'get', { index });
+        console.log(res);
+        alert("删除成功");
+        getHomeMsg();
+    }
+
+    $(".searchdelMsg").click(() => {
+
+        let username = decodeURI(location.search.split("=")[1]);
+        if (userInfo.username == username) {
+            let res = request("/search/delMsg", 'post', { username }).then(res => {
+                $(".delTitle").show();
+                $(".right .msg").text(res.msg);
+                console.log(res);
+                if (res.delData.length > 0) {
+                    let str = "";
+                    let str1 = ""
+                    let del = "删除";
+                    for (let i in res.delData) {
+                        let connect = res.delData[i];
+                        let html;
+                        if (userInfo) {
+                            let uname = userInfo.username;
+                            html = template("setHomeMsg", { uname, del, connect });
+                        }
+                        else {
+                            html = template("setHomeMsg", { connect });
+                        }
+                        str += html;
+                    }
+                    $(".homeMain .right .list").html(str);
+                } else {
+                    $(".right").html("<p style='color:#666,font-size:18px'>暂无删除记录</p>")
+                }
+
+            });
+
+        }
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,93 @@
+@media screen and (max-width: 750px) {
+    .header_main {
+        width: 90%;
+    }
+
+    .main {
+        width: 90%;
+    }
+
+    .biaodan {
+        width: 90%;
+    }
+
+    header .search {
+        display: none;
+    }
+
+    .header_left {
+        font-size: 18px;
+    }
+
+    .comments .left {
+        width: 10%;
+    }
+
+    .comments .right {
+        width: 88%;
+    }
+
+    /* .header_right .toMsg {
+        overflow: hidden;
+    } */
+
+    /*  .header_right .user {
+        overflow: hidden;
+    } */
+
+    .header_right > div {
+        margin-left: 10px;
+    }
+
+    .comments p {
+        margin-top: 0;
+    }
+
+    .homeMain {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .homeMain .right {
+        width: 100%;
+    }
+
+    .homeMain > .left {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    .homeMain > .left img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .homeMain > .left .name {
+        font-size: 18px;
+    }
+
+    .mysearch {
+        margin: 20px auto;
+        display: block;
+    }
+
+    .mysearch .search {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+}
+
+@media screen and (min-width: 750px) and (max-width:980px) {
+    .comments .left {
+        width: 8%;
+    }
+
+    .comments .right {
+        width: 92%;
+    }
+}

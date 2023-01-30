@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+    <!-- 页面头部内容 -->
+    <header>
+        <div class="header_main">
+            <div class="header_left">
+                北游论坛
+            </div>
+            <div class="search">
+                <select name="" id="select">
+                    <option value="name" name="sel">按照用户名</option>
+                    <option value="msg" name="sel" selected>按照话题</option>
+                    <option value="comment" name="sel">按照评论</option>
+                    <option value="all" name="sel">按照所有</option>
+                </select>
+                <input type="text" name="" id="search" placeholder="请输入搜索内容">
+                <span class="glyphicon glyphicon-search searchBtn"></span>
+            </div>
+            <div class="header_right">
+                <div class="toMsg">
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div>
+                <div class="login">
+                    <span class="glyphicon glyphicon-user"></span> 登录
+                </div>
+                <div class="user">
+                    <span class="glyphicon glyphicon-user  toHome"></span> <span class="username"></span>
+                    <div class="mtbtn">
+                        <div onclick="upload()">上传头像</div>
+                        <div class="toHome">我的论坛</div>
+                        <div class="outlogin">退出</div>
+                    </div>
+                </div>
+                <div class="myphoto">
+                    <img src="./img/default.png" alt="" class="photo toHome">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="mysearch">
+        <div class="search">
+            <select name="" id="select">
+                <option value="name" name="sel">按照用户名</option>
+                <option value="msg" name="sel" selected>按照话题</option>
+                <option value="comment" name="sel">按照评论</option>
+                <option value="all" name="sel">按照所有</option>
+            </select>
+            <input type="text" name="" id="searchtext" placeholder="请输入搜索内容">
+            <span class="glyphicon glyphicon-search searchBtn"></span>
+        </div>
+    </div>
+    <div class="main"></div>
+    <div class="bg">
+        <div class="adComment">
+            <p class="del">&times;</p>
+            <div class="form-group">
+                <label for="name">评论</label>
+                <textarea type="text" name="" class="form-control" id="comment" cols="30" rows="10"
+                    placeholder="请输入话题"></textarea>
+            </div>
+            <div class="form-group comlink">
+                <button type="button" class="delComBtn">取消</button> <button type="button" class="adComBtn">评论</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="./js/jquery.js"></script>
+<script src="./js/ajax.js"></script>
+<script src="./js/time.js"></script>
+<script src="./js/template.js"></script>
+<script id="setMsg" type="text/html">
+
+
+<div class="addMsg" data-name="{{connect.username}}" data-index="{{connect.date-index}}">
+    <div class="title">
+        <p> <img src="{{connect.img_url}}" alt="" data-name="{{connect.username}}" onclick="toHome(`{{connect.username}}`)">
+            <span class="uname">{{connect.username}}</span>
+            <span class="time">{{connect.time}}</span>
+        </p>
+    </div>
+    <div class="talk">
+        <p>{{connect.talk}}<button class="comBtn" onclick="adCom(`{{connect.dataIndex}}`)">评论</button></p>
+        {{if connect.comment.length>0}}
+        <div class="comments">
+            <p>评论列表:</p>
+        {{each connect.comment item index}}
+            <div class="commain">
+                 <div class="left">
+                     <img src="{{item.commentImgUrl}}" alt="" onclick="toHome(`{{item.commentName }}`)">
+                 </div>
+                 <div class="right">
+                     <p class="cname">{{item.commentName }}</p>
+                    <p class="cmsg">{{item.commentTalk }}</p>
+                    <p class="ctime">{{item.commentTime }}</p>
+                 </div>
+             </div>
+        {{/each}}
+        </div>
+        {{/if}}
+        {{if uname==connect.username}}
+        <p class="delMsg" onclick="delCom(`{{connect.dataIndex}}`)"><span class="glyphicon glyphicon-trash"></span>删除</p>
+        {{/if}}
+    </div>
+ </div>
+</script>
+
+
+<script>
+    $(".login").click(() => {
+        window.location.href = './page/login.html'
+    })
+    isLogin();
+    // 判断用户是否登录
+    function isLogin() {
+        request("/islogin", "get").then(res => {
+            console.log(res)
+            if (res.code == 0) {
+                $(".login").hide()
+                $(".username").text(res.data.username)
+                $(".username").attr("data-index", res.data.username);
+                $(".user").show();
+                $(".myphoto").show();
+                $(".photo").attr("src", res.data.img_url).attr("data-index", res.data.username)
+                // 将当前用户信息存储到本地
+                localStorage.setItem("userInfo", JSON.stringify(res.data));
+                getMsg();
+            } else {
+                localStorage.clear();
+                $(".login").show()
+                $(".user").hide();
+                $(".myphoto").hide();
+            }
+        })
+    }
+    // 退出登录
+    $(".outlogin").click(() => {
+        request("/outLogin", "get").then(res => {
+            if (res.code == 0) {
+                let flag = confirm("确定退出吗？");
+                if (flag == true) {
+                    localStorage.clear();
+                    alert("退出成功");
+                    isLogin();
+                }
+            }
+        })
+    })
+    function upload() {
+        window.location.href = './page/upload.html'
+    }
+
+    $(".toMsg").click(() => {
+        window.location.href = "./page/adMsg.html"
+    })
+
+    function getMsg() {
+        request("/isMsg", "post").then(res => {
+            let res0 = request("/islogin", "get");
+            let userInfo = localStorage.getItem("userInfo");
+            userInfo = JSON.parse(userInfo);
+            if (res.data.length == 0) {
+                $(".main").html("<p class='noMsg'>暂无论坛消息</p>");
+                return;
+            }
+            let str = "";
+            let str1 = ""
+            for (let i in res.data) {
+                let connect = res.data[i];
+                let html;
+                if (userInfo) {
+                    let uname = userInfo.username;
+                    html = template("setMsg", { uname, connect });
+                }
+                else {
+                    html = template("setMsg", { connect });
+                }
+                str += html;
+            }
+            $(".main").html(str);
+
+        })
+    }
+    getMsg()
+
+    $(".username").on("mouseover", () => {
+        $(".mtbtn").show();
+    })
+
+    $(".username").on("click", () => {
+        $(".mtbtn").show();
+        setTimeout(() => {
+            $(".mtbtn").hide();
+        }, 3000)
+
+    })
+
+
+    function delCom(index) {
+        let flag = confirm("确认要删除吗？");
+        if (flag == true) {
+            let res = request("/delMsg", 'get', { index });
+            alert("删除成功");
+            getMsg();
+        }
+    }
+
+    function adCom(index) {
+        $(".bg").show();
+        $(".bg").attr("index", index);
+        let userInfo = localStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+        if (!userInfo) {
+            alert("请你先登录");
+            window.location.href = "/page/login.html"
+        }
+        $(".del").click(() => {
+            $(".bg").hide();
+        })
+        $(".delComBtn").click(() => {
+            $("#comment").val("");
+        })
+    }
+
+    $(".adComBtn").click(async () => {
+        let userInfo = localStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+        if (!userInfo) {
+            alert("请你先登录");
+            window.location.href = "/page/login.html"
+        }
+        let commentName = userInfo.username;
+        let commentTalk = $("#comment").val();
+        let commentImgUrl = userInfo.img_url;
+        let commentTime = getTime();
+        let index = $(".bg").attr("index");
+        console.log(index);
+        if (!comment || comment == "") {
+            alert("请您先补充完整信息")
+            return
+        }
+        let res = await request("/adComment", 'post', { index, commentName, commentTalk, commentImgUrl, commentTime });
+        console.log(res);
+        if (res.code == 0) {
+            alert(res.msg);
+            window.location.href = "/"
+            return;
+        }
+        alert(res.msg);
+
+    })
+
+
+    $(".toHome").click(() => {
+        let userInfo = localStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+        if (!userInfo) {
+            alert("请你先登录");
+            window.location.href = "/page/login.html"
+        }
+        else {
+            let username = userInfo.username;
+            // console.log(username);
+            location.href = './page/home.html?username=' + username;
+        }
+
+    })
+    function toHome(username) {
+        let userInfo = localStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+        if (!userInfo) {
+            alert("请你先登录");
+            window.location.href = "/page/login.html"
+        }
+        else {
+            window.location.href = decodeURI(`./page/home.html?username=${username}`);
+        }
+    }
+
+    $(".searchBtn").click(async () => {
+        let userInfo = localStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+        let type = $('#select').val();
+
+        let value;
+        if (window.innerWidth < 750) {
+            value = $("#searchtext").val();
+        }
+        else {
+            value = $("#search").val();
+        }
+        if (value == "") {
+            getMsg();
+            return;
+        }
+        console.log(type, value);
+        let res = await request("/searchMsg", 'get', { type, value });
+        console.log(res);
+        let str = "";
+        let str1 = ""
+        for (let i in res.searchData) {
+            let connect = res.searchData[i];
+            let html;
+            if (userInfo) {
+                let uname = userInfo.username;
+                // console.log(uname);
+                html = template("setMsg", { uname, connect });
+            }
+            else {
+                html = template("setMsg", { connect });
+            }
+
+            str += html;
+        }
+        $(".main").html(str);
+    })
+
+
+    /* 
+    想要让别人也能访问自己网站，需要搭建到外网服务器上，购买服务器，阿里云， 腾讯云，华为云，百度云  30块百度云，阿里云比较贵，一年一两百。 产品--云服务器-立即购买--1vCPU，企业用的linus比较多，稳定安全。买完之后云磁盘，点击实例，
+    FinalShell ---输入主机号远程连接即可。
+ */
+</script>
+
+</html>
