@@ -1,0 +1,445 @@
+.banner {
+    width: 100%;
+    min-width: 1200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    min-width: 1200px;
+    display: block;
+}
+
+.banner .circle {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(0, -50%);
+}
+
+.banner .circle a {
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.banner .circle a:hover {
+    background: #ccc;
+}
+
+
+.brief {
+    background: url(../img/brief_bg.jpg);
+    min-width: 1200px;
+    min-height: 500px;
+    background-size: 100%;
+    /* margin-bottom: 80px; */
+}
+
+.brief .brief_main {
+    width: 100%;
+    min-height: 500px;
+    position: relative;
+}
+
+
+
+.brief .brief_left {
+    float: left;
+    margin-top: 60px;
+    margin-left: 120px;
+    width: 20%;
+    line-height: 2em;
+    color: #fff;
+
+}
+
+.brief .brief_left h1 {
+    margin: 30px 0;
+}
+
+
+.brief .brief_left p {
+    line-height: 2em;
+    /* 改变盒子属性 */
+    display: -webkit-box;
+    /* 盒子中的内容垂直排布 */
+    -webkit-box-orient: vertical;
+    /* 文子排列6行 */
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    /* 超出的文本以省略号显示 */
+    text-overflow: ellipsis;
+}
+
+.brief .brief_left .button_all {
+    border-color: #fff;
+    color: #fff;
+}
+
+.brief .brief_left .button_all:hover {
+    border-color: transparent;
+}
+
+
+
+.brief .brief_right {
+    float: right;
+    text-align: right;
+    color: #d7000f;
+    line-height: 1.5;
+}
+
+.brief .brief_right .brief_r1 {
+    margin: 50px 120px 20px 0;
+}
+
+.brief .brief_right .brief_r1 h6,
+.brief .brief_r2 h5 {
+    font-size: 18px;
+}
+
+.brief .brief_right .brief_r1 h4 {
+    font-size: 32px;
+
+}
+
+.brief .brief_right .brief_r2 {
+    margin: 50px 160px 20px 0;
+}
+
+.brief .brief_right .brief_r2 h1,
+.brief .brief_right .brief_r3 h1 {
+    font-size: 40px;
+}
+
+.brief .brief_right .brief_r3 {
+    margin: 50px 120px 20px 0;
+}
+
+.brief .brief_right .brief_r3 h2 {
+    font-size: 34px;
+}
+
+.business {
+    width: 1200px;
+    margin: 100px auto;
+}
+
+.business .business_top ul li {
+    float: left;
+    width: 594px;
+    height: 338px;
+    margin: 6px 0;
+    position: relative;
+    color: #fff;
+
+}
+
+.business .business_top ul li img {
+    width: 100%;
+    transition: all 0.5s;
+    transform-origin: left center;
+}
+
+.business .business_top ul li:hover {
+    left: 0;
+    /* outline: 2px solid red; */
+
+}
+
+.business .business_top ul :nth-child(2n+1) {
+    margin-right: 12px;
+}
+
+.business .business_top ul li h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    z-index: 999;
+    transition: all linear 0.5s;
+}
+
+.business .business_top ul li:hover h2 {
+    bottom: 40px;
+    color: #fff;
+
+}
+
+
+.business_bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0);
+    /* transition: all 0.5s; */
+}
+
+.business .business_top ul li:hover .business_bg {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+.business:hover {
+    animation: all;
+    animation-play-state: running;
+}
+
+.business:link {
+    animation-play-state: paused;
+}
+
+
+.business .business_top ul :nth-child(1) {
+    animation: slide_l linear 1s 1;
+}
+
+.business .business_top ul :nth-child(2) {
+    text-align: right;
+    line-height: 2em;
+    color: #666;
+    animation: slide_t linear 1s 1;
+}
+
+.business .business_top ul :nth-child(3) {
+    animation: slide_l linear 1s 1;
+
+}
+
+.business .business_top ul :nth-child(4) {
+    animation: slide_r linear 1s 1;
+
+}
+
+
+
+
+.business .business_top ul :nth-child(2) h1 {
+    color: #333;
+    font-size: 34px;
+    margin-bottom: 50px;
+}
+
+.business .business_top ul :nth-child(2) p {
+    padding-left: 16%;
+    text-align: left;
+}
+
+.business .business_top ul :nth-child(2) .button {
+    float: right;
+    margin-top: 20px;
+}
+
+.business .business_top ul :nth-child(2) .button a:hover {
+    color: #fff;
+}
+
+.business .business_bottom {
+
+    width: 1200px;
+    margin: 6px auto;
+}
+
+
+
+.business .business_bottom ul li {
+
+    display: block;
+    float: left;
+    width: 392px;
+    height: 223px;
+    margin-right: 12px;
+    position: relative;
+    color: #fff;
+    animation: slide_t linear 1s 1;
+}
+
+.business .business_bottom ul :nth-child(3) {
+    margin: 0;
+}
+
+
+
+.business .business_bottom ul li img {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+
+.business .business_bottom ul li:hover .business_bg {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.business .business_bottom ul li h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    /* 让h2显示在最上面，这样颜色就不会变化 */
+    z-index: 999;
+    transition: all 0.5s;
+}
+
+.business .business_bottom ul li:hover h2 {
+
+    bottom: 40px;
+}
+
+.business .business_top ul li:hover h2 {
+
+    bottom: 40px;
+}
+
+
+.invest_bg {
+    min-width: 1200px;
+    background: url(../img/img06.jpg);
+    padding: 60px 0;
+    /* margin: 100px auto; */
+}
+
+
+.new {
+
+    margin: 100px auto;
+
+}
+
+
+.new .new_title {
+    margin-bottom: 60px;
+    height: 50px;
+    /* border: 1px solid #333; */
+}
+
+
+.new .new_title h1 {
+    float: left;
+}
+
+
+.new .new_title .button {
+    float: right;
+    margin: 0;
+}
+
+.new .new .new_main {
+    /* width: 1200px; */
+    /* width: 90%;
+    margin: 5% 0; */
+
+    margin: 5% 0;
+    display: block;
+}
+
+
+.new .new_main .new_left {
+    width: 562px;
+    height: 500px;
+    line-height: 2;
+    background: #ccc;
+    border: 1px solid #333;
+    position: relative;
+    float: left;
+    background: url(../img/img07.png) left bottom no-repeat #eee;
+}
+
+.new .new_main .new_left .new_lm {
+    position: absolute;
+    /* left: 70px;
+    top: 50px; */
+    width: 452px;
+    height: 410px;
+    margin: 40px 60px;
+    /*  /*  background: red; */
+    /*  z-index: 999; */
+    overflow: hidden;
+}
+
+
+.new .new_main .new_left p {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 2em;
+    /* 改变盒子属性 */
+    display: -webkit-box;
+    /* 盒子中的内容垂直排布 */
+    -webkit-box-orient: vertical;
+    /* 文子排列2行 */
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    /* 超出的文本以省略号显示 */
+    text-overflow: ellipsis;
+}
+
+.new .new_main .new_left .new_lm h2 {
+    font-weight: normal;
+    margin: 10px 0 20px 0;
+}
+
+.new .new_main .new_left .new_lm img {
+    width: 100%;
+}
+
+.new .new_main .new_right {
+    /* background: red; */
+    width: 562px;
+    height: 500px;
+    float: right;
+    line-height: 2em;
+
+}
+
+.new .new_main .new_right dl {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 70px;
+    border-top: 1px solid #666;
+}
+
+.new .new_main .new_right dl dt {
+    margin: 20px;
+    padding-left: 20px;
+    background: url(../img/list_item_type.jpg) left center no-repeat;
+}
+
+.new .new_main .new_right dl dt h4 a {
+    color: #333;
+}
+
+.new .new_main .new_right dl dt:hover {
+    background-image: url(../img/list_item_typeH.jpg);
+}
+
+.new .new_main .new_right dl dt:hover h4 a {
+    color: #d7000f
+}
+
+
+.new .new_main .new_right dl dd {
+    margin: 20px 20px 0 20px;
+    /* 改变盒子属性 */
+    display: -webkit-box;
+    /* 盒子中的内容垂直排布 */
+    -webkit-box-orient: vertical;
+    /* 文子排列2行 */
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    /* 超出的文本以省略号显示 */
+    text-overflow: ellipsis;
+
+}

@@ -1,0 +1,146 @@
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+        padding: 0 -15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    body {
+        padding-top: 82px;
+    }
+
+    .navbar-brand {
+        margin-left: 0;
+        margin-right: 70px;
+    }
+
+    .header .navbar {
+        border-radius: 0;
+        padding: 15px 0;
+    }
+
+    .navbar .collapse .navbar-nav > li > a {
+        padding: 16px 22px 5px !important;
+
+    }
+
+    .numb {
+        font-size: 50px;
+    }
+
+    .ft100 small {
+        margin-top: 10px;
+    }
+
+    .encourage-top p {
+        margin: 25px 15px 10px 15px;
+    }
+
+    .encourage-top {
+        height: 160px;
+    }
+
+    .media-item p span {
+        float: left;
+    }
+
+    .footer .footer-contact h2 {
+        font-size: 26px !important;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        .footer .footer-contact h2 {
+            padding-left: 0;
+            font-size: 22px !important;
+        }
+    }
+
+    .footer-wechat {
+
+        width: 94px !important;
+        height: 94px !important;
+    }
+
+    .footer-wechat img {
+        width: 94px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .nav-top {
+        padding: 0 !important;
+    }
+
+
+
+    .navbar-brand {
+        margin-left: 15px;
+    }
+
+    .advan_items {
+        margin: 2px;
+    }
+
+    .table-item:hover {
+        transform: scale(1);
+    }
+
+    .encourage-top p {
+
+        margin: 25px 15px 10px 15px;
+    }
+
+    .encourage-top {
+        height: 160px;
+    }
+
+
+    .footer-item {
+        margin: 40px 0;
+        border-right: transparent;
+    }
+
+    .footer-item p {
+        text-align: left;
+    }
+
+    .encourage-bottom img {
+        width: 60px;
+        margin-bottom: 0;
+    }
+
+    .clan-slider {
+        position: fixed;
+        bottom: 10%;
+        right: 1%;
+        z-index: 1000;
+    }
+
+    .clan-slider ul li a {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        border-color: transparent !important;
+        border-radius: 50% !important;
+
+    }
+
+    #slider-goTop {
+        background-position: -93px 0;
+    }
+
+    #slider-goTop:hover {
+        background-position: 0 0;
+        /* background-color: #0ba1e4; */
+    }
+}

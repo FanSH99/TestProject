@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/common2.css">
+    <link rel="stylesheet" href="./css/media.css">
+    <script src="./bin/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/getNews3.js"></script>
+</head>
+
+<body>
+    <!-- 2022年8月17日14:14:29
+    响应式布局。 新闻页面，用ajax获取数据渲染到页面上面。
+    2022年8月20日10:37:21  ---修改为随机获取100条不同的数据进行渲染
+    -->
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header-left hnew">
+            <div class="li active">
+                <span class="active"></span>
+            </div>
+            <div class="li">
+                <span></span>
+            </div>
+        </div>
+        <div class="lbg">
+            <div class="line">
+                <div class="shortline"></div>
+            </div>
+        </div>
+        <div class="header-rnav">
+            <div class="search">
+                <img src="./img/search.png" alt="">
+            </div>
+            <div class="homeicon">
+                <img src="./img/home.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- 内容 -->
+    <div class="main">
+        <div class="mainlist active">
+            <div class="bignew">
+                <div class="news recommend">
+                    <div class="col content">
+                        <div class="topnew">
+                            <div class="title">
+                                <h3>推荐：轮播图的几种做法</h3>
+                            </div>
+                            <div class="titleimg">
+                                <img src="./img/13.jpg" alt="">
+                            </div>
+                        </div>
+                        <p><span>樊樊</span><span>2</span><span>3年前</span>
+                        </p>
+                        <div class="newStudy">
+                            <span class="btn">&times;</span>
+                            <div class="txt">356432</div>
+                        </div>
+                    </div>
+                    <div class="col list">
+                        <div class="topnew">
+                            <div class="title">
+                                <h3>推荐：构造函数的三种继承方式</h3>
+                            </div>
+                            <div class="titleimg">
+                                <img src="./img/75.jpg" alt="">
+                                <img src="./img/76.jpg" alt="">
+                                <img src="./img/77.jpg" alt="">
+                            </div>
+                        </div>
+                        <p><span>樊樊</span><span>2</span><span>3年前</span>
+                        </p>
+                        <div class="newStudy">
+                            <span class="btn">&times;</span>
+                            <div class="txt">356432</div>
+                        </div>
+                    </div>
+                    <div class="col content">
+                        <div class="topnew">
+                            <div class="title">
+                                <h3>推荐：class类的声明、调用和继承</h3>
+                            </div>
+                            <div class="titleimg">
+                                <img src="./img/66.jpg" alt="">
+                            </div>
+                        </div>
+                        <p><span>樊樊</span><span>2</span><span>3年前</span>
+                        </p>
+                        <div class="newStudy">
+                            <span class="btn">&times;</span>
+                            <div class="txt">356432</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news htmls">
+                    <div class="col content">
+                        <div class="topnew">
+                            <div class="title">
+                                <h3>html:这是一个用来测试的例子</h3>
+                            </div>
+                            <div class="titleimg">
+                                <img src="./img/18.jpg" alt="">
+                            </div>
+                        </div>
+                        <p><span>樊樊</span><span>2</span><span>3年前</span>
+                        </p>
+                        <div class="newStudy">
+                            <span class="btn">&times;</span>
+                            <div class="txt">356432</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="mainlist hide">
+            问答
+        </div>
+        <div class="mainlist hide">
+            视频
+        </div>
+        <div class="mainlist hide">
+            登录
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="item on">
+            <div class="icon">
+                <img src="./img/footer-icon1_1.png" alt="">
+                <img src="./img/footer-icon1_2.png" alt="" class="show">
+            </div>
+            <span>首页</span>
+        </div>
+        <div class="item">
+            <div class="icon">
+                <img src="./img/footer-icon2_1.png" alt="" class="show">
+                <img src="./img/footer-icon2_2.png" alt="">
+            </div>
+            <span>问答</span>
+        </div>
+        <div class="item">
+            <div class="icon">
+                <img src="./img/footer-icon3_1.png" alt="" class="show">
+                <img src="./img/footer-icon3_2.png" alt="">
+            </div>
+            <span>视频</span>
+        </div>
+        <div class="item">
+            <div class="icon">
+                <img src="./img/footer-icon4.png" alt="">
+            </div>
+            <span>我的</span>
+        </div>
+    </div>
+    <div class="navlinks hide">
+        <div class="bg"></div>
+        <div class="links">
+            <div class="title list">
+                <div class="top">
+                    <a class="btn" href="javascript:;">&times;</a>
+                    <h3>我的频道<small>点击进入频道</small><input type="button" value="编辑" class="button"></h3>
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+            <div class="items list">
+                <div class="top">
+                    <h3>频道推荐</h3>
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

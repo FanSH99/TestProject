@@ -1,0 +1,35 @@
+@media screen and (max-width: 670px) {
+    html {
+        font-size: 42px;
+    }
+
+    .main {
+        padding: 3rem .9rem;
+    }
+
+    /* TODO:下面不起作用,需要修改. */
+    .navlinks .links {
+        padding: 1.3rem 1.2rem;
+    }
+
+    .navlinks h3 {
+        font-size: .3rem;
+    }
+
+    .navlinks button {
+
+        margin-right: .1rem;
+        padding: .1rem .3rem;
+        border-radius: .3rem;
+        color: blueviolet;
+    }
+
+    .navlinks h3 .button {
+        width: 60px;
+        height: 30px;
+    }
+
+    .navlinks .items {
+        margin: .5rem 0;
+    }
+}

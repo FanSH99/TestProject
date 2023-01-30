@@ -1,0 +1,439 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.clear {
+    clear: both;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+
+.top_shadow {
+    width: 100%;
+    height: 100px;
+    padding-top: 30px;
+    box-shadow: 0px 20px 20px #ccc;
+    position: relative;
+    z-index: 999;
+}
+
+.top {
+    margin: auto;
+    width: 1200px;
+    height: 100px;
+    /* box-shadow: 0 10px 10px #ccc; */
+
+    /*  border: 1px solid #333; */
+
+    /*  z-index: 999; */
+    /* 直接加z-index不起作用，需要先相对定位之后在层级上调。 */
+
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.main1200 {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.top .logo {
+    float: left;
+}
+
+.top .top_right {
+    float: right;
+
+}
+
+
+.top .top_right .top_rt ul {
+    display: block;
+    margin: 20px 0;
+}
+
+.top .top_right .top_rt ul li {
+    float: right;
+    position: relative;
+    margin-left: 20px;
+}
+
+.top .top_right .top_rt ul li input {
+    width: 130px;
+    height: 24px;
+    border: 1px solid #666;
+    padding-left: 10px;
+    outline: none;
+}
+
+.top .top_right .top_rt ul li input::-webkit-input-placeholder {
+    font-size: 12px;
+}
+
+.top .top_right .top_rt ul li input::-moz-input-placeholder {
+    font-size: 12px;
+}
+
+.top .top_right .top_rt ul li input::-o-input-placeholder {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.top .top_right ul li button {
+    border: 0;
+    background: none;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    cursor: pointer;
+}
+
+.top .top_right .top_rt ul li a {
+    color: #666;
+    background: url(../img/header_icon01.png) no-repeat left center;
+    padding-left: 24px;
+}
+
+.top .top_right .top_rt ul li a:hover {
+    color: #d7000f;
+    background-image: url(../img/header_icon01H.png);
+
+}
+
+.top .top_right .top_rt ul li:nth-child(3) a {
+    padding-left: 20px;
+    background-image: url(../img/header_icon04.png);
+    border-right: 1px solid #777;
+    padding-right: 20px;
+
+}
+
+.top .top_right .top_rt ul li:nth-child(3) a:hover {
+    background-image: url(../img/header_icon04H.png);
+}
+
+
+
+
+.top .top_right .nav dl {
+    float: right;
+    padding: 0 20px 20px 15px;
+    position: relative;
+    z-index: 999;
+
+}
+
+.top .top_right .nav dl dt a {
+    color: #666;
+}
+
+.top .top_right .nav dl dt a:hover {
+    color: #d7000f;
+    /*  z-index: 999; */
+}
+
+.top .top_right .nav dl dd {
+    float: right;
+    position: relative;
+    padding: 10px;
+    border: 1px solid #666;
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 1);
+}
+
+.top .top_right .nav dl:hover dd {
+    display: block;
+    /* 设置下拉列表优先级最高 */
+    z-index: 999;
+}
+
+
+.top .top_right .nav dl dd a {
+    /* 
+    转换成行内块，这样就可以设置宽高并且可以浮动后排 */
+    display: inline-block;
+    line-height: 32px;
+    color: #666;
+    /* 
+    控制不换行 
+    */
+    white-space: nowrap;
+    /* 
+    放这里的时候，字体不居中，原因是因为行内块不能设置居中，应该方块状元素里。
+    text-align: center; */
+    /* 
+    为了使悬浮时字体不动，先用透明的线占位置，后面在改变线的颜色就行
+    */
+    border-bottom: 1px solid transparent;
+}
+
+.top .top_right .nav dl dd a:hover {
+    color: #d7000f;
+    border-bottom-color: #d7000f;
+}
+
+/* 
+.button {
+    padding: 10px 50px;
+    margin: 40px 20px;
+    border: 1px solid #ccc;
+    background: transparent;
+    border-radius: 10px;
+}
+
+.button a {
+    color: #666;
+}
+
+.button:hover {
+    background: #d7000f;
+    border: 1px solid transparent;
+}
+
+.button:hover a {
+    color: #fff;
+    font-weight: bold;
+} */
+
+.button_all {
+    width: 180px;
+    height: 36px;
+    display: block;
+    border: 1px solid #666;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 36px;
+    color: #666;
+    text-decoration: none;
+    float: left;
+    margin-top: 20px;
+    transition: hover 0.5s;
+}
+
+.button_all:hover {
+    color: #fff;
+    background: #d7000f;
+    border-color: transparent;
+}
+
+.button_w {
+    width: 180px;
+    height: 36px;
+    display: block;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 36px;
+    color: #fff;
+    text-decoration: none;
+    float: left;
+    transition: hover 0.5s;
+}
+
+.button_w:hover {
+    color: #d7000f;
+    background-color: #fff;
+}
+
+.invest_table {
+    width: 360px;
+    height: 350px;
+    background: rgba(215, 0, 15, 0.8);
+    float: right;
+    margin-right: 150px;
+    color: #fff;
+    padding: 50px 40px;
+}
+
+.invest_table h1 {
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.invest_table ul {
+    font-size: 20px;
+    height: 2em;
+    overflow: hidden;
+}
+
+.invest_table ul li {
+    line-height: 2em;
+}
+
+.invest_table .text,
+.intext_all {
+    font-size: 18px;
+    color: #ddd;
+    line-height: 2em;
+}
+
+.invest_table .text span,
+.intext_all span {
+    display: block;
+    float: left;
+    width: 90px;
+}
+
+.invest_table .text em,
+.intext_all em {
+    display: block;
+    float: left;
+    width: 250px;
+    height: 4em;
+    overflow: hidden;
+    font-style: normal;
+
+}
+
+.invest_table .button .but1 a {
+    width: 24px;
+    height: 24px;
+    display: block;
+    float: right;
+    margin: 10px 0;
+    background: url(../img/btn_r.png);
+    transition: color 0.5s;
+}
+
+.invest_table .button .but1 a:nth-child(2) {
+    background-image: url(../img/btn_l.png);
+    margin-right: 10px;
+    transition: color 0.5s;
+}
+
+.invest_table .button .but1 a:hover {
+    background-image: url(../img/btnH_r.png);
+}
+
+.button .but1 a:nth-child(2):hover {
+    background-image: url(../img/btnH_l.png);
+}
+
+.footer {
+    width: 100%;
+    min-width: 1200px;
+    /* height: 500px; */
+    border-top: 1px solid #d7d7d7;
+    background: url(../img/ft_bg.jpg);
+    padding: 100px 0 40px 0;
+
+}
+
+
+.footer ul {
+    width: 90%;
+    height: auto;
+    margin-top: 120px;
+    margin: auto;
+    /* background: #d7000f;*/
+}
+
+.footer ul li {
+    width: 16%;
+    float: left;
+    text-align: left;
+    line-height: 2;
+    color: #333;
+    /* border: 1px solid rebeccapurple; */
+
+}
+
+.footer ul li h4 {
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.footer ul li h4 a {
+    color: #333;
+}
+
+.footer ul li p a {
+    color: #666;
+    border: 1px solid transparent;
+}
+
+/* 
+.footer ul li p a:hover {
+    color: #d7000f;
+    border-bottom-color: #d7000f;
+    ;
+} */
+
+.footer .footer_access {
+    margin-top: 40px;
+    width: 100%;
+    min-width: 1200px;
+    line-height: 2;
+    font-size: 12px;
+    text-align: center;
+
+}
+
+.footer .footer_access hr {
+    margin: 40px 0;
+}
+
+@keyframes slide_l {
+    0% {
+        transform: translatex(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translatex(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_r {
+    0% {
+        transform: translatex(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translatex(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_t {
+    0% {
+        transform: translatey(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translatey(0px);
+        opacity: 1;
+    }
+
+
+}

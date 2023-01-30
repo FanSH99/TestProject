@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/media.css">
+    <script src="./bin/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/data.js"></script>
+</head>
+
+<body>
+    <!-- 2022年8月16日14:14:29
+    响应式布局。 新闻页面，用ajax获取数据渲染到页面上面。
+    -->
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header-left">
+            <div class="li">
+                <span class="active">推荐</span>
+            </div>
+            <div class="li">
+                <span>html</span>
+            </div>
+            <div class="line">
+                <div class="shortline"></div>
+            </div>
+        </div>
+        <div class="header-rnav">
+            <div class="search">
+                <img src="./img/search.png" alt="">
+            </div>
+            <div class="homeicon">
+                <img src="./img/home.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- 内容 -->
+    <div class="main recommend show">
+        <div class="mainlist active">
+            <div class="col col1 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>程序员的小浪漫---文字粒子效果</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/61.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>2</span><span>3年前</span></p>
+            </div>
+            <div class="col col2 list">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>Springboot@Autowired无法注入问题</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/66.jpg" alt="">
+                        <img src="./img/76.jpg" alt="">
+                        <img src="./img/85.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>2</span><span>3年前</span></p>
+            </div>
+            <div class="col col4 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>JVM堆 栈 方法区详解</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/18.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>0</span><span>3年前</span></p>
+            </div>
+            <div class="col col5 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>面向对象的三个基本特性</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/91.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>1</span><span>3年前</span></p>
+            </div>
+            <div class="col col6 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>List接口以及数据结构存储特点</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/47.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>2</span><span>3年前</span></p>
+            </div>
+            <div class="col col7 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>java中利用dom4j解析XML文件</h3>
+                    </div>
+                    <div class="titleimg">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>0</span><span>3年前</span></p>
+            </div>
+            <div class="col col8 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>使用命令把类压缩成jar包</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/53.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>1</span><span>3年前</span></p>
+            </div>
+            <div class="col col9 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>节流函数怎么写?</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/54.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>1</span><span>3年前</span></p>
+            </div>
+            <div class="col col10 list">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>Springboot@Autowired无法注入问题</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/31.jpg" alt="">
+                        <img src="./img/92.jpg" alt="">
+                        <img src="./img/81.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>2</span><span>3年前</span></p>
+            </div>
+            <div class="col col11 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>Springboot之banner</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/32.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>0</span><span>3年前</span></p>
+            </div>
+            <div class="col col12 list">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>Java基础教程(7)---运算符</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/52.jpg" alt="">
+                        <img src="./img/13.jpg" alt="">
+                        <img src="./img/78.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>2</span><span>3年前</span></p>
+            </div>
+            <div class="col col13 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>react-native 使用leanclound消息推送</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/65.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>0</span><span>3年前</span></p>
+            </div>
+
+            <div class="col col14 list">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>Vue响应式----数据响应式原理</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/15.jpg" alt="">
+                        <img src="./img/36.jpg" alt="">
+                        <img src="./img/32.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>1</span><span>3年前</span></p>
+            </div>
+
+            <div class="col col15 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>吐血整理 20 道 Spring Boot 面试题，我经常拿来面试别人！</h3>
+                    </div>
+                    <div class="titleimg">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>0</span><span>3年前</span></p>
+            </div>
+            <div class="col col16 list">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>SpringBoot开发案例之整合Dubbo分布式服务</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/25.jpg" alt="">
+                        <img src="./img/77.jpg" alt="">
+                        <img src="./img/60.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>1</span><span>3年前</span></p>
+            </div>
+            <div class="col col17 list">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>Maven</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/75.jpg" alt="">
+                        <img src="./img/80.jpg" alt="">
+                        <img src="./img/95.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>1</span><span>3年前</span></p>
+            </div>
+            <div class="col col18 content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>javascript异步编程</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/96.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>北游头条</span><span>0</span><span>3年前</span></p>
+            </div>
+        </div>
+        <div class="mainlist">
+            问答
+        </div>
+        <div class="mainlist">
+            视频
+        </div>
+        <div class="mainlist">
+            登录
+        </div>
+
+    </div>
+
+    <div class="main html">
+        <div class="mainlist active news">
+            <div class="col content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>这是一个用来测试的例子</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/18.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>樊樊</span><span>2</span><span>3年前</span>
+                </p>
+                <div class="newStudy">
+                    <span class="btn">&times;</span>
+                    <div class="txt">356432</div>
+                </div>
+            </div>
+        </div>
+        <div class="mainlist">
+            问答
+        </div>
+        <div class="mainlist">
+            视频
+        </div>
+        <div class="mainlist">
+            登录
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="item on">
+            <div class="icon">
+                <img src="./img/footer-icon1_1.png" alt="">
+                <img src="./img/footer-icon1_2.png" alt="" class="show">
+            </div>
+            <span>首页</span>
+        </div>
+        <div class="item">
+            <div class="icon">
+                <img src="./img/footer-icon2_1.png" alt="" class="show">
+                <img src="./img/footer-icon2_2.png" alt="">
+            </div>
+            <span>问答</span>
+        </div>
+        <div class="item">
+            <div class="icon">
+                <img src="./img/footer-icon3_1.png" alt="" class="show">
+                <img src="./img/footer-icon3_2.png" alt="">
+            </div>
+            <span>视频</span>
+        </div>
+        <div class="item">
+            <div class="icon">
+                <img src="./img/footer-icon4.png" alt="">
+            </div>
+            <span>我的</span>
+        </div>
+    </div>
+    <div class="navlinks hide">
+        <div class="bg"></div>
+        <div class="links">
+            <div class="title list">
+                <div class="top">
+                    <a class="btn" href="javascript:;">&times;</a>
+                    <h3>我的频道<small>点击进入频道</small><input type="button" value="编辑" class="button"></h3>
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+            <div class="items list">
+                <div class="top">
+                    <h3>频道推荐</h3>
+                </div>
+                <div class="bottom">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+
+
+
+</html>
