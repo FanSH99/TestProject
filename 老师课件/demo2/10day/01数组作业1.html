@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 1：查找数组中数值大于18对象的位置 ，arr=[5,19,21,9,83,10];
+/*
+ 数据类型  数值     大于18       位置  索引号0
+ for    for in    forEach
+*/
+//  function demo1(arr){
+//     arr.forEach(function(item,index){
+//         if(item>18&&typeof item==='number'){
+//             console.log(index);
+//         }
+
+//     })
+
+//  }
+//  var arr=[5,19,21,9,83,10,'20']
+//  demo1(arr)
+// 2.改变传入的数组，将数组中第 n(从 0 开始算 ) 个元素放到数组的开头 (用函数实现)
+/* 
+   数组    第 n(从 0 开始算 ) 个元素
+   var arr=[10,20,50];
+   var newarr=[20,10 50];
+   splice -----删除后，返回值是一个数组  
+   unshift     concat都可以 
+*/
+
+//  function  demo2(arr,n){
+//    var newarr= arr.splice(n,1);
+//    console.log(newarr,arr);//[83]
+//     // arr= newarr.concat(arr);
+//     arr.unshift(newarr[0]);//  返回值是数组的长度，不用变量  ，输出原数组即可
+//     console.log(arr);
+
+//  }
+//  var arr=[5,19,21,9,83,10,'20']
+//  demo2(arr,4)
+// 5.找出数组中元素"5"的位置（用函数实现）。arr=["4","5","6","jack",true,"5"];
+// indexOf 返回第一个位置       indexOf(item,start)
+//  function demo5(arr){
+//     var arr0=[];//保存符合条件的索引号
+//     for(var i=0;i<arr.length;i++){
+//         if(arr[i]==='5'){
+//             arr0.push(i)
+
+//         }
+//     }
+//     return arr0;
+//  }
+
+// var  arr=["4","5","6","jack",true,"5"];
+// var arr0=demo5(arr);
+// console.log(arr0);
+
+
+// 6.在数组 arr 末尾添加元素 item。不要直接修改数组 arr=['jack','lucy','merry','tom','mike'];
+// 深拷贝   原生   concat()   slice()
+//  function demo6(arr,item){
+//     var newarr=arr.concat();
+//     console.log(arr,newarr);
+//     newarr.push(item)
+//     console.log(arr,newarr);
+//  }
+
+//  var arr=['jack','lucy','merry','tom','mike'];
+//  demo6(arr,'Andy')
+// 7.删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组
+//  function demo7(arr){
+//     var newarr=arr.slice();
+//     console.log(arr,newarr);
+//     newarr.pop()
+//     console.log(arr,newarr);
+//  }
+
+//  var arr=['jack','lucy','merry','tom','mike'];
+//  demo7(arr)
+
+// 8.在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组
+
+// 不要直接修改数组 arr   深拷贝             修改原数组  浅拷贝
+
+var arr=['jack','lucy','merry','tom','mike'];
+// var arr0=arr;//浅拷贝
+// console.log(arr,arr0);
+// arr0.push('Andy')
+// console.log(arr,arr0);
+
+// var arr1=arr.slice();// 深拷贝
+// console.log(arr,arr1);
+// arr1.push('Andy')
+// arr1.unshift('Andy')
+// console.log(arr,arr1);
+
+// 9.删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组
+    </script>
+</body>
+</html>

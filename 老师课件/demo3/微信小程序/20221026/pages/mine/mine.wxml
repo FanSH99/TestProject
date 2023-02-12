@@ -1,0 +1,14 @@
+<view>
+我的页面 哈哈哈哈
+</view>
+<view>
+{{like}}
+</view>
+<!-- 自定义组件 在使用之前必须要在json配置文件中的 usingComponents属性中引入组册-->
+<myheader wx:if="{{isshow}}"></myheader>
+
+<button bindtap="changeIsshow">切换</button>
+
+<input type="text" placeholder="请输入姓名"/>
+<input type="text" placeholder="请输入年龄"/>
+<button>添加</button>

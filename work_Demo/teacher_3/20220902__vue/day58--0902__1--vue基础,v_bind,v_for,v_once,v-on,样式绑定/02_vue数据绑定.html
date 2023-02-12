@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日09:35:28 -->
+    <div id="app">
+        <!-- 使用双打大括号方法来实现数据绑定 -->
+        <h1>{{msg}}</h1><!-- 初始vue -->
+        <!-- 可以包含三元表达式或者其他内置方法 -->
+        <h2>{{title.includes("你")?"yes":"no"}}</h2><!-- 海绵宝宝和派大星 -->
+        <h1>{{msg.replace("梦想","钱")}}</h1>
+        <h2>{{isLogin?"已登录":"未登录"}}</h2>
+    </div>
+
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "你熬的不是夜，是梦想！",
+            title: "总有人要赢，为什么不是你呢？",
+            baidu: "<a href='https://www.baidu.com>百度一下</a>",
+            link: "<a href='https://www.baidu.com>百度一下</a>",
+            isLogin: true
+        }
+    })
+</script>
+
+</html>

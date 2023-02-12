@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        比较运算符  结果是布尔值，true 或者false
+
+        >  >=（有一个成立即成立）  <  <=  ==（等于）  ===(全等，或真等)
+     
+        ==只用保证数据大小相等即可。
+
+        相等和不相等——先转换再比较      （==）
+
+        全等和不全等——仅比较而不转换  （===）
+
+如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值——false转换为0，而true转换为1；
+
+②、如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值
+
+③、如果一个操作数是对象，另一个操作数不是，则调用对象的valueOf()方法，用得到的基本类型值按照前面的规则进行比较
+
+这两个操作符在进行比较时则要遵循下列规则。
+
+null 和undefined 是相等的
+
+②、要比较相等性之前，不能将null 和 undefined 转换成其他任何值
+
+③、如果有一个操作数是NaN，则相等操作符返回 false ，而不相等操作符返回 true。重要提示：即使两个操作数都是NaN，相等操作符也返回 false了；因为按照规则， NaN 不等于 NaN
+
+④、如果两个操作数都是对象，则比较它们是不是同一个对象，如果两个操作数都指向同一个对象，则相等操作符返回 true；否则， 返回false
+—
+
+
+[] 和 {} 都是属于引用类型，引用类型是存放在堆内存中的，而在栈内存中会有一个或者多个地址来指向这个堆内存相对应的数据。所以在使用 == 操作符的时候，对于引用类型的数据，比较的是地址，而不是真实的值。
+
+现在来探讨 [] == ! [] 的结果为什么会是true
+①、根据运算符优先级 ，！ 的优先级是大于 == 的，所以先会执行 ![]
+
+！可将变量转换成boolean类型，null、undefined、NaN以及空字符串('')取反都为true，其余都为false。
+
+所以 ! [] 运算后的结果就是 false
+
+也就是 [] == ! [] 相当于 [] == false
+
+
+②、根据上面提到的规则（如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值——false转换为0，而true转换为1），则需要把 false 转成 0
+
+也就是 [] == ! [] 相当于 [] == false 相当于 [] == 0
+
+③、根据上面提到的规则（如果一个操作数是对象，另一个操作数不是，则调用对象的valueOf()方法，用得到的基本类型值按照前面的规则进行比较，如果对象没有valueOf()方法，则调用 toString()）
+
+而对于空数组，[].toString() ->  '' (返回的是空字符串)
+
+也就是  [] == 0 相当于 '' == 0
+
+④、根据上面提到的规则（如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值）
+
+Number('') -> 返回的是 0
+
+相当于 0 == 0 自然就返回 true了
+
+总结一下：
+
+[] == ! [] -> [] == false -> [] == 0 -> '' == 0 -> 0 == 0 -> true
+
+那么对于 {} == !{} 也是同理的
+
+关键在于 {}.toString() -> NaN(返回的是NaN)
+
+根据上面的规则（如果有一个操作数是NaN，则相等操作符返回 false）
+
+总结一下：
+
+{} == ! {} -> {} == false -> {} == 0 -> NaN == 0 -> false
+
+    -->
+
+    <script>
+        var a = 10, b = 20;
+        var c = a < b;  //true
+        console.log("var a = 10, b = 20, c = a < b;");
+        console.log("c=", c);
+
+        var d = a >= b; //false
+        console.log("a>=b", d);
+        console.log("5=='5'", 5 == '5');//true
+        console.log("5==='5'", 5 === '5');//false
+
+        console.log(" 8<=5", 8 <= 5);//false
+        console.log(" 8>=5", 8 >= 5);//true
+
+        /* 特殊情况
+        两边都是字符串。
+        */
+
+
+
+        /*
+         如果两边都是字符串，比较的是ascII  从左到右一位一位进行比较。
+        
+        */
+        console.log("'5'>'16'", '5' > '16'); //true   比较的是ascII ，‘5’的码比‘1’大，所以为true
+        console.log("'5'>16", '5' > 16);//false
+        console.log("'5'>'76'", '5' > '76');//false
+        console.log("'world'>'hello'", 'world' > 'hello');//true  //比较ascII ，没有意义，不建议
+
+        /* ----------------------------------------- 比较重要*/
+
+        console.log("typeof undefined", typeof undefined);
+        console.log("typeof undefined === 'undefined'", typeof undefined === 'undefined');
+
+        console.log("typeof 123", typeof 123);
+        console.log("typeof 123===number", typeof 123 === 'number');
+
+        console.log("undefined===undefined", undefined === undefined);//true
+        console.log("undefined===null", undefined === null);//false
+        console.log("undefined==null", undefined == null);//true    记住
+
+        /* ----------------------------------------------- */
+
+        /* 如果undefined参与大小比较 ,无论如何都是false
+        undefined不参与大小比较。即> < >= <= 的比较，没有什么意义。
+        可以参与等于的比较。
+        
+        */
+        console.log("undefined > 10", undefined > 10);//false
+        console.log("undefined > 10", undefined < 10);//false
+
+        console.log('null< -1', null < -1);//false  null 会转换成0
+        console.log('null<1', null < 1);//true  
+        console.log('null==0', null == 0);//false  
+
+
+        console.log('true>10', true > 10);
+        console.log('true<10', true < 10);
+        console.log('true< -2', true < -2);  //true会自动转换成1，false会自动转换成0
+
+        console.log('true==1', true == 1);
+        console.log('false==0', false == 0);
+
+        //NaN和谁都不等，和自己都不等。
+        console.log("NaN === NaN", NaN === NaN);//false
+
+        console.log("'5' != 5", '5' != 5);//false
+        console.log("'5' !==5", '5' !== 5);//true
+
+
+
+        /* 下面面试官可能会问 */
+        console.log("[] == []", [] == []); //false
+        console.log("{} == {}", {} == {}); //false
+        console.log("{} != {}", {} != {});//true
+        console.log("[] != []", [] != []);//true
+        console.log("![] == []", ![] == []);//true
+        console.log("!{} == {}", !{} == {});//false
+
+    </script>
+
+</body>
+
+</html>

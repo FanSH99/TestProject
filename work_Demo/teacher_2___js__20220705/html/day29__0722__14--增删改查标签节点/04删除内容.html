@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        ul {
+            width: 510px;
+        }
+
+        ul li {
+            width: 100px;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            border: 1px dotted #333;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        parentNode.removeChild
+     -->
+
+    <ul>
+        <li>学号</li>
+        <li>姓名</li>
+        <li>年龄</li>
+        <li>性别</li>
+        <li>操作</li>
+    </ul>
+
+    <ul>
+        <li>1001</li>
+        <li>海绵宝宝</li>
+        <li>18</li>
+        <li>男</li>
+        <li><a href="#">删除</a></li>
+    </ul>
+    <ul>
+        <li>1002</li>
+        <li>派大星</li>
+        <li>17</li>
+        <li>男</li>
+        <li><a href="#">删除</a></li>
+
+    </ul>
+    <ul>
+        <li>1003</li>
+        <li>蟹老板</li>
+        <li>30</li>
+        <li>男</li>
+        <li><a href="#">删除</a></li>
+    </ul>
+    <ul>
+        <li>1004</li>
+        <li>章鱼哥</li>
+        <li>19</li>
+        <li>男</li>
+        <li><a href="#">删除</a></li>
+
+    </ul>
+
+    <script>
+
+
+        var lis = document.getElementsByTagName('li');
+        var li3 = lis[2];
+        console.log(li3);
+        var links = document.links;
+        console.log(link);//HTMLCollection(2) [a, a]
+        console.log(link[0]);
+        console.log(link[0].parentNode.parentNode);
+        for (var i = 0; i < link.length; i++) {
+            link[i].onclick = function () {
+                console.log(this);//<a href="#">删除</a>
+                console.log(this.parentNode.parentNode);
+                this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

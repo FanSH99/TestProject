@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 字符串 : 加上引号就是字符串
+        let star = "易烊千玺123";
+        console.log(star);
+
+        /* 
+            数据类型 ：更加合理的利用计算机的资源。
+            JS 的基本(简单) 数据类型：
+                1. number   22
+                2. 字符串
+                3. 布尔值 (boolean) true false  
+                4. null 指的是一个变量未指向任何对象(内存地址是空)
+                5. undefined 此处应该有一个值，但是还没有定义
+            变量都是用 var let 声明,
+            js 在客户端的浏览器中运行,消耗的是用户的电脑性能    
+
+            typyof 判断变量的数据类型
+        */
+        var age = 22;
+        //    age = '张飞';
+        let flag = true;
+        let flag1 = 'true';
+
+        console.log(typeof age);   // number
+        console.log(typeof flag);  // boolean
+        console.log(typeof flag1); // string
+
+        // JS 的一种特殊情况
+        console.log(typeof null);
+    </script>
+</body>
+
+</html>

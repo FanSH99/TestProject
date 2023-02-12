@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+
+<script type="text/babel">
+    let user = {
+        name: "张三",
+        age: 18,
+        sex: false
+    }
+
+    let dom = (
+        <div>
+            <h1>{user.name}</h1>
+            {isAge(user.age)}
+            {/* 使用逻辑运算符判断，满足条件才会渲染，以后会经常用。 */}
+            {user.sex && <h3>男孩</h3>}
+            {!user.sex && <h5>女孩</h5>}
+        </div>
+    )
+
+    // 注意这里不能用let isAge=(age)=>{}不能用箭头函数，因为function有变量提升，let没有，想用箭头函数放前面。
+    function isAge(age) {
+        if (age >= 18) {
+            return <h3>成年</h3>
+        } else {
+            return <a href="#">未成年</a>
+        }
+    }
+
+    ReactDOM.render(dom, document.getElementById("app"))
+</script>
+
+</html>

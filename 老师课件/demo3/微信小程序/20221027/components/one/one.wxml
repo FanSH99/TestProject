@@ -1,0 +1,4 @@
+<view class="one">
+one组件 {{msg}}
+<button bindtap="senhmg">向父组件传值</button>
+</view>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./5History对象-首页.html">点我回到首页</a>
+    <button>后退</button>
+    <!--  向左的 箭头   前提条件 必须操作过的历史  -->
+    <script>
+        console.log(history);
+        document.querySelector('button').onclick=function(){
+            // history.back()
+            history.go(-1)
+        }
+
+    </script>
+</body>
+</html>

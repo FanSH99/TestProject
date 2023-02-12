@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <button>送你离开</button>
+    <div>千里之外</div>
+    <script>
+        /* 
+            需求: 点击按钮， div 向右移动。
+            div 向右移动: 获取 div 当前的 offsetLeft，
+                        再加上某干像素,重新给 div 赋值。 
+        */
+        let div = document.querySelector('div');
+        let button = document.querySelector('button');
+
+        // button.addEventListener('click', function () {
+        //     let left = div.offsetLeft;
+        //     div.style.left = left + 20 + 'px';
+        // });
+
+        // div 自动往右移动
+        setInterval(() => {
+            let left = div.offsetLeft;
+            div.style.left = left + 20 + 'px';
+        }, 500);
+    </script>
+</body>
+
+</html>

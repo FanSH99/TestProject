@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: skyblue;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: brown;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            /* 先是隐藏 */
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        侧边栏
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        /* 
+          需求分析:
+                1. 滚动页面,到距离1,侧边栏变成固定定位。
+                2. 继续滚动页面，到距离2，显示返回顶部。
+
+          难点：固定定位的距离。
+        */
+        var sliderBar = document.querySelector('.slider-bar'); // 侧边栏
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var goBack = document.querySelector('.goBack');
+
+        var distance1 = banner.offsetTop; // 距离1
+
+        var distanceX = sliderBar.offsetTop - banner.offsetTop; // 固定定位的距离
+        var distance2 = main.offsetTop;  // 距离2
+
+        // 给页面添加滚动事件
+        document.addEventListener('scroll', function () {
+            // console.log(123);
+            // console.log(window.pageYOffset); // 页面卷去的头部
+
+            // 1. 滚动页面,到距离1,侧边栏变成固定定位。
+            if (window.pageYOffset >= distance1) {
+                sliderBar.style.position = 'fixed'; // 固定定位
+                sliderBar.style.top = distanceX + 'px';
+            } else {
+                sliderBar.style.position = 'absolute'; // 恢复相对定位
+                sliderBar.style.top = 300 + 'px';
+            }
+
+            //  2. 继续滚动页面，到距离2，显示返回顶部。
+            if (window.pageYOffset >= distance2) {
+                goBack.style.display = 'block';
+            } else {
+                goBack.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

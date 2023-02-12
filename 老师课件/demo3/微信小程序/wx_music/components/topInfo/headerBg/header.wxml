@@ -1,0 +1,6 @@
+<view class="header" style="background-image: url({{imgurl}});">
+<view class="msk"></view>
+<view class="btn" bindtap="goPlayer">
+随机播放
+</view>
+</view>

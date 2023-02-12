@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 
+            clientY: 鼠标在可视区的y坐标
+            pageY:   鼠标在文档的y坐标(加上被卷去的头部)
+            screenY: 鼠标到屏幕顶端的距离。
+        */
+        document.addEventListener('click', function (e) {
+            console.log("clientX:------" + e.clientX, e.clientY);
+            console.log("pageX:----" + e.pageX, e.pageY);
+            console.log("screenY:----" + e.screenX, e.screenY);
+        });
+
+    </script>
+</body>
+
+</html>

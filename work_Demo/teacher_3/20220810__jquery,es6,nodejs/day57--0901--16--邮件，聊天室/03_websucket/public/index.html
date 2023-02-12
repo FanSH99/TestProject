@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  -->
+    <h1>WebSocket</h1>
+
+    <input type="text" name="" id="" placeholder="请输入信息"><button onclick="send()">发消息</button>
+
+    <div class="msg"></div>
+</body>
+<script>
+    // 创建socket实例
+    let ws = new WebSocket("ws://192.168.22.17:8000");
+    ws.onopen = () => {
+        console.log("连接成功");
+    }
+    ws.onmessage = (data) => {
+        console.log(data);
+    }
+    ws.addEventListener("message", (data) => {
+        console.log(data);
+        let div = document.createElement("div");
+        div.innerText = data.data;
+        document.querySelector(".msg").append(div)
+
+    })
+    // 监听连接失败
+    ws.addEventListener("error", (err) => {
+        console.log("连接错误", err);
+    })
+    // 监听websocket关闭
+    ws.addEventListener("close", () => {
+        console.log("长链接关闭");
+    })
+
+    // 发送到服务器
+    function send() {
+        let msg = document.querySelector("input").value;
+        console.log(ws);
+        ws.send(msg)
+
+    }
+
+// qq,微信聊天都是用的websocket。
+</script>
+
+</html>

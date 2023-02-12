@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        一、函数定义：
+            就是封装一段可被重复调用和执行的代码块，通过此代码块可以实现大量代码的重复使用
+            这个函数可以在任何时候，任何地方调用。
+
+        二、分类：
+          有名函数 （常用的函数）
+          匿名函数（ 函数表达式，自执行函数）
+
+          上面的每种又可以分为 无参函数   有参函数    带返回值的函数（难理解） 
+
+        三、函数声明
+         function 函数名（）{
+            函数体;
+         }
+
+        四、函数不调用不执行
+          函数名（）;// 调用函数
+
+        五、函数名的命名规范
+            同变量名命名规范一致，但是注意：函数名尽量用动词  getSum     变量名尽量用名词 sum
+            尽量不用a ,b ,c 来命名函数名，   可以用 fn
+             
+         注意： 函数是引用类型    Function 
+                      基本类型的检测，因为函数特殊
+          console.log(typeof show);// 'function'
+                           引用类型的检测
+          console.log(show instanceof Function)// true 
+     -->
+
+     <script>
+        show();
+        function show(){
+            // document.write('hello world')
+            console.log('hello world');
+        }
+        show();// 调用函数
+        show();
+
+        console.log(typeof show);// 'function'
+        console.log(show instanceof Function);//true
+
+     </script>
+     <script>
+        show()
+     </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            padding: 10px;
+            border: 3px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="width: 220px;"></div>
+    <button>按钮</button>
+    <script>
+        /* 
+           offsetWidth 和 width 的区别
+                          读写    返回值    单位       样式              组成
+            offsetWidth   只读    number   不带单位 行内样式加类样式   width + border + padding
+            width         读写    string   带单位   行内样式          width
+        */
+        let div = document.querySelector('div');
+        let btn = document.querySelector('button');
+
+        btn.addEventListener('click',function (){
+            console.log(div.offsetWidth);  // 246 = 220 + 3*2 + 10*2
+            console.log(div.style.width);  // 220xp 
+
+            // div.offsetWidth = 150 + 'px';
+            div.style.width = 150 + 'px';
+        });
+
+    </script>
+</body>
+
+</html>

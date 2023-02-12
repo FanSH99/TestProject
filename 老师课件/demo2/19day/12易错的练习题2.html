@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <script>
+        //1.请写出下面的输出结果
+        // for (var i = 0; i < 5; i++) {
+        //     setTimeout(function () {
+        //         console.log(new Date().getMonth(), i);
+        //     })
+        // }
+        // console.log(new Date().getMonth(), i);
+
+
+
+
+        // for 循环是同步    setTimeout 异步
+    //    // i=0
+    //     setTimeout(function () {
+    //             console.log(new Date().getMonth(), i);//  2    7,5 
+    //         })
+    //     //i=1
+
+    //     setTimeout(function () {
+    //             console.log(new Date().getMonth(), i);//3.   7,5 
+    //         })
+
+    //     //i=2
+    //     setTimeout(function () {
+    //             console.log(new Date().getMonth(), i);//4.   7,5 
+    //         })
+
+    //     //i=3
+    //     setTimeout(function () {
+    //             console.log(new Date().getMonth(), i);//5.  7,5 
+    //         })
+    //     //i=4
+    //     setTimeout(function () {
+    //             console.log(new Date().getMonth(), i);//6.  7,5 
+    //         })
+    //     //i=5 循环结束，跳出循环
+    //     console.log(new Date().getMonth(), 5);//  1.  7,5   同步代码执行完毕 ，开始执行异步
+
+        //2.请写出下面的输出结果
+        var k = 1;
+        for (var i = 0, j = 1; i < 3, j < 5; i++, j++) {
+            setTimeout(function () {
+                console.log(i, j, k);
+                k += i + j;
+                console.log(k);
+            })
+            k++;
+
+        }
+
+        // 同步 循环    setTimeout 异步  i = 0, j = 1; i < 3, j < 5; i++, j++
+        // 循环轮数同  判断条件的最后一项来决定循环轮数j < 5    j=1;初值  轮数是4轮
+
+        //第一轮 i=0  j=1  k=1
+
+    //     setTimeout(function () {
+    //             console.log(i, j, k);// 4  5 5
+    //             k += i + j;// k+=9;    
+    //             console.log(k);// 14
+    //         })
+
+    //         // k=2
+
+    // // 第二轮 i=1 j=2 
+    // setTimeout(function () {
+    //             console.log(i, j, k);// 4 5 14
+    //             k += i + j;//  k+=9
+    //             console.log(k);// 23
+    //         })
+    //      // k=3
+
+    // //第三轮  i=2 j=3
+    // setTimeout(function () {
+    //             console.log(i, j, k);// 4 5  23
+    //             k += i + j;// k+=9
+    //             console.log(k);//32
+    //         })
+    //         //k=4
+    // //第四轮 i=3   j=4 
+    // setTimeout(function () {
+    //             console.log(i, j, k);// 4 5 32
+    //             k += i + j;//k+=9
+    //             console.log(k);//41
+    //         })
+            // k=5
+    // 第五轮   i=4  j=5循环结束  执行异步
+    </script>
+</body>
+
+</html>

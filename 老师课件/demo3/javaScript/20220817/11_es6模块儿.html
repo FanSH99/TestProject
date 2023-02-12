@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="module">
+    import {name,age,getuser} from './user.js'
+    import like from './like.js'
+    import mysay from './index.js'
+    console.log(mysay())
+    console.log(name,age)
+    getuser();
+    console.log(like)
+    /* 
+       es6 导出模块儿的两种方式：
+       1. export 在一个模块儿中可以导出多个数据
+        导入时必须使用{}解构数据
+        import {xx,xxx} from xxxx
+       2. export defalut 默认导出 只能导出一个模块儿
+        导入时直接使用 import xxx from xxx;
+        
+    */
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		let arr = [
+			{ id: 1, name: "项羽" },
+			{ id: 2, name: "剑圣" },
+			{ id: 3, name: "盲僧" },
+			{ id: 4, name: "末日使者" },
+			{ id: 2, name: "兽王" }
+		];
+		// findIndex() 找到第一个符合条件的元素的索引值，如果没有则返回 -1
+		// return true，表示查找结束,循环不再继续。返回元素的index
+
+		let result = arr.findIndex((item, index) => {
+			console.log(item, index);
+			if (item.id == 2) {
+				return true;
+			}
+		});
+		console.log(result);
+	</script>
+</body>
+
+</html>

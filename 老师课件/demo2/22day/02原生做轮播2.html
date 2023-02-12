@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li,ol{
+            list-style: none;
+        }
+        #focus{
+            width: 500px;
+            height: 300px;
+            background-color: aqua;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #focus .pic_box{
+            /* width 由js 动态来计算 */
+            /* width:500% ; */
+            height: 300px;
+
+            /* 6.新增 定位*/
+            position: relative;
+            left: 0;
+          
+        }
+        #focus .pic_box li{
+            width: 500px;
+            height: 300px;
+            background-color: rgba(255, 0, 0, 1);
+            float: left;
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+            color: #fff;
+        }
+        #focus .pic_box li:nth-child(2){
+            background-color: rgba(0, 255, 0, 1);
+        }
+        #focus .pic_box li:nth-child(3){
+            background-color: rgba(0, 0, 255, 1);
+        }
+        #focus .pic_box li:nth-child(4){
+            background-color: rgba(255, 255, 0, 1);
+        }
+        #focus .pic_box li:nth-child(5){
+            background-color: rgba(0, 255, 255, 1);
+        }
+
+        .circle{
+            position: absolute;
+            left: 50%;
+            bottom:20px;
+            transform: translateX(-50%);
+
+
+        }
+        .circle li{
+            width: 16px;
+            height: 16px;
+            background-color: #000;
+            margin: 0 5px;
+            float: left;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        .circle li.on{
+            background-color: burlywood;
+            opacity: 1;
+        }
+        .arrow{
+            width: 50px;
+            height: 50px;
+            display: block;
+            background-color: #000;
+            color: #fff;
+            position: absolute;
+            font-size: 30px;
+            text-align: center;
+            line-height: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+        .arrow.al{
+            left: 0;  
+        }
+        .arrow.ar{
+            right: 0;  
+        }
+    </style>
+</head>
+<body>
+    <div id="focus">
+        <!-- 大图区 -->
+        <ul class="pic_box">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <!-- <li>0</li> -->
+        </ul>
+        <!-- 指示器  注意 这里的li 也是js 动态来生成-->
+        <ol class="circle">
+            <!-- <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+        </ol>
+        <!-- 箭头 -->
+         <span class="arrow al"><</span> 
+         <span class="arrow ar">></span> 
+    </div>
+    <script src="./js/animate.js"></script>
+    <script>
+        //1.查找元素
+        var focus=document.querySelector('#focus');
+        var pic_box=document.querySelector('.pic_box');
+        var ulLi=document.querySelectorAll('.pic_box>li');
+        var circle=document.querySelector('.circle');
+        var al=document.querySelector('.al');
+        var ar=document.querySelector('.ar');
+
+        // 求出ul中li的宽度  ===focus的宽度是一样的
+          var liW=focus.offsetWidth;
+          console.log(liW);//500
+
+
+
+        // 2. 功能一  箭头  鼠标经过显示  鼠标移开隐藏
+        focus.onmouseenter=function(){
+            al.style.display="block";
+            ar.style.display="block"
+
+        }
+        focus.onmouseleave=function(){
+            al.style.display="none";
+            ar.style.display="none"
+
+        }
+
+        //3.动态来创建小圆点 根据ul li的个数来创建
+           for(var i=0;i<ulLi.length;i++){
+             var li= document.createElement('li');
+              circle.appendChild(li);
+               //8.2 调用小圆点函数
+                li.setAttribute('index',i);// 自定义属性，记下索引号
+                li.onclick=function(){
+                 var index= this.getAttribute('index');
+                    run(index);
+                   animate(pic_box,-index*liW);
+                
+                } 
+
+           }
+        // 把当前为on的类名增加
+         circle.children[0].className='on' 
+
+        //4.要想做到无缝滚动，把ul中的第一个li 克隆一份，追加到ul的最后
+       var first= pic_box.children[0].cloneNode(true);
+         pic_box.appendChild(first);
+
+        //  5.动态计算一下pic_box的宽度
+            ulLi=document.querySelectorAll('.pic_box>li');
+            pic_box.style.width=liW*ulLi.length+'px';
+
+       //6. 单击向右的按钮，让图片不断的向左移动
+         var i=0;// 记下当前的图片的索引号
+          var cir=0;// 记下小圆点对应的索引号
+         ar.onclick=function(){
+            if(i==ulLi.length-1){
+                i=0;
+                pic_box.style.left='0px';// 快速地回到了第一张
+            }
+            i++;
+            console.log(i);
+            // pic_box 向左运动  样式表中  position: relative; left: 0;
+             animate(pic_box,-i*liW);
+
+           //8.3 小圆点的同步  
+            cir++;
+            if(cir==circle.children.length){
+                cir=0;
+            }
+            run(cir)
+
+
+         }
+
+      //7. 单击向左的按钮，向右 运动
+         al.onclick=function(){
+            if(i==0){
+                i=ulLi.length-1;
+                pic_box.style.left=-i*liW+'px';// 快速地回到了克隆的那一张图片的位置
+            }
+            i--;
+            console.log(i);
+            // pic_box 向右运动  样式表中  position: relative; left: 0;
+             animate(pic_box,-i*liW);
+
+             //8.4 小圆点同步
+             cir--;
+            if(cir<0){
+                cir=circle.children.length-1;
+            }
+            run(cir)
+
+         }
+
+         //8.小圆点的问题
+           //8.1 排它思想
+        // 形参num 表示当前项   
+           function run(num){
+            //    排它思想
+             for(var m=0;m<circle.children.length;m++){
+                circle.children[m].className=''
+             }
+            //  当前项加上 on
+            circle.children[num].className='on'
+           }
+
+
+           //9. 自动轮播
+           setInterval(function(){
+            ar.onclick()
+
+           },2500)
+    </script>
+</body>
+</html>

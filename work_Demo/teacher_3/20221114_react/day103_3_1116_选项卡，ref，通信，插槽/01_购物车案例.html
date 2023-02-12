@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月16日12:46:23 --上午没听
+    class App extends React.Component {
+
+        // 直接定义的不能随便发生改变。如果数据要改变，最好定义到state中。
+        constructor() {
+            super();
+            this.state = {
+                list: [
+                    {
+                        name: "辣条",
+                        price: 0.5,
+                        num: 2
+                    },
+                    {
+                        name: "巧克力",
+                        price: 2,
+                        num: 2,
+                    },
+                    {
+                        name: "奶茶",
+                        price: 7,
+                        num: 1,
+                    },
+                    {
+                        name: "烤箱",
+                        price: 799,
+                        num: 1,
+                    }
+                ],
+                classname: "red"
+            }
+        }
+        render() {
+
+            return (
+                <div>
+                    <h1>购物车案例</h1>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>价格</th>
+                                <th>数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.list.map((item, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td>{item.name}</td>
+                                            <td>{item.price}</td>
+                                            <td>
+                                                <button onClick={() => this.reduceNum(index)} className={item.num <= 0 ? 'red' : ''}>-</button>
+                                                {item.num}
+                                                <button onClick={() => this.addNum(index)} className={item.num >= 10 ? 'red' : ""}>+</button>
+                                            </td>
+                                            <td><button onClick={() => {
+                                                this.state.list.splice(index, 1);
+                                                this.setState({})
+                                            }}>删除</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                    <h4>商品总价：{this.getSum()}</h4>
+                </div>
+            )
+        }
+        // 计算总价
+        getSum() {
+            let sum = 0;
+            this.state.list.forEach(item => {
+                let price = item.num * item.price;
+                sum += price;
+            })
+            // console.log(sum);
+            return sum;
+        }
+        addNum(index) {
+            // console.log(index);
+            if (this.state.list[index].num >= 10) {
+                return;
+            }
+            this.state.list[index].num++;
+            this.setState({})
+        }
+        reduceNum(index) {
+            if (this.state.list[index].num <= 0) {
+                return;
+            }
+            this.state.list[index].num--;
+            this.setState({})
+        }
+
+    }
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

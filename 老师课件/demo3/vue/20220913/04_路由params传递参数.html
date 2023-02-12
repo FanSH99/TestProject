@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <div>
+            <ul>
+                <li v-for="(item,index) in list" :key="index" @click="goInfo(item.id)">
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script src="../vue-router.js"></script>
+<script>
+    let home = {
+        name:"home",
+        template:"#home",
+        data() {
+            return {
+                list:[
+                    {
+                        name:"哥！你好吗?",
+                        id:1001
+                    },{
+                        name:"独行月球",
+                        id:1002
+                    }
+                ]
+            }
+        },
+        methods: {
+            goInfo(id){
+                // console.log(id)
+                this.$router.push({
+                    // params传参 跳转方式必须为name属性
+                    // path:'/info',
+                    name:"myinfo",
+                    params:{
+                        ids:id
+                    }
+                })
+            }
+        },
+    };
+    let info = {
+        template:"<div><button @click='black'>返回</button><h1>电影详情 {{id}}</h1></div>",
+        data() {
+            return {
+                id:null
+            }
+        },
+        methods:{
+            black(){
+            //    console.log(this)
+            // 返回上一级路由
+            this.$router.go(-1);
+            }
+        },
+        created() {
+            console.log(this.$route)
+            // 获取params 传递过来的参数  this.$route.params.属性名
+            this.id = this.$route.params.ids;
+        },
+    }
+
+    /* 
+    路由传递参数的两种方式：
+    query传递参数,参数会自动拼接到路由路径上，并且刷新页面参会不会丢失，获取参数时使用this.$route.query.属性名。
+    params传递参数，参会不会拼接到路由路径上，并且跳转时必须使用name属性跳转，刷新页面数据丢失 获取参数时使用this.$router.params.属性名获取。
+     
+    */
+    let  router = new VueRouter({
+        routes: [
+            {
+                path:"/",
+                name:"home",
+                component:home
+            },{
+                path:"/info",
+                name:"myinfo",
+                component:info
+            }
+        ]
+    })
+    Vue.use(router)
+    new Vue({
+        el:"#app",
+        router
+    })
+</script>
+</html>

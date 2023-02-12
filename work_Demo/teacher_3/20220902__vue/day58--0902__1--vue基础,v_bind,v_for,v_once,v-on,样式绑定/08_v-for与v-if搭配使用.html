@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日14:26:56 -->
+    <div id="app">
+        <!-- 在vue2中不推荐v-for指令与v-if指令作用在同一个元素上。 
+        原因是在vue2中v-for指令的优先级要高于v-if，如果使用在同一个dom上，将每次都会判断，会浪费vue的渲染性能。可能会比较卡。
+        -->
+        <li v-for="(item,index) in userList" :key="index" v-if="item.age>18">
+            {{item.name}}----{{item.age}}
+        </li>
+        <!-- 优化如下 -->
+        <li v-for="(item,index) in userList" :key="index">
+            <div v-if="item.age>18">
+                {{item.name}}----{{item.age}}
+            </div>
+
+        </li>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    console.log(document.getElementById("app"));
+    console.dir(document.getElementById("app"))//div#app
+    new Vue({
+        el: "#app",
+        data: {
+            userList: [
+                {
+                    name: "白浅",
+                    age: 18,
+                    sex: "女"
+                },
+                {
+                    name: "小乔",
+                    age: 16,
+                    sex: "女"
+                },
+                {
+                    name: "花影",
+                    age: 19,
+                    sex: "男"
+                },
+            ]
+        }
+    })
+</script>
+
+</html>

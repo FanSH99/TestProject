@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/role-nk.png" alt="" id="pic1">
+    <img src="img/role-ty.png" alt="" id="pic2">
+    <button id="btn">交换图片</button><br><br>
+    <!--  <img src="img/role-y.png" alt="" id="'pic3"> -->
+
+
+
+    <img src="img/role-jnl.png" alt="" id="pic3">
+    <img src="img/role-xl.png" alt="" id="pic4">
+    <button id="btn1">交换图片</button><br><br>
+    <!--  <img src="img/role-y.png" alt="" id="'pic3"> -->
+
+
+
+    <script>
+        var pic1 = document.querySelector('#pic1');
+        var pic2 = document.querySelector('#pic2');
+        var btn = document.querySelector('#btn');
+        // 取图片路径  ---在外面取
+        var url1 = pic1.src;
+        console.log(url1);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day30--7.25(15)/img/role-nk.png
+
+        var url2 = pic2.src;
+        console.log(url2);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day30--7.25(15)/img/role-ty.png
+
+        btn.onclick = function () {
+
+            if (pic1.src == url1) {
+                pic1.src = 'img/role-ty.png';
+                pic2.src = 'img/role-nk.png';
+            } else {
+                pic1.src = 'img/role-nk.png';
+                pic2.src = 'img/role-ty.png'
+            }
+        }
+
+        var pic3 = document.querySelector('#pic3');
+        var pic4 = document.querySelector('#pic4');
+        var btn1 = document.querySelector('#btn1');
+
+        btn1.onclick = function () {
+            var url3 = pic3.src;
+            console.log(url3);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day30--7.25(15)/img/role-jnl.png
+            if (pic3.src == 'file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day30--7.25(15)/img/role-jnl.png') {
+                pic3.src = 'img/role-xl.png';
+                pic4.src = 'img/role-jnl.png';
+            }
+            else {
+                pic3.src = 'img/role-jnl.png';
+                pic4.src = 'img/role-xl.png';
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button id="btn1">单击1</button>
+    <button id="btn2">单击2</button>
+    <!-- 
+2022年8月9日09:31:21
+jQuery中可以用原生js加样式。
+原生js中也可以使用jQuery。
+     -->
+
+    <script>
+        $(function () {
+            document.querySelector('#btn1').onclick = function () {
+                $('body').css('backgroundColor', '#aef879')
+            }
+
+            $('#btn2').click(function () {
+                document.body.style.backgroundColor = 'orange';
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

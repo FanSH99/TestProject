@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 3、生成一个point对象，调用point对象的cal函数，计算两点之间的距离（横线和竖线）
+
+        /* 
+        A(10,20)
+        B(30,40)
+                            X  Y       X  Y
+        形参部分传两个点  A=[10,20]  B=[30,40]
+
+        //公式
+        两点之间的距离公式为 d=根号[(x1-x2)^2+(y1-y2)^2]。
+
+        */
+        function Caljuli(point1, point2) {
+            this.point1 = point1;
+            this.point2 = point2;
+            this.cal = function () {
+                var d = Math.sqrt(Math.pow((this.point1[0] - this.point2[0]), 2) +
+                 Math.pow((this.point1[1] - this.point2[1]), 2))
+                return d;
+            }
+
+        }
+
+        var d1 = new Caljuli([10, 20], [30, 40]);
+         var d= d1.cal();
+         console.log(d);
+    </script>
+</body>
+
+</html>

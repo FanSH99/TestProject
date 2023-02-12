@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 作业
+        // 利用函数求任意个数的最大值
+        function getMax() {
+            console.log(arguments);
+            let max = arguments[0];
+            for (let i = 0; i < arguments.length; i++) {
+                if (arguments[i] > max) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        console.log(getMax(2, 22, 5, 12, 36));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

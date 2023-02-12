@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+
+
+    let { useReducer, useContext, useRef } = React;
+    let gloabContext = React.createContext();
+    let reducer = (state, data) => {
+        // state.cartList.push({
+        //     name: "面包",
+        //     price: "10"
+        // })
+        console.log(data);
+        if (data.msg == "add") {
+            state.cartList.push(data.data)
+        } else {
+            state.cartList.splice(data.index, 1)
+        }
+        return {
+            cartList: state.cartList
+        }
+    }
+    let initState = {
+        cartList: [
+            {
+                name: "辣条",
+                price: 10,
+            },
+            {
+                name: "牛奶",
+                price: "5",
+            },
+            {
+                name: "香蕉",
+                price: "9.9"
+            }
+        ],
+
+
+
+    }
+    function App() {
+        let [state, dispatch] = useReducer(reducer, initState)
+        let nameRef = useRef();
+        let priceRef = useRef();
+        return (
+            <div>
+                <h1>父组件</h1>
+                <ol>
+                    {
+                        state.cartList.map((item, index) => {
+                            return <li key={index}>{item.name}--{item.price}</li>
+                        })
+                    }
+                </ol>
+                <p> name: <input type="text" ref={nameRef} /></p>
+                <p> price：<input type="text" ref={priceRef} /></p>
+                <button onClick={() => {
+                    let data = {
+                        msg: "add",
+                        data: {
+                            name: nameRef.current.value,
+                            price: priceRef.current.value,
+                        }
+
+                    }
+                    console.log(data);
+                    dispatch(data)
+                }}>添加购物车</button>
+
+                <gloabContext.Provider value={{ state, dispatch }}>
+                    <One />
+                    <Two />
+                </gloabContext.Provider>
+            </div>
+        )
+    }
+    function One() {
+        let { state, dispatch } = useContext(gloabContext);
+        return (
+            <div>
+                <h3>子组件1</h3>
+                购物车数量:{state.cartList.length}
+            </div>
+        )
+    }
+    function Two() {
+        let { state, dispatch } = useContext(gloabContext);
+        return (
+            <div>
+                <h3>子组件2</h3>
+                购物车列表：
+                <ul>
+                    {
+                        state.cartList.map((item, index) => {
+                            return <li key={index}>{item.name}--{item.price}
+
+                                <button onClick={() => {
+                                    dispatch({ msg: "remove", index: index })
+                                }}>删除</button></li>
+                        })
+                    }
+                </ul>
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

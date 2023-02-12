@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-model双向数据绑定 
+        双向数据绑定--视图更新数据改变，数据改变司徒更新
+        v-model指令只能作用在表单标签上，input，textarea
+        -->
+        <div>{{uname}}</div>
+        <input type="text" name="name" id="name" placeholder="请输入姓名" v-model="uname">
+        <button @click="getValue">获取输入框内容</button>
+        <textarea name="" id="" cols="30" rows="10" v-model="content"></textarea>
+        <p>{{content}}</p>
+        <!-- v-model绑定的是value值，所以只有在单选框的value与绑定的值相等时才会被选中。 -->
+        <input type="radio" name="" id="" v-model="isvalue" value="张三">
+    </div>
+
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月2日15:53:29 */
+    new Vue({
+        el: "#app",
+        data: {
+            uname: "",
+            content: "",
+            isvalue: "张三",
+        },
+        methods: {
+            getValue() {
+                console.log(this.uname);
+            }
+        }
+    })
+</script>
+
+</html>
+<!-- 点击换色，跑马灯，增删，双向数据绑定 -->

@@ -1,0 +1,1 @@
+let name = '白浅'; let age = 19; console.log(name);

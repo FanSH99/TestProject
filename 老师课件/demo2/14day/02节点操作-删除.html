@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        ul{
+            width: 500px;
+            height: 50px;
+        }
+        ul li{
+            border:1px solid #333;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        删除
+        parentNode.removeChid(node)
+         父节点                孩子节点
+     -->
+     <ul class="bt">
+        <li>ID</li>
+        <li>姓名</li>
+        <li>年龄</li>
+        <li>性别</li>
+        <li>操作</li>
+     </ul>
+     <ul>
+        <li>1001</li>
+        <li>刘晨</li>
+        <li>18</li>
+        <li>男</li>
+        <li><a href="javascript:;">删除</a></li>
+     </ul>
+     <ul>
+        <li>1002</li>
+        <li>刘晨1</li>
+        <li>18</li>
+        <li>男</li>
+        <li><a href="javascript:;">删除</a></li>
+     </ul>
+
+     <script>
+        // var bt= document.getElementsByClassName('bt')[0];
+        // console.log(bt);
+        // document.body.removeChild(bt)
+
+
+        //1. 删除  要求，从当前a 出发，删除  ul 这一行元素removeChid
+        // 单击事件  onclick
+
+       var as= document.querySelectorAll('a');
+       console.log(as);
+
+       //每个a都要添加事件， 遍历
+        for(var i=0;i<as.length;i++){
+            as[i].onclick=function(){
+                //  as[i] 不能直接用 ，一定要换成this
+                this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+                // document.body.removeChild(this.parentNode.parentNode)
+            }
+        }
+
+
+     </script>
+</body>
+</html>

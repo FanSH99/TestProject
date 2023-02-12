@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        /* 
+            引入：轮播图，倒计时
+
+            1. 指定间隔时间重复执行的函数(定时器)：
+                 setInterval(函数, 1000);
+                返回值是定时器的名字(第几个定时器)。 
+            2. 清除定时器  
+                 clearInterval(定时器名字); 
+            3. 第一次执行的时间是 3 秒后。而不是刷新页面就开始执行。       
+        */
+        console.log(`定时器`);
+        let timer1 = setInterval(function () {
+            console.log(`今天天气不错`);
+        }, 1000);
+
+        let timer2 = setInterval(function () {
+            console.log(`出太阳了`);
+        }, 1000);
+
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            console.log(`清除定时器`);
+            // 清除定时器
+            clearInterval(timer1);
+        });
+    </script>
+</body>
+
+</html>

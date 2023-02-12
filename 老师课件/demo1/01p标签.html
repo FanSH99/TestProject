@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- 声明文档类型为html文档 -->
+<!-- ctrl+/  添加或删除注释 -->
+<html lang="en">
+<head>
+    <!--字符编码  -->
+    <meta charset="UTF-8">
+    <!-- 主要针对ie浏览器 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 主要针对的移动端设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 网页的标题 -->
+    <title>第一个网页</title>
+  
+</head>
+<body>
+    <a href="01p标签.html">01</a>
+    <a href="02格式化标签.html">02</a>
+    <a href="03列表.html">03</a>
+    <a href="04表格.html">04</a>
+  <!-- 标签结构：包含关系（父子关系）、并列关系（兄弟关系） -->
+  <!-- 网页内容的标题 hn n(1~6)标签 双标签 默认字体加粗  块状元素(一组标签排不满一行，另一组不会自动往后排；同时给标签设置宽高起作用)-->
+  <h1 style="width: 200px; height:40px; background:red">标题标签1</h1>
+  <h2 style="width: 200px; height:40px; background:green">标题标签2</h2>
+  <h3>标题标签3</h3>
+  <h4>标题标签4</h4>
+  <h5>标题标签5</h5>
+  <h6>标题标签6</h6>
+  <!-- 段落标签 p标签 双标签 默认字体正常  块状元素(一组标签排不满一行，另一组不会自动往后排；同时给标签设置宽高起作用)-->
+<p style="width: 200px; height:40px; background:red">这是一个段落</p>
+<p style="width: 200px; height:40px; background:green">这是一个段落</p>
+
+<!-- 图片标签 img 单标签  既有行内元素特点又有块状元素特点（行内块元素）
+src="图片路径"   ../返回上一级 
+
+alt=""  当图片不能正常显示时，对图片的文字描述
+title="456"  无论图片是否正常显示，鼠标移上图片对图片的文字描述
+
+width 宽度   height高度  只设置其中一个数值时图片会等比例缩放
+-->
+<img src="img/01.jpg" width="200px">
+<!-- <img src="./img/01.jpg"> -->
+<img src="02.jpg" alt="" height="200px">
+<img src="02.jpg" alt="123" title="456">
+</body>
+</html>

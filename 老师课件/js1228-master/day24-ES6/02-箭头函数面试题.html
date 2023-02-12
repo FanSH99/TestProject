@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>箭头函数面试题</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		var age = 22;
+		var obj = {
+			age: 20,
+			say: () => {
+				console.log(this.age);
+			}
+		}
+		// 对象不能产生作用域，say 方法定义在全局作用域下，
+		// 作用域: 全局,局部,块级
+		// 作用域中的 this，即 window
+		obj.say();  // 22
+	</script>
+</body>
+
+</html>

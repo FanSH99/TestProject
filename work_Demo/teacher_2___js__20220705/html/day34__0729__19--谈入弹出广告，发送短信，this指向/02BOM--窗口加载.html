@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 如果写在文档内容前面，需要添加window.onload，否则，执行结果均为null */
+        window.onload = function () {
+            var box = document.getElementById('box');
+            console.log(box);
+        }
+        window.addEventListener('load', function () {
+            console.log('aaa');
+        })
+        window.addEventListener('DOMContentLoaded', function () {
+            console.log('bbb');
+        })
+        /*
+        最终结果如下
+        bbb
+        <div id='box'><div>
+        aaa
+        窗口大小改变了
+         */
+    </script>
+
+</head>
+
+<body>
+    <!-- 
+        BOM --独立于文档内容，与浏览器窗口进行交互的对象。
+
+        窗口加载事件 onload ---当文档内容完全加载完成时触发该事件。
+        DOMContentLoaded  ---当Dom加载完成时触发，仅包括标签，不包括样式表， 这样加载速度更快。 ---如果页面较多建议用这个方法
+        window.onresize ---调整窗口大小事件。  和响应式有关
+     -->
+    <div id="box"> </div>
+    <script>
+
+        var a = 10;
+        // window.a = 10;
+        function show() {
+            console.log('aaaa');
+            console.log(this);//window
+        }
+        show();
+        // window.show();  ---调用方法时可以省略window
+        console.log(this);//window
+        window.onresize = function () {
+            console.log('窗口大小改变了');
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!--    Array 对象方法  内置方法
+
+         方法                      用法                           是否修改原数组
+
+        一、栈方法  
+        1. push(ele1,ele2....)    向数组的末尾添加一个或更多元素，      修改
+             压栈                     并返回新的长度
+        2.pop() 无参              删除数组的最后一个元素                修改
+             出栈                      并返回删除的元素。
+             
+        二、队的方法
+           push   入队               队尾添加
+
+        3. unshift(ele1,ele2,....)   向数组的开头添加一个或更多元素，   修改
+                                      并返回新的长度。
+        4. shift() 无参               删除并返回数组的第一个元素。      修改
+           出队
+-->
+    <script>
+        //1. push
+    //      var arr=[];
+    //     // arr[arr.length]=10;
+    //     arr.push(10);
+    //     arr.push(50,80)
+    //   var len=  arr.push('nice')
+    //     console.log(arr,arr.length,len);
+
+    //     //2.pop
+    //   var ele=  arr.pop();
+    //     ele=  arr.pop();
+    //     console.log(arr,ele);
+
+       //3. unshift
+       var arr=[10,20,'nice'];
+       arr.unshift('hello');
+     var len=  arr.unshift('very good','noon');
+       console.log(arr,len);
+
+       //4. shift
+         arr.shift();
+       var ele=  arr.shift();
+       console.log(arr,ele);
+        
+
+    
+    </script>
+</body>
+</html>

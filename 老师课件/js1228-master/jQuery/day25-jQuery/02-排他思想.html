@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button>李白</button>
+  <button>虞姬</button>
+  <button>诸葛亮</button>
+  <button>项羽</button>
+  <button>哪吒</button>
+  <script>
+    /* 
+      需求：点击按钮，变色，其余按钮不变色。
+      思路：
+          1.点击当前按钮变色。
+          2.通过选择器，兄弟按钮不变色。
+    */
+   // 入口函数
+    $(function () {
+      // 隐式迭代  点击事件
+      $('button').click(function () {
+        // 当前按钮变色
+        $(this).css('color', 'red');
+        // 兄弟按钮变色
+        $(this).siblings().css('color', "");
+      });
+    });
+  </script>
+</body>
+
+</html>

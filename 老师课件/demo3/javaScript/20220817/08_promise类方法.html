@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let p = new Promise((reslove, reject) => {
+        reslove("哈哈哈哈哈")
+    })
+    let p1 = new Promise((reslove, reject) => {
+        reslove("嘿嘿嘿额")
+    })
+    let p2 = new Promise((reslove, reject) => {
+        reslove("啦啦啦啦")
+    })
+    console.log(p)
+    // all 传入所有的promise状态都为成功是才会返回成功 只要有一个失败了则就走失败
+    Promise.all([p, p1, p2]).then(res => {
+        // 每一个成功对象所返回的数据
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
+    // race 传入多个promise对象只会使用第一个状态若第一个状态成功了就成功了
+    Promise.race([p, p1, p2]).then(res => {
+        console.log(res + "-----------------race")
+    })
+    // 直接将primise状态改变成功状态
+    Promise.resolve("哈哈哈哈").then(res => {
+        console.log(res + '-------------reslove')
+    })
+    // 相当于
+    // let p = new Promise((reslove,reject)=>{
+    //         reslove("哈哈哈哈哈")
+    // })
+    // 直接将primise状态改变失败状态
+    Promise.reject("失败失败").catch((err) => {
+        console.log(err + '--------------------err')
+    })
+       // 相当于
+    // let p = new Promise((reslove,reject)=>{
+    //         reject("哈哈哈哈哈")
+    // })
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日10:34:28
+     -->
+</body>
+<script>
+    function People(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    People.prototype.say = () => {
+        console.log(this.name + "正在说话");
+    }
+    // 原型方法不能直接继承
+    People.prototype.walk = () => {
+        console.log(this.name + "正在晨跑");
+    }
+    let p1 = new People("海绵宝宝", 18)
+    console.log(p1);//People {name: '海绵宝宝', age: 18}
+
+
+    function Student(name, age, sno) {
+        People.call(this, name, age);
+        this.sno = sno;
+    }
+    // 需要加上下面两句话来继承圆形方法，位置放在对象后面，原型方法前面。
+    Student.prototype = Object.create(People.prototype);//构造器指向有错误
+    Student.prototype.constructor = Student;//再次指向位置
+    Student.prototype.say = () => {
+        console.log(this.name = "说喜欢海绵宝宝");
+    }
+    let s1 = new Student("派大星", 18, "20181001");
+    console.log(s1);//Student {name: '派大星', age: 18, sno: '20181001'}
+
+    s1.say();
+    s1.walk();
+
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        say() {
+            console.log("好好学习天天向上");
+        }
+    }
+    let p2 = new Person("白浅", 19);
+    console.log(p2);//Person {name: '白浅', age: 19}
+    class NewStudent extends Person {
+
+        constructor(name, age, sex) {
+            super(name, age);
+            this.sex = sex;
+        }
+        nsay() {
+            super.say();
+            console.log(1111);
+        }
+
+    }
+    let n1 = new NewStudent("夜华", 17, "男");
+    console.log(n1);//NewStudent {name: '夜华', age: 17, sex: '男'}
+    console.log(n1.nsay(), n1.say);
+
+    class Person2 {
+        static age = 20;
+        static jump() {
+            console.log("Person中静态方法jump");
+        }
+        perRun() {
+            console.log("Person中的run方法");
+        }
+    }
+    class Snail extends Person2 {
+        run() {
+            super.perRun();// console.log("Person中的run方法");
+            //下面调用会报错，只能在子类静态方法中通过super调用父静态方法
+            // super.jump();
+        }
+        static inRun() {
+            super.jump();//Person中静态方法jump
+        }
+    }
+    let snail = new Snail();
+    snail.run();//Person中的run方法
+    snail.constructor.inRun();//Person中静态方法jump
+</script>
+
+</html>

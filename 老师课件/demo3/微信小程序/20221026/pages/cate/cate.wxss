@@ -1,0 +1,13 @@
+/* pages/cate/cate.wxss */
+.present{
+  width: 100%;
+  height: 300rpx;
+  background-color: blue;
+  color: #ffffff;
+}
+.child{
+  width: 100%;
+  height: 100rpx;
+  color: #fff;
+  background-color: red;
+}

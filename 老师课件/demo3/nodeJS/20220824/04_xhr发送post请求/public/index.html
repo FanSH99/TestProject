@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>xhr发送post请求</h1>
+    <button onclick="xhrPost()">热门电影</button>
+    <button onclick="xhrPostParams()">热门电影(post传参)</button>
+</body>
+<script src="../../template.js"></script>
+
+<script>
+    function xhrPost(){
+        // 创建 xhr实例
+        let xhr = new XMLHttpRequest();
+        // 设置请求方式请求地址
+        xhr.open("post","/get/list");
+        // 发送请求
+        xhr.send();
+        // 监听请求状态
+        xhr.onreadystatechange = ()=>{
+            // 判断请求成功
+            if(xhr.readyState == 4){
+                // 获取请求数据
+                console.log(JSON.parse(xhr.response))
+                
+            }
+        }
+    }
+    function xhrPostParams(){
+        let type = 'hot'
+        let xhr = new XMLHttpRequest();
+        xhr.open("post",'/get/list');
+        // 设置请求头 xhrpost请求需要设置请求头类型为application/x-www-form-urlencoded
+        xhr.setRequestHeader("content-type",'application/x-www-form-urlencoded')
+        // xhr post请求传递参数需要将参数以字符串得形式放请求体中
+        xhr.send(`type=${type}&name=张三`);
+        xhr.onreadystatechange = ()=>{
+            if(xhr.readyState === 4){
+                console.log(JSON.parse(xhr.response))
+            }
+        }
+    }
+
+
+</script>
+</html>

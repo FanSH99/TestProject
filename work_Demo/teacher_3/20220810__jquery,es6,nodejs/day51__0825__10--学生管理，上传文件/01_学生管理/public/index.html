@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1000px;
+            margin: 20px auto;
+            min-height: 400px;
+            border: 2px solid #f60;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .left {
+            width: 30%;
+            min-height: 300px;
+            /* border: 1px solid blueviolet; */
+
+        }
+
+        .right {
+            width: 60%;
+            padding: 6px;
+            min-height: 300px;
+            /* border: 1px solid green; */
+            box-sizing: border-box;
+        }
+
+        .title {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background: #4545fb;
+            color: #fff;
+            text-align: center;
+        }
+
+        .left>div {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .left>div input {
+            width: 100%;
+            border: none;
+            height: 40px;
+            border-bottom: 1px solid #4545fb;
+            padding: 0 10px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            text-align: center;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background: #4545fb;
+            margin: 16px 0;
+            border-radius: 5px;
+            color: #fff;
+
+        }
+
+        .right_title {
+            width: 100%;
+            height: 30px;
+            padding: 6px;
+            background: #f60;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+            box-sizing: border-box;
+            color: #fff;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            /* border-bottom: 1px solid #333; */
+        }
+
+        table thead tr {
+            height: 40px;
+        }
+
+        table tbody tr {
+            text-align: center;
+            height: 40px;
+            border-top: 1px solid #d3d3d3;
+        }
+
+        table tbody tr:nth-child(2n) {
+            background: #d4d3d3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left">
+            <div class="title">添加学生</div>
+            <div><input type="text" placeholder="请输入学生姓名" id="name"></div>
+            <div><input type="text" placeholder="请输入学生年龄" id="age"></div>
+            <div><input type="text" placeholder="请输入学生性别" id="sex"></div>
+            <div><input type="text" placeholder="请输入学生联系方式" id="phone"></div>
+            <div class="btn">确认添加</div>
+
+        </div>
+        <div class="right">
+            <div class="right_title">学生管理
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>性别</th>
+                            <th>联系方式</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script src="./js/jquery-3.6.0.min.js"> </script>
+<script src="./js/template.js"></script>
+
+
+<script id="tr" type="text/html">
+{{each data item index}}
+<tr>
+    <td>{{item.name}}</td>
+    <td>{{item.age}}</td>
+    <td>{{item.sex}}</td>
+    <td>{{item.phone}}</td>
+    <td>
+        <button onclick="remove('{{item.name}}')">删除</button>
+    </td>
+</tr>
+{{/each}}
+</script>
+
+
+<script>
+
+    // 封装ajax
+    let request = (url, method, data) => {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                method: method,
+                data: data,
+                success(res) {
+                    resolve(res)
+                },
+                error(err) {
+                    reject(err)
+                }
+            })
+        })
+    }
+    let render = async () => {
+        let res = await request("/get/list", "get");
+        console.log(res);
+        let html = template("tr", { data: res });
+        console.log(html);
+        $("tbody").html(html);
+    }
+    render();
+    $(".btn").on("click", async () => {
+        let name = $("#name").val();
+        let age = $("#age").val();
+        let sex = $("#sex").val();
+        let phone = $("#phone").val();
+
+        if (!name || !age || !sex || !phone) {
+            alert("请你补充完整信息")
+            return;
+        }
+        let data = {
+            name,
+            age,
+            sex,
+            phone
+        }
+        console.log(data);
+        let res = await request("/add/stu", "post", data);
+        // console.log(res);
+        render();
+        alert(res);
+    })
+    async function remove(name) {
+        alert(name);
+        let res = await request("/remove/stu", "get", { name })
+        render();
+        alert(res);
+    }
+
+</script>
+
+</html>

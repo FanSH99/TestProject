@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #time {
+            width: 600px;
+            height: 50px;
+            background-color: black;
+            color: #fff;
+            font-size: 25px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    实现今天距  '2022-7-15 12:00:00'  还有 XX 天 XX 分 XX 秒
+    并把时间输出在id="time"的div 内部
+     -->
+    <div id="time"></div>
+    <script>
+        function daoJiShi(){
+              //1. 今天距 1970年1月1日的毫秒数
+        var today = new Date();
+        // today=today.getTime();
+        today = +today
+        console.log(today);// 毫秒
+        //2. 7-15 距1970年1月1日的毫秒数
+        var end = new Date('2022-7-15 12:00:00');
+        end = +end;
+        console.log(end);
+
+        //3.差值    秒数
+        var diff=parseInt((end-today)/1000);
+        console.log(diff);
+
+        //4.分解为  ？天 ？小时 ？分钟  ？秒             1234
+        /* 
+                   24进制    60分钟     60秒
+        
+        */
+
+        var s=diff%60;// 秒数
+        var m= parseInt(diff/60)%60;//分钟
+        var h=parseInt(diff/60/60)%24;// 小时
+        var d=parseInt(diff/60/60/24);// 天
+       d= d<10?'0'+d:d;
+       h= h<10?'0'+h:h;
+       m= m<10?'0'+m:m;
+       s= s<10?'0'+s:s;
+
+    //    if(d<10){
+    //     d= '0'+d
+    //    }else{
+    //     d=d
+    //    }
+
+        // console.log(d,h,m,s);
+        var time=d+'天'+h+'时'+m+'分'+s +'秒';
+      var time1=  document.querySelector('#time');
+       time1.innerHTML=time;
+
+        }
+    //   调用函数
+     daoJiShi();
+     setInterval(daoJiShi,1000)
+
+    </script>
+</body>
+
+</html>

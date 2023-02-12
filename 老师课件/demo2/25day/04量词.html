@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        n+  出现1次或多次   ，最少出现1次  n{1,}
+        n*  出现0次或多次                 n{0,}
+        n?  出现0次或1次                  n{0,1}
+        n{x}  含 X 个 n 
+        n{x,} 连续的n 最少x个
+        n{x,y} 连续的n 最少x个,最多个
+
+
+     -->
+     <script>
+        //   / 密码/ 为6位的数字,并且全是数字
+        // var patt=/^[0-9]{6}$/
+
+        // console.log(patt.test('123456'));
+
+        // 密码至少6位的数字,并且全是数字
+
+        var patt=/^[0-9]{6,}$/
+
+        console.log(patt.test('12345'));
+     </script>
+</body>
+</html>

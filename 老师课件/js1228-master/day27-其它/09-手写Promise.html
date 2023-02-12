@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定义常量，有提示，且方便复用
+        const PENDING = 'pending'; // 等待
+        const FULFILLED = 'fulfilled'; // 成功
+        const REJECTED = 'rejected'; // 失败
+
+        class MyPromise {
+            constructor(executor) {
+                executor(this.resolve, this.reject);
+            }
+
+            status = PENDING; // promise 状态
+            value = undefined; // 成功之后的值
+            reason = undefined; // 失败的原因
+            // 普通函数的 this 执行 window，通过箭头函数
+            // 让函数内部的this 指向 这个类的实例对象 
+            resolve = (value) => {
+                // 状态不是等待，则阻止程序继续执行
+                if (this.status != PENDING) return;
+                // 将状态更改为成功
+                this.status = FULFILLED;
+                // 保存成功之后的值
+                this.value = value;
+            }
+            reject = (reason) => {
+                if (this.status != PENDING) return;
+                this.status = REJECTED;
+                this.reason = reason;
+            }
+            then(successCallback, failCallback) {
+                // 判断状态
+                if (this.status == FULFILLED) {
+                    successCallback(this.value);
+                } else if (this.status == REJECTED) {
+                    failCallback(this.reason);
+                }
+            }
+        }
+
+        let p = new MyPromise((resolve, reject) => {
+            // resolve("成功");
+            reject("失败");
+        });
+
+        p.then((value) => {
+            console.log(1, value);
+        }, (reson) => {
+            console.log(2, reson);
+        });
+
+
+    </script>
+</body>
+
+</html>

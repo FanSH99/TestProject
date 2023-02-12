@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 表单域   action=""提交网址  method="post" 提交方式 
+    表单控件：行内块属性（设置宽高起作用，一组排不满一行另一组标签自动往后排）
+    -->
+    <form action="" method="post">
+     <fieldset>
+        <legend>常用表单控件</legend>
+           <!-- 单行文本框 -->
+           <!-- placeholder="用户名"  输入新内容时，原文字提示自动消失
+        value="用户名"  输入新内容时，原文字提示不会消失，需手动删除
+        -->
+        <label for="adm">用户名：</label>  
+        <input type="text" placeholder="用户名" id="adm" style="width:300px ; height:50px;">
+           <!-- 密码框 
+        placeholder="密码" 文字提示为“密码”
+       value="密码"   提示为隐藏的数字 
+    -->
+           密码：<input type="password" placeholder="密码">
+           <!-- 单选按钮  实现单选功能加上name属性，两个属性值保持一致 -->
+           <input type="radio" name="xb">男 <input type="radio" name="xb">女
+           <!-- 多选按钮   checked默认选中-->
+           <input type="checkbox">打游戏 <input type="checkbox">逛淘宝 <input type="checkbox" checked>敲代码 <input
+               type="checkbox">吃饭
+           <!-- 下拉列表 -->
+           <select>
+   
+               <option>湖南省</option>
+               <option>河南省</option>
+               <option>河北省</option>
+   
+               <option>湖北省</option>
+               <option selected>北京市</option>
+           </select>
+           <!--  -->
+           <!-- 提交按钮 -->
+           <input type="submit">
+           <!-- 重置按钮 -->
+           <input type="reset">
+           <input type="button" value="普通按钮">
+           <button>普通按钮</button>
+           <!-- <input type="image" src="02.jpg"> -->
+           <input type="file">
+   
+           <textarea >个人评价：</textarea>
+     </fieldset>
+
+    </form>
+
+
+
+
+</body>
+
+</html>

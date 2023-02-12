@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5</title>
+    <script>
+        // navigator 是 window 的一个属性
+        // navigator 是一个对象
+        // navigator.userAgent 可以获取当前浏览器信息
+
+        // 需求: 根据浏览器的不同，显示不同的页面。
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            window.location.href = "../H5/index.html";
+        }
+    </script>
+</head>
+
+<body>
+    京东的 PC 页面
+    <br />
+    navigator 对象包含有关浏览器的信息，它有很多属性，
+    我们最常用的是userAgent ,该属性可以返回由客 户机发送服务器的user-agent头部的值。
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        案例:发送短信
+       点击按钮后，该按钮60秒之内不能再次点击，防止重复发送短信 
+    -->
+    <input type="text">
+    <button>发送</button>
+    <!-- 
+       1.点击发送按扭 后，按钮不可用 disabled=true;
+       2. 按钮上出现倒计时，60s    并不断的递减  0
+       3. 按钮变为可和，上面字变为发送  ，自定义的60s的时间还重新设为60s
+     -->
+     <script>
+        //1.查
+        var btn= document.querySelector('button') ;
+        //2.加事件
+        var time=3;
+        var timer=null;
+        btn.onclick=function(){
+         
+            this.disabled=true;
+            // btn.innerHTML=time+'s'
+           timer= setInterval(function(){
+        
+                time--;
+                btn.innerHTML=time+'s'
+                if(time==0){
+                 clearInterval(timer);
+                 btn.disabled=false;
+                 btn.innerHTML='发送'
+                //  time=3;
+                }
+
+            },1000)
+    
+
+        }
+
+
+     </script>
+</body>
+</html>

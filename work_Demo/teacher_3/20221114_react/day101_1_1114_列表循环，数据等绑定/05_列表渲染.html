@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    let list = ["海绵宝宝", "派大星", "章鱼哥"];
+    let dogs = [
+        {
+            name: "小红",
+            color: "red"
+        },
+        {
+            name: "小黑",
+            color: "black"
+        }
+    ]
+    let dom = (
+        <div>
+            <div>
+                <ul>
+
+                    {
+                        /* 这里必须使用map来进行列表循环 */
+                        list.map((item, index) => {
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    {
+                        dogs.map((item, index) => {
+                            return <li key={index}>{item.name}--{item.color}</li>
+                        })
+                    }
+                </ul>
+            </div>
+
+        </div>
+    )
+    ReactDOM.render(dom, document.getElementById("app"));
+
+    let doms1 = list.map((item, index) => {
+        console.log(item, index);
+        item = item + index;
+        return item;
+    })
+    console.log(doms1);//["海绵宝宝0","派大星1","章鱼哥2"]
+    console.log(list);//不变
+    let doms2 = list.forEach((item, index) => {
+        console.log(item, index);
+        item = item + index;
+        return item;
+    })
+    console.log(doms2);//undefined
+    console.log(list);//不变
+
+    let user = [
+        {
+            name: "张三",
+            age: 18
+        },
+        {
+            name: "李四",
+            age: 20
+        }]
+    let user1 = user.map((item, index) => {
+        // item.name = "白浅" + index;
+        item.age = 10 + index;
+        return item
+    })
+    console.log(user1, user);
+    let user2 = user.forEach((item, index) => {
+        item.name = "白浅" + index
+        return item
+    })
+    console.log(user2, user);
+</script>
+<script>
+
+    /*
+    map和forEach的区别
+    1.map和forEach都可以用来遍历数组
+    2.map可以有返回值，return值会放到一个新的数组返回。
+    forEach没有return值,return任何东西都是undefined
+    3.forEach可以改变原数组。
+    map不能改变简单数组，即没有对象的数组
+    4.map比forEack更快。
+    */
+</script>
+
+</html>

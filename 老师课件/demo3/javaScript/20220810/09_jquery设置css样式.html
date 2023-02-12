@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div>
+        小球
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    // document.querySelector('div').style.color = 'red'
+    // jquery可以通过链式调用的方式设置多个css属性
+    $("div").css("width",'50px').css("background",'red')
+    // 可以传入一个对象 设置多个属性
+    $("div").css({
+        height:"50px",
+        textAlign:"center",
+        lineHeight:"50px",
+        borderRadius:"50%"
+    })
+</script>
+</html>

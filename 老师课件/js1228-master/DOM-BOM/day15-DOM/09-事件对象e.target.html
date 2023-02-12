@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>富士山下</div>
+    <ul>
+        <li id="jay">发如雪</li>
+        <li>东风破</li>
+        <li>黑色毛衣</li>
+        <li>双截棍</li>
+    </ul>
+    <a href="http://www.jd.com">京东</a>
+    <a href="Javascript:void(0)">京东2</a>
+    <script>
+        // 常见事件对象的属性和方法
+        /* 
+            e.target:触发事件的元素
+            this:绑定事件的元素。
+            e.type:触发事件的类型
+            e.preventDefault();    阻止默认的事件(兼容性问题)
+        */
+        var ul = document.querySelector('ul');
+        var div = document.querySelector('div');
+
+        ul.addEventListener('click', function (e) {
+            console.log(e.target);   // 1. 触发事件的对象
+            console.log(this);  // 当前对象
+        });
+
+        div.addEventListener('click',fn);
+        div.addEventListener('mouseenter',fn);
+        div.addEventListener('mouseleave',fn);
+        div.addEventListener('mousemove',fn);
+
+        function fn(e){
+            // 2. 获取事件对象的类型
+            console.log(e.type);
+        }
+
+        // 3. 阻止默认行为  href = 'javascript:;' href = 'Javascript:void(0)'
+        var a = document.querySelector('a');
+        a.addEventListener('click',function(e){
+            // console.log(1);
+            alert('alert');
+            // 调用事件对象的方法
+            console.log(e.preventDefault());
+        });
+
+    </script>
+</body>
+
+</html>

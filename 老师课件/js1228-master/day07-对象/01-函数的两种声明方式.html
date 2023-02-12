@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 函数的2中声明方式
+        // 1. 通过 function 关键字声明
+        function play() {
+            console.log('今晚吃鸡');
+        }
+        play();
+
+        // 2. 匿名函数
+        //    声明了一个变量，变量的值是一个(匿名)函数
+        //    变量名();  调用函数
+        let eat = function (menu) {
+            console.log(`今晚吃${menu}`);
+        };
+        eat('红烧鱼');
+        // 输出函数的声明
+        console.log(eat);
+
+        // 3. 箭头函数
+        let run = () => {
+            console.log('就这么跑来跑去');
+        }
+        run();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

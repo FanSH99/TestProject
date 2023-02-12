@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            /* vh是根据可视窗口计算的高度,1vh==可视窗口高度的1% */
+            /* height: 100vh; */
+        }
+
+        div {
+            position: absolute;
+            box-shadow: 0 0 45px red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body></body>
+<script>
+    // 1.点击屏幕,在点击的位置上显示一个div
+    // $('body').click(function(){
+    //     alert(12)
+    // })
+    $(window).click(function (e) {
+        // 获取鼠标相对与浏览器试图窗口的位置(left/top的偏移量)
+        var xx = e.clientX;
+        var yy = e.clientY;
+
+        // console.log(xx,yy);
+        // 获取一个再170-20之间的随机数
+        var width = Math.floor(Math.random() * 150 + 20);
+        var left = Math.floor(Math.random() * ($(window).width() - width));
+        var top = Math.floor(Math.random() * ($(window).height() - width));
+        // console.log(width);
+        $("<div></div>").css({
+            width: width,
+            height: width,
+            left: xx - width / 2,
+            top: yy - width / 2
+        }).appendTo('body').animate({ left: left, top: top }, 2000, function () {
+            console.log($(this))
+            text(this)
+            // setInterval(function(){
+            // },2000)
+            // $(this).animate({left:800,top:500},2000,function(){
+            //     console.log($(this))
+            // })
+        });
+    })
+
+    function text(item) {
+        var left = Math.floor(Math.random() * ($(window).width() - $(item).width()));
+        var top = Math.floor(Math.random() * ($(window).height() - $(item).width()));
+        $(item).animate({ left: left, top: top }, 2000, function () {
+            // console.log($(item))
+            text(item);
+        });
+    }
+</script>
+
+</html>

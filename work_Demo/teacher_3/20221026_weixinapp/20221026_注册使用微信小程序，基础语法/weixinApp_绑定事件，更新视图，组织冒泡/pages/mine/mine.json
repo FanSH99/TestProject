@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "myheader":"../../components/header"
+  },
+  "navigationBarBackgroundColor": "#126bae",
+  "navigationBarTextStyle":"white"
+}

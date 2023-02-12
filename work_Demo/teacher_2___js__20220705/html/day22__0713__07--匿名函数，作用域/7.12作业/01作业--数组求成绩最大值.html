@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        1、计算圆的面积（用函数实现）
+2、计算长方形的面积（用函数实现）
+3、求圆的面积和长方形的面积的和（用函数实现）
+
+4、录入五个学生的成绩，输出其中的最高分（用函数实现）
+
+5、判断数字是否为偶数，判断数字是否为奇数（函数实现）
+
+6、用代码实现输出日期，日期格式为 yyyy-mm-dd(用函数实现);
+
+7、求取某个日期是星期几（例如：2017/9/25）（用函数实现）
+
+8、求100以内奇数的和（用函数实现）
+
+9、一张纸的厚度是0.07毫米，假设这张纸可以限次对折，问对折几次可以超过珠峰，珠峰是8848米（用函数实现）
+10、国际象棋64格，第一个放一粒，后面每一格都放上一格的2倍，问第64格上会放多少粒（用函数实现）
+     -->
+
+    <script>
+        function getMax() {
+            var arr = [];//定义一个空的数组
+            for (var i = 0; i < 5; i++) {
+                var score = +prompt('请录入学生成绩');
+                arr[i] = score;
+            }
+            console.log(arr);
+            var max = arr[0];//假设第一个数最大。
+            //遍历数组 ,如果数组中的数更大，则将最大值换位。
+            for (var j = 0; j < arr.length; j++) {
+
+                if (max < arr[j]) {
+                    max = arr[j];
+                }
+            }
+            return max;
+        }
+        
+
+
+    </script>
+</body>
+
+</html>

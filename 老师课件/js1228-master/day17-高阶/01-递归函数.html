@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /* 
+      递归(recursion)函数：
+          1. 函数内部，自己调用自己
+          2. 防止死循环
+          3. 函数在栈里面执行，防止栈溢出
+
+      循环的四要素：初始化条件; 变化条件; 判断条件; 执行逻辑     
+    */
+
+    let number = 1;
+    function fn() {
+      number++;
+      console.log('富士山下');
+      if (number == 6) {
+        return;
+      }
+
+      fn();
+    }
+
+    fn();
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日17:25:59
+     -->
+</body>
+
+<link rel="stylesheet" href="./data/user.js">
+<script type="module">
+
+    // export 导出,可以是函数或者对象.
+
+    import { name, age, sex, getUser } from './data/user.js';
+    import like from './data/like.js';
+    import mysay from './data/index.js';
+    console.log({ name, age, sex });
+    console.log(mysay());
+    getUser();
+    console.log(like);
+</script>
+
+</html>

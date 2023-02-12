@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        自定义的对象
+        对象 引用类型
+        检测：   obj instanceof Object
+                                Array
+                                Date
+                                String
+
+
+                                Person
+                                Student
+        栈内存       堆内存
+
+        浅拷贝（分享） 和   深拷贝 （面试题   --后续高级部分  递归函数）
+
+        obj=null;  相当于引线剪断了
+     -->
+     <script>
+        console.log({}=={});//false
+        console.log([]==[]);//false
+
+        console.log(!{}=={});//false
+        console.log(![]==[]);//true
+
+        // 浅拷贝
+        var obj={name:'李向阳',age:18};
+        var obj1={};
+        obj1=obj;
+        obj.name='刘晨'
+        console.log(obj,obj1);
+
+
+        // 内置方法
+        //  Object.assign(...)   es6的方法    也不能认是深拷贝 
+
+        // var obj2={name:'冯家宝',age:18}
+        var obj2={name:'冯家宝',age:18,subject:['html5','css3','js']}
+        var obj3=Object.assign({},obj2);
+        obj2.name='王文成';
+        // 简单的数据，可以做到深拷贝，但是数据复杂话，无法完成深拷贝
+        obj2.subject[0]='node.js'
+        console.log(obj2,obj3);
+
+
+        // 将来做到深拷贝，封装一个函数（递归函数的应用， 后面高级为大家分享） ---面试题
+
+
+     </script>
+</body>
+</html>

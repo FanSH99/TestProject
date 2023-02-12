@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue插槽</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-component>
+            <!-- 组件中内容不能直接插入，组件会覆盖内容，想要在组件中展示内容需要用到插槽。 -->
+            <h1>我想学习</h1>
+            <h2>学习使我快乐</h2>
+        </my-component>
+    </div>
+
+    <template id="mycom">
+
+        <div class="box">
+            <!-- vue内置组件--slot组件，用来接收组件中所携带的内容，插槽组件 
+            组件内部所携带的内容，合适展示展示到那里，都是由slot来决定的。
+            默认所有携带的内容会展示到一块
+            -->
+            <slot></slot>
+            <h1>我是一个组件</h1>
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月9日15:25:42 */
+
+    let myComponent = {
+        template: "#mycom"
+    }
+    new Vue({
+        el: "#app",
+        data: {
+
+
+        },
+        components: {
+            myComponent,
+        }
+
+    })
+</script>
+
+</html>

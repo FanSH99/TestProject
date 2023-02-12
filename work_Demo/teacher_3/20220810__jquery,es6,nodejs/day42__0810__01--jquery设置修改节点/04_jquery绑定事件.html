@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #333;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月10日10:49:02
+     -->
+    <button onclick="clickHanld()">原生点击事件1</button>
+    <button onclick="clickHanld2()" class="btn2">原生点击事件2</button>
+    <button onclick="clickHanld3()" class="btn3">原生点击事件3</button>
+
+    <button class="btn4">jQuery点击事件1</button>
+    <button class="move">jQuery移入事件</button>
+    <button class="hover">jquery-hover事件</button>
+    <input type="text" class="age1">
+    <input type="text" class="age2"><br><br>
+    <hr>
+    <div class="box">
+        请输入内容：<input type="text">
+        <div class="show"></div>
+    </div>
+
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+    function clickHanld() {
+        console.log(this);//指向window
+        console.log($(this));
+        alert('点我干啥');
+    }
+    var btn2 = document.querySelector('.btn2');
+    btn2.onclick = function () {
+        console.log($(this));
+        //  // 将this变为jQuery对象 ---加一个$符号即可。
+        console.log($(this).text());
+        alert('啦啦啦啦');
+    }
+
+    document.querySelector('.btn3').addEventListener('click', function () {
+        alert('中午吃什么呀！')
+    })
+
+    // jquery 绑定时间  $(选择器).事件名称(执行函数)
+    $('.btn4').click(function () {
+        alert('弹你一个大西瓜！')
+        console.log(this);//jquery中的this指向的是事件的绑定者，当前标签或dom对象。
+    })
+
+    $('.move').mousemove(function () {
+        console.log('鼠标移入了');
+    })
+    $('.hover').hover(function () {
+        console.log('鼠标移入');
+    }, function () {
+        console.log('鼠标移出');
+    }
+    )
+    // oninput事件，当输入框内容发生改变的时候就会触发
+    // onchange事件，当输入框内容改变时并且鼠标移开后触发，失去焦点并且内容改变触发。
+    // onblur事件，当鼠标移入并移开后触发，只要失去焦点就会触发。
+    $('.age1').on('change', function () {
+        console.log('我发生改变了');
+    })
+    $('.age2').on('input', function () {
+        console.log('我饿了');
+    })
+    console.log($(window));
+    // window.onload==function(){}
+    $(window).ready(function () {
+        console.log('js加载执行');
+    })
+    // onresize  页面尺寸发生改变时触发。
+    $(window).resize(function () {
+        console.log('页面尺寸发生改变了');
+    })
+
+    
+</script>
+
+</html>

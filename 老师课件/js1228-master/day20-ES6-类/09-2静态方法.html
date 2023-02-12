@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sing = function () {
+                console.log('我要开演唱会');
+            }
+        }
+
+        let jay = new Star('周杰伦', 22);
+        let eason = new Star('陈奕迅', 18);
+        let sun = new Star('孙红雷', 21);
+
+        Star.show = function (){
+            console.log("静态方法");
+        }
+        Star.prototype.show = function () {
+            console.log("普通方法");
+        }
+
+        jay.show();
+        eason.show();
+        Star.show();
+    </script>
+</body>
+
+</html>

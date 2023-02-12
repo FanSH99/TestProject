@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 当ref属性绑定在组件上时 使用this.$refs.属性名获取到的是当前组件实例 -->
+        <child ref="childRef"></child>
+        <button @click="changeState">切换</button>
+    </div>
+    <template id="child">
+        <div class="child">
+            <h1 v-show="isShow">我是一个子组件</h1>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let child = {
+        template:"#child",
+        data(){
+            return{
+                isShow:true
+            }
+        },
+        methods:{
+            init(){
+                console.log("调用我了")
+            }
+        }
+    }
+    new Vue({
+        el:"#app",
+        data:{
+            
+        },
+        components:{
+            child
+        },
+        methods: {
+            changeState(){
+                console.log(this.$refs.childRef)
+                this.$refs.childRef.isShow = !this.$refs.childRef.isShow;
+                this.$refs.childRef.init();
+            }
+        },
+    })
+    // 当ref属性作用在组件上时可以用来实现组件之间的通信
+</script>
+</html>

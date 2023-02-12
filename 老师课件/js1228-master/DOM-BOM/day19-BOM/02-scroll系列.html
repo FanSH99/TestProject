@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 10px solid red;
+            padding: 3px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        雨下整夜我的爱溢出就像雨水
+        <script>
+            /* 
+                1. scrollHeight/scrollWidth: 返回的是实际的高度，包括被卷去的头部。
+                2. scrollHeight   =  height + padding
+                3. scroll 滚动事件
+                4. scrollTop  卷去的头部的距离
+            */
+            /* 
+                总结:
+                    offsetWidth    =  height + padding + border
+                    clientHeight   =  height + padding
+                    scrollHeight   =  height + padding  (实际的高度，包括卷去的头部)
+            */
+            var div = document.querySelector('div');
+            // 206 = 200 + 3 * 2
+            // clientHeight =  height + padding
+            console.log(div.clientHeight);
+            // 206 = 200 + 3 * 2
+            // scrollHeight =  height + padding
+            console.log(div.scrollHeight);
+
+            // 给 div 添加一个滚动事件
+            div.addEventListener('scroll', function () {
+                console.log(div.scrollTop); // 卷去的头部的距离
+            });
+
+        </script>
+</body>
+
+</html>

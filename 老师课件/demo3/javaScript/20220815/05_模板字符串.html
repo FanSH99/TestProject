@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入姓名">
+    <input type="text" placeholder="请输入性别">
+        <input type="text" placeholder="请输入年龄">
+        <button>添加</button> 
+        <input type="text" placeholder="请输入姓名查询">
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+    </table>
+</body>
+<script>
+    var name = '张三';
+    var age = 12;
+    console.log("我叫"+name+"今年"+age)
+
+    let stuList = [
+        {
+            name:"张三",
+            age:18,
+            sex:"男"
+        },  {
+            name:"李四",
+            age:18,
+            sex:"男"
+        },  {
+            name:"王五",
+            age:18,
+            sex:"男"
+        },  {
+            name:"赵六",
+            age:18,
+            sex:"男"
+        },
+    ]
+    // 模板字符串 里面既可以写字符串又可以写变量
+    // 反引号 ${变量} 
+    console.log(`我叫${name}今年${age}`)
+</script>
+</html>

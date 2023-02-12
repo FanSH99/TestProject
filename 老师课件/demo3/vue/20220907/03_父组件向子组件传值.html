@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .move{
+            width: 200px;
+            font-size: 13px;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--
+            父组件向子组件传值：
+            1.在父组件中的子组件标签上绑定一个自定义属性
+            2.在子组件中使用props接收父组件传递过来的属性
+        --> 
+        <!-- 注意：自定义属性名不要使用驼峰命名法 -->
+        <move-component v-for="(item,index) in heroList" :key="index" :heroitem="item" :mymsg="msg"></move-component>
+    </div>
+    <template id="move">
+        <div class="move">
+             <p> {{mymsg}}</p>
+            <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${heroitem.alias}.png`" alt="">
+            <p>{{heroitem.title}}</p>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+
+<script>
+    // 创建组件
+    let moveComponent = {
+        template:"#move",
+        // 使用props接收到的自定义属性会自动挂载组件实例上所用使用这个属性可以向使用data中属性一样
+        props:["heroitem","mymsg"]
+    }
+    // 每个组件数据都是独享的 
+    new Vue({
+        el:"#app",
+        data:{
+           msg:"好好看电影",
+           heroList:[],
+        },
+        components:{
+            moveComponent
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get",'https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js');
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState ===4){
+                    let res = JSON.parse(xhr.response)
+                    console.log(res)
+                    this.heroList = res.hero;
+                }
+            }
+        },
+        
+    })
+</script>
+</html>

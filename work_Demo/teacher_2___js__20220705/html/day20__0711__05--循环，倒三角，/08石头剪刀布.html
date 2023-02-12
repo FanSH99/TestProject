@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="player"></div>
+    <div class="AI"></div>
+
+    <script>
+        /* 石头剪刀布 小游戏，三局两胜。有一方累计胜利 两次则游戏结束
+        0 石头
+        1 剪刀
+        2 布
+        */
+
+        var playCon = 0;
+        var AICon = 0;
+        var AIgame;
+        var playerGame;
+        for (var i = 0; i < 3; i++) {
+            var player = prompt('请出拳 0代表石头，1代表剪刀，2代表布');
+            console.log('player=' + player);
+            /*  document.write('player=' + player + '<br>'); */
+            switch (player) {
+                case '0':
+                    playerGame = '石头';
+                    break;
+                case '1':
+                    playerGame = '剪刀';
+                    break;
+                case '2':
+                    playerGame = '布';
+                    break;
+            }
+            document.write('玩家出的是' + "<span style='color:red; font-size:16px;'>" + playerGame + ' </span> ' + '<br>');
+            var AI = parseInt(Math.random() * 3);//0,1,2
+            console.log('AI=' + AI);
+            /*    document.write('AI=' + AI + '<br>'); */
+            switch (AI) {
+                case 0:
+                    AIgame = '石头';
+                    break;
+                case 1:
+                    AIgame = '剪刀';
+                    break;
+                case 2:
+                    AIgame = '布';
+                    break;
+            }
+            document.write('电脑出的是' + "<span style='color:blue;font-size:16px;'>" + AIgame + ' </span>' + '<br>')
+            /* 假设玩家胜利。 */
+            if (player == 0 && AI == 1 || player == 1 && AI == 2 || player == 2 && AI == 0) {
+                playCon++;
+                console.log('玩家胜一局');
+                document.write('<p style="color:orange;font-size:18px">玩家胜一局</p><br>');
+            } else if (player == AI) {
+                i--;//加赛一局。
+                console.log('平局');
+                document.write('<p style="color:brown;font-size:18px">平局</p><br>')
+            } else {
+                console.log('电脑胜');
+                document.write('<p style="color:purple;font-size:18px">电脑胜一局</p><br>')
+                AICon++;
+            }
+            /* 如果有一方提前计数到2，，循环结束*/
+            if (playCon == 2 || AICon == 2) {
+                break;
+            }
+        }
+        if (playCon == 2) {
+            alert('玩家赢')
+            document.write('<font color="green"; size="14";>玩家赢</font>');
+        }
+        else if (AICon == 2) {
+            alert('电脑赢')
+            document.write('<font color="green"; size="14";>电脑赢</font>');
+        }
+    </script>
+</body>
+
+</html>

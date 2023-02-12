@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue动态路由</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <template id="home">
+
+        <div>
+            <ul>
+                <li v-for="(item,index) in list" :key="item.id" @click="goInfo(item.id,item.name)">{{item.name}}</li>
+            </ul>
+        </div>
+    </template>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script src="../bin/vue-router-3.5.0.js"></script>
+<script>
+    /* 2022年9月13日15:06:35 
+    什么是动态路由？
+        访问的是同一个组件，路由地址不一样。或者说访问不同路由展示同一组件。
+    */
+    let home = {
+        template: "#home",
+        data() {
+            return {
+                list: [
+                    {
+                        name: "毒性月球",
+                        id: 1001,
+                    },
+                    {
+                        name: "悲伤逆流成河",
+                        id: 1002,
+                    }
+                ]
+            }
+        },
+        methods: {
+            goInfo(id, name) {
+                this.$router.push({
+                    path: "/info/" + id + "/" + name,
+                })
+            }
+        }
+    }
+    let info = {
+        template: "<h1>电影详情{{id}}{{name}}</h1>",
+        data() {
+            return {
+                id: "",
+                name: "",
+            }
+        },
+        created() {
+            console.log(this.$route);
+            // 用this.$route.params来获取动态路由传递的参数。
+            this.id = this.$route.params.id;
+            this.name = this.$route.params.name;
+        }
+    }
+    let router = new VueRouter({
+        routes: [
+            {
+                name: "home",
+                path: "/",
+                component: home
+            },
+            {
+                name: "info",
+                /*   定义动态路由，在名称后面加/:属性名--- 用来绑定动态路由属性 ---多个在后面继续拼接。 动态路由只要第一个参数一致以及个数一致，就可访问，例如，/info/1 /info/2  /info/aa等都可以访问 /info/:id */
+                path: "/info/:id/:name",
+                component: info
+            }
+        ]
+    })
+    Vue.use(router)
+    new Vue({
+        el: "#app",
+        router,
+    })
+</script>
+
+</html>

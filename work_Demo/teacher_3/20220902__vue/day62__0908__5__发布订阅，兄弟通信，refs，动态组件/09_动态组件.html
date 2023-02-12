@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+            background: #7f547d;
+            color: #fff;
+            position: fixed;
+            bottom: 0
+        }
+
+        .nav>div {
+            width: 25%;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .nav>div.active {
+            background: #d03852;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- component是动态组件，做选项卡，当然也可以不用，is属性作用域div等上面一样的效果。 -->
+        <component :is="mycom"></component>
+        <div class="nav">
+            <div v-for="(item,index) in navList" :key="index" :class="{active:active===index}" @click="change(index)">
+                {{item}}
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月8日15:21:02 */
+    let home = {
+        template: "<h1>首页组件</h1>"
+    }
+    let cate = {
+        template: "<h1>分类组建</h1>"
+    }
+    let mine = {
+        template: "<h1>个人中心组件</h1>"
+    }
+    let cart = {
+        template: "<h1>购物车组件</h1>"
+    }
+
+    new Vue({
+        el: "#app",
+        components: {
+            home,
+            mine,
+            cart,
+            cate
+        },
+        data: {
+            navList: ["首页", "分类", "购物车", "我的"],
+            active: 0,
+            mycom: "home",
+        },
+        methods: {
+            change(index) {
+                this.active = index;
+                switch (index) {
+                    case 0: this.mycom = "home"; break;
+                    case 1: this.mycom = "cate"; break;
+                    case 2: this.mycom = "cart"; break;
+                    default: this.mycom = "mine"; break;
+                }
+            }
+        }
+    })
+</script>
+
+</html>

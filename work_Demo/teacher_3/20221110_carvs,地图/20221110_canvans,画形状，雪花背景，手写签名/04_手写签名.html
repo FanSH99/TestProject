@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>canvas实现手写签名</title>
+    </head>
+    <style>
+        body{
+            margin: 0;
+        }
+        #cav{
+          
+            border:1px solid red;
+        }
+    </style>
+    <body>
+        <!-- 2022年11月10日16:25:15 -->
+        <canvas id="cav" width="300" height="300"></canvas> 
+        <button onclick="clearBoth()">清空画板</button>
+    </body>
+    <script>
+        let cav=document.getElementById("cav");
+        console.dir(cav);
+        let ctx=cav.getContext("2d");
+        let isEnter=false;
+        cav.addEventListener("mousedown",(e)=>{
+            // console.log("鼠标按下去了");
+            isEnter=true;
+            // 开始画线
+            ctx.beginPath();
+            // 设置线宽
+            ctx.lineWidth=4;
+            ctx.moveTo(e.pageX.e.pageY);
+        })
+        cav.addEventListener("mouseup",()=>{
+            // console.log('鼠标松开了');
+            isEnter=false;
+        })
+        cav.addEventListener("mousemove",(e)=>{
+           if(isEnter){
+                console.log("鼠标移动了");
+                ctx.lineTo(e.pageX,e.pageY);
+                ctx.strokeStyle="#ff4d3c"
+                ctx.stroke();
+           }
+            
+        })
+        function clearBoth(){
+            ctx.clearRect(0,0,300,300)
+        }
+    </script>
+</html>

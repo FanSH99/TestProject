@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 1. 求1-100之间所有数的平均值   
+        let sum = 0;
+        for (let i = 100; i > 0; i--) {
+            sum = sum + i;
+        }
+        console.log(sum, sum / 100);
+        // 2. 求1-100之间所有偶数和,奇数的和  偶数 even 奇数 odd
+        let even = null; // 偶数
+        let odd = null; // 奇数
+        for (let i = 0; i < 101; i++) {
+            if (i % 2 == 0) {
+                // console.log(`${i} 是偶数`);
+                even = even + i;
+            } else {
+                // console.log(`${i} 是奇数`);
+                odd = odd + i;
+            }
+        }
+        console.log(even, odd);
+
+        // 3. 求1-100之间所有能被3整除的数字的和 
+        let sum3 = null;
+        for (let i = 100; i > 0; i--) {
+            if (i % 3 == 0) {
+                // console.log(i);
+                sum3 = sum3 + i;
+            }
+        }
+        console.log(sum3);
+
+        // 4. 逢7过：7的倍数,个位是7的数字不输出。
+        for (let i = 0; i < 101; i++) {
+            // if(i % 7 !=0){
+            //     console.log(i);
+            // }
+            // if(i % 10 != 7 ){
+            //     console.log(i);
+            // }
+            if ((i % 7 != 0) && (i % 10 != 7)) {
+                console.log(i);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

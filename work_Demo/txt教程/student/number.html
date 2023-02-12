@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>简单DEMO</title>
+    <style>
+        .demo {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">DEMO</div>
+    <script type="text/javascript" src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script>
+        const animationDemo = anime({
+            targets: '.demo',
+            innerHTML: [0, 1000000],
+            easing: 'easeInOutExpo',
+            round: 100
+        })
+    </script>
+</body>
+
+</html>
+

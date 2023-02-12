@@ -1,0 +1,37 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch node.js",
+            "program": "D:\\node.js\\node-v18.2.0-win-x64",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            // "C:\\Users\\An\\AppData\\Local\\Chromium\\Application\\Chromium.exe",
+            "type": "chrome",
+            "request": "launch",
+            "name": "launch Chrome",
+            "file": "${file}",
+            "url": "http://localhost:8080",
+            // "runtimeExecutable": "C:\\Users\\An\\AppData\\Local\\Google\\Chrome\\Application\\Chromium.exe",
+            "sourceMaps": false,
+            "webRoot": "${workspaceRoot}",
+            "userDataDir": "${tmpdir}"
+        },
+        {
+            "type": "msedge",
+            "name": "Launch Edge",
+            "request": "launch", //每次重新运行
+            "url": "http://localhost:8080",
+            "file": "${file}", //打开当前文件
+            "webRoot": "${workspaceRoot}"
+        }
+    ]
+}

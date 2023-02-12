@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 500px;
+            height: 300px;
+            background-color: aqua;
+            border:10px solid red;
+            padding: 20px;
+            margin: 50px;
+            position: absolute;
+            left: 30px;
+            top:20px;
+          
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        offset 家族
+        client家族
+        scroll 家族
+
+        一、 offset 家族   只读属性，只能取不能设置
+          元素偏移量   
+
+          node.offsetWidth       width+2padding+2border
+          node.offsetHeight
+          node.offsetTop   
+          node.offsetLeft
+
+     -->
+     <div id="box"></div>
+     <script>
+        // 1.获取盒子的宽度
+         var box= document.querySelector('#box');
+       var w=  window.getComputedStyle(box,null).width;// 只读
+       console.log(w);//500px
+         w=parseFloat(w)
+         console.log(w);//500
+
+
+         //2.offsetWidth
+        var w1=  box.offsetWidth;
+        console.log(w1);//560     width+2padding+2border
+
+
+        //3. offsetLeft      left （必须有定位,如果没有定位，拿到auto,如果有定位，拿到left值）
+
+        var l=  window.getComputedStyle(box,null).left;
+        console.log(l);//auto
+
+
+        //4.offsetLeft     如果有定位，找离它最近的祖辈定位元素 （参照物），祖辈都无定位，直接找到body
+        // margin +left
+       var l1= box.offsetLeft;
+       console.log(l1);//80
+
+       //5. offsetParent
+       console.log(box.offsetParent);
+
+
+    //    获取和设置样式  
+    // window.getComputedStyle(node.null).样式名   只读的  行内和外部样式都可以取得
+    //  node.style.样式名   只能获取行内样式     可读可写    （赋值只有这一种方法）
+    box.style.width="600px"
+
+    console.log(box.offsetWidth);
+
+     </script>
+</body>
+</html>

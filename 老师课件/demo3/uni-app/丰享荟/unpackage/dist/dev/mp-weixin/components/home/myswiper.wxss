@@ -1,0 +1,12 @@
+
+.img.data-v-b6541dae{
+	width: 100%;
+}
+.myswiper.data-v-b6541dae{
+	width: 95%;
+	margin: 20rpx auto;
+}
+swiper.data-v-b6541dae{
+	height: 280rpx;
+}
+

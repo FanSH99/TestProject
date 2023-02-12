@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- https://www.bilibili.com/video/BV1Cy4y1q7xz/?spm_id_from=333.788 -->
+    <script>
+        function add() {
+            var _args = Array.prototype.slice.call(arguments);
+            var _adder = function () {
+                _args.push(...arguments);
+                return _adder;
+            }
+            _adder.toString = function () {
+                return _args.reduce(function (a, b) {
+                    return a + b;
+                }, 0);
+            }
+
+            return _adder;
+        }
+
+        let a = add(1, 2, 3);
+        let b = add(1)(2)(3);
+        console.log(a);
+        console.log(b);
+        console.log(a === 6);
+        console.log(b === 6);
+    </script>
+</body>
+
+</html>

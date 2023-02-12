@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 自学即可：函数的定义方式
+    // 1. 自定义函数(命名函数)
+    function fn() { }
+
+    // 2. 函数表达式(匿名函数)
+    let fn1 = function () { };
+
+    // 3. 利用 new Function('参数1', '参数2', '函数体');
+    // 参数都是字符串
+    let fn2 = new Function("a", "b", "console.log(a + b)");
+    fn2(2, 6);
+
+    // 4. 所有的函数都是 Function 的实例(对象).
+    // 函数的本质也是对象(万物皆对象)
+    console.log(fn2 instanceof Function); // 都是 Function 的实例对象
+
+    // 5. Object 是所有类的根类
+    console.dir(fn2); // 也有原型对象  也有属性和方法
+    console.log(fn2 instanceof Object);
+  </script>
+</body>
+
+</html>

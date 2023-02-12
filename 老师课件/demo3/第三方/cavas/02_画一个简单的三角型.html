@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #mycanvas{
+            width: 300px;
+            height: 150px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas"></canvas>
+</body>
+<script>
+    let cav = document.getElementById("mycanvas");
+    let ctx = cav.getContext("2d");
+    ctx.beginPath();
+    // 三角形第一根线
+    ctx.moveTo(30,30);
+    ctx.lineTo(30,100);
+    ctx.strokeStyle="#0000ff";
+    ctx.stroke();
+    ctx.closePath();
+    // 三角型第二根线
+    ctx.beginPath();
+    ctx.moveTo(30,100);
+    ctx.lineTo(200,100);
+    ctx.stroke();
+    ctx.closePath();
+    // 第三根线
+    ctx.beginPath();
+    ctx.moveTo(30,30);
+    ctx.lineTo(200,100);
+    ctx.stroke();
+    ctx.closePath();
+    // 画个圆形
+    ctx.beginPath();
+ctx.arc(100,75,50,0,2*Math.PI);
+ctx.stroke();
+</script>
+</html>

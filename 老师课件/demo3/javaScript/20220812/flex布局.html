@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 1000px;
+            margin: 0 auto;
+            height: 500px;
+            border: 1px solid red;
+            /* 开启弹性布局 */
+            display: flex;
+            /* 贴边平分 */
+            justify-content: space-around;
+            /* 不贴边平分 */
+            /* justify-content: space-around; */
+            /* 是否换行 wrap换行 */
+            /* flex-wrap: wrap; */
+            /* 布局方向  column 纵向布局 row 横向*/
+            flex-direction:column ;
+        }
+        .red{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .bule{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="bule"></div>
+        
+</body>
+</html>

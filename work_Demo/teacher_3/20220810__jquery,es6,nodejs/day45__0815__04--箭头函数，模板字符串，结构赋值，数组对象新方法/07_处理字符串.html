@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日16:53:29
+
+        es6新增的处理字符串的方法
+        1.复制字符串  --repeat
+        2.模糊查询判断是否存在 --includes
+        3.判断字符串开头是否包含某个字符。  ---startsWith
+        4.判断字符串结尾是否包含某个字符。  ---endsWith
+        5.去除字符串两端的空格      ---trim
+     -->
+</body>
+
+<script>
+    // 复制
+    let str = '好好学习,';
+    console.log(str.repeat(10));//好好学习好好学习...
+    // 判断字符是否存在
+    let str2 = '海绵宝宝和派大星一起打游戏';
+    console.log(str2.includes('游戏'));//true
+    console.log(str2.includes('等一下'));//false
+    console.log(str2.startsWith(' '));//false
+    console.log(str2.startsWith('海绵宝宝'));//true
+    console.log(str2.endsWith(' '));//false
+    console.log(str2.endsWith('游戏'));//true
+    let str3 = "        hello world         "
+    console.log(str3.trim());//hello world
+    console.log("1111" + str3.trimStart());
+    console.log(str3.trimEnd() + "等你");
+    console.log(str3.trimLeft());//hello world ___
+    console.log(str3.trimRight());//    hello world
+
+
+</script>
+
+</html>

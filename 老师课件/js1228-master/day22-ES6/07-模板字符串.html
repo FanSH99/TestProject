@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /* 
+            模板字符串:
+                1. 具有普通字符串的所有功能，加强版的字符串，
+                2. 用反引号 `` 定义
+                3. 定义多行字符串
+                4. 字符串中加入变量和表达式
+        */
+        var str = '王者荣耀';
+
+        // 1.  `` 定义
+        var game = `今晚吃鸡`;
+
+        // 2. 当成普通字符串使用即可.
+        console.log(game + ',明天也吃鸡');
+        console.log(game.startsWith('今晚'));
+
+        // 3. 多行字符串(支持换行)
+        var ul = $(`<ul>
+                        <li>剑圣</li>    
+                        <li>兽王</li>
+                        <li>小鱼人</li>
+                    </ul>`);
+        $('div').append(ul);
+
+        // 4. 可以直接使用变量
+        let hero = {
+            name: '盲僧',
+            level: 20
+        }
+        console.log('这把我选择了' + hero.name + ',目前等级' + hero.level);
+        console.log(`这把我选择了${hero.name},目前等级${hero.level}`);
+
+        // 5. 表达式
+        let age = 25;
+        console.log(`今年我${age + 3}岁了`);
+
+        // 6. 支持函数
+        function cook(menu) {
+            console.log('老板,给我来一份' + menu);
+            return '烤鱼';
+        }
+
+        console.log(`晚上吃${cook('猪蹄')}`);
+
+    </script>
+</body>
+
+</html>

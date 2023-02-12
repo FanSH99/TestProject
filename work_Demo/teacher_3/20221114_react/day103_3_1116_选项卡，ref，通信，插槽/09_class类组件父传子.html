@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月16日16:39:21
+    class App extends React.Component {
+
+        state = {
+            num: 100,
+        }
+        render() {
+
+            return (
+                <div>
+                    <h1>我是父组件</h1>
+                    <Child mynum={this.state.num} age="19" user={{ name: "白浅" }} />
+                    <button onClick={() => {
+                        this.state.num++;
+                        this.setState({
+                            num: this.state.num,
+                        })
+                    }}>num++</button>
+                </div>
+            )
+        }
+
+    }
+
+    /* 
+    1.父组件的子组件绑定自定义属性
+    2.子组件中用this.props.x自定义属性名称接收
+    */
+
+    class Child extends React.Component {
+        render() {
+            console.log(this);
+            return (
+                <div>
+                    <h4>我是子组件{this.props.mynum}</h4>
+                    <p>{this.props.user.name}--{this.props.age}</p>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

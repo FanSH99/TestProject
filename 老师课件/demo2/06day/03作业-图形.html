@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 1000px;
+            /* border: 1px solid #333; */
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table td {
+            border: 1px solid #333;
+            padding: 20px;
+            /* vertical-align: middle; */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 菱形、九九乘法口诀表 、空心的等腰三角形  &ensp;&nbsp;   ★
+        /* 
+                           i= 行号           每行星的个数      空格的个数
+            *                   1                   1            4
+           ***                  2                   3            3
+          *****                 3                   5            2  
+         *******                4                   7            1
+        *********               5                   9            0
+                                           星的个数=2*i-1        空格的个数= 总行数（5）-行号
+        */
+        // // 1.菱形
+
+        //  var num=prompt('请输入正三角的行数');
+        //  for(var i=1;i<=num;i++){
+        //    //空格的个数
+        //    for(var m=1;m<=num-i;m++){
+        //     document.write('&nbsp;')
+        //    } 
+        //   //   星的个数
+        //   for(var j=1;j<=2*i-1;j++){
+        //     document.write('*')
+        //    } 
+        //    document.write('<br>')
+        //  }
+
+        //  for(var i1=num-1;i1>=1;i1--){
+        //    //空格的个数
+        //    for(var m1=1;m1<=num-i1;m1++){
+        //     document.write('&nbsp;')
+        //    } 
+        //   //   星的个数
+        //   for(var j1=1;j1<=2*i1-1;j1++){
+        //     document.write('*')
+        //    } 
+        //    document.write('<br>')
+        //  }
+
+
+        //2. 九九乘法口诀表
+        // document.write('<table>')
+        // for(var i=1;i<=9;i++){
+        //     document.write('<tr>')
+        //     for(var j=1;j<=i;j++){
+        //         document.write('<td>')
+        //         document.write(j+'X'+i+'='+i*j)   
+        //         document.write('</td>')
+
+        //     }
+        //     document.write('</tr>')
+        // }
+        // document.write('</table>')
+
+        var str = '<table>';
+        for (var i = 1; i <= 9; i++) {
+            str += '<tr>';
+            for (var j = 1; j <= i; j++) {
+                str += '<td>';
+                str+=j+'X'+i+'='+i*j
+                str += '</td>'
+            }
+            str += '</tr>';
+        }
+        str += '</table>'
+        console.log(str);
+
+        document.write(str)
+
+        //3.空心的等腰三角形  &ensp;&nbsp;   ★
+
+        // for(var i=1;i<=8;i++){
+        //       //空格的个数
+        //    for(var m=1;m<=8-i;m++){
+        //     document.write('&ensp;&nbsp;')
+        //    } 
+        //   //   星的个数
+        //   for(var j=1;j<=2*i-1;j++){
+        //     // 条件 每行第一个 j==1     每行最后一个j==2*i-1  最后一行  i==8
+        //     if(j==1||j==2*i-1||i==8){
+        //       document.write('★')  
+        //     }else{
+        //         document.write('&ensp;&nbsp;')
+        //     }
+            
+        //    } 
+        //    document.write('<br>') 
+
+        // }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+                3.珠峰海拔8848米，现在有足够大的纸，厚度是0.01米，折多少次高度可以超过珠穆朗玛峰。
+                */
+
+        var hou = 1;
+        var height = 884800;
+        var count = 0;
+        while (true) {
+            hou *= 2;//厚度翻倍
+            count++;//折叠次数+1
+            if (hou >= height) {
+                break;
+            }
+        }
+        console.log(count);
+    </script>
+
+</body>
+
+</html>

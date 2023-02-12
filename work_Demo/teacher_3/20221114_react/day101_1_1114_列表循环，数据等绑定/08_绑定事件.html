@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+
+<script type="text/babel">
+    let user = {
+        name: "张三",
+        age: 18,
+        sex: false
+    }
+
+    let url = "https://ts3.cn.mm.bing.net/th?id=ORMS.46552f6f1c1828c9e0b2aeb71002f24b&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.25&p=0";
+    let link = "https://www.baidu.com"
+
+    let style = {
+        color: "blue",
+        fontWeight: "700"
+    }
+    // onmouseenter
+    let classname = "red"
+    let dom = (
+        <div>
+            {/* 必须有结束标签，单标签需要加反斜杠。 下面第一种最好，最后一种不建议*/}
+            <button onClick={() => {
+                console.log("点我干啥");
+            }}>按钮</button>
+            <button onClick={clickMe}>你还点我</button>
+            {/* 不能加小括号，比如这里加括号立即初始化执行，后续再点击就不执行了， */}
+            <button onClick={clickMe()}>我生气了哼</button>
+            <button onClick={() => showMsg("哈哈哈哈")}>点击传参</button>
+            <button onMouseEnter={() => {
+                console.log("鼠标移入了")
+            }}>其他事件</button>
+        </div >
+    )
+    function clickMe() {
+        console.log("再点你一次咋了")
+    }
+
+    function showMsg(msg) {
+        console.log(msg)
+    }
+
+
+    ReactDOM.render(dom, document.getElementById("app"))
+</script>
+
+</html>

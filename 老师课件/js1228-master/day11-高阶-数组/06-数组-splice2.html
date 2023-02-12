@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      slice() 
+        有三个或多个参数时，替换元素
+      语法：
+        数组名.splice(start[, num, ele ...]);
+          start ：第一个值为插入元素的位置
+          num   ：第二个值为替换的个数。
+          ele...：被替换的元素
+    */
+    let arr = [0, 1, 2, 3, 4, 5];
+    // let arr2 = arr.splice(2, 1, 6, 7, 8);
+    //从索引值2开始替换掉1个元素，并且插入6,7,8
+    // console.log(arr,arr2);
+
+    let arr2 = arr.splice(2, 0, 6, 7, 8);
+    //如果第二个值为0，则不替换，直接插入6,7,8;
+    console.log(arr, arr2);
+
+  </script>
+</body>
+
+</html>

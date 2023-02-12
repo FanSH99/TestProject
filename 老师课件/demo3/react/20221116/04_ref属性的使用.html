@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+   class Child extends React.Component{
+    state = {
+        msg:"我是一个子组件",
+        num:100
+    }
+    render(){
+        return (
+            <div>{this.state.msg}----{this.state.num}</div>
+        )
+    }
+    addnum(){
+        this.state.num ++;
+        this.setState({
+            num:this.state.num
+        })
+    }
+   }
+//    console.log(React.createRef())
+    class App extends React.Component{
+        // ref最新使用方法创建一个ref对向来接受组件实例或则dom对象
+        mynewh1=React.createRef();
+        mychildRef = React.createRef();
+        render(){
+            return (
+                <div>
+                    {
+                        //绑定ref属性 这种方案已经被react废弃
+                    }
+                    <h1 ref='myh1'>ref属性的使用</h1>    
+                    <button onClick={()=>{
+                        console.log(this)
+                        // 获取 dom对象
+                         console.dir(this.refs.myh1)
+                         let box = this.refs.myh1;
+                         box.style.color = 'red'
+                    }}>获取h1DOM对象</button>
+                    <Child ref="mychild" />
+                    <button onClick={()=>{
+                        // 当ref属性绑定到组件实例时可以通过 this.refs.名称获取组件实例
+                        console.log(this.refs.mychild)
+                        this.refs.mychild.addnum();
+                    }}>获取Child组件实例</button>
+
+                    <h1 ref={this.mynewh1}>ref最新使用方案</h1>
+                    <button onClick={()=>{
+                        // 获取标签实例
+                        console.log(this.mynewh1.current)
+                        this.mynewh1.current.style.color = 'blue'
+                    }}>获取好h1DOM对象</button>
+                    <Child ref={this.mychildRef}/>
+                    <button onClick={()=>{
+                        console.log(this.mychildRef.current )
+                    }}>获取组件实例</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

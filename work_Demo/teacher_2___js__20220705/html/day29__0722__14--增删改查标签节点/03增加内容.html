@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  
+        1.document.creatElement
+        2.追加--父元素的最后面  parentNode.appendChild()
+
+       3. document.creatAttribute()       document.createTextNode()---增加文本，了解
+
+       4. innerHTML--增加文本   ---弊端，会覆盖原来的内容。
+
+       innerText=()
+
+       document.write()
+    -->
+
+
+    <div></div>
+    <p id="txt1">段落1</p>
+    <ul>
+        <li>1111</li>
+        <li>22222</li>
+        <li>3333333</li>
+    </ul>
+    <script>
+
+
+        // 1.动态增
+        var div = document.createElement('div');
+        console.log(div);//<div></div>   ---暂存    并未实际添加到页面中。
+
+        // 2.追加
+        document.body.appendChild(div);
+        div.style.width = '400px';
+        div.style.height = '400px';
+        div.style.border = '1px solid #333';
+        div.style.backgroundColor = '#f90';
+        /* var txt = document.createAttribute('p');
+        txt.createTextNode('11111'); */
+        /* div.innerHTML = '这是添加的文字'; */
+        var txt1 = document.getElementById('txt1');
+        txt1.style.cursor = 'pointer';
+        console.log(txt1);
+        txt1.onclick = function () {
+            txt1.innerHTML = '改变文字';
+        }
+        document.write('<h3>我是标题</h3>')
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

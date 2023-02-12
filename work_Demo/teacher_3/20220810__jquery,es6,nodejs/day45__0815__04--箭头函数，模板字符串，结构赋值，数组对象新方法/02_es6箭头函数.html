@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月15日10:00:13
+
+        箭头函数和普通函数的区别：
+        1.写法上 ，箭头函数写法更简洁。 当只有一个参数是可以省略小括号。只有一句代码即为返回值时可以省略大括号。
+        2.箭头函数只能定义匿名函数，普通函数既可以定义具名函数也可以定义匿名函数。
+        3.箭头函数不能当作构造函数使用。也不能使用new关键字，没有圆形prototype
+        4.箭头函数没有arguments
+        5.箭头函数没有this指向、箭头函数指向的是其父级函数非箭头函数
+        6.箭头函数不能用call() apply()和bind()来改变this指向。
+        7.箭头函数不能用作Generator函数，不能使用yield关键字
+     -->
+</body>
+<script>
+
+    let a = () => {
+        console.log('我是一个箭头函数');
+    }
+    a();//我是一个箭头函数
+    let b = (a, b) => {
+        console.log(a + b);
+        return a + b;
+    }
+    a(10, 20);//我是一个箭头函数
+    let sum = b(10, 20);//30
+    console.log(sum);//30
+
+    let getage = age => {
+        console.log("我今年" + age + "岁了");
+    }
+    getage(18)//我今年18岁了。 ---只有一个参数时可以省略参数括号
+
+    let getsum = num => num;
+    console.log(getsum(2022));//2022  ---只有一句代码即为返回值时可以省略大括号。
+
+
+    var id = 'Global';
+    function fun1() {
+        // setTimeout中使用普通函数
+        setTimeout(function () {
+            console.log(this.id);
+        }, 2000);
+    }
+
+    function fun2() {
+        // setTimeout中使用箭头函数
+        setTimeout(() => {
+            console.log(this.id);
+        }, 2000)
+    }
+
+    fun1.call({ id: 'Obj' });     // 'Global'
+
+    fun2.call({ id: 'Obj' });     // 'Obj'
+
+    let Fun = (name, age) => {
+        this.name = name;
+        this.age = age;
+    };
+
+    // 报错
+    // let p = new Fun('cao', 24);
+
+    // 箭头函数没有自己的arguments
+    let fun = (val) => {
+        console.log(val);   // 111
+        // 下面一行会报错
+        // Uncaught ReferenceError: arguments is not defined
+        // 因为外层全局环境没有arguments对象
+        // console.log(arguments);
+    };
+    fun(111);
+
+    // 例子二
+    function outer(val1, val2) {
+        let argOut = arguments;
+        console.log(argOut);    // ①
+        let fun = () => {
+            let argIn = arguments;
+            console.log(argIn);     // ②
+            console.log(argOut === argIn);  // ③
+        };
+        fun();
+    }
+    outer(111, 222);
+    let obj = {
+        name: "派大星",
+        age: 18,
+        say: function () {
+            console.log('我最好的朋友是海绵宝宝');
+            console.log(this);//obj
+            setTimeout(() => {
+                console.log(this);//obj
+            })
+        }
+    }
+    obj.say();//obj
+    let getuser = () => {
+        console.log(this);//window
+    }
+    getuser();
+
+    /*
+    this指向：
+    1. 普通函数是谁调用它它指向谁。 一般指向window是因为默认是window调用的window.fn(),window一般省略了。
+    2.箭头函数没有this指向，指向的是父级非箭头函数的指向。
+    3.构造函数中this指向当前构造的实例对象。
+    */
+
+</script>
+
+</html>

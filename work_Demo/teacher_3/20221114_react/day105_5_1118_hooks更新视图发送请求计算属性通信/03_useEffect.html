@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月20日14:21:28
+    let { useState, useEffect } = React;
+    function App() {
+        let [isShow, setShow] = useState(true);
+        return (
+            <div>
+                <h2>app组件</h2>
+                <button onClick={() => {
+                    isShow = !isShow;
+                    setShow(isShow)
+                }}>changeShow</button>
+                {
+                    isShow && <Child />
+                }
+            </div>
+        )
+    }
+    function Child() {
+        useEffect(() => {
+            let timer = setInterval(() => {
+                console.log("每秒调用哈哈哈");
+            }, 1000)
+            window.onresize = () => {
+                console.log("窗口改变了");
+            }
+            // 返回的狗子函数就是组建销毁函数。
+            return () => {
+                console.log("组件销毁了");
+                clearInterval(timer);
+                window.onresize = null;
+            }
+        }, [])
+        return (
+            <div>子组件</div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

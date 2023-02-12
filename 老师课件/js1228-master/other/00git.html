@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    github:一个代码的分享网站。类似facebook。可以上传、下载代码,搜索代码,设置隐私权限,查看历史等。
+    gitee:国内版的github,类似微信。
+    git:负责本地把本地代码和 gitee 关联的桥梁。
+    因此:本机又称本地,远程又称云端。
+    git: 代码的管理工具,可以和同事一起开发同一个项目。有同步、提交、查看历史、回退等功能。
+
+    安装 git 程序
+        0. 登录官网:https://git-scm.com/download/win   (在群文件夹的,工具那个文件夹)
+        1. 卸载之前的
+        2. 下载 git安装包
+        3. 安装,下一步,下一步 。。。。。直至完成
+            在桌面右键,有 git Bash here,证明安装成功
+
+        4. 配置全局的git的用户名和邮箱(记录谁提交了代码)
+            右键桌面,点击 git Bash here,
+            如:
+                git config --global user.email "503522579@qq.com"
+                git config --global user.name "liuyajun"
+            如果没有任何提示,证明配置成功。    
+        5. 生成公钥和私钥
+            5.1 公钥和私钥的作用:提高账户的安全性。
+            5.2 不必每次提交代码,输入账户密码。
+            右键桌面,点击 git Bash here  
+            如:
+                ssh-keygen -t rsa -C your_email
+                ssh-keygen -t rsa -C "502533579@qq.com"
+            一路回车即可。(如果已生成,可以选择覆盖。)
+        6. 查看公钥和私钥的位置。
+            查看刚才生成时的提示,一般位于:  C:\Users\liuyaju\.ssh    
+
+    生成并添加公钥:   登录码云使用,不用每次输入账号密码 
+        右键 点开 git Bash here
+        输入:    ssh-keygen -t rsa -C "123@qq.com"
+        5. 在 C:\Users\文艺青年\.ssh 路径下,找到 公钥:id_rsa.pub
+        6. 打开 码云,找到个人  ————> 设置————> SSH公钥
+        7. 将生成的公钥内容复制至码云指定位置,确定即可。
+
+    核心原理:
+        git 分4个工作区域:  
+            1. 工作目录 (Working Directory) 
+            2. 暂存区 (Stage/index)
+            3. 资源库/本地仓库 (Repository/ Git Directory)   
+            4. 远程仓库(云端仓库) (Remote Directory)
+        转化关系:     
+            工作目录 ——git add files——> 暂存区  ——git commit——> 本地仓库  ——git push——> 远程仓库
+            远程仓库 ——git pull——>  本地仓库  ——git reset——> 暂存区  ——git chcekout——> 工作目录
+        1. 工作目录 暂存区 资源库,都在本机,远程仓库在云端。 
+        2. 介绍:
+            工作目录:工作区,平时存放代码的地方。或者代码刚开始被 git 接管。
+            暂存区:记录临时存放改动。
+            本地仓库: 安全存储数据的位置,有所有版本的信息,其中 HEAD 指向最新的放入的仓库版本。
+            远程仓库:远程存储代码的仓库。
+        3. 操作演示
+
+    初始化本地仓库: git init
+
+    远程仓库的创建:
+        1. 登录码云,新建仓库
+        2. 输入仓库名,仓库公开,
+        3. 选择初始化仓库:语言选择 JavaScript,忽略文件不用管,许可证选择 apache2.0
+        4. 确定即可。
+    仓库的创建,和代码的拉取,代码的提交。
+
+    拉取代码:
+        先右键,打开 git Bash here  
+        输入:git clone https://gitee.com/lyj503522579/js910.git
+        回车即可。
+        注意:只能拉取一次。
+    clone 后的项目中,会有一件隐藏的 .git ,代码已生成一个 git 仓库。里面都是git 的配置文件.(一切皆文件)
+
+    手动添加凭证:控制面板\用户帐户\凭据管理器\添加普通凭据
+        1. git:https://gitee.com
+        2. 码云的用户名
+        3. 码云的密码
+    代码的提交:
+        打开刚下载的文件夹
+        可以在文件夹中写代码
+        右键打开 git Bash here   
+        将代码提交至缓存区:git add .
+        给本次代码提交添加备注:git commit -m "备注"  
+        代码推送至远程仓库: git push 
+    登录码云进行确认
+    代码的拉取(代码的同步)
+        在项目的文件夹下,右键打开 git Bash here
+        输入命令: git pull
+
+    工作区:当前编写代码的区域
+    缓存区: git add .   // add 是添加至缓存区, . 代表当前目录下
+    本地仓库: git commit -m "备注"
+    远程仓库: 比如:码云,github,公司搭建的仓库  git push
+
+    git pull 拉取最新代码
+
+    创建远程仓库的第二种方法
+        核心：仓库关联
+
+    1. 打开项目的文件夹,右键 Git Bash here   ,继续提交
+    2. VSCode,终端 ————> 新终端 ————> 输入命令即可。
+    3. VSCode,源代码管理器 ————> 输入备注 ————> 点击对号,提交即可。
+        相当于 git add 和 git commit 的命令
+        终端 ————> 新终端 ————> 输入 git push.
+
+    最后,到码云查看。确认是否提交成功。   
+    
+    拉取代码时,代码冲突
+
+    其它:忽略文件
+	
+	修改忽略文件时，不生效：
+		先把本地缓存删除（改成未track状态）
+		git rm -r -f --cached .
+	
+    版本的命名规范 : 12.34.11
+        12 : 大版本号
+        34 : 增加新功能
+        11 : 修复bug
+
+    ### 分支命令
+    命令|解释
+    ---|---
+    git branch | 查看分支
+    git branch dev |创建分支 dev
+    git checkout dev |切换至分支 dev
+    git merge dev master | merge branch 'master' into dev
+    git merge dev | 把 dev 合并到当前分支
+    ```
+    //一般先切换至 master 分支
+    git checkout master
+    //再合并分支
+    git merge dev
+
+    git 不能提交空文件夹,必须在文件夹里新建一个文件 .gitkeep
+
+    自学：
+        回滚/撤销。
+
+</body>
+</html>

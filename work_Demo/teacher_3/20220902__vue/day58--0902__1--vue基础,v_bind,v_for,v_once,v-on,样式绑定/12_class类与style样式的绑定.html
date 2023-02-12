@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            background: color;
+        }
+
+        .size {
+            font-size: 40px;
+        }
+
+        .bacRed {
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2022年9月2日15:32:26 -->
+
+    <div id="box">
+        <h1 :class="classname">{{msg}}</h1>
+        <h1 :class="{'red':isRed,'size':isSize}">{{msg}}</h1>
+        <ul>
+            <li v-for="(item,index) in 3" :class="active==index?'bacRed':''" @click="changeColor(index)">{{item}}</li>
+        </ul>
+        <div :style="{width:'100px',height:height,background:background,color:color}">等不到你的雪月风花</div>
+        <div :style="mystyle" @click="changeStyle"></div>
+    </div>
+    
+</body>
+<script src=" ./bin/vue-2.2.2.min.js">
+</script>
+<script>
+    new Vue({
+        el: "#box",
+        data: {
+            msg: "明天依旧光芒万丈",
+            classname: "blue",
+            classname2: "size",
+            isRed: false,
+            isSize: true,
+            active: 0,
+            background: "#413268",
+            height: '100px',
+            color: "#fff",
+            mystyle: {
+                background: "orange",
+                width: '60px',
+                height: '60px',
+                color: '#fff',
+                borderRadius: '50%'
+            }
+        },
+        methods: {
+            changeColor(index) {
+                this.active = index;
+            },
+            changeStyle() {
+                this.mystyle.width = '100px'
+                this.mystyle.height = '100px'
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 网址引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button id="get">GET测试</button><br>
+    <div id='lol'></div>
+    <button id="post">POST测试</button><br>
+    <div id='dota'></div>
+    <button id="jsonp">JSONP</button>
+    <div id='jsonp1'></div>
+    <script>
+        /*
+            前端跨域问题产生原因
+                跨域是a页面想要获取b页面资源，
+                如果a,b页面的协议、域名、端口号不同，所进行的访问都是跨域的，
+                而浏览器一般为了安全都限制了跨域访问，也就是不允许跨域访问资源。
+
+            报错提示 : No 'Access-Control-Allow-Origin' header is present on the requested resource.
+                此时，服务收到了请求，但是浏览器拒绝了服务器的响应。
+            跨域解决方案:
+                1. CORS  主流解决方案，推荐使用
+                2. JSONP 仅支持 GET        
+            cors 是 Express 的一个第三方中间件，通过安装和配置 cors 中间件，可以方便解决跨域问题。
+                使用步骤：
+                    1. npm i cors 安装中间件
+                    2. const cors = require('cors');  // 导入中间件
+                    3. app.use(cors());  // 路由之前注册中间件
+
+            什么是 CORS
+                CORS (Cross-Origin Resource Shaing,跨域资源共享)
+                由一系列 HTTP 响应头组成，这些 HTTP 响应头决定浏览器是否阻止前端 js 代码跨域获取资源        
+                浏览器的同源安全策略默认会阻止网页跨域获取资源，但是如果服务器配置了 CORS 相关的 HTTP 响应头，
+                就可以解除浏览器的跨域访问限制。
+                如下图：19-跨域.png
+
+            注意事项 : 
+                1. CORS 是服务器端进行配置，而客户端浏览器无序做任何额外改动。
+                2. 浏览器有兼容性(例如:ie10+, chrome4+)
+
+            HTTP 协议入门    https://www.ruanyifeng.com/blog/2016/08/http.html
+            http: 客户端和服务器交互数据的方式。
+            get post 区别
+            https://blog.csdn.net/phineas123/article/details/80207136
+            TCP ： https://www.ruanyifeng.com/blog/2017/06/tcp-protocol.html
+
+        */
+        $(function () {
+            // 1. 测试 get 接口
+            $('#get').on('click', function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/api/get',
+                    data: { hero: '赏金猎人', age: 22 },
+                    success: function (result) {
+                        console.log(result);
+                        result = JSON.stringify(result);
+                        $('#lol').html(result);
+                    }
+                });
+            });
+            // 2. 测试 post 接口
+            $('#post').on('click', function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://127.0.0.1:8080/api/post',
+                    data: { game: '今晚吃鸡', weapon: '98k' },
+                    success: function (result) {
+                        result = JSON.stringify(result);
+                        $('#dota').html(result);
+                    }
+                });
+            });
+
+            // 3. 为 jsop 按钮绑定点击事件处理函数
+            $('#jsonp').on('click', function () {
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:8080/api/jsonp",
+                    dataType: 'jsonp', // 表示发起 jsonp 请求
+                    success: function (result) {
+                        result = JSON.stringify(result);
+                        $('#jsonp1').html(result);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

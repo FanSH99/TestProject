@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <div>我是div</div>
+    <div class="nav">我是nav div</div>
+    <p>我是p</p>
+    <ol>
+      <li>青花瓷</li>
+      <li>轨迹</li>
+      <li>东风破</li>
+      <li>发如雪</li>
+    </ol>
+    <ul class="abc">
+      <li id="eason">因为爱情</li>
+      <li>浮夸</li>
+      <li>好久不见</li>
+      <li>富士山下</li>
+      <div>
+        <li>周杰伦</li>
+      </div>
+    </ul>
+    <script>
+      /* 
+          语法结构： $("选择器"),和 CSS 选择器一样用法，但是加引号  
+        
+          用法                  名词  
+          $("#id")           ID 选择器
+          $("*")             全选
+          $(".class")        类选择器
+          $("div")           标签选择器
+          $("div,p,li")      并集选择器
+          $("li.current")    交集选择器
+          $("ul>li")         > 获取亲儿子层级的元素，不获取孙子的元素
+          $("ul li")         空格 后代选择器，ul的所有li，包括孙子
+        */
+
+      console.log($("#eason"));
+      console.log($("*"));
+      console.log($(".abc"));
+      console.log($("div")); // 返回是一个数组
+      console.log($("div,p"));
+      console.log($("ul.abc"));
+      console.log("------------后代选择器-------");
+      console.log($("ul>li"));
+      console.log($("ul li"));
+    </script>
+  </body>
+</html>

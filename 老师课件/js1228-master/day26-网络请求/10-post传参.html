@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // post
+        fetch("http://127.0.0.1:8080/post", {
+            method: 'post',
+            body: 'uname=lisi&pwd=1234',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+
+        // post2
+        fetch("http://127.0.0.1:8080/post", {
+            method: 'post',
+            body: JSON.stringify({
+                uname: '剑圣',
+                pwd: '666'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+
+         // put
+         fetch("http://127.0.0.1:8080/put/123", {
+            method: 'put',
+            body: JSON.stringify({
+                uname: '兽王',
+                pwd: '888'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

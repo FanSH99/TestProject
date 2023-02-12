@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 基于 Promise 发送 ajax 请求
+        function queryData(url) {
+            let p = new Promise(function (resolve, reject) {
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState != 4) {
+                        return;
+                    }
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // 处理正常情况
+                        resolve(xhr.responseText);
+                    } else {
+                        reject("服务器异常");
+                    }
+                };
+                xhr.open("get", url);
+                xhr.send(null);
+            });
+            return p;
+        }
+
+        let result = queryData("http://127.0.0.1:8080/data4")
+            .then(function (data) {
+                console.log(data);
+                // return "123";
+            }, function (info) {
+                console.log(info);
+            });
+
+        // 2. promise 的 then 的返回值还是 promise    
+        // console.log(result);
+        // // promise 是一个对象，有 then() 函数
+        // result.then(function (data) {
+        //     console.log(data);
+        // });
+        // 3. then() 的返回值，就是 promise 调用 then() 的data
+
+        // 多个 ajax 的请求(promise 的 then 的返回值还是 promise )
+
+        queryData("http://127.0.0.1:8080/data1")
+            .then(function (data) {
+                console.log(data);
+                return queryData("http://127.0.0.1:8080/data2")
+            })
+            .then(function (data) {
+                console.log(data);
+                return queryData("http://127.0.0.1:8080/data3")
+            })
+            .then(function (data) {
+                console.log(data);
+            });
+        // 结论：完成了 ajax 的线性调用，不再出现回调地狱
+        //      1. 通过 promise 的 then() 的返回值还是 promise，
+        //      2. then(data) 函数的data 接收上一步的异步处理结果
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        查---方法   函数
+
+        1. 通过id查找  唯一的     找到返回节点，找不到返回null
+         文档   的 得到元素通过id
+       var node= document.getElementById('id名');
+
+        2.通过class查找    
+        var nodes=  document.getElementsByClassName('类名');
+         注意：哪怕只有一个，也需要通过索引号来到取   nodes[0]
+
+        3.通过标签查找
+        var nodes= docmement.getElementsByTagName('标签名') 
+        注意：哪怕只有一个，也需要通过索引号来到取   nodes[0]
+
+        4.
+
+        5.
+     -->
+    <div id="box">
+        <ul>
+            <li>AAA</li>
+            <li>BBB</li>
+            <li>CCC</li>
+            <li class="blue">DDD</li>
+        </ul>
+    </div>
+
+     <p class="blue">我是段落</p>
+     <h2 class="blue">我是标题2</h2>
+
+    <script>
+        //1.document.getElementById('id名')
+        var box = document.getElementById('box');
+        console.log(box);
+        //1.2 操作  <li>BBB</li>
+        // console.log(box.childNodes);//NodeList(3) [text, ul, text]  回车符号
+      var ul= box.children;
+     console.log(ul);//HTMLCollection [ul]
+      console.log(ul[0]);// 如果是集体的话，哪怕只有一个元素，也得用索引号来取
+
+      var lib= ul[0].children[1];
+      console.log(lib);
+      lib.innerHTML='bbbbbb';
+      lib.style.color='red'
+
+
+      //2.document.getElementsByClassName('类名')
+    var blues=  document.getElementsByClassName('blue');//HTMLCollection(3) [li.blue, p.blue, h2.blue]
+    console.log(blues);
+
+    //2.1 操作li.blue
+     blues[0].style.color='blue'
+
+     //3.docmement.getElementsByTagName('标签名')
+   var ps=  document.getElementsByTagName('p');
+   console.log(ps);;//HTMLCollection [p.blue]
+    ps[0].style.color='green'
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+Page({
+    data:{
+        show:false
+    },
+    open(){
+        this.setData({
+            show:true
+        })
+    }
+})

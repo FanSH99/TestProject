@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>石头剪刀布</title>
+    <style>
+        #bigbox {
+            width: 600px;
+            height: 600px;
+            background: slateblue;
+            margin: 0 auto;
+        }
+
+        #bigbox>h1 {
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .box1 {
+            height: 200px;
+
+
+        }
+
+        .box2 {
+            height: 220px;
+        }
+
+        .box1 img {
+            float: left;
+            margin: 25px;
+        }
+
+        .box2 img {
+            float: left;
+            margin: 20px 63px;
+            width: 150px;
+            height: 150px;
+
+        }
+
+        .box2 h1 {
+
+
+            display: block;
+            color: #000;
+            float: left;
+            line-height: 150px;
+
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+
+        p {
+            text-align: center;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .text {
+            height: 20px;
+        }
+
+        .text span {
+            font-size: 20px;
+            color: #ffffff;
+            margin: 0 100px;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='bigbox'>
+        <h1>请选择</h1>
+        <div class="box1">
+            <img src="img/shitou.jpeg" alt="">
+            <img src="img/jiandao.jpeg" alt="">
+            <img src="img/bu.jpeg" alt="">
+        </div>
+        <div class="text">
+            <span>您选择了</span>
+            <span>系统选择了</span>
+        </div>
+        <div class="box2">
+            <img src="img/undefined.png" alt="">
+            <h1>pk</h1>
+            <img src="img/undefined.png" alt="">
+        </div>
+
+        <p>结果显示中。。。</p>
+
+    </div>
+
+    <script>
+        let imgs = document.getElementsByTagName('img')
+        // console.log(imgs.length)
+        for (let i = 0; i < 3; i++) {
+            imgs[i].onclick = function () {
+                game(this, i)
+
+            }
+        }
+
+        function game(src, i) {
+            // console.log(i)
+            //用户
+            let str = src.src;
+            let user = document.getElementsByTagName('img')[3]
+            user.src = str
+
+            //系统
+            setTimeout(function () {
+                let user = document.getElementsByTagName('img')[4]
+                let imgSrc = ['img/shitou.jpeg', 'img/jiandao.jpeg', 'img/bu.jpeg']
+                let num = Math.floor(Math.random() * imgSrc.length)
+                console.log(num)
+                user.src = imgSrc[num]
+                i = i * 1
+                //结果
+                let rs = document.getElementsByTagName('p')[0]
+                if (i == 0 && num == 1 || i == 1 && num == 2
+                    || i == 2 && num == 0) {
+                    rs.innerHTML = "恭喜你获得胜利！"
+                } else if (i == num) {
+                    rs.innerHTML = "平局，请再来一次吧"
+                } else {
+                    rs.innerHTML = "不好意思，游戏失败"
+
+                }
+            }, 200)
+
+
+        }
+
+    </script>
+</body>
+
+</html>

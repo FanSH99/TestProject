@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+         <h1 v-color="color">{{msg}}</h1>
+         <h3 v-color="'pink'">学啥学</h3>
+         <input type="text">
+         <my-component></my-component>
+      
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let myComponent = {
+        template:"<h1 v-color='red' v-size='size' v-mytext='text'>我是一个组件</h1>",
+        data() {
+            return {
+                red:"blue",
+                size:"20px",
+                text:"原来如此"
+            }
+        },
+        directives:{
+            // 属性名表示指令名称 
+            "size":{
+                inserted(el,data){
+                          // el标签当前指令所作用的dom对象
+            // data 表示当前指令的信息对象 data.value指令值
+                    el.style.fontSize = data.value;
+                }
+            },
+            "mytext":{
+                inserted(el,data){
+                    console.log(el)
+                    el.innerText = data.value
+                }
+            }
+        }
+    }
+    /* 
+    自定义指令是自己定义的vue指令：
+    1.全局自定义指令 可以作用在任意vue实例
+    2.局部自定义指令  只能作用在当前vue实例
+     */
+    // 定义全局自定义指令 directive指令
+    Vue.directive("color",{
+        inserted(el,data){
+            // el标签当前指令所作用的dom对象
+            // data 表示当前指令的信息对象 data.value指令值
+            console.log(el)
+            console.log(data)
+            el.style.color=data.value
+            console.log("当指令插入dom时触发")
+        }
+    })
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习天天向上",
+            color:"red"
+        },
+        components:{
+            myComponent,
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        span {
+            /* 动画一定要加定位 */
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开启</button>
+    <button>开启2</button>
+    <div>一路向北</div>
+    <span>龙卷风</span>
+    <script>
+        /* 
+            bug:
+                1. 速度会叠加。
+                2. 点击后会继续往前走。
+        */
+        let btns = document.querySelectorAll('button');
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+
+        btns[0].addEventListener('click', function () {
+            move(div, 500);
+        });
+
+        btns[1].addEventListener('click', function () {
+            move(span, 600);
+        });
+
+        // 解决方案：定时器和对象关联起来。
+        function move(obj, target) {
+            clearInterval(obj.timer);
+            // 动态给当前对象添加属性
+            obj.timer = setInterval(() => {
+                let left = obj.offsetLeft;
+                if (left > target) {
+                    clearInterval(obj.timer);
+                    // 不再执行后面的代码
+                    return;
+                }
+                obj.style.left = left + 30 + 'px';
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>

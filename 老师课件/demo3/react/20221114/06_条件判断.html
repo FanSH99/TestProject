@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    
+    let user = {
+        name:"张三",
+        age:17,
+        sex:false
+    }
+    let isAge = (age)=>{
+        if(age>=18){
+            return <h2>成年人</h2>
+        }else{
+            return <a href="">未成年</a>
+        }
+    }
+    // 只允许有一个根节点
+    let dom = (
+        <div>
+          <h1>{user.name}</h1>
+          {isAge(user.age)}
+           {
+            // 使用逻辑元算符进行判断 当满足条件时才会渲染 && 后面代码
+           }
+           {user.sex && <h3>男孩</h3>}
+           {!user.sex && <h5>女孩</h5>}
+        </div>
+    )
+
+    // function age(){
+
+    // }
+   
+    ReactDOM.render(dom,document.getElementById("app"));
+</script>
+
+</html>

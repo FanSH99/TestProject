@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 2022年11月15日21:42:05
+
+    function App() {
+        return (
+            <div>
+                <h1>我是父组件</h1>
+                {/* 1.父组件给子组件绑定一个函数事件属性，2.props接收自定义时间，3.子组件调用接收的自定义函数，4.函数中传递数据即可。 */}
+                <Child fun={(msg) => {
+                    console.log("我被父组件调用了");
+                    console.log(msg);
+                }} />
+            </div>
+        )
+    }
+
+    function Child(props) {
+        console.log(props);
+        return (
+            <div>
+                <p>我是一个子组件</p>
+                <button onClick={() => {
+                    // 调用父组件传递过来的函数并传递数据。
+                    props.fun("好好学习了")
+                }}>向父组件传值</button>
+            </div>
+        )
+    }
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

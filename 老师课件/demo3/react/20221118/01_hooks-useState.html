@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    console.log(React)
+    // 定义函数式组件状态
+    let {useState} = React;
+    function App(){
+        //  num表示当前状态初始值 setNum表示用来改变状态的函数
+        let [num,setNum] = useState(0); // [0,fun]
+        let [user,setUser] = useState({
+            name:"张三",
+            age:18
+        })
+        let [list,setList] = useState([0,1,2,3,4,5])
+        return (
+            <div>
+                <h1>useState状态hooks {num}</h1>
+                <button onClick={()=>{
+                    num++;
+                    setNum(num)
+                }}>add</button>
+                <h3>{user.name}---{user.age}</h3>
+                <button onClick={
+                    ()=>{
+                        // 注意使用useState Hooks 如定义的普通数据类型则可以直接调用方法更新数据，但是若定义的状态为引用数据类型则不可以直接改变值，需要先改变内存地址在更新
+                        // let newUser = JSON.parse(JSON.stringify(user))
+                        let newUser= {...user}
+                        newUser.name = "李四";
+                        setUser(newUser);
+                    }
+                }>change-username</button>
+                <ul>
+                    {
+                        list.map((item,index)=>{
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+                <button onClick={()=>{
+                    let newList = [...list];
+                    newList.push(1000)
+                    setList(newList)
+                }}>add</button>
+            </div>
+        )
+    }
+    ReactDOM.render(<App/>,document.getElementById("app"))
+
+    // let obj = {
+    //     name:"张三",
+    //     age:18
+    // }
+    // let obj1= {
+    //     name:'张三',
+    //     age:18
+    // }
+    // console.log(obj===obj1)
+    /* 
+     在js中普通数据类型 比较的是值 引用数据类型比较的是内存地址
+    */
+</script>
+</html>

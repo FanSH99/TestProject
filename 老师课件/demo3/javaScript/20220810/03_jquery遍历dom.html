@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li class="two">2
+            <span>
+                子节点
+            </span>
+        </li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    console.log($(".two"))
+    // 查询标签父元素
+    console.log($(".two").parent())
+    // 查询所用父节点 可以根据条件查询
+    console.log($(".two").parents("body"))
+    console.log($('.two').parentsUntil())
+    // 查询子标签
+    console.log($(".two").children())
+    //可以根据条件查询
+    console.log($('ul').children(".two"))
+    // 查询满足条件的子标签 参数为选择器名称
+    console.log($('ul').find('span'));
+    // 查询兄弟标签(所有的兄弟标签)
+    console.log($(".two").siblings())
+    //  查询下一个兄弟标签
+    console.log($('.two').next())
+    console.log($(".two").nextAll())
+    // 查询上一个兄弟标签 prevAll
+    console.log($('.two').prev())
+</script>
+<!-- 作业：
+1. 双向数据线绑定 输入框内容改变浏览器页面跟着改变
+2. 跑马灯 
+3. 选项卡 
+-->
+</html>

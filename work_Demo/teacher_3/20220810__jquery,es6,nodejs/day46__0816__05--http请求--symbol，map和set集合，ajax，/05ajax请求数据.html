@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+        <!-- 
+                2022年8月16日16:51:42
+        
+                ajax是前后端交互技术
+                ajax是基于jquery的，是jQuery封装的发送请求的方法
+                http请求  会用到网络协议
+                网络协议目前分为两种
+                1.HTTP协议  http://
+                2.HTTPS协议 https://
+        
+                https协议可以加密传送，要比http更安全。
+             -->
+    <!-- 
+        2022年8月16日16:54:39
+        bootcdn
+        ajax里面必填的有四个元素，
+        1.url
+        2.method
+        3.success
+        4.err
+
+        请求方式有两个，但是注意，请求方式是后端定义的。
+        get请求会将请求参数拼接到请求路径上传递给后端。
+        post请求
+        
+
+        请求状态码 200  请求成功   201创建成功  301请求从定向  
+        401未授权 404找不到请求地址 500后端报错  405请求方式不对
+
+     -->
+    <button class="cate">get获取博客分类</button>
+    <button class="cate1">post获取博客分类</button>
+    <button class="json">json</button>
+    <button class="speack">speack</button>
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(".cate").click(() => {
+        console.log($);//ƒ (e,t){return new S.fn.init(e,t)}
+        $.ajax({
+            url: "http://106.12.150.223:8000/v1_0/channels",//这里是一个在线的json文件
+            method: "get",
+            // 请求成功后的回调函数，即连接成功后执行的代码
+            success: (res) => {
+                console.log("请求成功了");
+                console.log(res);//res是请求到的数据
+                /* 
+                求成功了 {data: {…}, message: 'OK'} 
+                */
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
+
+    })
+    /* 
+    ajax请求是一个异步的过程
+    */
+
+    console.log("开始请求了。");
+
+    $(".cate1").click(() => {
+        console.log($);//ƒ (e,t){return new S.fn.init(e,t)}
+        $.ajax({
+            // url: "http://106.12.150.223:8000/v1_0/channels",//这里是一个在线的json文件 //405 (Method Not Allowed)  报错了
+            url: "https://api.it120.cc/xiaochengxu/shop/goods/list",//这里是一个在线的json文件
+            method: "post",
+            success: (res) => {
+                console.log("请求成功了");
+                console.log(res);//{code: 0, data: Array(12), msg: 'success'}
+            },
+            error: (err) => {
+                console.log("请求失败了");
+                console.log(err);
+            }
+        })
+    })
+
+    $(".json").click(function () {
+        $.ajax({
+            url: "./text.json",
+            method: "get",
+            success: (res) => {
+                console.log("请求成功了");
+                console.log(res);//{code: 0, data: Array(12), msg: 'success'}
+            },
+            error: (err) => {
+                console.log("请求失败了");
+                console.log(err);
+            }
+        })
+    })
+
+    // promise  解决异步回调地狱问题。
+    $(".speack").click(function () {
+        $.ajax({
+            url: "./02_ajax发送http请求",
+            success: (data) => {
+                console.log(data);
+                $.ajax({
+                    url: "",
+                    success: () => {
+
+                    }
+                })
+            }
+        })
+    })
+
+
+</script>
+
+</html>

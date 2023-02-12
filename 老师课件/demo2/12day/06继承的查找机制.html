@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+    //总结： 继承      继承者-- 子类 派生类       被继承者--父类 超类 基类
+    //方法和属性首先从自己本身找
+   // 自己没找到
+   // 就找自己继承的构造函数当中找
+   // 直到找到为止
+   // 如果一直找不到就报错
+
+  //下面时间：   试着举例子  三层
+  Person(name,age)   Stundent(name,age,no  )    ManStudent(name,age,no,gender)   实现继承关系     借用构造函数来实现
+   say                   say   test                say test   play
+
+  //先不考虑原型
+
+ -->
+ <script>
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+        this.say=function(){
+            console.log(this.name+'is saying~~~~~~~~~~1');
+        }
+    }
+
+    function Stundent(name,age,no){
+
+        Person.call(this,name,age);
+        this.no=no;
+        this.say=function(){
+            console.log(this.name+'is saying~~~~~~~~~~2');
+        }
+        this.test=function(){
+            console.log(this.name+'is testing~~~~~~~~~~2');
+        }
+
+    }
+
+    function ManStudent(name,age,no,gender){
+        Stundent.call(this,name,age,no);
+        // Stundent.apply(this,arguments);   [name,age,no]
+        this.gender=gender;
+        this.say=function(){
+            console.log(this.name+'is saying~~~~~~~~~~3');
+        }
+        this.playGame=function(){
+            console.log(this.name+'is playing~~~~~~~~~~3');
+        }
+
+    }
+
+
+    //实例化一个对象
+   var m1= new ManStudent('王子兴',18,'1001','男');
+   
+   console.log(m1.name,m1.age,m1.no,m1.gender);
+// 方法：
+   m1.say();
+   m1.playGame();
+   m1.test();
+   
+
+
+
+//    继承  查找属性和方法一种机制
+
+ /* 
+ 1.方法和属性首先从自己本身找
+ 2. 自身找不到， 就找自己继承的构造函数当中找
+ 3. 按照2的思路，接着向上查找，直到找到为止
+ 4.如果没找到，报错
+ 
+ */
+
+
+//  总结时，如果  借用构造函数实现继承 +原型实现继承
+// 查找 ，先从自身查，自身找不到，到自身的原型上查
+//  如果自身原型也找不到， 首先先醒继承构函数内部查，如果查不到，继承的构造函数的原型上查
+// 按照向上一直查，直到找到为止，找不到就报错
+
+ </script>
+
+
+</body>
+</html>

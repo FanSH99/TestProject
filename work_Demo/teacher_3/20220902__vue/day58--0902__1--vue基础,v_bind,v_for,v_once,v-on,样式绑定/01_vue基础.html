@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日09:06:51
+        三大框架
+        vue react ag
+        （1）vue ----双向数据流轻量级框架----目前最高是Vue3.x版本，要学的是Vue2.x版本， 当前很多企业依旧使用vue2,后面会学vue  ---作者--尤雨溪--单独开发的
+        （2）react ----单项数据流
+
+        vue特点：
+        （1）数据驱动，只要数据改变视图几句要更新
+        （2）组件系统（组件）---
+        （3）Vue框架是MVVM框架  M(model---数据模型)  V(view--视图模型)  VM（viewmodel)   用来连接数据与视图的桥梁。
+        （4）当数据发生改变时，会通过viewModel来更新视图。当视图发生改变时也会更新数据。双向数据绑定。
+     -->
+    <div id="box">
+        <!-- 使用双打大括号方法来实现数据绑定 -->
+        <h1>{{msg}}</h1><!-- 初始vue -->
+        <h2>{{user}}</h2><!-- 海绵宝宝和派大星 -->
+    </div>
+    <!-- 之作用与box标签，下面不起作用 -->
+    <div>
+        <h1>{{msg}}</h1><!-- msg -->
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    console.log(Vue);//ƒ ft(e) { this._init(e) }
+
+    // 创建一个Vue实例对象  vue2基于选项api(option api)
+    let vm = new Vue();
+    console.log(vm);//ft  --是一个对象，
+    let vue = new Vue({
+        // el--element,表示当前vue实例所作用的元素。其值是选择器名称
+        el: "#box",//当前vue实例只能作用域id为box的元素  id具有唯一性，所以经常使用#   ---当然也可以用.class类名
+        // 存放响应式数据，可以提供给dom节点（标签）使用。 会直接添加到vue实例中。
+        data: {
+            msg: "初步认识vue",
+            user: "海绵宝宝和派大星"
+        }
+    })
+    console.log(vue);
+</script>
+
+</html>

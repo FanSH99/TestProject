@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a=10;// 全局变量
+        // // window.a=10;
+        // console.log(this);//window
+
+        // function show(){
+        //     console.log(this);// window
+        // }
+        // show();
+        // // window.show()
+
+        var a = 20;// 全局范围声明的变量，尽量不要重名  虽然没报错，尽量不用这样做
+        console.log(a);
+        //  在全局范围声明的函数，如果重名，后面也覆盖前面的，虽没报错，不用这样做
+        function show() {
+            console.log('run');
+        }
+        show();
+
+        // 易造成变量的污染，  意思是变量名和函数名易重名。 以后编程时，尽量用函数来编程
+
+        // 函数内部的变量，var 声明的变量，是局部变量，只在函数内部生效。
+        var c = 'nice'
+        function show1() {
+            var a = 50;
+            console.log('a=' + a);
+            var b = 80;
+            console.log(b);
+            console.log(c);
+        }
+        show1();
+        console.log(a);
+        console.log(c);
+        // console.log('b='+b);// 报错
+
+
+
+        // 注意：  作用域：es5  全局作用域   和局部作用域（函数的作用域） ，es5没有块级作用域
+        //                es6  块级作用域  {}
+
+
+        // 块级作用域
+        //  es5
+
+        // if (true) {
+        //     var num = 668;// 全局作用域  ，没有块级作域
+        //     console.log(num);
+        // }
+        // console.log(num);
+
+        //  es6
+
+        if (true) {
+            let num = 668;// 全局作用域  ，没有块级作域
+            console.log(num);
+        }
+        // console.log(num);// error
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 显式/隐式原型都有一个属性 constructor 属性，
+        // constructor 我们称为构造函数，因为它指向构造函数本身。
+        // 说明对象是如何被创建的。
+
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // Star.prototype.sing = function () {
+        //     console.log('sing');
+        // }
+
+        // 给对象动态地添加属性
+        // Star.prototype.game = function () {
+        //     console.log('game');
+        // }
+
+        // console.log(Star.prototype.constructor);
+
+
+        // 对象的等效写法
+        // 赋值,进行了覆盖
+        Star.prototype = {
+            // 由于赋值的写法，把 constructor 给清空了
+            // 需要手动地添加这个属性，指向原来的构造函数 
+            constructor: Star,
+            sing: function () {
+                console.log('sing');
+            },
+            game: function () {
+                console.log('game');
+            }
+        }
+
+        console.log(Star.prototype.constructor);
+    </script>
+</body>
+
+</html>

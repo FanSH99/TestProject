@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        $(function () {
+            // 请求参数
+            let obj = {
+                name: "魔兽世界",
+                age: 22,
+            };
+            $.ajax({
+                // 请求方式
+                type: "GET",
+
+                // 请求地址
+                url: "http://localhost:8080/api/get?name=剑圣&game =刀塔2&position=carry",
+
+                // 请求成功回调函数
+                success: function (result) {
+                    console.log(result);
+                    result = JSON.stringify(result);
+                    $("div").html(result);
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+            });
+        });
+    </script>
+</body>
+
+</html>

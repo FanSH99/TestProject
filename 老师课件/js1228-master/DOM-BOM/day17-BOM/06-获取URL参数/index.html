@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 需求: 点击 login.html 中的提交按钮，跳转到 index.html 
+        //       index.html 的 div 显示 某某人欢迎你。
+        var div = document.querySelector('div');
+
+        console.log(location.href);      // 获取整个 url 
+        var search = location.search;    // 参数 ?uname=qwert
+        console.log(search);             
+        console.log(typeof search);      // 数据类型是字符串
+        var result = search.split('=');  // 字符串切割为数组
+        console.log(result);
+        var yourName = 'abc';
+        yourName = result[1];  // 获取数组中的第二个元素
+        div.innerHTML = yourName + " 欢迎你";
+
+    </script>
+</body>
+
+</html>

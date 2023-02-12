@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+     let p = new Promise((reslove,reject)=>{
+            let num = Math.floor(Math.random()*10);
+            console.log(num)
+            if(num>=5){
+                reslove(num+"大于五");
+            }else{
+                reject(num+"小于5")
+            }
+     })
+    //  promise 的.then方法可以获取当前promise状态
+    // 参数为两个回调函数 参数一回调函数为成功状态的回调函数 参数二失败状态的回调函数
+    p.then((res)=>{
+        console.log(res)
+        console.log("俺成功啦")
+    },(err)=>{
+        console.log(err)
+        console.log("俺失败")
+    })
+
+    console.log(p)
+   
+</script>
+</html>

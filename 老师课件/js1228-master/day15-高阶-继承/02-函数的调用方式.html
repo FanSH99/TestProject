@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button>按钮</button>
+  <script>
+    // 自学即可：函数的调用
+
+    // 1. 普通函数
+    function fn() {
+      console.log("普通函数");
+    }
+    fn(); // window 默认省略
+
+    // 2. 对象的方法
+    let obj = {
+      sayHi: function () {
+        console.log("对象的方法");
+      }
+    };
+    obj.sayHi();
+
+    // 3. 构造函数
+    function Star() {
+      this.sing = function () {
+        console.log("sing");
+      };
+    }
+    let jay = new Star();
+    jay.sing();
+
+    // 4. 绑定事件函数
+    // let btn = document.querySelector('button');
+    // 系统给 btn 添加一个 onclick 属性，值是 null
+    // console.dir(btn);
+
+    // 本质就是给 onclick 属性赋值
+    $("button").on("click", () => {
+      console.log("明天去看德云社");
+    });
+    // 4.1 主动调用
+    $("button").click();
+    // 4.2 点击按钮调用
+
+    // 5. 定时器
+    setInterval(function () {
+      console.log("定时器");
+    }, 1000);
+
+    // 6. 立即执行函数
+    (function () {
+      console.log("立即执行函数");
+    })();
+
+      // 总结：对象.方法(); 某人做了某个事情。  事情就是函数
+  </script>
+</body>
+
+</html>

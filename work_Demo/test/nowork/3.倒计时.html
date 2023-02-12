@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <span id="time"></span>
+    <script>
+        //  获取当前时间的24小时倒计时
+        function countdown() {
+            let now = new Date();         // 获取当前时间
+            let hour = now.getHours();    // 时
+            let min = now.getMinutes();   // 分
+            let sec = now.getSeconds();   // 秒
+
+            let h = 24 - hour;            // 倒计时 时
+            if (min > 0 || sec > 0) {
+                h -= 1
+            }
+            let m = 60 - min;             // 倒计时 分
+            if (sec > 0) {
+                m -= 1
+            }
+            if (m == 60) {
+                m = 0
+            }
+            let s = 60 - sec;             // 倒计时 秒
+            if (s == 60) {
+                s = 0
+            }
+            h = h.toString();
+            m = m.toString();
+            s = s.toString();
+            if (h.length == 1) {
+                h = '0' + h
+            }
+            if (m.length == 1) {
+                m = '0' + m
+            }
+            if (s.length == 1)
+                s = '0' + s
+            result = h + ':' + m + ':' + s
+            return result
+        }
+
+        // 循环执行
+        setInterval(function () {
+            time.innerHTML = countdown();
+        }, 1000)
+    </script>
+</body>
+
+</html>

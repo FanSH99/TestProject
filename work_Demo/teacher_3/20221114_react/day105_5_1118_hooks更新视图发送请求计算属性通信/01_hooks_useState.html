@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月18日09:06:07
+    // useState用来定义函数式组件状态
+
+    let { useState } = React;
+    function App() {
+        // let state=useState(0) //[0,fun()]
+        // num表示当前状态值，setNum表示改变状态的函数
+        let [num, setNum] = useState(0);
+        let [user, setUser] = useState({
+            name: "张三",
+            age: 18,
+        })
+        let [list, setList] = useState([0, 2, 4, 5, 7])
+        console.log(num, setNum);
+        return (
+            <div>useState状态hooks {num}
+                <button onClick={() => {
+                    num++
+                    setNum(num)
+                }}>状态num++</button>
+                <h3>{user.name}---{user.age}</h3>
+                <button onClick={() => {
+                    // user.name = "李四";
+                    // console.log(user);
+                    // setUser(user);//这里视图不更新
+                    // 注意：使用useState hooks时若定义的普通数据类型则可以直接调用方法更新数据
+                    // 若更新的是引用数据类型，则不可以直接改变值，需要先改变内存地址在更新。
+                    // 深拷贝更改内存
+                    let newUser = { ...user };
+                    // 也可以 let newUser=JSON.parse(JSON.stringify(user)) --这样可以深拷贝。
+                    newUser.name = "李四";
+                    setUser(newUser)
+                }}>changeuser</button>
+                <ol>
+                    {
+                        list.map((item, index) => {
+                            return <li key={index}> {item}</li>
+                        })
+                    }
+                </ol>
+                <button onClick={() => {
+                    let newList = [...list];
+                    newList.push(100)
+                    setList(newList)
+                }}>addList</button>
+            </div>
+
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+    /*
+    16.8版本以前函数式组件没有组件，只能做数据渲染。为了解决这一问题推出hooks，
+    函数式编程是类组件推荐使用的。
+    hooks函数
+
+    let obj={
+        name:"张三",
+        age:18,
+    }
+    let obj1={
+        name:"张三",
+        age:18,
+    }
+    console.log(obj===obj1) //false
+    js中普通数据类型比较的是值，引用数据类型比较的是内存地址。
+
+    */
+
+</script>
+
+</html>

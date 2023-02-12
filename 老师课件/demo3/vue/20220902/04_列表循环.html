@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- v-for 指令 用于列表循环渲染 item 表示遍历得到得每一项 index表示当前索引  -->
+            <!-- 在使用v-for 通常要给遍历得到得每一个节点绑定一个key 唯一标识 -->
+            <li v-for="(item,index) in list">
+                {{item}} --------- {{index}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in 10">
+                {{item}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in userList">
+                {{item.name}} ----------- {{item.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // for(let i=0;i<10)
+    new Vue({
+        el:"#app",
+        data:{
+            list:[2,3,4,5,62,5,2],
+            userList:[
+                {
+                    name:"张三",
+                    age:18
+                },{
+                    name:"李四",
+                    age:20
+                }
+            ]
+        }
+    })
+</script>
+</html>

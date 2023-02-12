@@ -1,0 +1,15 @@
+<!--pages/cart/cart.wxml-->
+<button type="warn" bindtap="getRequest">
+    发送get请求
+</button>
+<button type="primary" bindtap="sendPost">
+    发送post请求
+</button>
+<button type="primary" bindtap="sendCode">设置请求头</button>
+<button type="primary" bindtap="setStorge">缓存数据</button>
+<button bindtap="getStorge">获取本地缓存</button>
+<map style='width: 100%;height: 500rpx;' longitude="113.57358121643065" latitude="34.813588275899974" id="mymap"></map>
+<button bindtap="setImg" markers="{{marker}}">设置图标</button>
+<button bindtap="openClose">打开相册或拍照</button>
+<button bindtap="showimgs">预览图片</button>
+<button bindtap="paizhao">拍照</button>

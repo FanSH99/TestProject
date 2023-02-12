@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- return 作用  用于函数
+          1. 返回结果
+          2.结束函数，执行到return ，它后面的代码不再执行
+
+          返回值可以跨函数来使用的。
+
+          注意：retrun  后面只跟一个值，（如果出现多个值的话，用逗号隔开，但是只能最后一个生效）。
+
+          如果函数内部有有循环时，return  大部分情况可以代替break; 
+    
+    -->
+    <script>
+         function show(a,b){
+            return a,b;// 只有b生效，所有不建议使用，最好只跟一个值
+         }
+         console.log( show(10,20));
+        
+         
+    </script>
+</body>
+</html>

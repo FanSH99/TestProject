@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 用户输入年份，输出当前年份2月份的天数
+        function backDay() {
+            let year = prompt('请输入年份');
+            let flag = isLeapYear(year);
+            if (flag) {
+                console.log(`${year} 年的2月份有29天`);
+            } else {
+                console.log(`${year} 年是平年,2月份有28天`);
+            }
+        }
+
+        // 判断闰年函数
+        function isLeapYear(year) {
+            let result = false;
+            if (((year % 4 == 0) && (year % 100 != 0)) || (year % 100 == 0 && year % 400 == 0)) {
+                result = true;
+            }
+            return result;
+        }
+
+        backDay();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

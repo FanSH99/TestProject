@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        let div = document.querySelector("div");
+
+        div.onmousemove = function move(e) {
+            div.innerHTML = "x : " + e.pageX + "  ; y: " + e.pageY;
+        }
+
+        // 防抖(debounce)和节流(throttle)，限制函数的执行次数。
+        // 防抖：通过 setTimeout 的方法，在一定时间内多次触发，变成一次触发
+        // 节流：减少一段时间的触发频率
+        // 防抖应用：百度检索提示
+        // 节流应用：鼠标滚动，查询商品
+    </script>
+</body>
+
+</html>

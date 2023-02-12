@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用组件 -->
+        <mycomponent></mycomponent>
+        <componenta></componenta>
+        <my-com-one></my-com-one>
+        <h1>------------</h1>
+        <mycomponent></mycomponent>
+    </div>
+    <div id="box">
+        <mycomponent></mycomponent>
+    </div>
+    <!-- 组件模板 -->
+    <template id="one">
+       <div>
+         <a href="">百度一下</a>
+         <h1>哈哈哈哈</h1>
+         <div>简单多了</div></div>
+       </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+     /* 
+      vue组件: 全局组件 可以作用在任意vue实例中 局部组件
+      组件:就是可以复用vue实例
+     */
+    // component 组件
+    // 创建全局组件 参数一:组件名称 参数二 组件对象信息
+    // Vue.component("mycomponent",{
+    //     // template 模板 组件所对应的html模板 组件模板只能有一个根标签
+    //     template:"<div><h1>我是一个组件</h1> <h2>哈哈哈哈</h2></div>"
+    // })
+    //  创建一个全局组件
+    let mycomponent = {
+        template:"<h1>我是一个组件</h1>"
+    }
+    // 全局注册组件
+    Vue.component("mycomponent",mycomponent)
+
+    // 创建一个局部组件
+    let componenta = {
+        template:"<h1>我是一个局部组件</h1>"
+    }
+    // 创建一个组件
+    let myonecom = {
+        template:"#one"
+    }
+    console.log(myonecom)
+    // 组件可以无限次复用
+     new Vue({
+        el:"#app",
+        // 局部注册组件
+        // components:{
+        //     "compoenta":componenta
+        // }
+        components:{
+            componenta,
+            // 若组件名称为小驼峰命名法，那么使用组件时需要将大写字母变小写中间使用-链接
+            // <my-com-one></my-com-one>
+            myComOne:myonecom
+        }
+     })
+     new Vue({
+        el:"#box"
+     })
+</script>
+</html>

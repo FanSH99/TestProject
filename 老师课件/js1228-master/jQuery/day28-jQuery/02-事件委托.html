@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>黑色毛衣</li>
+        <li>可爱女人</li>
+        <li>东风破</li>
+        <li>七里香</li>
+    </ul>
+    <script>
+        $(function () {
+            /* 
+                on 事件委托 ：ul 绑定事件，li触发
+                    1. 第一个参数是事件类型
+                    2. 第二个参数是触发的对象
+                    3. 第三个参数是触发的函数
+                支持事件绑定    
+            */
+            $('ul').on('click', 'li', function () {
+                console.log(this);
+            });
+
+            // 4. click 不能动态添加事件
+            // $('li').click(function () {
+            //     console.log('123');
+            // });
+            // $('li').on('click', function () {
+            //     console.log(456);
+            // });
+
+            let li = $('<li>富士山下</li>');
+            $('ul').append(li);
+        });
+
+    </script>
+</body>
+
+</html>

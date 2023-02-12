@@ -1,0 +1,32 @@
+<view class="myswiper"> 
+    <view class="bg" style="background-image: url({{musicMsg.picUrl}});"></view>
+    <view class="musicSinger">
+        <view class="songname">
+            {{musicMsg.name}}
+        </view>
+        <view>
+            {{musicMsg.ar}}
+        </view>
+    </view>
+    <view class="swi">
+        <swiper bindchange='changeCurrent'>
+            <swiper-item>
+            <view class="swiper_img">
+                <image src="{{musicMsg.picUrl}}" class="{{isPlay?'picUrl':'picUrl pusah'}}"></image>
+            </view>
+            </swiper-item>
+            <swiper-item>
+                 <scroll-view wx:if="{{lyric.length>0}}" scroll-y="{{true}}" class="lyricScroll" scroll-into-view="to{{toIndex}}" scroll-with-animation="{{true}}">
+                    <view class="{{lyricIndex===index?'lyric activeLyric':'lyric'}}" wx:for="{{lyric}}" wx:key="index" id="to{{index}}">
+                      {{item.msg}}
+                    </view>
+                 </scroll-view>
+                  <view class="lyric activeLyric" wx:else>暂无歌词</view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="dots">
+     <view class="{{current===0?'active':''}}"></view>
+     <view class="{{current===1?'active':''}}"></view>
+    </view>
+</view>

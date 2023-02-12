@@ -1,0 +1,28 @@
+.topImg{
+    width: 100%;
+}
+.top{
+    width: 95%;
+    margin: 20rpx auto;
+    display: flex;
+}
+.left{
+    width: 40%;
+}
+.right{
+    width: 65%;
+    height: 260rpx;
+    background-color: #333;
+    margin-left: -5%;
+    font-size: 33rpx;
+    color: #919191;
+    padding: 20rpx 40rpx;
+    box-sizing: border-box;
+}
+.item{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 20rpx 0;
+}

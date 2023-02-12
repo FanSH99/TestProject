@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .focus {
+            width: 900px;
+            height: 700px;
+            background-color: crimson;
+            margin: 40px auto;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .focus .pic_box {
+            /* 大图设置应该是图片的个数加1，最后一张图复制第一张图，这样十位了无缝转换，另外，大图长度应该是由js计算来决定的。 */
+            /* width: 500%; */
+            height: 100%;
+
+            /* 定位
+             */
+            position: relative;
+            left: 0;
+        }
+
+        .focus .pic_box li {
+            float: left;
+            width: 900px;
+            height: 700px;
+            background-color: aquamarine;
+            line-height: 700px;
+            font-size: 50px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .focus .pic_box li:nth-child(2) {
+            background-color: darkmagenta;
+        }
+
+        .focus .pic_box li:nth-child(3) {
+            background-color: rgb(229, 114, 169);
+        }
+
+        .focus .pic_box li:nth-child(4) {
+            background-color: rgb(183, 124, 243);
+        }
+
+        .focus .pic_box li:nth-child(5) {
+            background-color: rgb(243, 182, 40);
+        }
+
+        .circle {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translate(-50%);
+        }
+
+        /* 小圆点应该由js来计算添加，与轮播的图片个数一致。 */
+        .circle li {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            color: #444;
+            border: 1px solid #333;
+            float: left;
+            margin: 0 5px;
+            text-align: center;
+            line-height: 16px;
+            opacity: 0.4;
+        }
+
+        .circle li.on {
+            background: rgb(231, 189, 178);
+            opacity: 1;
+        }
+
+        .arrow {
+            width: 50px;
+            height: 50px;
+            display: block;
+            background: #333;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 99;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .arrow.a-left {
+            left: 0;
+        }
+
+        .arrow.a-right {
+            right: 0;
+
+        }
+
+        .arrow:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月3日11:03:40
+     -->
+    <div class="focus">
+        <!-- 大图 -->
+        <ul class="pic_box">
+            <li>slide1</li>
+            <li>slide2</li>
+            <li>slide3</li>
+            <li>slide4</li>
+            <li>slide5</li>
+        </ul>
+        <!-- 切换圆点 -->
+        <ol class="circle">
+            <!-- <li class="on">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li> -->
+        </ol>
+        <!--  左右箭头-->
+        <span class="arrow a-left">
+            <- </span>
+                <span class="arrow a-right">-> </span>
+    </div>
+
+    <script src="./js/animate.js"></script>
+    <script>
+        /* 1.左右箭头：鼠标经过显示，鼠标移开不显示。 */
+        var focus = document.querySelector('.focus');
+        var pic_box = document.querySelector('.pic_box');
+        var plis = document.querySelectorAll('.pic_box li');
+        var circle = document.querySelector('.circle');
+        var al = document.querySelector('.a-left');
+        var ar = document.querySelector('.a-right');
+
+        var liW = focus.offsetWidth;
+        console.log(liW);//900
+        focus.onmouseenter = function () {
+            al.style.display = 'block';
+            ar.style.display = 'block';
+        }
+        focus.onmouseleave = function () {
+            al.style.display = 'none';
+            ar.style.display = 'none';
+        }
+        // 动态创建小圆点  ---图片有几个创建几个ul
+        for (var i = 0; i < plis.length; i++) {
+            var li = document.createElement('li');
+            circle.appendChild(li);
+        }
+        circle.children[0].className = 'on';
+        // 要想做到无缝滚动，需要将第一个li克隆一份
+
+        var first = pic_box.children[0].cloneNode(true);
+        pic_box.appendChild(first);
+        var plis = document.querySelectorAll('.pic_box li');
+        pic_box.style.width = liW * plis.length + 'px';
+
+        // 单击向右按钮，图片向左运动。
+        var i = 0;
+        console.log(plis.length - 1);
+        ar.onclick = function () {
+            if (i >= plis.length - 1) {
+                i == 0;
+                pic_box.style.left = '0px';//快速回到第一张
+            }
+            i++;
+            console.log(i);
+            // pic_box.style.left = '-500px';
+            animate(pic_box, -i * liW);
+        }
+        al.onclick = function () {
+            if (i == 0) {
+                i == -(plis.length - 1);
+                pic_box.style.left = '0px';//快速回到第一张
+            }
+            i--;
+            console.log(i);
+            // pic_box.style.left = '-500px';
+            animate(pic_box, -i * liW);
+        }
+
+    </script>
+</body>
+
+</html>

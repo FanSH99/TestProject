@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #mycanvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="300" height="300">
+
+    </canvas>
+    <button onclick="clearBoxs()">清空</button>
+</body>
+<script>
+    let cav = document.getElementById("mycanvas");
+    console.dir(cav)
+    // 获取canvas绘画实例
+    let ctx = cav.getContext("2d");
+    let isenter = false
+    // cav监听鼠标按下去
+    cav.addEventListener("mousedown",(e)=>{
+        console.log("鼠标按下去啦")
+        console.log(e)
+        isenter = true;
+        // 开始画线
+        ctx.beginPath();
+        ctx.lineWidth=5;
+        ctx.moveTo(e.pageX,e.pageY);
+        console.log(e.pageX,e.pageY)
+    })
+
+    // 监听鼠标松开时间
+    cav.addEventListener("mouseup",()=>{
+        console.log("鼠标松开啦")
+        isenter = false;
+    })
+
+    // 监听鼠标移动事件
+    cav.addEventListener("mousemove",(e)=>{
+       
+        if(isenter){
+            console.log("鼠标移动啦")
+            ctx.lineTo(e.pageX,e.pageY);
+            ctx.strokeStyle = "#ff4d3c";
+            ctx.stroke();
+            
+        }
+    })
+   function clearBoxs(){
+    ctx.clearRect(0,0,300,300)
+   }
+</script>
+</html>

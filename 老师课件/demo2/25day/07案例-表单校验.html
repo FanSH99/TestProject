@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 不可用 */
+        .btn-disable {
+            width: 100px;
+            height: 40px;
+            background-color: rgba(255, 0, 0, 0.4);
+            color: #fff;
+            border: 0 none;
+            cursor: pointer;
+        }
+
+        .btn-able {
+            width: 100px;
+            height: 40px;
+            background-color: rgba(255, 0, 0, 1);
+            color: #fff;
+            border: 0 none;
+            cursor: pointer;
+        }
+
+        span {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="./success.html" method="GET" onsubmit="return disForm()">
+        <p> <label for="">用户名：</label>
+            <input type="text" name="user" id="txt1">
+            <span id="txt1-tip">*用户名不能为空(8-12)位数字和字母组合</span>
+        </p>
+        <p> <label for="">密&nbsp;&nbsp;码：</label>
+            <input type="password" name="pwd1" id="txt2">
+            <span id="txt2-tip">*密码为6位数字</span>
+        </p>
+        <p> <label for="">重复密码：</label>
+            <input type="password" name="pwd2" id="txt3">
+            <span id="txt3-tip">*两次输入密码要一致</span>
+        </p>
+        <p> <label for="">电话：</label>
+            <input type="text" name="tel" id="txt4">
+            <span id="txt4-tip">请输入手机号</span>
+        </p>
+        <p><input type="checkbox" id="cbx">同意****协议</p>
+
+        <input type="submit" value="注册" class="btn-disable" id="btn" disabled>
+    </form>
+    <script>
+        //1.复选框勾选，按钮才可用，否则按钮不可用
+        //2. 表单校验  用户名  密码   重复密码只要密码一致即可    电话 选填 ，不填返回true  填还要校验
+
+        /* 
+          用户名   规则    var patt1=/^[0-9A-Za-z]{8,12}$/ 不包含下划线           /^\w{8,12}$/ 包含下划线
+          密码     规则    var patt2=/^\d{6}$/
+          手机号   规则    var patt3=/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+        
+        */
+        //1.查元素
+        var txt1 = document.getElementById('txt1');
+        var txt2 = document.getElementById('txt2');
+        var txt3 = document.getElementById('txt3');
+        var txt4 = document.getElementById('txt4');
+        var txt1Tip = document.getElementById('txt1-tip');
+        var txt2Tip = document.getElementById('txt2-tip');
+        var txt3Tip = document.getElementById('txt3-tip');
+        var txt4Tip = document.getElementById('txt4-tip');
+        var cbx = document.getElementById('cbx');
+        var btn = document.getElementById('btn');
+
+        function disForm() {
+            // return false;// false
+            return testUser() && testPwd() && testCfPwd() && testTel()
+        }
+
+        //  校验用户名
+        function testUser() {
+            //规则
+            var patt1 = /^[0-9A-Za-z]{8,12}$/
+            var v1 = txt1.value;
+            var flag = patt1.test(v1);
+            if (!flag) {
+                txt1Tip.style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+        // 校验密码
+        function testPwd() {
+            //规则
+            var patt2 = /^\d{6}$/
+            var v2 = txt2.value;
+            var flag = patt2.test(v2);
+            if (!flag) {
+                txt2Tip.style.display = 'block';
+                return false;
+            }
+            return true;
+        }
+        // 校验重复密码    重复密和上面的密码是否是一致
+        function testCfPwd() {
+            if (txt2.value !== txt3.value) {
+                txt3Tip.style.display = 'block';
+                return false;
+            }
+            return true;
+        }
+
+        // 校验电话号码 选填  
+        function testTel() {
+
+            if (txt4.value.trim().length != 0) {
+                //规则  11
+                var patt4 = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+                var v4 = txt4.value;
+                var flag = patt4.test(v4);
+                if (!flag) {
+                    txt4Tip.style.display = 'block';
+                    return false
+                }
+                return true;
+
+            }
+
+
+            return true;
+        }
+
+
+        //如果复选框未勾选   提交 按钮不能用
+        // 如果复选框勾选   提交 按钮能用
+        cbx.onchange=function(){
+            if(this.checked){
+                btn.disabled=false;
+                btn.className='btn-able'
+            }else{
+                btn.disabled=true;
+                btn.className='btn-disable'
+            }
+        }
+
+    </script>
+</body>
+
+</html>

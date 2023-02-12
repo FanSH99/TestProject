@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//   练习-需求：
+//  做一个方法
+//  （1）函数无参时，页面输出hello world
+//   (2) 函数有一个参数时，输出第一个参数的平方
+//  （3）函数有两个参数，输出参数的和
+
+    // function show(a,b){
+    //        if(arguments.length==0){
+    //         console.log('hello world');
+    //        }else if(arguments.length==1){
+    //          console.log(a*a);
+
+    //        }else if(arguments.length==2){
+    //         console.log(a+b);
+    //        }
+    // }
+    // show();
+    // show(10)
+    // show(10,20)
+
+    // 面试题    伪数组（类数组）如何转为真数组
+    // 有length属性可以通过索引号来取值，也可以遍历  ，没有数组内置方法比如：push()
+    //  arguments     dom       querySelectorAll     getElementsByClassName
+
+    //  function show(){
+    //     console.log(arguments);// 如何变为真数组
+    //     var arr=[];
+    //     for(var i=0;i<arguments.length;i++){
+    //         arr.push(arguments[i])
+    //     }
+    //     return arr;
+
+    //  }
+    
+    // var arr= show(10,20,30,80);
+    // console.log(arr);
+
+
+
+    function show(){
+        console.log(arguments);// 如何变为真数组
+       var arr= Array.prototype.slice.call(arguments);
+        return arr;
+
+     }
+    
+    var arr= show(10,20,30,80);
+    console.log(arr);
+
+       
+    </script>
+</body>
+</html>

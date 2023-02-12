@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+
+        while(判断条件){
+            循环体
+        }
+        do{
+            循环体；
+        }while(判断条件)
+     -->
+    <script>
+        var i = 0;
+        while (i < 3) {
+            i++;
+            document.write(i + 'hello world<br>')
+        }
+
+        var j = 0;
+        do {
+            j++;
+            document.write(j + 'good<br>');
+        } while (j < 3)
+
+
+        /* 什么情况下会多一次 
+        一半情况下不会多。
+        尽量用while 和for。
+        当一次也不成立的时候，do...while还是会运行一次。
+        */
+        var i = 0;
+        while (i > 0) {
+            i++;
+            document.write(i + 'hello')
+        }
+
+        var j = 0;
+        do {
+            j++;
+            document.write(j + 'world');
+        } while (i > 1)
+    </script>
+</body>
+
+</html>

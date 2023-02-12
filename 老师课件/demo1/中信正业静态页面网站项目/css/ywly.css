@@ -1,0 +1,435 @@
+/* 业务领域开始 */
+.ywly_top{
+    border-top: 3px solid #ccc; 
+}
+.ywly_top img{
+    width: 100%;
+    display: block;
+}
+.ywly_zw{
+    padding: 140px 0 120px 0;
+}
+.ywly_zw .ywly{
+    padding:30px 20px;
+    width: 1240px;
+    margin: auto;
+    background: url( ../img/27.jpg);
+
+}
+.ywly_zw .ywly .ywly_left{
+    width: 310px;
+    /* height: 500px;
+    background: #d7000f; */
+    float: left;
+    margin-top: 65px;
+    margin-left: 25px;
+}
+.ywly_zw .ywly .ywly_left h1{
+    font-size: 24px;
+    color: #464646;
+    font-weight: normal;
+}
+.ywly_zw .ywly .ywly_left h2{
+    width: 60px;
+    height: 2px;
+    background: #000;
+    margin-top: 20px;
+}
+.ywly_zw .ywly .ywly_left p{
+    margin-top: 20px;
+    font-size: 16px;
+    color: #666;
+    line-height: 2em;
+}
+.ywly_zw .ywly .ywly_right{
+    width: 760px;
+    height: 490px;
+    /* background: #d7000f; */
+    float: right;
+    overflow: hidden;
+}
+.ywly_zw .ywly .ywly_right ul li{
+    width: 190px;
+    height: 490px;
+    float: left;
+    position: relative;
+    /* transition-delay: 1s; */
+    transition: 0.5s;
+   
+}
+.ywly_zw .ywly .ywly_right ul:hover li{
+    width: 150px;
+}
+.ywly_zw .ywly .ywly_right ul li:hover{
+    width: 310px;
+}
+.ywly_zw .ywly .ywly_right ul li .ywly_bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+.ywly_zw .ywly .ywly_right ul li .ywly_bg:hover{
+    background: rgba(0, 0, 0, 0);
+}
+.ywly_zw .ywly .ywly_right ul li .ywly_tb{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+}
+.ywly_zw .ywly .ywly_right ul li .ywly_tb p{
+    margin-top: 20px;
+}
+
+.ywly_jjgl{
+   width: 1280px;
+   /* height: 560px; */
+   margin: auto;
+   background: url(../img/36.jpg);
+}
+.ywly_jjgl .ywly_jjgl_wz{
+    padding-top: 100px;
+    height: 460px;
+    width: 420px;
+    /* background: #d7000f; */
+    /* border: 1px solid #333; */
+    float: right;
+    margin-right: 50px;
+}
+.ywly_jjgl .ywly_jjgl_wz h1,.ywly_xmgl .ywly_xmgl_wz h1{
+    font-size: 24px;
+    color: #464646;
+}
+.ywly_jjgl .ywly_jjgl_wz h2,.ywly_xmgl .ywly_xmgl_wz h2{
+    width: 60px;
+    height: 2px;
+    background: #000;
+    margin-top: 20px;
+}
+.ywly_jjgl .ywly_jjgl_wz p,.ywly_xmgl .ywly_xmgl_wz p{
+    color: #666;
+    line-height: 2em;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.ywly_jjgl .ywly_jjgl_wz a,.ywly_xmgl .ywly_xmgl_wz a{
+    width: 180px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #d7000f;
+    display: block;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 38px;
+    text-decoration: none;
+    color:#ffffff;
+    margin-top: 75px;
+    background: #d7000f;
+    position: relative;
+    
+}
+.ywly_jjgl .ywly_jjgl_wz a h4{
+    width: 80px;
+    height: 1px;
+    background: #d7000f;
+    position: absolute;
+    bottom: 7px;
+    left: 50px;
+}
+.ywly_jjgl .ywly_jjgl_wz a:hover h4{
+    background: #ffffff;
+}
+.ywly_xmgl{
+    width: 1280px;
+   height: 560px;
+   margin: auto;
+   background: url(../img/37.jpg);
+   margin-top: 80px;
+}
+.ywly_xmgl .ywly_xmgl_wz{
+    padding-top: 100px;
+    height: 460px;
+    width: 420px;
+    /* background: #d7000f; */
+    /* border: 1px solid #333; */
+    float: left ;
+    margin-left: 50px;
+   
+}
+.ywly_xmgl .ywly_xmgl_wz a h4{
+    width: 80px;
+    height: 1px;
+    background: #d7000f;
+    position: absolute;
+    bottom: 7px;
+    left: 50px;
+   
+}
+.ywly_xmgl .ywly_xmgl_wz a:hover h4{
+    background: #ffffff
+}
+
+.ywly_three{
+    width: 1279px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+   
+    
+    
+}
+.ywly_three ul li img{
+    display: block;
+    /* width: 100%; */
+    transition: all 1s;
+   
+}
+.ywly_three ul li:hover img{
+    transform: scale(1.1);
+    
+}
+.ywly_three ul li{
+    width: 411px;
+    float: left;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+.ywly_three ul li:nth-child(2){
+    margin: 0 23px;
+}
+.ywly_three ul li h2{
+    position: absolute;
+    left:20px;
+    bottom: 20px;
+    color:#ffffff;
+    z-index: 2;
+}
+.ywly_three ul li .black_bg{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.ywly_three ul li .black_bg:hover{
+    background: rgba(0, 0, 0, 0);
+}
+/* 业务领域结束 */
+
+/* 二级导航开始 */
+
+/* 项目投资开始 */
+.ywly_zw{
+    border-top: 3px solid #ccc;
+}
+
+/* 项目投资结束 */
+
+/* 基金管理开始 */
+.ywly-1{
+    height: 630px;  
+    /* width: 100%; */
+    background: url(../img/64.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    
+    position: relative;
+}
+.ywly-1 .ywly-1bg{
+    width: 1280px;
+    margin: auto;
+}
+.ywly-1 .ywly-1bg h2{
+    font-size: 32px;
+    font-weight: normal;
+    color: #fff;
+    padding-bottom: 36px;
+    border-bottom: 2px solid #e4e4e4;
+    margin-top: 38px;
+}
+.ywly-1 .ywly-1bg .ywly-red{
+    width: 370px;
+    height: 270px;
+    padding: 70px 30px 0 30px;
+    background: rgba(215,0,15,0.8);
+    margin-top: 60px;
+    margin-bottom: 120px;
+    position: absolute;
+    left: 7%;
+    top: 20%;
+}
+.ywly-1 .ywly-1bg .ywly-red h3{
+    font-size: 24px;
+    font-weight: normal;
+    color: #fff;
+}
+.ywly-1 .ywly-1bg .ywly-red h6{
+    width: 60px;
+    height: 2px;
+    background: #ffffff;
+    margin-top: 20px;
+}
+.ywly-1 .ywly-1bg .ywly-red p{
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 30px;
+    line-height:32px;
+}
+
+/* 基金管理结束 */
+
+/* 项目管理与运营开始 */
+.ywly-3{
+    background: url( ../img/65.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* 项目管理与运营结束 */
+
+/* 酒店业务开始 */
+.ywly-4{
+    position: relative;
+}
+.ywly-4 img{
+    width: 100%;
+    display: block;
+
+}
+.ywly-4 .ywly-4-s{
+    position: absolute;
+    top: 8%;
+    left: 8%;
+
+}
+.ywly-4 .ywly-4-s h2{
+    font-size: 32px;
+    font-weight: normal;
+    color: #fff;
+}
+.ywly-4 .ywly-4-s h3{
+    width: 80px;
+    height: 2px;
+    background: #fff;
+    margin-top: 20px;
+}
+.ywly-4 .ywly-4-red{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    background: #d7000f;
+    padding: 10px;
+}
+.ywly-4-bx{
+    padding: 80px 0 120px 0;
+    width: 1280px;
+    margin: auto;
+}
+.ywly-4-bx .ywly-4-t{
+    text-align: center;
+
+}
+.ywly-4-bx .ywly-4-t h2{
+    font-size: 24px;
+    color: #464646;
+    font-weight: normal;
+}
+.ywly-4-bx .ywly-4-t h3{
+    /* text-align: center; */
+    width: 60px;
+    height: 3px;
+    background: #464646;
+    display: block;
+    margin: 40px auto;
+}
+.ywly-4-bx .ywly-4-t p{
+    color: rgb(102, 102, 102);
+    font-size: 16px;
+    line-height: 2em;
+}
+
+.one{
+    width: 1240px;
+    /* height: 418px; */
+    padding:20px;
+    margin:  60px auto;
+    background: #ffffff;
+
+}
+
+.one .one_js{
+    width: 600px;
+    height: 420px;
+    float: left;
+    
+}
+.one .one_js img{
+    width: 100%;
+    height: 100%;;
+}
+.one .one_js_zw{
+    width: 540px;
+    
+    float: right;
+    margin-top:50px;
+   
+}
+.one .one_js_zw img,
+.two .two_hx_zw img{
+   display: block;
+   float: left;
+   margin-right: 20px;
+}
+.one .one_js_zw h4,
+.two .two_hx_zw h4{
+    font-weight: normal;
+    font-size: 24px;
+
+}
+.one .one_js_zw p,
+.two .two_hx_zw p{
+    margin-top: 30px;
+    font-size: 16px;
+    color: #666;
+    line-height: 2em;
+}
+.two{
+    width: 1240px;
+    padding:20px;
+    margin:  60px auto;
+}
+.two .two_hx{
+    width: 640px;
+    height: 465px;
+    float: right;
+}
+.two .two_hx img{
+    width: 100%;
+    height: 100%;
+   
+}
+.two .two_hx_zw {
+    width: 514px;
+    margin-left: 40px;
+    float: left;
+}
+.two .two_hx_zw h1{
+    font-weight: normal;
+    font-size: 24px;
+}
+/* 酒店业务结束 */

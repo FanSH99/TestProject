@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 语法糖：两种方法可以实现同一种功能，简单、便捷、清晰那种写法，称为语法糖。
+        // 匿名函数
+        // let eat = function () {
+        //     console.log('吃火锅');
+        // };
+
+        // 箭头函数(匿名函数)
+        let eat = () => {
+            console.log('吃烤鱼');
+        };
+        eat();
+
+        // 2. 构造函数
+        //       构造函数是一种特殊的函数，主要作用是初始化对象，即为对象动态地添加属性。
+        //       new 关键字 创建对象
+        function Star(age) {
+            this.age = age;
+            this.sing = function () {
+                console.log('我喜欢唱歌');
+            }
+        }
+
+        let eason = new Star(22);
+        eason.sing();
+
+        // 类，是对象公共属性抽取，对象的模板
+        class Hero {
+            constructor(age) {
+                this.age = age;
+            }
+            sing() {
+                console.log('我来郑州开演唱会');
+            }
+        }
+
+        let jay = new Hero(18);
+        jay.sing();
+
+        /* 
+            总结：
+                构造函数和类的作用都是将对象的属性和方法进行抽取
+                构造函数和类都是用了创建对象的
+                创建对象的语法一模一样。
+            
+            类和构造函数是一码事，类是构造函数的语法糖。    
+        */
+        console.log(typeof Star);  // function
+        console.log(typeof Hero);  // function
+
+        // 所有的类的父类都是 Object
+    </script>
+</body>
+
+</html>

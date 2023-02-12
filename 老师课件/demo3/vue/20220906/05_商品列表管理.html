@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+         <div>
+            id: <input type="text" disabled> 名称： <input type="text" v-model="name"> <button @click="add">添加</button> <input type="text" placeholder="输入商品名称搜索" v-model="keyWords">
+         </div>
+         <div>
+            <table border="1">
+                <tr>
+                    <th>id</th></th>
+                    <th>Name</th>
+                    <th>date</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(item,index) in getList" :key="index">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.date | getTime}}</td>
+                    <td><button @click="remove(item.id)">删除</button></td>
+                </tr>
+            </table>
+            <!-- {{getList}} -->
+         </div>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            arr: [{
+                    id: 1,
+                    name: "奔驰",
+                    date: new Date()
+                }, {
+                    id: 2,
+                    name: "宝马",
+                    date: new Date()
+                }, {
+                    id: 3,
+                    name: "法拉利",
+                    date: new Date()
+                }, {
+                    id: 4,
+                    name: "劳斯莱斯",
+                    date: new Date()
+                }, ],
+                name:"",
+                keyWords:""
+        },
+        filters:{
+            getTime(time){
+                let year = time.getFullYear();
+                let month = time.getMonth()+1;
+                return `${year}年${month}月`
+            }
+        },
+        methods: {
+            add(){
+                let id = this.arr.length +1;
+                let index = this.arr.findIndex(item=>item.id===id);
+                if(index==-1){
+                    let obj = {
+                    id:id,
+                    name:this.name,
+                    date:new Date
+                }
+                
+                this.arr.push(obj)
+                }else{
+                    id = id+1;
+                    let obj = {
+                    id:id,
+                    name:this.name,
+                    date:new Date
+                }
+                
+                this.arr.push(obj)
+                }
+               
+            },
+            remove(id){
+                let index = this.arr.findIndex(item=>item.id===id);
+                this.arr.splice(index,1)
+            }
+        },
+        computed:{
+            getList(){
+                let newArr = this.arr.filter(item=>item.name.includes(this.keyWords));
+                return newArr
+            }
+        }
+    })
+</script>
+</html>

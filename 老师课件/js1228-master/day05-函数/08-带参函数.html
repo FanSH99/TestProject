@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function daily(hero) {
+            // let hero;
+            // hero = '项羽';
+            console.log('------------start----------');
+            console.log(hero + '起床');
+            console.log(hero + '上课');
+            console.log(`${hero}课前分享`);
+            console.log(hero + '中午吃饭');
+            console.log(hero + '继续上课');
+            console.log(hero + '吃晚饭');
+            console.log(hero + '上自习');
+            console.log('------------- end 睡觉-------');
+        }
+
+        daily('项羽');
+        daily('张飞');
+        daily();
+        /* 
+            语法结构
+                function 函数名(形参) {
+                    let 形参;  // 系统省略
+                    形参 = 实参; // 调用时运行，系统省略。
+                    函数体;
+                }
+                函数名(实参); 
+            形参：形式上的参数。
+            实参：实际参与运算的数据。  
+            
+            总结：
+                1. 形参就是只声明，未赋值的变量
+                2. 调用函数的时候，把实参赋值给形参。
+                3. 形参和实参尽量保持一致。
+        */
+
+        function paly(game1, game2, game3) {
+            console.log(`我喜欢玩${game1}`);
+            console.log(`我喜欢玩${game2}`);
+            console.log(`我喜欢玩${game3}`);
+            console.log('----------------------------------');
+        }
+        paly('王者荣耀', '刀塔');
+        paly('王者荣耀', '刀塔', '吃鸡');
+        paly('王者荣耀', '刀塔', '吃鸡', 'lol');
+    </script>
+</body>
+
+</html>

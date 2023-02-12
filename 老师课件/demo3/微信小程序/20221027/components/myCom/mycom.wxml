@@ -1,0 +1,8 @@
+<view class="child">
+我是一个子组件 {{mymsg}}
+<view wx:for="{{list}}" wx:key="index">
+{{item}}
+</view>
+<button bindtap="sendData">向父组件传递数据</button>
+</view>
+

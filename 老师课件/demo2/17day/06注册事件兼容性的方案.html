@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 兼容性方案
+        btn.addEventListener('click',function(){})
+        btn.attachEvent('onclick',function(){})
+        btn.onclick=function(){
+
+        }
+
+        // 提形参 ele (btn)  eventName(click  onclick)     fn(函数   回调函数)
+    -->
+
+    <button id="btn">单击</button>
+    <script>
+        function addEventListener(ele,eventName,fn){
+            if(ele.addEventListener){
+                ele.addEventListener(eventName,fn)
+            }else if(ele.attachEvent){
+                ele.attachEvent('on'+eventName,fn)
+            }else{
+                ele['on'+eventName]=fn
+            }
+
+        }
+
+        var btn=document.querySelector('#btn');
+
+        addEventListener(btn,'click',function(){
+            console.log('下课了');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            多分支: 
+            语法结构: 
+                if (布尔值1) {
+                    逻辑体1;
+                } else if (布尔值2) {
+                    逻辑体2;
+                } else if (布尔值3) {
+                    逻辑体3;
+                } else {
+                    逻辑体x;
+                }
+            执行顺序: 
+                1. 布尔值1,如果是 true,执行逻辑体1.跳出整个代码块。
+                2. 布尔值1,如果是 false,判断布尔值2.
+                3. 布尔值2,如果是 true,执行逻辑体2.跳出整个代码块。
+                4. 布尔值2,如果是 false,判断布尔值3.
+                ...
+                x. 如果布尔值都是false,则执行逻辑体x。
+            
+            总结: 
+                1. 只能选择其中的一个条件触发。    
+                2. 可读性。
+                3. 计算机的性能更高
+        */
+        var score = prompt('请出入你的成绩');
+        if (score > 90) {
+            console.log('A');
+        } else if (score > 80) {
+            console.log('B');
+        } else if (score > 70) {
+            console.log('C');
+        } else {
+            console.log('D');
+        }
+        console.log('--------------gameover------------');
+        if (score > 90) {
+            console.log('A');
+        }
+        if (score > 80 && score <= 90) {
+            console.log('B');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

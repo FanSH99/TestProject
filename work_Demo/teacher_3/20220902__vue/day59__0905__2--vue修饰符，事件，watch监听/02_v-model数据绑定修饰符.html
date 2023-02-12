@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- lazy懒加载，input输入框失去焦点时触发 -->
+        <input type="text" name="" id="" v-model.lazy="msg">
+        <p>{{username}}</p>
+        <!-- trim修饰符去除首尾两端的空格。 -->
+        <input type="text" name="" id="" v-model.trim="username">
+        <button @click="login">获取</button>
+        <p>{{num}}</p>
+        <!-- number修饰符可以将字符串转换为数字，只支持纯数字的字符串 -->
+        <input type="text" name="" id="" v-model.number="num">
+    </div>
+</body>
+<script src="../bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "等不到的雪月风花",
+            username: '',
+            num: ""
+
+        },
+        methods: {
+            login() {
+                console.log(this.username, typeof this.username);
+                console.log(this.num, typeof this.num);
+            }
+        }
+    })
+</script>
+
+</html>

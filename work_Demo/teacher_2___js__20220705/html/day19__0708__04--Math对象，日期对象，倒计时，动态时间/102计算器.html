@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+</head>
+
+<body>
+
+    <input type="text" id="txt1">
+    <select name="" id="slt">
+
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    第二个数：<input type="text" id="txt2">
+    <button id="btn">计算</button>
+    结果：<input type="text" id="txt3">
+
+
+
+    <script>
+        var txt1 = document.querySelector('#txt1');
+        var txt2 = document.querySelector('#txt2');
+        var txt3 = document.querySelector('#txt3');
+        var btn = document.querySelector('#btn');
+        var slt = document.querySelector('#slt');
+        var res;
+
+        btn.onclick = function () {
+            var v1 = txt1.value;
+            var v2 = txt2.value;
+            console.log(v1, typeof v1);
+
+            var fuhao = slt.value;
+            switch (fuhao) {
+                case '+':
+                    res = parseFloat(v1) + parseFloat(v2);
+                    break;
+                case '-':
+                    res = v1 - v2;
+                    break;
+                case '*':
+                    res = v1 * v2;
+                    break;
+                case '/':
+                    res = v1 - v2;
+                    break;
+                case '%':
+                    res = v1 - v2;
+                    break;
+                default:
+                    res = parseFloat(v1) + parseFloat(v2);
+                    break;
+            }
+
+            console.log(res);
+            txt3.value = res;
+
+
+        }
+    </script>
+</body>
+
+</html>

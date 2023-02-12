@@ -1,0 +1,12 @@
+<!--pages/cart/cart.wxml-->
+<button type="warn" bindtap="getRequest">发送get请求</button>
+<button type="primary" bindtap="postRequest">post请求</button>
+<button type="warn" bindtap="sendCode">设置请求头</button>
+<button type="primary" bindtap="setStorage">缓存数据</button>
+<button bindtap="getStorage">获取本地缓存</button>
+<!-- 地图， -->
+<map name="" style="width: 100%;height: 400rpx;" longitude="113.57358121643065" latitude="34.813588275" id="mymap"></map>
+<button bindtap="saveImg">保存图片到本地</button>
+<button bindtap="openClose" type="primary">选择图片或拍照</button>
+<button bindtap="priviewImg">预览图片</button>
+<button bindtap="paizhao" type="primary">拍照</button>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            width: 400px;
+            height: 50px;
+            margin: 100px auto;
+        }
+
+        ul {
+            width: 400px;
+            height: 50px;
+            list-style: none;
+        }
+
+        li {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background: #fff;
+            float: left;
+            margin-left: 30px;
+            box-sizing: border-box;
+            border: 3px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    var num = 0;  // 选中圆圈的个数
+    var flag = false;  // 是否点击标识符
+
+    $('li').each(function (index, item) {
+        $(this).mouseenter(function (e) {
+            for (var k = 0; k < 5; k++) {
+                $('li').eq(k).css('background', '#fff');
+            }
+            num = index;
+            // console.log(num);
+            for (var i = 0; i <= num; i++) {
+                $('li').eq(i).css('background', '#ffff00');
+            }
+        })
+        $(this).click(function () {
+            var num = index;
+            for (var i = 0; i <= num; i++) {
+                $('li').eq(i).css('background', '#ffff00');
+            }
+            flag = true;
+        });
+    });
+
+    //
+    $('ul').mouseleave(function () {
+        for (var k = 0; k < 5; k++) {
+            $('li').eq(k).css('background', '#fff');
+        }
+
+        if (flag) {
+            for (var i = 0; i <= num; i++) {
+                $('li').eq(i).css('background', '#ffff00');
+            }
+        }
+
+    });
+
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    console.log(React)
+    // class 类组件组件名称首字母依旧要大写 
+    // class 类组件具有私有数据
+    class App extends React.Component{
+       
+        // 页面渲染时调用
+        render(){
+           
+            return (
+                <div>
+                     <button onClick={()=>{
+                        // this指向当前组件实例实例
+                        console.log(this)
+                        console.log("点你咋地")
+                     }}>点我一下你试试</button>
+                     <button onClick={this.clickMe.bind(this)}>更改this指向</button>
+                     <button onClick={this.clickMe2}>this指向</button>
+                     <button onClick={()=>this.clickMe3()}>你试试</button>
+                </div>
+            )
+        }
+        clickMe(){
+            console.log(this)
+        }
+        clickMe2=()=>{
+            console.log(this)
+        }
+        clickMe3(){
+            console.log(this)
+        }
+    }
+    // console.log(<App/>)
+    ReactDOM.render(<App/>,document.getElementById("app"))
+
+    
+</script>
+<!-- <script>
+    "use strict"
+    function getUser(){
+        console.log(this)
+    }
+    getUser();
+</script> -->
+</html>

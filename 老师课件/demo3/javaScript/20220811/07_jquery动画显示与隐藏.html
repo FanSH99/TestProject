@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="box">
+
+     </div>
+     <button class="hide">隐藏</button>
+     <button class="show">显示</button>
+     <button class="togell">切换</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    $(".box").css({
+        width:"100px",
+        height:"100px",
+        background:"red",
+        display:"none"
+    })
+    $(".hide").click(function(){
+        // 隐藏元素 相当于disply:none 参数一 动画时间 参数二 成功后得回调函数
+        $(".box").hide(2000,function(){
+            console.log("隐藏成功啦")
+        });
+    })
+    $('.show').click(function(){
+        $(".box").show(500,function(){
+            console.log("显示成功啦")
+        });
+    })
+    $(".togell").click(function(){
+        // 显示则隐藏 隐藏则显示
+        $('.box').toggle(1000)
+    })
+</script>
+</html>

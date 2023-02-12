@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="checkbox">
+        <span>全选</span>
+        <a href="#">反选</a>
+        <!-- (p{选项$}>input:checkbox)*5 -->
+        <p>
+            <input type="checkbox">选项1
+        </p>
+        <p>
+            <input type="checkbox">选项2
+        </p>
+        <p>
+            <input type="checkbox">选项3
+        </p>
+        <p>
+            <input type="checkbox">选项4
+        </p>
+        <p>
+            <input type="checkbox">选项5
+        </p>
+    </div>
+</body>
+<script>
+    // 1.点击全选,所有选项被选中,然后全选文字改为全不选
+    // 点击全不选,所有选项取消选中,文字改为全选
+
+    // 获取第一个input标签
+    var inp1 = document.querySelector('input');
+    var inps = document.querySelectorAll('input');
+    var span = document.querySelector('span');
+    var fan = document.querySelector('a');
+
+    inp1.onclick = function (e) {
+        // 点击全选input之后,获取选项的所有input 设置 选项值(是否被选中)等于全选值(true/false)
+        for (var i = 1; i < inps.length; i++) {
+            inps[i].checked = e.target.checked;
+            console.log(e.target.checked);
+        }
+        // 判断如果全选被选中(值为true)就更改span的内容为false
+        // 否则为true
+        // if (e.target.checked) {
+        //     span.innerHTML = "全不选"
+        // } else {
+        //     span.innerHTML = "全选"
+        // }                       / **********/
+        span.innerHTML = inp1.checked ? '全不选' : "全选";
+    }
+
+    // 2.点击单选, 需要判断如果所有单选都选中,就更改第一个input的全选
+    var num = 0;
+    // 获取所有选项的input,给每一个添加点击事件
+    for (var k = 1; k < inps.length; k++) {
+        inps[k].onclick = function () {
+            // 调用函数 check();
+            check();
+        }
+    }
+
+    // 3. 反选,点击反选,让下边的选项框checked值反过来
+    fan.onclick = function () {
+        for (var i = 1; i < inps.length; i++) {
+            // 取反值
+            inps[i].checked = !inps[i].checked;
+            // if(inps[i].checked){
+            //     inps[i].checked = false;
+            // }else{
+            //     inps[i].checked = true;
+            // }
+            check();
+        }
+    }
+    // 验证选项是否被全部选中
+    function check() {
+        // 获取所有选项的checked状态(true/false)
+        for (var x = 1; x < inps.length; x++) {
+            // 若为true则记录
+            if (inps[x].checked) {
+                num++;
+            }
+        }
+        // 循环得到每一个选项的状态后判断记录的为true的选项数量是否跟选项input的数量一致
+        // console.log(num);
+        // if (num == inps.length - 1) {
+        //     inp1.checked = true;
+        //     span.innerHTML = "全不选"
+        // } else {
+        //     inp1.checked = false;
+        //     span.innerHTML = '全选'
+        // }
+        inp1.checked = (num == inps.length - 1);
+        span.innerHTML = inp1.checked ? '全不选' : "全选";
+
+
+        // 最后将记录的数量清零,防止多次调用时,记录叠加
+        num = 0;
+    }
+
+</script>
+
+</html>

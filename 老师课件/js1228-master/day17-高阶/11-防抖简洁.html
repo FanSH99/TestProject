@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        let div = document.querySelector("div");
+
+        div.onmousemove = move;
+        let temp = debounce(move, 1000);
+        div.onmousemove = temp;
+
+        function move(e) {
+            console.log(123);
+            console.log(this);
+            console.log(e);
+        }
+
+        // 防抖：通过 setTimeout 的方法，在一定时间内多次触发，变成一次触发 
+        function debounce(fn, delay) {
+            let t = null;
+            return function () {
+                if (t) {
+                    clearTimeout(t);
+                }
+                let firstClick = !t; // 第一次点击
+                if (firstClick) { fn.call(this, ...arguments); }
+                // 厕所关门(第二次触发， fn 函数走延时，不能立即执行)
+                t = setTimeout(() => {
+                    t = null; // 厕所开门 
+                }, delay);
+            }
+        }
+    </script>
+</body>
+
+</html>

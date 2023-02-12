@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 300px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+    <script>
+        /* 
+            jQuery 封装了很多常见的动画效果，如下:
+                更多内容查看 jQuery 的在线文档
+                显示与隐藏：show()  hide()  toggle()
+                滑动：slideDown()   slideUp()   slideToggle()
+                淡入淡出：fadeIn()  fadeOut()   fadeToggle()    fadeTo() 
+                自定义动画：animate()
+
+            语法示例：
+                show([speed, [easing],[fn]])
+                1. 参数都可以省略，无动画直接显示
+                2. speed: 三个预定的速度之一的字符串("slow","normal","fast"),或表示动画时长的数值(毫秒)    
+                3. easing: 切换效果,默认 "swing(速度慢、快、慢)"，linear(匀速运动)
+                4. 回调函数，动画完成时，执行一次。
+        */
+        $(function () {
+            // 显示
+            $('button').eq(0).click(function () {
+                $('div').show("fast", "swing", function () {
+                    console.log(`显示完成`);
+                });
+            });
+            // 隐藏
+            $('button').eq(1).click(function () {
+                $('div').hide(2000, "linear", function () {
+                    console.log(`隐藏完成`);
+                });
+            });
+
+            // 切换
+            $('button').eq(2).click(function () {
+                $('div').toggle();
+            });
+        });
+
+    </script>
+</body>
+
+</html>

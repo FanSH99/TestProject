@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 箭头函数不能使用 arguments
+    // 2. 剩余参数：形参的个数少于实参的个数. 多余的参数,
+    //             前面加 ... ,表示为一个数组来接收.
+
+    const sum = (a, ...args) => {
+      // console.log(arguments);
+      // console.log(a, b, c);
+      console.log(args);
+    };
+
+    sum(1, 3, 5, 7, 9);
+
+    // 3. 剩余参数配合解构赋值   h2 接收剩余的元素
+    let arr = ["易烊千玺", "王一博", "肖战"];
+
+    let [s1, s2, s3] = arr;
+    console.log(s1, s2, s3);
+    let [h1, ...h2] = arr;
+    console.log(h1);
+    console.log(h2);
+  </script>
+</body>
+
+</html>

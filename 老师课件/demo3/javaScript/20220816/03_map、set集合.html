@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 在es中新增了两种数据结构 map set 集合
+    // set 集合
+    // 使用构造函数的方式创建set集合
+    let set = new Set([0,1,2,3,4,5]);
+    console.log(set)
+    // 获取集合大小
+    console.log(set.size)
+    // has 判断集合中是否有某个属性若存在则返回true 若不存在则返回false
+    console.log(set.has(10))
+    set.add(10);
+    // 向集合中添加元素
+    console.log(set)
+    // 清空集合
+    // set.clear();
+    // console.log(set)
+    // 删除集合中某个元素
+    set.delete(2)
+    console.log(set)
+    // 遍历集合
+    set.forEach((item)=>{
+        console.log(item)
+    })
+    //类似于拷贝 
+    let newKey = set.keys();
+    console.log(set)
+    console.log(newKey)
+    // 数组去重
+    let a = [0,1,2,3,2,3,2323,23,4,3,3];
+    let newa = new Set(a);
+    // set集合可以使用扩展运算符获取集合中每一个元素
+       newa = [...newa]
+    console.log(newa)
+
+    // map 集合 是以键值对形式存储的
+    let map = new Map();
+    map.set("name","张三")
+    // map集合中的key可以是任意数据
+    let key =[1,2];
+    map.set(key,[3,4])
+    map.set("age",18);
+    map.set({like:"学习"},"学啥学")
+    // 删除属性
+    map.delete("age")
+    console.log(map.get("name"))
+    console.log(map.get(key))
+    console.log(map.has("name"))
+    console.log(map)
+    map.forEach(item=>{
+        console.log(item)
+    })
+    // map也可以使用扩展运算符
+    console.log(...map)
+</script>
+</html>

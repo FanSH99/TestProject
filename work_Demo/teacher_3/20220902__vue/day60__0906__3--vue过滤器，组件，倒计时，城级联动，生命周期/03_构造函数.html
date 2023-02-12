@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+
+<body>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+
+    /* 2022年9月6日09:29:47 */
+
+    function People(name, age, sex) {
+        /* 构造函数的this指向的是构造出来的实例对象。 */
+        console.log(this);//People{}
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    /* 构造函数调用必须用new关键字。 */
+    let p = new People();
+    console.log(p);//People{}
+    let obj = {};
+    /* 给普通对象添加属性可以用obj.属性名=属性值 */
+    obj.name = "白浅";
+    console.log(obj);
+    let p2 = new People("派大星", 12, "男");
+    console.log(p2);//People {name: '派大星', age: 12, sex: '男'}
+    console.log(People.prototype);//{constructor: ƒ}
+    /* 给对象原型添加原型属性。 */
+    People.prototype.filter = () => {
+        console.log("哈哈哈哈");
+    }
+    /* 调用方法，方法在原型上 */
+    p.filter();//哈哈哈哈
+    /* 调用原型方法 */
+    People.prototype.filter();//哈哈哈哈
+
+</script>
+
+</html>

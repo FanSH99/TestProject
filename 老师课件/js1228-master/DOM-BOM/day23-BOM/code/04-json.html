@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      为何数组（array）和对象（object）就能够储存一切数据了。
+      从结构上看，所有的数据（data）最终都可以分解成三种类型：
+        第一种类型是标量（scalar），也就是一个单独的字符串（string）或数字（numbers），
+            比如"北京"这个单独的词。
+        第二种类型是序列（sequence），也就是若干个相关的数据按照一定顺序并列在一起，
+            又叫做数组（array）或列表（List），比如"北京，上海"。
+        第三种类型是映射（mapping），也就是一个名/值对（Name/value），
+            即数据有一个名称，还有一个与之相对应的值，
+            比如"首都：北京"。
+    */
+    /*
+      Json
+          概念: JavaScript Object Notation.   JavaScript 对象的表示法。
+                一种特殊格式的字符串。
+          作用：语法结构简单，层次清晰，多用于前后端(网络中)交互时传递数据。
+      Json 的格式规定
+          1） 并列的数据之间用逗号（", "）分隔。
+          2） 映射用冒号（": "）表示。
+          3） 并列数据的集合（数组）用方括号("[]")表示。
+          4） 映射的集合（对象）用大括号（"{}"）表示。
+
+      Json 的优点：格式简单，清晰，体积小。
+             缺点：不能写注释。
+      在线校验工具: https://www.bejson.com/
+      使用语法：json对象.属性名 即可。
+    */
+    /*
+        JSON 格式的字符串案例
+            1. 数组：
+                示例：
+                    [
+                        {
+                            "id": 1,
+                            "name": "xiaoming"
+                        },
+                        {
+                            "id": 2,
+                            "name": "xiaohong"
+                        }
+                    ]
+            2. 对象：
+                示例：
+                     {
+                        "status": 0,
+                        "msg": "SUCCESS",
+                        "data": [
+                            {
+                                "id": 1,
+                                "name": "xiaohong"
+                            },
+                            {
+                                "id": 2,
+                                "name": "xiaoming"
+                            }
+                        ]
+                    }
+    */
+    // 定义 json
+    let hero = {
+      "name": "剑圣",
+      "skill": "剑圣风暴",
+      "level": 20
+    };
+    // 可以把 json 当作对象使用
+    console.log(hero.name);
+  </script>
+</body>
+
+</html>

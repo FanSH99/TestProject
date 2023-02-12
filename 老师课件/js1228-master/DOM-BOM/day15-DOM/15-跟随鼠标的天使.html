@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="">
+    <script>
+        /* 
+            需求:
+                1. 移动鼠标，获取鼠标的坐标
+                2. 图片跟随移动，把鼠标的坐标给图片
+        */
+        var img = document.querySelector('img');
+
+        document.addEventListener('mousemove', (e) => {
+            // console.log(this);
+            // console.log(e.clientX, e.clientY);
+            img.style.left = e.clientX - 48 + 'px';
+            img.style.top = e.clientY - 40 + 'px';
+        });
+    </script>
+</body>
+
+</html>

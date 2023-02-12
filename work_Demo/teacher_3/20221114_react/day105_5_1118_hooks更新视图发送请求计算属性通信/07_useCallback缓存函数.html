@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月20日15:17:19
+
+    let { useState, useCallback } = React;
+
+    function App() {
+        let [num, setNum] = useState(0);
+        let [name, setName] = useState("张三")
+        // 参数1要缓存的数据，参数2依赖项
+        let getName = useCallback(() => {
+            console.log(name);
+            // 获取的一致是张三，是老的name，因为组件被缓存了。
+        }, [name])
+        return (
+            <div>
+                <h2>{num}</h2>
+                <button onClick={() => { num++; setNum(num) }}>num++</button>
+                {/* getList()每次更新都会调用一次，很浪费性能。 */}
+
+                <input type="text" value={name} onChange={(e) => {
+                    setName(e.target.value)
+                }} />
+                <button onClick={getName}>获取输入框内容</button>
+            </div>
+        )
+    }
+
+    function Child() {
+        return (
+            <div></div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+
+</script>
+
+</html>

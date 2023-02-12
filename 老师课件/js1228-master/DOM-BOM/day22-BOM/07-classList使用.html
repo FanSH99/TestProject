@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bg {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one two"></div>
+    <button>添加类</button>
+    <button>删除类</button>
+    <button>切换类</button>
+    <script>
+        /* 
+            类名的操作 classList
+                classList ：返回一个类名的数组。
+                classList.add() : 追加类名。  
+                classList.remove() : 删除指定类。
+                classList.toggle() : 指定类名，如果有则删除，如果没有则添加。
+        */
+        let div = document.querySelector('div');
+        let btns = document.querySelectorAll('button');
+
+        console.log(div.classList);
+
+        btns[0].addEventListener('click', function () {
+            div.classList.add('three');
+        });
+        btns[1].addEventListener('click', function () {
+            div.classList.remove('three');
+        });
+        btns[2].addEventListener('click', function () {
+            div.classList.toggle('five');
+        });
+    </script>
+</body>
+
+</html>

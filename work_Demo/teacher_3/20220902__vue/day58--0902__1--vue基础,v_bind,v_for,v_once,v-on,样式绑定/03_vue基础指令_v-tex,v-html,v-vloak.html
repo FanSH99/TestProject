@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 这一句解决内容闪烁， */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 会有差值闪烁，即先出现{{msg}}后渲染内容，为了解决可以添加v-vloak
+        v-vloak用于解决差值闪烁的问题，需要添加样式[v-cloak]{display:none}配合使用
+        -->
+        <h1 v-vloak>{{msg}}</h1>
+        <!-- v-text用于渲染普通的文本内容，相当于{{}}语法，不存在差值闪烁问题。 但不区分标签-->
+        <h1 v-text="title"></h1>
+        <h3 v-text="baidu"></h3>
+        <!-- v-html用来渲染字符串标签 -->
+        <h1 v-html="link">百度一下</h1>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月2日09:45:32 */
+    //指令： vue给浏览器的指示，浏览器收到指令后帮vue处理某些事情。
+    // 指令通常以v-开头 v-指令名称
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "你熬的不是夜，是梦想！",
+            title: "总有人要赢，为什么不是你呢？",
+            baidu: "<a href='https://www.baidu.com>百度一下</a>",
+            link: "<a href='https://www.baidu.com>百度一下</a>",
+        }
+    })
+</script>
+
+</html>

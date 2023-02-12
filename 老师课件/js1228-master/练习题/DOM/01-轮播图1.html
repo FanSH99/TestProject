@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .box {
+            width: 296px;
+            height: 419px;
+            margin: 200px 0 0 200px;
+            border-top: 1px solid #ff6700;
+            /* background: #f0f0f0; */
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            width: 296px;
+            padding-top: 45px;
+            height: 24px;
+            text-align: center;
+            color: #ff6700;
+            line-height: 24px;
+            font-size: 16px;
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+            font-weight: 400;
+            margin-bottom: 18px;
+        }
+
+        .lis {
+            width: calc(296px*4);
+            height: 286px;
+            position: relative;
+            left: 0px;
+            text-align: center;
+            transition: left 0.5s ease;
+        }
+
+        .lis>li {
+            width: 296px;
+            height: 286px;
+            float: left;
+        }
+
+        .lis>li>h3 {
+            width: 256px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.25;
+            margin: 0 auto;
+            text-align: center;
+            color: #333;
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        .lis>li>p {
+            width: 196px;
+            margin: 5px auto 10px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+
+        .lis>li>span {
+            display: block;
+            text-align: center;
+            height: 22px;
+            line-height: 22px;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .lis>li>a {
+            height: 28px;
+            width: 118px;
+            display: block;
+            text-align: center;
+            line-height: 28px;
+            color: #ff6700;
+            border: 1px solid #ff6700;
+            font-size: 12px;
+            margin: 0 auto 30px;
+        }
+
+        .but {
+            width: 120px;
+            height: 30px;
+            margin: 0px auto 0;
+        }
+
+        .but>li {
+            width: 10px;
+            height: 10px;
+            margin: 10px;
+            background: #999;
+            float: left;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            box-sizing: border-box;
+            transition: 0.5s;
+        }
+
+        .but>li:hover {
+            background: #ff6700;
+        }
+
+        .but1 {
+            border-color: #ff6700 !important;
+            background: #fff !important;
+        }
+
+        section {
+            width: 30px;
+            height: 60px;
+            background: #f0f0f0;
+            position: absolute;
+            top: 180px;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>MIUI主题</h1>
+        <ul class="lis">
+            <li>
+                <h3>熊本熊 酷MA萌</h3>
+                <p>戳一戳、摸一摸,酷MA萌会在锁屏跟你亲密互动哦。</p>
+                <span></span>
+                <img src="https://i1.mifile.cn/a4/xmad_15360565735203_Uuvyd.jpg" alt="">
+            </li>
+            <li>
+                <h3>蚁人2</h3>
+                <p>小米主题和迪士尼首度合作,打造精品漫威系列主题</p>
+                <span></span>
+                <img src="https://i1.mifile.cn/a4/xmad_15357000957252_GpoLc.png" alt="">
+            </li>
+            <li>
+                <h3>复仇者联盟3-我的英雄</h3>
+                <p>28张超级英雄个人专属锁屏及桌面壁纸随你挑！</p>
+                <span>8.8米币</span>
+                <img src="https://i1.mifile.cn/a4/xmad_15290561352349_zNjLT.png" alt="">
+            </li>
+            <li>
+                <p>众多个性主题、百变锁屏与自由桌面让你的手机与众不同！</p>
+                <a href="">前往MIUI主题市场</a>
+                <img src="https://s01.mifile.cn/i/index/more-miui.jpg" alt="">
+            </li>
+        </ul>
+        <ul class="but">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <section class="left">&lt;</section>
+        <section class="right">&gt;</section>
+    </div>
+</body>
+<script>
+    //轮播的项目
+    var img = document.querySelector('.lis');
+    //轮播导航
+    var but = document.querySelectorAll('.but>li');
+    //轮播按键
+    var left = document.querySelector('.left');
+    var right = document.querySelector('.right');
+    
+    var arr = ['0', '-296px', '-592px', '-888px'];
+
+    but[0].className = 'but1';
+    var i = 0;
+
+    function move() {
+        img.style.left = arr[i];
+        for (var k = 0; k < but.length; k++) {
+            but[k].className = '';
+        }
+        but[i].className = 'but1'
+    }
+    right.onclick = function () {
+        i++;
+        if (i > 3) {
+            i = 3
+        }
+        move();
+    }
+    left.onclick = function () {
+        i--;
+        if (i < 0) {
+            i = 0
+        }
+        move();
+        console.log(i);
+    }
+    but.forEach(function (item, index) {
+        item.index = index;
+        item.onclick = function (e) {
+            for (var k = 0; k < but.length; k++) {
+                but[k].className = '';
+            }
+            e.target.className = 'but1'
+            img.style.left = arr[index];
+            i = index;
+        }
+    });
+</script>
+
+</html>

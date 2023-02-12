@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            width: 300px;
+            height: 60px;
+            line-height: 30px;
+            color: red;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
+    <script>
+        // 需求: 点击按钮，禁用，修改表单内容
+        let btn = document.querySelector('button');
+        let input = document.querySelector('input');
+
+        btn.onclick = function () {
+            // disabled 是按钮释放禁用的属性
+            // btn.disabled = true;
+            this.disabled = true;
+            // 修改表单值的属性  value
+            input.value = '我被点击了';
+
+            // 某个人做了某件事，this 就是某个人。
+            console.log(this);
+        }
+    </script>
+</body>
+
+</html>

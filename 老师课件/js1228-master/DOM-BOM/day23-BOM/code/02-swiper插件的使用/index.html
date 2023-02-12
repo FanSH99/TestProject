@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="css/index.css">
+    <title>移动端轮播图</title>
+    <!--引入 CSS -->
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <style>
+        .main {
+            height: 800px;
+            background-color: skyblue;
+        }
+
+        .footer {
+            height: 150px;
+            background-color: purple;
+        }
+
+        /* 引入 样式 */
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 返回顶部模块 -->
+    <div class="goBack"></div>
+    <!-- 焦点图模块 -->
+    <div class="focus">
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="upload/1.png" alt=""></div>
+                <div class="swiper-slide"><img src="upload/2.png" alt=""></div>
+                <div class="swiper-slide"><img src="upload/3.png" alt=""></div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 如果需要滚动条 -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+
+    <div class="main">主体部分</div>
+    <div class="footer">底部区域</div>
+    <script>
+        /*
+            插件: 解决单个功能。(animate  fastclick)
+            框架: 一整套的解决方案，轮播图、模态框、面包屑导航。VUE bootstrap。
+
+            swiper ：解决轮播图
+            使用步骤:
+                1. 登录官网，查看效果和使用说明
+                2. 下载对应的包(代码)
+                3. 引入代码。(CSS  JS  H5)
+                4. 调试代码。(CSS  JS  H5)
+        */
+    </script>
+    <!-- 引入 js 代码 -->
+    <script src="./js/swiper.min.js"></script>
+    <!-- 初始化 Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            loop: true, // 循环模式选项
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+</body>
+
+</html>

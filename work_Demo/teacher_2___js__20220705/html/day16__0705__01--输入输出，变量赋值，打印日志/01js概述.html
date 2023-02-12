@@ -1,0 +1,192 @@
+<!-- <script>
+    alert('good morning')
+</script> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--  -->
+    <script>
+        /*  @import url(../ js / 02.js);  出错*/
+    </script>
+
+
+    <style>
+        /* 导入式。 */
+        @import url(../css/01.css);
+    </style>
+
+    <!--  <script src="../js/02.js" type=""></script> -->
+
+    <!--  <script>
+        alert('good morning')
+    </script> -->
+</head>
+
+<body>
+    <!-- 
+    h5
+    html5
+
+    H5不=HTML5
+
+    H5 是一个产品名词
+    HTML5是一个技术名词
+
+    HTML的英文全称为Hyper Text Markup Language
+    HTML5：是构建Web内容的一种语言描述方式，
+        万维网联盟于2014年发布，被认为是互联网的核心技术之一。
+
+     H5和HTML5的区别主要有三个：
+    1、文档声明区别
+    HTML：超文本标记语言，一种纯文本类型的语言。
+    HTML5.0：文档声明HTML5方便书写，精简，有利于程序员快速的阅读和开发。
+
+    2、结构语义区别
+    html：没有体现结构语义化的标签，如：<div id="nav"></div>
+    html5：添加了许多具有语义化的标签，如：<article>、<aside>、<audio>、<bdi>…
+
+    3、绘图区别
+    HTML：指可伸缩矢量图形，用于定义网络的基于矢量的图形。
+    HTML5：HTML5的canvas元素使用脚本（通常使用JavaScript）在网页上绘制图像，可以控制画布每一个像素。
+————————————————
+版权声明：本文为CSDN博主「梦琪96」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/m0_37690540/article/details/86576058
+
+
+一、学习目标：
+ 1、HTML5+CSS3
+ 2、JavaScript
+ 3.jQuary
+ 4.ajex
+ 5.es6
+ 6.node.js 
+ 7.Bootstrasp 辅助排版
+ 8.vue.js
+ 9.React.js
+ 10.git github
+ 11.webpack
+ 12.微信小程序 等等
+
+
+二、前端和后端区别
+
+前端开发：
+        h5   ==> 核心Javascript
+        Android 安卓程序员 
+        IOS 
+后端开发：
+        JAVA  .NET  .PHP  python
+        
+全栈包括前后端。
+
+三、Javascript是什么？
+ .1.JavaScript 是web开发领域中，功能强大的编程语言。（脚本语言），
+    不需要配置环境，在浏览器上可以直接运行的解释性语言。
+    JAVA需要配置环境。
+ .2.HTML5、CSS3、JavaScript关系
+    .HTML 结构，从语义化的角度，描述页面结构。
+    .CSS 样式，从审美的角度美化页面。
+    .JavaScript 行为。 从交互的角度，来提升用户体验。 CSS3可以做一部分但没有JavaScript方便。
+
+四、Javascript由来。
+    1、Javascript和Java没有任何关系，为了蹭热度。  就像娃哈哈  娃啥啥  脉动，脉劫
+    2、历史。 1995年开始出现----网景公司（Netscape） （现在的Mozzilla 火狐的生产厂商）
+        布兰登·艾奇 仅用了10天首次设计出，
+    最初叫liveScript  后来网景公司与SUN公司合作（被收购），
+    SUN公司以java著名，为了推广产品蹭热度改名为javascript. JavaScript 与Java没有任何关系。
+
+五、javascript 和EVMAScript的关系。
+    1996年---javascript被网景公司内置于Navigator2.0浏览器中，但是微软公司也开发出了JScript。
+    JScript内置于IE3.0浏览器中。
+    网景公司主导权面临丧失。所以将JavaScript提交到ECMA国际，希望成为一个国际标准。
+   
+    ECMA是欧洲计算机厂家协会;规定浏览器的脚本语言标准。
+    所以统称为ECMAScript（JavaScript 和JScript的扩展。）
+    es5 
+
+
+    2015年开发出了新的标准，ECMAScript2015-----es6    之后每年退出新标准。ECMAScript2016----es7  等等
+
+
+    标准化后的 JavaScript 包含了 3 个组成部分：
+    
+    1.ECMAScript
+    
+    脚本语言的核心内容，定义了脚本语言的基本语法和基本对象。现在每种浏览器都有对ECMAScript标准的实现。
+    
+    2.DOM（Document Object Model）
+    
+    文档对象模型，浏览器中的DOM把整个网页规划成由节点层级构成的树状结构的文档，用DOM API可以轻松地删除、添加和替换文档树结构中的节点。
+    
+    3.BOM（Browser Object Model）
+    
+    浏览器对象模型，描述了对浏览器窗口进行访问和操作的方法和接口。
+    ————————————————
+    版权声明：本文为CSDN博主「余月初贰」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+    原文链接：https://blog.csdn.net/m0_68633696/article/details/125231064
+
+
+    开发工具：
+    浏览器：谷歌浏览器或者火狐浏览器。
+    软件：VScode
+
+
+    JavaScript的特点
+    JavaScript 是一种运行在浏览器中的主要用于增强网页的动态效果、提高与用户的交互性的编程语言。相比于其他编程语言，它具有许多特点，主要包括以下几方面。
+    
+    1. 解释性
+    
+    JavaScript 不同于一些编译性的程序语言，它是一种解释性的程序语言，它的源代码不需要经过编译，直接在浏览器中运行时进行解释。
+    
+    2. 动态性
+    
+    JavaScript 是一种基于事件驱动的脚本语言，它不需要经过 Web 服务器就可以对用户的输入直接做出响应。
+    
+    3. 跨平台性
+    
+    JavaScript 依赖于浏览器本身，与操作环境无关。任何浏览器，只要具有JavaScript脚本引擎，就可以执行JavaScript。目前，几乎所有用户使用的浏览器都内置了JavaScript脚本引擎。
+    
+    4. 安全性
+    
+    JavaScript 是一种安全性语言，它不允许访问本地的硬盘，同时不能将数据存到服务器上，不允许对网络文档进行修改和删除，只能通过浏览器实现信息浏览或动态交互。这样可有效地防止数据丢失。
+    
+    5. 基于对象
+    
+    JavaScript 是一种基于对象的语言，同时也可以被看作是一种面向对象的语言。这意味着它能运用自己已经创建的对象。因此，许多功能可以来自于脚本环境中对象的方法与脚本的相互作用。
+    ————————————————
+    版权声明：本文为CSDN博主「余月初贰」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+    原文链接：https://blog.csdn.net/m0_68633696/article/details/125231064
+
+
+    
+ -->
+
+
+    
+
+
+    <!-- 行内式 -->
+
+    <a href="javascript:;" onclick="alert('hello world')">单击弹出hello word 框</a><br>
+    <a href="javascript:alert('nice')">单击弹出警告框</a>
+
+    <!-- 外链式 -->
+    <script src="../js/02.js" type=""></script>
+    <!-- 内嵌式 -->
+    <script>
+        alert('hello word!!!!!!');
+    </script>
+
+</body>
+
+</html>
+

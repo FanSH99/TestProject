@@ -1,0 +1,18 @@
+项目一：北游极客园App
+演示地址：http://106.12.150.223:8000/app/index.html#/
+接口文档：http://106.12.150.223:8000/api.html
+
+项目二： 仿饿了么App
+演示地址：http://106.12.150.223:9000/ele/#/city
+接口文档：eleapi.pdf
+
+注意：上传文件必须是form-data请求头，可以另外设置一个input（隐藏），@click调用该input.click之后input绑定@change事件接收文件。
+
+项目三： 丰享会App
+演示地址：http://106.12.150.223:3000/app/index.html#/home
+接口文档：https://docs.apipost.cn/preview/eda898270b2e68d6/013ffbe1cd7bdd41/?target_id=3cb7f592-397c-4e54-8d70-ddfe237726c0
+
+演示地址：http://106.12.150.223:9000/www/#/login
+接口文档：https://shimo.im/docs/1d3agVWbaxuXJDkg/read、
+
+

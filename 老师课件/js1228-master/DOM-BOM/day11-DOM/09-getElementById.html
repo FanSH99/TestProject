@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="time">2019-9-9</div>
+    <script>
+        /* 
+           js 基础语法,DOM BOM。
+           DOM : 文档对象模型 Document Object Model 
+                 系统提供了一些接口，可以动态地改变网页的样式和内容。
+           DOM 树
+           文档 ：document ，一个网页就是一个文档。
+           元素 ：element 网页中所有的标签都是元素。
+           节点 ：node 网页中所有的内容都是节点。比如：标签、属性、文本、注释     
+       */
+        /* 
+            getElementById:
+                输入：
+                处理：
+                输出：
+            总结：
+                1. id 对大小写敏感
+                2. 返回值是一个对象
+                3. 小驼峰
+                4. script 书写顺序
+        */
+        let div = document.getElementById('time');
+        console.log(div);
+        console.dir(div);
+        console.log(typeof div);
+        console.log(div instanceof Object);
+
+    </script>
+
+
+</body>
+
+</html>

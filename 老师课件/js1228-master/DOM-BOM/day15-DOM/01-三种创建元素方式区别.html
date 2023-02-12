@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <div class="inner"></div>
+    <div class="create"></div>
+    <script>
+
+        // 三种创建元素方式区别 
+
+        // 1. document.write() 创建元素  如果页面文档流加载完毕，再调用这句话会导致页面重绘
+        document.write('<div>123</div>');
+
+        var btn = document.querySelector('button');
+        btn.onclick = function () {
+            document.write('<div>123</div>');
+        }
+
+        // 2. innerHTML 字符串渲染的方式创建元素
+        var inner = document.querySelector('.inner');
+        inner.innerHTML = '<a href="#">百度</a>';
+
+
+        // 3. document.createElement() 创建元素
+        var create = document.querySelector('.create');
+        var a = document.createElement('a');
+        create.appendChild(a);
+
+        var inner = document.querySelector('.inner');
+
+        // 效率比拼
+        // 1 字符串拼接。(产生新的字符串)
+        for (var i = 0; i <= 100; i++) {
+            inner.innerHTML += '<a href="#">百度</a>'
+        }
+
+        // 2 数组转化为字符串，减少字符串的操作
+        var arr = [];
+        for (var i = 0; i <= 100; i++) {
+            arr.push('<a href="#">百度</a>');
+        }
+        inner.innerHTML = arr.join('');
+
+        // 3. createElement 
+        var create = document.querySelector('.create');
+        for (var i = 0; i <= 100; i++) {
+            var a = document.createElement('a');
+            create.appendChild(a);
+        }
+
+        /* 
+            总结：
+                1. document.write() 文档流执行完毕，会造成页面重绘
+                2. innerHTML 插入大量元素，
+                    如果直接使用字符串拼接，由于字符串的不可变性，效率较低。
+                    如果数组转化为字符串，则效率较高，但结构复杂。
+                3. createElement 插入大量元素，较慢，但结构清晰。    
+        */
+    </script>
+</body>
+
+</html>

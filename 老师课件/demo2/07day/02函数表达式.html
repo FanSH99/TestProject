@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 函数表达式
+//   var fn= function show(){
+//             console.log('hello');
+//         }
+//     // show();// 报错了
+//     fn();// 需要这个调用函数
+
+    // 上面的情况明显多一个名字，没有必要 ，把名字去掉， 匿名函数
+    /* 
+    1.赋值再执行，函数表达式
+      注意： 调用函数必须放在声明后再调用
+    2.自我执行  自执行函数  -下一节分享
+
+    */
+//    show();// 报错的
+    // var show= function(){
+    //     console.log('hello');
+    //  }
+    //  console.log(show);
+    //  show();// 调用函数
+
+
+    //  为什么会报错
+     var show;//  变量声明会提升，但是赋值不会提升
+    //  show();// 报错
+     show=function(){
+        console.log('hello');
+     }
+     console.log(show);
+     show();// 正常执行的
+
+    </script>
+</body>
+</html>

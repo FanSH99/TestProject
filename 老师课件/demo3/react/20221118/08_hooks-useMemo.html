@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    // useMemo 类似于vue中计算属性 必须有一个返回值 当其依赖的属性发生改变时就会自动调用
+    let {useState,useMemo} = React;
+    function App(){
+       let [num,setNum] = useState(10);
+       let [price,setPrice] = useState(1)
+        // 参数一执行函数 必须有返回值 参数二为依赖项若为空则表示不依赖任意属性
+        let getSum = useMemo(()=>{
+            // 可以做更多的业务逻辑处理
+            return price*num
+        },[price,num])
+        return(
+            <div>
+                商品个数: <input type="text" value={num} onChange={(e)=>{
+                    setNum(e.target.value)
+                }}/>  * 商品价格： <input type="text" value={price} onChange={(e)=>{
+                    setPrice(e.target.value)
+                }}/>
+                = 商品总价：   {getSum}
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

@@ -1,0 +1,20 @@
+<scroll-view scroll-y="{{true}}" class="pagescroll">
+<view class="search"> 
+<input type="text" placeholder="请输入歌手名、歌曲名搜索" placeholder-class='textcolor' model:value='{{keyWords}}' bindinput="search"/>
+</view>
+<view class="gotsearch" wx:if='{{keyWords===""?true:false}}'>
+<view>
+热门搜索:
+</view>
+<view class="tags"> 
+ <view class="tag" wx:for="{{hotList}}" wx:key="index" bindtap="goSearch" data-tag='{{item.first}}'>
+    {{item.first}}
+ </view>
+</view>
+</view>
+<view class="song">
+    <view wx:for="{{songsList}}" wx:key="index" class="songs" bindtap="goPlayer" data-index='{{index}}'> 
+     {{item.name}} - <text wx:for="{{item.artists}}" wx:for-item='ar' wx:for-index='i' wx:key="i">{{ar.name}} <text wx:if="{{i!==item.artists.length-1}}">、</text></text>
+    </view>
+</view>
+</scroll-view>

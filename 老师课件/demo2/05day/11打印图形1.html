@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //4. 输出如下图形  直角三角形
+ /* 
+                   i= 行号           每行星的个数
+*                   1                  1
+***                 2                  3
+*****               3                  5
+*******             4                  7
+*********           5                  9
+                                星的个数=2*i-1    
+*/
+
+// 外层循环控制行数
+// for(var i=1;i<=5;i++){
+//     // 内层循环控制每行星的个数
+//      for(var j=1;j<=2*i-1;j++){
+//         document.write('*');
+//      }
+//      document.write('<br>');
+//  }
+
+        //5. 输出如下图形  等腰三角形
+ /* 
+                   i= 行号           每行星的个数      空格的个数
+    *                   1                   1            4
+   ***                  2                   3            3
+  *****                 3                   5            2  
+ *******                4                   7            1
+*********               5                   9            0
+                                星的个数=2*i-1        空格的个数= 总行数（5）-行号
+*/
+
+// 外层循环控制行数
+for(var i=1;i<=5;i++){
+    // 控制空格的个数
+     for(var m=1;m<=5-i;m++){
+        document.write('&nbsp;')
+     }
+
+    // 内层循环控制每行星的个数
+     for(var j=1;j<=2*i-1;j++){
+        document.write('*');
+     }
+     document.write('<br>');
+ }
+
+//  
+    </script>
+</body>
+</html>

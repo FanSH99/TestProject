@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        面试题
+     -->
+    <script>
+
+        // 1、
+        //     function show(x, y) {
+        //         return function () {
+        //             console.log(x * y);
+
+        //         };
+        //     }
+        //  匿名函数的赋值再执行
+        //    var a= show(20,30);
+        //    console.log(a);
+        //    a();//600
+
+
+
+        //      function show(x, y) {
+        //         return function () {
+        //             console.log(x * y);
+
+        //         };
+        //     }
+        // //    匿名函数的自我执行
+        //     show(20,30)()
+
+
+        //2. 匿名函数   
+        // 方法一：  赋值再执行
+
+        //   var a= function() {
+        //             var x = 10;
+        //             var y = 5;
+        //             return function () {
+        //                 return x * y
+        //             };
+
+        //         }
+        //  var b=a();
+        //  console.log(b);// 又一个匿名函数
+        //  var c= b();
+        //  console.log(c);// x*y 的结果  50
+
+
+        // 方法二： 自我执行
+  var c=  (function() {
+            var x = 10;
+            var y = 5;
+            return function () {
+                return x * y
+            };
+        })()()
+
+        console.log(c);//50
+    </script>
+</body>
+
+</html>

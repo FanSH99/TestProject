@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li>11</li>
+            <li class="two">22
+                <ol>
+                    <li>bb</li>
+                    <li>bb</li>
+                </ol>
+            </li>
+            <li>33</li>
+            <li>44</li>
+            <li class="five">55</li>
+
+        </ul>
+    </div>
+    <!-- 2022年8月10日 09:38:31 -->
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        console.log($('.two'));
+        console.log($('.two').parent());//ul  ---直接父节点
+        console.log($('.two').parents());// --所有父节点  ul nav body html
+        console.log(($('.two').parents('.nav')));
+        console.log($('.two').parentsUntil());//ul nav body html
+        console.log($('.two').children());//ol
+        console.log($('ul').children());//li
+        console.log($('ul').children('.two'));//li.two
+        console.log($('ul').children('ol'));//找不到
+        // console.log($('ul'.find('div')));//没有的话报错
+        console.log($('ul').find('ol'));//ol
+
+        console.log($('.two').siblings());//1 3 4 5
+        console.log($('.two').nextAll());//3 4 5
+        console.log($('.two').next());//3
+        console.log($('.two').nextAll('.five'));//5
+        console.log($('.two').nextUntil());
+        console.log($('.five').prev());//4
+        console.log($('.five').prevAll('.two'));//2
+        console.log($('.five').prevAll());
+        console.log($('.five').prevUntil());
+
+    </script>
+</body>
+
+
+</html>

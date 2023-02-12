@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .back {
+            position: fixed;
+            width: 80px;
+            height: 50px;
+            background-color: brown;
+            right: 30px;
+            bottom: 100px;
+            display: none;
+        }
+
+        .container {
+            width: 900px;
+            height: 500px;
+            background-color: skyblue;
+            margin: 400px auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="back">返回顶部</div>
+    <div class="container">container
+    </div>
+    <script>
+        /* 
+            需求:
+                1. 页面滚动，到距离1，则返回顶部显示，否则隐藏
+                2. 点击返回顶部，页面缓慢回滚到顶部
+        */
+        $(function () {
+            // 元素的偏移量
+            let top = $('.container').offset()['top'];
+
+            // 页面滚动事件
+            $(document).scroll(function () {
+                // 获取卷去的头部
+                let scrollTop = $(document).scrollTop();
+                // console.log(scrollTop);
+                if (scrollTop > top) {
+                    $('.back').show();
+                } else {
+                    $('.back').hide();
+                }
+            });
+
+            // 点击事件
+            $('.back').click(function () {
+                // $(document).scrollTop(0);
+
+                // 调用动画函数
+                $('body, html').stop().animate({
+                    scrollTop: 0
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            switch 交换,开关  case 案例  break  打破  default 默认
+            语法结构
+                swith (value){
+                    case value1 :
+                        逻辑体1;
+                        break;
+                    case value2 :
+                        逻辑体2;
+                        break;
+                    case value3 :
+                        逻辑体3;
+                        break;
+
+                    default ：
+                        逻辑体x;            
+                }
+            执行顺序 :
+                value 和 value1 ,如果相等,则则执行 逻辑体1;跳出整个代码块  
+                如果不相等  
+                value 和 value2 ,如果相等,则则执行 逻辑体2;跳出整个代码块  
+                如果不相等,。。。。
+                如果和 case 的 value 都不相等,则执行 逻辑体x;跳出代码块
+
+            总结：
+                1. 遇到 break ,则跳出整个代码块   
+                2. value 的比较是 === 
+        */
+        switch (80) {
+            case 90:
+                console.log('A');
+                break;
+            case 80:
+                console.log('B');
+                break;  // break 必须写
+            case 70:
+                console.log('C');
+                break;
+            default:
+                console.log('E');
+        }
+        console.log('gameover');
+    </script>
+</body>
+
+</html>

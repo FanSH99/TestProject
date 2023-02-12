@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <button onclick="changeUser()">改变</button>
+</body>
+<script>
+     let user = {
+        name:"张三",
+        age:18
+     }
+     document.querySelector("h1").innerText = user.name;
+  
+     let myobj = new Proxy(user,{
+         get(target,property){
+         console.log("get调用啦")
+         console.log(target,property)
+         },
+         set(target,property,value){
+            console.log(target)
+            console.log(property)
+            console.log(value)
+            target[property] = value;
+            document.querySelector("h1").innerText = value;
+         }
+     })
+    console.log(myobj)
+    function changeUser(){
+        myobj.name = "李四"
+     }
+     myobj.name
+</script>
+</html>

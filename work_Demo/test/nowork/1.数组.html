@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript 数组</h1>
+
+<p>Array 对象用于在单个变量中存储多个值：</p>
+
+<p id="demo"></p>
+<p id="demo2"></p>
+
+<script>
+    /*数组 */
+
+    /* 
+concat() 方法用于连接两个或多个数组。
+
+concat() 方法不会更改现有数组，而是返回一个新数组，其中包含已连接数组的值。
+ */
+const cars = ["Tesla", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+
+/* 
+在 JavaScript 中，constructor 属性返回对象的构造函数。
+
+其返回值是对函数的引用，而不是函数的名称：
+
+对于 JavaScript 数组，constructor 属性返回：
+function Array() { [native code] }
+
+对于 JavaScript 对象，constructor 属性返回：
+function Object() { [native code] }
+ */
+
+ /* 连接三个数组 */
+ var sedan = ["S60", "S90"];
+var SUV = ["XC40", "XC60", "XC90"];
+var wagon = ["V60", "V90", "V90CC"];
+var Volvo = sedan.concat(SUV, wagon);
+
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo2").innerHTML = fruits.constructor;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .banner {
+            width: 670px;
+            height: 340px;
+            border: 1px solid #333;
+            margin: 10px auto;
+            padding: 10px;
+            position: relative;
+        }
+
+        .banner ul li img {
+
+            width: 670px;
+        }
+
+        .box_black {
+            width: 630px;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            /* padding-left: 20px; */
+            padding: 15px 20px;
+            color: #fff;
+            /* display: block; */
+            /* padding-right: 10px; */
+        }
+
+        .blue_bg {
+            width: 6px;
+            height: 40px;
+            background: blue;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #333;
+            margin: auto;
+            position: relative;
+        }
+
+        .box p {
+            background: red;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            /*  */
+            transform: translate(-50%, -50%);
+
+        }
+
+        .circle {
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+            padding-right: 10px;
+        }
+
+        .circle a {
+            width: 12px;
+            height: 12px;
+            display: block;
+            background: #fff;
+            float: left;
+            border-radius: 50%;
+            margin: 0 5px;
+
+
+
+        }
+
+        a:hover {
+            background: #1c96dc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="banner">
+
+        <ul>
+            <li>
+                <img src="img/pic1.jpg" alt="">
+                <div class="box_black">
+                    <h1>刘诗诗一席白裙仙气十足 产后复出状态太好</h1>
+                    <p>近日,北京，刘诗诗现身某活动，并拍摄一组写真</p>
+                    <div class="blue_bg"></div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="circle">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+
+        </div>
+    </div>
+
+    <div class="box">
+        <p>标题1</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>富士山下</li>
+        <li id = 'eason'>好久不见</li>
+        <li>K歌之王</li>
+        <li>浮夸</li>
+    </ul>
+    <script>
+        let eason =document.querySelector('#eason');
+
+        // 获取兄弟节点
+        console.log(eason.nextSibling);
+        console.log(eason.previousSibling);
+
+        // 获取兄弟元素节点
+        console.log(eason.nextElementSibling);
+        console.log(eason.previousElementSibling);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hero>div {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月20日14:05:07 --周五拉了一天课，
+
+    let { useState, useEffect } = React;
+
+    function App() {
+        let [list, setList] = useState([]);
+        let [num, setNum] = useState(0);
+        // 发送请求，相当于class类组件中的componentDidMount
+        useEffect(() => {
+            // console.log("23456");
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res);
+                    setList(res.hero)
+                }
+            }
+        }, [num])
+        // []表示不依赖任意状态，只会执行一次，[num]表示依赖num状态，只要num改变就会执行一次。
+        return (
+            <div>
+                <h2>lol英雄列表</h2>
+                <button onClick={() => {
+                    num++;
+                    setNum(num)
+                }}>num++</button>
+
+                <div className="hero">
+                    {
+                        list.map((item, index) => {
+                            return (
+                                <div key={index}>
+                                    <img src={`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png`} alt="" />
+                                    <div>{item.title}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

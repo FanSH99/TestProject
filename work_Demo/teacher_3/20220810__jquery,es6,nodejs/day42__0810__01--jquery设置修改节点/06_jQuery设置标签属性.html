@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月10日16:39:06
+        什么是属性
+
+        标签中自带的是属性。
+        例如src  id class  href等
+        JavaScript 属性
+        属性指的是与 JavaScript 对象相关的值。
+        JavaScript 对象是无序属性的集合。
+        属性通常可以被修改、添加和删除，但是某些属性是只读的。
+     -->
+
+    <h1>好好学习，天天向上</h1>
+    <div id="one" class="one"></div><br>
+    <img src="pic01.jpg" alt="">
+    <button class="getImg">获取图片路径</button>
+    <input type="text" name="" value="" id="set">
+    <button class="btn2">改变图片</button><br>
+    <a href="https://www.baidu.com">百度一下</a>
+    <button class="chg"> 设置a属性</button>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(function () {
+            var img = document.querySelector('img');
+            console.log(img.getAttribute('src'));//pic01.jpg ---原生js获取
+
+            $('.getImg').on('click', function () {
+                console.log('啦啦啦啦啦');
+                console.log($('img').attr('src'));
+                var src = $('img').attr('src');
+                $('#set').val(src)
+                console.log($('#set').attr('id'));
+            })
+            $('.btn2').on('click', function () {
+                // document.querySelector('img').setAttribute('src', 'pic02.jpg');
+                $('img').attr('src', 'pic02.jpg');
+            })
+            $('h1').attr('class', 'red');
+
+            $('.chg').on('click', function () {
+                $('a').attr({
+                    href: 'https://www.mi.com/shop',
+                    'id': 'box1',
+                    'class': 'red'
+                })
+            })
+
+            $('img').attr('a', 1234);
+            $('h1').attr({
+                'data-name': 'xy',
+                'data-title': '111',
+                'index': 1
+            });
+
+        })
+
+        var obj = {
+            name: '张三',
+            age: 18//对象里面属性名可以不加引号，可以单引号也可以双引号。
+        }
+        console.log(obj.name);//张三
+        console.log(obj['age']);//18 ---设置对象的时候如果obj.属性名，属性名不加引号。如果obj['属性名']  属性名需要加引号。
+        obj.sex = '男';
+        obj['title'] = '脾气很好';//{name: '张三', age: 18, sex: '男', title: '脾气很好'}  
+        console.log(obj);
+
+        /* window.onload=function(){
+
+        } */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <button class="start">开始</button> <button class="stop">暂停</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    var msg = "奔跑吧！！！！少年！！！！！"
+    $('h1').text(msg)
+    var timer = null;
+    // if(timer){
+    //     console.log(1232321312)
+    // }else{
+    //     console.log("哈哈哈")
+    // }
+    $(".start").click(function(){
+        // clearInterval(timer)
+        //判断当前是否已经计时，如果已经计时不在重复计时
+        if(timer){
+            return 
+        }
+     timer =setInterval(function(){
+         // 获取第一个字符
+         var  str = msg.slice(0,1);
+        // console.log(str)
+        // 获取除第一个之外所有字符
+        var str2 = msg.slice(1)
+        // console.log(str2)
+        // 将第一个字符添加到最后
+         msg = str2+str
+         console.log(msg)
+         $('h1').text(msg)
+     },100)
+     console.log(timer)
+    })
+    $('.stop').click(function(){
+        clearInterval(timer)
+        timer = null
+    })
+    // 数组 splice slice join ... 
+    // 字符串 slice substr split substring ...
+    let str = '12312312';
+</script>
+</html>

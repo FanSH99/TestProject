@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            margin: 20px;
+            display: flex;
+        }
+
+        .nav div {
+            width: 100px;
+            text-align: center;
+            background: #eee;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        .nav div.active {
+            background: red;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月11日09:13:53
+     -->
+    <h1></h1>
+    <input type="text" class="txt" value="学习使我快乐">
+    <div class="nav">
+        <div class="active">首页</div>
+        <div>购物车</div>
+        <div>活动中心</div>
+    </div>
+    <h2></h2>
+    <button class="start">开始</button><button class="end">暂停</button>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        var msg = $('input').val();
+        $('h1').text(msg);
+        $('input').on('input', function () {
+            var value = $('input').val();
+            $('h1').text(value);
+        })
+
+        $('.nav div').on('click', function () {
+            console.log('点我了');
+            console.log(this);//jQuery中this指向当前的dom对象，不能直接使用jQuery对象。jQuery方法只能用于jQuery对象。
+            $(this).addClass('active').siblings().removeClass('active');
+        })
+
+        // $('.').click(function(){})
+        var msg1 = '奔跑吧！！！！少年！！！！！';
+        $('h2').text(msg1);
+        var timer = null;//接收计时器
+        $('.start').on('click', function () {
+            // 如果已经计时，不再重复计时。
+            if (timer) {
+                return 0;
+            }
+            timer = setInterval(function () {
+                /*   clearInterval(timer); */
+                var str = msg1.slice(0, 1);
+                var str2 = msg1.slice(1);
+                msg1 = str2 + str;
+                $('h2').text(msg1);
+            }, 250)
+        })
+
+        $('.end').on('click', function () {
+            clearInterval(timer);
+            timer = null;
+        })
+    </script>
+</body>
+
+</html>

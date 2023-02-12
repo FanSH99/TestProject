@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav {
+            width: 640px;
+            height: 40px;
+
+            background: #0155a4;
+            margin: 20px auto;
+        }
+
+        /* 
+           a 或者a:link 加上超链接一开样式
+           a:visited   访问之后样式
+           a:hover     鼠标移上去样式
+           a:active    鼠标点击时样式
+           LV(LOVE)  HA(HATE)
+         
+        
+        */
+        .nav a {
+            line-height: 40px;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 20px;
+            /* height: 40px;
+display: block;
+float: left; */
+        }
+
+        .nav a:hover {
+            background: #eb1d4e;
+        }
+
+        .box{
+            width: 200px;
+            height: 100px;
+            margin: auto;
+            background: red;
+            /* 四个角的圆角值一致 */
+            /* border-radius: 30px; */
+            /* 两个对角线的圆角值 */
+            /* border-radius: 0 20px; */
+            /* 0是左上角  10px右上和左下  30px右下 */
+            /* border-radius: 0 10px 30px; */
+            /* 从左上角顺时针绕一圈 */
+            /* border-radius: 0 10px 30px 50px; */
+            /* 等同于 */
+            /* border-top-left-radius: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius:30px;
+            border-bottom-left-radius: 0; */
+        }
+        .page{
+            background: #d1d1d1;
+            width: 570px;
+            height: 50px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+        .page a{
+            background: #fff;
+            padding: 0 20px;
+            line-height: 50px;
+            height: 50px;
+            display: block;
+            float: left;
+            border-right: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
+            color: #919191;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .page a:hover{
+            background: #ff464e;
+            color: #fff;
+        }
+        .page a:nth-child(1){
+            font-weight: normal;
+            margin-right: 3px;
+            border-radius:25px 0 0 25px;
+        }
+        .page a:nth-child(9){
+            margin-left: 3px;
+            border-radius:0 25px 25px 0px;
+        }
+        .page a:nth-child(6){
+            margin-right: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="#">首页</a>
+        <a href="#">品牌知识</a>
+        <a href="#">客户案例</a>
+        <a href="#">行业新闻</a>
+        <a href="#">关于我们</a>
+    </div>
+
+
+    <div class="box"></div>
+
+    <div class="page">
+       <a href="#">上一页</a>
+       <a href="">1</a>
+       <a href="">2</a>
+       <a href="">3</a>
+       <a href="">4</a>
+       <a href="">5</a>
+       <a href="">…</a>
+       <a href="">38</a>
+       <a href="#">下一页</a>
+    </div>
+</body>
+
+</html>

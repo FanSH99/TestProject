@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="clickHanld()">点击事件</button> -->
+    <button>点击事件</button>
+    <button class="move">移入事件</button>
+    <button class="hover">hover事件</button>
+    <!-- input事件当输入框内容发生改变时就是调用 -->
+    <div>
+     <input type="text" >
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    // function getval(){
+    //     console.log(11111)
+    // }
+    function clickHanld(){
+        alert('点我干啥')
+        //原生js  指向window
+        console.log(this)
+    }
+    // document.querySelector("button").onclick = function(){
+    //     alert("哈哈哈")
+    // }
+    // document.querySelector('button').addEventListener("click",function(){
+    //     alert("嘿嘿嘿")
+    // })
+    // juuery 绑定事件 $("选择器").事件名称(执行函数)
+     $('button').click(function(){
+        // jquery 事件中的this指向的是当前点击的标签dom对象
+        console.log(this)
+        //  将this变为jquery对象
+        console.log($(this))
+        alert("你点俺了")
+     })
+
+     $('.move').mousemove(function(){
+        console.log("鼠标移入了")
+     })
+     $(".hover").hover(function(){
+        console.log("鼠标移入")
+     },function(){
+        console.log("鼠标移出")
+     })
+    //  监听事件 参数一 监听的事件名称 参数二 回调函数
+    // 输入框内容发生改变失去焦点时才会触发
+     $("#age").on("change",function(){
+        console.log("我发生改变了")
+     })
+    //  只要输入框发生改变就会调用 
+     $("#age").on("input",function(){
+        console.log('我发生该变了')
+     })
+    //  输入框只要失去焦点就会触发
+     $("#age").on("blur",function(){
+        console.log('hahhaha 我出发啦')
+     })
+    //  window.onload = function(){
+    //     // 当所有的js代码加载完毕后执行
+    //  }
+     $(window).ready(function(){
+        // 相当于原生js window.onload
+        console.log("js加载时执行")
+     })
+    //  window.onresize=function(){
+    //     // 当页面尺寸发生改变时触发
+    //  }
+     $(window).resize(function(){
+            console.log("页面尺寸发生改变了")
+     })
+</script>
+</html>

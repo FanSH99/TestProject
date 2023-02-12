@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 字符串 数值 布尔值 null undefind
+    let mytsy = Symbol(1);
+    let mytsy1 = Symbol(1);
+    console.log(mytsy)
+    console.log(typeof mytsy)
+    // 每一个symbol都是唯一的
+    console.log(mytsy === mytsy1)
+    // 可以定义对象的属性
+    // let obj = {
+    //     Symbol(2):"张三",
+    // }
+     let mykey = Symbol("哈哈哈");
+     let mykey1 = Symbol("哈哈哈")
+     let obj = {};
+    obj[mykey] ="232131";
+    obj[mykey1] = '嘿嘿嘿';
+    console.log(obj)
+
+    //  bigInt 
+    let int = BigInt(1111);
+    console.log(int)
+
+    /* 
+     js数据类型：
+     基本：string number blone null undefind bigint symbol
+     引用：object
+    */
+</script>
+</html>

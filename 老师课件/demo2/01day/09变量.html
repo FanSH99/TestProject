@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        变量：
+        1、定义：可以变化的量。   变量是用于存放数据的
+        2、变量的声明（定义）
+         var  变量名;
+        3.变量名的命名规范
+         （1）包含有：英文字母 、数字、_  $
+          (2) 变量名不能以数字开头    如：1age  错误
+         （3）变量名是区分大小写    如：age   Age
+          (4)不能使用关键字和保留字   （var   if   else break  for...）
+          (5)见名知意  age  stuName
+          (6)建议用驼峰命名法（小驼峰 stuName  推荐      大驼峰StuName） 下划线命名法（stu_name 推荐）
+        4.变量的赋值
+          （1）先明再赋值  var a;  a=10;
+           (2) 声明的同时即赋值  var a=10;// 相当于变量初始化
+
+        5.输出，查看变量的值,获取
+
+             console.log(变量名);
+             alert(变量名);
+             document.write(变量名)
+
+        6.变量的重新赋值
+           a=新的值;
+     -->
+     <script>
+        //1.声明
+        //  var age;   // 正确
+        //  var 1age;//error
+        //  var $Name;// 正确
+        //  var -Name;////error
+
+        // 2.赋值
+        var a;// 声明一个变量，变量名是a;
+        a=10;//把10赋值给变量a
+
+         //3. 输出
+         console.log(a);
+        //4.重新赋值
+         a='hello';
+        //  alert(a)
+        console.log(a);// 会覆盖变量上一次的值
+
+
+        // 5.变量之间互相赋值
+         var b='nice';
+         console.log('b='+b);
+
+         b=a;// 把变量a的值，赋值给了变量b
+
+         console.log('a='+a,'b='+b);
+
+
+
+
+     </script>
+</body>
+</html>

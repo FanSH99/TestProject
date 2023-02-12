@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+
+    // 2022年11月20日15:33:57
+    // useMemo类似于计算属性，必须有一个返回值，当其依赖项改变就会自动调用。
+    let { useState, useMemo } = React;
+    function App() {
+        let [num, setNum] = useState(10);
+        let [price, setPrice] = useState(1);
+        // useMemo参数1回调函数必须有返回值，参数2依赖项若空则不依赖任意属性每次更新数据就调用。
+        let getSum = useMemo(() => {
+            // console.log("111");
+            return num * price
+        }, [num, price])
+        return (
+            <div>
+                商品个数:<input type="text" value={num} onChange={(e) => { setNum(e.target.value) }} />
+                *商品数量:<input type="text" value={price} onChange={(e) => { setPrice(e.target.value) }} />
+                =商品总价：{getSum}
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

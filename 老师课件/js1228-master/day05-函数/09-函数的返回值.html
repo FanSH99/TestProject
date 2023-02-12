@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            需求：求两个数组中最大值的和
+            思路 : 
+                求数组1 的最大值
+                求数组2 的最大值
+                两个最大值相加
+        */
+        /* 
+             总结：
+                 1. 函数 ：做了某件事情。
+                 2. return 事情结果。
+                 3. 函数默认返回 undefined。
+                 4. 手动返回值,则覆盖 undefined。
+                 5. return 之后的代码不再执行。
+                 6. 函数的返回值，可以选择接收，也可以不接收
+        */
+        /* 
+         学习函数的核心：
+             输入：参数
+             处理：函数的目的
+             输出：函数的结果
+        */
+        var arr = [2, 77, 52, 25, 7, 99];
+        var arr1 = [2, 77, 52];
+
+        function getMax(arr) {
+            let max = arr[0];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            // console.log(max);
+
+            // return undefined;
+            // return max;
+        }
+
+        let num1 = getMax(arr);
+        let num2 = getMax(arr1);
+        console.log(num1, num2, num1 + num2);
+
+        function money() {
+            console.log('周一微信催你还钱');
+            console.log('周二支付宝催你还钱');
+            console.log('周三,去你家催还钱');
+            return 100;
+            console.log('周四,不还钱,砸你家玻璃');
+            console.log('周五,不还钱,法院告你');
+        }
+
+        let result = money();
+        money();
+        console.log(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

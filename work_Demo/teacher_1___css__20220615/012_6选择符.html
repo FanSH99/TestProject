@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #f00;
+        }
+
+        h3+p {
+            color: #f00;
+        }
+
+        h4~p {
+            color: blue;
+        }
+
+        dl h1 {
+            color: palevioletred;
+        }
+
+        input[type="checked"] {
+            width: 50px;
+            height: 50px;
+            border: 2px solid orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        E F 包含选择符  选择所有E元素中包含的F元素
+        E>F 选择E中的F子元素
+        E~f  所有
+        同级别，紧跟着的。
+     -->
+
+    <!-- 
+         E:first-child
+         E:last_cjo;d
+
+         E:checked
+
+
+         E:hover
+
+         E:focus
+
+      -->
+
+    <dl>
+
+        <h1>aaa</h1>
+        <h1>aaa</h1>
+        <h2>aaa</h2>
+        <p>aaaa</p>
+
+    </dl>
+
+    <h3>这是标题</h3>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+
+
+    <div class="div1">
+        <h4>这是标题</h4>
+        <p>p1</p>
+        <p>p2</p>
+        <p>p3</p>
+        <div class="div2">
+            <p>p1</p>
+            <p>p2</p>
+            <p>p3</p>
+        </div>
+    </div>
+
+
+
+
+    
+
+</body>
+
+</html>

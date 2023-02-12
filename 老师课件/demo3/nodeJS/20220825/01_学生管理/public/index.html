@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+   <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .box{
+            width: 1000px;
+            margin:  0 auto;
+            min-height: 400px;
+            border: 2px solid red;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .left{
+            width: 30%;
+        }
+        .right{
+            width: 65%;
+        }
+        .title{
+            width: 100%;
+            padding: 6px;
+            font-size: 14px;
+            background-color: #4545fb;
+            color: #fff;
+            box-sizing: border-box;
+        }
+        .left>div{
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .left input{
+            width: 100%;
+            border: none;
+            height: 30px;
+            padding: 0 10px;
+            border-bottom: 1px solid #4545fb;
+            outline: none;
+            box-sizing: border-box;
+        }
+        .mybtn{
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            background-color: #4545fb;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .rigth_title{
+            width: 100%;
+            padding: 6px;
+            background-color: red;
+            color: #fff;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="box">
+        <div class="left">
+            <div class="title">
+                添加学生
+            </div>
+            <div>
+                <input type="text" placeholder="请输入学生姓名" id="name">
+            </div>
+            <div>
+                <input type="text" placeholder="请输入学生年龄" id="age">
+            </div>
+            <div>
+                <input type="text" placeholder="请输入学生性别" id="sex">
+            </div>
+            <div>
+                <input type="text" placeholder="请输入联系方式" id="phone">
+            </div>
+            <div class="mybtn">
+                确认添加
+            </div>
+        </div>
+        <div class="right">
+            <div class="rigth_title">
+                学生列表信息
+            </div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>性别</th>
+                            <th>联系方式</th>
+                            <th>
+                                操作
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="./js/template.js"></script>
+<script id="tr" type="text/html">
+    {{each data item index}}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.sex}}</td>
+            <td>{{item.phone}}</td>
+            <td>
+                <button onclick="remove('{{item.name}}')">删除</button>
+            </td>
+        </tr>
+        {{/each}}
+</script>
+<script>
+    // 封装ajax
+    let request = (url,method,data)=>{
+        return new Promise((reslove,reject)=>{
+            $.ajax({
+                url:url,
+                method:method,
+                data:data,
+                success(res){
+                    reslove(res)
+                },
+                error(err){
+                    reject(err)
+                }
+            })
+        })
+    }
+    // 渲染方法
+    let render = async ()=>{
+        // 获取学生列表
+        let res = await request("/get/list","get");
+        console.log(res)
+        let html = template("tr",{data:res})
+        console.log(html)
+        $("tbody").html(html)
+    }
+    render();
+    $(".mybtn").click(async ()=>{
+        // 获取输入狂内容
+        let name = $("#name").val();
+        let age = $("#age").val();
+        let sex = $("#sex").val();
+        let phone = $("#phone").val();
+        if(!name||!age||!sex||!phone){
+            alert("请您补充完整信息")
+            return
+        }
+        let data = {
+            name,
+            age,
+            sex,
+            phone
+        }
+        let res = await request("/add/stu",'post',data)
+        render();
+        alert(res)
+
+    })
+
+   async  function remove(name){
+        let res = await request("/remove/stu",'get',{name});
+        render();
+        alert(res)
+    }
+</script>
+</html>

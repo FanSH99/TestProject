@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            *****
+            ****
+            ***
+            **
+            *
+            思路：双重for 循环，外层控制行，内层控制列
+            i       num 的最大值
+            0           5
+            1           4
+            2           3
+            3           2
+            4           1
+            
+            i + num = 5
+            num = 5 - i;
+        */
+        for (let i = 0; i < 5; i++) {
+
+            let star = '';
+            for (let k = 0; k < 5 - i; k++) {
+                star = star + '*';
+            }
+            console.log(star);
+        }
+
+        console.log(`-----------案例---------`);
+        /*
+            *
+            **
+            ***
+            ****
+            *****
+
+                 *
+                **
+               ***
+              ****
+             *****
+        */
+
+
+    </script>
+</body>
+
+</html>

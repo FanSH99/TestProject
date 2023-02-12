@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      Set
+        1. 一种类似数组的数据解构，元素的值必须唯一.
+        2. 作用:
+          2.1 唯一性可以用于数组的去重.
+          2.2 存储用户的搜索记录
+        3. 创建:构造函数,
+          3.1 无参
+          3.2 数组作为参数
+    */
+
+    // 无参
+    let s1 = new Set();
+    console.log(s1, s1.size);
+
+    // 有参
+    let arr = [1, 2, 3, 4, 1, 2, 3, 4];
+    let s2 = new Set(arr);
+    console.log(s2);
+
+    console.log("-------去重------------");
+    arr = [1, 2, 3, 4, 1, 2, 3, 4];
+    s2 = new Set(arr);
+    console.log(s2);
+    
+  </script>
+</body>
+
+</html>

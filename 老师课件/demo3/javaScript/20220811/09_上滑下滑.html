@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <button class="slidDon">下滑</button>
+    <button class="up">上滑</button>
+    <button class="qh">切换</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+          $(".box").css({
+        width:"100px",
+        height:"100px",
+        background:"red",
+        display:"none"
+    })
+    $(".slidDon").click(function(){
+        $('.box').slideDown(500)
+    })
+    $(".up").click(function(){
+        $(".box").slideUp(500);
+    })
+    $(".qh").click(function(){
+        
+        $(".box").slideToggle(100)
+    })
+</script>
+</html>

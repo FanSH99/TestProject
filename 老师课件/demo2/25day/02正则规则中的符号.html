@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.边界符
+         ^   表示匹配行首的文本（以谁开始）
+         $   表示匹配行尾的文本（以谁结束）
+
+        如果 ^和 $ 在一起，表示必须是精确匹配
+     -->
+     <script>
+        //1.  正则表达式/ /里面不需要加引号 不管是数字型还是字符串型
+        // 只要包含有abc这个字符串返回的都是true
+        var patt=/abc/ig
+    //      var str='abc';
+    //   var flag= patt.test(str);
+    //   console.log(flag);//true
+
+       console.log(patt.test('abcd'));//true
+       console.log(patt.test('acd'));//false
+       console.log(patt.test('acdb123'));//false
+       console.log(patt.test('cdb123Abc'));//true
+
+       //2.^
+       var patt1=/^abc/ig
+       console.log(patt1.test('abc9d'));//true
+       console.log(patt1.test('bca9dabc'));//false
+       console.log(patt1.test('aabca9dabc'));//false
+
+
+       //3.^ $   精确匹配
+       var patt2=/^abc$/ig
+       console.log(patt2.test('abc9d'));// false
+       console.log(patt2.test('abc'));//true
+       console.log(patt2.test('abcabc'));//false
+
+     </script>
+</body>
+</html>

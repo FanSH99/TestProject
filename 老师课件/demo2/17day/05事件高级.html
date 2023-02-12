@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            /* 事件穿透性 */
+            pointer-events: none;
+        }
+    </style>
+    <button id="btn">单击</button>
+</head>
+<body>
+   <script>
+    var btn=document.querySelector('#btn');
+    // btn.onclick=function(){
+    //     console.log('上午好！！');
+    // }
+    // btn.onclick=function(){
+    //     console.log('中午好！！');
+    // }
+    // 特点： 注册事件的唯一性    同一个元素同一个事件只能设置一个处理函数，最后注册的处理函数将会覆盖前面注册的处理函数
+
+    // 回调函数 ，回过头来调用  表现是匿名函数
+
+
+    function show(){
+        console.log('nice');
+    }
+    // show()
+
+    // btn.onclick=show();// 错误的
+ btn.onclick=show;// 正确
+
+
+//  方法监听注册方式  w3c       false(默认) 冒泡--现在用的都是冒泡      true 捕获
+// btn.addEventListener('click',function(){},false)
+
+ btn.addEventListener('click',function(){
+    console.log('very good');
+ },false)
+
+ btn.addEventListener('click',function(){
+    console.log('very good~~~~~~');
+ })
+
+ btn.addEventListener('click',show)
+   </script> 
+</body>
+</html>

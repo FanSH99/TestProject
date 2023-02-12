@@ -1,0 +1,1 @@
+<view class="{{['data-v-fb765bb4',(true)?'navbar':'',(isNav)?'bg':'']}}"><view data-event-opts="{{[['tap',[['gobalck',['$event']]]]]}}" class="left data-v-fb765bb4" bindtap="__e"><uni-icons vue-id="735418c0-1" type="back" size="20" class="data-v-fb765bb4" bind:__l="__l"></uni-icons></view><view class="search data-v-fb765bb4">搜索商品</view></view>

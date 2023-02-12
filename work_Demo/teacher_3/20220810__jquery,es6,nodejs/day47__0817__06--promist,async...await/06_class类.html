@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日10:15:19
+     -->
+</body>
+
+<script>
+    // 构造函数创建对象：
+    function People(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    let p = new People("海绵宝宝", 18, "男");
+    console.log(p);//People {name: '海绵宝宝', age: 18, sex: '男'}
+
+    // class类创建对象。
+    class Person {
+        uname = "白子画";
+        uage = 18;
+        like = "打游戏";
+        constructor(name, age) {//在构造器上添加属性和方法
+            console.log(name, age);//海绵宝宝 18
+            this.name = name;
+            this.age = age;
+            this.say = () => {
+                console.log(this.name + "正在说话~~~~~~~~");
+            }
+            console.log("我是构造器函数，只要调用先执行我");
+        }//constructor()构造器函数，入口函数  ---只要类被调用了，就会先执行constructor
+        // 在原型上添加方法
+        color() {
+            console.log(this.name + "喜欢红色");
+        }
+        eat() {
+            console.log(this.name + "喜欢吃火锅");
+        }
+    }
+    console.log(Person);//class Person
+    // 必须用new关键字来调用class类。
+    let p2 = new Person("海绵宝宝", 18);
+    console.log(p2);//我是构造器函数，只要调用先执行我 Person(){}
+
+    // 调用类中的方法
+    p2.color();
+    p2.eat();
+    // 添加属性。
+
+    /*
+    Person {uname: '白子画', uage: 18, like: '打游戏', name: '海绵宝宝', age: 18, …}
+age: 18
+like: "打游戏"
+name: "海绵宝宝"
+say: () => {…}
+uage: 18
+uname: "白子画"
+[[Prototype]]: Object
+    */
+
+
+    class Dog {
+        // 声明类属性
+        static like = "火腿肠"//static 必须加上，否则结果是undefined
+        constructor(name, age) {
+            // 属性名自定义的可以和右边不一样。
+            this.name = name;
+            this.age = age;
+        }
+    }
+
+    let dog = new Dog("金毛", 2)
+    console.log(dog);
+    // 调用类属性
+    console.log(dog.constructor.like);
+    // 可以用类名直接调用类属性。
+    console.log(Dog.like);
+
+</script>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+
+        }
+
+        .form1 {
+            width: 640px;
+            height: 40px;
+            border: 1px solid #333;
+            margin: auto;
+            padding: 15px;
+        }
+
+        .form1 input {
+            width: 538px;
+            height: 38px;
+            border-top: 1px solid #b2b4be;
+            border-bottom: 1px solid #b9b4be;
+            border-left: 1px solid #b6b8c2;
+            border-right: 1px solid #b9b4be;
+
+            /* b9bbc4 b2b4be    b6b8c2   下，上 左 */
+            /* 去掉黑色的轮廓线，如果不去掉，点击颜色就是黑色，变不了别的颜色 */
+            outline: none;
+            display: block;
+            float: left;
+
+        }
+
+        .form1 input::-webkit-input-placeholder {
+            color: blue;
+        }
+
+        /* 兼容火狐浏览器 */
+        .form1 input::-moz-input-placeholder {
+            color: blue;
+        }
+
+        .form1 input::-o-input-placeholder {
+            color: blue;
+        }
+
+
+        .form1 input:focus {
+            width: 536px;
+            height: 36px;
+            border: 2px solid rgb(36, 130, 238);
+        }
+
+        .form1 input:hover {
+
+            border-color: rgb(36, 130, 238);
+
+        }
+
+        .form1 button {
+
+
+            width: 100px;
+            height: 40px;
+            float: left;
+            border: none;
+            color: #fff;
+            background: #4e6ef2;
+            font-size: 16px;
+
+        }
+
+        .form1 button:hover {
+            cursor: pointer;
+            background-color: #4662d9;
+        }
+
+
+
+        /* button和input不一样，input加边框后，外观变化，盒子会变大，
+        而button不一样，加边框之后盒子大小不变，相当于加的是内边框 */
+
+
+
+        /* input高度不能超过40 */
+
+
+        .form2 {
+            width: 650px;
+            height: 1150px;
+            margin: auto;
+            display: block;
+            margin: 250px auto;
+            background: url(img/bg1.jpg);
+            overflow: hidden;
+
+            /* 纯黑色3个0 纯白色，三个255 */
+        }
+
+        .form2 input {
+            width: 400px;
+            height: 60px;
+            display: block;
+            opacity: 0.4;
+            margin: 250px auto;
+            background: url(img/adm.png) no-repeat rgba(255, 255, 255, 0.4);
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" class="form1">
+
+        <input type="text" name="" id="" placeholder="百度一下">
+        <button>百度一下</button>
+    </form><br>
+
+    <form action="" method="post" class="form2">
+
+    </form>
+</body>
+
+</html>

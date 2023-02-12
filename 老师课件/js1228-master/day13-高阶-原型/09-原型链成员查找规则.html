@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型链：类的继承关系。
+        //     当前对象如果没有这个方法，则查找父类的方法。
+        //     就近原则
+
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        let eason = new Star('eason', 22);
+
+        // eason.sex = "男";
+        // Star.prototype.sex = '女';
+        // Object.prototype.sex = "male";
+
+        console.log(eason.sex);
+
+        console.log('-----------toString()-----------------------');
+
+        console.log(Object.prototype);  // 有一个 toString()
+        console.log(Star.prototype);    // 没有 toString()
+        console.log(eason);             // 没有 toString()
+
+        console.log('--------------------------');
+        console.log(eason.toString());
+        // Object 是所有类的超类，把常见的方法写好了，子类重写即可。
+
+        
+
+    </script>
+</body>
+
+</html>

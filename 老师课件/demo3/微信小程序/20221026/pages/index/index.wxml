@@ -1,0 +1,61 @@
+<!-- 小程序组件 -->
+<!-- view 组件相当于html中的div标签 -->
+<view class="title">
+小程序全局配置
+</view>
+<!-- 数据绑定 和 vue中一样都是使用{{}} 可以写表达式 -->
+<view>
+{{msg}}
+</view>
+<view>
+{{num>10?"大于10":"小于或等于10"}}
+</view>
+<view>
+<!-- 列表循环 -->
+<!-- wx:for='{{属性名}}' 默认每一项为item 索引为index -->
+  <view wx:for="{{list}}" wx:key="index">
+    {{item}} -------{{index}}
+  </view>
+</view>
+<view>
+<view wx:for="{{goods}}" wx:key="index">
+{{item.name}}--------{{item.price}} ---- {{item.num}}
+<!-- 使用wx:for-item 自定义每一项名称 使用wx:for-index 自定义索引-->
+<view wx:for="{{item.tag}}" wx:for-item='tag' wx:for-index='i' wx:key="i">
+  {{tag}}
+</view>
+</view>
+</view>
+<view>
+   <view wx:for="{{user}}" wx:for-item='myuser' wx:for-index='i' wx:key="i">
+   {{myuser}} -------- {{i}}
+   </view>
+</view>
+<!-- 条件判断 -->
+<view wx:if="{{n>5}}">
+{{n}} 大于5
+</view>
+<view wx:elif='{{n==5}}'>
+{{n}} 等于 5
+</view>
+<view wx:else>
+{{n}}小于5
+</view>
+
+<!-- 显示与隐藏  类似于vue中v-show 当满足条件时隐藏不满足条件时才会显示-->
+<view hidden="{{isshow}}">
+哈哈哈哈哈
+</view>
+
+<!-- wx:for wx:if  hidden -->
+<template is='mymsg' data="{{msg}}"></template>
+
+<!--  定义模版 -->
+<template name='mymsg' >
+<view>
+    我是一个模版 {{msg}}
+</view>
+</template>
+<include src="./footer.wxml"></include>
+
+<view>{{like}}</view>

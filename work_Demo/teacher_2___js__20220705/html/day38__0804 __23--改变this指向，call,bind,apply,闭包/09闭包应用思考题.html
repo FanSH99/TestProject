@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月4日15:14:05
+
+
+     -->
+
+    <script>
+        var name1 = "The window";
+        var object = {
+            name1: "My Object",
+            getNameFunc: function () {
+                return function () {
+                    return this.name1;
+                }
+            }
+        }
+
+        var fn = object.getNameFunc();
+        var b = fn();
+        console.log(b);//The window
+        // 函数在外面调用指向window   --this值得是window
+
+        var name2 = "The window";
+        var object2 = {
+            name2: "My Object",
+            getNameFunc: function () {
+                var that = this;//改变指向
+                return function () {
+                    return that.name2;
+                }
+            }
+        }
+
+        var fn2 = object2.getNameFunc();
+        var b2 = fn2();
+        console.log(b2);//My Object
+
+
+    </script>
+</body>
+
+</html>

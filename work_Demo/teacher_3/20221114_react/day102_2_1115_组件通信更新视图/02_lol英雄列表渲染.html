@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hero {
+            width: 120px;
+            margin-right: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    //2022年11月15日21:15:57
+
+    function App(props) {
+        // console.log(props);
+        return (
+            <div className="box">
+                {
+                    props.list.map((item, index) => {
+                        return (
+                            <div key={index} className="hero" >
+                                <HeroItem hero={item} />
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        )
+    }
+
+    function HeroItem(props) {
+        // console.log(props);
+        return (
+            <div>
+                <img src={`https://game.gtimg.cn/images/lol/act/img/champion/${props.hero.alias}.png`} alt="" />
+                <div>{props.hero.title}</div>
+            </div>
+        )
+    }
+
+    // 获取英雄列表
+    function sendHttp() {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    // console.log(xhr.response);
+                    let data = JSON.parse(xhr.response);
+                    // console.log(data);
+                    resolve(data.hero);
+                }
+            }
+        })
+    }
+    sendHttp();
+    async function getList() {
+        let res = await sendHttp();
+        console.log(res);
+        ReactDOM.render(<App list={res} />, document.getElementById("app"))
+    }
+    getList();
+
+
+</script>
+
+</html>

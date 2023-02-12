@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            display: flex;
+            margin: 20px 0;
+            background-color: slateblue;
+            color: #fff;
+            font-size: 13px;
+            border-radius: 10px;
+        }
+
+        .nav>div {
+            margin: 0 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .active {
+            color: red;
+
+        }
+
+        .active::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero {
+            width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .heroItem {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月17日12:40:16--上午没听
+    class App extends React.Component {
+        state = {
+            navList: [
+                {
+                    name: "全部",
+                    type: "all",
+                }, {
+                    name: "法师",
+                    type: "mage"
+                }, {
+                    name: "战士",
+                    type: "fighter"
+                }, {
+                    name: "坦克",
+                    type: "tank"
+                }, {
+                    name: "刺客",
+                    type: "assassin"
+                }, {
+                    name: "射手",
+                    type: "marksman"
+                }, {
+                    name: "辅助",
+                    type: "support"
+                }
+            ],
+            activeIndex: 0,
+            type: "all",
+        }
+
+        render() {
+
+            let { navList, activeIndex } = this.state;
+            return (
+                <div className="box">
+
+                    <div className="nav">
+                        {
+                            navList.map((item, index) => {
+                                return <div key={index} className={activeIndex == index ? 'active' : ""} onClick={() => {
+                                    this.changeActive(index)
+                                }}>{item.name}</div>
+                            })
+                        }
+
+                    </div>
+                    <div>
+                        <HeroList type={this.state.type} />
+                    </div>
+
+                </div>
+            )
+        }
+        changeActive(index) {
+            this.setState({
+                activeIndex: index,
+                type: this.state.navList[index].type,
+            })
+        }
+
+    }
+
+    // 发送请求不能在constructor，因为不能更新状态。
+    class HeroList extends React.Component {
+
+        constructor() {
+            super();
+            this.state = {
+                list: []
+            }
+        }
+        render() {
+            return (
+                <div className="hero">
+                    {
+                        // this.state.list.map((item, index) => {
+                        //     return (
+                        //         <div key={index}>
+                        //             <HeroItem item={item} />
+                        //         </div>
+                        //     )
+                        // })
+                        this.getList(this.props.type)
+                    }
+                </div>
+            )
+        }
+        getList(type) {
+            console.log(type);
+            let arr = this.state.list.filter((item, index) => {
+                // console.log(item.roles);
+                if (type == "all") {
+                    return item
+                }
+                return item.roles.includes(type);
+            })
+            console.log(arr);
+
+            return arr.map((item, index) => {
+                return (
+                    <div key={index}>
+                        <HeroItem item={item} />
+                    </div>
+                )
+            })
+        }
+        componentDidMount() {
+            // 发送请求获取lol列表
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res);
+                    this.setState({
+                        list: res.hero,
+                    })
+                }
+            }
+        }
+    }
+
+
+    class HeroItem extends React.Component {
+        render() {
+            return (
+                <div className="heroItem">
+                    <img src={`https://game.gtimg.cn/images/lol/act/img/champion/${this.props.item.alias}.png`} alt="" />
+                    <div>{this.props.item.title}</div>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

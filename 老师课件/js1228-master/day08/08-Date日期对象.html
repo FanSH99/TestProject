@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            步骤:
+                1. 对象的作用:
+                2. 如何生成对象:构造函数。
+                3. 对象的方法(输入、处理、输出)
+        */
+
+        // 1. 无参，当前的系统时间
+        let d1 = new Date();
+        console.log(d1);
+
+        // 2. 参数是指定格式时间的字符串
+        //    某个时间点的对象
+        let d2 = new Date('2022-02-22 16:50:00');
+        console.log(d2);
+
+        let year = d2.getFullYear();
+        let month = d2.getMonth() + 1;
+        let date = d2.getDate();
+        let day = d2.getDay();
+        var week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+
+        console.log(year);
+        console.log(month);
+        console.log(date);
+        console.log(week[day]);
+
+
+        console.log("今天是" + year + '年' + month + '月' + date + '日' + week[day]);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      闭包：
+          全局变量不能访问局部变量
+          延申局部变量的使用范围
+          把局部变量保存在内存中
+    */
+
+    // 在 method 外部，想访问 method 的局部作用域，可以通过闭包，
+    function method() {
+      let num = 10;
+      function show() {
+        console.log(num);
+      }
+      // show();
+
+      return show;
+    }
+
+    let temp = fun();
+    temp();
+
+    // num++;
+
+    // 相当于执行了，但是声明在函数 method 的内部，因此可以方法 method 的局部变量
+    // 打断点，会发现函数的声明在函数的内部。类似文件夹快捷图标，本质还是文件夹内部的文件。
+    // let temp = function show() {
+    //     console.log(num);
+    // }
+
+    // 变量的值是一个函数，因此可以调用
+  </script>
+</body>
+
+</html>

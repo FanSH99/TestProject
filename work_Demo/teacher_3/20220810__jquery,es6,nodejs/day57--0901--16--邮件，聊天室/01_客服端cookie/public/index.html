@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月1日09:12:36
+    cookie服务端和客户端都能使用添加和删除等操作
+    -->
+    <h1>插件cookie</h1>
+    <button class="set">设置cookie</button>
+    <button class="get">获取cookie</button>
+    <button class="remove">删除cookie</button>
+    <h1>手动设置cookie</h1>
+    <button class="setCookie">设置cookie</button>
+    <button class="getCookie">获取cookie</button>
+    <button class="removeCookie">删除cookie</button>
+    <h1>本地存储</h1>
+    <button class="localSave">设置localStorage</button>
+    <button class="localGet">获取localStorage指定值</button>
+    <button class="localRemove">删除localStorage指定值</button>
+    <h1>会话存储</h1>
+    <button class="sessionSave">设置sessionStorage</button>
+    <button class="sessionGet">获取sessionStorage指定值</button>
+    <button class="sessionRemove">删除sessionStorage指定值</button>
+
+</body>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="./js/jquery.cookie.js"></script>
+<script>
+
+    $(".set").click(() => {
+        $.cookie("username", "admin");
+    })
+    $(".get").click(() => {
+        let token = $.cookie("tooken");
+        console.log(token);//123456
+    })
+    $(".remove").click(() => {
+        $.removeCookie("username");
+    })
+    $(".setCookie").click(() => {
+        cookie.setItem("cookie")
+    })
+    $(".remove").click(() => {
+        cookie.clearCookie();
+    })
+    $(".localSave").click(() => {
+        console.log(window);
+        /*   设置localStorage 参数一属性名，参数二值，
+        注意：必须是字符串，否则会自动转换为字符串（隐式转换，不能识别对象）
+        存储对象的时候需要用到JSON.stringify(对象)，数组也是一个对象 */
+        localStorage.setItem("user", JSON.stringify({ name: "花花", age: 18 }))
+        localStorage.setItem("msg", JSON.stringify({ sex: "男", img: "./img/1.jpg" }))
+    })
+
+    $(".localGet").click(() => {
+        /* getItem("属性名")来获取localStorage，获取到的是JSON字符串形式，需要JSON.parse()来转换 */
+        let user = localStorage.getItem("user");
+        console.log(user);//{"name":"花花","age":18}
+        let user1 = JSON.parse(user);
+        console.log(user1);//{name: '花花', age: 18}
+    })
+    $(".localRemove").click(() => {
+        localStorage.removeItem("msg");
+    })
+
+    $(".sessionSave").click(() => {
+        sessionStorage.setItem("tokenr", "1234543");
+        sessionStorage.setItem("code", JSON.stringify({ msg: "hhhhh" }))
+
+    })
+    $(".sessionGet").click(() => {
+        /* getItem("属性名")来获取localStorage，获取到的是JSON字符串形式，需要JSON.parse()来转换 */
+        let tokenr = sessionStorage.getItem("tokenr");
+        console.log(tokenr);//{"name":"花花","age":18}
+        let token1 = JSON.parse(tokenr);
+        console.log(token1);//{name: '花花', age: 18}
+    })
+    $(".sessionRemove").click(() => {
+        sessionStorage.removeItem("code");
+        // sessionStorage.clearSession();
+    })
+
+    /*
+    面试题，
+    cookie,localStorage,sessionStorage三只之间的区别
+    1.三者都是用来在客户端存储数据的
+    2.sessionStorage会话存储在关闭浏览器的时候数据会自动删除，
+        localStorage本地存储，数据存储在本地，只要不手动删除会永远存在。
+        cookie可以设置有效期，期限到了会自动删除，不设置默认一直存在。
+    3.没调cookie存储大小不能超过4kb 最多20条，
+        sessionStorage每条数据大小不能超过5M 最多20条
+        localStorage每条不能超过5M，但可以存储无限条。
+    4.cookie 可以通过http请求自动传递到后台服务器， 其他两个不会自动传递。
+        cookie不仅能在客户端设置获取也能在服务端设置获取，
+    */
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+
+<script type="text/babel">
+
+    let dom = (
+        <div>
+
+        </div >
+    )
+
+    // 创建一个函数式组件。 组件名称首字母必须大写，否则报错。如果小写会编译成标签不会编译成组件。
+    function App() {
+        let name = "张三"
+        return (<div>
+            <h1>我是一个函数式组件,{name}</h1>
+            <Child />
+            <button onClick={() => {
+                alert("点你咋的")
+            }}>点我</button>
+        </div>)
+    }
+
+    // 创建一个子组件
+    function Child() {
+        return (
+            <div>
+                <div>我是一个子组件</div>
+            </div>
+        )
+    }
+    console.log(<App />);
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+    /*
+    函数式组件由称为无状态组件，所谓的状态就是数据，即没有自己的数据，不是响应式的。
+    函数式组件必须是一个纯函数。
+
+    
+    
+    什么是纯函数？
+    纯函数的返回结果只依赖于他的参数。
+    执行过程中没有任何副作用，即不对其他的有所依赖。。
+
+    什么是高级函数？
+
+    */
+</script>
+
+</html>

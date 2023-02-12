@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: center;
+        }
+
+        table td,
+        table th {
+            width: 100px;
+            height: 30px;
+            border: 1px solid #333;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>ID：</span><input type="text" id="id"><br>
+    <span>姓名：</span><input type="text" id="username"><br>
+    <span>年龄：</span><input type="text" id="age"><br>
+    <input type="button" value="添加" id="btn"><br>
+    <div class="box"></div>
+</body>
+
+<script>
+    var box = document.getElementsByClassName('box')[0];
+    var tab = document.createElement('table');
+    var cap = document.createElement('caption');
+    cap.innerHTML = '员工信息表';
+    tab.appendChild(cap);
+    var thead = document.createElement('thead');
+    var thead_tr = document.createElement('tr');
+    var th1 = document.createElement('th');
+    var th2 = document.createElement('th');
+    var th3 = document.createElement('th');
+    var th4 = document.createElement('th');
+    th1.innerHTML = 'ID';
+    th2.innerHTML = '姓名';
+    th3.innerHTML = '年龄';
+    th4.innerHTML = '操作';
+    thead_tr.appendChild(th1);
+    thead_tr.appendChild(th2);
+    thead_tr.appendChild(th3);
+    thead_tr.appendChild(th4);
+
+    thead.appendChild(thead_tr);
+    tab.appendChild(thead);
+
+
+    var tbody = document.createElement('tbody');
+    tbody.id = 'tbody_box';
+
+    tab.appendChild(tbody);
+    box.appendChild(tab);
+
+
+    var id = document.querySelector('#id');
+    var username = document.querySelector('#username');
+    var age = document.querySelector('#age');
+    var btn = document.querySelector('#btn');
+
+    btn.onclick = function () {
+        if (id.value == '' || username.value == '' || age.value == "") {
+            alert('不能为空')
+        } else {
+            var tr = document.createElement('tr');
+            var td1 = document.createElement('td');
+            td1.innerHTML = id.value;
+            var td2 = document.createElement('td');
+            td2.innerHTML = username.value;
+            var td3 = document.createElement('td');
+            td3.innerHTML = age.value;
+            var td4 = document.createElement('td')
+            var link = document.createElement('a');
+            link.href = '#';
+            link.innerHTML = '删除';
+            link.onclick = function () {
+                if (confirm('确定要删除吗')) {
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                }
+            }
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            td4.appendChild(link)
+            tbody.appendChild(tr);
+        }
+
+    }
+</script>
+
+</html>

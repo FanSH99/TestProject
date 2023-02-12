@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 作业
+        // 格式化日期 时分秒  
+        
+        var date1 = new Date();
+        // console.log(date1);
+        var h = date1.getHours();
+        var m = date1.getMinutes();
+        var s = date1.getSeconds();
+        // console.log(h, m, s);
+
+        function getNow() {
+            var date1 = new Date();
+            var h = date1.getHours();
+            var m = date1.getMinutes();
+            var s = date1.getSeconds();
+
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getNow());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

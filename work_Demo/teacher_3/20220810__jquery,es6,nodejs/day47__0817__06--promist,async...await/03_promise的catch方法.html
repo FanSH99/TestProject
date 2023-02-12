@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日09:34:11
+     -->
+</body>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+    /*    try {
+   
+       } catch (err) {
+           console.log(err);
+       } */
+
+    let p = new Promise((reslove, reject) => {
+        let num = Math.floor(Math.random() * 10);
+        console.log(num);
+        if (num >= 5) {
+            reslove(num + "大于5")
+        } else {
+            reject(num + "失败了")
+        }
+    })
+
+    let p1 = new Promise((reslove, reject) => {
+        reject("567890")
+    })
+    p1.catch((err) => {
+        console.log(err);//我失败了
+    })
+
+    p.then((res) => {
+        console.log(res);
+    }).catch((err) => {
+        console.log(err);
+    })
+
+    p.then((res) => {
+        console.log(res);
+    }, (err) => {
+        console.log("我失败了");
+    }).catch((err) => {
+        console.log(err);
+    })
+
+    let p2 = new Promise((reslove, reject) => {
+        $.ajax({
+            url: "./data/1.json",
+            success(res) {
+                reslove(res)
+            }
+        })
+    })
+    p2.then(res => {
+        console.log(res);
+        $.ajax({
+            url: "./data/2.json",
+            success(data) {
+                reslove(data)
+            }
+        })//2.json访问有问题，reslove is not defined
+    })
+</script>
+
+</html>

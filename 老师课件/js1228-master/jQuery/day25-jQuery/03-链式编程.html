@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button>李白</button>
+  <button>虞姬</button>
+  <button>诸葛亮</button>
+  <button>项羽</button>
+  <button>哪吒</button>
+  <script>
+    $(function () {
+      $('button').click(function () {
+        // console.log(this);
+        // css() 函数的返回值是 当前 jQuery 对象
+        // let result = $(this).css('backgroundColor', 'skyblue');
+        // console.log(result);
+        // result.siblings().css('backgroundColor', "");
+
+        // 合并之后
+        // 链式编程 ：函数的返回值是它自己
+        $(this).css('backgroundColor', 'skyblue').siblings().css('backgroundColor', "");
+
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 严格模式:消除语法中不合理的地方,为 ES 后期发展做铺垫
+
+    // 1.1 整个脚本开启严格模式
+    "use strict";
+
+    // num = 10;
+  </script>
+
+  <script>
+    // 1.2 立即执行函数，作为独立的作用域，开启严格模式
+    age = 10;
+    (function (a, b) {
+      "use strict";
+      console.log(a + b);
+      // score = 100;
+    })(1, 2);
+  </script>
+
+  <script>
+    // 1.3 函数作为局部作用域开启严格模式
+
+    function sum() {
+      "use strict";
+      // score = 12;
+    }
+
+    function sum1() {
+      score = 12;
+    }
+
+    sum();
+    sum1();
+  </script>
+</body>
+
+</html>

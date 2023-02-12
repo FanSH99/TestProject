@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 函数是可以互相调用的。
+
+        function skill1() {
+            console.log('控制敌人');
+            return '被眩晕的吕布';
+        }
+
+        function skill2() {
+            let hero = skill1();
+            console.log(`击杀${hero}`);
+        }
+
+        // skill1();
+        skill2();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

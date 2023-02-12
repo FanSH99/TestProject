@@ -1,0 +1,7 @@
+/* 引入图表库 */
+@import './icon/icon.wxss';
+.pagescroll,page{
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+}

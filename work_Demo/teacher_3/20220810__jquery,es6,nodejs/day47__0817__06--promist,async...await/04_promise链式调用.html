@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日09:43:38
+     -->
+    <a href="./data/1.json">连接</a>
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+    console.log($.ajax);
+    let p = new Promise((reslove, reject) => {
+        $.ajax({
+            url: "./data/1.json",
+            success(res) {
+                reslove(res)
+            }
+        })
+    })
+    console.log(p);
+    // TODO:  下面报错了，不能访问，Failed to load resource: net::ERR_FAILED   ---原因需要用live Server，
+    p.then(res => {
+        console.log(res);
+        // return "23123"  //在then方法中return出来的内容默认会包裹一层promise对象。
+        return new Promise((reslove, reject) => {
+            $.ajax({
+                url: "./data/2.json",
+                success(data) {
+                    reslove(data)
+                }
+            })
+        })
+    }).then(res => {
+        console.log(res);
+        $.ajax({
+            url: "./data/3.json",
+            success(data) {
+                reslove(data)
+            }
+        })
+    })
+
+    // 作业，使用promise封装ajax，实现依次请求，1.json 2.json 3.json
+</script>
+
+</html>

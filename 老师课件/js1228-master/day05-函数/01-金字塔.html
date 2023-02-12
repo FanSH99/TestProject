@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /*
+            *
+            **
+            ***
+            ****
+            *****
+
+                 *
+                **
+               ***
+              ****
+             *****
+        */
+        /* 
+            1111*
+            111**
+            11***
+            1****
+            *****
+            11111
+            1111
+            111
+            11
+            1
+            *
+            **
+            ***
+            ****
+            *****
+        */
+        /* 
+             i           j
+             0           5
+             1           4
+             2           3
+             3           2
+             4           1
+             i + j = 5;
+             j = 5 - i;
+ 
+             i           j
+             0           1
+             1           2
+             2           3
+ 
+             i + 1 = j
+        */
+        for (let i = 0; i < 5; i++) {
+            let star = "";
+            let star1 = "";
+            for (let j = 0; j < 5- i; j++) {
+                // star = star + "1";
+                star = star + " ";
+            }
+            for (let j = 0; j < i + 1; j++) {
+                star1 = star1 + "*";
+            }
+            // console.log(star);
+            // console.log(star1);
+            console.log(star + star1);
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

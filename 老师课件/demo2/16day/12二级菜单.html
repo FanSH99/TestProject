@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+        }
+        ul,li,ol{
+          list-style: none;
+        }
+        .nav{
+          width: 1200px;
+          height: 50px;
+          background-color: #000;
+          color: #fff;
+          margin: 20px auto;
+        }
+        .nav ul{
+          width: 100%;
+          height: 100%;
+        }
+        .nav ul>li{
+          width: 120px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          font-size: 18px;
+          float: left;
+          position: relative;
+        }
+        .nav ul>li>ol{
+          width: 100%;
+          background-color: aqua;
+          position: absolute;
+          left: 0;
+          top: 50px;
+          display: none;
+        }
+      </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+          <li onmouseover="show(this)" onmouseout="show(this)">AAA
+             <ol>
+                <li>aaa</li>
+                <li>aaa</li>
+                <li>aaa</li>
+                <li>aaa</li>
+             </ol>
+          </li>
+          <li onmouseover="show(this)" onmouseout="show(this)">BBB
+            <ol>
+              <li>bbb</li>
+              <li>bbb</li>
+              <li>bbb</li>
+              <li>bbb</li>
+           </ol>
+          </li>
+          <li onmouseover="show(this)" onmouseout="show(this)">CCC
+            <ol>
+              <li>bbb</li>
+              <li>bbb</li>
+              <li>bbb</li>
+              <li>bbb</li>
+           </ol>
+          </li>
+          <li onmouseover="show(this)" onmouseout="show(this)">DDD
+            <ol>
+              <li>bbb</li>
+              <li>bbb</li>
+              <li>bbb</li>
+              <li>bbb</li>
+           </ol>
+          </li>
+        </ul>
+     </div>
+     <script>
+        //1.传统事件
+
+          function show(obj){
+            var s= window.getComputedStyle(obj.children[0],null).display;
+
+            if(s=='none'){
+                obj.children[0].style.display='block';
+            }else{
+                obj.children[0].style.display='none';
+            }
+       
+          }
+
+        
+
+
+    </script>
+</body>
+</html>

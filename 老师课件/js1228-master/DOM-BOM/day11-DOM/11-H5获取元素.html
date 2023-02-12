@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">盒子1</div>
+    <div class="box">盒子2</div>
+    <div id="nav">
+        <ul>
+            <li>好久不见</li>
+            <li>富士山下</li>
+            <li>浮夸</li>
+            <li>因为爱情</li>
+        </ul>
+    </div>
+    <script>
+        // 1. getElementsByClassName 根据类名获得某些元素集合
+        let boxs = document.getElementsByClassName('box');
+        console.log(boxs);
+
+        // 2. 返回符合条件的第一个元素
+        console.log(document.querySelector('#nav'));  // id
+        console.log(document.querySelector('.box'));  // 类名
+        console.log(document.querySelector('li'));    // 标签
+
+        // 3. 返回数组
+        console.log(document.querySelectorAll('li'));
+
+    </script>
+</body>
+
+</html>

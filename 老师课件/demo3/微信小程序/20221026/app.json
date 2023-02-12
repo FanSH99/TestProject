@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/cate/cate"
+  ],
+  "window":{
+    "navigationBarBackgroundColor":"#ee3f4d",
+    "navigationBarTextStyle":"white",
+    "navigationBarTitleText":"初识小程序",
+    "navigationStyle":"default",
+    "enablePullDownRefresh":true,
+    "backgroundColor":"#c35691",
+    "backgroundTextStyle":"light"
+  },
+  "tabBar": {
+    "color": "#b4b4b4",
+    "selectedColor":"#ee3f4d",
+    "backgroundColor":"#f1f1f1",
+    "borderStyle":"white",
+    "position":"bottom",
+    "list": [
+      {
+        "pagePath":"pages/index/index",
+        "text":"首页",
+        "iconPath":"./imgs/home-o.png",
+        "selectedIconPath":"./imgs/home.png"
+      },{
+        "pagePath": "pages/cate/cate",
+        "text": "分类",
+        "iconPath": "./imgs/cate-o.png",
+         "selectedIconPath": "./imgs/cate.png"
+      },{
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./imgs/cate-o.png",
+         "selectedIconPath": "./imgs/cate.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

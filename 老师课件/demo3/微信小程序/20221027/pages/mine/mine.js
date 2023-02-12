@@ -1,0 +1,33 @@
+Page({
+    data:{
+        to:0,
+        range1:[{
+            name:"web前端",
+            id:1
+        },{
+            name:"java",
+            id:2
+        }],
+        name:""
+    },
+    goTo(e){
+        console.log(e)
+        let index = e.currentTarget.dataset.index;
+        this.setData({
+            to:index
+        })
+    },
+    checkChange(e){
+        console.log(e.detail.value)
+    },
+    changSelector(e){
+        console.log(e.detail.value)
+        console.log(this.data.range1[e.detail.value])
+        this.setData({
+            name:this.data.range1[e.detail.value].name
+        })
+    },
+    getcity(e){
+       console.log(e)
+    }
+})

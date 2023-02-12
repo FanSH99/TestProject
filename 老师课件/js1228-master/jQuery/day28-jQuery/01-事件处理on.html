@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 1. jQuery 注册事件  可以注册多个事件
+        // $('div').click(function (){
+        //     console.log(`为了部落`);
+        // });
+        // $('div').click(function (){
+        //     console.log(`今晚吃鸡`);
+        // });
+
+        // 2. 第二种注册事件的方法 
+        //    参数1：事件类型 参数2：执行的函数
+        // $('div').on('click',function (){
+        //     console.log(`为了部落`);
+        // });
+        // $('div').on('click',function (){
+        //     console.log(`今晚吃鸡`);
+        // });
+
+        // 3. jQuery 注册多个事件(对象的形式传参)
+        // $('div').on({
+        //     mouseenter: function () {
+        //         console.log('富士山下');
+        //     },
+        //     mouseleave: function () {
+        //         console.log('好久不见');
+        //     }
+        // });
+
+        // 4. jQuery 注册多个不同类型事件，执行相同的函数
+        $('div').on('click mouseenter mouseleave', function () {
+            console.log('好久不见');
+        });
+    </script>
+</body>
+
+</html>

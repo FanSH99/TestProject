@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+         有参函数  哪个作为参数？
+         需要不断变化的参数设为形参。 例如计算圆的面积中，半径为形参。
+         */
+        function getArea(r) {//形参也属于局部变量。
+            /* 有参函数中不需要在声明改参数 */
+            var area = Math.PI * r * r;
+            console.log('r=' + r, 'area=' + area.toFixed(2));
+        }
+        getArea(10);//这里传的参数是实参。
+        var r1 = prompt('请输入一个半径');
+        getArea(r1);//实参，和函数名里面的形参不同，调用部分的参数都叫实参。
+
+        /* 计算长方形面积 */
+        function getRecArea(w, h) {
+            var area = w * h;
+            alert(area);
+        }
+        getRecArea(10, 20);
+        /* 当两个名字一样的时候，后面的函数名会覆盖前面的东西，
+        例如，上述两个函数均定义wigetArea时，第一个输出NaN ,第二个输出200*/
+
+        /* 总结：有参函数，声明部分的参数叫形参，
+        形参以逗号隔开，没有个数限制，也没有数据类型限制。
+        有参函数调用时传入的参数叫实参。
+        */
+        function show(stuName, a, b, isTrue) {
+            if (isTrue) {
+                console.log('Welcome' + stuName + '来我们班');
+            } else {
+                console.log(a * b);
+            }
+        }
+        show('志伟', 10, 20, true);
+        show('志伟', 10, 20, false);
+    </script>
+</body>
+
+</html>

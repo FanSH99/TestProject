@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--使用双大括号实现数据绑定，在双打括号中我们可以写入表达式 -->
+        <!-- 插值闪烁 -->
+        <h1>{{msg.replace("游戏","向上")}}</h1>
+        <h2>{{isLogin?"已登录":"未登录"}}</h2>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+     new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习，天天游戏",
+            isLogin:false
+        }
+     })
+</script>
+</html>

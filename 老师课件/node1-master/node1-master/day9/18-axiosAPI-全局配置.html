@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./axios.js"></script>
+    <script>
+        /* 
+            axios 的全局配置
+                // 超时时间
+                axios.defaults.timeout = 3000; 
+                // 默认地址
+                axios.defaults.baseURL = 'http://127.0.0.1:8080/';
+                // 设置请求头 (需要后台配置)
+                axios.defaults.headers['mytoken'] = 'Bearer qwer'; 
+        */
+        axios.defaults.baseURL = 'http://127.0.0.1:8080/';
+        axios.get("axios-json").then((result) => {
+            console.log(result.data.uname);
+        });
+    </script>
+</body>
+
+</html>

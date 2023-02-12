@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            立即执行函数: 声明后，直接执行。
+            语法结构1:
+                (函数的声明)(实参);
+
+            语法结构2:
+                (函数声明(实参));    
+
+            立即执行函数声明一个独立的作用域，里面的变量是局部变量    
+        */
+        (function cook(hero) {
+            console.log(`${hero}点了油闷大虾`);
+        })('张飞');
+
+        (function play(game) {
+            console.log(`我喜欢玩${game}`);
+        }('吃鸡'));
+    </script>
+</body>
+
+</html>

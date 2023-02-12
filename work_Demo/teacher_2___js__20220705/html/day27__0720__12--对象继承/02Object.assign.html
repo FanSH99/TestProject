@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        自定义对象，
+        对象    引用类型
+        检测对象数据类型：
+        obj.instanceof Object(Array/Date/String)
+        栈内存  堆内存
+        深拷贝  浅拷贝  后期会用到递归函数。
+        obj=null; 
+     -->
+
+    <script>
+        // 面试题
+        console.log({} == {});//false
+        console.log([] == []);//false
+        console.log({} != {});//true
+        console.log([] != []);//true
+        console.log(!{} == {});//false
+        console.log(![] == []);//true
+
+        // 浅拷贝
+        var obj = { name: '白浅', age: '18', sex: '女' }
+        var obj1 = {};
+        obj1 = obj;
+        obj1.name = '顾南衣';
+        console.log(obj, obj1);//{name: "顾南衣", age: "18", sex: "女"}  {name: "顾南衣", age: "18", sex: "女"}
+
+        obj1 = null;
+        console.log(obj, obj1);//{name: "顾南衣", age: "18", sex: "女"}age: "18"name: "顾南衣"sex: "女"__proto__: Object null
+        // object.assign()  es6
+
+        var obj2 = { name: '海绵宝宝', age: 10 };
+        var obj3 = Object.assign({}, obj2);
+        console.log(obj2, obj3);//{name: "海绵宝宝", age: 10}age: 10name: "海绵宝宝"__proto__: Object {name: "海绵宝宝", age: 10}
+        obj2.name = '派大星';
+        console.log(obj2, obj3);//{name: "派大星", age: 10}age: 10name: "派大星"__proto__: Object {name: "海绵宝宝", age: 10}
+        //Object.assign  ---不能称为深拷贝，因为看起来是深拷贝，但是简单的可以，如果数据比较复杂的话，无法完成深拷贝。
+
+
+        var obj4 = { name: '海绵宝宝', age: 10, subject: ['html', 'css', 'js'] };
+        var obj5 = Object.assign({}, obj4);
+        obj4.subject[3] = 'node.js';
+        console.log(obj4, obj5);
+        /*
+        name: "海绵宝宝", age: 10, subject: Array(4)}age: 10name: "海绵宝宝"subject: (4) ["html", "css", "js", "node.js"]__proto__: Object
+        name: "海绵宝宝", age: 10, subject: Array(4)}age: 10name: "海绵宝宝"subject: (4) ["html", "css", "js", "node.js"]__proto__: Object
+        */
+
+
+
+
+    </script>
+</body>
+
+</html>

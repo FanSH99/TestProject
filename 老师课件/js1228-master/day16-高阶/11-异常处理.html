@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            异常处理:
+                try: 捕获代码块中的异常(尝试执行)
+                catch: 处理异常 (可以用于日志记录等)
+                throw：自定义异常
+                finally: 始终执行的代码。
+        */
+        try {
+            console.log("这瓜保熟吗？");
+            // 调用不存在的函数
+            alert1("保熟");
+            let num = 10;
+            // num.toUpperCase();
+            let age = 110;
+            if (age > 100) {
+                // 自定义异常
+                // throw "年龄不能大于100";
+            }
+            console.log("不气盛叫年轻人");
+        } catch (error) {
+            console.log(error);
+            // 异常的名字
+            console.log(error.name);
+            // 异常的具体信息
+            console.log(error.message);
+        } finally {
+            console.log("记得点赞");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 将数组  ['关羽', '张飞', '程咬金','吕布']  转换为字符串
+        var arr = ['关羽', '张飞', '程咬金', '吕布'];
+
+        let result = '[';
+        for (let i = 0; i < arr.length; i++) {
+            // result = result + '\"' + arr[i] + '\"' + ', ';
+            // console.log(arr[i]);
+            if (i == arr.length - 1) {
+                // console.log(`${arr[i]} 是最后一个元素`);
+                result = result + '\"' + arr[i] + '\"';
+            } else {
+                // console.log(arr[i]);
+                result = result + '\"' + arr[i] + '\"' + ', ';
+            }
+        }
+        result = result + ']'
+        console.log(result);
+    </script>
+</head>
+
+<body>
+    <input id='aa' name="qq">
+    <!-- 键值对，k-v   key  value  -->
+</body>
+
+</html>

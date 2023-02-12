@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月16日16:24:57
+    class App extends React.Component {
+
+        state = {
+            mycontent: "<h2>哈哈哈哈</h2> <img src='https://ts1.cn.mm.bing.net/th?id=ORMS.5860fbf664beb6731e8ccf7d83a44399&pid=Wdp&w=300&h=156&qlt=90&c=1&rs=1&dpr=1.25&p=0' alt='' />"
+        }
+        render() {
+            return (
+                <div>
+                    <h1>dangerouslySetInnerHtml的使用</h1>
+                    {/* 固定写法，名称不能写错，大括号里面两个缸html,注意不要写错。 */}
+                    <div dangerouslySetInnerHTML={
+                        {
+                            __html: this.state.mycontent
+                        }
+                    }>
+                    </div>
+                </div>
+            )
+        }
+        componentDidMount() {
+            console.log("组价你渲染后，可以发送http请求");
+            let xhr = new XMLHttpRequest();
+            // xhr.open("get", "https://apif.java.crmeb.net/api/front/product/detail/356?type=normal");
+            xhr.open("get", `https://apif.java.crmeb.net/api/front/product/detail/2?type=normal`);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.response);
+                    let data = JSON.parse(xhr.response);
+                    this.setState({
+                        mycontent: data.data.productInfo.content
+                    })
+                }
+            }
+        }
+
+    }
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

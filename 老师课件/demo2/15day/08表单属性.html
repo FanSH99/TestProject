@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./07表单的属性.html" method="get" onsubmit="return false">
+       用户名： <input type="text" id="user" value="请输入用户名"><br>
+       密码： <input type="password" id="pwd" placeholder="请输入密码"><br>
+       <input type="radio" name="gender" id="rad">男<input type="radio" name="gender">女<br>
+       <input type="checkbox" name="ah" checked id="cbx">游泳 <input type="checkbox" name="ah">打球<br>
+       <input type="file" id="file"><br>
+       <textarea id="area" cols="30" rows="10"></textarea><br>
+
+       <select  id="slt">
+           <option value="henan">河南省</option>
+           <option selected>河北省</option>
+       </select><br>
+
+         <input type="submit" value="提交" id="btn"  >
+
+    </form>
+<script>
+    //1. 查
+
+    var user= document.querySelector('#user')
+    var pwd= document.querySelector('#pwd')
+    var rad= document.querySelector('#rad')
+    var cbx= document.querySelector('#cbx')
+    var file= document.querySelector('#file')
+    var area= document.querySelector('#area')
+    var slt= document.querySelector('#slt')
+    var btn= document.querySelector('#btn')
+
+     //2. 加事件
+     btn.onclick=function(){
+        // value   checked   （selected）主要关注value     disabled
+        //1 设置属性  （三种）
+         rad.checked=true;
+         btn.disabled=true;// 按钮不可用
+         setTimeout(function(){
+            btn.disabled=false;//可用
+         },1000)
+
+
+        //2 获取属性（三种）
+         var v1= user.value;
+         console.log(v1,typeof v1);//string 类型
+
+         var v2=  pwd.value
+         console.log(v2);
+        // 3. 单选框  复选框 特殊  value 不可以
+        // console.log(rad.value);//on  没有用处 ，value 不能用，用什么？ checked
+       var flag= rad.checked;
+       console.log(flag);//true    false 
+       
+         var flag1= cbx.checked;
+         console.log(flag1);//true    false 
+
+
+         //4. file  textarea    也是value
+         console.log(file.value,area.value);
+
+         //5. select    关注 <option value="hebei">河北</option> <option>河北</option>
+
+         console.log(slt.value);
+
+
+         //6. 按钮
+          
+          console.log(btn.value);
+console.log(btn.disabled);
+          
+
+
+       
+       
+
+
+         
+
+
+
+     }
+
+</script>
+
+</body>
+</html>

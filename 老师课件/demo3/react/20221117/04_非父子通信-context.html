@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    console.log(React)
+    // 创建上下文对象
+    let context = React.createContext();
+    console.log(context)
+    class App extends React.Component {
+        state= {
+            name:"张三",
+            age:""
+        }
+     name: this.state.name, age: this.state.age ,setAge:(age)=>{
+                        this.setState({
+                            age:age
+                        })
+                    }}}>
+                        <One />
+                        <Two />
+                    </context.Provider>
+                </div>
+            )
+        }    render() {
+            return (
+                <div>
+                    我是一个父组件 <button onClick={()=>{
+                        this.setState({
+                            name:"李四"
+                        })
+                    }}>change-name</button>
+                    {
+                        //context.Provider 服务商组件 value表示服务商传递的数据给小费者
+                    }
+                    <context.Provider value={{
+    }
+
+    class One extends React.Component {
+        
+        //消费者组件中必须是一个回调函数 回调函数可以返回组件虚拟dom 因为需要在回调函数中接受服务商推送的消息
+        render() {
+            return (
+                <context.Consumer>
+                    {(user) => {
+                        console.log(user)
+                        return (
+                            <div>
+                                我是一个子组件 {user.name} 
+                                <button onClick={
+                                    ()=>{
+                                        user.setAge(18)
+                                    }
+                                }>向另一个子组件传值</button>
+                            </div>
+                        )
+                    }}
+                </context.Consumer>
+            )
+        }
+    }
+    class Two extends React.Component {
+        render() {
+
+            return (
+                <context.Consumer>
+                    {
+                        (user) => {
+                            return (
+                                <div>
+                                    我也是一个子组件 {user.name}--{user.age}
+                                </div>
+                            )
+                        }
+                    }
+                </context.Consumer>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+</script>
+
+</html>

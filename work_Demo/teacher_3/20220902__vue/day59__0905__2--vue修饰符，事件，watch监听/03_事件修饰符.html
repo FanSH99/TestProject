@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .child {
+            width: 50px;
+            height: 50px;
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            什么是事件冒泡，
+            当点击字标签的时候也会触发父标签。
+        
+        -->
+        <div class="parent" @click="parentHandle">
+            <!--触发了child div事件 触发了parent div事件 -->
+            <div class="child" @click="childHandle()">
+
+            </div>
+            <!-- 触发了child div事件 -->
+        </div>
+        <p></p>
+        <div class="parent" @click="parentHandle">
+            <!-- .stop修饰符用于阻止事件冒泡、 -->
+            <div class="child" @click.stop="childHandle()">
+                <!-- 点击child的时候，同时会触发parent -->
+
+            </div>
+            <!-- 同时阻止多个事件冒泡可以链式调用，用点连接 -->
+
+            <a href="https://www.baidu.com" @click.prevent.stop="goBaiDu">百度一下</a>
+
+        </div>
+        <!-- .prevent修饰符阻止跳转 -->
+        <a href="https://www.baidu.com" @click.prevent="goBaiDu">百度一下</a>
+
+        <!-- .self只有自己元素被触发才会调用。要用到父标签上，也可以用来阻止冒泡 -->
+        <div class="parent" @click.self="parentHandle">
+            <!-- .stop修饰符用于阻止事件冒泡、 -->
+            <div class="child" @click="childHandle()">
+
+            </div>
+        </div>
+        <h1></h1>
+        <!-- 。capture捕获父元素事件，优先执行父元素。 -->
+        <div class="parent" @click.capture="parentHandle">
+            <!--触发了parent div事件 触发了child div事件  -->
+
+            <div class="child" @click="childHandle()">
+
+            </div>
+        </div>
+
+        <div class="parent" @click.capture="parentHandle">
+            <!--触发了parent div事件 触发了child div事件  -->
+
+            <div class="child" @click="childHandle()">
+
+            </div>
+        </div>
+        <!-- once只执行一次。 -->
+        <button @click.once="clickMe">onceclick</button>
+        <!-- ondelclick双击事件。 -->
+        <button @dblclick.once="clickMe">oncedblclick</button>
+        <button @mouseenter.once="clickMe">oncemouseenter</button>
+
+    </div>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+        },
+        methods: {
+            childHandle() {
+                // e.stopPropagation();
+                console.log('触发了child div事件');
+            },
+            parentHandle() {
+                console.log('触发了parent div事件');
+            },
+
+            goBaiDu(e) {
+                /* 原生js阻止跳转动作。 */
+                e.preventDefault();
+            },
+            clickMe() {
+                console.log('我只执行一次，点多少次都是一次');
+            }
+        }
+
+    })
+    /* 原生js中 */
+</script>
+
+</html>

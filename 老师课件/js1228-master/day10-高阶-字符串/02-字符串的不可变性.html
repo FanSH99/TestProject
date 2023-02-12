@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+       var myHero = "貂蝉";
+       myHero = "吕布";
+       /* 
+            1. 字符串的不可变性：当对字符串进行切割，拼接，翻转的时候，原字符串是不会改变,返回新的字符串。
+            2. 操作进行不要出现大量的字符串拼接，产生很多的内存碎片。
+            3. 变量名 = null  内存地址的清空。
+       */
+        for (var i = 0; i < 1000; i++) {
+            myHero = myHero + "123";
+        }
+        console.log(myHero);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

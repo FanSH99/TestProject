@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 晚上的作业题
+
+        //1.
+        // var name1 = 'window对象';// 全局变量
+        // var obj = {
+        //     name1: 'obj对象',
+        //     say: function () {
+        //         console.log(this.name1);//1.'obj对象'
+        //     },
+        //     props: {
+        //         name1: 'props对象',
+        //         run: function () {
+        //             var that = this;
+        //             console.log(this.name1);// 2.'props对象'
+        //     },
+        //     sing: function () {
+        //             var that = this;
+        //             function aa() {
+        //                 console.log(this.name1);//3.'window对象'
+        //             }
+        //             return aa;
+        //         }
+        //     }
+        // }
+        // console.log(obj.say());//4. undefined
+        // obj.props.run();
+        // var nn = obj.props.sing();
+        // nn();// this--指向window
+
+    // 作业：
+        // 2.
+        // function Show(age) {
+        //     this.name1 = "show对象";
+        //     var age = 18;// 局部变量
+        //     this.run = function () {
+        //         console.log(this.age);// age 属性   undefined   undefined
+        //     }
+        // }
+        // var ss = new Show(23);
+        // ss.run();
+        // // var b=ss.run()
+        // // console.log(b);
+        // console.log(ss.run());// undefined
+        // console.log(ss);//Show {name1: 'show对象', run: ƒ}
+
+        // //3.
+        // function show() {
+        //     console.log(name1);
+        //     name1 = 'show对象';// 赋值不会提升
+        //     function name1() {
+        //         console.log(this.name1);
+        //     }
+        //     console.log(name1);
+        // }
+
+
+
+        // var name1 = 'window对象';
+        // show();
+
+
+        function show() {
+            function name1() {
+                console.log(this.name1);
+            }
+            console.log(name1);//ƒ name1() { console.log(this.name1);}
+            name1 = 'show对象';// 赋值不会提升
+           
+            console.log(name1);// 'show对象'
+        }
+        var name1;
+         name1 = 'window对象';
+        show();
+
+
+    //     function show1(){
+    //         console.log('aaa');//'aaaa'
+
+    //     }
+    //     // show1();
+    // // var c=show1();
+    // // console.log(c);// undefined
+    // console.log(show1());
+    </script>
+</body>
+</html>

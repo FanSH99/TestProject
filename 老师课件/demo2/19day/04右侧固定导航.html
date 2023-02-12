@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .right_nav {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 232px;
+            height: 940px;
+            background: url(./images/right-nav.png) no-repeat top -24px right;
+            transition: all 0.5s ease;
+
+        }
+
+        .close {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            display: block;
+            width: 42px;
+            height: 125px;
+            background: url(./images/sprite.png) no-repeat -907px -670px;
+            text-indent: -9999px;
+        }
+
+        .open {
+
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            width: 42px;
+            height: 125px;
+            background: url(./images/sprite.png) no-repeat -955px -670px;
+            text-indent: -9999px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="right_nav">
+        <a href="javascript:;" class="close btn">收起</a>
+    </div>
+
+    <script>
+        // 1.右侧导航正好满屏     right_nav 缩放比例
+        var right_nav = document.querySelector('.right_nav');
+
+        function change() {
+            // 2.获取一个right_nav 高度
+            var h = window.getComputedStyle(right_nav, null).height;
+            console.log(h);//940px
+            h = parseFloat(h)
+            console.log(h);//940
+
+
+            //3. 获取文档内部高度 window.innerHeight  document.documentElement.clientHeight
+            // console.log(window.innerHeight,document.documentElement.clientHeight,document.body.clientHeight);
+
+            var wh = window.innerHeight;
+            console.log(wh);
+
+            //   4.缩放比例     zoom 缩放属性
+            var scale = wh / h;
+            console.log(scale);
+
+            right_nav.style.zoom = scale;
+        }
+
+        change();// 一定提前执行一次  ，刚找开页面，自动有一个比例缩放
+        window.onresize=function(){
+            change();
+        }
+
+        //5.给按钮加事件
+        var btn= document.querySelector('.btn');
+        var flag=1;
+        btn.onclick=function(){
+            if(flag){
+                btn.className='open';
+                right_nav.style.right="-220px"
+                flag=0
+            }else{
+                flag=1;
+                btn.className='close';
+                right_nav.style.right="0px"
+            }
+
+        }
+    </script>
+</body>
+
+</html>

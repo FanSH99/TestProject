@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名器</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+    <script>
+        let temp = '赵荣昌,李浩义,朱宝乾,张家祥,马冉,臧新根,韩欣阳,' +
+            '胡昊,张彪,周昌顺,赵闯,孟令天,焦帅旗,李孟达,陈培栋,吴礼贞,李宝香,' +
+            '李军,韩艳梅,申策文,张伊博,胡延庆,杜飞翔,班建永,王富豪,' +
+            '杨天遇,胡龙飞,郝娅惠,贺欣月,柳丽娟,吕玉林,郭妞妞,何慧,李书琦,' +
+            '曹闯闯,胡俊巍,徐鼎哲,郝晓栋,董晨光,吴昊,张广森,郑舞风,汪曼曼,蒋慧娟,王震江,' +
+            '姚崇,陈振凡,李浩博,王志高,郭浩然,竹强,王子恺,朱超超,李向阳,李克俭,叶召剑,' +
+            '苗雅倩,田刚,刘永光,葛新龙,肖洋威,王超鹏,曹广兵';
+
+        let list = temp.split(',');
+        // 我们想要得到两个数之间的随机整数 并且 包含这2个整数
+        // Math.floor(Math.random() * (max - min + 1)) + min;
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // let index = getRandom(0, list.length);
+        // console.log(list[index]);
+        // alert(list[index]);
+        let ul = document.querySelector('ul');
+
+        for (let i = 0; i < 10; i++) {
+            let index = getRandom(0, list.length - 1);
+            let temp = list[index];
+            let li = $(`<li><h2>${temp}</h2></li>`);
+            $('ul').append(li);
+        }
+
+    </script>
+</body>
+
+</html>

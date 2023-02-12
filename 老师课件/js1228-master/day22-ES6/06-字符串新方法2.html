@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>repeat方法</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		// repeat()：返回新的字符串，表示将字符串重复指定次数返回
+		console.log("say".repeat(2));
+
+		// padStart：返回新的字符串，表示用参数字符串从头部（左侧）补全原字符串。
+		// padEnd：返回新的字符串，表示用参数字符串从尾部（右侧）补全原字符串。
+
+		console.log("h".padStart(5, "o"));  // "ooooh"
+		console.log("h".padEnd(5, "o"));    // "hoooo"
+		console.log("h".padStart(5));      // "    h"
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg | filterMsg("玩乐") }}  {{num | changenum("哈哈哈",'嘿嘿嘿')}}</h1>
+    </div>
+    <div id="box">
+        {{msg | filterMsg("好好")}}
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // vue 过滤器 就是用来过滤处理 {{}} 中的数据
+    // 1. 全局过滤器 可以作用在任意vue实例中 2.局部过滤器 只能作用在当前vue实例中
+    // console.log(Vue)
+    // 定义全局过滤器 参数一 过滤器名称 参数二：执行函数
+    //  过滤器必须将处理后的数据return
+    //  全局过滤器必须定义在vue实例创建之前
+      Vue.filter("filterMsg",(text,value)=>{
+        // text 就是将要处理的数据
+        // value 表示 过滤器传递过来的参数
+        console.log(text,value)
+        let newText =  text.replace("向上",value);
+        return newText
+    })
+     new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习天天向上",
+            num:100000
+        },
+        // 局部过滤器
+        filters:{
+            // changenum 过滤器名称
+           changenum(text,value1,value2){
+            console.log(text,value1,value2)
+            return   text/10000+"万"+value1+value2
+           }
+        }
+     })
+
+     new Vue({
+        el:"#box",
+        data:{
+            msg:"向上少年"
+        }
+     })
+   
+</script>
+</html>

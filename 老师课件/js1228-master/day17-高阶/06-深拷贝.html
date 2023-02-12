@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 深拷贝拷贝多层, 每一级别的数据都会拷贝.
+    let obj = {
+      id: 1,
+      name: "andy",
+      msg: {
+        age: 24,
+      },
+      color: ["red", "purple"]
+    };
+    let target = {};
+
+    // 封装函数
+    function deepCopy(target, obj) {
+      for (let k in obj) {
+        // console.log(k);
+        // 1. 获取了属性值
+        let item = obj[k];
+
+        // 2. 判断数据类型
+        if (item instanceof Array) {
+          // 数组
+          target[k] = [];
+          // target.color = ["red", "purple"];
+          deepCopy(target[k], item);
+        } else if (item instanceof Object) {
+          // 对象
+          target[k] = {};
+          // target[msg] = {
+          //   age: 24,
+          // }
+          deepCopy(target[k], item);
+        } else {
+          // 基本数据类型
+          target[k] = item;
+        }
+      }
+    }
+
+    deepCopy(target, obj);
+    console.log(target);
+    target.msg.age = 99;
+    console.log(obj);
+    console.log('-----------------------');
+    // 只适用于纯 json 对象的深度拷贝
+    let result = JSON.stringify(obj);
+    result = JSON.parse(result);
+    console.log(result);
+
+  </script>
+</body>
+
+</html>

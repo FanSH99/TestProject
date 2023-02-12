@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .wall_r {
+            width: 1px;
+            height: 600px;
+            background-color: black;
+            overflow: hidden;
+            position: absolute;
+            left: 1000px;
+            top: 0;
+        }
+
+        #btn1 {
+            margin-top: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="wall_r"></div>
+    <button id="btn1">向右</button>
+    <button id="btn2">向左</button>
+    <!-- 
+    缓动动画就是让元素运动速度有所变化,最常见的是让速度慢慢停下来
+    思路：
+    让盒子每次移动的距离慢慢变小，速度就会慢慢落下来。
+
+   核心算法：公式  header=header+(end-header)/10
+   
+    1. 速度：（目标值-现在的位置）/ 10做为每次移动的距离步长      
+    2. 停止的条件是：让当前盒子位置等于目标位置就停止定时器
+
+    注意步长值需要取整
+     -->
+    <script>
+        var box = document.querySelector('.box');
+        var btn1 = document.querySelector('#btn1');
+        var btn2 = document.querySelector('#btn2');
+
+        btn1.onclick = function () {
+            // moveRight(box, 1000)
+            move(box,1000,function(){
+                box.style.backgroundColor="blue";
+                box.style.transform='scale(2)';
+                move(box,50,function(){
+                    box.style.backgroundColor="green";
+                })
+
+            })
+        }
+        btn2.onclick = function () {
+            // moveLeft(box, 0)
+            move(box,0)
+        }
+        //   obj 运动的对象   end 结束的位置
+        var timer;
+        // function moveRight(obj, end) {
+        //     // console.log(obj.offsetLeft);
+        //     clearInterval(timer);
+        //    timer= setInterval(function () {
+        //         // (end-header)/10   速度 或者偏移量
+        //         var speed = (end - obj.offsetLeft) / 10;
+        //         speed = Math.ceil(speed)
+        //         console.log('speed=' + speed);
+        //         if(obj.offsetLeft==end){
+        //             clearInterval(timer)
+
+        //         }
+
+        //         var newL = obj.offsetLeft + speed;
+        //         obj.style.left = newL + 'px';
+        //     },15)
+
+        // }
+
+
+        // function moveLeft(obj, end) {
+        //     // console.log(obj.offsetLeft);
+        //     clearInterval(timer);
+        //    timer= setInterval(function () {
+        //         // (end-header)/10   速度 或者偏移量
+        //         var speed = (end - obj.offsetLeft) / 10;
+        //         speed = Math.floor(speed)
+               
+        //         console.log('speed=' + speed);
+        //         if(obj.offsetLeft==end){
+        //             clearInterval(timer)
+
+        //         }
+
+        //         var newL = obj.offsetLeft + speed;
+        //         obj.style.left = newL + 'px';
+        //     },15)
+
+        // }
+
+        // 合在一起    参数部分加一个回调函数callback 声明的一个函数名
+        function move(obj,end,callback){
+            clearInterval(timer);
+           timer= setInterval(function () {
+                // (end-header)/10   速度 或者偏移量
+                var speed = (end - obj.offsetLeft) / 10;
+               speed= speed>0?Math.ceil(speed):Math.floor(speed)
+                console.log('speed=' + speed);
+                if(obj.offsetLeft==end){
+                    clearInterval(timer);
+                    // callback();
+                    // if(callback){
+                    //     callback()
+                    // }
+                    callback&&callback()
+
+                }
+
+                var newL = obj.offsetLeft + speed;
+                obj.style.left = newL + 'px';
+            },15)
+        }
+
+    </script>
+</body>
+
+</html>

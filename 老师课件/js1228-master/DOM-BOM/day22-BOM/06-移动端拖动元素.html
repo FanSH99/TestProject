@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /* 
+            需求: 手指拖动 div 移动 
+
+            div最新位置 = div最初位置 + 移动距离
+            移动的距离  =  触点移动的距离
+            触点移动的距离  =  触点当前坐标 -  触点的起始坐标
+
+            某个触点：e.targetTouches[0]
+            触点的坐标: pageX pageY
+
+            touchstart ：触摸元素  获取到 div 的坐标(最初的位置)，获取到触点初始坐标
+            touchmove :  获取触点的当前坐标
+            touchend :   
+        */
+        let div = document.querySelector('div');
+
+        // 触点的起始坐标
+        let startX = null;
+        let startY = null;
+        // div 的起始位置
+        let divX;
+        let divY;
+
+        div.addEventListener('touchstart', function (e) {
+            // div 的起始位置
+            divX = div.offsetLeft;
+            divY = div.offsetTop;
+            // 触点的起始坐标
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+        });
+
+        div.addEventListener('touchmove', function (e) {
+            // 触点移动时当前坐标
+            let currentX = e.targetTouches[0].pageX;
+            let currentY = e.targetTouches[0].pageY;
+
+            //  触点移动的距离  =  触点当前坐标 -  触点的起始坐标
+            let moveX = currentX - startX;
+            let moveY = currentY - startY;
+
+            // 最新位置 = 最初位置 + 移动距离
+            div.style.left = divX + moveX + 'px';
+            div.style.top = divY + moveY + 'px';
+        });
+    </script>
+</body>
+
+</html>

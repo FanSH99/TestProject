@@ -1,0 +1,13 @@
+{
+    // 编译选项
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "outDir": "js"
+    },
+    // 要编译那些文件
+    "include": [
+        "src/**/*"
+    ],
+    // 不编译那些文件
+    "exclude": []
+}

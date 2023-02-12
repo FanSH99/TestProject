@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+         retrun：
+
+         break
+         contine
+         区别：
+
+     -->
+</head>
+<body>
+    <script>
+        //  1. 计算圆的面积 ，来函数来编程  
+        // 带返回值的函数  return    有两个作用： 1.返回结果   2.结束函数
+
+        // 调用函数，方法一：用变量接收一下，函数的调用结果，再输入变量var area=getArea(10) ; console.log(area)
+              //    方法二：直接输出函数，输出函数调用 console.log(getArea(10))
+
+            function getArea(r){
+                var area=Math.PI*r*r;
+                return area;
+                // console.log('run');// 不再执行了
+            }
+
+        //   var area=  getArea(10);// 调用函数
+        //   console.log(area.toFixed(2));
+
+        console.log(getArea(10));
+
+    //   总结，如果函数内部没有return   ,不能用变量来接收，如果接收了，输出是undefined结果  ，
+    //                                  直接用控制台输出函数调用也不合适，输出是undefined结果
+        function show(a,b){
+            var sum=a+b;    
+        }
+        console.log(show(10,20));// undefined
+        // 等同于下面的两句话
+    //    var sum= show(10,20);
+    //    console.log(sum);
+        
+    </script>
+</body>
+</html>

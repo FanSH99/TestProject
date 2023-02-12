@@ -1,0 +1,2 @@
+<!--components/one/one.wxml-->
+<view class="one">one组件</view>

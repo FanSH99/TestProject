@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <table border="1">
+            <tr>
+                <th>姓名</th>
+                <th>年龄段</th>
+                <th>性别</th>
+            </tr>
+            <!-- <tr :class="{red:index%2==0,blue:index%2!=0"></tr> -->
+            <tr v-for="(item,index) in userList" :key="index" :class="index%2==0?'red':'blue'">
+                <td>{{item.name}}</td>
+                <td v-if="item.age>0 && item.age<10 ">少年</td>
+                <td v-if="item.age>=10&&item.age<18">青年</td>
+                <td v-if="item.age>=18">成年</td>
+                <td>{{item.sex}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月5日09:02:54 */
+
+    new Vue({
+        el: "#app",
+        data: {
+            userList: [
+                {
+                    name: "白浅",
+                    age: 18,
+                    sex: "女"
+                },
+                {
+                    name: "海绵宝宝",
+                    age: 12,
+                    sex: "男"
+                },
+                {
+                    name: "派大星",
+                    age: 9,
+                    sex: "男"
+                },
+                {
+                    name: "蟹老板",
+                    age: 37,
+                    sex: "男"
+                },
+                {
+                    name: "珊迪",
+                    age: 19,
+                    sex: "女"
+                }
+            ]
+        }
+    })
+</script>
+
+</html>

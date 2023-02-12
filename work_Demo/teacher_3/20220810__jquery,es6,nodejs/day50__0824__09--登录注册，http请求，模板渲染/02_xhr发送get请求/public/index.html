@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <!-- 2022年8月24日10:20:31 -->
+    <h1>原生js发送http请求</h1>
+    <button onclick="xhrGet()">热映</button>
+    <button onclick="xhrGetParms() ">待映</button>
+    <div class="box"></div>
+</body>
+
+<script>
+    xhrGet();
+    function xhrGet() {
+        // 创建请求实例
+        let xhr = new XMLHttpRequest();
+        console.log(xhr);
+        // 设置请求方式和请求地址  ---参数1，请求方式，参数2请求地址
+        xhr.open("get", "/hot/movie");
+        // 发送请求
+        xhr.send();
+        // 监听http请求状态码改变
+        xhr.onreadystatechange = () => {
+            console.log(xhr.readyState);
+            /*   状态码一共有5中， 
+            0 表示当前实例已经初始化完毕但open方法没有调用。
+            1 表示open方法已调用，但send方法还没有发送请求
+            2 已经发送请求，即send方法已调用，服务端已经接收到前端请求，但是没有返回数据。
+            3 后端开始给客户端返回数据，但是数据还没有完全返回
+            4 后端已经完全返回给前端数据，请求已经结束
+            */
+            if (xhr.readyState === 4) {
+                // 请求成功，数据已经完全返回到前端。
+                // 获取服务端返回的数据
+                let res = xhr.response;
+                res = JSON.parse(res);
+                console.log(res);
+                document.querySelector('.box').innerHTML = `<div>
+                    <img src=${res.url}/>
+                    <p>${res.name}</p>
+                    <div>`
+            }
+        }
+    }
+
+
+    function xhrGetParms() {
+        let type = 2;
+        let xhr = new XMLHttpRequest();
+        xhr.open("get", `/hot/movie?mytype=${type}&name=张三`);
+        xhr.send();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                let res = xhr.response;
+                res = JSON.parse(res)
+                document.querySelector('.box').innerHTML = `<div>
+                    <img src=${res.url}/>
+                    <p>${res.name}</p>
+                    <div>`
+            }
+        }
+    }
+
+
+    // 请求地址也可以用别人的地址。
+    // ajax是jquery封装的方法
+
+
+</script>
+
+</html>

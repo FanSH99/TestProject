@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // call 方法: 1. 修改 this 指向; 2. 调用函数
+        let hero = {
+            name: '刘备',
+            age: 22,
+            game: function (skill) {
+                console.log('英雄的坐骑是： ' + skill);
+                console.log(this);
+            }
+        }
+
+        let lvbu = {
+            name: '吕布',
+            age: 18
+        }
+
+        hero.game("的卢马");
+        hero.game.call(lvbu,"赤兔马");
+        // 不传任何参数，则默认为将this指向修改为 windows
+        hero.game.call(null,"赤兔马");
+
+        // 总结：lvbu 调用了 hero 的方法(某个人做了某件事)
+
+    </script>
+</body>
+
+</html>

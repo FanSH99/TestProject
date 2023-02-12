@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div>
+
+     </div>
+     <p></p>
+</body>
+<script src="./js/template.js"></script>
+<!-- 定义html渲染模板 -->
+<script id="tem" type="text/html">
+    <h1>{{name}}</h1>
+    <h2>{{sex}}</h2>
+    <!-- each 用来遍历数组 后面跟要遍历的数据 item表示遍历得到的每一项 index为索引 -->
+     {{each like value index}}
+      <h3>{{value}}----------{{index}}</h3>
+     {{/each}}
+     {{if age>18}}
+     <h4>成年</h4>
+     {{else}}
+    <h4>未成年</h4>
+    {{/if}}
+</script>
+<script id="msg" type="text/html">
+    <h1>{{msg}}</h1>
+</script>
+<script>
+    let obj = {
+        name:"张三",
+        sex:"男",
+        like:["打游戏","敲代码","k哥"],
+        age:19
+    }
+    // 获取动态模板标签字符串 参数一html模板id 参数二 将要渲染到模板上得数据 必须为对象 在模板可以直接使用{{}} 渲染对象中的属性
+    let html = template("tem",obj);
+    console.log(html)
+    document.querySelector("div").innerHTML = html;
+
+    let p = template("msg",{msg:"好好学习天天向上"})
+    document.querySelector("p").innerHTML= p;
+</script>
+</html>

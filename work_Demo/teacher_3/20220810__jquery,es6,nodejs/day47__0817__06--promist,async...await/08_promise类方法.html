@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日10:48:30
+     -->
+</body>
+<script>
+    let p = new Promise((reslove, reject) => {
+        reslove("success,1,白浅喜欢夜华")
+    })
+    let p1 = new Promise((reslove, reject) => {
+        reslove("success,2,派大星喜欢海绵宝宝")
+    })
+    let p2 = new Promise((reslove, reject) => {
+        reject("err,3,张楚岚喜欢冯宝宝")
+    })
+    console.log(p, p1, p2);//Promise {<fulfilled>: 'success,1,白浅喜欢夜华'}
+    // all方法只要有一个失败就返回失败。
+    console.log("---------p,p1,p2-------------");
+    Promise.all([p, p1, p2]).then(res => {
+        console.log(res);
+    }).catch((err) => {
+        console.log(err);//success,3,张楚岚喜欢冯宝宝
+    })
+
+    // race只要找到一个成功的就返回成功，只会使用第一个状态。如果第一个成功就成功，否则就失败。
+    console.log("----------p1, p, p2-----------");
+    Promise.race([p1, p, p2]).then(res => {
+        console.log(res + "---------------race.success");//success,2,派大星喜欢海绵宝宝---------------race.success
+    }).catch((err) => {
+        console.log(err + "---------------race.err");
+    })
+
+    // resolve方法直接将promise转为成功状态
+    Promise.resolve("hhhhhhhhhh").then(res => {
+        console.log(res + "----------------reslove");//hhhhhhhhhh----------------reslove
+    })
+    // reject方法直接将promise转为失败状态
+    Promise.reject("失败失败").catch((err) => {
+        console.log(err + "------------------reject,err");//失败失败------------------reject,err
+    })
+
+</script>
+
+</html>

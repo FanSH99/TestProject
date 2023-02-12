@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        main{
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+     <!-- 页面头部内容 -->
+    <header>
+        <div class="header_main">
+            <div class="header_left">
+                北游论坛
+            </div>
+            <div class="header_right">
+                <!-- <div>
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div> -->
+                <div>
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div>
+            <input type="file" accept="*" class="file">
+        </div>
+        <br>
+
+        <div>
+            <button onclick="upload()">上传</button>
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.js"></script>
+<script>
+    // 读取本地存储的用户信息
+    let userInfo = localStorage.getItem("userInfo");
+    if(!userInfo){
+        // 跳转到登录页面
+        window.location.href = './login.html'
+    }
+    userInfo = JSON.parse(userInfo);
+    let username = userInfo.username;
+    // 获取当前选中的文件对象信息
+    let data = new FormData();
+    data.append("username",username)
+    $(".file").change((e)=>{
+       data.append("myphoto",e.target.files[0])
+    })
+    function upload(){
+        let myphoto = data.get("myphoto");
+        console.log(myphoto)
+        if(!myphoto){
+            alert("请您选择图片")
+            return
+        }
+        $.ajax({
+            url:"/user/upload",
+            method:"post",
+            data:data,
+            processData:false,
+            contentType:false,
+            success(res){
+                console.log(res)
+                if(res.code==0){
+                    window.location.href = '/'
+                }
+            }
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #222;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #222;
+            text-align: center;
+            height: 50px;
+        }
+
+        caption {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 表格中的数据 ，增  改，删  查 
+     动态添加一个表格
+    -->
+    <script src="./js/data1.js"></script>
+    <script>
+        //1.table
+        var tab = document.createElement('table');
+        //    console.log(tab);
+        //2. caption
+        var cap = document.createElement('caption');
+        //2.1  加字  innerHTML    innerText
+        cap.innerHTML = '学生信息表';
+        tab.appendChild(cap);
+
+        //3.thead
+
+        var thead = document.createElement('thead');
+        var thead_tr = document.createElement('tr');
+        var thead_td1 = document.createElement('th');
+        thead_td1.innerHTML = 'ID'
+
+        var thead_td2 = document.createElement('th');
+        thead_td2.innerHTML = '姓名'
+
+        var thead_td3 = document.createElement('th');
+        thead_td3.innerHTML = '年龄'
+        var thead_td4 = document.createElement('th');
+        thead_td4.innerHTML = '<span>操作</span>';
+
+        thead_tr.appendChild(thead_td1);
+        thead_tr.appendChild(thead_td2);
+        thead_tr.appendChild(thead_td3);
+        thead_tr.appendChild(thead_td4);
+        thead.appendChild(thead_tr);
+        tab.appendChild(thead);
+
+        //4. tbody
+        var tbody = document.createElement('tbody');
+        // 添加数据
+        // 外层循环控制行数  tr
+          for(var i=0;i<stuinfo.length;i++){
+            var tr= document.createElement('tr');
+               // 内层循环 控制列数   单元格的个数
+               for(var j in stuinfo[i]){
+                var td= document.createElement('td');
+                td.innerHTML=stuinfo[i][j];
+                tr.appendChild(td);
+               }
+               // 创建第四个单元格
+             var td4=document.createElement('td');
+               var link=  document.createElement('a');
+                link.href='javascript:;';
+                link.innerHTML='删除';
+
+                link.onclick=function(){
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                }
+               td4.appendChild(link);
+               tr.appendChild(td4);
+                
+            tbody.appendChild(tr);
+
+          }
+
+      
+        tab.appendChild(tbody)
+        document.body.appendChild(tab);
+
+        
+    </script>
+
+    
+</body>
+
+</html>

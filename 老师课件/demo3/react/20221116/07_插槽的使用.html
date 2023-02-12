@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header,footer{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            background-color: red;
+        }
+        footer{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    class App extends React.Component{
+        render(){
+            return (
+                <div>
+                    <h1>插槽的使用</h1>    
+                    <Child>
+                        <header>
+                           我是头部
+                        </header>
+                         <footer>我是底部内容</footer>
+                         <Son/>
+                    </Child>
+                </div>
+            )
+        }
+    }
+    class Child extends React.Component{
+        render(){
+            console.log(this)
+            return (
+                <div>
+                    {
+                        // 使用this.prpos.children获取插槽内容
+                        //若组件内部有多个结构那么this.props.children就是存放每一个虚拟dom的数组
+                    }
+                    {this.props.children[0]}
+                    <h5>我是一个子组件</h5>
+                    {this.props.children[1]}
+                    {
+                        this.props.children[2]
+                    }
+                </div>
+            )
+        }
+    }
+    class Son extends React.Component{
+        render(){
+            return(
+                <div>son组件</div>
+            )
+        }
+    }
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

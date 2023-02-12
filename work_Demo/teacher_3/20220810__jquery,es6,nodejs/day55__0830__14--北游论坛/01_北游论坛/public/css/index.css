@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.pinglun{
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.pinglun img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.list_pl{
+    border-top: 1px dotted #b4b4b4;
+}
+.pinglun .right{
+    padding-left: 20px;
+}
+.right .username{
+    font-size: 20px;
+    color: blue;
+}
+.right .right_content{
+    font-size: 14px;
+    color: #8c8c8c;
+    margin-top: 5px;
+}
+
+.right .time{
+    font-size: 13px;
+    margin-top: 5px;
+    color: #8c8c8c;
+}
+.search{
+    width: 300px;
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 30px;
+    padding: 0 10px;
+    outline: none;
+    border: none;
+    color: #333 !important;
+}

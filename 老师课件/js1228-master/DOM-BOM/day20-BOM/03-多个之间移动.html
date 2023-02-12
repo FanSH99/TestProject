@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        span {
+            /* 动画一定要加定位 */
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn500'>移动到500</button>
+    <button id='btn800'>移动到800</button>
+    <div>一路向北</div>
+    <script>
+        /* 
+            1. 判断的定时器停止，等于目标位置。
+            2. 如果小于0，要向下取整。比如，-0.9，向下取整是 -1。
+        */
+        var btn500 = document.querySelector('#btn500');
+        var btn800 = document.querySelector('#btn800');
+        var div = document.querySelector('div');
+
+        btn500.addEventListener('click', function () {
+            animate(div, 500);
+        });
+        btn800.addEventListener('click', function () {
+            animate(div, 800);
+        });
+
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(() => {
+                let left = obj.offsetLeft;
+                if (left == target) {
+                    clearInterval(obj.timer);
+                    return;
+                }
+                // 步长 = (目标位置 - 当前位置) / 10
+                let step = target - left;
+                step = step / 10;
+                // 向上取整,向下取整。
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                obj.style.left = left + step + "px";
+            }, 200);
+        }
+    </script>
+</body>
+
+</html>

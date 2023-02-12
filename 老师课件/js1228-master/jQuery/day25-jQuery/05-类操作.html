@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            /* 过渡 */
+            transform: all 0.5s;
+        }
+
+        .current {
+            background-color: saddlebrown;
+            /* 旋转 */
+            transform: rotate(360deg);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="current"></div>
+    <button>添加类</button>
+    <button>删除类</button>
+    <button>切换类</button>
+    <script>
+        //  let div = document.querySelector('div');
+        //  div.classList.add('one');
+        
+        $('button').eq(0).click(function () {
+            $('div').addClass('one');
+        });
+
+        $('button').eq(1).click(function () {
+            $('div').removeClass('one');
+        });
+
+        $('button').eq(2).click(function () {
+            $('div').toggleClass('one');
+        });
+    </script>
+</body>
+
+</html>

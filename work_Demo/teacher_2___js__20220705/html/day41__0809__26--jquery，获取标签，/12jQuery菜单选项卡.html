@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tab_box {
+            width: 500px;
+            height: 500px;
+        }
+
+        .tab_tit {
+            width: 500px;
+            height: 50px;
+            background: aquamarine;
+        }
+
+        .tab_tit li {
+            float: left;
+            width: 60px;
+        }
+
+        .tab_tit li.active,
+        .tab_tit li:hover {
+            color: rgb(253, 95, 95);
+        }
+
+        .tab_tit {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月9日15:09:57
+     -->
+
+    <div class="tab_box">
+        <ul class="tab_tit">
+            <li class="item active"> 音频 </li>
+            <li class="item">视频</li>
+            <li class="item">图片</li>
+        </ul>
+        <div class="tab_tit">
+            <div class="item dis">音频内容</div>
+            <div class="item">视频内容</div>
+            <div class="item">图片内容</div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.tab_tit>li').on('click', function () {
+                var idx = $(this).index();
+                $(this).addClass('active').siblings('li').removeClass('active')
+            })
+
+            $('.tab_con>.undis').eq(idx).addClass('dis').siblings().removeClass('dis')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //     6、穷举的例子
+    //    公鸡3块钱一只，母鸡2块钱一只，小鸡5毛一只，小明有100块钱，问：花光所有的钱，有多少种购买组合。
+    /* 
+     公鸡   0    ~33只
+     母鸡   0    ~ 50只
+     小鸡  0    ~ 200只
+    */
+   var count=0;
+    for(var gj=0;gj<=33;gj++){
+        for(var mj=0;mj<=50;mj++){
+            for(var xj=0;xj<=200;xj++){
+                if(gj*3+mj*2+xj*0.5==100){
+                    // document.write('gj='+gj+'只','mj='+mj+'只','xj='+xj+'只');
+                    // document.write('<br>');
+                    count++;
+                }
+            }
+            
+        }
+
+    }
+    document.write(count);//884
+    </script>
+</body>
+</html>

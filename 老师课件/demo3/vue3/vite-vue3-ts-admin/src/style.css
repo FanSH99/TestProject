@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.login .content .el-button{
+  width: 100%;
+}
+.el-container{
+  height: 100vh;
+}
+.el-aside{
+  background-color: #304156;
+  transition: 0.5s;
+}
+.el-header{
+  /* height: 50px; */
+  --el-header-height:50px !important; 
+  background-color: #f1f1f1;
+}
+.el-menu{
+  border-right: none !important;
+}
+.table{
+  margin-top: 15px;
+}
+.page{
+  background-color: #ffff;
+  padding: 10px 0;
+}

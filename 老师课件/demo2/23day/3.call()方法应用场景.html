@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        call应用场景 
+        构造函数的继承
+     -->
+     <script>
+        function Perosn(name,age){
+            this.name=name;
+            this.age=age;
+            this.say=function(){
+                console.log('saying');
+            }
+        }
+        function Student(name,age,no,gender){
+             Perosn.call(this,name,age);
+            // Perosn.apply(this,[name,age])
+             this.no=no;
+             this.gender=gender;
+             this.test=function(){
+                console.log('testing');
+             }
+
+        }
+
+       var s1= new Student('赵一泽',18,'1001','女');
+       console.log(s1.name,s1.age,s1.no,s1.gender);
+       s1.say();
+       s1.test();
+     </script>
+</body>
+</html>

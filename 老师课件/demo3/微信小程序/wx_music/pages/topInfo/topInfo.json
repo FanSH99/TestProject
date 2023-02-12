@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "myheader":"../../components/topInfo/headerBg/header",
+        "myloading":"../../components/loading/loading"
+    }
+}

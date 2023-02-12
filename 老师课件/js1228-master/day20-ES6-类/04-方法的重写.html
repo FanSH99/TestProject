@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Father {
+            constructor(address, age) {
+                this.address = address;
+                this.age = age;
+            }
+            play() {
+                console.log('Father 喜欢看报纸------');
+            }
+        }
+
+        class Son extends Father {
+            // 1. 对父类的方法进行了重写 override
+            play() {
+                console.log('son 喜欢玩电脑游戏-----');
+            }
+            // 2. 子类扩展了自己特有的方法
+            ball() {
+                console.log('son 打网球----');
+            }
+        }
+
+        let s = new Son('开封', 18);
+        console.log(s);
+        // 3. 调用的时候，就近原则
+        s.play();
+        s.ball();
+
+
+    </script>
+</body>
+
+</html>

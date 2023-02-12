@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+        <div id="app">
+            <table border="1">
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄段</th>
+                    <th>性别</th>
+                </tr>
+                <!-- <tr v-for="(item,index) in userList" :key="index" :class="index % 2==0?'red':
+                'blue'">
+                    <td>{{item.name}}</td>
+                    <td v-if="item.age>0 && item.age<10">少年</td>
+                    <td v-else-if="item.age>=10 && item.age<18">青年</td>
+                    <td v-else>成年</td>
+                    <td>{{item.sex}}</td>
+                </tr> -->
+                <tr v-for="(item,index) in userList" :key="index" :class="{red:index%2==0,blue:index%2!=0}">
+                    <td>{{item.name}}</td>
+                    <td v-if="item.age>0 && item.age<10">少年</td>
+                    <td v-else-if="item.age>=10 && item.age<18">青年</td>
+                    <td v-else>成年</td>
+                    <td>{{item.sex}}</td>
+                </tr>
+            </table>
+        </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    
+    new Vue({
+        el:"#app",
+        data:{
+            userList:[
+                {
+                    name:"张三",
+                    age:12,
+                    sex:"男"
+                },{
+                    name:"李四",
+                    age:18,
+                    sex:"男"
+                },{
+                    name:"王红",
+                    age:8,
+                    sex:"女"
+                },{
+                    name:"小利",
+                    age:20,
+                    sex:"女"
+                }
+            ]
+        }
+    })
+
+</script>
+</html>

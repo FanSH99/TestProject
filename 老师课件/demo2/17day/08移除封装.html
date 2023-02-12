@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ele    eventName   fn 
+    removeEventListener(eventName,fn,false) 第三个参数是false
+    -->
+
+    <button id="add">增加</button> <button id="remove">移除事件</button>
+    <script>
+        // 增加事件的封装
+        function addEventListener(ele, eventName, fn) {
+            if (ele.addEventListener) {
+                ele.addEventListener(eventName, fn)
+            } else if (ele.attachEvent) {
+                ele.attachEvent('on' + eventName, fn)
+            } else {
+                ele['on' + eventName] = fn
+            }
+
+        }
+        //  移除事件 封装好的函数
+        function removeEventListener(ele, eventName, fn) {
+            if (ele.removeEventListener) {
+                ele.removeEventListener(eventName, fn)
+            } else if (ele.detachEvent) {
+                ele.detachEvent('on' + eventName, fn)
+            } else {
+                ele['on' + eventName] = null
+            }
+
+        }
+
+
+        var add = document.querySelector('#add');
+        var remove = document.querySelector('#remove');
+
+        addEventListener(add,'click',show)
+        addEventListener(add,'mouseover',function(){
+            console.log('over');
+        })
+        addEventListener(add,'mouseout',function(){
+            console.log('out');
+        })
+
+        function show(){
+            console.log('click');
+        }
+
+        addEventListener(remove,'click',function(){
+            
+            removeEventListener(add,'click',show)
+
+        })
+
+    </script>
+</body>
+
+</html>

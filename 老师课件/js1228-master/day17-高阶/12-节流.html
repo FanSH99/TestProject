@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 节流：减少一段时间的触发频率
+
+        let div = document.querySelector("div");
+
+        div.onmousemove = move;
+        let temp = throttle(move, 1000);
+        div.onmousemove = temp;
+
+        function move(e) {
+            div.innerHTML = "x : " + e.pageX + "  ; y: " + e.pageY;
+            console.log(this);
+            console.log(e);
+        }
+
+        // 每次执行都要调用函数，同时判断时间间隔，因此需要闭包
+        function throttle(fn, interval) {
+            let begin = 0;
+            return function () {
+                // 当前时间戳
+                let cur = new Date().getTime();
+                let temp = cur - begin;
+                console.log(temp);
+                if (temp > interval) {
+                    fn.call(this, ...arguments);
+                    // 重新计时
+                    begin = cur;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

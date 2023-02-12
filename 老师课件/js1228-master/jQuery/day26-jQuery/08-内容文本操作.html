@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <span>我是内容</span>
+    </div>
+    <div id="jay"></div>
+    <div id="eason"></div>
+    <input type="text" value="请输入内容">
+    <script>
+        // 1. 读操作
+        console.log($('div').html());
+        console.log($('div').text());
+
+        // 2. 赋值
+        $('#jay').html('<strong>富士山下</strong>');
+        $('#eason').text('<strong>富士山下</strong>');
+
+        // 3. 表单值的读写
+        let value = $('input').val();
+        console.log(value);
+        $('input').val('K歌之王');
+    </script>
+</body>
+
+</html>

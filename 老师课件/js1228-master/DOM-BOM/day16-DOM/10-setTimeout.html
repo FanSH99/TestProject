@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击停止定时器</button>
+    <script>
+        /* 
+            清除定时器：
+            clearTimeout(定时器的名字);
+        */
+        console.log(`安装了炸弹`);
+        let timer = setTimeout(function () {
+            console.log(`炸弹爆炸了`);
+        }, 5000);
+
+        let button = document.querySelector('button');
+        button.addEventListener('click', function () {
+            console.log(`点击，拆除了炸弹`);
+            clearTimeout(timer);
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 4、录入五个学生的成绩，输出其中的最高分（用函数实现）
+        //     function getMax() {
+        //         //1. 生成一个数组
+        //         var arr = [];// 空数组
+        //         for (var i = 0; i < 5; i++) {
+        //             var score = +prompt('请录入学生成绩');
+        //             arr[i] = score;
+
+        //         }
+        //         console.log(arr);
+        //         //2. 求最组中的最大值
+        //         var max = arr[0]
+        //         for (var j = 0; j < arr.length; j++) {
+        //             if (max < arr[j]) {
+        //                 max = arr[j];
+        //             }
+
+        //         }
+        //         //3. 返回最大值
+        //         return max;
+        //     }
+        //  var max=   getMax();
+        //  console.log(max);
+
+
+        // function getMax(score1, score2, score3, score4, score5) {
+        //     // 假如 第一个是最大值
+        //     var max = score1;
+        //     if (max < score2) {
+        //         max = score2;
+        //     }
+        //     if (max < score3) {
+        //         max = score3;
+        //     }
+        //     if (max < score4) {
+        //         max = score4;
+        //     }
+        //     if (max < score5) {
+        //         max = score5;
+        //     }
+        //     return max;
+        // }
+        // var num1 = prompt('请输入第一个分数')
+        // var num2 = prompt('请输入第二个分数')
+        // var num3 = prompt('请输入第三个分数')
+        // var num4 = prompt('请输入第四个分数')
+        // var num5 = prompt('请输入第五个分数')
+        // var max = getMax(num1, num2, num3, num4, num5);
+        // console.log(max);
+
+        // 5、判断数字是否为偶数，判断数字是否为奇数（函数实现）
+        //  function getNum(num){
+        //      var str='';
+        //      if(num%2==0){
+        //         str=num+'是偶数'
+        //      }else if(num%2==1){
+        //         str=num+'是奇数'
+        //      }
+        //      return str;
+
+        //  }
+
+        // function getNum(num) {
+
+        //     if (num % 2 == 0) {
+        //         return num + '是偶数'
+        //     } else if (num % 2 == 1) {
+        //         return num + '是奇数'
+        //     }
+
+
+        // }
+        // console.log( getNum(50));
+        // console.log( getNum(45));
+
+        // 6、用代码实现输出日期，日期格式为 yyyy-mm-dd(用函数实现);
+        // function getDate() {
+        //     var date = new Date();
+        //     var y = date.getFullYear();
+        //     var m = date.getMonth() + 1;
+        //     var d = date.getDate();
+        //     // 一位数转为两位数
+        //     m = m < 10 ? '0' + m : m;
+        //     d = d < 10 ? '0' + d : d;
+        //     //  字符串拼接
+        //     var str = y + '-' + m + '-' + d;
+        //     return str;
+        // }
+        // console.log(getDate());
+
+        // 7、求取某个日期是星期几（例如：2017/9/25）（用函数实现）
+        function demo7(date) {
+            var date = new Date(date);
+            var week = date.getDay();
+            // var arr=['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+            //  week=  arr[week]
+            switch (week) {
+                case 0:
+                    week = '星期日';
+                    break;
+                case 1:
+                    week = '星期一';
+                    break;
+                case 2:
+                    week = '星期二';
+                    break;
+                case 3:
+                    week = '星期三';
+                    break;
+                case 4:
+                    week = '星期四';
+                    break;
+                case 5:
+                    week = '星期五';
+                    break;
+                case 6:
+                    week = '星期六';
+                    break;
+            }
+            return week;
+        }
+        console.log(demo7('2017/9/25'));
+     
+    </script>
+</body>
+
+</html>

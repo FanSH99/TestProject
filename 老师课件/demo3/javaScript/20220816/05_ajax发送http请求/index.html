@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="cate">获取博客分类</button>
+    <button class="post">ajax发送post请求</button>
+    <button class="json">获取json数据</button>
+    <button class="speack">张三说啥？</button>
+
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    $(".cate").click(()=>{
+        $.ajax({
+            // 请求地址 get请求请求参数拼接到请求路径上传递给后端
+            url:"http://106.12.150.223:8000/v1_0/channels",
+            // 请求方法 get post delete put ...
+            method:"get",
+            // 请求成功后的回调函数
+            success:(res)=>{
+                console.log("请求成功了")
+                // 请求到的数据
+                console.log(res)
+            },
+            // 请求失败的回调函数
+            error:(err)=>{
+                console.log(err)
+            }
+        })
+        console.log("开始请求了")
+        // 请求状态码 200 请求成功 201创建成功 301请求从定向 401为授权 404 找不到请求地址 500 后端报错
+        // ajax请求是一个异步的过程
+    })
+
+    $(".post").click(function(){
+        $.ajax({
+            url:"https://api.it120.cc/xiaochengxu/shop/goods/list",
+            // 请求方式是由后端定义的
+            method:"post",
+               // 请求成功后的回调函数
+               success:(res)=>{
+                console.log("请求成功了")
+                // 请求到的数据
+                console.log(res)
+            },
+            // 请求失败的回调函数
+            error:(err)=>{
+                console.log(err)
+            }
+        })
+    })
+
+    $(".json").click(function(){
+        $.ajax({
+            url:"./text.json",
+            // method:"get"
+            success:(res)=>{
+                console.log(res)
+            }
+        })
+    })
+    //  promise  解决异步回调地狱问题？
+    $(".speack").click(function(){
+        $.ajax({
+            url:"./list.json",
+            success:(res)=>{
+                // 获取张三id
+                $.ajax({
+                    url:"./msg.json",
+                    success:(data)=>{
+                        console.log(data)
+                        $.ajax({
+                            url:"",
+                            success:()=>{
+
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    })
+</script>
+</html>

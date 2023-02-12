@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue插槽</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- props用来接收插槽传递的数据，是一个队形，自定的名称，比如可以写作myprops -->
+        <my-component v-slot="props">
+            <h1>我是一个普通的插槽，我想用组件中的数据。{{props}}----{{props.msg}}</h1>
+        </my-component>
+    </div>
+
+    <template id="mycom">
+
+        <div class="box">
+            <!-- vue内置组件--slot组件，用来接收组件中所携带的内容，插槽组件 
+            组件内部所携带的内容，合适展示展示到那里，都是由slot来决定的。
+            默认所有携带的内容会展示到一块
+            -->
+            <h1> 我是一个组件 </h1>
+            <!-- 在插槽组件上绑定一个自定义属性， -->
+            <slot :msg="msg" :mytitle="title"></slot>
+
+
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月9日15:39:50 */
+
+    let myComponent = {
+        template: "#mycom",
+        data() {
+            return {
+                msg: "时光追不上白马",
+                title: "等一束阳光"
+            }
+        }
+    }
+    new Vue({
+        el: "#app",
+
+        components: {
+            myComponent,
+        }
+
+    })
+</script>
+
+</html>

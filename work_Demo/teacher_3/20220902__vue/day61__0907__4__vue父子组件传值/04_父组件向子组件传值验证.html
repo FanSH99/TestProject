@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            width: 100%;
+            height: 300px;
+            background: red;
+            color: #fff;
+        }
+
+        .child {
+            width: 300px;
+            height: 100px;
+            background: green;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <!-- 父组件模板 -->
+    <template id="parent">
+        <div class="parent">
+            <h1>我是父组件{{num}}</h1>
+            <child :mynum="num" :msg="msg" :message="message"></child>
+
+        </div>
+    </template>
+    <!-- 子组件模板 -->
+    <template id="child">
+        <div class="child">
+            <h4>我是子组件{{mynum}}</h4>
+            <h5>{{msg==''?"我是默认值":msg}}</h5>
+            <h6>{{message}}</h6>
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+
+<script>
+    /* 2022年9月7日14:38:59 */
+    let child = {
+        template: "#child",
+        /* props可以接受任意数据类型 */
+        // props: ["mynum"]
+        props: {
+            //  规范自定义属性数据类型 ，如果类型不一致会报错，注意要求高版本的，低版本不报错。（2.2不可使用不会报错，2.7可以）
+            mynum: Number,
+            msg: String,
+            message: {
+                type: String,
+                /* 如果不传递message或者传的值为undefined 则为其设置默认值。默认值比如有return返回。*/
+                default: function () {
+                    return "哈哈哈哈"
+                }
+            }
+        }
+    }
+    let parent = {
+        template: "#parent",
+        components: {
+            child,
+        },
+        data() {
+            return {
+                num: 0,
+                msg: "",
+                message: undefined
+            }
+        }
+    }
+
+    new Vue({
+        el: "#app",
+        components: {
+            parent,
+        },
+    })
+
+</script>
+
+</html>

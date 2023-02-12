@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+// 2022年11月15日23:36:43
+    class App extends React.Component {
+
+        constructor() {
+            super();
+            this.state = {
+                num: 0,
+                name: "白浅",
+                age: 19,
+            }
+        }
+        render() {
+            console.log("调用渲染啦");
+            return (
+                <div>
+                    <h1>setState属性</h1>
+                    <p>{this.state.name}--{this.state.age}--{this.state.num}</p>
+                    <button onClick={() => {
+                        // console.log(this.state.name);
+                        this.state.num++;
+                        {/* this.setState如果什么都不传不调用，否则每次都调用 */ }
+                        {/* 传递一个空对象后每次数据改变视图也更新 */ }
+                        this.setState({});
+                    }}>调用</button>
+                    <button onClick={this.changeData.bind(this)}>改变name和num</button>
+                    <button onClick={() => { this.setHand() }}>调用setState</button>
+                </div>
+            )
+        }
+        changeData() {
+            // 虽然写了多个this.setState,但是this.setState只调用一次,异步setState
+            this.setState({
+                num: this.state.num + 1,
+            }, () => {
+                // 更新成功后进入回调
+                console.log(this.state.num);
+            })
+            this.setState({
+                name: "李四",
+            })
+            this.setState({
+                age: 20
+            })
+        }
+        setHand() {
+            // 同步setState,这里setState会调用两次，render会调用两次。
+            setTimeout(() => {
+                this.setState({
+                    name: "流星雨"
+                })
+                this.setState({
+                    age: 21
+                })
+                console.log(this.state.name);
+            }, 1000)
+        }
+    }
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+    /*
+    react渲染过程
+    1.class类组件通过调用render方法生成虚拟dom
+    2.虚拟dom交给reactDOM中的render()方法进行处理
+    3.将虚拟dom转化为真实dom,更新到浏览器
+    4.只要使用setState({})，每次更新数据，render()方法便会调用一次。会生成一个新的虚拟dom树
+    */
+
+    /*
+    setState特性：
+    1.没有调用setState，则render之执行一次，
+    2.setState中什么都不传递，则render不再次调用。
+    3.调用setState后，每次数据更新视图就会更新，并且render会调用一次
+    4.同一个业务逻辑中react会自动将多个setState合并更新，多个setState被调用也只是调用一次render，利于性能优化
+    5.setState参数一是要更新的数据，可以为{}或者具体要更新的数据，不写不调用，参数二十更新完成的回调函数
+    6.setState可以是同步的，也可以是异步的。
+    当事件受react控制即为异步。
+    当事件不受react控制即为同步。例如计时器，原生事件，监听中的setState即为同步
+    7.如果setState在非react控制的事件中使用时，不会将多个setState合并更新，即多个setState会调用多次render
+    */
+
+</script>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    let { useReducer } = React;
+    // 参数一 状态 参数二 dispatch传递的参数
+    let reducer = (state, action) => {
+        switch (action) {
+            case "add":
+                return {
+                    num: state.num + 1,
+                    msg: "好好学习天天向上"
+                };
+                break;
+            case "jian":
+                return {
+                    num: state.num - 1,
+                };
+                break;
+            case "ten":
+                return {
+                    num: state.num + 10
+                }
+                break;
+        }
+
+    }
+    let initState = {
+        num: 0,
+        msg: "张三"
+    }
+    function App() {
+        // state表示初始化状态对象 dispatch触发处理状态函数的方法 userReducer 参数一表示处理函数(state 表示要处理的状态) 参数二表示初始化状态对象
+        let [state, dispatch] = useReducer(reducer, initState)
+        return (
+            <div>
+                <h1>App组件 -- {state.num}--{state.msg} <button onClick={() => {
+                    dispatch("add");
+                }}>++</button></h1>
+                <One />
+                <Two />
+            </div>
+        )
+    }
+    function One() {
+        let [state, dispatch] = useReducer(reducer, initState)
+        return (
+            <div>
+                <h1>子组件一{state.num}---{state.msg}</h1>
+                <button onClick={() => {
+                    dispatch("jian")
+                }}>--</button>
+            </div>
+        )
+    }
+    function Two() {
+        let [state, dispatch] = useReducer(reducer, initState)
+        return (
+            <div>
+                <h1>子组件2-{state.num}---{state.msg}</h1>
+                <button onClick={() => {
+                    dispatch("ten")
+                }}>+10</button>
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+</script>
+
+</html>

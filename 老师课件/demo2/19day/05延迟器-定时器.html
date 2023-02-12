@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- setTimeout(回调函数,time)    time     ms  
+         setInterval(回调函数,time)   周期调用
+
+         其实，回调函数部分有形参的话，  setTimeout(show,3000,10,20)
+    -->
+
+    <script>
+        //1.方法一
+        //   setTimeout( function(){
+        //      console.log('时间到了~~~~');
+        //   },2000)
+
+        //2. 方法二
+
+        //    function show(){
+        //     console.log('时间到了~~~~');
+        //    }
+        //    var show=function(){
+        //     console.log('时间到了~~~~');
+        //    }
+        //    setTimeout(show,3000)
+
+        //3. 方法三  不推荐
+        // var show=function(){
+        //     console.log('时间到了~~~~');
+        //    }
+        //    setTimeout("show()",3000)
+
+
+        // 时间编号  标识符   全局变量 timer   time
+        //      var timer;// timer=null;
+        //     timer= setTimeout( function(){
+        //              console.log('时间到了~~~~');
+        //           },2000)
+
+        //  console.log(timer);// 数字的形式
+
+        // 如果有形参，在时间后，依次传递
+
+        // setTimeout(function (a,b) {
+        //     console.log('时间到了~~~~',10,20);
+        // }, 2000)
+
+            function show(a,b){
+            console.log('时间到了~~~~',a,b);
+           }
+           setTimeout(show,3000,10,20)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            js 
+            函数、接口、方法、API是一样的。都是一个动作。
+            文档 DOM： 系统提供了一些接口，可以动态修改网页的内容和样式。
+            browser BOM ：刷新浏览器、前进、后退、更改尺寸、返回顶部
+            BOM 的对象是 window。
+                1. 全局对象，就是整个浏览器。
+                2. 提供一些接口，提供了很多操作浏览器的方法。
+
+            window 默认省略
+                声明的变量和函数都是 window 的属性和方法
+        */
+        var num = 22;
+        function cook() {
+            console.log(`今晚吃鸡`);
+        }
+        console.log(window.num);
+        window.cook();
+
+        console.log(window);
+        console.log(window.name);
+    </script>
+    <script>
+        console.log(num);
+        cook();
+    </script>
+</body>
+
+</html>

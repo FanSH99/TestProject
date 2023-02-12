@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象方法
+                Promise.all():  并发处理多个异步任务，所有任务都执行完成，才能得到结果
+                Promise.race(): 并发处理多个异步任务，任一任务执行完成，就能得到结果
+            语法：
+                 Promise.all([p1, p2, p3]).then((result) => {
+                    console.log(result);
+                });    
+        */
+        function queryData(url) {
+            let p = new Promise(function (resolve, reject) {
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState != 4) {
+                        return;
+                    }
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // 处理正常情况
+                        resolve(xhr.responseText);
+                    } else {
+                        reject("服务器异常");
+                    }
+                };
+                xhr.open("get", url);
+                xhr.send(null);
+            });
+            return p;
+        }
+
+        let p1 = queryData("http://127.0.0.1:8080/a1");
+        let p2 = queryData("http://127.0.0.1:8080/a2");
+        let p3 = queryData("http://127.0.0.1:8080/a3");
+
+        // Promise.all([p1, p2, p3]).then(function (result) {
+        //     console.log(result);
+        // });
+        // 三个请求都执行了，但是只关心第一个返回的结果
+        Promise.race([p1, p2, p3]).then(function (result) {
+            console.log(result);
+        });
+    </script>
+</body>
+
+</html>

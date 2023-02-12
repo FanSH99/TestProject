@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 动画进入之前在的位置 */
+        h1 {
+            width: 400px;
+        }
+
+        .v-enter {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+
+        /* 动画结束位置 */
+        .v-leave-to {
+            transform: translateX(100px);
+            opacity: 1;
+        }
+
+        /* 进入动画执行中 */
+        .v-enter-active {
+            transition: 0.3s;
+            opacity: 1;
+        }
+
+        /* 动画离开过程 */
+        .v-leave-active {
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .box-enter,
+        .box-leave-to {
+            transform: rotate(360deg);
+        }
+
+        .box-enter-active,
+        .box-leave-active {
+            transition: 0.3s;
+            /*  opacity: 0; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition>
+            <h1 v-show="isShow">{{msg}}</h1>
+        </transition>
+        <button @click="isShow=!isShow">切换</button>
+        <!-- name 表示指定的动画名称，若不写则默认为v-
+        mode动画模式， out-in表示先出后进， in-out表示先进后出。
+        -->
+        <transition name="box" mode="out-in">
+            <div class="box" @click="" v-show="isShow">
+
+            </div>
+        </transition>
+
+
+
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 
+    2022年9月9日09:59:34 */
+
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "啦啦啦啦啦",
+            isShow: true,
+        }
+    })
+</script>
+
+</html>

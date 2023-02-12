@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+          then函数的返回值
+            1. return 是一个 Promise 实例
+                   可以继续调用 then函数
+            2. return 普通值
+                    返回一个默认的 Promise 实例，
+                    通过 then(data),data 接收普通值
+        */
+        function queryData(url) {
+            let p = new Promise(function (resolve, reject) {
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState != 4) {
+                        return;
+                    }
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // 处理正常情况
+                        resolve(xhr.responseText);
+                    } else {
+                        reject("服务器异常");
+                    }
+                };
+                xhr.open("get", url);
+                xhr.send(null);
+            });
+            return p;
+        }
+
+        let result = queryData("http://127.0.0.1:8080/data4")
+            .then(function (data) {
+                console.log(data);
+                // 1. 如果返回值是普通值，则返回一个默认的 promise
+                //     then 接收上一个 then 的返回值
+                return "123";
+            })
+            .then(function (data) {
+                console.log(data);
+            });
+        // 返回值是 promise
+        console.log(result);
+
+        console.log('-------------------------------');
+        let result2 = queryData("http://127.0.0.1:8080/data4")
+            .then(function (data) {
+                console.log(data);
+                let p = new Promise(function (resolve, reject) {
+                    setTimeout(() => {
+                        resolve("success")
+                    }, 100);
+                });
+                return p;
+            })
+            .then(function (data) {
+                // 2. 上一个 then 的返回值是 promise，此时可以得到 上一个 promise 的结果
+                console.log(data);
+            });
+        // 3. 返回值永远是 promise
+        console.log(result2);
+
+    </script>
+</body>
+
+</html>

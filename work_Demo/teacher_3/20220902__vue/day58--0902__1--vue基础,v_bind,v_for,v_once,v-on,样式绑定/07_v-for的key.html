@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日14:05:27 -->
+    <div id="app">
+        <!-- key表示每个节点遍历的额唯一标识。
+        v-for列表循环中必须要绑定一个key，原因是
+        1.vue中有一个特点，就是大量使用了虚拟dom，这个好处是增加了编译速度
+            虚拟dom，就是一个假的dom，不是真是的dom，实际上就是使用js描述的一个对象，对象中有存在的vue编译的所依赖的哥哥属性。
+        2.key表示节点，唯一表示，当数据发生改变，视图更新时，会生成虚拟dom树，有利于两个dom之间diff算法的快速计算。
+            diff算法就是vue中为我们提供的新旧虚拟dom树的对比。
+            所以只要写列表循环，一定要绑定key,
+        -->
+        <li v-for="(item,index) in userList" :key="index">
+            {{item.name}}----{{item.age}}----{{item.sex}}
+        </li>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    console.log(document.getElementById("app"));
+    console.dir(document.getElementById("app"))//div#app
+
+    // let dom={
+    //     name:"div",
+    //     id:0,
+    //     attr:"",
+    //     class:"",
+    // }  ---虚拟dom只用加载需要的几个属性。加载速度更快。
+    new Vue({
+        el: "#app",
+        data: {
+            userList: [
+                {
+                    name: "白浅",
+                    age: 18,
+                    sex: "女"
+                },
+                {
+                    name: "小乔",
+                    age: 16,
+                    sex: "女"
+                },
+                {
+                    name: "花影",
+                    age: 19,
+                    sex: "男"
+                },
+            ]
+        }
+    })
+</script>
+
+</html>

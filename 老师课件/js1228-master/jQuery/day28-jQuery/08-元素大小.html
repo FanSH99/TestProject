@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 250px;
+            background-color: skyblue;
+            padding: 12px;
+            border: 15px solid red;
+            margin: 20px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /* 
+            语法                                    用法
+            width()/height()                    获取元素宽度  只有 width
+            innerWidth()/innerHeight()          获取元素宽度  只有 width + padding
+            outerWidth()/outerHeight()          获取元素宽度  只有 width + padding + border
+            outerWidth(true)/outerHeight(true)  获取元素宽度  只有 width + padding + border + margin
+        */
+        console.log($('div').width());        // 200 
+        console.log($('div').innerWidth());   // 224 = 200 + 12 * 2
+        console.log($('div').outerWidth());   // 254 = 200 + 12 * 2 + 15 * 2
+        console.log($('div').outerWidth(true));  // 294 = 200 + 12 * 2 + 15 * 2 + 20 * 2
+    </script>
+</body>
+
+</html>

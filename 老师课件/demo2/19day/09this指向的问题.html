@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        this指向的问题---面试题
+        1.全局作用域下 声明的函数和变量      this 指向window
+
+        2. 自我执行函数  (function(){console.log(this)})()   this 指向window
+
+        3.定时器 setInterval  setTimeout(function(){console.log(this)},1000)    this 指向window
+
+        4. btn.onclick=function(){ console.log(this)}    this -----指向btn  事件触发者  事件的调用者
+
+        5.构造函数       方法    
+         对象.方法
+         this指向实例对象
+
+
+         6.箭头函数---this指向的问题？      
+         如何改变this 指向---------后续再分析
+
+
+     -->
+     <button>单击</button>
+    <script>
+        //1.this 指向window
+        //  var a=10;
+        //  function show(){
+        //     console.log(this);//window
+        //  }
+        //  console.log(this);//window
+        //  show()
+
+        //2.this 指向window
+        // (function () { console.log(this) })()
+
+        //3.this 指向window
+        // setTimeout(function () { console.log(this) }, 1000)
+
+        //4. btn
+
+        // var btn= document.querySelector('button');
+        // btn.onclick=function(){
+        //     console.log(this);//<button>单击</button>
+        // }
+
+        //5. 构造函数
+          function Person(name,age){
+             this.name=name;
+             this.age=age;
+             this.say=function(){
+                console.log(this);//{name: '郭雨晨', age: 18, say: ƒ}
+             }
+          }
+         var p1= new Person('郭雨晨',18);
+          //调用方法    方法的调用都  p1
+           p1.say();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        解绑事件  ---移除事件 删除事件
+        1.脚本模型 ---btn.onclick=null;         ---兼容所有的浏览器
+        2.W3C   ---btn.removeEventListener('click',function(){},false)      ---ie9以上版本可用。
+        3.ie8及以下 ---btn.detachEvent('onclick',function(){},false)
+
+        --false均可以省略不写。  增加事件可以对自身加或对其他加。
+
+        ，
+     -->
+
+    <button id="add">增加事件</button>
+    <button id="add1">增加事件</button>
+    <button id="remove">移除事件</button>
+    <button id="remove2">移除事件</button>
+
+    <script>
+        var add = document.querySelector('#add');
+        var add1 = document.querySelector('#add1');
+        var remove = document.querySelector('#remove');
+        var remove1 = document.querySelector('#remove1');
+        add.onclick = function () {
+            console.log('click');
+        }
+        add.onmouseover = function () {
+            console.log('over');
+        }
+        add.onmouseout = function () {
+            console.log('out');
+        }
+
+        // 移除
+        remove.onclick = function () {
+            add.onclick = null;
+        }
+
+
+        function show() {
+            console.log('click');
+        }
+        add1.addEventListener('click', show);
+        add1.addEventListener('mouseover', function () {
+            console.log('over');
+        });
+        add1.addEventListener('mouseout', function () {
+            console.log('out');
+        });
+
+        remove.addEventListener('click', function () {
+            add.removeEventListener('click', show);
+        })
+
+        // 函数名是复杂类型，名字一样不代表是同样的函数，为了避免出错，需要用函数名取代
+    </script>
+</body>
+
+</html>

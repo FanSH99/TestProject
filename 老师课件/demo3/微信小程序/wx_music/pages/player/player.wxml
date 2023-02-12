@@ -1,0 +1,13 @@
+<view class="player">
+<view class="myswiper">
+<!-- 将当前播放的音乐信息传递给子组件 -->
+    <musicSwiper musicMsg="{{musicMsg}}" isPlay="{{isPlay}}" lyric="{{lyric}}" lyricIndex='{{lyricIndex}}'></musicSwiper>
+</view>
+<view>
+    <myslider duration="{{duration}}" currentTime="{{currentTime}}" percent="{{percent}}" bindsendPercent='getSeek'></myslider>
+</view>
+<view>
+<!-- 将当前歌曲播放索引传递到子组件中 -->
+    <mybtn playIndex='{{playIndex}}' bindsendindex='getPlayIndex' isPlay='{{isPlay}}' bindplayOrPause='playOrPause' palyState='{{palyState}}' bindchangeState='changeState' bindnextPlay='nextPlay' bindprePlay='prePlay'></mybtn>
+</view>
+</view>

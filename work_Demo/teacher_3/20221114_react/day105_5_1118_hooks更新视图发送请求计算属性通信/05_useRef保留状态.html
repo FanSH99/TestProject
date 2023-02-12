@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月20日14:42:57
+
+    // useState和useRef可以保存状态
+    let { useState, useRef } = React;
+    function App() {
+        let [num, setNum] = useState(0);
+        let age = useRef(18);
+        // useRef也可以保存状态--获取useRef需要用xx.current否则报错。
+        return (
+            <div>
+                <h2>num--{num} --{age.current}</h2>
+                <button onClick={() => {
+                    num++;
+                    age.current++;
+                    setNum(num)
+                }}>num++</button>
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

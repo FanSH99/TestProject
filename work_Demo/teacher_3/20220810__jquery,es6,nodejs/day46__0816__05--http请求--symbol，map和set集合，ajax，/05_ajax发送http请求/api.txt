@@ -1,0 +1,10 @@
+获取轮播图：
+https://api.it120.cc/xiaochengxu/banner/list
+get请求
+
+获取商品列表：
+https://api.it120.cc/xiaochengxu/shop/goods/list
+post
+参数：
+ pingtuan:false,
+ kanjia:false

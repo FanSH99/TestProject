@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 5、假设你应聘Web前端技术开发岗位，如果你会html、css和JavaScript技术，你面试成功，欢迎加入公司，否则你面试不成功，
+     不能加入公司。
+     例：
+         请问你会html技术吗？(yes/no)
+         请问你会css技术吗？(yes/no)
+         请问你会JavaScript技术吗?(yes/no)
+     以上三问都会打为yes时，面试成功，否则失败
+      */
+        // var html= prompt('请问你会html技术吗？(yes/no)')
+        // var css= prompt('请问你会html技术吗？(yes/no)')
+        // var js= prompt('请问你会html技术吗？(yes/no)')
+        // if(html=='yes'&&css=='yes'&&js=='yes'){
+        //     console.log('面试成功');
+
+        // }else{
+        //     console.log('面试失败');
+        // }
+        /* 6、某公司根据工龄发放年终奖
+         工作满一年   工资8000以上的人，年终奖为工资的1.2倍，10000以上的的为工资的1.5倍，其它为1个月的工资
+         工作满两年  工资10000以上的人，年终奖为工资的1.5倍，15000以上的为工资的1.8倍，其它为1个月的工资
+        工作满三年  工资15000以上的人，年终奖为工资的1.8倍，20000以上的为工资2.5倍，其它为1个月的工资
+        根据员工的工龄，计算员工最后一个月发的工资？
+         */
+        //  if  else if  ...    >=大值开始    <=小值开始
+        var year = prompt('请输入工作年限');
+        var salary = +prompt('请输入您的工资');
+        var money;
+        if (year >= 3) {
+            if (salary > 20000) {
+                money=salary+salary*2.5
+
+            } else if (salary > 15000) {
+                money=salary+salary*1.8
+
+            } else {
+                money=salary
+            }
+
+        } else if (year >= 2) {
+            if (salary > 15000) {
+                money=salary+salary*1.8
+
+            } else if (salary > 10000) {
+                money=salary+salary*1.5
+
+            } else {
+                money=salary
+            }
+
+        } else if (year >= 1) {
+            if (salary > 10000) {
+                money=salary+salary*1.5
+
+            } else if (salary > 8000) {
+                money=salary+salary*1.2
+
+            } else {
+                money=salary
+            }
+
+        } else {
+            money=salary
+        }
+
+
+        console.log('您最后一月的工资是'+money+'元');
+
+
+        /* 7、判断以下变量的命名不正确的是：A  abc   B _abc   C  $abc   D #abc  (要求编制一个程序用 switch语句) */
+
+        // var answer = prompt('判断以下变量的命名不正确的是：A  abc   B _abc   C  $abc   D #abc ');
+        // switch (answer) {
+        //     case 'D':
+        //         console.log('回答正确');
+        //         break;
+        //     case 'A':
+        //     case 'B':
+        //     case 'C':
+        //         console.log('回答错误');
+        //         break;
+        //     default:
+        //         console.log('没有这个答案');
+        //         break;
+        // }
+
+    </script>
+</body>
+
+</html>

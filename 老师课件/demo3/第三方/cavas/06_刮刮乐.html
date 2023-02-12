@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #mycav{
+            background-image: url('./1.png');
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycav" width="200" height="56"></canvas>
+</body>
+<script>
+    let cav = document.getElementById("mycav");
+    let ctx = cav.getContext("2d");
+    ctx.rect(0,0,200,56);
+    ctx.fillStyle="#919191";
+    ctx.fill();
+    let isdown = false
+    document.addEventListener("mousedown",()=>{
+        isdown = true
+        console.log("摁下去")
+    })
+    document.addEventListener("mousemove",(e)=>{
+        if(isdown){
+        console.log("移动啦")
+        ctx.clearRect(e.pageX,e.pageY,15,15)
+        }
+    })
+    document.addEventListener("mouseup",()=>{
+        console.log("鼠标松开啦")
+        isdown = false
+    })
+</script>
+</html>

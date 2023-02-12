@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            width: 1200px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        div>img {
+            width: 100%;
+            display: block;
+        }
+
+        .div2 {
+            list-style: none;
+            height: 420px;
+            width: 250px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .div2>a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            line-height: 42px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        #div1>span {
+            display: block;
+            width: 20px;
+            height: 40px;
+            background: rgb(0, 0, 0.6);
+            /* opacity: 0; */
+            line-height: 40px;
+            text-align: center;
+            font-size: 22px;
+            color: #666;
+            position: absolute;
+            top: 40%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .left {
+            left: 254px;
+        }
+
+        .right {
+            right: 0;
+        }
+
+        #div3 {
+            height: 60px;
+            display: flex;
+            margin-left: 1000px;
+        }
+
+        #div3>a {
+
+            width: 6px;
+            height: 6px;
+            border: 3px solid rgba(0, 0, 0, 0.4);
+            background: #757575;
+            border-radius: 50%;
+            margin-left: 20px;
+            margin-top: -50px;
+
+        }
+
+        #div3>.o {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <img src="https://i1.mifile.cn/a4/xmad_1540980471431_UElug.jpg" alt="">
+        <div class="div2">
+            <a href="">手机 电话卡</a>
+            <a href="">电视 盒子</a>
+            <a href="">笔记本 平板</a>
+            <a href="">家电 插线板</a>
+            <a href="">出行 穿戴</a>
+            <a href="">智能 路由器</a>
+            <a href="">电源 配件</a>
+            <a href="">健康 儿童</a>
+            <a href="">耳机 音箱</a>
+            <a href="">生活 箱包</a>
+        </div>
+        <span class="left">&lt;</span>
+        <span class="right">&gt;</span>
+        <div id="div3">
+            <a class="o" href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+<script>
+    var span1 = document.querySelector('.left');
+    var span2 = document.querySelector('.right');
+    var img = document.querySelector('img');
+    var as = document.querySelectorAll('#div3 > a');
+    var image = [
+        'https://i1.mifile.cn/a4/xmad_1540980471431_UElug.jpg',
+        'https://i1.mifile.cn/a4/xmad_15411417211918_EUHLt.jpg',
+        'https://i1.mifile.cn/a4/xmad_15415038329853_xiWTO.jpg',
+        'https://i1.mifile.cn/a4/xmad_15409525725204_NuvzS.jpg',
+        'https://i1.mifile.cn/a4/xmad_15416818675823_UPyxq.jpg'
+    ];
+    var number = 0; // 计数器
+    // 激活小圆圈样式
+    function active(x) {
+        as.forEach(function (item) {
+            item.className = '';
+        })
+        as[x].className = "o";
+    }
+
+    // 左按钮
+    span1.onclick = function () {
+        number--;
+        if (number < 0) {
+            number = image.length - 1;
+        }
+        img.src = image[number];
+        active(number);
+    }
+    // 右按钮
+    span2.onclick = function () {
+        next()
+    }
+    // 播放下一张图片
+    function next() {
+        number++;
+        if (number == image.length) {
+            number = 0;
+        }
+        img.src = image[number];
+        active(number);
+    }
+    // 开启定时器
+    var timer = setInterval(next, 2000);
+
+    // 小圆圈绑定点击事件
+    as.forEach(function (item, index) {
+        item.temp = index;
+        item.onclick = function (e) {
+            number = e.target.temp;
+            img.src = image[number];
+            active(number);
+        }
+    });
+
+    var div1 = document.querySelector('#div1')
+    console.log(div1);
+
+
+    div1.onmouseenter = function () {
+        clearInterval(timer);
+    }
+    div1.onmouseleave = function () {
+        timer = setInterval(next, 2000);
+    }
+
+</script>
+
+</html>

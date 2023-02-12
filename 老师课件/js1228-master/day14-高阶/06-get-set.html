@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            a: "这瓜保熟吗?",
+            get b() {
+                console.log("get");
+                return this.a;
+            },
+            set b(value) {
+                console.log("set");
+                this.a = value;
+            }
+        };
+
+        obj.b = "年轻人不要太气盛~";
+        // 固定写法，当属性 b 进行读写时，分别会调用 get 和 set 方法
+        console.log(obj);
+        // console.log(obj.b);
+
+        console.log(Object.getOwnPropertyDescriptor(obj, 'a'));
+        // 此时，get 和 set 替换了 value 和 writable
+        console.log(Object.getOwnPropertyDescriptor(obj, 'b'));
+    </script>
+</body>
+
+</html>

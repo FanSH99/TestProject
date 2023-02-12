@@ -1,0 +1,31 @@
+Page({
+    data:{
+        drawing: [
+                {
+                    type:"text",
+                    content:"生成海报啦",
+                    left:200,
+                    top:100,
+                    width:300,
+                    color:"white",
+                    fontSize:"50"
+                },{
+                    type:"text",
+                    content:"李志琦",
+                   left:600,
+                   top:700,
+                    width:300,
+                    color:"white",
+                    fontSize:"50"
+                },
+                {
+                    type:"image",
+                    url:"http://mmbiz.qpic.cn/mmbiz_png/2icD059sjpibkG45AibepS94Vf53ddsHnRmPIbd9jbVko7JkIgKlbysOD6q4aQqdQxha4EUCjGnyOuUsE4ia3UquEA/0",
+                    left:100,
+                    top:400,
+                    width:400,
+                    height:800
+                }
+          ],
+    }
+})

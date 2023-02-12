@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日10:48:28
+
+     -->
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+    </table>
+</body>
+
+<script>
+    var name = "张三";
+    var age = 12;
+    console.log("我叫" + name + "今年" + age + "岁了");//我叫张三，今年18岁了。
+
+    let stuList = [
+        {
+            name: "海绵宝宝",
+            age: 11,
+            sex: "男"
+        },
+        {
+            name: "派大星",
+            age: 10,
+            sex: "男"
+        },
+        {
+            name: "章鱼哥",
+            age: 36,
+            sex: "男"
+        },
+        {
+            name: "蟹老板",
+            age: 54,
+            sex: "男"
+        },
+        {
+            name: "珊迪",
+            age: 16,
+            sex: "女"
+        },
+    ]
+
+    // 模板字符串， 里面既可以写字符串，又可以写变量。  ${变量}
+    console.log(`我叫${name}今年${age}岁了`);
+</script>
+
+</html>

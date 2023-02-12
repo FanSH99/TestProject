@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <button @click="msg='哈哈哈哈'">改变</button>
+    </div>
+    <button onclick="destroyVue()">销毁vue实例</button>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // 生命周期： 描述vue实例从创建到销毁的一个过程称之为这个过程是就是vue的生命周期
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习吧，哥们儿不要让钱打水漂了！"
+        },
+        // vue实例创建之前生命周期钩子函数
+        // 特点:在不同的时间段生命周期钩子函数会自动调用
+        beforeCreate() {
+            // vue实例创建前,vue实例初始化了,但是vue实例中data属性和methods还没有初始化
+            // 在创建前不能操作使用data和methods属性
+            console.log("vue创建之前生命周期钩子")
+            console.log(this.msg)  // undefind
+            // this.getMsg(); 报错
+        },
+        // vue实例创建后生命周期钩子函数
+        created() {
+            // vue 创建后 vue实例中的data和methods已经初始化完毕但还有开始渲染
+            console.log("vue创建之后生命周期钩子")
+            // 最早可以使用data中数据和methods方法
+            console.log(this.msg) 
+            this.getMsg();
+            console.log(document.querySelector("h1").innerText)
+        },
+        // vue实例渲染前生命周期钩子函数 mount 挂载
+        beforeMount() {
+            // 渲染之前 vue开始渲染数据已经生成虚拟dom但还未虚拟dom转化为真实dom
+            console.log("vue渲染之前生命周期钩子函数")
+            console.log(document.querySelector("h1").innerText)
+        },
+        // vue渲染后生命周期钩子函数
+        mounted() {
+            // 渲染后 vue将虚拟dom转化为真是dom并渲染到页面上
+            console.log("vue渲染之后生命周期钩子")
+            console.log(document.querySelector("h1").innerText)
+        },
+        // vue实例更新前生命周期钩子
+        beforeUpdate() {
+            // 更新前 生成了虚拟dom 还没有将虚拟dom转化为真是dom挂载到页面
+            console.log("vue更新前生命周期钩子")
+            console.log(document.querySelector("h1").innerHTML)
+        },
+        // vue实例更新后生命周期钩子
+        updated() {
+            // 更新后 将真是dom渲染到页面
+            console.log('vue更新后生命周期钩子函数')
+            console.log(document.querySelector("h1").innerText)
+        },
+        // vue实例销毁前生命周期钩子函数
+        beforeDestroy() {
+            console.log('vue销毁前生命周期钩子函数')
+        },
+        // vue实例销毁后生命周期钩子函数
+        destroyed() {
+            console.log("vue销毁后生命周期钩子函数")
+        },
+        methods: {
+            getMsg(){
+                console.log("哈哈哈哈")
+            }
+        },
+    })
+    console.log(vm)
+    function destroyVue(){
+        // 销毁vue实例
+        vm.$destroy();
+    }
+</script>
+</html>

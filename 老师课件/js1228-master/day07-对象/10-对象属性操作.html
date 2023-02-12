@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var star = {
+            salary: 2000,
+            address: '魔都',
+            skill: function () {
+                console.log('释放技能');
+            }
+        }
+
+        // 1. 获取对象属性的两种方式
+        //    对象名.属性名
+        console.log(star.address);
+        //    对象名[字符串] 字符串是数学名
+        console.log(star['salary']);
+
+        // 2. 对象方法的调用
+        star.skill();
+
+        // 3. 对象可以动态地添加属性(方法)。 
+        star.name = "吕布";
+        console.log(star.name);
+
+        // 4. 属性的修改(变量的重新赋值)
+        star.name = "张飞";
+        console.log(star.name);
+
+        // 5. 属性的删除 delete 对象名.属性名
+        delete star.name;
+        console.log(star.name);
+
+        // 6. in 判断属性是否存在
+        console.log("salary" in  star);
+        console.log("age" in  star);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

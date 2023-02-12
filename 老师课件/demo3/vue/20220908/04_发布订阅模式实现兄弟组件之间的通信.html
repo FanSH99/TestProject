@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 兄弟组件之间的通信可以使用发布订阅者模式实现 -->
+        <component-one></component-one>
+        <component-two></component-two>
+    </div>
+    <template id="two">
+        <div>
+            <h1>第二个组件</h1>
+            <p>{{msg}}</p>
+            <button @click="send">发布消息给第一个组件</button>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+    let bus = {
+        // 存放订阅者的回调函数
+        list:[],
+        // 订阅者
+        on(callback){
+            this.list.push(callback);
+            console.log(this.list)
+            console.log("订阅公众号")
+        },
+        // 发布者
+        emit(msg){
+            this.list.forEach(callback=>{
+                console.log(callback)
+                callback(msg)
+            })
+            console.log("发消息",msg)
+        }
+    }
+
+    let componentOne = {
+        template:"<h1>第一个组件 {{msg}}</h1>",
+        data(){
+            return{
+                msg:""
+            }
+        },
+        created() {
+            // 订阅消息
+            bus.on((msg)=>{
+                console.log(msg)
+                this.msg = msg
+            })
+        },
+    }
+    let componentTwo = {
+        template:"#two",
+        data() {
+            return {
+                msg:"我是组件二中的msg"
+            }
+        },
+        methods: {
+            send(){
+                bus.emit(this.msg)
+            }
+        },
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            componentOne,
+            componentTwo
+        }
+    })
+</script>
+</html>

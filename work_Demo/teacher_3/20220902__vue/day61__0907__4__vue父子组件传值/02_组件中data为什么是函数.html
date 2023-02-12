@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <h1>--------------------</h1>
+        <mycom></mycom>
+        <mycom></mycom>
+        <mycom></mycom>
+        <mycom></mycom>
+        <mycom></mycom>
+    </div>
+    <template id="mycom">
+        <h1>我是一个组件{{num}}</h1>
+        <button @click="num++">add</button>
+    </template>
+</body>
+
+<script src="../bin/vue-2.7.10.js"></script>
+
+<script>
+    let obj = {
+        num: 0,
+    }
+
+    /* 
+    vue规定组件中的data必须是一个函数，组件是可以复用的，
+    若组件中的data属性不是一个函数，而是一个对象，那么没有办法保证组件中的数据私有性。
+    */
+    let myComponent = {
+        template: "#mycom",
+        data() {
+            return obj
+        }
+
+    }
+    let mycom = {
+        template: "#mycom",
+        data() {
+            return {
+                num: 0,
+            }
+        }
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            myComponent,
+            mycom
+
+        }
+
+    })
+</script>
+
+</html>

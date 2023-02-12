@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 1. 遍历数组：把数组中的元素，全部访问一遍。
+        var arr = [22, '貂蝉', true, '男'];
+
+        console.log(arr[0]);
+        console.log(arr[1]);
+        console.log(arr[2]);
+        console.log(arr[3]);
+
+        console.log('--------2. for 循环遍历数组，计数器作为索引号-------------------');
+        for (let i = 0; i < 4; i++) {
+            // console.log(i);
+            console.log(arr[i]);
+        }
+
+        console.log('-----------3. for   of  ---------------------------------------');
+        for (const item of arr) {
+            console.log(item);
+        }
+        console.log('-----------4. for   in  ---------------------------------------');
+        for (let key in arr) {
+            console.log(key, arr[key]);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

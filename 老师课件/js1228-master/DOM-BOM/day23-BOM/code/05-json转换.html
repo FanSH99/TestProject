@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      age: 22,
+      address: "郑州",
+      subject: "js",
+      score: 99,
+    };
+
+    console.log(typeof obj);
+    // 判断一个对象是否由该类生成。
+    console.log(obj instanceof Object);
+
+    // 1. 对象转化为 json 格式的字符串
+    let result = JSON.stringify(obj);
+    console.log(result);
+    console.log(typeof result);  // string
+
+    console.log("--------------------------------");
+    // 2. json 字符串转化为 对象
+    let temp = JSON.parse(result);
+    console.log(temp);
+    console.log(typeof temp);
+
+    // 作业
+    let arr = ["张飞", "吕布", "王一博", "易烊千玺"];
+  </script>
+</body>
+
+</html>

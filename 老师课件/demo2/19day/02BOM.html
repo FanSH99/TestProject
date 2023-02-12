@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height:2000px">
+    <!-- 
+        JS核心语法   DOM(Document Object  Model)   BOM (Browser Object Model)
+        Window对象  ------
+        Navigator对象  -----浏览器相关信息
+        Screen 对象
+        History对象
+        Location对象   当前 URL 的信息。
+     -->
+
+     <script>
+        //   Window对象     最顶层的对象   可以省略的
+        // 属性和方法   document是属性也是对象
+    //    window.document.body
+   var body= document.body;
+
+       // innerHeight  返回窗口的文档显示区的高度   会调整有关，会变   响应式对接  掌握
+       console.log(window.innerHeight);//757
+       console.log(window.innerWidth);//  包含滚动条
+
+
+       console.log(window.outerHeight);// 了解即可
+
+    //  pageYOffset	设置或返回当前页面相对于窗口显示区左上角的 Y 位置。
+
+    console.log(window.pageYOffset);// 页面卷时去的距离  观察右侧滚动条     掌握
+
+
+    // 方法
+
+    alert('hello');
+    // window.alert('hello')
+    clearInterval(timer);// 取消定时器   setInterval() 
+    clearTimeout(timer);// 取消定时器    setTimeout()
+
+    var flag=confirm('您真的要删除吗？');//  true false
+   var bg= window.getComputedStyle(node,null).backgroundColor;
+
+//    moveTo(x,y)	把窗口的左上角移动到一个指定的坐标   
+// scrollTo()	把内容滚动到指定的坐标。      掌握
+
+    var stuName= prompt('请输入您的名字','洪博')
+
+
+    // 全局
+    var a=10;
+    window.a=10;
+    function show(){
+        console.log('aaaa');
+        console.log(this);// window
+    }
+    show();
+    window.show();
+    console.log(this);// window
+
+
+
+     </script>
+</body>
+</html>

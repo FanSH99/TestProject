@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+       元字符
+        .   查找单个字符，除了换行和行结束符。   a.b
+        \w   查找数字、字母及下划线。    [0-9A-z_]
+        \W                             [^0-9A-z_]
+        \d   查找数字                  [0-9]
+        \D 查找非数字                  [^0-9]  
+        \s  空白字符  （包含空格 换行符 制表符）  [\t\r\n\v\f]
+        \S  非空白字符    [^\t\r\n\v\f]
+     -->
+
+     <!-- 
+        search  查找
+        match  匹配
+        replace 替换
+        split
+
+        校验正则 test  重点
+
+      -->
+
+      <script>
+        //1.
+         var str='abcdaabcd'
+        // 查找字符串中是否包含 'bc' 字符     相当于  indexOf  第一次出现的位置  ，不存在返回-1
+        var index= str.search(/bc/);
+        console.log(index);
+      //2.match    找到话，返回数组，找不到null
+     var arr= str.match(/bc/ig);
+     console.log(arr);
+
+     //3. replace 方法 
+    //  查找字符串中包含 'bc' 字符，把bc 换成'' 去掉bc
+    str= str.replace(/bc/g,'');
+    console.log(str);
+
+      </script>
+</body>
+</html>

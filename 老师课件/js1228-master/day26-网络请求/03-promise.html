@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. Promise 是一个对象
+        console.dir(Promise);
+
+        // 2. 实例化
+        let p = new Promise(function (resolve, reject) {
+            // 模拟异步任务
+            setTimeout(() => {
+                let flag = true;
+                if (flag) {
+                    // 正常情况
+                    resolve("正常情况");
+                } else {
+                    // 异常情况
+                    reject("异常情况")
+                }
+            }, 100);
+        });
+        p.then(function (data) {
+            console.log(data);
+        }, function (data) {
+            console.log(data);
+        });
+
+        // 3. 先规定好正常和异常的情况，再通过 then 得到结果
+
+        /* 
+            4.promise 状态，调用 reserve 或 reject 的时候，实际上在更改了状态
+                pending 等待  fulfilled 成功 rejected 失败
+                pending ——> fulfilled
+                pending ——> rejected
+                单向不可逆。
+        */
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 1.打印水仙花数（三位数），
+        （153 = 1 * 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3）
+        每位数字的立方和等于等于该数即水仙花数，打印出所有水仙花数。 */
+
+        for (var i = 100; i < 1000; i++) {
+            var a = parseInt(i / 100);//百位
+            var b = parseInt(i / 10) % 10;//十位
+            var c = i % 10;//个位
+            if (i == Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3)) {
+                console.log(i + '是水仙花数');//4个
+            }
+        }
+
+        /* 
+        2.求10的阶乘   1*2*3*4*5*。。。。*10
+        */
+
+        var sum = 1;
+        for (var i = 1; i <= 10; i++) {
+            sum *= i;
+        }
+        console.log(sum);//3628800
+
+        
+
+       
+    </script>
+</body>
+
+</html>

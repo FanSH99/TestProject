@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var name1 = 'window';
+        var obj = {
+            name1: 'obj对象',
+            say: function () {
+                console.log(this.name1);//obj对象
+            },
+            props: {
+                name1: 'props对象',
+                run: function () {
+                    var that = this;
+                    console.log(this.name1);//props对象
+                },
+                sing: function () {
+                    var that = this;
+                    function aa() {
+                        console.log(this.name1);
+                    }
+                    return aa;
+                }
+            },
+            sing: function () {
+                var that = this;
+                function aa() {
+                    console.log(this.name1);
+                }
+                return aa;
+            }
+        }
+        console.log(obj.say());//undefined ---没有返回值
+        obj.props.run();//props对象
+        var mm = obj.sing();
+        mm();//window
+        var nn = obj.props.sing();//window
+        nn();
+
+        // 作业2
+        function Show(age) {
+            this.name1 = 'show对象';
+            var age = 18;
+            this.run = function () {
+                console.log(this.age);//undefined
+            }
+        }
+        var ss = new Show(23);
+        ss.run();//undefined
+        console.log(ss.run());//undefined undefined  
+        /* 
+        等同于var b=ss.run(); console.log(b);
+        */
+        console.log(ss);//Show {name1: "show对象", run: ƒ}
+
+
+        function show() {
+            name1 = 'show对象';
+            function name1() {
+                console.log(this.name1);
+
+            }
+            console.log(name1);
+        }
+        var name1 = 'window对象';
+        show();//show对象
+
+
+        /*
+        function show() {
+             function name1() {
+                console.log(this.name1);
+
+            } //没有调用，没有执行，
+            name1 = 'show对象';//重新赋值
+            console.log(name1);//打印的是show对象
+        }
+        var name1;
+        name1 = 'window对象';
+        name1='show对象'
+        console.log(name1)
+        show();//show对象
+        */
+
+
+    </script>
+
+</body>
+
+</html>

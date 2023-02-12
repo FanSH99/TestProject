@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        好好学习天天向上
+    </div>
+    <button class="remove">删除red类名</button>
+    <button class="btn">有则删除无则添加</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    // 给元素添加类名
+    $("div").addClass("red blue a b c")
+    $('.remove').click(function(){
+        // 删除元素类名
+        $('div').removeClass('red blue')
+    })
+    $(".btn").click(function(){
+        $('div').toggleClass('red')
+    })
+</script>
+</html>

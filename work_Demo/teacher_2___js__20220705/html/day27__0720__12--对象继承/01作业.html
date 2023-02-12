@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.生成3个学生实例，调用学生实例的showInfo方法，打印学号，姓名，年龄，年级，宿舍号
+
+        function Student(name, sno, age, grade, room) {
+            this.name = name;
+            this.sno = sno;
+            this.age = age;
+            this.grade = grade;
+            this.room = room;
+            /*  this.showInfo = function () {
+                 console.log(this.name, this.sno, this.age, this.grade, this.room);
+             } */
+        }
+
+        Student.prototype.showInfo = function () {
+            console.log(this.name, this.sno, this.age, this.grade, this.room);
+        }
+
+        function demo1() {
+            var stu1 = new Student('顾南衣', 18, '10001', '18级', '5-507');
+            var stu2 = new Student('白浅', 19, '10002', '18级', '5-304');
+            var stu3 = new Student('花千骨', 18, '10003', '19级', '3-209');
+            stu1.showInfo();
+            stu2.showInfo();
+            stu3.showInfo();
+        }
+
+        function Computer(name, color, price) {
+            this.name = name;
+            this.color = color;
+            this.price = price;
+        }
+        Computer.prototype.start = function () {
+            console.log(this.name + this.color + this.price + 'is opening');
+        }
+        Computer.prototype.end = function () {
+            console.log(this.name + this.color + this.price + 'is closing');
+        }
+        function demo2() {
+            var compu1 = new Computer('苹果', 'white', 7800);
+            var compu2 = new Computer('红旗', 'black', 5600);
+            var compu3 = new Computer('联想', 'pink', 4200);
+            compu1.start();
+            compu1.end();
+        }
+
+
+        function demo3() {
+            var arr = [];
+            var count = 0;
+            while (true) {
+                var obj = {};
+                count++;
+                obj.name = prompt('请输入学生' + count + '的姓名');
+                obj.age = prompt('请输入学生' + count + '的年龄');
+                obj.sex = prompt('请输入学生' + count + '的性别');
+                arr.push(obj);
+                if (confirm('是否结束录入') == true) {
+                    break;
+                }
+            }
+            console.log(arr);
+            for (var i = 0; i < arr.length; i++) {
+                console.log(i);
+                console.log(arr[i]);
+                for (var j in arr[i]) {
+                    console.log(j, arr[i][j]);
+                }
+            }
+        }
+        /*  demo3(); */
+
+        function Person(name, height, weight, age, gender, sarlay, money, houseArea) {
+            this.name = name;
+            this.height = height;
+            this.weight = weight;
+            this.age = age;
+            this.gender = gender;
+            this.sarlay = sarlay;
+            this.money = money;
+            this.houseArea = houseArea;
+            this.makeGirlFriend = function (girl) {
+                if (girl.height < 170) {
+                    console.log('女方身高有点矮，祝早日相亲成功');
+                    return false;
+                } else if (girl.weight > 90) {
+                    console.log('女方有点胖，祝早日相亲成功');
+                    return false;
+                } else if (girl.age > this.age || girl.age > 25) {
+                    console.log('女方年纪有点大，祝早日相亲成功');
+                    return false;
+                } else if (girl.gender != '女') {
+                    console.log('女方不是女的，祝早日相亲成功');
+                    return false;
+                } else {
+                    console.log('中意女方，可以继续接触');
+                    return true;
+                }
+            }
+            this.makeBoyFriend = function (boy) {
+                if (boy.age < this.age) {
+                    console.log('男方年纪有点小，祝早日相亲成功');
+                    return false;
+                } else if (boy.height - this.age < 7) {
+                    console.log('男方个子有点矮，祝早日相亲成功');
+                    return false;
+                } else if (boy.sarlay < 2) {
+                    console.log('男方工资有点低，祝早日相亲成功');
+                    return false;
+                } else if (boy.money < 200) {
+                    console.log('男方家境不太好，祝早日相亲成功');
+                    return false;
+                } else if (houseArea < 140) {
+                    console.log('男方房子面积有点小，祝早日相亲成功');
+                    return false;
+                } else if (boy.gender != '男') {
+                    console.log('对方不是男的，祝早日相亲成功');
+                    return false;
+                } else {
+                    console.log('中意男方，可以继续接触');
+                    return true;
+                }
+            }
+        }
+
+        function demo4() {
+            var boy = new Person('古天乐', 185, 70, 30, '男', 3, 300, 150);
+            var girl = new Person('热巴', 175, 80, 28, '女', 3, 300, 150);
+            console.log(boy);
+            console.log(girl);
+            var v1 = boy.makeGirlFriend(girl);
+            var v2 = girl.makeBoyFriend(boy);
+            console.log(v1, v2);
+            if (v1 == true && v2 == true) {
+                console.log('相亲成功');
+            } else {
+                console.log('相亲失败');
+            }
+        }
+        demo4();
+    </script>
+</body>
+
+</html>

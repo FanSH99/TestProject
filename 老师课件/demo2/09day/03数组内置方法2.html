@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        方法                      用法                                            是否修改原数组
+         四、操作方法
+        7. concat (arr0,arr1,ele1,el2,...)           连接两个或更多的数组，                 不修改
+                                                       并返回结果。
+         注意： 如果无参，相当复制数组，做了深拷贝
+
+        8. slice(start,end)                  选取（截取）数组的一部分，
+                                              并返回一个新数组。                            不修改
+
+            注意： start ,end 都是可选的  正负都可以
+
+          （1）slice()     相当复制数组，做了深拷贝
+           (2) slice(2,5)    [2  5)   包含索引号为2的元素，不包含5
+           (3) slice(-2,5)    倒数第2个元素，到索引号为5（不包含）的元素，  从起始位置向后
+          （4）slice(2)   从2(包含)开始，直到数据的末尾 arr.length
+
+        9.splice(index,howmany,item1, ..., itemX)   特关注          从数组中添加或删除元素      修改
+                index  必选    howmany(正数或0) 可选    item  可选    返回值，删除的元素形成的数组
+
+                （1） splice(2)  删除元素   [2  数组的末尾]
+                （2） splice(2 ，0)   一个都没有删除
+                （3）splice(2,3)    从2的位置开始，删除3个元素
+                （4）splice(2,3，'hello','world') 从2的位置开始  删除3个，添加2个
+     -->
+     <script>
+
+        //1. slice
+         var arr=[10,20,30,'hello','world'];
+        //  var arr0=arr.slice();//深拷贝
+        //  arr0[arr0.length]='nice'
+        //  console.log(arr0,arr);
+
+    //    var arr1=   arr.slice(2,4);
+    //    console.log(arr,arr1);
+
+
+    //  var arr1=   arr.slice(-2,4);
+    //    console.log(arr,arr1);
+
+    //  var arr1=arr.slice(2);
+    //  console.log(arr,arr1);
+
+
+    //2. splice   在任意位置添和删
+    var arr=[10,20,30,'hello','world'];
+    // var arr2= arr.splice(2);// 新数组是 返回删除的元素
+    // console.log(arr2,arr);// 旧数组是留下的元素
+
+//     var arr2= arr.splice(2 ,0);
+//   console.log(arr2,arr);
+
+
+//   var arr2= arr.splice(2 ,1);
+//   console.log(arr2,arr);//[30]    [10, 20, 'hello', 'world']
+
+//   var arr2= arr.splice(2 ,1,'very good','nice');
+//   var arr2= arr.splice(2 ,0,'very good','nice');
+//   console.log(arr2,arr);
+
+  var arr2= arr.splice(-2 ,1);
+  console.log(arr2,arr);
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+            width: 1000px;
+            margin:0 auto;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 15px;
+            border-radius: 5px;
+            background: slateblue;
+            color: #fff;
+            display: flex;
+        
+        }
+        .header div{
+            font-size: 13px;
+            margin-right: 10px;
+        }
+        .content{
+            width: 1000px;
+            margin: 10px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .content div{
+            width: 120px;
+            text-align: center;
+            font-size: 13px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <city-component></city-component>
+        <lol-component></lol-component>
+    </div>
+    <template id="city">
+        <div>
+            <h1>city component</h1>
+            <select v-model="provinceIndex">
+                <option :value="index" v-for="(item,index) in provinceArray" :key='index'>{{item.provinceName}}</option>
+            </select>
+            <select v-model="cityIndex">
+                <option :value="index" v-for="(item,index) in provinceArray[provinceIndex].cityList" :key="index">
+                    {{item.cityName}}
+                </option>
+            </select>
+            <select  v-model="areaIndex">
+                <option :value="index" v-for="(item,index) in provinceArray[provinceIndex].cityList[cityIndex].areaList" :key="index">
+                    {{item}}
+                </option>
+            </select>
+        </div>
+    </template>
+    <template id="lol">
+        <div>
+            <h1>LoL Component</h1>
+            <div class="header">
+                <div v-for="(item,index) in navList" :key="index">
+                    <input type="radio" :checked="active===index" @click="changeRadio(index)"> {{item.name}}
+                </div>
+            </div>
+            <div class="content">
+                <div v-for="(item,index) in getHeroList" :key="index">
+                    <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png
+                    `" alt="">
+                    <p>{{item.title}}-{{item.name}}</p></p>
+                </div>
+            </div>
+            <!-- {{getHeroList}} -->
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // 创建城级联动组件
+    let cityComponent = {
+        template:"#city",
+        data() {
+            return {
+                //当前选中的省份索引
+                provinceIndex:0,
+                // 当前选中城市索引
+                cityIndex:0,
+                // 当前选中县区索引
+                areaIndex:0,
+                provinceArray: [
+                {
+                    provinceName: "河南省",
+                    cityList: [
+                        {
+                            cityName: "郑州市",
+                            areaList: ["高新区", "中原区", "金水区", "二七区"]
+                        }, {
+                            cityName: "安阳市",
+                            areaList: ["文峰区", "北关区", "开发区", "汤阴县", "安阳县"]
+                        }, {
+                            cityName: "新乡市",
+                            areaList: ["红旗区", "原阳县", "新乡新区"]
+                        }
+                    ]
+                },
+                {
+                    provinceName: "福建省",
+                    cityList: [
+                        {
+                            cityName: "福州市",
+                            areaList: ["滨海区", "吴岩区"]
+                        }, {
+                            cityName: "厦门市",
+                            areaList: ["集美区", "翔安区", "思明区"]
+                        }
+                    ]
+                },{
+                    provinceName: "河北省",
+                    cityList: [
+                        {
+                            cityName: "石家庄",
+                            areaList: ["A区", "B区"]
+                        }, {
+                            cityName: "唐山市",
+                            areaList: ["一区", "二区", "三区"]
+                        }
+                    ] 
+                }
+            ]
+            }
+        },
+        watch:{
+            provinceIndex(){
+                this.cityIndex = 0;
+            },
+            cityIndex(){
+                this.areaIndex = 0;
+            }
+        }
+    }
+    // 全局注册组件
+     Vue.component("cityComponent",cityComponent)
+    //  创建 LoL英雄选择组件
+    let lolComponent = {
+        template:"#lol",
+        data() {
+            return {
+                navList: [
+                {
+                    name: "所有英雄",
+                    type: "all",
+                }, {
+                    name: "法师",
+                    type: "mage"
+                }, {
+                    name: "战士",
+                    type: "fighter"
+                }, {
+                    name: "坦克",
+                    type: "tank"
+                }, {
+                    name: "刺客",
+                    type: "assassin"
+                }, {
+                    name: "射手",
+                    type: "marksman"
+                }, {
+                    name: "辅助",
+                    type: "support"
+                }
+            ],
+                active:0,
+                heroList:[]
+          }
+        },
+        created() {
+            // 发送请求获取英雄列表
+            let xhr = new XMLHttpRequest();
+            xhr.open("get","https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState === 4){
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.heroList = res.hero;
+                }
+            }
+        },
+        methods: {
+            changeRadio(index){
+                this.active = index;
+            }
+        },
+        computed:{
+            getHeroList(){
+                // 获取当前选中的英雄类型
+                let type = this.navList[this.active].type;
+                if(type=="all"){
+                    return this.heroList
+                }
+                let newList = this.heroList.filter(item=>{
+                    return item.roles.join("").includes(type)
+                })
+                return newList
+            }
+        }
+    }
+     new Vue({
+        el:"#app",
+        components:{
+            lolComponent
+        }
+     })
+
+    //  let str = "fightertank"
+
+    // join将数据转为为字符串参数为以xx拼接
+    let arry = [1,2,3,4,5];
+    console.log(arry.join(""))
+</script>
+</html>

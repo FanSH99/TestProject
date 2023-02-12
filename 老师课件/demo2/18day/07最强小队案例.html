@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        #team_box {
+            width: 1230px;
+            height: 620px;
+            background-color: aqua;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #team_box .team_left {
+            width: 420px;
+            height: 525px;
+            background: url(./images/roles-bg-left.png) no-repeat top right;
+            margin-top: 60px;
+            float: left;
+        }
+
+        #team_box .team_left ul {
+            width: 265px;
+            height: 100%;
+            padding-top: 100px;
+            margin-left: 20px;
+
+
+        }
+
+        #team_box .team_left ul li {
+            width: 82px;
+            height: 120px;
+            float: left;
+            margin: 5px 3px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+
+        }
+
+        #team_box .team_left ul li img {
+            width: 82px;
+            height: 82px;
+            border-radius: 10px;
+        }
+
+        #team_box .team_left ul li.on:after {
+            content: '';
+            width: 82px;
+            height: 82px;
+            display: block;
+            background: url(./images/icon-swiper-on.png) no-repeat top center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-size: 82px 82px;
+
+        }
+
+        #team_box .team_left ul li.on {
+            transform: scale(1.1);
+        }
+
+        #team_box .team_left ul li.on p::after {
+            content: '  】';
+        }
+
+        #team_box .team_left ul li.on p::before {
+            content: '【  ';
+        }
+
+        #team_box .team_right {
+            width: 806px;
+            height: 401px;
+            background: url(./images/roles-bg-right.png) no-repeat top right;
+            float: right;
+            margin-top: 150px;
+            position: relative;
+        }
+
+        #team_box #pic {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-70%);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        #team_box .team_right h3 {
+            font-size: 64px;
+            color: #fff;
+            position: absolute;
+            top: 100px;
+            left: 350px;
+            text-shadow: 0 0 0.2em #af7537, 0 0 0.2em #af7537;
+        }
+
+        #team_box .team_right p {
+            width: 624px;
+            height: 224px;
+            position: absolute;
+            top: 180px;
+            right: 0;
+            box-sizing: border-box;
+            padding: 44px 135px 54px 115px;
+            font-size: 15px;
+            color: #fffbea;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="team_box">
+        <div class="team_left">
+            <ul>
+                <li class="on">
+                    <img src="./images/zq-pic1.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic2.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic3.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic4.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic5.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic6.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic7.png" alt="">
+                    <p>纳兹</p>
+                </li>
+                <li>
+                    <img src="./images/zq-pic8.png" alt="">
+                    <p>纳兹</p>
+                </li>
+            </ul>
+        </div>
+        <img src="./images/zq-nz-role1.png" alt="" id="pic">
+        <div class="team_right">
+            <h3>纳兹</h3>
+            <p>火之灭龙魔导士，他可以使用将自身体质变换为龙的灭龙魔法。搭档是一只名叫哈比的猫。经常和露西一起行动。抚养他长大成人的火龙伊古尼尔曾突然消失不见，而纳兹则一直在寻找着它。</p>
+
+        </div>
+    </div>
+    <script src="./js/data.js"></script>
+    <script>
+       var lis= document.querySelectorAll('.team_left>ul>li');
+       for(var i=0;i<lis.length;i++){
+            lis[i].setAttribute('index',i)
+           lis[i].onclick=function(){
+            // 排它思想
+             for(var i=0;i<lis.length;i++){
+                lis[i].classList.remove('on');
+             }
+             this.classList.add('on')
+
+           //修改内容
+        //    取出索引号
+           var idx= this.getAttribute('index');
+        document.querySelector('.team_right>h3').innerHTML= dataArr[idx].roleName;
+        document.querySelector('.team_right>p').innerHTML= dataArr[idx].roleinfo;
+        document.querySelector('#pic').src=dataArr[idx].imgsrc;
+
+           }
+       }
+    </script>
+</body>
+
+</html>

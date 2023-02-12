@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- 引入 Bootstrap -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #box{
+            width: 800px;
+            margin: 0 auto;
+            position: relative;
+            height: 300px;
+            /* border: 2px solid red; */
+            overflow: hidden;
+        }
+        #imgs{
+            width: 100%;
+            display: flex;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        img{
+            width: 100%;
+        }
+        ul{
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            margin:0;
+            position: absolute;
+            list-style: none;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -50px;
+        }
+        .dot{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #6a6a6a;
+            cursor: pointer;
+        }
+        .active{
+            background-color: red;
+        }
+        .left,.right{
+            width: 30px;
+            height: 70px;
+            background: rgb(44, 44, 44,0.6);
+            color: #fff;
+            text-align: center;
+            line-height: 70px;
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+            cursor: pointer;
+            display: none;
+        }
+        .left{
+            left: 0;
+        }
+        .right{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 视图窗 专门用来展示当前轮播的图片 -->
+     <div id="box">
+        <!-- 改变位置展示不同的同图片 -->
+         <div id="imgs">
+            <!-- 第一张图 -->
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b453cdd97372b524915a86fed01ede5.jpg?w=2452&h=920" alt="">
+            <!-- 第二张图 -->
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2efa4236c5c3bf48f1d1243bbc48c99f.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+            <!-- 第三 -->
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d5bcaeb5b2c0d8853a1f26036951364c.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+            <!-- 第四 -->
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4cfa4e9a0f10a79ed068f26adf846bfa.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+                  <!-- 第一张图 -->
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b453cdd97372b524915a86fed01ede5.jpg?w=2452&h=920" alt="">
+         </div>
+         <ul>
+            <li class="dot active"></li>
+            <li class="dot"></li>
+            <li class="dot"></li>
+            <li class="dot"></li>
+         </ul>
+         <div class="left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+         </div>
+         <div class="right">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+         </div>
+     </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    // 定义一个播放索引
+    var playIndex = 0;
+    // 播放方法
+    function play(){
+        playIndex++;
+        if(playIndex==4){
+            $("li").eq(0).addClass("active").siblings().removeClass("active")
+        }
+        // 判断播放索引是否大于最大播放索引 如果大于那么要求他从第一张开始
+        if(playIndex>=5){
+         $("#imgs").css("left",0)
+         playIndex = 1;
+        }
+        $("#imgs").animate({
+            left:-playIndex*800+"px"
+        }) 
+        // console.log($("li"))
+        //根据索引查询要改变的li
+        $("li").eq(playIndex).addClass("active").siblings().removeClass("active")
+    }
+    // play();
+    var timer = null;
+    // 自定轮播
+    function autoPlay(){
+      timer = setInterval(play,2000)
+    }
+    autoPlay();
+    $("li").click(function(){
+        // 获取当前点击的索引
+        let index = $(this).index();
+     
+        $("li").eq(index).addClass("active").siblings().removeClass("active")
+        index -- ;
+        playIndex = index;
+        play();
+    })
+
+    $("#box").hover(function(){
+        $(".left").show();
+        $(".right").show();
+            // 清楚计时器
+        // 暂停轮播
+        clearInterval(timer)
+        timer = null;
+    },function(){
+        $(".left").hide();
+        $(".right").hide();
+        autoPlay();
+    })
+   $(".right").click(function(){
+    // 播放下一个图片
+    play();
+   })
+  //播放上一个
+  function playPre(){
+        playIndex--;
+        console.log(playIndex)
+        if(playIndex<0){
+            playIndex=3
+        }
+        $("#imgs").animate({
+            left:-playIndex*800+"px"
+        }) 
+        $("li").eq(playIndex).addClass("active").siblings().removeClass("active")
+    }
+   $(".left").click(function(){
+    playPre();
+   })
+//    问题 如何想左无缝轮播;
+</script>
+</html>

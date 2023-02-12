@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            fetch
+                1. 更加简单的数据获取方式，功能更加强大、更灵活，xhr 的升级版
+                2. 基础 Promise
+        */
+        fetch("http://127.0.0.1:8080/fetch").then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+        // data.text() 是 fetch API 的一部分，返回值是一个 promise, 需要下一个 then 获取
+    </script>
+</body>
+
+</html>

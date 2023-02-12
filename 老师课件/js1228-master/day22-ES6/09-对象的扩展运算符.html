@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 扩展运算符: ... 
+        //        取出对象所有可以遍历的属性，然后拷贝给当前对象。  
+        //    作用：1.对象的浅拷贝; 2.对象的合并
+        let hat = { red: '红色', price: 99 };
+        let phone = { year: 2022 };
+        let school = { name: '麻省理工', address: '波士顿', hat }
+
+        // 拷贝对象
+        let university = { ...school };
+
+        // 对象的合并
+        let result = { ...phone, ...hat };
+        console.log(result);
+
+        // 注意点(自测)
+        //      自定义的属性和拓展运算符对象里面属性的相同的时候：
+        //      自定义的属性在拓展运算符后面，则拓展运算符对象内部同名的属性将被覆盖掉。
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+@media screen and(max-width:750px) {
+    .header_main {
+        width: 80%;
+    }
+
+    .header_right > div {
+        margin-left: 20px;
+    }
+}

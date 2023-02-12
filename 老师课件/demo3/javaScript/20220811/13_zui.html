@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/css/zui.min.css">
+
+<!-- ZUI Javascript 依赖 jQuery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/js/zui.min.js"></script>
+</head>
+<body>
+    <div class="panel panel-primary">
+        <div class="panel-body">
+         1122112
+        </div>
+        <div class="panel-footer panel-primary">
+          222222
+        </div>
+      </div>
+      <table class="table table-hover table-bordered">
+         <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+         </tr>
+         <tr>
+            <td>23123</td>
+            <td>3213213</td>
+            <td>312321</td>
+            <td>3213123</td>
+         </tr>
+      </table>
+      <button class="btn">提示</button>
+</body>
+<script>
+    $(".btn").click(function(){
+        new $.zui.Messager('这是一个浮动消息。', {
+        icon: 'bell',// 定义消息图标
+        placement: 'center',
+        type:"success"
+    }).show();
+    })
+</script>
+</html>

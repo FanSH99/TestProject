@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 复杂数据类型传参
+        function Hero(name) {
+            this.name = name;
+        }
+
+        function change(x) {     // 
+            // let x;
+            // x = yuji;
+            console.log(x.name); // 2. 这个输出什么 虞姬     
+            x.name = "貂蝉";
+            console.log(x.name); // 3. 这个输出什么 貂蝉 
+        }
+        var yuji = new Hero("虞姬");
+        console.log(yuji.name); // 1. 这个输出什么 虞姬    
+        change(yuji);
+        console.log(yuji.name); // 4. 这个输出什么 貂蝉  
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

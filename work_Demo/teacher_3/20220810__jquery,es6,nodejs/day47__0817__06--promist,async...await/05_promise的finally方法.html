@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月17日09:53:55
+     -->
+</body>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+    let p = new Promise((reslove, reject) => {
+        let num = Math.floor(Math.random() * 10);
+        console.log(num);
+        if (num >= 5) {
+            reslove(num + "大于5")
+        } else {
+            reject(num + "失败了")
+        }
+    })
+
+    p.then((res) => {
+        console.log(res + "---------------" + 'success');
+    }).catch((err) => {
+        console.log(err + '-----------------' + "err");
+    }).finally(() => {
+        console.log("无论是成功或者失败都会调用");
+    })
+</script>
+
+</html>

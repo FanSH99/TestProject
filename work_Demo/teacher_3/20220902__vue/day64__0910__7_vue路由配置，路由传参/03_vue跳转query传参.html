@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue配置及使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-view> </router-view>
+    </div>
+    <template id="home">
+        <div>
+            <ul>
+                <li v-for="(item,index) in list" :key="index" @click="goInfo(item.name,item.id)">{{item.name}}</li>
+            </ul>
+            <ul>
+                <dl v-for="(item,index) in list" :key="index">
+                    <!-- 注意 to需要添加:来绑定属性，另外，用模板字符串来写路径注意引号，容易出错。 -->
+                    <router-link :to="'/info?id='+item.id+'&name='+item.name">{{item.name}}</router-link>
+                </dl>
+            </ul>
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script src="../bin/vue-router-3.5.0.js"></script>
+
+<script>
+    /* 2022年9月13日11:16:15 */
+    let home = {
+        template: "#home",
+        data() {
+            return {
+                list: [
+                    {
+                        name: "流浪月球",
+                        id: 1002,
+                    },
+                    {
+                        name: "栀子花开",
+                        id: 1003,
+                    }
+                ]
+            }
+        },
+        methods: {
+            goInfo(name, id) {
+                console.log(name, id);
+                this.$router.push({
+                    // path: `/info?id=${id}&name=${name}`
+                    path: "/info",
+                    // 可以直接拼接到路径上，也可以用query属性用来传递数据，建议用query，这样增删数据比较方便。
+                    query: {
+                        id: id,
+                        name: name
+                    }
+                })
+            }
+        }
+    }
+    let info = {
+        template: "<h1>电影详情{{id}}{{name}}</h1>",
+        data() {
+            return {
+                id: null,
+                name: null,
+            }
+        },
+        created() {
+            console.log(this.$route.query);
+            this.name = this.$route.query.name
+            this.id = this.$route.query.id
+        }
+    }
+    let router = new VueRouter({
+        routes: [
+            {
+                path: "/",
+                name: "home",
+                component: home,
+            },
+            {
+                path: "/info",
+                name: "info",
+                component: info,
+            }
+        ]
+    })
+    Vue.use(router);
+    new Vue({
+        el: "#app",
+        router,
+    })
+</script>
+
+
+</html>

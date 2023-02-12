@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.open("get","https://suggest.taobao.com/sug?code=utf-8&q=水杯");
+    xhr.send();
+    xhr.onreadystatechange = ()=>{
+        if(xhr.readyState ===4){
+            console.log(xhr.response)
+        }
+    }
+
+    /* 
+    跨域：受浏览器同源策略的影响服务端不允许客户端随便访问，为了减少服务器并且加大数据安全
+    同源策略：1.域名 2.协议 3.端口 三者有一个不一样那么就是跨域
+    https://www.baidu.com
+    https://www.baidu.com/login
+
+    https://www.taobao.com
+    https://www.jd.com
+    //'Access-Control-Allow-Origin 跨域请求
+
+    解决跨域的方案：
+    1.jsonp跨域 （ajax）
+    2.script 脚本跨域
+    3.反向代理跨域
+    4.服务端开启cors 
+    */
+</script>
+</html>

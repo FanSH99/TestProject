@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            fetch 请求参数
+                1. 常用配置选项
+                    method(String): 请求方式，默认是 get(get,post,put,delete)
+                    body(String): 请求参数
+                    header(Object): 请求头,默认 {}
+        */
+        // get
+        fetch("http://127.0.0.1:8080/get1?id=123&hero=coco", {
+            method: 'get'
+        }).then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+
+        // get 动态传参
+        fetch("http://127.0.0.1:8080/get2/123/jugg", {
+            method: 'get'
+        }).then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+
+        // delete
+        fetch("http://127.0.0.1:8080/delete/456/am", {
+            method: 'delete'
+        }).then(function (data) {
+            return data.text();
+        }).then(function (data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

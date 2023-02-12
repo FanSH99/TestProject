@@ -1,0 +1,142 @@
+/* 人才招聘开始 */
+.qy{
+    border-top: 3px solid #ccc; 
+    position: relative;
+}
+.qy img{
+    width: 100%;
+    display: block;
+}
+.qy .qy_we{
+    width: 340px;
+    height: 160px;
+    background: rgba(215,0,15,0.8);
+    text-align: center;
+    line-height: 160px;
+    position: absolute;
+    bottom: 33%;
+    left: 10%;
+}
+
+.qy .qy_we h1{
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.one{
+    width: 1240px;
+    /* height: 418px; */
+    padding:20px;
+    margin:  60px auto;
+    background:#f7f7f7;
+}
+
+.one .one_js{
+    width: 640px;
+    height: 465px;
+    /* height: 418px; */
+    /* border: 1px solid #333; */
+    float: left;
+    
+}
+.one .one_js img{
+    width: 100%;
+    height: 100%;;
+}
+.one .one_js_zw{
+    width: 540px;
+    /* height: 418px; */
+    /* border: 1px solid #333; */
+    float: right;
+    display: block;
+}
+.one .one_js_zw h2,.two .two_hx_zw h2{
+    width: 60px;
+    height: 2px;
+    background: #212121;
+    margin:40px 0;
+}
+.one .one_js_zw h1,.two .two_hx_zw h1{
+    font-size: 34px;
+    color: #464646;
+    font-weight: normal;
+    margin-top: 100px;
+}
+.one .one_js_zw p,.two .two_hx_zw p{
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1em;
+   
+}
+.one1{
+    padding: 0px;
+    background: url(../img/59.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.one1 .one3{
+    width: 640px;
+    height: 465px;
+    background: rgba(1,99,213,0.8);
+}
+.one1 .one3 h1{
+    color: #ffffff;
+    margin-left: 60px;
+}
+.one1 .one3 h2{
+    background: #ffffff;
+    margin-left: 60px;
+}
+.one1 .one3 p{
+    color: #ffffff;
+    margin-left: 60px;
+}
+.two{
+    width: 1240px;
+    /* height: 418px; */
+    padding:20px;
+    margin:  60px auto;
+    background: url( ../img/40.jpg);
+}
+.two .two_hx{
+    width: 640px;
+    height: 465px;
+    float: right;
+}
+.two .two_hx img{
+    width: 100%;
+    height: 100%;
+}
+
+.two .two_hx_zw {
+    width: 514px;
+    margin-left: 40px;
+}
+.one2{
+   background: url(../img/61.jpg);
+   padding: 80px 0 65px 0;
+   background-size: cover;
+   background-position: center;
+}
+.one2 .zhaopin{
+    text-align: center;
+    
+
+}
+.one2 .zhaopin h2{
+    font-size: 32px;
+    font-weight: normal;
+    color: #ffffff;
+
+}
+.one2 .zhaopin h4{
+    width: 60px;
+    height: 2px;
+    background: #ffffff;
+    margin: 20px auto;
+    
+}
+/* 人才招聘结束 */

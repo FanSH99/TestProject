@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ajax发送http请求</h1>
+    <button class="get">ajax发送get请求</button>
+    <button class="gets">$.get</button>
+    <br>
+    <button class="post">ajax发送post请求</button>
+    <button class="posts">$.post</button>
+    <!-- ajax是基于jquery -->
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    // console.log($.ajax)
+    $(".get").click(function(){
+        let username = 'admin';
+        let password = 123456;
+        $.ajax({
+            // 请求地址 get请求参数拼接到路径上
+            // url:`/login?username=${username}&password=${password}`,
+            url:`/login`,
+            // 要传递得参数  get请求会自动将请求参数拼接到路径上
+            data:{
+                username:username,
+                password:password
+            },
+            // 请求方式 若不传默认为get请求
+            method:"get",
+            // 响应数据类型默认为json
+            dataType:"json",
+            // 请求成功后得回调函数
+            success(res){
+                console.log(res)
+            },
+            // 请求失败后进入得回调函数
+            error(err){
+                console.log("请求失败",err)
+            }
+        })
+    })
+    $(".gets").click(()=>{
+        let username = 'admin';
+        let password = 123456;
+        // 参数一请求地址参数二请求参数参数三成功回调函数
+        $.get('/login',{username,password},function(res){
+            console.log(res)
+        })
+    })
+
+    $(".post").click(()=>{
+        let username = 'admin';
+        let password = 123456;
+        $.ajax({
+            url:"/regiest",
+            method:"post",
+            dataType:"json",
+            // post请求传递参数 直接将参数放到data属性中
+            data:{
+                username,
+                password
+            },
+            // 设置请求头 ajax会自动设置
+            contentType:"application/x-www-form-urlencoded",
+            success(res){
+                console.log(res)
+            },
+            error(err){
+                console.log(err)
+            }
+        })
+    })
+
+    $('.posts').click(()=>{
+        let username = 'admin';
+        let password = 123456;
+        $.post("/regiest",{username,password},(res)=>{
+            console.log(res)
+        })
+    })
+</script>
+</html>

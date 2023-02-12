@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.
+        var arr = [1, 2, 3];
+        console.log(arr.constructor);//ƒ Array() { [native code] }
+        console.log(arr.constructor === Array);//true
+//2.
+    //  匿名函数   1.赋值再执行  2.自我执行
+    //  var a=    (function () {
+    //         var x = 10;
+    //         var y = 5;
+    //         return function () {
+    //             return x * y
+
+
+    //         };
+
+    //     });
+
+    //     var b=a()
+    //    var c= b();
+    //    console.log(c);
+
+
+    // var c=   (function () {
+    //         var x = 10;
+    //         var y = 5;
+    //         return function () {
+    //             return x * y
+
+
+    //         };
+
+    //     })()();
+    //     console.log(c);
+
+
+    // 2.让数组[11,5,999,24,6,666]里面的元素按照从小到大的方式排列
+
+    // 我们将0、1、1、2、3、5、8、13、21、34、...这样的数列成为斐波纳契数列，F(1)=0，F(2)=1，F(n+1)=F(n)+F(n-1),输出第n项的值及前n项的和
+    function demo(n){
+        var one=0;
+        var two=1;
+        var three;
+        var sum=1;
+        // 轮数
+        for(var i=2;i<n;i++){
+            three=one+two;
+            one=two;
+            two=three;
+            sum+=three;
+        }
+       console.log('第'+ n+'项的值是' +three,'前'+n+'项的和是'+sum);
+    }
+    demo(5)
+
+    </script>
+</body>
+
+</html>

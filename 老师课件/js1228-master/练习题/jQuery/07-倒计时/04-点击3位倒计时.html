@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时js</title>
+    <style>
+        main {
+            width: 300px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        span {
+            display: inline-block;
+            background-color: white;
+            color: #333;
+            line-height: 50px;
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        span:last-child {
+            margin-left: 13px;
+        }
+
+        button {
+            width: 200px;
+            border: none;
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            transition: all .5s;
+        }
+
+        button:hover,
+        button.active {
+            background: red;
+        }
+
+        button.green {
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p>
+            <span id='shi'>01</span>
+            <span id='fen'>10</span>
+            <span id='miao'>2</span>
+        </p>
+        <button class="nnn">开始倒计时</button>
+    </main>
+</body>
+<script>
+    // todo 有 bug
+    var shi = document.querySelector('#shi');
+    var fen = document.querySelector('#fen');
+    var miao = document.querySelector('#miao');
+    var but = document.querySelector('.nnn');
+    var d = true;
+    but.onclick = function () {
+        if (d == true) {
+            but.innerHTML = '暂停';
+            but.style.background = 'red';
+            time = setInterval(dian, 10);
+            d = false;
+        } else {
+            but.innerHTML = '继续';
+            but.style.background = 'blue';
+            clearInterval(time);
+            d = true;
+        }
+    }
+
+    function dian() {
+        m = miao.innerHTML;
+        f = fen.innerHTML;
+        s = shi.innerHTML;
+        m--;
+        // if if是每一个都会进行判断  当判断条件不成立时  会执行else
+        // 当不满足if中的条件的时候,就会去执行else if ,如果if中的条件已经满足了,就不会去判断else if中的条件了
+        // if (m < 0) {m = 59; if (f > 0) {f--} if(s <= 0){f=0;m=0}else{}}             //第二个if不成立跳出判断开始执行els
+        // if(m < 10){m = '0'+m}
+
+
+        // if(m < 0){m = 59;if(f <= 0){m = 0}else{f--;if(f < 10){f = '0'+f}}}if(m < 10){m = '0'+m}
+
+        // m.innerHTML--;
+        // if (m< 10 && m >= 0) {m = '0' + m;}
+        //  else if (m< 0) {m = 59;f--;
+        //     if (f < 10 ) {f = '0' + f;}
+        //      else if (f < 0) {f = 59;s--;
+        //         if(s<10){s = '0'+s;}}}
+        // if (s == 0 && f == 0 && m==0) {
+        //     clearInterval(time)
+        //     but.innerHTML = '完成'
+        // }
+        miao.innerHTML = m;
+        fen.innerHTML = f;
+        shi.innerHTML = s;
+    }
+
+</script>
+
+</html>

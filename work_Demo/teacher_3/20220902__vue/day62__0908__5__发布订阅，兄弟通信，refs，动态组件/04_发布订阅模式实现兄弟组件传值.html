@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <component-one></component-one>
+        <component-two></component-two>
+    </div>
+    <template id="two">
+        <div>
+            <h2>第二个组件</h2>
+            <p>{{msg}}</p>
+            <button @click="send">发消息</button>
+        </div>
+
+    </template>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    let bus = {
+        // 存放订阅者的回调函数
+        list: [],
+        on(callback) {
+            // 订阅者--接收消息
+            console.log("订阅公众号");
+            this.list.push("callback")
+        },
+        // 发布者--发消息
+        emit() {
+            this.list.forEach(callback => {
+                callback(msg);
+            })
+            console.log("发布者");
+        }
+    }
+    let componentOne = {
+        template: "<h1>第一个组件</h1>",
+        data() {
+            return {
+                msg: ""
+            }
+        },
+        created() {
+            // 订阅消息
+            bus.on((msg) => {
+                console.log("接收到消息了", msg);
+                this.msg = msg
+            });
+        },
+    }
+    let componentTwo = {
+        template: "#two",
+        data() {
+            return {
+                msg: "我是组件2中的msg"
+            }
+        },
+
+        methods: {
+            send() {
+                bus.$emit(this.msg)
+            }
+        }
+
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            componentOne,
+            componentTwo
+        }
+    })
+
+</script>
+
+</html>

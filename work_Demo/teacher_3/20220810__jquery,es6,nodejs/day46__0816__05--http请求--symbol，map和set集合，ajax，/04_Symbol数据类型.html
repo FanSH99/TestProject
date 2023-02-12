@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月16日11:13:39
+     -->
+
+</body>
+<script>
+
+    let mysy = Symbol(1);
+    let mysy1 = Symbol(1);
+    console.log(mysy, typeof mysy);//Symbol(1) 'symbol'
+    console.log(mysy == mysy1);//false
+
+    let mykey = Symbol("哈哈哈");
+    let mykey1 = Symbol("嘿嘿嘿");
+    let obj = {};
+    obj[mykey] = "23345";
+    obj[mykey1] = "嘿嘿嘿"
+    console.log(obj);//{Symbol(哈哈哈): '23345', Symbol(嘿嘿嘿): '嘿嘿嘿'}
+
+    let int = BigInt(12345);//BigInt 里面数必须是整数
+    console.log(int);//12345n
+    let int2 = BigInt(-123);
+    console.log(int2);//-123n
+
+
+    let uid = Symbol.for("uid");
+    let object = {};
+    object[uid] = "20181001";
+    console.log(object);//{Symbol(uid): '20181001'}
+
+
+    /*
+    基本：string number boolean null undefined bigint symbol
+    引用:object  ---Set Map weakSet  WeakMap TypedArray
+    */
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{keywords}}</p>
+        <!-- v-model可以实现双向数据绑定，只能作用在表单标签中，例如input,textrear,select,checkbox -->
+        <input type="text" name="" id="" v-model="keywords">
+        <button @click="getValue">获取输入框内容</button>
+        <textarea name="" id="" cols="30" rows="10" v-model="keywords"></textarea><br>
+        <!-- v-model使用在单选框中，必须要添加value属性，v-model内容是哪个选项的value值，就选中哪个。 -->
+        请选择你所在的地区：
+        <input type="radio" name="" id="" value="河南" v-model="city">河南
+        <input type="radio" name="" id="" value="河北" v-model="city">河北
+        <!-- 不适用v-model怎么实现，一个简单的双向数据绑定。
+        1.绑定一个value属性，实现数据改变视图更新。
+        2.使用v-on(@)绑定input事件，获取最新输入框内容更新数据。
+        -->
+        <input type="text" placeholder="请输入内容" :value="value" @input="getNewValue">
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* --2022年9月5日14: 05: 22 */
+    new Vue({
+        el: "#app",
+        data: {
+            keywords: '20',
+            city: '河北',
+            value: '等不到的雪月风花'
+        },
+        methods: {
+            getValue() {
+                console.log(this.keywords);
+            },
+            getNewValue(){
+                
+            }
+        }
+    })
+
+</script>
+
+</html>

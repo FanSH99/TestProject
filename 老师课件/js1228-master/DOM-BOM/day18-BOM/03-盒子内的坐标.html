@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            margin: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /* 
+            需求：鼠标在 div 内移动，获取鼠标在 div 内的坐标
+        */
+        let div = document.querySelector('div');
+        div.addEventListener('mousemove', function (e) {
+            // console.log(e.pageX);
+            let x = e.pageX;         // 鼠标在页面的坐标
+            let x1 = div.offsetLeft; // div 左侧的偏移量
+
+            let x2 = x - x1;
+            let y2 = e.pageY - div.offsetTop;
+            div.innerHTML = `x 的坐标是${x2};y 的坐标是${y2}`;
+        });
+    </script>
+</body>
+
+</html>

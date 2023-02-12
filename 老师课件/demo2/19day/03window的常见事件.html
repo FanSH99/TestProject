@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // window.onload = function () {
+        //     var box = document.getElementById('box');
+        //     console.log(box);
+        // }
+
+        window.addEventListener('load',function(){
+            // var box = document.getElementById('box');
+            // console.log(box);
+
+            console.log('aaa');
+        })
+
+        window.addEventListener('DOMContentLoaded',function(){
+            console.log('bbb');
+            
+        })
+
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.窗口加载事件  onload
+         window.onload
+    当文档内容完全加载完成会触发该事件 onload(文档内容：包括图像、脚本文件、CSS 文件等)
+
+       2.窗口加载事件DOMContentLoaded
+       DOMContentLoaded事件触发时，仅当DOM加载完成，不包括样式表，图片，flash等等
+       Ie9以上才支持
+
+        3.调整窗口大小事件  响应式
+         window.onresize
+
+
+         
+
+
+    -->
+    <div id="box"></div>
+    <script>
+        window.onresize=function(){
+            console.log('窗口大小改变了');
+        }
+    </script>
+ 
+   
+
+</body>
+
+</html>

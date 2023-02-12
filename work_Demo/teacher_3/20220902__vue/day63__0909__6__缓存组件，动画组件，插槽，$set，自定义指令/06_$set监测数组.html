@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 如果对象中没有某条数据，也可以写，写了并不报错。 -->
+        <h1>{{user.name}}---{{user.age}}----{{user.sex}}</h1>
+        <button @click="add">添加sex属性</button>
+        <ul>
+            <li v-for="(item,index) in list" :key="index">{{item}}</li>
+        </ul>
+        <button @click="getTimo">提莫</button>
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月9日14:16:35 */
+    new Vue({
+        el: "#app",
+        data: {
+            user: {
+                name: "白浅",
+                age: 18
+            },
+            list: ["卡特", "亚索", "克里斯", "盖伦"]
+        },
+        methods: {
+            add() {
+                /* 数据添加了但是并不会渲染。vue不会对对象新增的属性进行数据劫持。 */
+                // this.user.sex = "男";
+                // console.log(this.user);
+                /*如果想要给视图渲染后的对象添加新的属性，必须使用this.$set()来实现视图的强制更新。 
+                $set非常重要，参数一要添加数据的对象名称，参数二属性名，参数三属性值。 
+                数组也属于对象。
+                */
+                this.$set(this.user, "sex", "男")
+            },
+            getTimo() {
+                // this.list[1] = '提莫'
+                this.$set(this.list, 1, "提莫")
+            }
+        }
+    })
+</script>
+
+</html>

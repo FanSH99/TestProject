@@ -1,0 +1,74 @@
+/* 底部开始 */
+.foot{
+    /* width:1200px; */
+    padding-top: 106px;
+    height: 200px;
+    background-image: url( ../img/14.jpg);
+    border-top:1px solid #d7d7d7;
+    
+}
+
+.foot .foot_lb{
+    width: 1200px;
+    /* height: 200px; */
+    /* border: 1px solid #333; */
+    /* background: #666; */
+    margin: auto;
+   
+}
+.foot .foot_lb dl{
+    float: left;
+    padding-right: 152px;
+    position: relative;
+    /* margin: auto; */
+}
+.foot .foot_lb dl:nth-child(6){
+    padding-right:0px;
+}
+.foot .foot_lb dl dt a{
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+.foot .foot_lb dd{
+    position: absolute;
+    margin-top: 15px;
+}
+.foot .foot_lb dd a{
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #868686;
+    margin-top:15px;
+
+   
+    /* display: none; */
+}
+/* 底部结束 */
+.zym{
+    /* height: 60px; */
+    background-image: url( ../img/14.jpg);
+    border-top:1px solid #d7d7d7;
+    
+}
+
+
+/* 座右铭开始 */
+.zym {
+    
+    font-size: 12px;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #dbdbdb;
+    
+
+}
+.zym a{
+    color: #333;
+    text-decoration: none;
+}
+.zym p a:hover{
+    color:red;
+
+}
+/* 座右铭结束 */

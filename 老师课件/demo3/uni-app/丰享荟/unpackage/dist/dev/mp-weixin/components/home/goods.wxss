@@ -1,0 +1,33 @@
+
+.goods.data-v-7eea82a1{
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 20rpx;
+}
+image.data-v-7eea82a1{	
+	width: 100%;
+}
+.content.data-v-7eea82a1{
+	padding: 15rpx;
+	box-sizing: border-box;
+}
+.goodsname.data-v-7eea82a1{
+	width: 100%;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	font-size: 29rpx;
+	font-weight: 700;
+}
+.otprice.data-v-7eea82a1{
+	font-size: 25rpx;
+	color: #919191;
+	text-decoration: line-through;
+	margin: 15rpx 0;
+}
+.price.data-v-7eea82a1{
+	font-size: 32rpx;
+	color: red;
+	font-weight: 700;
+}
+

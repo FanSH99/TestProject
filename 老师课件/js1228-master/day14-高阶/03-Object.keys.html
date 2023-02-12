@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let phone = {
+            id: 1,
+            pname: "小米",
+            num: 200,
+            price: 199,
+        };
+        // 1. 传统方法遍历对象
+        for (let key in phone) {
+            console.log(key, phone[key]);
+        }
+
+        // 2. for  in 遍历数组
+        let arr = ['张飞', '张辽', '关羽', '吕布', '曹操'];
+        for (let index in arr) {
+            console.log(index, arr[index]);
+        }
+
+        // 3. Object.keys(obj); 获取对象属性名,返回是一个数组.
+        //    即所有的属性保存到该数组
+        let result = Object.keys(phone);
+        console.log(result);
+        for (let index in result) {
+            console.log(result[index], phone[result[index]]);
+        }
+
+        result.forEach(temp => {
+            console.log(temp);
+        });
+    </script>
+</body>
+
+</html>

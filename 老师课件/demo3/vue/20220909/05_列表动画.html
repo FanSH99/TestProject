@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .v-enter,.v-leave-to{
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 列表动画可以让多个标签做动画  appear 属性表示动画是否立即执行-->
+        <!-- transition-group 会自动渲染成span标签 -->
+        <!-- tag属性表示可以将 transition-group组件当作成某个标签-->
+        <transition-group appear tag="ul">
+          <li v-for="(item,index) in list" :key="index" @click="list.splice(index,1)">{{item}}</li>
+        </transition-group>
+        <button @click="list.push(list.length+1)">add</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:[1,2,3,4]
+        }
+    })
+</script>
+</html>

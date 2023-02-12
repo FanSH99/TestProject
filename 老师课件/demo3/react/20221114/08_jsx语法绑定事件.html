@@ -1,0 +1,49 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" onmousemove="">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+
+    let dom = (
+        <div>
+             <button onClick={()=>{
+                // console.log("di")
+                alert("点你咋地")
+             }}>点我</button>
+             <button onClick={clickme}>再点我一下你试试</button>
+             <button onClick={()=>  clickMsg("哈哈哈哈")}>点击传递参数</button>
+             <button onMouseMove={()=>{
+                console.log("移动啦")
+             }}>其他⌚️</button>
+        </div>
+    )
+    function clickme(){
+        alert("再点你一次咋啦")
+    }
+    function clickMsg(msg){
+        alert(msg)
+    }
+    ReactDOM.render(dom,document.getElementById("app"));
+</script>
+
+</html>

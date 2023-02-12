@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+
+    // 2022年11月20日14:58:01
+    let { useState, useImperativeHandle, useRef } = React;
+    let Child = React.forwardRef((props, ref) => {
+        let [num, setNum] = useState(0);
+        let [list, setList] = useState([20, 340, 56, 76, 99])
+        let add = () => {
+            num++;
+            setNum(num);
+        }
+        // 参数1暴露给谁（ref)，参数2暴露的东西
+        useImperativeHandle(ref, () => {
+            return {
+                num,
+                add,
+                list
+            }
+        })
+        return (
+            <div>
+                <h5>子组件 {num}</h5>
+                <button onClick={add}>num++</button>
+            </div>
+        )
+    })
+
+    function App() {
+        let childRef = useRef();
+        return (
+            <div>
+                <h3>app组件 <button onClick={() => {
+                    console.log(childRef);
+                    childRef.current.add();
+                    console.log(childRef.current.list);
+                }}>num++</button></h3>
+                < Child ref={childRef} />
+            </div>
+        )
+    }
+    // function Child() {
+    //     let [num, setNum] = useState(0);
+    //     let add = () => {
+    //         num++;
+    //         setNum(num);
+    //     }
+    //     return (
+    //         <div>
+    //             <h5>子组件 {num}</h5>
+    //             <button onClick={add}>num++</button>
+    //         </div>
+    //     )
+    // }
+
+    // 若想使用useRef获取组件实例对象，需要使用React.fordRef来创建组件
+    // react默认不会暴露任何属性，如果想要获取子组件中的数据，需要暴露。
+
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // js 数据类型分为两大类：基本数据类型 引入数据类型
+    // 存储在内存里的 基本数据类型在栈内存 引用数据类型在堆内存
+    //  无论是深拷贝还是浅拷贝都是针对于引用数据类型。
+    // 浅拷贝只拷贝一层不拷贝更深层次
+    let user = {
+        name:'张三',
+        age:18
+    }
+    let msg = user;
+    msg.name = "李四";
+    console.log(msg,user)
+    console.log(msg===user);
+    let obj = {
+        name:"张三",
+        age:18,
+        like:{
+            name:"打篮球"
+        }
+    }
+    let newObj = {...obj};
+    newObj.name = '王五'
+    newObj.like.name = '打游戏'
+    console.log(newObj,obj)
+    // 扩展运算符拷贝一层时是深拷贝 拷贝多层时是浅拷贝
+
+    //  深拷贝拷贝多层
+    let a = {};
+    let b = {
+        name:"张三",
+        age:18
+    }
+    for(let key in b){
+        console.log(key)
+        a[key] = b[key]
+    }
+    a.name='赵六'
+    console.log(a,b)
+    let c = {
+        name:"张三",
+        age:18,
+        like:{
+            name:"学习"
+        }
+    }
+    let d ={};
+    // // Object.assign拷贝一层时是深拷贝 拷贝多层时是浅拷贝
+     Object.assign(d,c);
+     d.name = '哈哈哈哈'
+     d.like.name='打游戏'
+     console.log(d,c)
+
+     let myuser = {
+        name:"啦啦",
+        sex:"男",
+        like:{
+            name:"学习"
+        }
+     }
+    //  JSON.parse 结合 JSON.stringify 使用为深拷贝
+     let newMyuser = JSON.parse(JSON.stringify(myuser));
+     newMyuser.name = '哈哈哈哈哈'
+     newMyuser.like.name='打游戏'
+     console.log(newMyuser,myuser)
+
+</script>
+</html>

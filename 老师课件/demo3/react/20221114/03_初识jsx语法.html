@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    /* 
+     jsx语法是js的扩展语言 兼容所有js语法 jsx的出现就是为了提供给react使用
+     我们一般使用jsx声明式语法创建虚拟dom react语法采用的是 指令式语法创建虚拟dom
+     浏览器只能编译js语法 所以要想让浏览器编译jsx语法那么就需要想办法将jsx语法转化js语法
+    可以借助babel.js库将jsx语法转化为js语法编译到浏览器上。
+    */
+    // let dom = <div id='box'>哈哈哈哈神奇吧</div>;
+    // console.log(dom)
+    let div = (
+        <ul>
+            <li>231231</li>
+            <li>231231</li>
+            <li>2312312</li>
+            <li>23232</li>
+            <li>
+                <h1>2321323</h1>
+            </li>
+        </ul>
+    );
+    console.log(div)
+    ReactDOM.render(div,document.getElementById("app"))
+
+</script>
+
+</html>

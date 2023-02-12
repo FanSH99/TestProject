@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    /* 
+      作用域 : 产生作用的区域。
+         作用：变量命名冲突。
+      js 的作用域：
+        全局作用域：在整个 script 标签内部可用。   
+        局部作用域：在函数内部。
+      变量的作用域：
+          全局变量：在全局作用域下，声明的变量。
+          局部变量：在函数内部声明的变量，在函数内部可用。  
+      局部作用域可以使用全局变量，函数外部不能使用函数内部声明的变量。
+      形参是局部变量。
+      函数内部，未声明，直接赋值的变量，是全局变量，不推荐。
+    */
+    let age = 22;
+    function play(menu) {
+      // var menu;
+      let num = 10;
+      score = 122;
+      console.log(age);
+    }
+
+    play();
+    console.log(age);
+    // console.log(num);
+    // console.log(menu);
+    console.log(score);
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        return：函数里面用的多。
+        break：循环里面用的多。break可以代替return
+        continue：循环里面用的多。
+
+     -->
+    <script>
+
+        /* 带有返回值的函数 
+        return 有两个作用。1.返回结果，2.结束函数。
+        如果遇到return,后面有再多代码都不会再执行了。 
+        return有时可以代替break使用。
+
+        在数组的回调函数中，break和continue不能使用，但是可以使用return，此时的return相当于continue
+
+        调用函数
+        方法1:用变量接受以下函数的调用结果，再输出变量即可。 这种方法更好，因为这样别的函数也可以调用。
+        方法2：直接输出函数，输出函数调用。 console.log(getArea(10))
+        */
+
+        function getArea(r) {
+            var area = Math.PI * r * r;
+            return area;
+        }
+        getArea(10);//调用函数，但是没有结果。
+        var area = getArea(10);//这里的area和函数里面的不一样，函数里面的均为局部变量。
+        console.log(area.toFixed(2));
+        console.log(getArea(10).toFixed(2));
+
+        /* 
+        如果函数内部没有没有return，不能用变量来接，
+        如果接收了，输出的是undefined
+        直接输出函数调用也不合适。
+        */
+        function show(a, b) {
+            var sum = a + b;
+        }
+        console.log(show(10, 20));//undefined
+        /*
+        等同于下面两句话
+        var sum=show(10,20);
+        console.log(sum)
+        */
+
+    </script>
+</body>
+
+</html>

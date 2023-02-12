@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>
+<script>
+    !function a() {
+        let wt = document.documentElement.clientWidth;
+        let ht = document.documentElement.clientHeight;
+        $('body').css({ margin: 0, padding: 0 }).children('#box').css({ width: wt, height: ht, background: 'black', position: 'relative' });
+        $(document).click(function (e) {
+            let top = Math.round(Math.random() * ht);
+            let left = Math.round(Math.random() * wt);
+            let color1 = Math.round(Math.random() * 255);
+            let color2 = Math.round(Math.random() * 255);
+            let color3 = Math.round(Math.random() * 255);
+            let sizee = Math.round(Math.random() * 120) + 80;
+            if (top + (e.pageY - sizee / 2) <= ht && left + (e.pageY - sizee / 2) <= wt) {
+
+            }
+            $("#box").append($('<div></div>').css({
+                width: sizee + 'px', height: sizee + 'px', background: ' rgb(' + color1 +
+                    "," + color2 + "," + color3 + ')', 'border-radius': '50%', position: 'absolute',
+                top: e.pageY - sizee / 2, left: e.pageX - sizee / 2
+            }).animate({ top: top, left: left }, 2000, function () {
+                fun($(this), sizee);
+            }));
+        });
+        function fun(ts, sizee) {
+            let xtop = Math.round(Math.random() * ht);
+            let xleft = Math.round(Math.random() * wt);
+            ts.animate({ top: xtop - sizee, left: xleft - sizee }, 2000, function () {
+                return fun(ts, sizee);
+            });
+        }
+    }();
+</script>

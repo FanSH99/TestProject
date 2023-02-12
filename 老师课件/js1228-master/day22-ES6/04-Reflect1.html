@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Reflect 对象与 Proxy 对象一样，也是 ES6 为了操作对象而提供的新 API。
+            Reflect 的目的：
+                1. 将 Object 的一些明显属于语言内部的方法(比如Object.defineProperty)
+                   移植到了 Reflect 对象上。
+                  (当前某些方法会同时存在于 Object 和 Reflect 对象上)
+                  未来的新方法会只部署在 Reflect 对象上。
+                2. Reflect 对象对某些方法的返回结果进行了修改，使其更合理。
+                3. Reflect 对象使用函数的方式实现了 Object 的命令式操作。 
+        */
+        // Reflect 是一个全局的普通对象，它的所有的属性和方法都是静态的   
+        // 详情见图 04-Reflect.png
+        console.log(Reflect);
+
+        // Relftce.get(target, name, receiver);
+        // 方法查找并返回 target 对象的 name 属性，如果没有，则返回 undefined
+        let hero = {
+            name: "剑圣",
+            skill: '剑圣风暴',
+            get age() {
+                console.log("查询年龄");
+                return "22"
+            }
+        }
+        console.log(Reflect.get(hero, "name"));
+        console.log(Reflect.get(hero, "skill"));
+        console.log(Reflect.get(hero, "age"));
+    </script>
+</body>
+
+</html>

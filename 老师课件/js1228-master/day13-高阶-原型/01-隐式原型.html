@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+           js 规定：
+             1. 构造函数(对象/实例),有一个 prototype(显式原型) 属性，prototype 的是一个对象。
+             2. prototype 这个对象的所有属性和方法是构造函数的实例化的对象，所共享。
+       
+           疑问:
+                game 定义在构造函数的 prototype 上。是 prototype 的一个属性。
+                为何 eason、jay 这些对象，可以直接使用
+
+            隐式原型 ：
+                1.每个对象都会有一个属性 __proto__,
+                2.向了构造函数的 prototype (显式原型)   
+        */
+        function Star(name, age) {
+            this.age = age;
+            this.name = name;
+            this.sing = function () {
+                console.log('这瓜保熟吗？');
+            }
+        }
+
+        Star.prototype.game = function () {
+            console.log('今晚吃鸡');
+        }
+
+        let eason = new Star('eason', 22);
+        eason.sing();
+        eason.game();
+
+        console.log(eason);
+
+        console.log(eason.__proto__);
+        console.log(eason.__proto__ === Star.prototype);
+
+        // chrome:[[Prototype]] 是对象的一个内部属性，
+        // 引擎通过 __proto__ 向外暴露了这个属性。
+        // 也就是说 [[Prototype]] 和 __proto__ 等价的
+    </script>
+</body>
+
+</html>

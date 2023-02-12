@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        (function (a) {
+            console.log(a);// function(){return 5}
+        })(function () {
+            return 5;
+        });//---外层执行，但内层未执行
+
+        (function (b) {
+            console.log(b);//10
+        })(function () {
+            return 10;
+        }());//---内外层均执行 
+
+        /*   (function (b) {
+              console.log(b);//10
+          })(function () {
+              return 10;
+          })();//---报错 -多写了执行。*/
+
+
+
+    </script>
+</body>
+
+</html>

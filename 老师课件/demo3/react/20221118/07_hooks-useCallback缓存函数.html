@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+      let {useState,useCallback} = React;
+      function App(){
+          let [num,setNum] = useState(0)
+          let  [name,setName] = useState("张三")
+        //   useCallback 缓存函数，参数一你要缓存的函数体参数儿当前这个函数的依赖项
+          let getName = useCallback(()=>{
+            //代码被缓存
+            console.log(name)
+          },[name])
+        // let getName = ()=>{
+        //     console.log(name)
+        // }
+         return(
+            <div>
+                <div>app组件 {num} --{name}</div>    
+                <button onClick={()=>{
+                    num++
+                    setNum(num)
+                }}>++</button>
+                <input type="text" value={name} onChange={(e)=>{
+                    setName(e.target.value)
+                }}/>
+                <button onClick={getName}>获取输入框内容</button>
+            </div>
+         )
+      }
+
+      ReactDOM.render(<App/>,document.getElementById("app"))
+      
+</script>
+</html>

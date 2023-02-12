@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="title">
+            静夜思
+        </li>
+        <li class="one">窗前明月光</li>
+        <li>疑是地上霜</li>
+        <li>举头望明月</li>
+        <li>
+            低头思故乡
+        </li>
+        <div>
+            好好学习
+        </div>
+    </ul>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    // 原生js获取dom
+    // document.getElementById()
+    console.dir(document.getElementById("title"));
+    document.getElementById("title").style.color = 'red'
+    // 使用jquery获取的dom是一个jquery对象 是一个数组
+    // 只能调用jquery的方法属性
+    // 根据id查询dom
+     console.log($("#title"))
+    // console.log( $("#title")[0])
+    // 获取jquery 对象中的dom对象
+    // $("#title")[0].style.color='blue'
+    var title = document.getElementById("title");
+    // 将dom对象转化为jquery对象
+    console.log($(title))
+    // 根据类名查询节点
+    console.log($(".one"))
+    // $(选择器名称)
+    console.log($('li'))
+    console.log($("ul div"))
+    console.log($("ul>div"))
+    console.log($("li:odd"))
+    // 查询所有dom
+    console.log($("*"))
+    // $("选择器名称")
+</script>
+</html>

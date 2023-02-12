@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 3px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 兼容性方案
+    1.addEventListener('click',function(){})
+    2.attachEvent('onclick',function(){})
+    3. btn.onclick=function(){}
+   一般用第一个或者第三个
+
+   ele(btn) eventName( click/oncick)  fn(回调函数)
+
+   ele---元素例如btn
+    -->
+
+    <button id="btn">点击我</button>
+    <script>
+        function addEventListener(ele, eventName, fn) {
+            if (ele.addEventListener) {
+                console.log('addEventListener');
+                ele.addEventListener(event, fn)
+            } else if (ele.attachEvent) {
+                console.log('attachEvent');
+                ele.attachEvent('on' + eventName, fn)
+            } else {
+                ele['on' + eventName] = fn;
+            }
+        }
+
+        var btn = document.querySelector('#btn');
+        addEventListener(btn, 'click', function () {
+            console.log('中午好！！！');
+        });
+    </script>
+</body>
+
+</html>

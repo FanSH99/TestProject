@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            function $(arg) {
+                console.log('123');
+                let result = document.querySelector('arg');
+                return result;
+            }
+
+            $('div');
+            // 问题：变量名冲突
+            // jQuery('div');
+
+            // 2. 自定义命名
+            let temp = jQuery.noConflict();
+            console.log(temp('div'));
+            temp('span').html('566');
+        });
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <span>sssss</span>
+</body>
+
+</html>

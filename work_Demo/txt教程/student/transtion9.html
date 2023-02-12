@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>First HTML Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            perspective: 10000px;
+        }
+
+        .main {
+            width: 200px;
+            height: 200px;
+            perspective: 10000px;
+            position: relative;
+            /* 设置变形类型，保留它内部的3D效果 */
+            /* 这个盒子又是舞台，又是演员，这个box整体带着里面的p旋转 */
+            transform-style: preserve-3d;
+            transition: transform 2s linear 0s;
+        }
+
+        section:hover .main {
+            transform: rotateX(360deg) rotateY(360deg);
+        }
+
+        p {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -100px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .before {
+            background-color: rgb(247, 98, 93, 0.486);
+            transform: translateZ(100px);
+        }
+
+        .after {
+            background-color: rgb(250, 146, 27, 0.486);
+            transform: translateZ(-100px);
+        }
+
+        .left {
+            background-color: rgb(248, 234, 111, 0.486);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .right {
+            background-color: rgb(183, 250, 107, 0.486);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .top {
+            background-color: rgb(117, 196, 248, 0.486);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .bottom {
+            background-color: rgb(236, 120, 252, 0.486);
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 正方体旋转 -->
+    <section>
+        <div class="main">
+            <p class="before"></p>
+            <p class="after"></p>
+            <p class="left"></p>
+            <p class="right"></p>
+            <p class="top"></p>
+            <p class="bottom"></p>
+        </div>
+    </section>
+</body>
+
+</html>

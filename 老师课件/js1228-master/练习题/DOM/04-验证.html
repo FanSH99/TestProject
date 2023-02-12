@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        section>div {
+            width: 300px;
+            height: 50px;
+            font-size: 22px;
+            border: 2px solid #aaa;
+            padding-left: 15px;
+            line-height: 50px;
+            margin: 15px 0;
+        }
+
+        ul {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        li {
+            width: 13%;
+            height: 40px;
+            margin: 15px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 22px;
+            background: #eee;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="yan"></div>
+        <div class="zheng"></div>
+        <ul>
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>确定</li>
+            <li>删除</li>
+            <li>清空</li>
+            <li>刷新</li>
+        </ul>
+    </section>
+</body>
+<script>
+    let zhi = 12345;
+    let yan = document.querySelector('.yan');
+    yan.innerHTML = zhi;
+    let zheng = document.querySelector('.zheng');
+    let lis = document.querySelectorAll('li');
+    let sum = '';
+
+    // 输入验证码
+    for (let i = 0; i < lis.length - 4; i++) {
+        lis[i].onclick = function () {
+            let temp = this.innerHTML;
+            sum = sum + temp;
+            zheng.innerHTML = sum;
+        }
+    }
+
+
+    // 验证验证码
+    lis[10].onclick = function () {
+        if (sum == zhi) {
+            alert('验证通过');
+        } else {
+            alert("验证错误");
+        }
+    }
+
+    // 删除验证码
+    lis[11].onclick = function () {
+        sum = sum.substr(0, sum.length - 1);
+        zheng.innerHTML = sum;
+    }
+    // 清空验证码
+    lis[12].onclick = function () {
+        zheng.innerHTML = "";
+    }
+    // 刷新验证码
+    lis[13].onclick = function () {
+        sum = "";
+        for (let i = 0; i < 5; i++) {
+            let temp = getRandomInt(0, 10);
+            sum = sum + temp;
+        }
+        zheng.innerHTML = sum;
+    }
+
+    // 得到一个两数之间的随机整数
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+    }
+
+    /*
+        扩展
+            1. 清空输入的验证码             (div.innerHTML="")
+            2. 删除输入验证码的最后一个字符  字符串切割(substr())
+            3. 随机刷新验证码               random 函数
+    */
+</script>
+
+</html>

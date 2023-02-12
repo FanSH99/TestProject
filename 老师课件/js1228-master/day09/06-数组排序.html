@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 数组排序
+        const months = ['March', 'Jan', 'Feb', 'Dec'];
+        months.sort();
+        console.log(months);
+        // expected output: Array ["Dec", "Feb", "Jan", "March"]
+
+        const array1 = [1, 30, 4, 21, 100];
+        array1.sort();
+        console.log(array1);
+        // expected output: Array [1, 100000, 21, 30, 4]
+
+        // 数字排序
+        array1.sort(function (a, b) {
+            return a - b;
+        });
+        console.log(array1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

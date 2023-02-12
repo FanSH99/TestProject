@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日09:17:08
+
+        js组成 DOM BOM ECMAScript(js语法规范)
+        es6 javascript的第六代版本 ----- ECMAScript6
+        目前更新到es11  ---es6版本变化比较大。
+     -->
+</body>
+
+<script>
+
+    /**
+     * aa
+     * bb
+     * 
+    *（1）声明变量  ---使用let声明变量。let不存在变量提升。 let不能重复声明相同的变量
+    *（2）版模字符串
+    *（3）对象的改变
+    *（4）处理数组的方法
+    *（5）处理字符串的新方法
+    *（6）扩展运算符
+    *（7）结构赋值
+    *（8）map set集合 
+    *（9）promise
+    *（10）class类
+    *（11）es6模块化。
+    *（12）函数的改变，箭头函数
+    */
+
+    //    var 特点：1.变量提升 2可以重复声明 3.没有块级作用域。
+    console.log(a);//undefined
+    var a = '2341234';
+    // console.log(b); //报错，找不到b
+    b = '24ffs'
+    var b = '小明喜欢小红';//var 可以重复声明变量。
+    console.log(b);
+    getuser()//函数全部提升， 函数一等公民，会优先提升到最顶端，所以函数调用无论在那里调用都可以。
+    function getuser() {
+        console.log('我是张三');
+    }
+
+    // console.log(c); //报错 let声明不会提升。
+    let c = '白浅';
+    // let c='哈哈哈哈'  //报错。let不能重复声明
+    console.log(c);
+    for (var i = 0; i < 5; i++) {
+        console.log(i);
+    }
+    setTimeout(function () {
+        for (let i = 0; i < 5; i++) {
+            console.log(i + 'let');
+        }
+    })
+    setTimeout(function () {
+        for (var i = 0; i < 5; i++) {
+            console.log(i + 'var');
+        }
+    })
+
+    setTimeout(function () {
+        console.log(11111111);
+    })
+    console.log(222222222222);
+    // js是单线程，为了 提高js的执行顺序js分为同步任务和异步任务  例如setTimeout是异步任务，定时器是异步任务。
+    /* 
+    异步任务又分为微任务和宏任务。
+    */
+
+    let n1 = {
+        name: '张三'
+    }
+    let n2 = {
+        name: '张三'
+    }
+
+    var n3 = {
+        name: '张三'
+    }
+    var n4 = {
+        name: '张三'
+    }
+    console.log(n1 == n2);//false
+    console.log(n3 == n4);//false
+
+    const p1 = "白子画"
+    console.log(p1);
+    const obj1 = {
+        name: "海绵宝宝"
+    }
+
+    console.log(obj1);
+    // const age;  //报错
+    var age;  //不报错
+    let age1;
+    age1 = 10;
+    console.log(age1);
+    // const obj1=10;
+
+    /*
+    1.let var const 三者之间的区别   ===   ==>   ||
+    1.var 存在变量提升， let const不存在变量提升
+    2. let 存在块级作用域 var const 没有块级作用域
+    3. let 和const不可以重复声明相同的变量。 var可以
+    4. const只能声明常量 即不能被改变的量。var和const可以
+    */
+</script>
+
+</html>

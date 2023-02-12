@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐
+式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的__proto__
+中查找，这样一层一层向上查找就会形成一个链式结构，我们称为原型链
+
+     -->
+     <script>
+         function Person(name,age){
+            this.name=name;
+            this.age=age;
+            this.say=function(){
+                console.log(this.name+'is saying~~~~~1');
+            }
+        }
+        Person.prototype.say=function(){
+            console.log(this.name+'is saying~~~~~11');
+        }
+        Person.prototype.walk=function(){
+            console.log(this.name+'is walking~~~~~12');
+        }
+
+      var p1=  new Person('刘创',18)
+      var p2=  new Person('杨雨鹭',18)
+
+        // 验证    prototype    __proto__  constructor
+        //1.
+        console.log(p1.__proto__);// 原型对象
+        console.log(Person.prototype);// 原型对象
+
+        console.log(p1.__proto__===Person.prototype);//true
+
+        //2.
+           console.log(p1.constructor);// Person 构造函数
+           console.log(Person.prototype.constructor);// Person 构造函数
+
+           console.log(p1.constructor===Person.prototype.constructor);//true
+
+
+       //3.原型链   隐式原型  __proto__  一直向上查的
+         console.log(p1.__proto__.__proto__);// 原型对象的原型    Object.prototype
+         console.log(Person.prototype.__proto__);//// 原型对象的原型   Object.prototype
+
+         console.log(p1.__proto__.__proto__===Person.prototype.__proto__);//true
+
+        //  它的构造函数会是谁昵？
+
+         console.log(p1.__proto__.__proto__.constructor);//ƒ Object() { [native code] }
+
+         //4. 原型的原型的原型
+         console.log(p1.__proto__.__proto__.__proto__);//null   顶层的没有原型对象
+         console.log(Person.prototype.__proto__.__proto__);//null
+
+
+         //5.再从细的出发，再了解的一些话
+        //  person 函数 也是  Function 的一个实例
+        // 注意：  Function.__proto__  指向 自身的原型   Functoin.prototype
+        
+     </script>
+</body>
+</html>

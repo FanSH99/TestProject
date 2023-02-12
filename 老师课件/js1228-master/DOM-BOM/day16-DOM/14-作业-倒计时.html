@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 200px;
+        }
+
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 需求: 把时间差换算为时分秒，放入 span  
+
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+
+        function countDown(date) {
+            var date1 = new Date();
+            date = date.getTime();
+            date1 = date1.getTime();
+            var sub = date - date1;
+
+            sub = sub / 1000;
+            h = parseInt(sub / 60 / 60 % 24)   //   计算小时
+            m = parseInt(sub / 60 % 60);     //   计算分数
+            s = parseInt(sub % 60);            //   计算当前秒数
+
+
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+
+
+            hour.innerHTML = h;
+            minute.innerHTML = m;
+            second.innerHTML = s;
+
+            return h + ':' + m + ':' + s;
+        }
+        const date2 = new Date('2022-03-05 18:59:10');
+
+        console.log(countDown(date2));
+
+        setInterval(() => {
+            console.log(countDown(date2));
+        }, 1000);
+
+    </script>
+</body>
+
+</html

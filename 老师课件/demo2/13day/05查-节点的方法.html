@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+          查---方法   函数
+
+        1. 通过id查找  唯一的     找到返回节点，找不到返回null
+         文档   的 得到元素通过id
+       var node= document.getElementById('id名');
+
+        2.通过class查找    兼容性
+        var nodes=  document.getElementsByClassName('类名');
+         注意：哪怕只有一个，也需要通过索引号来到取   nodes[0]
+
+        3.通过标签查找
+        var nodes= docmement.getElementsByTagName('标签名') 
+        注意：哪怕只有一个，也需要通过索引号来到取   nodes[0]
+
+        4.通过name查找  表单   NodeList [input]
+        var names= document.getElementsByName('name名');
+        注意：哪怕只有一个，也需要通过索引号来到取   nodes[0]
+
+        5. 选择器   id   class   标签  后代  子   等  兼容性
+        var node=  document.querySelector('选择器');
+          // 返回是一个节点，只能找到第一个
+
+        6. 选择器   NodeList
+        var nodes= document.querySelectorAll('选择器');
+        注意：哪怕只有一个，也需要通过索引号来到取   nodes[0]
+
+       注意： 前面写的6种 都是document. 方法 ，在整个文档查找的
+             如果想从想一个节点出发再向下查找话，也可以
+
+             node.getElementsByTagName('标签名') 
+             node.getElementsByClassName('标签名') 
+             node.querySelector('选择器')
+     -->
+     <input type="text" name="user">
+     <input type="password" name="pwd">
+     <input type="radio" name="gender">男<input type="radio" name="gender">女
+      <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+      </ul>
+     <script>
+        //1.
+       var genders=  document.getElementsByName('gender');
+       console.log(genders);//NodeList(2) [input, input]
+         // 设置选中状态
+         genders[0].checked=true;
+
+        var users= document.getElementsByName('user');
+        console.log(users);//NodeList [input]
+         users[0].value='请输入您的名字'
+
+         //2.
+        var ipt=  document.querySelector('input');
+        console.log(ipt);//   <input type="text" name="user">
+
+        var iptPwd=  document.querySelector('input[type=password]');
+        console.log(iptPwd);//<input type="password" name="pwd">
+
+       var ipts= document.querySelectorAll('input');
+       console.log(ipts);//NodeList(4) [input, input, input, input]
+
+
+       //3. 
+     var firstli=  document.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
+     console.log(firstli);
+     </script>
+</body>
+</html>

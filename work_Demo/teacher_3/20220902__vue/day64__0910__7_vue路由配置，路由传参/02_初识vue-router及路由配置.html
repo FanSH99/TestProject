@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路由跳转及query传参</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="goHome">首页</button>
+        <button @click="goMovie">影院</button>
+        <button @click="goCinema">电影</button>
+        <!-- 标签式跳转，vue-router内置组件，用来跳转路由。 -->
+        <router-link to="/movie">to电影</router-link>
+        <router-link to="/cinema">to影院</router-link>
+        <router-link to="/">to首页</router-link>
+
+        <!-- vue-router中内置组件，用来展示路由匹配组件 -->
+        <router-view> </router-view>
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script src="../bin/vue-router-3.5.0.js"></script>
+<script>
+    /* 2022年9月13日09:24:59 
+    vue-touter引入必须在引入vue之后
+    */
+    let movie = {
+        template: "<h1>电影组件</h1>"
+    }
+    let cinema = {
+        template: "<h1>影院组件</h1>"
+    }
+    let home = {
+        template: "<h1>首页</h1>"
+    }
+    //    创建一个路由实例
+    let router = new VueRouter({
+        /*  // 定义路由模式 --默认是hash 
+        可以实现页面的局部刷新，路径改变不需要向服务器发送请求，不会出现404，。
+        一般实现hash模式。
+        使用hash模式后路径上会带一个#,不太美观
+        
+        history---路径上不带#，高级美观，
+        每次访问都会向服务器发送请求。需要后端配置，如果不配置会404.
+         */
+        mode: "hash",
+        // 定义路由匹配规则
+        routes: [
+            {
+                // 定义路由匹配路径
+                path: "/movie",
+                // 定义路由名称
+                name: "movie",
+                // 定义路径对应的组件（访问那个路径展示那个组件）
+                component: movie
+                // 注意，直接访问并不管用，需要进行注册。
+            },
+            {
+                path: "/",
+                name: "home",
+                component: home,
+            },
+            {
+                path: "/cinema",
+                name: "cinema",
+                component: cinema,
+            },
+        ]
+
+    });
+    // 使用vue-router
+    Vue.use(router);
+    console.log(router);
+    let vm = new Vue({
+        el: "#app",
+        // 注册vue实例。
+        router: router,
+        methods: {
+            // 编程式跳转
+            goMovie() {
+                console.log(this);
+                this.$router.push({
+                    path: "/movie"
+                })
+            },
+            goHome() {
+                this.$router.push({
+                    path: "/"
+                })
+            },
+            goCinema() {
+                this.$router.push({
+                    path: "/cinema"
+                })
+            }
+
+        }
+    })
+    /*
+    路由使用，
+    1.引入vue-router.js
+    2 创建路由实例 new VueRouter
+    3.定义路由匹配规则，routes:[
+        {
+            path:"",
+            name:"",
+            conponent:,
+        }
+    ]
+    4.Vue.use使用路由
+    5.vue实例中进行注册
+    6.router-view展示路由组件
+    7.router-link 路由跳转
+    8.this.$router.push({ path:"/ddd"}) 编程式路由跳转
+    */
+
+    var str = '你好呀？#哈哈#，很#不错##78346854#';
+    let arr = []
+    str = str.replace(/#(.*?)#/gi, function (data) {
+        data = data.replace(/#/gi, '');
+        arr.push(data);
+        return '<span class="yellow">' + data + '</span>'
+    })
+    console.log(str, arr);//哈哈，不错，78346854
+
+    let str2 = '你好呀？#哈哈#，很#不错#78346854#';
+    let arr2 = []
+    str2 = str2.replace(/#(.*?)#/gi, function (data) {
+        data = data.replace(/#/gi, '');
+        arr2.push(data);
+        return '<span class="yellow">' + data + '</span>'
+    })
+    console.log(str2, arr2);//哈哈，不错
+
+</script>
+
+</html>

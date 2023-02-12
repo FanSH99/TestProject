@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 兄弟组件 -->
+        <component-one></component-one>
+        <component-two></component-two>
+    </div>
+    <template id="one">
+        <div>
+                <h1>组件一 {{num}}</h1>
+                <button @click='send'>向组件二中传递数据</button>
+        </div>
+    </template>
+    <template id="two">
+        <div>
+            <h1>组件二 {{mynum}}</h1>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+    // 创建一个空vue实例 
+    // bus 事件总线 (公交车)
+    let bus = new Vue();
+    console.log(bus)
+    let componentOne = {
+        template:"#one",
+        data() {
+            return {
+                num:0
+            }
+        },
+        mounted() {
+            bus.$emit("sendnum",this.num)
+        },
+        methods: {
+            send(){
+                this.num++
+                // 使用bus 实例发送一个自定义事件 参数一自定义事件名称 参数二将要传递的数据
+                bus.$emit("sendnum",this.num)
+            }
+        },
+    }
+    let componentTwo = {
+        template:"#two",
+        data(){
+            return{
+                mynum:""
+            }
+        },
+        created() {
+            // 使用bus实例监听自定义事件
+            bus.$on("sendnum",(value)=>{
+                console.log("传递过来啦:"+value)
+                this.mynum = value;
+            })
+        },
+    }
+    
+    new Vue({
+        el:"#app",
+        components:{
+            componentOne,
+            componentTwo
+        }
+    })
+    /* 
+    
+    1. 创建空vue实例
+    2. bus.$emit发送自定事件
+    3. bus.$on监听自定义事件
+    
+    */
+</script>
+</html>

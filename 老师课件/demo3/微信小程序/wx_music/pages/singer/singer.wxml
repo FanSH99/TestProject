@@ -1,0 +1,16 @@
+<scroll-view class="pagescroll" scroll-y="{{true}}" enhanced="{{true}}" 	paging-enabled="{{true}}" bindscrolltolower='scrolltolower'>
+<view class="title">
+  {{title}}
+</view>
+<view>
+ <view class="singger" wx:for="{{singgerList}}" wx:key="index" bindtap="goInfo" data-id="{{item.id}}">
+    <image src="{{item.picUrl}}" class="singerImg"></image>  <text>{{item.name}}</text>
+ </view>
+</view>
+<myloading wx:if="{{isloading}}"></myloading>
+</scroll-view>
+<view class="nav">
+    <view wx:for="{{navList}}" wx:key="index" bindtap="gonav" data-tag='{{item}}'>
+        {{item}}
+    </view>
+</view>

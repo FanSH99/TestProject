@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "确认订单",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uni-tag": "/uni_modules/uni-tag/components/uni-tag/uni-tag",
+    "uni-list-chat": "/uni_modules/uni-list/components/uni-list-chat/uni-list-chat",
+    "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item",
+    "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput"
+  }
+}

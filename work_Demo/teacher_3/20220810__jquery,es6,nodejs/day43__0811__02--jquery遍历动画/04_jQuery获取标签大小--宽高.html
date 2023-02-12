@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月11日10:53:13
+        height()获取标签元素的高度，不包含边框和内边距。
+       width()获取标签元素的宽度，不包含边框和内边距。
+       innerHeight()包含内边距的高度，不包含边框。
+       innerWidth()包含内边距的宽度，不包含边框。
+
+
+     -->
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        var div = $('<div></div>');
+        var msg = '柯南.道尔的《福尔摩斯探案全集》是一部家喻户晓的作品。福尔摩斯早已成为神探的代名词。他破案的方法和推理的严密正确，往往令人着迷。他具有广博的学识和丰富的经验，这帮助他在破案过程中大胆联想。小心求证，正确推理，最终捉住凶犯，而案件的结果则更使人惊叹不已。《福尔摩斯探案全集》结构严谨，环环紧扣，故事情节惊险离奇，引人入胜，被推理迷们称为推理小说中的《圣经》，是每一个推理迷必备的案头书籍。从《血字的研究》诞生到现在的一百多年间，福尔摩斯打遍天下无敌手，影响力早已越过推理一隅，成为人们心中神探的代名词。福尔摩斯仿佛真的成为了生活在我们身边的有血有肉的活人，许多人都在寻找福尔摩斯，并坚信确实有这样一位伟大侦探存在。即便是没有看过侦探小说的人，也知道福尔摩斯这号人物。'
+        div.text(msg);
+        $('body').append(div);
+        div.css({
+            "text-indent": '2rem',
+            'background-color': 'pink',
+            'padding': '5px',
+            'border': '4px solid #333'
+        })
+        console.log($('div').height());//104  ---不包含边框和内边距   124.8
+        console.log($('div').width());//1072.4  ---不包含边框和内边距   1064.4
+        console.log($('div').innerHeight());//114  ---不包含边框   134.8
+        console.log($('div').innerWidth());//1082.4  ---不包含边框   1074.4
+
+
+
+    </script>
+</body>
+
+</html>

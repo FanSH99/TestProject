@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="top">
+
+    </div>
+    <div id="app">
+
+    </div>
+</body>
+<!-- react语法库 ，提供核心语法-->
+<script src="../js/react17.js"></script>
+<!-- react操作dom库 ,用来为react提供操作dom方法，基于react必须在react后引入，俩必须搭配使用，只引入一个不管用。-->
+<script src="../js/react_dom17.js"></script>
+<script>
+    // 2022年11月14日19:04:08 --下午讲课没有听
+    // 创建真实dom
+    let app = document.getElementById("app")
+    let h1 = document.createElement("h1");
+    console.dir(h1);
+    h1.innerHTML = "js创建真实dom";
+    // 页面中追加
+    document.getElementById("top").appendChild(h1);
+    console.log(React);
+    console.log(ReactDOM);
+    // react17创建一个虚拟dom--参数1节点名称，参数2节点属性，参数3节点内容
+    let span = React.createElement("span", null, "哈哈哈哈")
+    // html中元素由三部分组成，1标签，2,标签内容，3标签属性（可自定义
+    let dom = React.createElement("h1", { id: "box" }, "react构建虚拟dom", span)
+    console.log(dom);
+
+    //将虚拟dom转化为真实dom，渲染到页面上 ,
+    // 参数1渲染节点，参数2挂载容器，参数3回调函数
+    ReactDOM.render(dom, app, () => {
+        console.log("渲染结束");
+    });
+
+
+</script>
+<script>
+    /* 开发版本和生产版本的不同。
+        开发版本代码没有压缩，
+        生产版本代码被压缩了。
+        压缩后可以提高开发速度。因为空格换行等也会被浏览器解析，比较慢。
+        */
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <!-- 向子组件传值。绑定一个自定义名称即可。 -->
+        <child :mynum="num"></child>
+        <button @click="num++">add(父组件)</button>
+    </div>
+
+    <!-- 子组件模板 -->
+    <template id="child">
+        <div class="child">
+            <h4>我是子组件{{mynum}}</h4>
+            <button @click="add">add</button>
+        </div>
+    </template>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+
+<script>
+    /* 2022年9月7日15:01:12 */
+    let child = {
+        template: "#child",
+        /* props可以接受父组件传来的任意数据类型 */
+        props: {
+            mynum: Number
+        },
+        /**
+        *!什么是单向数据流?
+        在vue中父组件向子组件传值的过程是一个单项数据流的过程，子组件不允许修改父组件的值。若强制修改会报错
+        在父组件中修改则子组件同步修改。
+        传递数据时命名需要小写，有大写会出错。
+
+        */
+        methods: {
+            add() {
+                console.log(this);
+                this.mynum++;
+            }
+        },
+        watch: {
+            mynum(newVal) {
+                console.log("父组件传递过来的数据改变了", newVal);
+            }
+        }
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            child,
+        },
+        data: {
+            num: 0,
+        }
+
+    })
+</script>
+
+</html>

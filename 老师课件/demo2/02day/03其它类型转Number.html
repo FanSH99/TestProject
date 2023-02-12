@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  2.其它类型----Number
+        // 强制转换     Number(参数)函数
+
+        //  false  null    '    '  ''  转为0
+        //  true    转为 1
+        //  纯数字字符串转为了数字         ，不是线数字和undefined 转为 NaN
+        // NaN  (not a number)   此值是 number类型
+
+        //   parseInt(参数)            parseFloat(参数)
+        // 特殊，针对  "123hello" ,把字符前的数字提取出来，变为数字
+        // true false undefined  null 'hello'    NaN
+     
+
+        //2.1. 字符串---数字
+           var str='888';// 纯数字字符串
+          str= Number(str);
+          console.log(str,typeof str);//888 'number'
+
+          var str1='6hello8';//数字与字母结合的字符串
+          str1= Number(str1);
+          console.log(str1,typeof str1);//NaN 'number'      not a number
+
+          var str2='    ';// 很多空格
+          str2= Number(str2);
+          console.log(str2,typeof str2);//0 'number'
+
+          var str3='';// 空串
+          str3= Number(str3);
+          console.log(str3,typeof str3);//0 'number'
+
+          //2.2 布尔----数字
+          var flag=true;
+          flag=false
+          flag= Number(flag);
+          console.log(flag,typeof flag);// true 转为1 'number'   flase转为  0 'number'
+
+          //2.3 null  undefined
+         var num1= Number(null);
+         console.log(num1);//0
+
+         var num2= Number(undefined);
+         console.log(num2);//NaN
+
+
+         //2.4  parseInt(参数) 整型           parseFloat(参数)   浮点型
+        //  特殊，针对  "123hello" ,把字符前的数字提取出来，变为数字
+             console.log(parseInt('123hello'));//123
+             console.log(parseInt('123.85hello'));
+
+             console.log(parseFloat('123.85hello'));//123.85
+             console.log(parseInt('123'));
+             console.log(parseInt(true));//NaN
+             console.log(parseInt(null));//NaN
+             console.log(parseInt(undefined));//NaN
+
+
+
+        // 隐式转换
+
+        //  +'123'     '123'-0    '123'*1    '123'/1    '123'%1
+
+    </script>
+   
+</body>
+</html>

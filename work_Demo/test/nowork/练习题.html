@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let funArr = [];
+    for (var i = 0; i < 5; i++) {
+        funArr.push(function () {
+            console.log(i);
+        })
+    }
+    funArr.forEach(item => {
+        item();//结果是5个5
+    })
+
+    let funArr2 = [];
+    for (var i = 0; i < 5; i++) {
+        (function (i) {
+            funArr2.push(function () {
+                console.log(i);
+            })
+        })(i)
+    }
+    funArr2.forEach(item => {
+        item()//0,1,2,3,4
+    })
+
+
+    let funArr3 = [];
+    for (let i = 0; i < 5; i++) {
+        funArr3.push(function () {
+            console.log(i);
+        })
+    }
+    funArr3.forEach(item => {
+        item();//0,1,2,3,4
+    })
+
+    // for (const i = 0; i < 5; i++) {
+    //     console.log(i);//报错
+    // }
+
+
+    let obj = {
+        name: "张三",
+        age: 28
+    }
+    for (const i in obj) {
+        console.log(i);
+    }
+    // for (const i of obj) {
+    //     console.log(i);
+    // }//报错，对象没有of方法
+    let arr = ["张三", "李四", "王五"]
+    for (const i in arr) {
+        console.log(i);//0,1,2
+    }
+    for (const i of arr) {
+        console.log(i);//张三，李四，王五
+    }
+
+
+    let [a, b, c] = [10, 20, 30]
+    console.log(a, b, c);
+    let [a1, b1] = [10, 20, 30];
+    console.log(a1, b1);
+    let [a2, b2, c2] = [10, 20]
+    console.log(a2, b2, c2);
+
+    let [, , c3] = [10, 20, 30];
+    console.log(c3);
+
+    let [str, ...str2] = [10, 20, 30];
+    console.log(str, str2);//10,[20,30]
+
+    let m = 10;
+    let n = 20;
+    [m, n] = [n, m];
+    console.log(m, n);
+    let { name, age ,height="178cm"} = obj;
+    console.log(name, age,height);
+
+    let person = {
+        name2: "白浅",
+        age2: 20,
+        family: {
+            father: "白子画",
+            mother: "玲玲"
+        }
+    }
+    let { name2, age2, family: { father, mother } } = person;
+    console.log(name2, age2, father, mother);
+
+    
+    
+</script>
+
+</html>

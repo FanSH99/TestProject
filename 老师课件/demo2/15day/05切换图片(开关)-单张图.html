@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/role-ty.png" alt="">
+    <button>交换</button>
+
+    <!-- 如何判断按钮单击的奇数和偶数 
+     flag=1  
+     flag=0
+    -->
+    <script>
+        //1.查
+        var pic= document.querySelector('img');
+       var btn= document.querySelector('button');
+       //2.加事件
+       var flag=1;
+       btn.onclick=function(){
+           if(flag){
+            // 真
+             pic.src='./images/role-y.png';
+             flag=0;
+
+           }else{
+            pic.src='./images/role-ty.png';
+            flag=1;
+
+           }
+
+
+       }
+    </script>
+</body>
+</html>

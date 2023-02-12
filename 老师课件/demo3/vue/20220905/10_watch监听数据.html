@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <button @click="num++"> ++</button>
+        <h2>{{msg}}</h2>
+        <button @click="msg='哈哈哈'">改变</button>
+        <h1>{{user.name}}----{{user.age}}</h1>
+        <button @click="user.name='李四'">改变用户</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            num:0,
+            msg:"好好学习天天向上",
+            user:{
+              name:"张三",
+              age:18
+            }
+        },
+        // watch监听 可以监听响应式数据的改变 watch普通写法并没有办法监听对象的改变
+        watch:{
+            num(newVal,oldVal){
+                console.log("我发生改变了",newVal,oldVal)
+            },            // num:function(newVal,oldVal){
+            //     console.log("我发生改变了",newVal,oldVal)
+            // }
+            // "num":function(newVal,oldVal){
+            //     console.log("我发生改变了",newVal,oldVal)
+            // }
+            msg(newVal){
+                console.log("msg发生改变了",newVal)
+            },
+            // user(newVal){
+            //     console.log("user发生改变了",newVal)
+            // }
+            // user:{
+            //     // 执行函数
+            //     handler:function(newVal){
+            //         console.log('user发生改变了',newVal)
+            //     },
+            //     // deep 深度 开启深度监听 
+            //     deep:true
+            // }
+             "user.name":{
+                // handler执行函数默认只有监听到数据发生改变才会执行
+                handler:function(newVal){
+                    console.log('user中name发生改变了',newVal)
+                },
+                deep:true,
+                // 当immediate 为true时表示 立刻执行handler函数不需要等到数据发生改变
+                immediate:true
+             },
+            //  num:{
+            //     handler(newVal){
+            //         console.log("num发生改变了",newVal)
+            //     },
+            //     deep:false,
+            //     immediate:true
+            //  }
+        }
+    })
+</script>
+</html>

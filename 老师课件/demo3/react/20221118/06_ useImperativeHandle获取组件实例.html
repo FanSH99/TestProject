@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    let  {useState,useRef,useImperativeHandle} = React;
+    console.log(React)
+     // 若要想使用 useRef获取组件实例对象需要使用React.forwardRef()创建组件
+     let Child = React.forwardRef((props,ref)=>{
+        let [num,setNum] = useState(0); 
+        let add = ()=>{
+            num++;
+            setNum(num);
+        }
+        let [list,setList]=useState([0,2,3,4,56])
+        // 将子组件中指定属性暴露给ref对象
+        useImperativeHandle(ref,()=>{
+             return {
+                num,
+                add,
+                list
+             }
+        })
+        return (
+            <div>哈哈哈哈我是子组件 {num}</div>
+        )
+    })
+
+    function App(){
+        let ChildRef = useRef();
+        return(
+            <div>
+                <h5>app组件 <button onClick={
+                    ()=>{
+                        console.log(ChildRef)
+                        ChildRef.current.add();
+                        console.log(ChildRef.current.list)
+                    }
+                }>++</button></h5>    
+                <Child ref={ChildRef}/>
+            </div>
+        )
+    }
+
+    // function Child(){
+    //     let [num,setNum] = useState(0); 
+    //     let add = ()=>{
+    //         num++;
+    //         setNum(num);
+    //     }
+    //     return (
+    //         <div>
+    //             <h5>子组件 {num}</h5>
+    //             <button onClick={add}>++</button>
+    //         </div>
+    //     )
+    // }
+   
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

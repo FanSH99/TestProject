@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            line-height: 30px;
+            color: red;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>七里香</div>
+    <script>
+        // 需求：点击div 控制台输出 为了部落
+
+        let div = document.querySelector('div');
+
+        div.onclick = function () {
+            console.log(`为了部落，今晚吃鸡`);
+        }
+        /*
+            绑定事件步骤 ：
+                1. 获取元素
+                2. 绑定函数,属性进行重新赋值
+                3. 编写函数,把具体的业务逻辑封装到函数体
+        */
+
+
+    </script>
+</body>
+
+</html>

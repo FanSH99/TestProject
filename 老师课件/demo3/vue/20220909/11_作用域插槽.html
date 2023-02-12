@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用v-slot 接收插槽传递的属性 -->
+        <my-component v-slot="myprops">
+             <h1>我是一个普通插槽，我想用组件里面的数据 {{myprops.msg}}</h1>
+             {{myprops.mytitle}}
+        </my-component>
+    </div>
+    <template id="mycom">
+        <div class="box">
+            <!-- vue 内置slot组件 用来接收组件携带的内容 -->
+            <h1>
+                我是一个组件
+            </h1>
+            <!-- 绑定一个自定义属性 -->
+            <slot :msg="msg" :mytitle="tile"></slot>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let myComponent = {
+        template: "#mycom",
+        data() {
+            return {
+                msg: "哈哈哈哈",
+                tile:"作用域插槽"
+            }
+        },
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            myComponent
+        }
+    })
+</script>
+
+</html>

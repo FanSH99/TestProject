@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/info/info"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarBackgroundColor": "#919191",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "哈哈哈哈",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#919191",
+    "selectedColor": "#ff4d32",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./static/home-o.png",
+        "selectedIconPath": "./static/home.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "./static/cate-o.png",
+        "selectedIconPath": "./static/cate.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

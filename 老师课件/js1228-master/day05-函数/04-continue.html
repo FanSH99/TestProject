@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            continue (继续) 跳过本次循环。
+            break  (打破) 跳出整个循环  
+        */
+        for (let i = 1; i < 100; i++) {
+            if (i % 7 == 0 || i % 10 == 7) {
+                console.log(i);
+                break;
+                // continue;
+            } else {
+                // console.log(i);
+            }
+            console.log(`i 是${i}----- `);
+        }
+        console.log('game over');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GET</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <script>
+    /*
+      Ajax : 
+          1. Asynchronous Javascript And XML（异步JavaScript和XML）, 。
+          2. what : 一种创建交互式网页的开发技术。
+          3. how : 刷新局部网页，而不是整个网页刷新的技术。
+          4. 核心 : 使用 JavaScript 向服务器提出请求并处理响应而不阻塞用户核心对象XMLHttpRequest。
+          5. 好处 : 快速响应客户端。
+      
+      核心原理：
+          传统的 web 开发，js 向服务器发起请求，等待服务器处理后，响应给浏览器。浏览器接收数据并渲染。  
+              此时，浏览器要等待服务器的响应后，才能发起新的请求。容易阻塞，用户体验不好。
+          ajax 开发，浏览器内部有一个 ajax  引擎(XMLHTTPRequest)。 
+              js 向 ajax 引擎发送数据。
+              ajax 引擎向服务器发送请求。服务器处理完请求向 ajax 引擎响应数据。  
+              引擎通过事件监听函数，接收到响应的数据，并渲染。
+              js 可以不必等待 ajax 引擎的响应，多次向 ajax 引擎发起请求。
+      
+      使用步骤见： https://www.w3school.com.cn/xml/xml_http.asp
+      */
+  </script>
+
+  <div id="dota">刀塔</div>
+
+  <script type="text/javascript">
+    console.log("-----------页面重新加载了--------------");
+
+    var xmlhttp;
+    var getUrl =
+      "http://localhost:8080/api/get?name=剑圣&game =刀塔2&position=carry";
+
+    // 发起请求
+    sendAjax();
+    function sendAjax() {
+      xmlhttp = null;
+      // 1. 创建 XMLHttpRequest 对象
+      if (window.XMLHttpRequest) {
+        // code for all new browsers
+        xmlhttp = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        // 浏览器兼容 code for IE5 and IE6
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      if (xmlhttp != null) {
+        // 2. 设置回调函数，处理服务器的响应
+        xmlhttp.onreadystatechange = callback;
+
+        // 3. 设置请求方式，url ，异步与否
+        xmlhttp.open("GET", getUrl, true);
+
+        // 4. 向服务器发送请求
+        xmlhttp.send(null);
+      } else {
+        alert("Your browser does not support XMLHTTP.");
+      }
+    }
+
+    // 回调函数
+    function callback() {
+      // 测试状态码
+      // console.log(xmlhttp.readyState);
+
+      if (xmlhttp.readyState == 4) {
+        // 4 = "loaded"
+        if (xmlhttp.status == 200) {
+          // 200 = OK
+          // 5. 接收数据并渲染
+          console.log(xmlhttp.responseText);
+        } else {
+          alert("Problem retrieving XML data");
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 兄弟组件 -->
+        <component-one></component-one>
+        <component-two></component-two>
+    </div>
+
+    <template id="one">
+        <div>
+            <h1>组件1---{{num}}</h1>
+            <button @click="send">向组件2中传递数据</button>
+        </div>
+
+    </template>
+    <template id="two">
+        <div>
+            <h1>组件2---{{mynum}}</h1><!-- 不能直接用num，报错。num is not defined -->
+        </div>
+
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月8日14:08:19 */
+    //创建一个空的vue实例，不需要定义dom,可以将bus看成一个事件总线，或者公交车。
+    let bus = new Vue();
+    console.log(bus);
+    let componentOne = {
+        template: "#one",
+        data() {
+            return {
+                num: 0,
+            }
+        },
+        methods: {
+            send() {
+                // 使用bus实例发送一个自定义事件。参数1自定义事件名称，参数2将要传递的数据。
+                bus.$emit("sendnum", this.num);
+            }
+        },
+        mounted() {
+            // 如果是created，则发布者必须在后面定义，也就是说componentTwo要定义在前面。为了防止出错，则可以用mounted渲染后。
+            bus.$emit("sendnum", this.num);
+        }
+
+    }
+    let componentTwo = {
+        template: "#two",
+        data() {
+            return {
+                mynum: "",
+            }
+        },
+        created() {
+            // 使用bus实例监听自定义事件接收消息。，参数1自定义事件名称，参数2回调函数，
+            bus.$on("sendnum", (value) => {
+                console.log("传递过来了：", value);
+                this.mynum = value;
+            })
+        }
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            componentOne,
+            componentTwo
+        }
+    })
+    /* 
+    兄弟组件传值步骤。（这个也适用于爷孙组件。）
+    1.创建一个空的实例
+    2.bus.$emit发送自定义事件。
+    3.bus.$on监听自定义事件。
+    */
+</script>
+
+</html>

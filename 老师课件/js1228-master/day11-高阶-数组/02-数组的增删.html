@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. arr.push(value)
+        //    在数组的末尾添加一个或多个元素，并返回数组的新长度
+        let arr = ['张飞', '关羽', '刘备'];
+        let length = arr.push("吕布", '貂蝉');
+        console.log(arr, length);
+
+        // 2. arr.pop() 
+        //    删除索引值最大的元素,并返回被删除的元素。
+        let item = arr.pop();
+        console.log(arr, item);
+
+        // 3. unshift(value);
+        //    在数组的头部添加一个或多个元素,并返回数组的新长度
+        length = arr.unshift("后裔", "剑圣");
+        console.log(arr, length);
+
+        // 4. shift();
+        //    删除索引为0的元素，并返回删除的元素
+        item = arr.shift();
+        console.log(arr, item);
+    </script>
+</body>
+
+</html>

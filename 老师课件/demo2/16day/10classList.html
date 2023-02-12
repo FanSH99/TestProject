@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+        .red{
+            background-color: red;
+        }
+        .border{
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        node.classList.add('one','two');// 增加类名
+        node.classList.remove('one','two');// 移除类名
+        node.classList.toggle('one');// 有的话，就移掉，没有话，就添加
+
+        className
+     -->
+      <div class="box"></div>
+
+      <script>
+        //1. className
+      var box= document.querySelector('.box');
+        // box.className='box red'
+
+
+        //2.增加
+        //  box.classList.add('red','border');
+
+        //  box.classList.remove('red');
+
+         document.documentElement.onclick=function(){
+            console.log('ddd');
+            box.classList.toggle('red')
+         }
+
+
+      </script>
+</body>
+</html>

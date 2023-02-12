@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.
+        // 1. 以下表达式的运行结果是： A
+        var val = 'value';
+        console.info('Value id ' + (val === 'value') ? 'Something' : 'Nothing');
+        // A.Something
+        // B.Nothing
+        // C.NaN
+        // D.其他
+
+
+        // 2.以下表达式的运行结果是：  A
+        // var name = 'World';
+        // (function () {
+        //     var name;
+        //     if (typeof name === 'undefined') {
+        //         // var name = "Jack";
+        //         name = "Jack";
+        //         console.info('Goodbye ' + name);
+        //     } else {
+        //         console.info('Hello ' + name);
+        //     }
+        // })();
+        // A.Goodbye Jack
+        // B.Hello Jack
+        // C.Goodbye undefined
+        // D.Hello undefined
+        // var a;
+        //         console.log(a,typeof a);
+
+        //3.以下表达式的运行结果是：   C
+        // function showCase(value) {
+        //     switch (value) {
+        //         case 'A':
+        //             console.info('Case A');
+        //             break;
+        //         case 'B':
+        //             console.info('Case B');
+        //             break;
+        //         case undefined:
+        //             console.info('undefined');
+        //             break;
+        //         default:
+        //             console.info('Do not know!');
+        //     }
+        // }
+        // showCase(new String('A'));
+        // A.Case A
+        // B.Case B
+        // C.Do not know
+        // D.undefined
+
+        // 全等比较
+
+        // console.log(new String('A'),new String('A')[0]);
+        // console.log(String('A'));
+
+
+        // 4.以下表达式的运行结果是：  C
+        // function isOdd(num) {
+        //     return num % 2 == 1;// 奇数  true   不是奇数 返回  false
+        // }
+        // function isEven(num) {
+        //     return num % 2 == 0;//// 偶数  true   不是偶数 返回  false
+        // }
+        // function isSane(num) {
+        //     return isEven(num) || isOdd(num);
+        // }
+        // var values = [7, 4, '13', -9, Infinity];
+        // values.map(isSane);
+        // A.[true, true, true, true, true]
+        // B.[true, true, true, true, false]
+        // C.[true, true, true, false, false]
+        // D.[true, true, false, false, false]
+
+        // 5.以下表达式的运行结果是：  B
+        // [] == []
+        // A.true
+        // B.false
+        // C.报错
+        // D.其他
+
+        // 6.以下表达式的运行结果是：C   i++      没有1++的写法
+        // 1 + -1++ - +1
+        // A.true
+        // B.false
+        // C.报错
+        // D.其他
+
+
+        //  7.以下表达式的运行结果是：A
+        // Number.MIN_VALUE > 0
+        // A.true
+        // B.false
+        // C.报错
+        // D.其他
+
+        // 8.以下表达式的运行结果是：A
+        // [1 < 2 < 3, 3 < 2 < 1]
+        // A.[true, true]
+        // B.[true, false]
+        // C.报错
+        // D.其他
+
+        // 9.以下表达式的运行结果是：C
+        // (function () {
+        //     // var x1 = y1 = 1;
+        //     var x1;
+        //     x1=1;// 局部
+        //     y1=1;// 全局
+        // })();
+        // console.info(y1);
+        // console.info(x1);
+        // A.1，1
+        // B.error，error
+        //  C.1，error
+        // D.其他
+
+
+        // 10 求y和z的值是多少？  undefined  undefined  因为函数里没有retrun
+        // var x = 1;
+        // var y = 0;
+        // var z = 0;
+        // function add(n) { n = n + 1; }
+        // y = add(x);
+        // function add(n) { n = n + 3; }
+        // z = add(x);
+
+        11.
+        // 写出函数DateDemo的返回结果，系统时间假定为今天
+
+        // function DateDemo() {
+
+        //     var d, s = "今天日期是：";
+
+        //     d = new Date();
+
+        //     s += d.getMonth() + "/";
+
+        //     s += d.getDate() + "/";
+
+        //     s += d.getFullYear();
+
+        //     return s;
+
+        // }
+        // console.log(DateDemo() );
+        // "今天日期是:6/14/2022"
+
+
+
+        // 12.
+        // 解释下列代码的输出
+
+        console.log("0 || 1 = " + (0 || 1)); //  '0||1=1' 
+        console.log("1 || 2 = " + (1 || 2));//'1 || 2 =1'
+        console.log("0 && 1 = " + (0 && 1));//'0 && 1=0'
+        console.log("1 && 2 = " + (1 && 2));//'1 && 2=2'
+
+
+
+        // 13.
+        // 解释下面代码的输出	
+        // console.log(false == '0');//true
+
+        // console.log(null==0);//false    注意：参与==  不会转数据类型
+        // console.log(undefined==0);//false  注意：参与==  不会转数据类型   >= 也不行
+        // console.log(null>=-1);//true
+        // console.log(undefined>=-1);//false
+        // console.log(null==undefined);//true
+        // console.log(NaN==NaN);//false
+
+        // 14.下面的代码输出结果为:     //1 
+        (function (x) {
+            return (function (y) {
+                console.log(x);
+            })(2)
+        })(1);
+    </script>
+</body>
+
+</html>

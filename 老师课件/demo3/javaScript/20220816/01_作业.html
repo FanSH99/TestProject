@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="">姓名：</label>
+        <input type="text" class="username">
+    </div>
+    <div>
+        <label for="">年龄：</label>
+        <input type="text" class="age">
+    </div>
+    <div>
+        <label for="">性别：</label>
+        <input type="text" class="sex">
+    </div>
+    <div>
+        <button class="add">添加</button>
+    </div>
+    <div>
+        <input type="text" placeholder="请输入姓名查询" class="search">
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    let stuList = [
+        {
+            name:"张三",
+            age:18,
+            sex:"男"
+        },  {
+            name:"李四",
+            age:18,
+            sex:"男"
+        },  {
+            name:"王五",
+            age:18,
+            sex:"男"
+        },  {
+            name:"赵六",
+            age:18,
+            sex:"男"
+        },
+    ]
+    // 封装渲染函数 参数为哪个列表就将哪个列表渲染到页面上
+    let render = (list)=>{
+        let html = "";
+        list.forEach((item,index)=>{
+            let tr = `<tr><td>${item.name}</td><td>${item.age}</td><td>${item.sex}</td><td><button class='remove' onclick=remove(${index})>删除</button></td></tr>`
+            // console.log(tr)
+            // $("tbody").append(tr)
+            html+=tr;
+        })
+        $("tbody").html(html)
+    }
+    render(stuList);
+    $(".add").click(()=>{
+    //    获取输入框中内容
+     let name = $(".username").val();
+     let age = $(".age").val();
+     let sex =$(".sex").val();
+     console.log(name,age,sex)
+     let obj = {
+         name:name,
+         age:age,
+         sex:sex
+     }
+     stuList.push(obj);
+     render(stuList)
+    })
+    // 监听输入框input事件
+    $(".search").on("input",()=>{
+        // 获取输入框最新的值
+        let keyword = $(".search").val();
+        console.log(keyword)
+        // 根据条件过滤数组
+        let list = stuList.filter((item,index)=>{
+             return item.name.includes(keyword)
+        })
+        console.log(list)
+        render(list)
+    })
+    function remove(index){
+        console.log(index)
+        stuList.splice(index,1);
+        render(stuList)
+    }
+</script>
+</html>

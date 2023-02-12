@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日11:16:43
+       结构赋值，按照一定结构取值。
+
+     -->
+</body>
+<script>
+    let array = [1, 2, 3, 4, 5];
+    let [a, b, c, d, e] = array;
+    console.log([a, b, c, d, e]);//[1,2,3,4,5]
+    let array2 = [[2, 3], [6, 7]];
+    let [[n, m], [x, y]] = array2;
+    console.log([[n, m], [x, y]]);
+    /*
+    0: (2) [2, 3]
+    1: (2) [6, 7]
+    */
+    let user = {
+        name: "海绵宝宝",
+        age: 18,
+        sex: "男"
+    }
+    let { name, age, sex } = user;
+    console.log({ name, age, sex });//{name: '海绵宝宝', age: 18, sex: '男'}
+    // let { name, age, sex } = user;  //不能重复使用。报错。结构名和属性名必须一致，否则报错。
+</script>
+
+</html>

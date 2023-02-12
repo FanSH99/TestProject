@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 自字量的方法  和new Object（）  一次只能创建一个对象
+       只能判断出是Object
+       具体是哪一个类不清除
+
+       构造函数    定义一类
+       //1. 函数名的首字母大写
+    -->
+    <script>
+        function Person(name,age,gender){
+            // 把值绑定在属性上
+            this._name=name;
+            this._age=age;
+            this._gender=gender;
+            // 方法
+            this.say=function(){
+                console.log(this._name +'is saying');
+            };
+            this.walk=function(){
+                console.log(this._name +'is walking');
+            };
+
+        }
+
+        // 生成对象  new Person()
+      var p1=  new Person('张耀文',18,'男');//  p1 实例对象
+      var p2=  new Person('赵一泽',18,'女');//  p2 实例对象
+
+      // 查看属性，调有方法
+       console.log(p1._name,p1._age,p1._gender);
+       console.log(p2._name,p2._age,p2._gender);
+       p1.say();
+       p1.walk();
+       p2.say();
+       p2.walk();
+
+
+       // 优点 ： 检测 p1 属性Person 类           Object
+       console.log(p1 instanceof  Person);//true
+       console.log(p1 instanceof  Object);//true
+
+    // 不足的地方 只要造一个人，就会有一个自己的说话，走路的方法
+     console.log(p1.say===p2.say);//false
+     console.log(p1.walk===p2.walk);//false
+    </script>
+</body>
+</html>

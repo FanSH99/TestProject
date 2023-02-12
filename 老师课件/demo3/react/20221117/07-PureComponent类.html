@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    console.log(React)
+    class App extends React.Component{
+        state={
+            list:[
+            "宋江","卢俊宇","吴用"
+            ]
+        }
+        render(){
+            return(
+                <div>
+                <h3>好汉列表</h3> 
+                <ol>
+                    {
+                        this.state.list.map((item,index)=>{
+                            return <Item item={item} key={index}/>
+                        })
+                    }
+                </ol>   
+                <button onClick={
+                    ()=>{
+                        this.state.list.push("林冲");
+                        this.setState({
+                            list:this.state.list
+                        })
+                    }
+                }>添加好汉</button>
+                <button onClick={()=>{
+                    this.state.list[1]='西门庆'
+                    this.setState({
+                        list:this.state.list
+                    })
+                }}>修改好汉</button>
+            </div>
+            )
+        }
+    }
+    // PureComponent 自动会处理shouldComponentUpdate 不需要你在来写判断
+   class Item extends React.PureComponent{
+    // shouldComponentUpdate 生命周期函数 当返回false时组织组件更新 返回true时才会更新组件 nextPros参数表示最新的props值，nextstate表示最新的state状态值
+        // shouldComponentUpdate(nextprops,nextstate){ 
+        //     console.log(nextprops)
+        //     if(nextprops.item === this.props.item){
+        //         return false
+        //     }else{
+
+        //     return true
+        //     }
+        // }
+        render(){
+            console.log("item-render")
+            return (
+                 <li>{this.props.item}</li>
+            )
+        }
+   }
+   ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴效果</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .banner {
+            width: 760px;
+            height: 300px;
+            border: 1px solid #333;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* 如果有超出的时候，可以直接设置 */
+        .banner ul {
+            display: block;
+        }
+
+        .banner ul li {
+            float: left;
+            width: 190px;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+        .banner ul:hover li {
+
+            width: 120px;
+            height: 100%;
+
+
+        }
+
+        .banner ul li:hover {
+            width: 400px;
+        }
+
+        .banner ul li .text_icon {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            z-index: 99;
+
+
+        }
+
+        .banner ul li .black_bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+
+
+        }
+
+        .banner ul li:hover .black_bg {
+            background: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="banner">
+        <ul>
+            <li>
+                <img src="img/hot-1.jpg" alt="">
+                <div class="text_icon">
+                    <img src="img/pic_icon01.png" alt="">
+                    <p>基础设施业务</p>
+                </div>
+                <div class="black_bg"></div>
+            </li>
+            <li>
+                <img src="img/hot-3.jpg" alt="">
+                <div class="text_icon">
+                    <img src="img/pic_icon01.png" alt="">
+                    <p>基础设施业务</p>
+
+                </div>
+                <div class="black_bg"></div>
+            </li>
+            <li>
+                <img src="img/hot-4.jpg" alt="">
+                <div class="text_icon">
+                    <img src="img/pic_icon01.png" alt="">
+                    <p>基础设施业务</p>
+                </div>
+                <div class="black_bg"></div>
+            </li>
+            <li>
+                <img src="img/hot-6.jpg" alt="">
+                <div class="text_icon">
+                    <img src="img/pic_icon01.png" alt="">
+                    <p>基础设施业务</p>
+                </div>
+                <div class="black_bg"></div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

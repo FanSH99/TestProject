@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        变量的作用域：
+        变量的作用范围，根据变量作用域的不同，分为全局变量和局部变量。
+
+        1.全局变量---在全局范围内都生效的变量。
+            它的生命周期比较长，从声明开始，一直到页面关闭，变量才会销毁。占用内存时间较长，程序运行较慢。
+
+            !注意：当函数内没有用var 来声明的变量,也可能会升格为全局变量。
+        2.局部变量---在函数内部用var声明的变量，函数参数也是局部变量。
+            它的声明周期较短，当函数调用时开始调用变量，
+            当函数被销毁时，里面的变量会被标为垃圾，会被回收，能够及时释放内存。陈程序运行较快。
+            不会造成全局作用域的污染，建议多用局部变量。
+     -->
+
+    <script>
+        /* 1.全局变量 */
+
+        var a = 20;//全局变量。
+        if (a > 10) {
+            console.log(a);//生效。20
+        } else {
+            console.log(a + 1);
+        }
+
+        /* for循坏和while循坏中的i也是全局变量。 */
+        for (var i = 0; i < 5; i++) {
+            console.log(i);//0,1,2,3,4,
+        }
+        console.log('i=' + i);//5
+        console.log('------------------');
+
+        /* 2.局部变量 */
+        var b = 10;//全局变量
+        function show() {
+            var c = 20;//局部变量
+            console.log(b);//10  全局变量
+            console.log(c);//20  局部变量
+        }
+        show();
+        /* console.log(b, c);  //----报错，因为c访问不到，*/
+
+        console.log('======================');
+        function show1() {
+            var c = 20;
+            var b = 50;
+            var a = 40;
+            console.log(b);//50
+            console.log(c);//50
+            console.log(a);//40
+        }
+        console.log(b);//10
+        show1();
+        console.log('>>>>>>>>>>>>>>');
+
+        function show2() {
+            var c = 20;
+            var b = 50;
+            a = 100;
+            console.log(b);//50
+            console.log(c);//20
+            console.log(a);//100
+        }
+        console.log('a=' + a);//a=100
+        show2();
+
+        console.log('?????????????????');
+        var c = 'hello'
+        function show3() {
+            var c = 60;
+            var b = 50;
+            c = 99;//重新赋值，考虑的是就近原则。
+            console.log(b);//50
+            console.log(c);//99
+            console.log(a);//100
+        }
+        console.log('c=' + c);//c=hello
+        show3();
+
+        console.log('iiiiiiiiiiiiiiiii------------');
+
+        function show4(c) {
+            var c = 60;
+            var b = 50;
+            c = 99;//重新赋值，考虑的是就近原则。
+            console.log(b);//50
+            console.log(c);//99
+            console.log(a);//100
+        }
+        show4('goodday');
+        console.log(c);//hello    
+        /* 当带参数的时候，不会提升到全局变量。 */
+
+    </script>
+</body>
+
+</html>

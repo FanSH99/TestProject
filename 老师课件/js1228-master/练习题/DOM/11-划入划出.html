@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            height: 60px;
+        }
+
+        div {
+            width: 1170px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        section {
+            width: 60px;
+            height: 60px;
+            float: left;
+            background-size: 100% 100%;
+            background-color: skyblue;
+        }
+
+        ul {
+            height: 60px;
+            float: right;
+        }
+
+        li {
+            width: 120px;
+            /* height: 30px; */
+            margin: 15px 0px 0px 20px;
+            /* background: #ff6700; */
+            float: left;
+        }
+
+        a {
+            display: block;
+            width: 120px;
+            height: 30px;
+            background: #ff6700;
+        }
+
+        span {
+            display: block;
+            width: 120px;
+            height: 0px;
+            background: #f3a617;
+            margin-top: 10px;
+            transition: 0.2s linear;
+        }
+
+        aside {
+            width: 500px;
+            height: 300px;
+            background-size: 100% 100%;
+            background: #000;
+            opacity: 0.5;
+            position: fixed;
+            left: 700px;
+            top: 300px;
+            /* position: relative; */
+            display: none;
+        }
+
+        p {
+            width: 50px;
+            height: 50px;
+            /* position: absolute; */
+            float: right;
+            background: #d0d0d0;
+        }
+    </style>
+</head>
+
+<body>
+    <aside>
+        雨下整夜我的爱溢出就像雨水
+        <p>关闭</p>
+    </aside>
+    <header>
+        <div>
+            <section>七里香</section>
+            <ul>
+                <li><a href=""></a><span></span></li>
+                <li><a href=""></a><span></span></li>
+                <li><a href=""></a><span></span></li>
+                <li><a href=""></a><span></span></li>
+                <li><a href=""></a><span></span></li>
+                <li><a href=""></a><span></span></li>
+            </ul>
+        </div>
+    </header>
+</body>
+<script>
+    var sec = document.querySelector('section');
+    var aside = document.querySelector('aside');
+    var p = document.querySelector('p');
+    var lis = document.querySelectorAll('li');
+
+    sec.onclick = function () {
+        aside.style.display = 'block'
+    };
+    p.onclick = function () {
+        aside.style.display = 'none'
+    };
+
+    for (var i = 0; i < lis.length; i++) {
+
+        lis[i].onmouseenter = function (e) {
+            // console.log(e)
+            // console.log(i)
+            e.target.querySelector('span').style.height = '300px'
+        }
+        lis[i].onmouseleave = function (e) {
+            e.target.querySelector('span').style.height = '0';
+        }
+    }
+</script>
+
+</html>

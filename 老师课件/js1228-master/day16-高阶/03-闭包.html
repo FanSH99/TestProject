@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // 没有被引用的数据，将会被GC。
+      // 需求：做一个计数器
+      // let counter = 0;
+
+      // function add(){
+      //   counter++;
+      //   return counter;
+      // }
+
+      // function add1(){
+      //   counter = counter + 2;
+      //   return counter;
+      // }
+
+      // console.log(add());
+      // console.log(add1());
+      // console.log(add());
+
+      // 现在我们已经达到了目的，可是问题来了，
+      // 代码中的任何一个函数都可以随意改变 counter 的值，所以这个计数器并不完美。
+      // 那我们把counter放在add函数里面不就好了么？
+
+      // function add(){
+      //   let counter = 0;
+      //   counter++;
+      //   return counter;
+      // }
+      // console.log(add());
+      // console.log(add());
+      // console.log(add());
+
+      // 每次调用add函数，counter的值都要被初始化为0，还是达不到我们的目的。
+
+      function outer() {
+        let counter = 0;
+        function inner() {
+          counter++;
+          return counter;
+        }
+        return inner;
+      }
+
+      let add = outer();
+
+      console.log(add());
+      console.log(add());
+      console.log(add());
+
+      /* 
+        add  的值是一个函数，因此可以调用。
+        通过断点可以得知，将内部函数给了 add 。
+        内部函数是复杂数据类型，传递内存地址，有可以说 add 和 inner 指向的是同一个函数。
+        而内部函数可以访问 out 的局部变量，即 add 可以访问 out 的局部变量。
+        outer 函数执行后，销毁局部变量 counter 的时候，
+        发现被 innner 使用，因此保存到内存中，不再销毁。
+
+        let add = function innerFunction() {
+            counter++;
+            return counter;
+        }
+    
+        结论: 在函数外部，可以函数内部的变量。原理：将局部变量放置内存中。
+        注意: 容易内存泄漏，手动解除引用。
+      */
+
+      /* 
+        闭包 closure 的定义 ：指有权访问另一个函数作用域中变量的函数
+        一个作用域可以访问另一个函数内部的局部变量,局部变量所在函数就是闭包函数
+        闭包 : 函数嵌套函数,内部函数可以引用外部函数的参数和变量,
+              参数和变量不会被垃圾回收机制所收回
+
+        闭包需要满足三个条件：
+            1. 访问所在作用域；
+            2. 函数嵌套；
+            3. 在所在作用域外被调用
+
+　　　　　　 优点：
+                1. 可以读取函数内部的变量
+　　　　　　　　  2. 可以避免全局污染
+　　　　　　 缺点：
+　　　　　　　　 1. 闭包会导致变量不会被垃圾回收机制所清除，会大量消耗内存；
+　　　　　　　　 2. 不恰当的使用闭包可能会造成内存泄漏的问题；
+        应用:
+            一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。
+      */
+    </script>
+  </body>
+</html>

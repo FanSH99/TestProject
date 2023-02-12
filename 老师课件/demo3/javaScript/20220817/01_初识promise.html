@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    // $.ajax({
+    //     url:"./1.json",
+    //     success(res){
+    //         console.log(res)
+    //         $.ajax({
+    //             url:"./2.json",
+    //             success(data){
+    //                 console.log(data)
+    //                 $.ajax({
+    //                     url:"./3.json",
+    //                     success(reslue){
+    //                         console.log(reslue)
+    //                     }
+    //                 })
+    //             }
+    //         })
+    //     }
+    // })
+    // setTimeout 
+    // fs 
+    // promise 是一种解决异步回调地狱的方案
+    // 创建primise对象 promise 承若
+    // promise 拥有三种状态 两个过程
+    /* 
+      三种状态：pending(等待状态) fulfilled 成功状态 rejected 失败状态
+      两过程： 等待状态 => 成功状态  等待状态=>失败状态
+      状态一旦发生改变 不会在改变状态
+    */
+    let p = new Promise((reslove,reject)=>{
+        // reslove 就是将等待状态变成功状态
+        reslove();
+        // reslove 就是将等待状态变失败状态
+        // reject();
+    });
+    console.log(p)
+    
+    
+</script>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 展示一级路由 -->
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <div>
+            <div class="nav">
+                <router-link to="/films/playing">正在热映</router-link>
+                <router-link to="/films/soon">即将上映</router-link>
+            </div>
+            <!-- 展示二级路由 -->
+            <router-view></router-view>
+        </div>
+    </template>
+    <template id="playing">
+        <div>
+            <ul>
+                <li v-for="(item,index) in list" :key="item.id">
+                    <router-link :to="'/info/'+item.id">{{item.name}}</router-link>
+                </li>
+            </ul>
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script src="../bin/vue-router-3.5.0.js"></script>
+<script>
+    /* 2022年9月13日16:01:19
+    在一级路由配置中用children属性写二级路由，注意二级路由要在一级路由中再次使用以下（router-view标签)
+    */
+    let home = {
+        template: "#home",
+
+    }
+    let playing = {
+        template: "#playing",
+        data() {
+            return {
+                list: [
+                    {
+                        name: "我的姐姐",
+                        id: 1002
+                    },
+                    {
+                        name: "熊大快跑",
+                        id: 1003
+                    }
+                ]
+            }
+        }
+    }
+    let info = {
+        template: "<h1>电影详情{{id}}</h1>",
+        data() {
+            return {
+                id: "",
+            }
+        },
+        created() {
+            this.id = this.$route.params.id
+        }
+    }
+    let soon = {
+        template: "<h1>即将上映</h1>"
+    }
+
+    let router = new VueRouter({
+        routes: [
+            {
+                name: "home",
+                path: "/",
+                component: home,
+                // 路由重定向---访问/的时候自动访问/films/playing
+                redirect: "/films/playing",
+                // 子路由，在children中写路由嵌套，
+                children: [
+                    {
+                        name: "playing",
+                        path: "/films/playing",
+                        component: playing,
+                    },
+                    {
+                        name: "soon",
+                        path: "/films/soon",
+                        component: soon,
+                    },
+                ]
+            },
+            {
+                name: "info",
+                path: "/info/:id",
+                component: info
+            }
+
+        ]
+    })
+    Vue.use(router)
+    new Vue({
+        el: "#app",
+        router,
+    })
+    /* 
+    http://game.gtimg.cn/images/lol/act/img/js/hero/2.js
+    */
+</script>
+
+</html>

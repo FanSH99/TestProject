@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="father">father
+        <div class="son">son
+            <span class="me">×</span>
+        </div>
+    </div>
+
+    <script>
+        // 通过层级关系，父子兄，获取节点，逻辑性更强。
+        let span = document.querySelector('span');
+
+        // 1. 获取父级节点(亲爸爸)
+        console.log(span.parentNode);
+    </script>
+
+    <ul>
+        <li>富士山下</li>
+        <li>好久不见</li>
+        <li>K歌之王</li>
+        <li>浮夸</li>
+    </ul>
+
+    <script>
+        let ul = document.querySelector('ul');
+        // 2. 获取所有子节点(文本、注释、元素等)
+        console.log(ul.childNodes);
+
+        // 3. 只获取元素节点
+        console.log(ul.children);
+    </script>
+</body>
+
+</html>

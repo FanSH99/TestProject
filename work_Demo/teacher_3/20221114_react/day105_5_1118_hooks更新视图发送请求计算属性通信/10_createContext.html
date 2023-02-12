@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月20日15:53:22
+
+    let gloabContext = React.createContext();
+    console.log(gloabContext);
+    let { useState } = React;
+    function App() {
+        let [num, setNum] = useState(0);
+        let [list, setList] = useState([])
+        return (
+            <div>
+                <h1>父组件   <button onClick={() => {
+                    num++
+                    setNum(num)
+                }}>num++</button></h1>
+                <gloabContext.Provider value={{
+                    name: "张三", age: "18", num: num, list: list, fun: (data) => {
+                        setList(data)
+                    }
+                }}>
+                    <One />
+                    <Two />
+                </gloabContext.Provider>
+            </div>
+        )
+    }
+
+    function One() {
+        let [list, setList] = useState([20, 40, 50, 60, 99])
+        return (
+            <gloabContext.Consumer>
+                {(value) => {
+                    return (
+                        <div>
+                            <h2>子组件1---{value.name}--{value.age}--{value.num}</h2>
+                            <button onClick={() => {
+                                value.fun(list)
+                            }}>向另一个组件传递数据</button>
+                        </div>
+                    )
+                }}
+            </gloabContext.Consumer>
+
+        )
+    }
+    function Two() {
+        return (
+            <gloabContext.Consumer>
+                {(value) => {
+                    return (
+                        <div>
+                            <h2>子组件2---{value.name}--{value.age}--{value.num}</h2>
+                            {
+                                value.list.map((item, index) => {
+                                    return (
+                                        <li key={index}>{item}</li>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                }}
+            </gloabContext.Consumer>
+        )
+    }
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

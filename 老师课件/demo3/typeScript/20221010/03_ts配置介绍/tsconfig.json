@@ -1,0 +1,10 @@
+{
+    "compilerOptions":{
+        "alwaysStrict":true,
+        "outDir":"js"
+    },
+    "include": [
+        "03_ts配置介绍/src/**/*"
+    ],
+    "exclude": []
+}

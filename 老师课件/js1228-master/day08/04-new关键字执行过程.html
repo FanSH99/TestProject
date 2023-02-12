@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            new 执行过程
+                1. 后面跟着函数名(),调用了构造函数。
+                2. 创建了一个空对象,this 就是对象名。
+                3. 给当前对象，动态添加属性和方法。
+                4. 返回这个对象。
+        */
+        function Star(name, age, address) {
+            // let this = new Object();
+            this.name = name;
+            this.age = age;
+            this.address = address;
+            this.play = () => {
+                console.log(`大吉大利,今晚吃鸡`);
+            }
+        }
+
+        let eason = new Star('陈奕迅', 19, '香港');
+        console.log(eason.address);
+        console.log(eason['age']);
+        eason.play();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

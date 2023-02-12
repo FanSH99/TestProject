@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 2022年11月17日13:44:18
+
+    // 创建上下文对象 ,注意这种方法可以实现共享数据。
+    let context = React.createContext();
+    console.log(context);
+    class App extends React.Component {
+
+        state = {
+            name: "张三",
+            age: ""
+        }
+        render() {
+
+            return (
+                <div>
+                    <h1>我是一个父组件</h1>
+                    <button onClick={() => {
+                        this.setState({
+                            name: "白浅",
+                        })
+                    }}>changename</button>
+                    {/* 服务商吧消费者抱起来 ,value 是服务商传递的数据*/}
+                    <context.Provider value={{
+                        name: this.state.name, age: this.state.age, setAge: (age) => {
+                            this.setState({
+                                age: age
+                            })
+                        }
+                    }}>
+                        <One />
+                        <Two />
+                    </context.Provider>
+                </div>
+            )
+        }
+
+    }
+
+    class One extends React.Component {
+        state = {
+            num: 2,
+        }
+        // 消费者中必须是一个回调函数，海钓函数可以返回虚拟dom,因为需要在回调函数中接收服务商推送的消息。
+        render() {
+            return (
+                <context.Consumer>
+                    {(value) => {
+                        console.log(value);
+                        return (
+                            <div>
+                                <h4> 我是一个子组件 {value.name}</h4>
+                                <button onClick={
+                                    () => {
+                                        value.setAge(19)
+                                    }
+                                }>向兄弟组件传值</button>
+                            </div>
+                        )
+                    }}
+
+                </context.Consumer>
+            )
+        }
+    }
+
+    class Two extends React.Component {
+        state = {
+            num: ""
+        }
+        render() {
+            return (
+                <context.Consumer>
+                    {
+                        (value) => {
+                            console.log(value);
+                            return (<div>
+                                <h4>我是另一个子组件---{value.name}--{value.age}</h4>
+                            </div>
+                            )
+                        }
+                    }
+                </context.Consumer>
+            )
+        }
+
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+数据库设计：
+    约束：
+        概念：约束是作用于表中列的规则，用于限制加入表的数据。
+        作用: 保证了数据库中数据的正确性、有效性、完整性等。
+    约束的分类
+        约束名称     关键字         描述
+        非空约束     not null   保证列中所有数据不能为 null 值
+        唯一约束    unique      保证列中数据各不相同
+        主键约束    primary key 主键是一行数据的唯一标识，必须非空且唯一
+        检查约束    check       保证列中的值满足某一条件
+        默认约束    default     保存数据时，默认值
+        外键约束    foreign key 让两个表之间建立关联，保证数据的一致性和完整性
+
+        注意：MySQL 不支持检查约束(js java 判断)
+
+        案例：
+            -- 根据需求，为表添加合适的约束
+            -- 员工表
+            CREATE TABLE emp (
+            	id int, 					  -- 员工id，主键且自增长
+            	ename varchar(50),  -- 员工姓名，非空唯一
+            	joindate DATE, 		  -- 入职日期，非空
+            	salary DOUBLE(7,2), -- 工资，非空
+            	bonus DOUBLE(7,2)   -- 奖金，默认 0
+            );
+            添加约束
+                DROP TABLE IF EXISTS emp;
+                CREATE TABLE emp (
+                	id int PRIMARY KEY AUTO_INCREMENT, 		    -- 员工id，主键且自增长
+                	ename varchar(50) NOT NULL UNIQUE,          -- 员工姓名，非空唯一
+                	joindate DATE NOT NULL, 		 			-- 入职日期，非空
+                	salary DOUBLE(7,2) NOT NULL, 				-- 工资，非空
+                	bonus DOUBLE(7,2) DEFAULT 0  				-- 奖金，默认 0
+                );
+                SELECT * from emp;
+                INSERT INTO emp (id,ename,joindate,salary,bonus) VALUES (1, '张三','1999-01-01',8888,5000);
+
+                -- 非空
+                INSERT INTO emp (id,ename,joindate,salary,bonus) VALUES (null, '张三','1999-01-01',8888,5000);
+                -- 唯一
+                INSERT INTO emp (id,ename,joindate,salary,bonus) VALUES (1, '张三','1999-01-01',8888,5000);
+                -- 主键约束：非空、唯一
+                INSERT INTO emp (id,ename,joindate,salary,bonus) VALUES (2, '剑圣','1999-01-01',8888,5000);
+                -- 默认约束
+                INSERT INTO emp (id,ename,joindate,salary) VALUES (3, '火女','1999-01-01',8888);
+                INSERT INTO emp (id,ename,joindate,salary,bonus) VALUES (4, '冰女','1999-01-01',8888,null);
+                -- 自增：auto_increment 当列是数字类型且唯一约束
+                INSERT INTO emp (ename,joindate,salary,bonus) VALUES ( '月骑','1999-01-01',8888,5000);
+                INSERT INTO emp (id,ename,joindate,salary,bonus) VALUES ( null,'牛头','1999-01-01',8888,5000);
+            非空约束：
+                关键字：not null
+                建表之后添加非空约束：alter table 表名 modify 字段名 数据类型 not null;
+                删除约束：          alter table 表名 modify 字段名 数据类型;
+            唯一约束：保证列中数据各不相同
+                关键字：unique
+                建表之后添加唯一约束：alter table 表名 modify 字段名 数据类型 unique;
+                删除约束:          alter table 表名 drop index 字段名;
+            主键约束：非空且唯一
+                关键字：primary key
+                建表之后添加非空约束：alter table 表名 add primary key(字段名);
+                删除约束:          alter table 表名 drop primary key;
+            默认约束：给默认值
+                关键字：default value
+                建表之后添加默认约束：alter table 表名 alter 列名 set default 默认值;
+                删除约束:          alter table 表名 alter 列名 drop default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

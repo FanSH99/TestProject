@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button>按钮</button>
+  <script>
+    // 自学: 函数内 this 的指向问题
+    // 总结：对象.方法();
+    //      某人做了某个事情,事情就是函数。事情就是函数,某人就是 this
+    //      console.log(this);
+
+    // 1. 普通函数 _____ window
+    function fn1() {
+      console.log("普通函数:" + this);
+    }
+    fn1();
+
+    // 2. 构造函数 _____ 实例对象  原型对象里面的方法也是指向实例对象
+    function Star() {
+      this.moive = function () {
+        console.log("构造函数:" + this);
+      };
+    }
+
+    let that;
+    Star.prototype.money = function () {
+      that = this;
+    };
+
+    let eason = new Star();
+    eason.money();
+    console.log(that == eason);
+
+    // 3. 对象方法 _____ 该方法所属的对象
+    var obj = {
+      age: 22,
+      singHi() {
+        console.log("对象方法:");
+        console.log(this);
+      },
+    };
+    obj.singHi();
+
+    // 4. 事件绑定方法 ____ 绑定事件对象
+    $("button").on("click", function () {
+      console.log("绑定事件函数:");
+      console.log(this);
+    });
+    // 4.1 主动调用
+    $("button").click();
+
+    // 5. 定时器 ____  window
+    window.setTimeout(function () {
+      console.log("定时器:" + this);
+    }, 1000);
+
+    // 6. 立即执行函数 ____ window
+    (function () {
+      console.log("立即执行函数:" + this);
+    })();
+  </script>
+</body>
+
+</html>

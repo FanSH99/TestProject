@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style>
+			.btn {
+				width: 200px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				border: 1px solid red;
+				margin: 20px auto;
+				border-radius: 5px;
+			}
+		</style>
+		<script type="text/javascript">
+			// 在 手机app中 h5+ 默认存在全局对象 plus
+			function paizhao() {
+				// 获取摄像头对象
+				let car = plus.camera.getCamera();
+				car.captureImage((path) => {
+					alert("拍照成功！！！！", path)
+				}, (err) => {
+					alert("拍照失败", err)
+				})
+			}
+
+			function xiangce() {
+				plus.gallery.pick((file) => {
+					console.log(file)
+				}, (err) => {
+					console.log(err)
+				}, {
+					animation: true,
+					//是否选择多张
+					multiple: true,
+
+				})
+			}
+
+			function actionSheet() {
+				plus.nativeUI.actionSheet({
+						title: "好友列表",
+						cancel: "取消",
+						buttons: [{
+							title: "张三"
+						}, {
+							title: "李四"
+						}, {
+							title: "王五"
+						}]
+					},
+					function(e) {
+						console.log("User pressed: " + e.index);
+					}
+				);
+			}
+
+			function previewImage() {
+				plus.nativeUI.previewImage([
+					"https://api.java.crmeb.net/crmebimage/public/content/2022/09/28/24cf2492772c44e8b48a3c2d006b16e6z83iz1p60x.jpg",
+					"https://api.java.crmeb.net/crmebimage/public/content/2022/08/04/0f78716213f64bfa83f191d51a832cbf73f6axavoy.jpg"
+				]);
+			}
+
+			function pickTime() {
+				plus.nativeUI.pickTime(function(e) {
+					var d = e.date;
+					console.log("选择的时间：" + d.getHours() + ":" + d.getMinutes());
+				}, function(e) {
+					console.log("未选择时间：" + JSON.stringify(e));
+				});
+			}
+			
+			// 系统分享
+			function SystemShare(){
+				plus.share.sendWithSystem({
+					type:"text",
+					content:"好好学习,天天敲代码",
+					href:"https://www.baidu.com",
+					title:"学习吧"
+				}, ()=>{
+					alert("分享成功")
+				}, ()=>{
+					alert("分享失败")
+				});
+			}
+		    let shareServe = {
+				qq:"",
+				weixin:"",
+				sinaweibo:""
+			}
+			let loginServe = {
+				univerify:"",
+				weixin:"",
+				google:"",
+				qq:"",
+				sinaweibo:"",
+				facebook:""
+			}
+			document.addEventListener("plusready",function(){
+				// 在这里确保一定有全局plus对象
+				// 获取分享服务
+				plus.share.getServices(function(s){
+						console.log(JSON.stringify(s))
+						s.forEach(item=>{
+							console.log(item.id)
+							shareServe[item.id] = item
+						})
+						
+					}, function(e){
+						alert("获取分享服务列表失败： "+JSON.stringify(e));
+					});
+				 
+				 // 获取登录权限服务商
+				  plus.oauth.getServices( (serve)=>{
+					  console.log(JSON.stringify(serve))
+					  serve.forEach(item=>{
+						  loginServe[item.id] = item
+					  })
+				  },(err)=>{
+						alert("获取失败")
+				  });
+				  // 设置手机系统导航栏背景颜色
+				   plus.navigator.setStatusBarBackground("#ffffff")
+				   plus.navigator.setStatusBarStyle("dark");
+			})
+			// 微信分享
+			function showWx(){
+				plus.nativeUI.actionSheet({
+						title: "微信分享",
+						cancel: "取消",
+						buttons: [{
+							title: "微信好友"
+						}, {
+							title: "微信朋友圈"
+						}, {
+							title: "微信收藏"
+						}]
+					},
+					function(e) {
+						console.log("User pressed: " + e.index);
+						let msg = {
+							type:"web",
+						    title:"分享给你个好东西",
+							content:"想啥呢，逗你呢",
+							thumbs:"https://api.java.crmeb.net/crmebimage/public/content/2022/09/30/7d26592b331244229f449eff63240f12yj7ud7wbnr.jpg",
+							href:"http://106.12.150.223:3000/app/index.html#/home",
+							extra:""
+						}
+						if(e.index == 1){
+							// 分享给好友
+							msg.extra = 'WXSceneSession'
+							shareServe["weixin"].send(msg,()=>{
+								alert("分享成功")
+							},()=>{
+								alert("分享失败")
+							})
+						}else if(e.index==2){
+							msg.extra = 'WXSceneTimeline'
+							shareServe["weixin"].send(msg,()=>{
+								alert("分享成功")
+							},()=>{
+								alert("分享失败")
+							})
+						}else{
+							msg.extra = 'WXSceneFavorite'
+							shareServe["weixin"].send(msg,()=>{
+								alert("分享成功")
+							},()=>{
+								alert("分享失败")
+							})
+						}
+					}
+				);
+			}
+			function qqShare(){
+				let msg = {
+					type:"web",
+				    title:"分享给你个好东西",
+					content:"想啥呢，逗你呢",
+					thumbs:"https://api.java.crmeb.net/crmebimage/public/content/2022/09/30/7d26592b331244229f449eff63240f12yj7ud7wbnr.jpg",
+					href:"http://106.12.150.223:3000/app/index.html#/home",
+					extra:""
+				}
+				shareServe["qq"].send(msg,()=>{
+					alert("分享成功")
+				},()=>{
+					alert("分享失败")
+				})
+			}
+			
+			// 微信登录
+			function wxLogin(){
+				loginServe["weixin"].login((res)=>{
+						console.log(JSON.stringify(res));
+						alert("登录成功")
+				},()=>{
+					alert("登录失败")
+				})
+			}
+			function qqLogin(){
+				loginServe["qq"].login((res)=>{
+						console.log(JSON.stringify(res));
+						alert("登录成功")
+				},()=>{
+					alert("登录失败")
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div class="btn" onclick="paizhao()">
+			拍照
+		</div>
+		<div class="btn" onclick="xiangce()">
+			相册
+		</div>
+		<div class="btn" onclick="actionSheet()">
+			选择好友
+		</div>
+		<div class="btn" onclick="previewImage()">
+			预览图片
+		</div>
+		<div class="btn" onclick="pickTime()">
+			选择时间
+		</div>
+		<div class="btn" onclick="showWx()">
+			微信分享
+		</div>
+		<div class="btn" onclick="qqShare()">
+			qq分享
+		</div>
+		<div class="btn" onclick="SystemShare()">
+			系统分享
+		</div>
+		<div class="btn" onclick="wxLogin()">
+			微信登录
+		</div>
+		<div class="btn" onclick="qqLogin()">
+			qq登录
+		</div>
+		<div class="btn">
+			扫一扫
+		</div>
+	</body>
+</html>

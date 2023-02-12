@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <h1>num----{{num}}<button @click="num++">++</button></h1>
+        <h2>num2----{{num2}}<button @click="num2++">++</button></h2>
+        <h2>num3----{{num3}}<button @click="num3++">++</button></h2>
+        <h1>{{user.name}}------{{user.age}}</h1>
+        <button @click="user.name='李四'">改变用户</button>
+
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num: 0,
+            num2: 0,
+            num3: 0,
+            msg: "好好学习天天向上",
+            user: {
+                name: "白浅",
+                age: 18,
+            }
+        },
+        /* watch监听，可以监听多个响应式数据的改变，
+        以data中改变的数据名称为函数名，参数1是救新的值，参数2是旧的值。
+        普通写法不能监听对象的改变。
+        当写了多个监听的时候，最后一个起作用。
+        */
+        watch: {
+            // 要改变的数据命名的函数，参数1是救新的值，参数2是旧的值。
+            num(newVal, oldVal) {
+                console.log("我改变了", newVal, oldVal);
+            },
+            num2: function (newVal, oldVal) {
+                console.log("我改变了", newVal, oldVal);
+            },
+            "num3": function (newVal, oldVal) {
+                console.log("我改变了", newVal, oldVal);
+            },
+            /* 普通写法没有办法监听对象的改变。 */
+            // user(newVal){
+            //     console.log("user发生改变了",newVal);
+            // }
+
+
+            // user: {
+            //     handler: function (newVal) {
+            //         console.log('user发生改变了', newVal);
+            //     },
+            //     deep: true,
+            // },
+            "user.name": {
+                // 执行函数，---默认只有坚挺到数据发生改变时才会执行。
+                handler: function (newVal) {
+                    console.log('user发生改变了', newVal);
+                },
+                // 不管用，需要开启deep深度监听
+                deep: true,
+                // 立刻执行handler函数，不需要等到数据局发生改变。
+                immediate: true,
+            },
+            // 高级监听并非只能监听对象，也可以监听普通数据，监听普通数据的时候deep可以是false
+            num: {
+                handler() {
+                    console.log("num改变了");
+                },
+                deep: false,
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+      //  5、石头、剪刀、布   小游戏，  三局两胜制，有一方累计胜利两次，则游戏结束  （每次开始，玩家和电脑都要出拳）
+
+      // 随机数  0  1  2      Math.floor( Math.random()*3)    电脑 
+
+      //  parseInt( Math.random()*10  ) %3         0  1  2 
+
+      // 0 代表 石头
+      // 1代表 剪刀
+      // 2代表 布 
+      var playCon = 0;
+      var AICon = 0;
+      while (true) {
+         var player = prompt('请出拳 0代表石头、1代表剪刀、2代表布 ');
+         console.log('player=' + player);
+         // var AI=parseInt(Math.random()*(2-0+1))+0
+         var AI = parseInt(Math.random() * 3);// 0 1 2
+         console.log('AI=' + AI);
+
+         // 假设玩家胜  什么情况
+         if (player == 0 && AI == 1 || player == 1 && AI == 2 || player == 2 && AI == 0) {
+            console.log('玩家胜');
+            playCon++;
+         } else if (player == AI) {
+            console.log('平局');
+
+         } else {
+            console.log('电脑胜');
+            AICon++;
+         }
+
+         // 如果 有一方提前计数==2 循环结束
+         if (playCon == 2 || AICon == 2) {
+            break;
+         }
+      }
+
+      //  胜利者找到了
+      if (playCon == 2) {
+         alert('玩家赢')
+      } else if (AICon == 2) {
+         alert('电脑赢')
+      }
+
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // 量词符：用来设定某个模式出现的次数。限制密码长度
+
+      // 1. * 重复次数  >= 0 即可
+      let rg1 = /^a*$/;
+      console.log(rg1.test('a'));
+      console.log(rg1.test('aa'));
+      console.log(rg1.test('bb'));
+
+      console.log('---------+ 重复次数  >= 1 即可----------');
+      // 2. + 重复次数  >= 1 即可
+      let rg2 = /^a+$/;
+      console.log(rg2.test(''));
+      console.log(rg2.test('a'));
+      console.log(rg2.test('aa'));
+
+      console.log('-------------? 出现 0 或 1 次--------------------');
+      // 3. ? 出现 0 或 1 次
+      let rg3 = /^a?$/;
+      console.log(rg3.test(''));
+      console.log(rg3.test('a'));
+      console.log(rg3.test('aa'));
+
+      console.log('-------- {3} 重复出现固定次数----------');
+      // 4.  {3} 重复出现固定次数
+      let rg4 = /^a{3}$/;
+      console.log(rg4.test('a'));
+      console.log(rg4.test('aa'));
+      console.log(rg4.test('aaa'));
+      console.log(rg4.test('aaaa'));
+
+      console.log('-------- {2, } 次数 >= 2----------');
+      // 5. {2,} 次数 >= 2
+      let rg5 = /^a{2,}$/;
+      console.log(rg5.test('a'));
+      console.log(rg5.test('aa'));
+      console.log(rg5.test('aaa'));
+      console.log(rg5.test('aaaa'));
+
+      console.log('-------- {2,4} 中间不能有空格，次数 >=2，且 <=4----------');
+      // 6. {2,4} 中间不能有空格，次数 >=2，且 <=4
+      let rg6 = /^a{2,4}$/;
+      console.log(rg6.test('a'));
+      console.log(rg6.test('aa'));
+      console.log(rg6.test('aaa'));
+      console.log(rg6.test('aaaa'));
+      console.log(rg6.test('aaaaa'));
+    </script>
+  </body>
+</html>

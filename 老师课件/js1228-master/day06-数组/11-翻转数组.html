@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 将数组 ['red', 'green', 'blue', 'skyblue', 'purple'] 的内容反过来存放
+        //       ['purple', 'skyblue', 'blue', 'green', 'red']
+        var arr = ['red', 'green', 'blue', 'skyblue', 'purple'];
+        var newArr = [];
+        var newArr1 = [];
+        /* 
+            index   newIndex
+              0      4
+              1      3
+              2      2
+              3      1
+              4      0
+         
+              index + newIndex = 4
+              newIndex = 4 - index;
+        */
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i]);
+            newArr[arr.length - 1 - i] = arr[i];
+        }
+
+        console.log(arr);
+        console.log(newArr);
+        
+        console.log('----------------方案2------------');
+        // 倒着遍历 arr
+        for (var i = arr.length - 1; i >= 0; i--) {
+            // console.log(i);
+            // console.log(arr[i]);
+            newArr1[newArr1.length] = arr[i];
+        }
+        console.log(newArr1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

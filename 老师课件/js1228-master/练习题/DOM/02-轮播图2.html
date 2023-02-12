@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 600px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        li {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        .action {
+            background: red;
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="upload/eason.png" alt="">
+        <ul>
+            <li class="action"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 小圆圈
+    var lis = document.querySelectorAll('li'); 
+    var img = document.querySelector('img');
+    // 创建一个数组,放置跟li相对应的图片路径
+    var image = ['upload/eason.png', 'upload/jackie.png', 'upload/jay.png', 'upload/peng.png', 'upload/wangyibo.png'];
+
+    // 记录定时器执行次数 初始值为0
+    var number = 0;
+    // 设置自动轮播执行的 function
+    function set() {
+        // 记录执行次数每次+1  
+        number++;
+        // 判断得到想要的索引范围 0 - 4
+        if (number > 4) {
+            number = 0;
+        }
+        // 根据执行次数得到的索引值来显示相对应的图片
+        img.src = image[number];
+        // 首先设置所有的li的class为空(去除样式)
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].className = "";
+        }
+        // 再设置当前索引值相对应的li的class(添加样式)
+        lis[number].className = 'action';
+    }
+    setInterval(set, 2000);
+
+    // 使用foreach来获取lis集合(数组)中的每一个li标签
+    lis.forEach(function (item, index) {
+        // 给所有li标签都添加一个自定义属性index,属性值为当前li的索引值
+        item.index = index;
+        // 给所有li添加点击事件
+        item.onclick = function (event) {
+            // 首先设置所有的li的class为空(去除样式)
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = "";
+            }
+            // 使用event.target来获取当前标签
+            // 给当前标签设置class(添加样式)
+            event.target.className = 'action';
+            // 获取当前标签的index属性值
+            let temp = event.target.index;
+            // 属性值为当前标签的索引值
+            console.log(temp);
+            // 根据这个索引值查找到image数组中相对应的img.src路径
+            img.src = image[temp];
+            // 设置自动轮播中循环的索引值为当前点击标签的索引值
+            number = temp;
+        }
+    });
+</script>
+
+</html>

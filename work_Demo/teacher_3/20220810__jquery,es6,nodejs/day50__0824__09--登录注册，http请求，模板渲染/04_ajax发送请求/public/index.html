@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年8月24日15:36:30 -->
+    <h1>ajax发送http请求</h1>
+    <button class="get">ajax发送get请求</button>
+    <button class="get2">ajax发送get请求2</button>
+    <button class="post">ajax发送post请求</button>
+    <button class="post2">ajax发送post请求2</button>
+</body>
+<script src="./jquery-3.6.0.min.js"></script>
+<script>
+    console.log($.ajax);
+    let uname = "admin";
+    let pwd = 123456;
+    $(".get").click(function () {
+        $.ajax({
+            // 请求地址 ,请求参数拼接到路径上。
+            url: `/login?uname=${uname}&pwd=${pwd}`,
+            // 请求方式，如果不传默认为get
+            method: "get",
+            // 只有在请求成功后才会调用
+            success(res) {
+                console.log(res);
+            },
+            // 请求失败后进入的回调函数
+            error(err) {
+                console.log("请求失败了", err);
+            }
+
+        })
+    })
+
+
+    $(".get2").on("click", function () {
+        // 参数1请求地址，参数2请求参数，参数3回调函数。
+        $.get("/login", { uname, pwd }, function (res) {
+            console.log(res);
+        })
+    })
+
+    $(".post").on("click", () => {
+
+        $.ajax({
+            url: "/register",
+            method: "post",
+            dataType: "json",
+            // post请求传递传递参数
+            date: {
+                uname,
+                pwd
+            },
+            // 设置请求头 默认会自动设置为application/x-www-form-urlencoded
+            contentType: "",
+            success(res) {
+                console.log(res);
+            },
+            error(err) {
+                console.log('请求失败', err);
+            }
+
+        })
+    })
+
+    $(".post2").on("click", () => {
+        $.post("/register", { uname, pwd }, (res) => {
+            console.log(res);
+        })
+    })
+</script>
+
+</html>

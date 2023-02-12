@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #top {
+            width: 1200px;
+            height: 1000px;
+            background-color: brown;
+            margin: 0 auto;
+        }
+
+        #news {
+            width: 1200px;
+            height: 400px;
+            background-color: orange;
+            margin: 0 auto;
+        }
+
+        #mage {
+            width: 1200px;
+            height: 600px;
+            background-color: blue;
+            margin: 0 auto;
+        }
+
+        #team {
+            width: 1200px;
+            height: 600px;
+            background-color: rgb(213, 17, 89);
+            margin: 0 auto;
+        }
+
+        #game {
+            width: 1200px;
+            height: 600px;
+            background-color: green;
+            margin: 0 auto;
+        }
+
+        #guide {
+            width: 1200px;
+            height: 600px;
+            background-color: rgb(69, 174, 69);
+            margin: 0 auto;
+        }
+
+        #video {
+            width: 1200px;
+            height: 600px;
+            background-color: purple;
+            margin: 0 auto;
+        }
+
+        #footer {
+            width: 1200px;
+            height: 600px;
+            background-color: black;
+            margin: 0 auto;
+        }
+
+        .nav_r {
+            width: 50px;
+            height: calc(100%);
+            background-color: orange;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav_r li {
+            height: 50px;
+            line-height: 50px;
+            background-color: aqua;
+            margin: 2px 0;
+        }
+
+        .nav_r li.on {
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top">top</div>
+    <div id="news">news</div>
+    <div id="mage">mage</div>
+    <div id="team">team</div>
+    <div id="game">game</div>
+    <div id="guide">guide</div>
+    <div id="video">video</div>
+    <div id="footer">footer</div>
+
+    <div class="nav_r">
+        <ul>
+            <li><a href="#news" _index="0">news</a></li>
+            <li><a href="#mage">mage</a></li>
+            <li><a href="#team">team</a></li>
+            <li><a href="http://yw.qq.com">game</a></li>
+            <li><a href="#guide">guide</a></li>
+            <li><a href="#video">video</a></li>
+        </ul>
+        <p id="back">返回</p>
+    </div>
+
+    <script>
+        //1.查找元素，获取到页面版块距body的偏移量
+        var news = document.querySelector('#news');
+        var mage = document.querySelector('#mage');
+        var team = document.querySelector('#team');
+        var game = document.querySelector('#game');
+        var guide = document.querySelector('#guide');
+        var video = document.querySelector('#video');
+
+        var lis = document.querySelectorAll('.nav_r>ul>li')
+
+        //2.获取每个版块到距body的偏移量
+        var newsTop = news.offsetTop;
+        console.log(newsTop);
+        var mageTop = mage.offsetTop;
+        console.log(mageTop);
+        var teamTop = team.offsetTop;
+        console.log(teamTop);
+        var gameTop = game.offsetTop;
+        console.log(gameTop);
+        var guideTop = guide.offsetTop;
+        console.log(guideTop);
+        var videoTop = video.offsetTop;
+        console.log(videoTop);
+
+        //3. 定义成一数组  偏移量
+        var arr1 = [newsTop, mageTop, teamTop, gameTop, guideTop, videoTop];
+        var arr2 = [newsTop, mageTop, teamTop, guideTop, videoTop];
+
+        // 4.滚动交互  arr1[0]  >页面卷进去的距离<  arr[1] ,选中news项 on
+
+        document.addEventListener('scroll', function () {
+            //4.1获取页面卷进去的距离
+            var t = window.pageYOffset;
+
+            for (var i = 0; i < arr1.length; i++) {
+                // 遍历 先清掉所有的on
+                lis[i].classList.remove('on')
+                if (t >= arr1[arr1.length - 1]) {
+                    lis[arr1.length - 1].classList.add('on');
+                } else if (t >= arr1[i] && t < arr1[i + 1]) {
+                    // 符合条件再加on
+                    lis[i].classList.add('on')
+
+                }
+
+            }
+
+        })
+
+        // 5.单击右侧导航的项，页面滚动对应的位置
+    //    找到  <a href='#news"> 属性选择器
+      var lisA=  document.querySelectorAll(".nav_r>ul>li>a[href*='#']");
+      console.log(lisA);
+
+      //6. 单击事件
+        for(var j=0;j<lisA.length;j++){
+            // lisA[j]._index=j;
+            lisA[j].setAttribute('_index',j)
+           
+            // console.log(j);
+            lisA[j].addEventListener('click',function(e){
+              
+                // 阻止默认跳转
+                e.preventDefault();
+                // 排它思想
+                 for(var j=0;j<lisA.length;j++){
+                     lisA[j].classList.remove('on')
+                 }
+                 this.classList.add('on')
+                //  console.log(j);//5
+                // var index= this._index
+              var index= this.getAttribute('_index')
+       
+                 animate(document,arr2[index])
+
+            });
+
+            lisA[j].addEventListener('mouseover',function(){
+                console.log('sss');
+              
+              // 排它思想
+               for(var j=0;j<lisA.length;j++){
+                   lisA[j].classList.remove('on')
+               }
+               this.classList.add('on')
+             
+            
+
+          });
+
+        }
+        
+// 有三种方法，自定义属性
+/* 
+    node.属性名=属性值
+    node[属性名]=属性值
+    node.setAttribute(属性名，属性值)-----自定义属性
+*/
+    
+   //封装好的函数
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);//防止定时器累加，速度加快 
+            //点击一次按钮，小球不断向右运动，启动定时器
+            obj.timer = setInterval(function () {
+                //1.
+                //  页面卷进去的距离   document.documentElement.srcollTop
+                var t = window.pageYOffset
+                // 1.1新增一个求速度的方法   速度由快到慢       （802-797.5）/10  约等0
+                var speed = (target - t) / 10;
+                //1.2 解决办法
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                //  console.log(speed);
+                var newT = t + speed;;//移动一个新的位置
+                //3.
+                // obj.style.left = newL + 'px';// 赋值 
+                window.scrollTo(0, newT);
+                //4.可能小球停不下来，   newL不是正好是802，解决的办法
+                if (newT == target) {
+                    clearInterval(obj.timer);
+                    // 回调函数根据需要来传，可传也可以不传
+                    callback && callback()
+                }
+
+            }, 15)
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title></title>
+        <script type="text/javascript">
+            /* document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
+   			
+   		}); */
+            // 拍照，参数1成功回调，参数2失败回调，参数3配置参数。
+            function carema() {
+                // 获取摄像头对象
+                let cmr = plus.camera.getCamera();
+                let res = cmr.supportedImageResolutions[0];
+                let fmt = cmr.supportedImageFormats[0];
+                console.log("Resolution: " + res + ", Format: " + fmt);
+                // path是图片路径
+                cmr.captureImage((path) => {
+                    // 图片不会自动存到手机里面，需要设置存储路径。
+                    alert("拍照成功！！！！", path);
+                    console.log(path);
+                }, (err) => {
+                    console.log("拍照失败", err.message)
+                }, {
+                    saveToAlbum: true,
+                    resolution: res,
+                    format: fmt,
+                })
+
+            }
+            // 在手机上会直接调取摄像头。在电脑上会提示是否开启摄像头。 录像的话，可以考虑手机点击开始拍照，再次点击结束。
+
+            // 打开手机相册。参数1文件，参数2错误回调。参数3配置参数。
+            // 如果拍照失败，检查摄像头是否开启，--应用权限里面点击摄像头
+            function photo() {
+                plus.gallery.pick((file) => {
+                    console.log(JSON.stringify(file));
+                }, (err) => {
+                    console.log(err);
+                }, {
+                    // 是否可以选择多张
+                    multiple: true,
+                    // 开启动画。
+                    animation: true,
+                })
+            }
+
+            // 弹出系统选择按钮框
+            function actionSheet() {
+                plus.nativeUI.actionSheet({
+                        title: "Plus is ready!",
+                        cancel: "取消",
+                        buttons: [{
+                            title: "白浅"
+                        }, {
+                            title: "夜华"
+                        }]
+                    },
+                    function(e) {
+                        // console.log(JSON.stringify(e));
+                        console.log("User pressed: " + e.index);
+                    }
+                );
+            }
+
+            // 关闭预览图片界面
+            // void plus.nativeUI.closePreviewImage();
+
+            // 图片预览
+            function previewImage() {
+                plus.nativeUI.previewImage([
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/053d963a35ffe0654dfc2ac3d20466ee.jpg?w=2452&h=920",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/28c13d0d11b38ec17fa5d83bc6ba5912.jpg?w=632&h=340",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fb9e3201ac236e7d93d98d80cd56f185.jpg?thumb=1&w=1226&h=460&f=webp&q=90"
+                ]);
+            }
+
+            // 选择时间
+            function pickTime() {
+                plus.nativeUI.pickTime(function(e) {
+                    var d = e.date;
+                    console.log("选择的时间：" + d.getHours() + ":" + d.getMinutes());
+                }, function(e) {
+                    console.log("未选择时间：" + JSON.stringify(e));
+                });
+            }
+
+
+            // 系统分享
+            // 使用系统分享发送分享消息 
+            function shareSystem() {
+                // 参数1分享的消息对象，参数2成功回调，参数3失败回调
+                plus.share.sendWithSystem({
+                    type: 'text',
+                    content: '我想要天上的月光和地上的霜',
+                    href: 'http://www.baidu.com/',
+                    title: '我想要',
+                }, function() {
+                    alert('分享成功')
+                    console.log('分享成功');
+                }, function(e) {
+                    console.log('分享失败：' + JSON.stringify(e));
+                });
+            }
+
+            // 分享对象 ---名字不能变，否则出错
+            let shareServe = {
+                qq: '',
+                weixin: '',
+                sinaweibo: ""
+            }
+
+            // 设置登录对象 ---名字不能变，否则出错
+            let loginServe = {
+                univerify: "",
+                weixin: "",
+                google: "",
+                qq: "",
+                sinaweibo: "",
+                facebook: ""
+            }
+            // 监听分享事件		
+            document.addEventListener('plusready', function() {
+                // 确保一定有全局plus对象
+                // 获取分享服务商,参数1成功回调，参数2，失败回调
+                plus.share.getServices(function(s) {
+                    console.log(JSON.stringify(s))
+                    s.forEach(item => {
+                        console.log(item.id)
+                        shareServe[item.id] = item
+                    })
+                }, function(e) {
+                    alert("获取分享服务列表失败： " + JSON.stringify(e));
+                });
+
+                // 获取登录权限服务商
+                plus.oauth.getServices((serve) => {
+                    console.log(JSON.stringify(serve))
+                    serve.forEach(item => {
+                        loginServe[item.id] = item
+                    })
+                }, (err) => {
+                    alert("获取失败")
+                });
+
+                plus.navigator.setStatusBarBackground('#333')
+                // 状态栏样式只有dark和light两种，dark--当前状态栏文字为黑色 light--状态栏文字为白色
+                plus.navigator.setStatusBarStyle("light")
+            })
+            // 微信分享
+            function shareWechat() {
+                plus.nativeUI.actionSheet({
+                        title: "微信分享",
+                        cancel: "取消",
+                        buttons: [{
+                                title: "微信好友"
+                            },
+                            {
+                                title: "微信朋友圈"
+                            },
+                            {
+                                title: "微信收藏"
+                            }
+                        ]
+                    },
+                    function(e) {
+                        console.log("User pressed: " + e.index);
+                        let msg = {
+                            type: "web",
+                            title: "分享给你个好东西",
+                            content: "想啥呢，逗你呢",
+                            thumbs: "https://api.java.crmeb.net/crmebimage/public/content/2022/09/30/7d26592b331244229f449eff63240f12yj7ud7wbnr.jpg",
+                            href: "http://106.12.150.223:3000/app/index.html#/home",
+                            extra: ""
+                        }
+                        if (e.index == 1) {
+                            // 分享给微信好友
+                            msg.extra = 'WXSceneSession'
+                            shareServe["weixin"].send(msg, () => {
+                                alert("分享成功")
+                            }, () => {
+                                alert("分享失败")
+                            })
+                        } else if (e.index == 2) {
+                            // 分享给微信朋友圈
+                            msg.extra = 'WXSceneTimeline'
+                            shareServe["weixin"].send(msg, () => {
+                                alert("分享成功")
+                            }, () => {
+                                alert("分享失败")
+                            })
+                        } else {
+                            // 分享到微信收藏
+                            msg.extra = 'WXSceneFavorite'
+                            shareServe["weixin"].send(msg, () => {
+                                alert("分享成功")
+                            }, () => {
+                                alert("分享失败")
+                            })
+                        }
+                    }
+
+                );
+            }
+
+
+            // qq分享
+            function shareQQ() {
+                let msg = {
+                    type: "web",
+                    title: "分享给你个好东西",
+                    content: "想啥呢，逗你呢",
+                    thumbs: "https://api.java.crmeb.net/crmebimage/public/content/2022/09/30/7d26592b331244229f449eff63240f12yj7ud7wbnr.jpg",
+                    href: "http://106.12.150.223:3000/app/index.html#/home",
+                    extra: ""
+                }
+                // 参数1成功回调，参数2失败回调。
+                shareServe["qq"].send(msg, () => {
+                    alert("分享成功")
+                }, () => {
+                    alert("分享失败")
+                })
+            }
+
+            // 微信登录
+            function wxLogin() {
+                loginServe["weixin"].login(res => {
+                    console.log('登录成功');
+                    console.log('微信信息', JSON.stringify((res)));
+                }, () => {
+                    console.log("登录失败");
+                })
+            }
+
+            // qq登录
+            function qqLogin() {
+                loginServe["qq"].login(res => {
+                    console.log('登录成功');
+                    console.log('qq信息', JSON.stringify((res)));
+                }, () => {
+                    console.log("登录失败");
+                })
+            }
+
+            // 扫描图片
+            function startRecognize() {
+                if (!window.plus) return
+                // scan = new plus.barcode.create('bcid');
+                // 设置扫描框
+                scan = plus.barcode.create('bcid', [plus.barcode.QR], {
+                    top: '60px',
+                    left: '0px',
+                    width: '100%',
+                    height: '100%',
+                    position: 'static'
+                });
+                // 创建扫描框
+                plus.webview.currentWebview().append(scan);
+                console.log("创建扫描控件---------", scan);
+                // 开始扫描
+                console.log("开始扫描");
+                scan.start();
+                scan.onmarked = onmarked
+                // 识别扫描内容
+                function onmarked(type, result, file) {
+                    switch (type) {
+                        case plus.barcode.QR:
+                            type = 'QR'
+                            break
+                        case plus.barcode.EAN13:
+                            type = 'EAN13'
+                            break
+                        case plus.barcode.EAN8:
+                            type = 'EAN8'
+                            break
+                        default:
+                            type = '其它' + type
+                            break
+                    }
+                    console.log("扫描数据", type, result, file);
+                    result = result.replace(/\n/g, '')
+                    alert(result)
+                    //关闭
+                    scan.close();
+                }
+
+            }
+
+            // 扫描本地图片
+            function scanLocal() {
+                plus.gallery.pick((file) => {
+                    plus.barcode.scan(file, (type, result) => {
+                        console.log('扫码成功', type, result);
+                    }, () => {
+                        console.log("扫码失败")
+                    });
+                }, (err) => {
+                    console.log(err);
+                }, {
+                    // 是否可以选择多张
+                    multiple: false,
+                    // 开启动画。
+                    animation: true,
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <h1>hello \(^o^)/~</h1>
+        <div class="btn" onclick="carema()">拍照功能</div>
+        <div class="btn" onclick="photo()">打开相册</div>
+        <div class="btn" onclick="actionSheet()">弹出系统选择框</div>
+        <div class="btn" onclick="previewImage()">预览图片</div>
+        <div class="btn" onclick="pickTime()">选择时间</div>
+        <div class="btn" onclick="shareWechat()">微信分享</div>
+        <div class="btn" onclick="shareQQ()">qq分享</div>
+        <div class="btn" onclick="shareSystem()">系统分享</div>
+        <div class="btn" onclick="wxLogin()">第三方微信登录</div>
+        <div class="btn" onclick="qqLogin()">第三方qq登录</div>
+        <div class="btn" onclick="startRecognize()">扫描图片</div>
+        <div class="btn" onclick="scanLocal()">扫描本地</div>
+    </body>
+
+    <style>
+        .btn {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 20px auto;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+    </style>
+</html>

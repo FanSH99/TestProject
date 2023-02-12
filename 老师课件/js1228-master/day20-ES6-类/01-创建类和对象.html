@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            创建类
+                语法结构：
+                    class 类名 {
+                        constructor(){
+
+                        }
+                    }
+
+            类是对事物的抽象，如下特点：   
+                1. 有两个成员，属性、方法。
+                2. 构造函数，给对象动态添加属性。并返回该对象。   
+            
+            创建对象
+            var 对象名 = new 类名();    
+        */
+        class Hero {
+            constructor(name, skill, level) {
+                this.name = name;
+                this.skill = skill;
+                this.level = level;
+            }
+
+            play(game) {
+                console.log(`我喜欢玩${game}`);
+            }
+            gank() {
+                console.log(`一起去抓人`);
+            }
+        }
+
+        let lvbu = new Hero('吕布', '天崩地裂', 18);
+        console.log(typeof lvbu);
+        console.log(lvbu);
+        console.log(lvbu.name);
+        lvbu.gank();
+        lvbu.play(`吃鸡`);
+
+        /*
+            总结：
+                1. 通过 class 关键字声明类。大驼峰的命名规范。
+                2. constructor() 是构造函数，接收参数，并对属性进行初始化，然后返回这个对象。
+                3. new 关键字，创建对象。new 的本质是申请内存空间。
+                4. 方法的声明，省略 function
+                5. 多个函数不需要逗号切割。
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        nav {
+            width: 100%;
+            display: flex;
+        }
+
+        nav>div {
+            width: 25%;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .active::after {
+            content: "";
+            width: 30px;
+            height: 2px;
+            background-color: red;
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月16日13:10:35
+    class App extends React.Component {
+
+        state = {
+            navList: ["首页", "购物车", "分类", "我的"],
+            activeIndex: 0,
+        }
+        render() {
+
+            return (
+                <div>
+                    <nav>
+                        {
+                            this.state.navList.map((item, index) => {
+
+                                return (
+                                    <div key={index} className={this.state.activeIndex == index ? "active" : ""} onClick={() => this.setActive(index)}>{item}</div>
+                                )
+                            })
+                        }
+                    </nav>
+                    {/* 方案一，
+                    <div>
+                        {this.getComponent()}
+                    </div>
+                    */}
+                    <div>
+                        {this.state.activeIndex === 0 && <Home />}
+                        {this.state.activeIndex === 1 && <Cart />}
+                        {this.state.activeIndex === 2 && <Cate />}
+                        {this.state.activeIndex === 3 && <Mine />}
+                    </div>
+
+                </div>
+            )
+        }
+        setActive(index) {
+            // this.state.activeIndex = index;
+            this.setState({
+                activeIndex: index
+            })
+        }
+        // 方案一
+        getComponent() {
+            switch (this.state.activeIndex) {
+                case 0: return <Home />; break;
+                case 1: return <Cart />; break;
+                case 2: return <Cate />; break;
+                case 3: return <Mine />; break;
+            }
+        }
+
+    }
+
+    class Home extends React.Component {
+        render() {
+            return (
+                <h1>首页</h1>
+            )
+        }
+    }
+
+    class Cart extends React.Component {
+        render() {
+            return (
+                <h1>购物车</h1>
+            )
+        }
+    }
+    class Cate extends React.Component {
+        render() {
+            return (
+                <h1>分类</h1>
+            )
+        }
+    }
+    class Mine extends React.Component {
+        render() {
+            return (
+                <h1>我的</h1>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

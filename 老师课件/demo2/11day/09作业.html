@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、生成3个学生实例，调用学生实例的showInfo方法（注：showInfo方法打印出学生的学号，姓名，年龄，年级，宿舍编号）
+        //  造 一个学生的构造函数      形参 学号，姓名，年龄，年级，宿舍编号    showInfo 方法（函数 动作）
+
+    //     function Student(no,name,age,grade,room){
+    //         // 属性
+    //         this.no=no;
+    //         this.name=name;
+    //         this.age=age;
+    //         this.grade=grade;
+    //         this.room=room;
+    //         // this.showInfo=function(){
+    //         //     console.log(this.no,this.name,this.age,this.grade,this.room);
+    //         // }
+    //     }
+    //     Student.prototype.showInfo=function(){
+    //         console.log(this.no,this.name,this.age,this.grade,this.room);
+    //     }
+
+    //   var s1=  new Student('1001','杨铭',18,'九年级','209')
+    //   var s2=  new Student('1002','朱佳培',18,'九年级','209')
+    //   var s3=  new Student('1003','赵一泽',18,'九年级','209')
+    // s1.showInfo();
+    // s2.showInfo();
+    // s3.showInfo();
+
+
+    // 2、生成三台笔记本电脑实现，调用电脑的开始和关闭方法
+    //  function  Computer(brand,color){
+    //     this.brand=brand;
+    //     this.color=color;
+    //     this.open=function(){
+    //         console.log(this.brand+this.color +' is opening');
+    //     }
+    //     this.close=function(){
+    //         console.log(this.brand+this.color +' is closeing');
+    //     }
+    //  }
+
+    // var c1=new Computer('联想','黑色')
+    // var c2=new Computer('华为','灰色')
+    // var c3=new Computer('苹果','白色')
+
+    // c1.open();
+    // c1.close();
+
+//     4、录入班级学生信息（比如 姓名  年龄 性别）
+       
+//    提示： 每一个学生都是一个对象
+//            再把所有的学生，放入一个数组     要用循环
+
+//            是否结束录入？判断条件confirm('是否结束录入')     单击确定按钮，是true ,结束录入
+//                                                                                             取消            false 继续录入
+
+//  数组和对象    [{},{},{}]   循环来录入
+
+  var arr=[];// 保存班级学生的信息
+  while(true){
+    // 每一个学生保存成一个对 象，然后推入数组
+    var obj={};// 保存每一个学生的信息
+     obj.name=prompt('请输入学生的姓名');
+     obj.age=prompt('请输入学生的年龄');
+     obj.gender=prompt('请输入学生的性别');
+     // 推入数组
+     arr.push(obj);
+     if(confirm('是否结束录入')){
+        break;
+     }
+
+
+  }
+  console.log(arr);// [{name: '王子兴', age: '18', gender: '男'},{name: '任俭俭', age: '18', gender: '男'}]
+
+//   输出学生的信息
+ for(var i=0;i<arr.length;i++){
+    // console.log(i);// 0 1
+    // console.log(arr[i]);//{name: '王子兴', age: '18', gender: '男'}  {name: '任俭俭', age: '18', gender: '男'}
+    for(var j in arr[i]){
+        console.log(j);// 属性名
+        console.log(arr[i][j]);// 属性值
+
+    }
+ }
+
+
+//  var flag= confirm('是否结束录入');// true  false
+    </script>
+</body>
+</html>

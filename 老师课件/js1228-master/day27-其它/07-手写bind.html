@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test(a, b, c) {
+            console.log(a, b, c);
+            console.log('this', this);
+            return "无敌斩";
+        }
+
+        let result = test(1, 2, 3);
+
+        console.log('----------------------------');
+        let obj = {
+            "name": "剑圣",
+            "age": 18
+        }
+        let testBind = test.bind(obj, 22, 33, 44);
+        let result2 = testBind();
+        console.log(result, result2);
+    </script>
+    <script>
+        /*
+            bind 函数：
+                1. 修改 this 指向
+                2. 参数1 是this, 剩余的参数是函数接收的参数
+                3. 函数返回值不变
+        */
+        // bind 是 Function 类显式原型上一个函数   
+        console.log(Function.prototype.bind);
+
+        Function.prototype.myBind = function () {
+            // 26 行代码，test 调用了 bind，因此，this 就是当前函数
+            const self = this;
+
+            // 转化为数组
+            const args = Array.prototype.slice.call(arguments);
+            // 删除数组的第一个元素，并获取 this。(补充代码，判断 this 是空，则是 windows)
+            const thisVale = args.shift();
+
+            // 返回值是一个函数
+            return function () {
+                // 调用函数，且返回值不变
+                // return self();
+                return self.apply(thisVale, args);
+            }
+        }
+
+        console.log('--------------自定义-----------------');
+        let temp = test.myBind(obj, 12, 23, 55);
+        console.log(temp());
+    </script>
+</body>
+
+</html>

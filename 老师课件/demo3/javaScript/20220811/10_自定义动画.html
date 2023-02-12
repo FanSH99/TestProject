@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="box">
+     
+   </div> 
+    <button>运动</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+       $(".box").css({
+        width:"100px",
+        height:"100px",
+        background:"red",
+        borderRadius:"50%",
+        position: "absolute",
+        top:0,
+        left:"100px"
+    })
+     $("button").click(function(){
+        // 自定义动画 参数为自定义动画样式 通常改变元素得位置
+        $(".box").animate({
+            // marginLeft:"1000px",
+            // width:"50px",
+            // height:"50px",
+            // marginTop:"100px"
+            top:"500px",
+            left:"1000px"
+        },function(){
+            console.log("我执行完成")
+            $(".box").animate({
+                top:0,
+                left:'100px'
+            })
+        })
+     })
+     
+</script>
+<!--  作业
+1. 淡入淡出轮播图
+2. 无缝轮播图
+3. 动态导航栏
+
+ -->
+</html>

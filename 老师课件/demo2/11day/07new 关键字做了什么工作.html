@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function  Student(name,age,gender,no){
+            // this.name  这个name是属性名    =name    值 ，其实是形参的变量
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+            this.no=no;
+            this.say=function(){
+                console.log(this.name+'is saying');
+            }
+            // 在构造函数内部属于私有
+        }
+        //  Student.prototype  公共
+        Student.prototype.test=function(){
+            console.log(this.name+'is testing');
+
+        }
+
+        var s1=new Student('刘晨',18,'男','1001');
+
+        // new 关键字 做了哪些工作
+         /* 
+         1. 在内存中创建一个新的空对象   （构造函数内不需要写new Object()）
+         2.让 this 指向这个新的对象。    从上面来看  指向s1
+         3.执行构造函数里面的代码，给这个新对象添加属性和方法
+         4.返回这个新对象（但是构造函数里面不需要return）
+        
+         */
+    </script>
+</body>
+</html>

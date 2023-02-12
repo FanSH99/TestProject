@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+       单击按钮，如果box是红色，变为蓝色，如果是蓝色，变为红色
+       切换颜色
+     -->
+     <div id="box"></div>
+     <button id="btn">切换</button>
+     <script>
+       var box= document.querySelector('#box');
+      var btn= document.querySelector('#btn');
+
+      var bg= window.getComputedStyle(box,null).backgroundColor;
+       console.log(bg);//‘rgb(255, 0, 0)’     逗号的后面有空格
+      btn.onclick=function(){
+     
+        if(getComputedStyle(box,null).backgroundColor===bg){
+            box.style.backgroundColor='blue'
+        }else{
+            box.style.backgroundColor='red'  
+        }
+
+
+      }
+     </script>
+</body>
+</html>

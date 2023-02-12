@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue路由--params传参</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <div>
+            <ul>
+                <li v-for="(item,index) in list" :key="index" @click="goInfo(item.id,item.name)">{{item.name}}</li>
+            </ul>
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script src="../bin/vue-router-3.5.0.js"></script>
+<script>
+    /* 2022年9月13日14:10:28 */
+
+    let home = {
+        template: "#home",
+        data() {
+            return {
+                list: [
+                    {
+                        name: "独行月球",
+                        id: 1001,
+                    },
+                    {
+                        name: "熊大快跑",
+                        id: 1002,
+                    }
+                ]
+            }
+        },
+        methods: {
+            goInfo(id, name) {
+                /*  //    方法1，this.$router.push()直接拼接到path路径，
+                方法2，用<router-link to="">拼接到to属性上，需要绑定to
+                    方法3，params传参，必须有name属性 */
+                this.$router.push({
+                    path: "/info",
+                    /* params传参必须有name属性,可以不用有path属性，另外，name里面的值需要与route配置的名称一致。 */
+                    name: "info",
+                    params: {
+                        id: id,
+                        name: name,
+                    }
+                })
+            }
+        }
+    }
+    let info = {
+        template: "<div><button @click='back'>返回</button><h1>电影详情{{id}}{{name}}</h1></div>",
+        methods: {
+            back() {
+                console.log(this);
+                // go 去那一层路由。返回上一层则参数为-1，
+                this.$router.go(-1)
+            }
+        },
+        created() {
+            // this.$router路由实例对象， this.$router.parms路由信息对象。
+            console.log(this.$route);
+            // 获取params传递的参数：
+            console.log(this.$route.params);
+            this.id = this.$route.params.id;
+            this.name = this.$route.params.name;
+        }
+    }
+
+    let router = new VueRouter({
+        routes: [
+            {
+                path: "/",
+                name: "home",
+                component: home,
+            },
+            {
+                path: "/info",
+                name: "info",
+                component: info,
+            }
+        ]
+    })
+
+    Vue.use(router);
+    new Vue({
+        el: "#app",
+        // router:routere,可以简写成router,
+        router: router,
+    })
+    /*
+    路由传参两种方式
+    1.query传参，拼接到路径上，刷新页面后参数不会丢失，获取参数时使用this.$route.query.属性名
+    2.params传参，不会拼接到路径上，并且，跳转时必须有name属性。刷新页面数据会丢失。所以一般不用params。获取用$router.params获取。
+    */
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        3. 组合继承   相对完美 （网上认真完美方案）
+        借用构造函数  实现函数内部的继承   +原型链prototype 实现原型上的继承 
+    -->
+    <script>
+         // 人类  被继承者  父类    基类   超类
+         function Person(name,age,gender){
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+            this.say=function(){
+                console.log(this.name+'is saying');
+            }
+        }
+    
+        Person.prototype.walk=function(){
+            console.log(this.name+'is walking');
+        }
+        Person.prototype.play=function(){
+            console.log(this.name+'is playing');
+        }
+
+        // 学生类  继承者   子类  派生类
+         function  Student(name,age,gender,no){
+            // 父构造函数内部的属性和方法 都可以被继承
+            // Person.call(对象，实参1，实参2，实参3);
+             Person.call(this,name,age,gender);
+            // 学生自己特有的属性或方法
+            this.no=no;
+            this.speak=function(){
+                console.log(this.name+'is speaking');
+            }
+
+         }
+        //  一定在加在学生原型上方 ，实现原型继承
+        // Student.prototype=Person.prototype;// 不可以的，----会反向添染父类
+        // 正确的方法  es5的新方法   比较完美
+         Student.prototype=Object.create(Person.prototype)
+        // 回指一下
+        Student.prototype.constructor=Student;
+
+        Student.prototype.test=function(){
+            console.log(this.name+'is testing');
+         }
+        
+        
+     var s1= new Student('王子兴',18,'男', '1001');
+  
+       console.log(s1.name,s1.age,s1.gender,s1.no);
+       s1.speak();
+       s1.test();
+       s1.say();
+
+    //    报错的,怎么解决 原型链上的继承  实现方法
+    s1.walk();
+    s1.play();
+
+
+    // var p1=new Person('王王子兴',18,'男');
+    // p1.test();// 反向污染父类
+
+    // constructor 构造器 ----指向是构造函数  
+    console.log(s1.constructor);
+
+
+
+    // 组合继承也有不足的地方  ，两个调用父构造函数
+    /* 
+        Student.prototype=new Person();  第一次
+       Person.call(this,name,age,gender); 第二次
+    */
+
+    // 修改一下不足的地方
+
+    
+     
+
+    </script>
+</body>
+</html>

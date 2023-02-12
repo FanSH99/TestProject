@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            arguments : 一般用于实参个数不确定的情况。
+                1. 每个函数自带的，系统帮我们生成的一个关键字。
+                2. 它是一个伪数组, 保存了用户输入的实参。
+        */
+
+        // 需求：让用户输入若干个数字，求和。
+        function getSum() {
+            console.log(arguments);
+            let sum = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                // console.log(arguments[i]);
+                sum = sum + arguments[i];
+            }
+            return sum;
+        }
+
+        let result = getSum(1, 3, 2, 5, 12, 11);
+        let result1 = getSum(1, 3, 2);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

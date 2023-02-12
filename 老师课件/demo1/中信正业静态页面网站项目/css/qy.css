@@ -1,0 +1,76 @@
+/* 企业文化开始 */
+.qy{
+    border-top: 3px solid #ccc; 
+    position: relative;
+}
+.qy img{
+    width: 100%;
+    display: block;
+}
+.qy .qy_we{
+    width: 270px;
+    height: 160px;
+    background: rgba(215,0,15,0.8);
+    text-align: center;
+    line-height: 160px;
+    position: absolute;
+    bottom: 33%;
+    left: 10%;
+}
+
+.qy .qy_we h1{
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.one{
+    width: 1240px;
+    /* height: 418px; */
+    padding:20px;
+    margin:  60px auto;
+    background: url( ../img/40.jpg);
+}
+
+.one .one_js{
+    width: 300px;
+    /* height: 418px; */
+    /* border: 1px solid #333; */
+    float: left;
+}
+.one .one_js_zw{
+    width: 440px;
+    /* height: 418px; */
+    /* border: 1px solid #333; */
+    float: right;
+    display: block;
+}
+.one .one_js_zw h1,.two .two_hx_zw h1{
+    font-size: 24px;
+    color: #464646;
+    font-weight: normal;
+    margin-top: 50px;
+}
+.one .one_js_zw p,.two .two_hx_zw p{
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 2em;
+}
+.two{
+    width: 1240px;
+    /* height: 418px; */
+    padding:20px;
+    margin:  60px auto;
+    background: url( ../img/40.jpg);
+}
+.two .two_hx{
+    float: right;
+}
+
+
+.two .two_hx_zw {
+    width: 440px;
+    margin-left: 40px;
+}
+/* 企业文化开始 */

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            继承: extends 关键字
+                语法:
+                    class 子类名 extends 父类名 {
+
+                    }
+            继承：子类继承了父类成员(属性和方法);        
+        */
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            play() {
+                console.log('今晚吃鸡');
+            }
+        }
+        class Student extends Person {
+
+        }
+
+        let eason = new Student('eason', 22);
+        // 子类继承了父类的构造函数
+        console.log(eason.name);
+        // 子类继承了父类的方法
+        eason.play();
+
+    </script>
+</body>
+
+</html>

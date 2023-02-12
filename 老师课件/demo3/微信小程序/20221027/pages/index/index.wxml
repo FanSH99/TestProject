@@ -1,0 +1,16 @@
+<view>
+自定义组件
+</view>
+<!-- 
+    父组件向子组件传值：
+    1.在父组件的子组件标签上绑定一个自定义属性
+    2.在子组件中使用properties来接受父组件传递的自定义属性
+ -->
+<myCom mymsg="{{msg}}" list="{{list}}" bindsenduser="getUser"></myCom>
+<view>
+{{hroes.name}} ------ {{hroes.like}}
+</view>
+<one bindsendhmg='gethmg' class="onecom"></one>
+<two myname='{{name}}'></two>
+
+<button bindtap="getOneCom">获取one组件实例</button>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时js</title>
+    <style>
+        main {
+            width: 300px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+
+        p {
+            font-size: 20px;
+        }
+
+
+        span {
+            display: inline-block;
+            background-color: white;
+            color: #333;
+            line-height: 50px;
+            width: 50px;
+            margin-right: 15px;
+        }
+
+
+        span:last-child {
+            margin-left: 13px;
+        }
+
+
+        button {
+            width: 200px;
+            border: none;
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            transition: all .5s;
+        }
+
+
+        button:hover,
+        button.active {
+            background: red;
+        }
+
+
+        button.green {
+            background: green;
+        }
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <p>
+            <span id='span1' ;>01</span>分
+            <span id='span2' ;>10</span>秒
+        </p>
+        <button>开始倒计时</button>
+    </main>
+</body>
+<script>
+    // 1.先给button添加点击事件
+    var but = document.querySelector('button');
+    var span1 = document.querySelector('#span1');
+    var span2 = document.querySelector('#span2');
+    
+    //  2.设置初始值,判断点击次数,根据点击次数来设置button不同的样式和内容
+    //  3.定时器,在点击开始倒计时之后开始倒计时
+    var flag = false; // 点击开始的标识符
+    var timer; // 定时器名字
+    but.onclick = function () {
+        if (!flag) {
+            flag = true;
+            but.style.background = 'red';
+            but.innerHTML = '暂停';
+            // 3.1 获取标签内的时间,来判断从那个时间开始倒计时
+            var minute = span1.innerHTML;
+            var second = span2.innerHTML;
+            // console.log(minute, second);
+            // 3.2 使用定时使时间开始--,然后每次都要再次把新的时间添加到标签上
+            timer = setInterval(function () {
+                second--;
+                if (second < 0) {
+                    second = 59;
+                    if (minute <= 0) { second = 0; } else {
+                        minute--;
+                        console.log()
+                        if (minute < 10) { minute = '0' + minute; }
+                    }
+                }
+                if (second < 10) { second = '0' + second; }
+                span2.innerHTML = second;
+                span1.innerHTML = minute;
+            }, 1000)
+
+        } else {
+            clearInterval(timer);
+            but.style.background = 'green';
+            but.innerHTML = '开始倒计时';
+            flag = false;
+        }
+    }
+
+</script>
+
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <select v-model="provinceIndex">
+            <!-- value 表示当前选中是谁值就是谁 -->
+            <option :value="index" v-for="(item,index) in provinceArray" :key='index'>{{item.provinceName}}</option>
+        </select>
+        <select v-model="cityIndex">
+            <option :value="index" v-for="(item,index) in provinceArray[provinceIndex].cityList">{{item.cityName}}</option>
+        </select>
+        <select v-model="areaIndex">
+            <option :value="index" v-for="(item,index) in provinceArray[provinceIndex].cityList[cityIndex].areaList">{{item}}</option>
+        </select>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            // 当前选中省份的索引
+            provinceIndex:0,
+            // 当前选中城市索引，
+            cityIndex:0,
+            //当前选中县区索引
+            areaIndex:0,
+            provinceArray: [
+                {
+                    provinceName: "河南省",
+                    cityList: [
+                        {
+                            cityName: "郑州市",
+                            areaList: ["高新区", "中原区", "金水区", "二七区"]
+                        }, {
+                            cityName: "安阳市",
+                            areaList: ["文峰区", "北关区", "开发区", "汤阴县", "安阳县"]
+                        }, {
+                            cityName: "新乡市",
+                            areaList: ["红旗区", "原阳县", "新乡新区"]
+                        }
+                    ]
+                },
+                {
+                    provinceName: "福建省",
+                    cityList: [
+                        {
+                            cityName: "福州市",
+                            areaList: ["滨海区", "吴岩区"]
+                        }, {
+                            cityName: "厦门市",
+                            areaList: ["集美区", "翔安区", "思明区"]
+                        }
+                    ]
+                },{
+                    provinceName: "河北省",
+                    cityList: [
+                        {
+                            cityName: "石家庄",
+                            areaList: ["A区", "B区"]
+                        }, {
+                            cityName: "唐山市",
+                            areaList: ["一区", "二区", "三区"]
+                        }
+                    ] 
+                }
+            ]
+        },
+        watch:{
+            provinceIndex(){
+                this.cityIndex = 0;
+                this.areaIndex = 0;
+            },
+            cityIndex(){
+                this.areaIndex = 0;
+            }
+        }
+    })
+</script>
+</html>

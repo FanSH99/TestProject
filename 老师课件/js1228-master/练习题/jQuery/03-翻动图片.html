@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 660px;
+            margin: 20px auto;
+            border: 2px solid red;
+            padding: 20px;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            width: 125px;
+            position: relative;
+            height: 125px;
+            margin: 20px;
+            /*  */
+            transition: all 0.3s linear;
+        }
+
+        p {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #eee;
+            z-index: 100;
+            text-align: center;
+            line-height: 125px;
+            font-size: 26px;
+        }
+
+        div li img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            height: 100%;
+        }
+
+        section {
+            position: absolute;
+            /* left: 0;
+            top: 0px;
+            bottom: 0;
+            right: 0; */
+            left: 50%;
+            top: 50%;
+            bottom: 50%;
+            right: 50%;
+            z-index: 200;
+            box-sizing: border-box;
+            padding: 20px 0;
+            text-align: center;
+            background: #ddd;
+            transition: all 0.7s linear;
+        }
+
+        section>img {
+            height: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <p>1</p><img src="http://img.zcool.cn/community/015cb758e4c8fda801219c770b4bf4.png" alt="">
+            </li>
+            <li>
+                <p>2</p><img
+                    src="http://img.zcool.cn/community/01870d57cd4fba0000018c1bd8c567.jpg@1280w_1l_2o_100sh.png" alt="">
+            </li>
+            <li>
+                <p>3</p><img src="http://img.duoziwang.com/2018/06/2018010110174352.jpg" alt="">
+            </li>
+            <li>
+                <p>4</p><img src="http://ww2.sinaimg.cn/thumb300/005OHrnkgw1evdtoe0xzxj30hs0hswf6.jpg" alt="">
+            </li>
+            <li>
+                <p>5</p><img src="http://img.zcool.cn/community/015cb758e4c8fda801219c770b4bf4.png" alt="">
+            </li>
+            <li>
+                <p>6</p><img
+                    src="http://img.zcool.cn/community/01870d57cd4fba0000018c1bd8c567.jpg@1280w_1l_2o_100sh.png" alt="">
+            </li>
+            <li>
+                <p>7</p><img src="http://img.duoziwang.com/2018/06/2018010110174352.jpg" alt="">
+            </li>
+            <li>
+                <p>8</p><img src="http://ww2.sinaimg.cn/thumb300/005OHrnkgw1evdtoe0xzxj30hs0hswf6.jpg" alt="">
+            </li>
+        </ul>
+        <section>
+            <img src="http://ww2.sinaimg.cn/thumb300/005OHrnkgw1evdtoe0xzxj30hs0hswf6.jpg" alt="">
+        </section>
+    </div>
+
+</body>
+<script>
+    $('li').hover(function () {
+        $(this).css({ transform: "rotateY(180deg)" }).children("p").hide();
+    }, function () {
+        $(this).css({ transform: "rotateY(0deg)" }).children("p").show();
+    });
+
+    $('li').dblclick(function () {
+        var src = $(this).children('img').attr('src');
+        console.log(src);
+        $('section').css({ left: 0, top: 0, bottom: 0, right: 0 })
+        $('section img').attr('src', src); //attr 找到当前标签的属性  'src'是属性名  ,后添加的是属性值
+    });
+
+    $('section').dblclick(function () {
+        $(this).css({ left: '50%', top: '50%', bottom: '50%', right: '50%' })
+    })
+
+
+
+
+
+
+    // $('li').mouseenter(function(){              
+    //     $(this).css({transform: "rotateY(180deg)"}).children("p").hide();
+    //     $(this).siblings().css({transform: "rotateY(0deg)"}).children("p").show()
+    // })
+    // $('li').dblclick(function(){
+    //     var src = $(this).children('img').attr('src');
+    //     $('section > img').attr('src',src).parent()
+    //     .css({left: 0,top: 0,bottom: 0,right: 0})
+    // })
+    // $('section').dblclick(function(){
+    //     $(this).css({left: '50%',top: '50%',bottom: '50%',right: '50%'})
+    // })
+
+
+
+</script>
+
+</html>

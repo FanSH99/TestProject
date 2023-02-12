@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        字符串的内置方法
+
+        <6>lastIndexOf()
+        <7>repeat(count)  复制字符串指定次数，并将他们连接在一起返回
+        <8>slice(start,emd)  提取字符串的片段，并在新的字符串中返回被提取的部分。
+        start必须，end可选，左闭右开。
+        slice(2,5)  ---[2,5)
+        slice(2)  ----[2,str.lemgth)  截取到字符串的末尾
+        slice(-5,-2)  ----从倒数第5个想有截取到倒数第2个。
+
+        如果两个位置没有交集，截取不到字符。不修改原来字符串
+        <9>substring(from,to)  提取字符串中两个指定的索引号之间的字符。
+            from-和to都是非负整数。  [from,to) 左闭右开
+            from必须，
+            to可选。
+            如果from小于to,
+
+        <10> subbr()  从起始字符串中提取数目的字符串
+            start 必选，可正可负  length可选。 正值
+        <11> toLowerCase()  
+        <12> toUpperCase()
+        <13> trin()
+
+        -->
+    <script>
+
+        //repeat
+        var str = 'hello';
+        var str1 = str.repeat(3);
+        console.log(str1);//hellohellohello
+        console.log('-'.repeat(50));//---------------------
+        //slice()
+        var str2 = str.slice(1, 3)//el
+        console.log(str2);//el
+
+        var str2_1 = str.slice(1);
+        console.log(str2_1);//ello
+
+        var str2_2 = str.slice(-3);
+        console.log(str2_2);//llo
+        var str2_3 = str.slice(-3, -2);
+        console.log(str2_3);//l
+
+        var str3 = str.substring(2, 4);
+        console.log(str3);//ll
+
+        var str3_1 = str.substring(4, 2);
+        console.log(str3_1);//ll
+
+        var str3_2 = str.slice(4, 2);
+        console.log(str3_2);//空的
+
+        var str4 = str.substr(1, 3);
+        console.log(str4);//ell
+
+        var str4_1 = str.substr(-2, 3);
+        console.log(str4_1);//le
+
+        var str4_2 = str.substr(-5, 3);
+        console.log(str4_2);//hel
+
+        var str4_3 = str.substr(-4);
+        console.log(str4_3);//ello
+
+        //str.toUpperCase7
+        var str11 = '   he llo  '
+        var str5 = str11.toUpperCase();
+        console.log(str5);//HELLO
+
+        var str6 = str5.toLowerCase();
+        console.log(str6);
+        var str7 = str11.trim();
+        console.log(str7);
+
+
+
+    </script>
+</body>
+
+</html>

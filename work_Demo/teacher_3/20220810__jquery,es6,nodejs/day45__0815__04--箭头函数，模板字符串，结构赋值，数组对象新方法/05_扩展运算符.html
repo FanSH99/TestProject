@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日10:55:02
+        扩展运算符 ...arr  可以将数组中的每一项都拿出来。扩展运算符
+        扩展运算符属于深拷贝，浅拷贝只拷贝地址，，一个变另一个也变。 深拷贝一个变另一个不变。
+     -->
+</body>
+<script>
+    let array = [0, 1, 2, 4];
+    console.log(...array);//0,1,2,4
+    // {...array}  //报错  
+    // [...array]
+
+    let array2 = [9, 10, 6];
+    // 将两个数组合并到同一个数组中。
+    let newarray = [...array, ...array2];//[0,1,2,4,9,10,6]
+    console.log(newarray);
+    let user = {
+        name: "张三",
+        age: 18,
+        sex: "男"
+    }
+    console.log({ ...user });//{name: '张三', age: 18, sex: '男'}
+
+    let a = {
+        sno: "20181501"
+    }
+    console.log({ ...a, ...user }); //{  sno: "20181501", name: '张三', age: 18, sex: '男' }
+    let newObj = { ...a, ...user };
+    user.num = "15138607803";
+    console.log(newObj);//{  sno: "20181501", name: '张三', age: 18, sex: '男' }
+    console.log(user);//{name: '张三', age: 18, sex: '男', num: '15138607803'}
+
+    console.log({ ...user } === user);//false
+
+</script>
+
+</html>

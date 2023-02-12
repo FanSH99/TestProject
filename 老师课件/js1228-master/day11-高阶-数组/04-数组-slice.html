@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+          slice() 
+            方法可通过指定的开始和结束位置，提取数组的某个部分
+          语法：
+            数组名.slice(start[, end]);
+              start (必需)：规定从何处开始选取
+              end   (可选)：规定从何处结束选取，即结束处的字符下标。 
+          注意：原数组不受影响          
+        */
+
+        let arr = ['张飞0', '关羽1', '刘备2', '猴子3', '黑鸟4', '剑圣5'];
+
+        // let arr1 = arr.slice(1, 2);
+        let arr1 = arr.slice(1);
+        console.log(arr, arr1);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        对象操作   增  删 改  查
+
+        1.查
+
+          （1）节点属性查  node.属性
+
+             childNodes   获取孩子节点（直接后代）   ---多种节点（不只是元素）
+             parentNode   获取父节点（唯一的）  ------（重点）
+             children     获取孩子节点（直接后代）---只有元素节点   （重点）
+
+             nextSibling   下兄弟     （不一定是元素节点）
+             previousSibling  兄弟
+
+            nextElementSibling    下兄弟(元素)    兼容性有要求
+            previousElementSibling   上兄弟(元素)  兼容性有要求
+
+            firstChild   fisrtElementChild
+            lastcCilid   lastElementChild
+     -->
+    <!-- <div id="box"><div>AAA</div><div>BBB</div><div>CCC</div></div> -->
+    <div id="box">
+        <div>AAA</div>
+        <div>BBB</div>
+        <div>CCC</div>
+    </div>
+
+    <script>
+        // id="box"  div 查找   查找到，返回元素，查不到，返回null
+        var box = document.querySelector('#box');
+        console.log(box);
+    //  //1.childNodes 
+    //     //1.1  查到  box 节点下的孩子们  NodeList   数组形式展现  （可以通过索引号操作 length属性），
+    //     //    但是是伪数组（没有数组的方法）
+    //     var divs = box.childNodes;
+    //     console.log(divs);//NodeList(7) [text, div, text, div, text, div, text]
+
+    //     //    1.2 <div>AAA</div>
+    //     console.log(divs[1]);
+    //     divs[1].innerHTML = '我是新换的文本';
+    //     divs[1].style.color = 'red';
+
+    //   //2. parentNode
+    //   console.log(divs[3]);
+    //   console.log(divs[3].parentNode); //<div id="box">
+
+    //   console.log(divs[3].parentNode.parentNode);   //body
+
+      //3. children   元素孩子   HTMLCollection(3) [div, div, div]    --使用机会高
+     var divs= box.children;
+     console.log(divs);
+    //  for(var i=0;i<divs.length;i++){
+    //     divs[i].innerHTML='我换了内容';
+    //     divs[i].style.color='red'
+    //  }
+
+     //4. nextSibling    nextElementSibling  
+     console.log( divs[0].nextSibling);//#text
+     console.log( divs[0].nextSibling.nextSibling);// <div>BBB</div>
+
+     console.log(divs[0].nextElementSibling);
+
+    //5.  previousSibling    previousElementSibling
+
+    console.log(divs[2].previousSibling);//#text
+    
+    console.log(divs[2].previousSibling.previousSibling);//// <div>BBB</div>
+       
+    console.log(divs[2].previousElementSibling);
+
+    </script>
+
+</body>
+
+</html>

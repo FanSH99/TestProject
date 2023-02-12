@@ -1,0 +1,39 @@
+.title{
+    width: 100%;
+    padding: 15rpx 20rpx;
+    font-size: 30rpx;
+    color: #919191;
+    background-color: #333;
+    box-sizing: border-box;
+}
+.singerImg{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 30rpx;
+}
+.singger{
+    padding:0 20rpx;
+    font-size: 30rpx;
+    color: #fff;
+    box-sizing: border-box;
+    margin-top: 30rpx;
+}
+.nav{
+    width: 50rpx;
+    height: 90%;
+    background: #000;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 25rpx;
+    font-size: 25rpx;
+    color: #919191;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5rpx 0;
+}

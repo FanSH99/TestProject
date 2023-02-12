@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .news_box{
+            width: 540px;
+            height: 270px;
+            background-color: aqua;
+            margin: 20px auto;
+        }
+        .news_box .news_tit{
+            width: 100%;
+            height:50px ;
+            background-color: aquamarine;
+        }
+        .news_box .news_tit ul{
+            width: 100%;
+            height: 100%;
+        }
+        .news_box .news_tit ul li{
+            width: 100px;
+            height: 50px;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .news_box .news_tit ul li.on{
+            background-color: aqua;
+            font-size: 16px;
+            font-weight: 800;
+
+        }
+
+        .news_box .news_con{
+            width: 100%;
+            height: 220px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .news_box .news_con div.item{
+            display: none;
+        }
+        .news_box .news_con div.item.dis{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 自定义属性    排它思想  on   active   current-->
+    <div class="news_box">
+        <div class="news_tit">
+            <ul>
+                <li class="on">综合</li>
+                <li>新闻</li>
+                <li>公告</li>
+                <li>活动</li>
+            </ul>
+
+        </div>
+        <div class="news_con">
+             <div class="item dis">综合内容</div>
+             <div class="item">新闻内容</div>
+             <div class="item">公告内容</div>
+             <div class="item">活动内容</div>
+            
+        </div>
+    </div>
+    <script>
+        //1.查
+      var lis=  document.querySelectorAll('.news_box>.news_tit>ul>li');
+ 
+     var divs= document.querySelectorAll('.news_con>.item');
+  
+      //2.加事件  onclick      onmouseover   onmouseenter
+       for(var i=0;i<lis.length;i++){
+       
+        //  自定义属性的方法，记下索引号  0  1 2 3   i=   注意的地方
+         lis[i].setAttribute('index',i);
+         
+          lis[i].onmouseover=function(){
+
+            // 1.排它思想
+            for(var i=0;i<lis.length;i++){
+                //清掉所有的on
+                lis[i].className='';
+                divs[i].className='item';
+
+
+            }
+             //2. 当前项加on
+              this.className='on';
+            //取属性 内容区找到对应的索引号   注意的地方
+           var idx=  this.getAttribute('index');
+             divs[idx].className='item dis'
+
+          }
+       }
+
+    </script>
+
+</body>
+</html>

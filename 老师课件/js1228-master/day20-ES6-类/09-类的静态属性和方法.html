@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 类是构造函数的语法糖
+        // static 给类添加静态属性和方法
+        class User {
+            constructor(title) {
+                this.title = title;
+            }
+            static title = "静态属性"
+            // 给 User 的实例添加的方法是普通方法
+            show() {
+                console.log("普通方法");
+            }
+            // 给 User 类本身添加的方法是静态方法
+            static show() {
+                console.log("静态方法");
+            }
+        }
+        let u = new User("普通属性");
+        console.log(u.title);
+        console.log(User.title);
+        u.show();
+        User.show();
+
+        // Math 的所有属性和方法都是静态的
+    </script>
+</body>
+
+</html>

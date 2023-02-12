@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="dingyue()">订阅公众号</button>
+    <button onclick="fabu()">管理员发消息</button>
+</body>
+<script>
+    //  创建微信公众号
+    let public = {
+        // 用来存放订阅者的回调函数
+        list:[],
+        // 用户订阅方法
+        sub(callback){
+            this.list.push(callback)
+            console.log("有用户订阅")
+        },
+        // 发布消息
+        send(msg){
+            this.list.forEach(callback=>{
+                callback(msg)
+            })
+            console.log("管理员发布消息",msg)
+        }
+    }
+    function dingyue(){
+        // 用户订阅
+        public.sub((msg)=>{
+            console.log("收到消息",msg)
+        });
+
+    }
+    function fabu(){
+        public.send("好好学习天天向上");
+    }
+</script>
+</html>

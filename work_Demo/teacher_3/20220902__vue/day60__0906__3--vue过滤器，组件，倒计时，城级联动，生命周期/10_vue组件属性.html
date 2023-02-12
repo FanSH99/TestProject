@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue组件属性</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-component></my-component>
+
+    </div>
+    <template id="mycom">
+        <div>
+            <h1>{{num}}</h1>
+            <ul>
+                <li v-for="(item,index) in list" :key="index">{{item}}</li>
+            </ul>
+            <button @click='add'>添加</button>
+        </div>
+    </template>
+</body>
+<script src="../bin/vue-2.2.2.min.js"></script>
+<script>
+
+    /* 2022年9月6日15:57:34 */
+
+    let child = {
+        template: "<h1>我是一个组件啦啦啦</h1>"
+    }
+    // 创建组件 ---vue组件拥有vue实例中的所有属性
+    let myComponent = {
+        template: "#mycom",
+        // 存放当前组件中所用到的数据。 ---注意只能用到当前模板。
+        // data: {
+        //     list: ['白浅', '夜华', '宁臣'],//报错，必须是一个函数，且必须有返回值。
+        // }
+        data() {
+            return {
+                list: ['白浅', '夜华', '宁臣'],
+                num: 0
+            }
+        },
+        methods: {
+            add() {
+                console.log("11111");
+                console.log(this);
+                this.list.push("白子画");
+                this.num++;
+            }
+        },
+        watch: {
+            num(newVal) {
+                console.log("我改变了");
+            }
+        },
+        computed: {
+
+        },
+        filters: {
+
+        },
+        beforeCreate() {
+            console.log("组件创建前");
+        },
+        created() {
+            console.log("组件创建后");
+        },
+        components: {
+            mychild: child
+        }
+    }
+    new Vue({
+        el: "#app",
+        data: {
+
+        },
+        // 注册组件
+        components: {
+            myComponent
+        }
+
+    })
+    /*
+    作业
+    1.城市联动--组件
+    2.英雄选择--组件
+    一个vue实例两个组件。
+    https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js
+
+     navList: [
+                {
+                    name: "所有英雄",
+                    type: "all",
+                }, {
+                    name: "法师",
+                    type: "mage"
+                }, {
+                    name: "战士",
+                    type: "fighter"
+                }, {
+                    name: "坦克",
+                    type: "tank"
+                }, {
+                    name: "刺客",
+                    type: "assassin"
+                }, {
+                    name: "射手",
+                    type: "marksman"
+                }, {
+                    name: "辅助",
+                    type: "support"
+                }
+            ],
+    */
+</script>
+
+</html>

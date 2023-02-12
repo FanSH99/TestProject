@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            padding: 3px 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn">点击1</button><br>
+    <button id="btn2">点击2</button>
+    <script>
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
+        btn.onclick = function () {
+
+            console.log(window);
+            console.log(PointerEvent);//ƒ PointerEvent() { [native code] }
+            console.log(event);//事件对象
+            console.log(window.event); //----低版本认识的
+
+        }
+
+        /*
+        cancelBubble:false ----取消冒泡
+        clientX:    clientY     ----可视位置
+
+        低版本不认识e和event可以用window.event来代替
+        
+        */
+
+        btn2.onclick = function (e) {
+            console.log(e);
+            console.log(e.x, e.y);//52.79999923706055 72
+            console.log(e.pageX, e.pageY);//52.79999923706055 72
+            console.log(e.clientX, e.clientY);
+            console.log(e.screenX, e.screenY);//316 416
+            console.log(window.event); //----低版本认识的
+
+        }
+
+
+    </script>
+</body>
+
+</html>

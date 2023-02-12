@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            border: 10px solid red;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body style="height:2000px">
+    <div id="box">
+
+    </div>
+    <script>
+       var box= document.querySelector('#box');
+      var w= box.clientWidth;// width +2padding
+      console.log(w);//540
+      var h= box.clientHeight;
+
+       var borderL= box.clientLeft;// 边框的宽度   用的很少
+       console.log(borderL);
+
+
+    //    注意： 页面可视的大小
+     console.log(window.innerWidth);// 包含滚动条
+     console.log(document.documentElement.clientWidth);// 不包含滚动条
+     console.log(document.body.clientWidth);
+
+    var pageW= window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth
+
+
+    </script>
+</body>
+</html>

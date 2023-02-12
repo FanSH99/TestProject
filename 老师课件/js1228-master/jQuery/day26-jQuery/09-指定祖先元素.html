@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="one">one
+        <div class="two">two
+            <div class="three">three
+                <div class="four">青花瓷</div>
+            </div>
+        </div>
+    </div>
+    <ol>
+        <li>青花瓷</li>
+        <li class="item">双截棍</li>
+        <li>轨迹</li>
+        <li>东风破</li>
+        <li>发如雪</li>
+    </ol>
+    <script>
+        // 如果获取了 four 这个div，怎么获取 one 这个div
+        let one = $('.four').parent().parent().parent();
+        console.log(one);
+
+        // 1. parents() 获取当前元素的父级数组
+        let result = $('.four').parents();
+        console.log(result);
+
+        // 2. parents('选择器') 获取当前元素的指定父级元素
+        console.log($('.four').parents(".two"));
+        console.log($('.four').parents(".one"));
+
+        // 3. 获取子元素
+        let lis = $('ol').children();
+        console.log(lis);
+
+        // 4. 获取指定的子元素
+        console.log($('ol').children('.item'));
+    </script>
+
+</body>
+
+</html>

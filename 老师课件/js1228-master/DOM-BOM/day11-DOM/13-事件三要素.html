@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">周杰伦</button>
+    <button id="eason">陈奕迅</button>
+    <script>
+        // 需求：点击一个按钮，弹出对话框
+        /* 
+           1. 事件 ：特定情况触发的函数。比如：鼠标左键，右键，经过，离开，键盘按下。。。
+           2. 事件的三要素
+                 2.1 事件源 ：某个人
+                 2.2 事件类型 ：鼠标左键，右键，经过，离开
+                 2.3 事件处理程序 ：匿名函数。
+           3. 手动调用函数  btn.onclick();     
+        */
+        let btn = document.querySelector('#btn');
+        // 给对象属性重新赋值，属性值是匿名函数
+        // on + 事件类型  约定大于规范，规范大于编码
+        console.log(btn);
+        console.dir(btn);
+        btn.onclick = function () {
+            alert('青花瓷');
+        }
+
+        // 手动调用函数
+        // btn.onclick();
+
+    </script>
+</body>
+
+</html>

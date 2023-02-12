@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            width: 100%;
+            height: 300px;
+            background: red;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .child {
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+
+    <template id="parent">
+        <div class="parent">
+            <h3>父组件</h3>
+            <child @getmsg="getValue" @sendnum="getnumValue"></child>
+            <p>{{mynum}}----{{mymsg}}</p>
+            <button @click="mynum++">mynum++</button>
+
+        </div>
+
+    </template>
+
+    <template id="child">
+        <div class="child">
+            <h5>子组件</h5>
+            {{msg}}----{{num}}
+            <button @click="sendMsg">向父组件传递数据</button>
+            <button @click="num++">num++</button>
+        </div>
+    </template>
+</body>
+
+<script src="../bin/vue-2.7.10.js"> </script>
+
+<script>
+    /*  2022年9月7日15: 22: 52  */
+
+    let child = {
+        template: "#child",
+        data() {
+            return {
+                msg: "天亮了就出发",
+                num: 0
+            }
+        },
+        created() {
+            this.$emit("sendnum", this.num)
+        },
+        methods: {
+            sendMsg() {
+                console.log(this, this.msg);
+                // 发送自定义事件  参数1自定义名称 参数2要传递的数据； 注意自定义名称不要使用驼峰命名法否则报错。最好全部小写。
+                this.$emit("getmsg", this.msg);
+            },
+
+            /* 
+            子组件向父组件传值。
+            1子组件使用this.$emit()发送一个自定义事件，自定义么名称需要是全部小写。
+            2.在父组件中的子组件标签上接收数据。---用@自定义的名称来接收。
+            3.@自定义名称=接收事件名称。
+            4.在methods中用接收事件名称写方法，参数即为接收到的值，
+            5，用this.名称将接收到的值赋值给一个值。之后即可使用了
+
+            子组件向父组件中传值后，父组件修改不会改变子组件的值，
+            
+            */
+        }
+    }
+    let parent = {
+        template: "#parent",
+        components: {
+            child,
+        },
+        data() {
+            return {
+                mymsg: "",
+                mynum: '',
+            }
+        },
+        methods: {
+            getValue(value) {
+                console.log("我被调用了");
+                console.log(value);
+                this.mymsg = value;
+            },
+            getnumValue(value) {
+                console.log(value);
+                this.mynum = value
+            }
+        }
+    }
+
+    new Vue({
+        el: "#app",
+        components: {
+            parent
+        },
+
+    })
+</script>
+
+</html>

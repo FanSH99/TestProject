@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-cloak 指令用于解决 {{}} 插值闪烁得问题 -->
+        <h1 v-cloak>{{msg}}</h1>
+        <!-- v-text 指令用于 渲染文本内容 相当于 {{}} 语法 不会存在插值闪烁得问题 -->
+        <!-- 类似 于 innerText -->
+        <h2 v-text="title"></h2>
+        <!-- v-html 指令可以直接渲染字符串标签 -->
+        <!-- 类似于innerHtml -->
+        <h3 v-html = 'baidu'></h3>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // 指令： vue给浏览器得指示，浏览器收到指令后帮vue处理某些事情。
+    // 在vue中 指令通常使用v-开头  v-指令名称
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习，天天向上",
+            title:"学习使我快乐",
+            baidu:"<a href='https://www.baidu.com'>百度一下</a>"
+        }
+    })
+</script>
+</html>

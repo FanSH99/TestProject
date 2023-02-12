@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const age = 12;
+        const address = '郑州';
+
+        let hero = {
+            skill: '无敌斩',
+            age: age,
+            // 1. ES6 对象属性的简写，属性名是变量名，属性值是变量值。
+            address,
+            play: function () {
+                console.log('今晚吃鸡');
+            },
+            // 2. ES6 中对象方法的简写(类中定义方法一样)
+            game() {
+                console.log('今晚打球');
+            }
+        }
+        console.log(hero);
+        console.log(hero.age);
+        hero.play();
+        hero.game();
+    </script>
+</body>
+
+</html>

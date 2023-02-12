@@ -1,0 +1,4 @@
+<view class="search" bindtap="goSearch">
+输入歌手名、歌曲名搜索
+<image src="../../../image/search-2.png" class="search_icon"></image>
+</view>

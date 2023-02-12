@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{provinceIndex}}
+        <select name="" id="" v-model="provinceIndex">
+            <option v-for="(item,index) in provinceArr" :key="index" :value="index">{{item.provinceName}}
+            </option>
+        </select>
+        <select name="" id="" v-model="cityIndex">
+            <option v-for="(item,index) in provinceArr[provinceIndex].cityList" :key="index" :value="index">
+                {{item.cityName}}
+            </option>
+        </select>
+        <select name="" id="" v-model="areaIndex">
+            <option v-for="(item,index) in provinceArr[provinceIndex].cityList[cityIndex].areaList" :key="index"
+                :value="index">
+                {{item}}
+            </option>
+        </select>
+
+    </div>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月6日09:05:43 */
+    new Vue({
+        el: "#app",
+        data: {
+            // 当前选中省份的索引，
+            provinceIndex: 0,
+            // 当前选中城市的索引，
+            cityIndex: 0,
+            // 当前选中地区的索引
+            areaIndex: 0,
+            provinceArr: [
+                {
+                    provinceName: "河南省",
+                    cityList: [
+                        {
+                            cityName: "郑州市",
+                            areaList: ["高新区", "中原区", "金水区", "二七区"]
+                        }, {
+                            cityName: "安阳市",
+                            areaList: ["文峰区", "北关区", "开发区", "汤阴县", "安阳县"]
+                        }, {
+                            cityName: "新乡市",
+                            areaList: ["红旗区", "原阳县", "新乡新区"]
+                        }
+                    ]
+                },
+                {
+                    provinceName: "山东省",
+                    cityList: [
+                        {
+                            cityName: "济南市",
+                            areaList: ["历下区", "槐荫区", "天桥区", "历城区"],
+                        }, {
+                            cityName: "青岛市",
+                            areaList: ["市南区", "崂山区", "城阳区", "即墨区"]
+                        }, {
+                            cityName: "烟台市",
+                            areaList: ["牟平区", "威海区", "莱山区", "福山区"]
+                        }
+                    ]
+                },
+                {
+                    provinceName: "浙江省",
+                    cityList: [
+                        {
+                            cityName: "杭州市",
+                            areaList: ["历上城区", "滨江区", "萧山区", "余杭区"],
+                        }, {
+                            cityName: "湖州市",
+                            areaList: ["南浔区", "吴兴区", "长兴县"]
+                        }, {
+                            cityName: "绍兴市",
+                            areaList: ["悦城区", "柯桥区", "上虞区"]
+                        }
+                    ]
+                }
+            ],
+        },
+        watch: {
+            provinceIndex() {
+                this.cityIndex = 0;
+                this.areaIndex = 0;
+            },
+            cityIndex() {
+                this.areaIndex = 0;
+            }
+        }
+    })
+</script>
+
+</html>

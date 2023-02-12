@@ -1,0 +1,93 @@
+.bg{
+    width: 100%;
+    height: 500rpx;
+    /* background-image: url("http://p1.music.126.net/Ul0KgeDk8ajPp29CdXOXdw==/109951168005906590.jpg"); */
+    background-size: cover;
+    /* 添加滤镜 */
+    filter: blur(40rpx);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+.musicSinger{
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+.musicSinger view{
+    margin: 30rpx 0;
+    font-size: 32rpx;
+}
+.songname{
+    font-size: 35rpx !important;
+}
+.swiper_img{
+    width: 100%;
+    text-align: center;
+}
+
+
+.dots{
+    width: 100rpx;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.dots view{
+    width: 23rpx;
+    height: 23rpx;
+    background-color: #b4b4b4;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.active{
+    width: 65rpx !important;
+    border-radius: 12rpx !important;
+    background-color: #ffffff !important;
+    transition: 0.3s;
+}
+.picUrl{
+    width: 450rpx;
+    height: 450rpx;
+    border-radius: 50%;
+    border: 10rpx solid #b4b4b4;
+    /* 定义动画 */
+    animation: zhuan 20s linear infinite;
+}
+@keyframes zhuan{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.pusah{
+    animation-play-state: paused;
+}
+.myswiper{
+    height: 100%;
+}
+.swi{
+    height: 75%;
+}
+swiper{
+    height: 100%;
+}
+.lyricScroll{
+    height: 100%;
+}
+.lyric{
+    font-size: 35rpx;
+    color: #ffffff;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 90rpx;
+    transition: 0.3s;
+}
+.activeLyric{
+    font-size: 40rpx;
+    color: #ffcd32;
+    transition: 0.3s;
+}

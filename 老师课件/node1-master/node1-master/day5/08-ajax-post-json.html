@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id='lol'>英雄联盟</div>
+    <script>
+        console.log('-----------页面重新加载了--------------');
+
+        // 1. 创建 XMLHttpRequest 对象 
+        var xmlhttp;
+        var postUrl = 'http://localhost:8080/api/post';
+
+        // 发起请求
+        sendAjax();
+        function sendAjax() {
+            xmlhttp = null;
+            // 1. 创建 XMLHttpRequest 对象
+            if (window.XMLHttpRequest) {// code for all new browsers
+                xmlhttp = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject) {// 浏览器兼容 code for IE5 and IE6
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            if (xmlhttp != null) {
+                // 2. 设置回调函数，处理服务器的响应
+                xmlhttp.onreadystatechange = callback;
+
+                // 3. 设置请求方式，url ，异步与否
+                xmlhttp.open("POST", postUrl, true);
+
+                // post 请求时，设置请求头
+                xmlhttp.setRequestHeader('Content-Type', 'application/json');
+
+                // 4. 向服务器发送请求
+                //JSON.stringify() 将json对象转换为json字符串
+                xmlhttp.send(JSON.stringify({ name: 'lisi', age: 22 }));
+            }
+            else {
+                alert("Your browser does not support XMLHTTP.");
+            }
+        }
+
+        // 回调函数
+        function callback() {
+            // 测试状态码
+            console.log(xmlhttp.readyState);
+
+            if (xmlhttp.readyState == 4) {// 4 = "loaded"
+                if (xmlhttp.status == 200) {// 200 = OK
+                    // 5. 接收数据并渲染
+                    console.log(xmlhttp.responseText);
+
+                    $('div').html(xmlhttp.responseText);
+                }
+                else {
+                    alert("Problem retrieving XML data");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

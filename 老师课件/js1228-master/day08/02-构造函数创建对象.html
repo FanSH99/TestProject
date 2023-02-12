@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            构造函数：给对象动态添加属性，返回这个对象。
+            语法结构：
+                自己总结
+        */
+        function Hero(name, level, sex) {
+            this.name = name;
+            this.level = level;
+            this.sex = sex;
+            this.skill = (jineng ) => {
+                console.log(`释放了${jineng}`);
+            }
+            // console.log(this);
+        }
+
+        // 通过构造函数，创建一个对象
+        let lvbu = new Hero('吕布', 18, '男');
+        let zhangfei = new Hero('张飞', 22, '男');
+
+        console.log(lvbu.name);
+        zhangfei.skill('方天画戟');
+        console.log(typeof lvbu);
+        console.log(lvbu);
+        /*
+            构造函数：
+                1. 作用，创建对象。
+                2. 返回值是一个对象，默认省略
+                3. 封装的代码是，给对象多态的添加属性和方法
+                4. this 是当前对象
+                5. 函数名用大驼峰
+                6. 配合关键字 new 使用
+                7. 构造函数和类是一码事
+                8. 就是对象公共属性和方法的抽取。
+                9. 属性名和形参尽量保持一致，可读性强。
+
+            约定大于规范，规范大于编码    
+        */
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

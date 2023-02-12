@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 输入、处理、输出 
+        // indexOf() 方法返回在数组中可以找到一个
+        // 给定元素的第一个索引，如果不存在，则返回-1。
+
+        const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+        console.log(beasts.indexOf('bison'));
+        console.log(beasts.lastIndexOf('bison'));
+
+        // 自己封装
+        function indexOf(arr, ele) {
+            var index = -1;
+            if(!(arr instanceof Array)){
+                return -1;
+            }
+            for (var i = 0; i < arr.length; i++) {
+                if (ele == arr[i]) {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        console.log(indexOf(beasts,'abc'));
+        console.log(indexOf(beasts,'camel'));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

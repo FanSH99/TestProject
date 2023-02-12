@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 打印 4 行，5列小星星
+        for (let i = 0; i < 4; i++) {
+            let star = '';
+            for (let i = 0; i < 5; i++) {
+                star = star + '*';
+            }
+            console.log(star);
+        }
+
+        /* 
+            双重 for 循环
+            语法结构：
+                for (初始化变量; 判断条件; 变化条件) {
+                    for (初始化变量; 判断条件; 变化条件) {
+                        逻辑体;
+                    }
+                }
+            特点：内层循环是外层循环的循环体。   
+                 外层循环一次，内层循环全部。
+        */
+         for (let i = 0;i < 5; i++){
+             console.log(`i此时是${i},外层循环----------------`);
+             for(let k = 0; k < 2; k++){
+                console.log(`k此时是${k},内层循环`);
+             }
+         }       
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

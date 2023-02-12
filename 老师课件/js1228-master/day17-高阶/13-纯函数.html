@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // arr.slice(start, end);     // 截取字符串 包括 start, 不包括 end
+        // arr.splice(start, number); // 器
+        /* 
+            截取字符串
+                arr.slice(start, end); 
+                    start : 起始索引号，包括 start
+                    end : 终止索引号，不包括
+                arr.splice(start, number)
+                    start : 起始索引号，包括 start
+                    number : 截取的个数
+        */
+        let arr = [0, 1, 2, 3, 4, 5, 6];
+        console.log(arr.slice(1, 3), arr);  // [1, 2] 和 [0, 1, 2, 3, 4, 5, 6]
+        console.log(arr.slice(1, 3), arr);  // [1, 2] 和 [0, 1, 2, 3, 4, 5, 6]
+        console.log(arr.slice(1, 3), arr);  // [1, 2] 和 [0, 1, 2, 3, 4, 5, 6]
+        console.log('---------splice-----------');
+        console.log(arr.splice(1, 3), arr);  // [1, 2, 3] 和 [0, 4, 5, 6]
+        console.log(arr.splice(1, 3), arr);  // [4, 5, 6] 和 [0]
+        console.log(arr.splice(1, 3), arr);  // []        和 [0]
+        /* 
+            结论：
+                1. 两个函数都传入相同的参数。
+                2. slice()  每次得到相同的结果,不修改原数组(参数)
+                3. splice() 每次得到不同的结果,修改原数组(参数)
+        */
+        /* 
+            纯函数概念：相同的输入永远会得到相同的输出，而且没有任何可观察的副作用，
+            slice() 纯函数，splice() 不纯
+            副作用的来源：依赖了外部的变量或函数
+                在 day05-函数 的 12-输出年份的2月份天数.html
+                backDay() 函数依赖了 isLeapYear(year) 函数。
+                isLeapYear() 函数变化，会影响 backDay() 函数
+        */
+
+        // score 的变化会影响 play() 函数的变化
+        let score = 12;
+        function play(num) {
+            return num + score;
+        }
+
+        console.log(play(5));
+        console.log(play(5));
+        console.log(play(5));
+
+    </script>
+</body>
+
+</html>

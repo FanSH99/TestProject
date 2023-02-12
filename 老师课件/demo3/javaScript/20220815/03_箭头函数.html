@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 函数的声明, 函数的调用,函数传递参数,函数的return值
+    // function a(){
+    //     console.log(23)
+    // }
+
+    // 箭头函数的声明
+    let a = (a,b)=>{
+        console.log(a*b)
+        console.log("我是一个箭头函数")
+        return a+b
+    }
+   let sum = a(10,20);
+    console.log(sum)
+   // 箭头函数和普通函数的区别:
+//    1. 写法相比普通函数更简便
+//    2. 箭头函数只能定义匿名函数 普通函数既可以定义具名函数也可以定义匿名函数
+//    3. 箭头函数不能定义构造函数 不能使用new关键子
+//    4. 箭头函数没有arguments
+//    5. 箭头函数没有this指向 指向的是其父级非箭头函数的this指向
+    // function c(){
+    //     console.log(this)
+    // }
+    // console.log(window)
+    let obj = {
+        name:"李奥所",
+        age:18,
+        say:function(){
+            console.log("我玩儿了")
+            console.log(this)
+            setTimeout(()=>{
+                console.log(this)
+            })
+        },
+
+    }
+    obj.say();
+    // this 指向?
+    // 普通函数谁调用它this指向谁
+    // 箭头函数没有this指向
+    //  构造函数中this指向当前构造的实例对象
+    let getuser = ()=>{
+        console.log(this)
+    }
+    getuser();
+
+    // 当箭头函数只有一个参数时可以省略小括号
+    let getage = age =>{
+        console.log(age)
+    }
+    getage(18)
+
+    // 当箭头函数只有一句代码为返回值时可以省略大括号 和return
+    let getsum = num=> num;
+    console.log(getsum(2022))
+</script>
+</html>

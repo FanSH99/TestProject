@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div>青花瓷</div>
+  <div>轨迹</div>
+  <div>东风破</div>
+  <div>发如雪</div>
+  <script>
+    // 获取了一个数组，里面是 4 个 div
+    console.log($('div'));
+
+    // 数组也是一个对象，调用了 hide().
+    // 隐式迭代 ：数组调用了 hide() 方法，相当于数组中的每一个元素调用了 hide().
+    $('div').hide();
+  </script>
+</body>
+
+</html>

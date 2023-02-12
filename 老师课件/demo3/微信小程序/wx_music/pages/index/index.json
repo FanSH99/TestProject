@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+      "mySearch":"../../components/index/search/search",
+      "myswiper":"../../components/index/mySwiper/myswiper",
+      "myTop":"../../components/index/top/top",
+      "myloading":"../../components/loading/loading"
+  }
+}

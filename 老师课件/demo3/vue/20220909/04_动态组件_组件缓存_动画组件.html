@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lol{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .lol .lol_item{
+            width: 120px;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+        body{
+            margin: 0;
+        }
+        .nav{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav div{
+            width: 22%;
+            padding: 10px 0;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+        .active::after{
+            content:"";
+            width: 16px;
+            height: 2px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -8px;
+        }
+        .v-enter,.v-leave-to{
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="nav">
+            <div v-for="(item,index) in navList" :key="index" @click="goNav(index)" :class="{active:active===index}">
+                {{item}}
+            </div>
+        </div>
+        <br>
+        <!-- vue中自带的缓存组件 会自动保存组件的状态 -->
+        <!-- 若 使用了keep-alive组件那么vue就会新增两个钩子函数，组件激活前，组件激活后 -->
+        <!-- include属性 指定要缓存哪些组件  1.值为字符串要缓存的组件名称，多个组件之间用逗号隔开include='home,cate' 2.绑定include时值为数组 数组中为要缓存的每个组件名称 :include=["home","cate"] 3.值为正则表达式 :include='/home|cate/' -->
+        <transition mode="out-in">
+            <keep-alive :include="/home|cate/" >
+                <component :is="componentName"></component>
+            </keep-alive>
+        </transition>
+        <!-- exclude属性表示所有匹配到的组件都不会被缓存 -->
+        <!-- <keep-alive :exclude="['home','cate']">
+            <component :is="componentName"></component>
+        </keep-alive> -->
+    </div>
+    <template id="home">
+        <div class="lol">
+            <div class="lol_item" v-for="(item,index) in list" :key="index">
+                <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png`" alt="">
+                 <p>{{item.title}}</p>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let home = {
+        template:"#home",
+        data(){
+            return{
+                list:[]
+            }
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get","https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState ===4){
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.list= res.hero;
+                }
+            }
+        },
+        mounted() {
+            console.log("组件渲染后")
+        },
+    }
+    let cart = {
+        template:"<h1>购物车</h1>",
+        created(){
+            console.log("购物车组件创建后")
+        },
+        activated() {
+            // 可以在此生命周期激活组件从新发送请求
+            console.log("组件激活后")
+        },
+    }
+    let cate = {
+        template:"<h1>分类</h1>",
+        created(){
+            console.log("分类组件创建后")
+        }
+    }
+    let mine = {
+        template:"<h1>我的</h1>",
+        created(){
+            console.log("我的组件创建后")
+        }
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            home,
+            cart,
+            mine,
+            cate
+        },
+        data:{
+            navList:["首页","购物车","分类","我的"],
+            componentName:"home",
+            active:0
+        },
+        methods: {
+            goNav(index){
+                this.active = index;
+                switch (index) {
+                    case 0:
+                        this.componentName = 'home'
+                        break;
+                        case 1:
+                        this.componentName = 'cart'
+                        break;
+                        case 2:
+                        this.componentName = 'cate'
+                        break;
+                      
+                    default:
+                        this.componentName = 'mine'
+                        break;
+                }
+            }
+        },
+    })
+</script>
+</html>

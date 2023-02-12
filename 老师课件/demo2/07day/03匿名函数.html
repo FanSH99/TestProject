@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        匿名函数
+
+        1.先赋值，再执行
+        2.自我执行，自执行函数
+     -->
+    <script>
+// 10、国际象棋64格，第一个放一粒，后面每一格都放上一格的2倍，问第64格上会放多少粒（用函数实现）
+//   var demo10= function(){
+//         var num=1;// 表示第一个格已放一粒
+//         // 循环轮数是 63次，再放63次即可
+//         for(var i=2;i<=64;i++){
+//             num*=2;
+//         }
+//         console.log(num);//9223372036854776000
+
+//      }
+//      demo10()
+
+    //  1  2   4  8
+
+
+    var demo10= function(){
+        var num=1;// 表示第一个格已放一粒
+        // 循环轮数是 63次，再放63次即可
+        for(var i=2;i<=64;i++){
+            num*=2;
+        }
+        return num;
+
+     }
+     console.log( demo10());//9223372036854776000
+    
+
+    </script>
+</body>
+</html>

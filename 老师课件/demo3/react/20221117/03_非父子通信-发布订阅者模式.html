@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    // 发布订阅模式实现非父子通信
+    let bus = {
+        // 用来存放订阅回调函数
+        list:[],
+        // 发布者
+        emit(eventName,msg){
+            let index = this.list.findIndex(item=>item.eventName===eventName)
+            this.list[index].callBack(msg);
+        },
+        // 订阅者
+        on(eventName,callBack){
+            let obj = {
+                eventName,
+                callBack
+            }
+            // 将订阅的事件存放到list
+            this.list.push(obj)
+        }
+    }
+    class App extends React.Component{
+        
+        render(){
+            return (
+                <div>
+                   我是一个父组件  
+                   <One/>
+                   <Two/>  
+                </div>
+            )
+        }
+    }
+
+    class One extends React.Component{
+        state={
+            num:0
+        }
+        render(){
+            return (
+                <div>
+                    我是一个子组件
+                    <button onClick={()=>{
+                        // 发布者发送消息
+                        bus.emit("getnum",this.state.num)
+                    }}>向另一个子组件传值</button>
+                </div>
+            )
+        }
+    }
+    class Two extends React.Component{
+        state={
+            num:""
+        }
+        render(){
+            return (
+                <div> 
+                    我也是一个子组件  {this.state.num}
+                </div>
+            )
+        }
+        componentDidMount(){
+            // 订阅消息（监听自定义事件）
+            bus.on("getnum",(num)=>{
+                console.log(num)
+                this.setState({
+                    num
+                })
+            })
+        }
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

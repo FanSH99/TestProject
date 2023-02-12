@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="coco" getTime="getTime123"  data-index="data-index" data-list-name="data-list-name"></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.getAttribute('getTime'));
+
+        // 1. 约定大于规范，规范大约编码。自定义属性都以 data- 开头
+        // 2. 返回值是一个对象。属性是 data- 作为前缀
+        // 3. 属性名 data- 默认省略，小驼峰。
+
+        console.log(div.dataset);
+
+        console.log(div.dataset.index);
+        console.log(div.dataset.listName);
+    </script>
+</body>
+
+</html>

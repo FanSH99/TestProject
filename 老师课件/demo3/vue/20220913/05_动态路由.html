@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <div>
+            <ul>
+                <li v-for='(item,index) in list' :key="index" @click='goinfo(item.id,item.name)'>
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script src="../vue-router.js"></script>
+<script>
+    // 动态路由：访问不同路由展示同一组件
+    let home = {
+       template:"#home",
+       data() {
+        return {
+            list:[
+                {
+                    name:"哥！你好",
+                    id:1001
+                },{
+                    name:"独行月球",
+                    id:1002
+                }
+            ]
+        }
+       },
+       methods: {
+        goinfo(id,name){
+            this.$router.push({
+                path:"/info/"+id+"/"+name
+            })
+        }
+       },
+    }
+    let info = {
+        template:"<h1>电影详情{{id}}</h1>",
+        data() {
+            return {
+                id:""
+            }
+        },
+        created() {
+            console.log(this.$route)
+           this.id =  this.$route.params.ids;
+           console.log(this.$route.params.name)
+        //    使用 this.$route.params.属性名获取动态路由的动态参数
+        },
+    }
+    let router = new VueRouter({
+        routes:[
+            {
+                name:"home",
+                path:"/",
+                component:home
+            },{
+                name:"info",
+                //使用: 绑定动态路由属性
+                path:"/info/:ids/:name",
+                component:info
+            }
+        ]
+    })
+    Vue.use(router)
+    new Vue({
+        el:"#app",
+        router      
+    })
+</script>
+</html>

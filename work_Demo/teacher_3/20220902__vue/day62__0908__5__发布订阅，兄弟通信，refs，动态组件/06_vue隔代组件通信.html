@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爷孙组件传值</title>
+    <style>
+        .one {
+            width: 100%;
+            height: 300px;
+            background: red;
+        }
+
+        .two {
+            width: 300px;
+            height: 200px;
+            background: blue;
+        }
+
+        .child {
+            width: 150px;
+            height: 100px;
+            background: yellow;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <component-one></component-one>
+    </div>
+    <template id="one">
+        <div class="one">
+            <h1>组件1---{{num}}--{{msg}}</h1>
+            <button @click="send">向孙子组件中传递数据</button>
+            <button @click="getMsg">获取孙子组件中数据</button>
+            <component-two></component-two>
+        </div>
+
+    </template>
+    <template id="two">
+        <div class="two">
+            <div>
+                <h2>儿子组件---{{mynum}}</h2><!-- 不能直接用num，报错。num is not defined -->
+                <button @click="getNum">获取父亲组件num</button>
+            </div>
+            <child></child>
+        </div>
+
+    </template>
+    <template id="child">
+        <div class="child">
+            <h3>孙子组件---{{mynum}}</h3>
+        </div>
+    </template>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月8日14:23:32 */
+    let bus = new Vue();
+    console.log(bus);
+    let child = {
+        template: "#child",
+        data() {
+            return {
+                mynum: "",
+                msg: "这一生太漫长",
+            }
+        },
+        created() {
+            // 使用bus实例监听自定义事件接收消息。，参数1自定义事件名称，参数2回调函数，
+            bus.$on("sendnum", (value) => {
+                console.log("收到爷爷发来的消息了：", value);
+                this.mynum = value;
+            })
+        }
+    }
+    let componentTwo = {
+        template: "#two",
+        data() {
+            return {
+                mynum: "",
+            }
+        },
+        components: {
+            child,
+        },
+        methods: {
+            getNum() {
+                console.log(this.$parent.num);
+                this.mynum = this.$parent.num;
+            }
+        }
+
+    }
+    let componentOne = {
+        template: "#one",
+        data() {
+            return {
+                num: 0,
+                msg: ""
+            }
+        },
+        methods: {
+            send() {
+                // 使用bus实例发送一个自定义事件。参数1自定义事件名称，参数2将要传递的数据。
+                bus.$emit("sendnum", this.num);
+            },
+            getMsg() {
+                console.log(this.$children[0].$children[0].msg);
+                this.msg = this.$children[0].$children[0].msg
+            }
+        },
+        mounted() {
+            // 如果是created，则发布者必须在后面定义，也就是说componentTwo要定义在前面。为了防止出错，则可以用mounted渲染后。
+            bus.$emit("sendnum", this.num);
+        },
+        components: {
+            componentTwo,
+        }
+
+    }
+
+    new Vue({
+        el: "#app",
+        components: {
+            componentOne
+        }
+    })
+    /*
+    发布订阅模式$emit和$on使用与任意组件。
+    父子之间传递常常用自定义名称传递。
+    组件之间可以用$parent和$children属性来查询组件实例。
+    */
+
+</script>
+
+</html>

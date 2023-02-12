@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let num = 5;
+        // num = num + 1; 
+        // 自增运算符 : 自加一后,重新赋值给自己。
+        num++;  // 后置运算符
+        ++num;  // 前置运算符
+
+        // 自减运算符
+        // num--;
+        // --num;
+
+        console.log(num);
+
+        console.log('----------------------------');
+        var age = 10;
+        // 后置运算符,先返回,后加1
+        console.log(age++ + 5);  // 15
+        console.log(age);        // 11
+
+        var score = 10;
+        // 前置运算符,先加1,后返回
+        console.log(++score + 5);  // 16
+        console.log(score);        // 11
+
+        // 尽量单独一行,避免这种容易混淆的写法。
+
+    </script>
+</body>
+
+</html>

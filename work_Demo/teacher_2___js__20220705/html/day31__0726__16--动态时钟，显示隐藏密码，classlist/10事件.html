@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px #333 solid;
+        }
+
+        nav {
+            width: 1200px;
+            height: 50px;
+            background-color: #000;
+            color: #fff;
+            margin: 40px auto;
+        }
+
+        nav ul>li {
+            width: 120px;
+            height: 50px;
+            text-align: center;
+            float: left;
+            line-height: 50px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul>li>ol {
+            width: 100px;
+            background: rosybrown;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            display: none;
+        }
+
+        .nav1 ul>li:hover ol {
+            display: block;
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 事件主要应用是交互行为，动态效果 
+    事件三要素
+    （1）事件源---事件绑定给谁
+    （2）事件名称   ---onclick  onchange    onmouseover
+    （3）事件处理程序---函数    一般是匿名函数，即回调函数。
+
+    最好js和html分离开 ，这样有利于团队合作。
+
+    时间分类
+    （1）传统事件   eg:   <div onclick="alert('hhhhh')"></div>  ---优点是比较简单，缺点是不利于团队合作。尽量少用。
+    （2）脚本模型   即 现代事件     用的比较多 <div id="box"></div>  box.onclick=function(){}   容易理解，利于团队合作。
+    （3）新事件 即 W3C事件      btn.addEventListener('click',function(){},false)      ---事件监听。
+
+
+    常见事件
+
+    （1）onclick 单击
+    （2）onmouseover 经过
+    （3）onmouseout  离开
+    （4）onmouseenter    进入（没有冒泡）
+    （5）onmouseleave    离开（没有冒泡）
+    （6）onfocus 获取焦点----常常用于表单
+    （7）onblur 失去焦点
+    （8）onmousedown 按下鼠标
+    （9）onmousemove 移动鼠标
+    （10）onmouseup   释放鼠标   ---鼠标的拖放可以商铺中图片放大镜上。
+    -->
+
+    <nav class="nav1">
+        <ul>
+            <li><a href='javascript:;'>AAA</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li><a href='javascript:;'>BBB</a>
+                <ol>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                    <li>bbb</li>
+                </ol>
+
+            </li>
+            <li><a href='javascript:;'>CCC</a>
+                <ol>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                    <li>ccc</li>
+                </ol>
+            </li>
+            <li><a href='javascript:;'>DDD</a>
+                <ol>
+                    <li>ddd</li>
+                    <li>ddd</li>
+                    <li>ddd</li>
+                    <li>ddd</li>
+                </ol>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="nav2">
+        <ul>
+            <li onmouseover="show(this)" onmouseout="hide(this)"><a href='javascript:;'>AAA</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li onmouseover="show(this)" onmouseout="hide(this)"><a href='javascript:;'>BBB</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li onmouseover="show(this)" onmouseout="hide(this)"><a href='javascript:;'>CCC</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li onmouseover="show(this)" onmouseout="hide(this)"><a href='javascript:;'>DDD</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+        </ul>
+    </nav>
+
+
+    <nav class="nav3">
+        <ul>
+            <li onmouseover="show1(this)" onmouseout="show1(this)"><a href='javascript:;'>AAA</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li onmouseover="show1(this)" onmouseout="show1(this)"><a href='javascript:;'>BBB</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li onmouseover="show1(this)" onmouseout="show1(this)"><a href='javascript:;'>CCC</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+            <li onmouseover="show1(this)" onmouseout="show1(this)"><a href='javascript:;'>DDD</a>
+                <ol>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                    <li>aaa</li>
+                </ol>
+            </li>
+        </ul>
+    </nav>
+
+    <div onclick="this.style.backgroundColor='red'">点击我试试</div>
+    <div id=" box"></div>
+    <script>
+        function show(obj) {
+            obj.children[1].style.display = 'block';
+        }
+
+        function hide(obj) {
+            obj.children[1].style.display = 'none';
+        }
+
+        function show1(obj) {
+            var s = window.getComputedStyle(obj.children[1], null).display;
+            if (s == 'none') {
+                obj.children[1].style.display = 'block';
+            } else {
+                obj.children[1].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

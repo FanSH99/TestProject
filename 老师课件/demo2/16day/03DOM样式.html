@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #222;
+        }
+        .red{
+            color: red;
+            background-color: aqua;
+        }
+
+        #box::after{
+            content: '我是新增的文字';
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        css                dom 样式
+        color             color
+        width             width
+        ...                ....
+
+        font-size         fontSize(驼峰)     
+                         行内样式  （优先级高）
+     -->
+     <!-- 
+        1.设置（修改）样式  （行内样式   外部样式）
+        
+        只有一种方法
+         node.style.样式名=样式值;
+
+
+        2.获取样式  （行内样式   外部样式）
+
+        有两种方法
+         2.1    node.style.样式名                 只有获取行内
+         2.2    window.getComputedStyle(node,null).样式名        （行内样式和外部样式都可以取到）
+               window 可以省略           只读
+                                             如果是伪对象，写伪对象 不再写null
+      -->
+
+      <div id="box">我是块元素</div>
+    <script>
+        // 以前的方法 用属性方法解决 样式的问题
+        var box=document.querySelector('#box');
+
+        // 方法一：
+        // box.className='red'
+        //方法二：
+        // box['className']='red'
+        // 方法三：
+        // box.setAttribute('class','red')
+        //方法四： style
+         box.style="font-size:20px; color:red;background-color:green";
+        //不足  会覆盖
+        // box.style="letter-spacing:20px"
+
+        //方法五 ：样式
+       box.style.letterSpacing="20px";
+       box.style.textIndent="40px";
+       box.style.transform="rotate(30deg)"
+
+
+       // 获取样式（2种方法）
+
+         console.log(box.style.color);
+         console.log(box.style.backgroundColor);
+
+        console.log(box.style.width);// 外部样式 找不到
+
+        //  行内和外部都能取到
+        var o= window.getComputedStyle(box,null);//对象
+        // console.log(o);
+      var w=  o.width;
+      console.log(w);//200px
+
+      var h= window.getComputedStyle(box,null).height;
+      console.log(h);
+
+      console.log(getComputedStyle(box,null).textIndent);
+
+
+    //   伪类
+   var c=  window.getComputedStyle(box,'::after').color;
+   console.log(c);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .present{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        .child{
+            width:50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="present" @click="presentClick">
+            <!-- .stop修饰符用于阻止事件冒泡 -->
+            <div class="child" @click.stop='childHanle'>
+                
+            </div>
+                 <!-- 事件修饰符可以串联执行(链式调用) -->
+           <a href="http://www.baidu.com" @click.prevent.stop="goBai">百度一下</a>
+        </div>
+             <!-- .prevent 修饰符用于阻止默认事件 -->
+             <a href="http://www.baidu.com" @click.prevent="goBai">百度一下</a>
+         <!-- .self 修饰符  self 自己的意思 只用自己本身元素触发这个事件才会被调用-->
+        <div class="present" @click.self="presentClick">
+            <div  class="child"  @click='childHanle'>
+
+            </div>
+        </div> 
+        <h1>capture 修饰符</h1>
+        <!-- .capture 修饰符 捕获父元素事件 当存在事件冒泡时优先执行 捕获父元素事件-->
+        <div class="present" @click.capture="presentClick">
+            <div  class="child"  @click='childHanle'>
+
+            </div>
+        </div> 
+        <button @click.once="clickMe">once修饰符</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods: {
+            childHanle(){
+                // 原生js阻止事件冒泡;
+                // e.stopPropagation();
+                console.log("触发了child div的事件")
+            },
+            presentClick(){
+                console.log("触发了present div事件")
+            },
+            goBai(){
+                // js阻止默认事件
+                // e.preventDefault();
+                console.log("1231231")
+            },
+            clickMe(){
+                console.log("我只执行一次")
+            }
+        },
+    })
+    
+</script>
+</html>

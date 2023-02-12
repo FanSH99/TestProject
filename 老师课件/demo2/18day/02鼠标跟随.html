@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.页面中暂时没有图片
+         2.移动鼠标，出现一张图片，并跟随鼠标移动
+      -->
+      <script>
+         var img= document.createElement('img');
+          img.src='./images/1.gif';
+          img.style.width="100px";
+          img.style.position="absolute";
+
+        //   暂时不追加，当移动鼠标时，再追加
+         document.onmousemove=function(e){
+           e= e||window.event;
+           document.body.appendChild(img);
+
+        //  鼠标的位置  e.clientX   e.clientY     e.pageX  e.pageY
+
+         var x=e.clientX;
+         var y=e.clientY;
+         console.log(x,y);//208 251   数字，不带单位
+
+       // 有定位，才能使用left top right bottom
+        img.style.left=x-50+'px';// 一定要带单位
+        img.style.top=y-50+"px";
+
+         }
+      </script>
+</body>
+</html>

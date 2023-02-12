@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- location.assign()    和 location.href 用法一样   可以跳转页面（也称为重定向页面）
+         location.replace()   替换当前页面,因为不记录历史，所以不能回退页面
+         location.reload()    重新加载页面，相当于刷新按钮或者f5如果参数为true强制刷新ctrl+f5
+        location.reload(true)   强制刷新ctrl+f5
+    -->
+    <button>单击</button>
+    <script>
+      var btn=  document.querySelector('button');
+        btn.onclick=function(){
+            //1.
+            // location.assign('http://www.baidu.com');
+            // location.href='http://www.baidu.com';
+
+            //2.
+            // location.replace('http://www.baidu.com');
+
+            //3.
+            location.reload(true)
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>用户注册</h2>
+    <label for="userName">用户名:</label><input type="text" id="userName">
+    <label for="pwd">密码:</label><input type="text" id="pwd">
+    <label for="tel">电话:</label><input type="text" id="tel">
+    <!-- 存值 -->
+    <input type="button" value="注册" id="btnReg">
+
+    <!-- 取值 -->
+
+    <textarea id="area" cols="30" rows="10"></textarea>
+    <button id="btnGet">取值</button>
+
+    <script>
+        //  存储   sessionStorage    localStorage       setItem()   getItem()
+        //  JSON.stringify()   JSON.parse()
+
+        //1.查找
+        var userName = document.querySelector('#userName');
+        var pwd = document.querySelector('#pwd');
+        var tel = document.querySelector('#tel');
+        var btnReg = document.querySelector('#btnReg');
+        var btnGet = document.querySelector('#btnGet');
+        var area = document.querySelector('#area');
+
+        //2.加事件 存值 ,如果想保存多个人
+        var PersonArr = [];// 保存是每个人对象  [{},{},{}]
+        btnReg.onclick = function () {
+            // localStorage.setItem('_username',userName.value);
+            // localStorage.setItem('_pwd',pwd.value);
+            // localStorage.setItem('_tel',tel.value);
+            var obj = {};
+            obj._userName = userName.value;
+            obj._pwd = pwd.value;
+            obj._tel = tel.value;
+
+            PersonArr.push(obj)
+            // js对象---转为 JSON格式的对象  重点的信息
+            var arr = JSON.stringify(PersonArr);
+            console.log(arr);// js对象   
+            localStorage.setItem('_person', arr);
+        }
+
+        //3.取数据 在文本框中输出
+        btnGet.onclick = function () {
+            var PersonArr1 = localStorage.getItem('_person');
+            console.log(PersonArr1);// JOSN字符串
+            //   JOSN字符串---js对象输出
+            PersonArr1 = JSON.parse(PersonArr1);
+            console.log(PersonArr1);
+
+            // 文本框中输出
+            var str = ''
+            for (var i in PersonArr1) {
+                 str+='姓名:'+PersonArr1[i]['_userName']+'密码：'+PersonArr1[i]['_pwd']+'电话：'+PersonArr1[i]['_tel']+'\n'
+     
+            }
+            area.value=str;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.输出如下图形
+        /* 
+
+        *****
+        
+        */
+
+//    document.write(' *****');
+
+//    for(var i=0;i<5;i++){
+//     document.write('*');
+//    }
+
+//2. 输出如下图形
+ /* 
+
+*****
+*****
+*****
+        
+*/
+// 双重循环
+// 外层循环控制行数
+// for(var i=0;i<3;i++){
+//     // 内层循环控制每行星的个数
+//     for(var j=0;j<5;j++){
+//         document.write('*')
+//     }
+//     document.write('<br>')
+
+
+// }
+//3. 输出如下图形  直角三角形
+ /* 
+                i= 行号           每行星的个数
+*                1                  1
+**               2                  2
+***              3                  3
+****             4                  4
+*****            5                  5
+                                星的个数=行号    
+*/
+// 外层循环控制行数
+ for(var i=1;i<=5;i++){
+    // 内层循环控制每行星的个数
+     for(var j=1;j<=i;j++){
+        document.write('*');
+     }
+     document.write('<br>');
+ }
+    </script>
+</body>
+</html>

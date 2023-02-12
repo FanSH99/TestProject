@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        变量会提升  ：声明会提升 var a;   但是赋值不会提升 a=10; 
+
+        函数也会提升
+        var a=10;
+        //相当于
+        var a;
+        a=10;
+
+
+     -->
+    <script>
+        //1.
+        // console.log(a);// undefined
+        // var a=10;
+
+        // 相当于
+        // var a;
+        // console.log(a);
+        // a=10;
+
+        // console.log(a);
+
+        //2.
+        // console.log(a);//error
+        // a=10;
+
+
+        //3.
+
+        // function demo(){
+        //     console.log(a);// undefined
+        //     var a=20;
+        //     console.log(a);//20
+        // }
+        // demo()
+
+        // function demo() {
+        //     var a;
+        //     console.log(a);// undefined
+        //     a = 20;
+        //     console.log(a);//20
+        // }
+        // demo()
+
+
+        //4. 
+        // function show() {
+        //     var a = 10;//局部变量
+        //     if (a > 10) {
+        //         b = 20;
+        //     } else {
+        //         a = 80;
+        //     }
+        //     console.log(a);//80
+        //     console.log(b);//error
+        // }
+        // show();
+        // console.log(b);//没有执行到
+
+
+
+        function show() {
+             var a = 10;//局部变量
+           
+            if (a > 10) {
+                var b = 20;
+              
+            } else {
+                a = 80;
+            }
+            console.log(a);//80
+            console.log(b);// undefined
+        }
+        show();
+        console.log(b);//error
+
+
+        // function show() {
+        //     // var a = 10;//局部变量
+        //     var a;
+        //     var b;
+        //     a = 10;
+        //     if (a > 10) {
+        //         //   var b = 20;
+        //         b = 20;
+        //     } else {
+        //         a = 80;
+        //     }
+        //     console.log(a);//80
+        //     console.log(b);// undefined
+        // }
+        // show();
+        // console.log(b);//error
+    </script>
+</body>
+
+</html>

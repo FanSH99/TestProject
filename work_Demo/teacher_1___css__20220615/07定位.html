@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* border: 1px solid red; */
+
+            margin: auto;
+            /* 相对定位 */
+            /* 相对定位是相对于自身原先的位置来进行定位，
+              同时marigin：auto依然生效
+              相对定位对网页排版没有任何影响，但是可以当子集元素的参照物*/
+            position: relative;
+            top: 30px;
+            left: 30px;
+
+            /* 固定定位 
+             position: fixed;
+            调整板块的上下层级，数值大的在上一层，数值小的会被盖住。
+            /* 添加固定定位之后，用bottom：npx; left\top 来固定位置 
+            /* 添加固定定位之后，margin:auto不起作用 
+            z-index必须在固定定位之后彩绘生效。 */
+
+            /* 固定定位以浏览器屏幕窗口为参照物， */
+
+
+            /* 标签在下面则上浮，后来着居上。
+        可以通过z轴改变顺序 */
+
+            z-index: 2;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 2000px;
+            background: green;
+            /*   position: relative; */
+            /* 粘性定位结合了相对定位和固定定位的属性 */
+            position: sticky;
+            margin: auto;
+            z-index: 10;
+            /* position: fixed; */
+        }
+
+        .box6 {
+            width: 200px;
+            height: 200px;
+            background: green;
+            /*   position: relative; */
+
+
+            margin: auto;
+            z-index: 10;
+            bottom: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        .box3 {
+            width: 400px;
+            height: 500px;
+            background: yellow;
+            z-index: 1;
+
+            right: 0;
+            bottom: 0;
+
+            margin: auto;
+        }
+
+        /*绝对定位 
+            以网页的第一屏来定位
+
+            如果使用absolute和fixed定位的话，必须指定top、right、bottom、left属性中的至少一个，否则top、right、bottom、left属性会使用它们的默认值auto，这将导致对象遵从正常的HTML布局规则，在前一个对象之后立即被呈递，简单讲就是都变成relative，会占据文档空间，
+
+
+            如果top和bottom同时存在，那么只有top生效。
+            如果left和right同时存在，那么只有left生效。
+            如果是包含关系，则以父级元素为参照物，
+            且父级元素必须有定位，不能是静态定位。
+            父级元素最好用relative，这样对排版没有影响。
+            父级元素如果没有设置定位，则继续往上找参照物。
+            如果父级元素是绝对定位，也可以当参照物。
+
+            这里还需要注意的是，
+            relative和static方式在最外层是以<body>标签作为定位原点，
+                而absolute方式是以<html>标签作为定位原点。
+                <html>和<body>元素相差8px左右的margin。
+
+
+            position: absolute;
+
+        }
+
+        p {
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            margin: auto;
+        }
+
+        /* 如果想让子集元素以父级元素为参照物，则父级元素需要有定位。 */
+        .box4 {
+            width: 50px;
+            height: 50px;
+            background: purple;
+            position: absolute;
+            z-index: 1;
+
+            right: 0;
+            bottom: 0;
+            z-index: 4;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            /* position: relative; */
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .box5 {
+            width: 50px;
+            height: 50px;
+            background: purple;
+            /* 静态定位，是取消定位。
+            浏览器默认就是静态定位
+            该定位方式下，top、right、bottom、left、z-index等属性是无效的。 */
+            position: static;
+            z-index: 1;
+
+            right: 0;
+            bottom: 0;
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 固定定位， 相对定位，粘性定位，静态定位-->
+    <div class="box">
+        <div class="box1">
+            <div class="box4"></div>
+        </div>
+    </div>
+    <div class="box2">22222
+        <div class="box5"> </div>
+
+    </div>
+    <!-- <p>123</p> -->
+    <div class="box3">33333
+        <div class="box">
+            <div class="box4"></div>
+        </div>
+    </div>
+    <div class="box6"></div>
+</body>
+
+</html>

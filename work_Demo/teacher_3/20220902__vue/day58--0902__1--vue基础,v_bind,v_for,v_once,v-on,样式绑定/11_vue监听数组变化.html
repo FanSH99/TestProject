@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年9月2日15:19:59 -->
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in user" :key="index">
+                {{item}}
+            </li>
+        </ul>
+        <button @click="change">改变</button>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            user: ["白浅", "花千骨", "小乔"]
+        },
+        methods: {
+            change() {
+                this.user[1] = "海绵宝宝"
+                console.log(this.user);// ["白浅", "画面宝宝", "小乔"]
+                this.user = this.user.concat([]);
+                this.user.push("等等")
+            }
+        }
+    })
+    /* vue2响应式原理，使用原生js中的object.defindePropert劫持对象的哥哥属性，
+    通过调用功能对象的哥哥属性的get,set方法，结合发布订阅模式实现响应式的改变。
+    为了减少性能浪费，不会劫持数组数据。 */
+
+    /*
+    面试题
+    vue2为何不能直接监听数据的改变
+        数组中的数据有可能有成千上万条数据，如果vue以每条数据都监听的话，比较浪费性能。
+         所以vue不直接监听数组的改变，
+    那么vue怎么监听数组的癌变呢？
+        通过重写处理数据的7中方法来实现数组的响应式变化。
+        push,reverse unshift,splice,concat,slice,pop
+    */
+</script>
+
+</html>

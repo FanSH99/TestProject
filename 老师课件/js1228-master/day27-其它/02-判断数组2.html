@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. toString()
+        console.log(Object.prototype.toString.call([]));
+
+        // 2. instanceof 对象是否为该类的实例
+        console.log([] instanceof Array);
+
+        // 3. 通过constructor判断
+        // 实例的构造函数属性constructor指向构造函数，
+        // 通过constructor属性可以判断是否为一个数组
+        console.log([].constructor === Array);
+
+        // 4. Array.isArray()
+        console.log(Array.isArray([]));
+
+        // 5. typeof 只能检测基本数据类型
+    </script>
+</body>
+
+</html>

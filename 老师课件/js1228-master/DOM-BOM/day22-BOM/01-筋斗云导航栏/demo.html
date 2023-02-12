@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .c-nav {
+            width: 900px;
+            height: 42px;
+            background: #fff url(images/rss.png) no-repeat right center;
+            margin: 100px auto;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .c-nav ul {
+            position: absolute;
+        }
+
+        .c-nav li {
+            float: left;
+            width: 83px;
+            text-align: center;
+            line-height: 42px;
+        }
+
+        .c-nav li a {
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            height: 42px;
+        }
+
+        .c-nav li a:hover {
+            color: white;
+        }
+
+        .cloud {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="c_nav" class="c-nav">
+        <span class="cloud"></span>
+        <ul>
+            <li><a href="#">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">公司简介</a></li>
+            <li><a href="#">王一博</a></li>
+            <li><a href="#">易烊千玺</a></li>
+        </ul>
+    </div>
+</body>
+<!-- 引入动画函数 -->
+<script src="animate.js"></script>
+<script>
+    /* 
+        需求：
+            1. 鼠标接触 li，云彩移动到当前(li)位置
+            2. 鼠标离开 li，云彩回到固定位置
+            3. 鼠标点击 li，云彩的固定位置，重新赋值。
+    */
+    let cloud = document.querySelector('.cloud');
+    let lis = document.querySelectorAll('li');
+
+    // 计数器，保存云彩的回归位置
+    let current = 0;
+    for (let i = 0; i < lis.length; i++) {
+        // 鼠标接触li，云彩跟随移动
+        lis[i].addEventListener('mouseenter', function () {
+            animate(cloud, this.offsetLeft);
+        });
+
+        // 鼠标离开 li，云彩回归到固定位置。
+        lis[i].addEventListener('mouseleave', function () {
+            animate(cloud, current);
+        });
+
+        // 鼠标点击li，云彩的固定位置重新赋值。
+        lis[i].addEventListener('click', function () {
+            current = this.offsetLeft;
+        });
+    }
+</script>
+
+</html>

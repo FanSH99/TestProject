@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+          slice() 
+            方法可通过指定的索引号和个数，提取数组的某个部分
+          语法：
+            数组名.splice(start[, number]);
+              start    (必需)：规定开始选取索引号
+              number   (可选)：元素的个数。
+          注意：原数组受到影响            
+        */
+
+        let arr = ['张飞0', '关羽1', '刘备2', '猴子3', '黑鸟4', '剑圣5'];
+
+        // let arr1 = arr.splice(2, 3);
+        let arr1 = arr.splice(2);
+        console.log(arr, arr1);
+    </script>
+</body>
+
+</html>

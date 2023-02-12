@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./images/images/0.png" alt="">
+    <img src="./images/images/0.png" alt="">
+    <img src="./images/images/second1.png" alt="">
+    <img src="./images/images/0.png" alt="">
+    <img src="./images/images/0.png" alt="">
+    <img src="./images/images/second1.png" alt="">
+    <img src="./images/images/0.png" alt="">
+    <img src="./images/images/0.png" alt="">
+
+    <script>
+        var imgs = document.querySelectorAll('img');
+        console.log(imgs);
+
+        function showTime() {
+
+
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            console.log(h, m, s);
+            //   分解数
+            var h1 = parseInt(h / 10);
+            var h2 = h % 10;
+
+            var m1 = parseInt(m / 10);
+            var m2 = m % 10;
+
+            var s1 = parseInt(s / 10);
+            var s2 = s % 10;
+            console.log(h1, h2, m1, m2, s1, s2);//1 7 1 9 2 7
+            //  设置路tca径
+            imgs[0].src = './images/images/' + h1 + '.png'
+            imgs[1].src = './images/images/' + h2 + '.png'
+
+            imgs[3].src = './images/images/' + m1 + '.png'
+            imgs[4].src = './images/images/' + m2 + '.png'
+
+            imgs[6].src = './images/images/' + s1 + '.png'
+            imgs[7].src = './images/images/' + s2 + '.png'
+        }
+        showTime();
+        // 定时器
+      setInterval(showTime,1000)
+    </script>
+</body>
+
+</html>

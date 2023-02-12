@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    let name = '张三';
+    let age = 18;
+    let like = ["学习",'打游戏'];
+    let isshow = true
+    let dog = {
+        name:"小花",
+        age:18
+    }
+    // 只允许有一个根节点
+    let dom = (
+        <div>
+           <ol>
+            {/*数据绑定,大括号中可以写js表达式  */}
+            <li>{name}</li>
+            <li>{age>=18?"成年":"不成年"}</li>
+             {/* jsx语法中会默认将数组拼接字符串渲染  默认会讲布尔值渲染为空*/}
+            <li>{like}</li>
+            <li>{isshow}</li>
+            <li>{JSON.stringify(dog)}</li>  
+            <li>{dog.name}---{dog.age}</li>
+            </ol>
+        </div>
+    )
+    ReactDOM.render(dom,document.getElementById("app"));
+</script>
+
+</html>

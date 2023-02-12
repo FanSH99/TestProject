@@ -1,0 +1,33 @@
+.title{
+    width: 100%;
+    text-align: center;
+    font-size: 33rpx;
+    color: #ffcd32;
+    margin: 40rpx 0;
+}
+.mv{
+    width: 95%;
+    margin: 40rpx auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 31rpx;
+    color: #999999;
+}
+.itemmv{
+    width: 48.5%;
+}
+.mvCover{
+    width: 100%;
+}
+.name{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 15rpx 0;
+}
+.artistName{
+    color: #fff;
+    margin-bottom: 40rpx;
+}

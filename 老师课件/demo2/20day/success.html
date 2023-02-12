@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h2>欢迎<span></span>来到我们班学习~~~</h2>
+   <script>
+      var span=document.querySelector('span');
+
+      //1.file:///D:/ftp/2022-7-5%E5%BC%80%E5%A7%8Bjs/js20220705/20day/success.html?userName=Tom
+    // ?userName=Tom    location.search
+
+   var str= location.search;
+   console.log(str);//'?userName=Tom'
+
+   //2.  去掉？截取  'userName=Tom'   slice       substr   substring
+
+   str=str.substr(1);
+   console.log(str);//userName=Tom
+
+   //3. = 分隔成数据，组成数组 split
+   var arr=  str.split('=');
+   console.log(arr);// ['userName', 'Tom']
+   //4. 取出数据中索引号为1的数据
+   span.innerHTML=arr[1]
+
+
+
+   </script>
+</body>
+</html>

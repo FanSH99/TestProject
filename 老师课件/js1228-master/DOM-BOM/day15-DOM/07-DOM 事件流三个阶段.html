@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: skyblue;
+            text-align: center;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            background-color: purple;
+            line-height: 200px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='qq'>你好啊</button>
+    <div class="father">father盒子
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+        let btn = document.querySelector('button');
+        let father = document.querySelector('.father');
+        let son = document.querySelector('.son');
+
+        father.addEventListener('click', function () {
+            console.log(this);
+        }, true);
+
+        son.addEventListener('click', function () {
+            console.log(this);
+        }, false);
+
+        /* 
+            1. 事件流描述页面中接收事件的顺序。
+            2. DOM 事件流：事件发生时会在元素节点之间按照特定的顺序触发。
+            3. 事件只能在冒泡或捕获阶段触发，只能在其中的一个阶段触发。
+                true 捕获阶段，默认是 false
+        */
+        // 捕获： document ——> html ——> body ——> father  ——> son
+        // 冒泡： son  ——> father ——> body  ——> html  ——> document 
+
+        btn.addEventListener('click',function (){
+            console.log(this);
+        });
+
+        document.addEventListener('click',function (){
+            console.log(this);
+        });
+    </script>
+</body>
+
+</html>

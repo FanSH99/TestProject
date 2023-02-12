@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{keywords}}</p>
+        <!-- v-model双向数据绑定指令 只能作用在表单标签中 -->
+        <input type="text" v-model="keywords">
+        <button @click="getvalue">获取输入框内容</button>
+        <textarea v-model="keywords" cols="30" rows="10"></textarea>
+        <div>
+            <p>
+                请选择你的国家
+            </p>
+            <input type="radio" value="中国" v-model="city"> 中国
+            <input type="radio" value="日本" v-model="city">日本
+        </div>
+        <!-- 
+            不使用v-model 怎么实现一个简单双向数据绑定：
+            1. 绑定value属性 实现数据与视图的绑定 数据改变视图更新
+            2. 使用v-on(@)绑定input 获取最新输入框内容 更新数据
+         -->
+         <p>{{value}}</p>
+         <input type="text" placeholder="请输入内容" :value="value" @input="getNewValue">
+         <!-- v-model指令实际上就是 v-bind与v-on指令的语法糖 -->
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            keywords:"hahah",
+            city:"日本",
+            value:"好好学习天天向上"
+        },
+        methods: {
+            getvalue(){
+                console.log(this.keywords)
+            },
+            getNewValue(e){
+                // 获取输入框最新得值
+                console.log("我改变了")
+                console.log(e.target.value)
+                this.value = e.target.value;
+            }
+        },
+    })
+</script>
+</html>

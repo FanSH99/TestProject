@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .size {
+            font-size: 40px;
+        }
+
+        .bacRed {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 :class="{'red':isRed,'size':isSize}">{{msg}}</h1>
+        <ul>
+            <li v-for="(item,index) in 3" :class="active==index?'bacRed':''" @click="changeColor(index)">{{item}}</li>
+        </ul>
+
+        <div :style="{color:'red',width:'100px',height:height,backgroundColor:'#333'}">
+            好好学习天天向上
+        </div>
+        <div :style="mystyle">
+
+        </div>
+        <button @click='changeStyle'>change</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"大海呀全是水！！！",
+            isRed:false,
+            isSize:false,
+            active:2,
+            height:"100px",
+            mystyle:{
+                width:"50px",
+                height:"50px",
+                backgroundColor:"red",
+                borderRadius:"50%",
+                transition:"0.3s",
+            }
+        },
+        methods: {
+            changeColor(index){
+                this.active = index;
+            },
+            changeStyle(){
+                this.mystyle.width = '100px'
+            }
+        },
+    })
+</script>
+
+</html>

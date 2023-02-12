@@ -1,0 +1,368 @@
+/* 投资项目开始 */
+.tz{
+    position: relative;
+}
+.tz .tz_bg img{
+    width: 100%;
+    display: block;
+}
+.tz .tz_rd{
+    width: 364px;
+    height: 470px;
+    background: rgba(215,0,15,0.8);
+    position: absolute;
+    left: 100px;
+    top: 15%;
+    padding: 0px 36px;
+}
+.tz .tz_rd h2,.tz .tz_rd a h3{
+    font-size: 32px;
+    margin-top: 82px;
+    color: #ffffff;
+    font-weight: normal;
+}
+.tz .tz_rd a{
+    text-decoration: none;
+}
+.tz .tz_rd a h3{
+   font-size: 26px;
+    margin-top: 40px;
+    
+}
+.tz .tz_rd .tz_xm{
+    margin-top: 15px;
+}
+.tz .tz_rd .tz_xm h6,
+.tz .tz_rd .tz_xm p{
+    font-size: 18px;
+    font-weight: normal;
+    color: #e4e4e4;
+    display: block;
+    float: left;
+    line-height: 2em;
+}
+.tz .tz_rd .tz_xm p{
+    width: 280px;
+    float: right;
+    display: block;
+}
+.tz .tz_rd .tz_qian p{
+    font-size: 18px;
+    color: #e4e4e4;
+    display: 
+    inline-block;
+    margin-top: 15px;
+}
+.tz .tz_rd .tz_xiangqing a{
+    width: 180px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    display: block;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 38px;
+    text-decoration: none;
+    color:#ffffff;
+    margin-top: 75px; 
+    float: left; 
+}
+.tz .tz_rd a:hover{
+    background: #ffffff;
+    color: #d7000f;
+}
+.tz .tz_rd .tz_xiangqing .tz_cir a{
+    width: 26px;
+    height: 26px;
+    border: 1px solid #ffffff;
+    float: right;
+    margin-top: 80px; 
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    /* font-weight: bold; */
+    margin-left: 15px;
+}
+
+.azf_bg{
+    background: #f7f7f7;
+    padding: 80px 0px 130px 0px;
+}
+.azf{
+   width: 1273px;
+   height: 1430px;
+   margin:auto;
+   /* background: #a2a2a2; */
+   /* margin-top: 80px;
+   margin-bottom: 130px;
+    */
+}
+.azf .chengdu{
+    width: 409px;
+    height: 530px;
+    /* border: 1px solid #333; */
+    float: left;
+    background: #ffffff;
+
+}
+.azf .chengdu .azf_text,
+.azf .kunming .azf_text,
+.azf .wuhan .azf_text,
+.azf .hubei .azf_text,
+.azf .shanxi .azf_text,
+.azf .panlongqu .azf_text,
+.azf .xinzhouqu .azf_text{
+    padding: 23px 30px 39px 10px;
+}
+.azf .chengdu .azf_text a,
+.azf .kunming .azf_text a,
+.azf .wuhan .azf_text a,
+.azf .hubei .azf_text a,
+.azf .shanxi .azf_text a,
+.azf .panlongqu .azf_text a,
+.azf .xinzhouqu .azf_text a{
+    text-decoration: none;
+    font-size: 24px;
+    color: #464646;
+    
+}
+.azf .chengdu .azf_text a:hover,
+.azf .kunming .azf_text a:hover,
+.azf .wuhan .azf_text a:hover,
+.azf .hubei .azf_text a:hover,
+.azf .shanxi .azf_text a:hover,
+.azf .panlongqu .azf_text a:hover,
+.azf .xinzhouqu .azf_text a:hover{
+    color: #d7000f;
+}
+.azf .chengdu .azf_text .azf_xm,
+.azf .kunming .azf_text .azf_xm,
+.azf .wuhan .azf_text .azf_xm,
+.azf .hubei .azf_text .azf_xm,
+.azf .shanxi .azf_text .azf_xm,
+.azf .panlongqu .azf_text .azf_xm,
+.azf .xinzhouqu .azf_text .azf_xm{
+   
+    padding-top: 10px;
+}
+.azf .chengdu .azf_text .azf_xm h6,.azf .chengdu .azf_xm p,
+.azf .kunming .azf_text .azf_xm h6,.azf .kunming .azf_xm p,
+.azf .wuhan .azf_text .azf_xm h6,.azf .wuhan .azf_xm p,
+.azf .hubei .azf_text .azf_xm h6,.azf .hubei .azf_xm p,
+.azf .shanxi .azf_text .azf_xm h6,.azf .shanxi .azf_xm p,
+.azf .panlongqu .azf_text .azf_xm h6,.azf .panlongqu .azf_xm p,
+.azf .xinzhouqu .azf_text .azf_xm h6,.azf .xinzhouqu .azf_xm p{
+    font-size: 16px;
+    font-weight: normal;
+    color: #464646;
+    display: block;
+    float: left;
+}
+.azf .chengdu .azf_text .azf_xm p,
+.azf .kunming .azf_text .azf_xm p,
+.azf .wuhan .azf_text .azf_xm p,
+.azf .hubei .azf_text .azf_xm p,
+.azf .shanxi .azf_text .azf_xm p,
+.azf .panlongqu .azf_text .azf_xm p,
+.azf .xinzhouqu .azf_text .azf_xm p
+{
+    width: 290px;
+    float: right;
+}
+.azf .chengdu img,
+.azf .kunming img,
+.azf .wuhan img,
+.azf .hubei img,
+.azf .shanxi img,
+.azf .panlongqu img{
+    width: 100%;
+    display: block
+}
+.azf .kunming{
+    width: 409px;
+    height: 530px;
+    /* border: 1px solid #333; */
+    float: left;
+    margin: 0px 23px;
+    background: #ffffff;
+}
+.azf .wuhan{
+    width: 409px;
+    height: 872px;
+    /* border: 1px solid #333; */
+    float: right;
+    background: #ffffff;
+}
+.azf .xinzhouqu{
+    width: 843px;
+    height: 317px;
+    /* border: 1px solid #333; */
+    margin-top: 23px;
+    float: left;
+    background: #ffffff;
+}
+
+.azf .xinzhouqu .azf_text{
+    width: 398px;
+    padding-bottom: 0px;
+    float: left;
+    
+
+}
+
+.azf .xinzhouqu .azf_text .azf_xm p{
+    float: right;
+    width: 320px;
+}
+.azf .xinzhouqu img{
+    display: block;
+    height: 100%;
+    float: right;
+}
+.azf .hubei{
+    width: 409px;
+    height: 530px;
+    /* border: 1px solid #333; */
+    float: left;
+    margin-top: 23px;
+    background: #ffffff;
+}
+.azf .shanxi{
+    width: 409px;
+    height: 530px;
+    /* border: 1px solid #333; */
+    float: left;
+    margin: 23px 0px 0px 23px;
+    background: #ffffff;
+}
+.azf .shanxi img{
+    height: 322px;
+    display: block;
+}
+.azf .panlongqu{
+    width: 409px;
+    height: 530px;
+    /* border: 1px solid #333; */
+    float: right;
+    background: #ffffff;
+    /* margin: 23px 0px 0px 23px; */
+    margin-top: 23px;
+}
+
+/* 投资项目结束 */
+
+/* 投资项目二级导航开始 */
+
+.cd-qing{
+    padding: 40px 0 120px 0;
+    border-top: 3px solid rgb(232, 238, 235);
+}
+.cd-qing .cd-qing_star{
+    width: 1280px;
+    margin: auto;
+}
+.cd-qing .cd-qing_star .cd-qing_top h2{
+    color: #464646;
+    font-size: 32px;
+    font-weight: normal;
+}
+.cd-qing .cd-qing_star .cd-qing_top h6{
+    width: 80px;
+    border-bottom:2px solid #a2a2a2;
+    padding-top: 32px;
+    
+}
+
+.cd-qing_star .cd-qing_c{
+    margin-top: 120px;
+    /* height: 660px; */
+    /* background: #a2a2a2; */
+}
+.cd-qing_star .cd-qing_c .three{
+    width: 840px;
+    height: 660px;
+    /* background: #464646; */
+    float: left;
+}
+.cd-qing_star .cd-qing_c .three .three_1{
+    width: 320px;
+    height: 315px;
+    /* background: #846565; */
+    float: left;
+}
+.cd-qing_star .cd-qing_c .three .three_1 h1{
+    font-size: 32px;
+    font-weight: normal;
+    color: #464646;
+}
+.cd-qing_star .cd-qing_c .three .three_1 p{
+    font-size: 16px;
+    color: #464646;
+    line-height: 32px;
+}
+.cd-qing_star .cd-qing_c .three .three_1 p:nth-child(2){
+    margin-top: 40px;
+}
+/*----------------------------------------------------- */
+/* ---------------------------------------------------- */
+
+.cd-qing_star .cd-qing_c .three .three_2{
+    width: 400px;
+    height: 315px;
+    background: aquamarine;
+    float: right;
+    position: relative;
+}
+.cd-qing_star .cd-qing_c .three .three_2 .three_2_wz{
+    width: 370px;
+    padding: 15px ;
+    color: #ffffff;
+    background: rgba(255, 255, 255,0);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+
+.cd-qing_star .cd-qing_c .three .three_3{
+    width: 840px;
+    height: 315px;
+    background: #7373c2;
+    margin-top: 20px;
+    position: relative;
+}
+.cd-qing_star .cd-qing_c .three .three_3 img{
+    display: block;
+}
+.cd-qing_star .cd-qing_c .three .three_3 .three_3_wz{
+    width: 810px;
+    padding: 15px ;
+    color: #ffffff;
+    background: rgba(255, 255, 255,0);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.cd-qing_star .cd-qing_c .gaolou{
+    float: right;
+    width: 420px;
+    /* height: 660px; */
+    /* background: antiquewhite; */
+    position: relative;
+}
+.cd-qing_star .cd-qing_c .gaolou img{
+    display: block;
+}
+.cd-qing_star .cd-qing_c .gaolou .gaolou_wz{
+    width:390px ;
+    padding: 15px;
+    color: #ffffff;
+    background: rgba(255, 255, 255,0);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}
+/* 投资项目二级导航结束 */

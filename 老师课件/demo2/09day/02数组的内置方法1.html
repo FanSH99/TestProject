@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Array 对象方法  内置方法
+
+         方法                      用法                                            是否修改原数组
+      三、排序的方法
+          5.sort()                对数组的元素进行排序。                                  修改
+                                   注意：按ascII码排序
+
+            如果想按数字从小到大排序，或都从大到小排序
+            arr.sort(函数名) 
+            // 升序
+             function 函数名（a,b）{
+               return a-b
+             }
+
+               // 降序
+             function 函数名（a,b）{
+               return b-a
+             }
+          6.reverse()             反转数组的元素顺序                                        修改
+
+      四、操作方法
+        7. concat (arr0,arr1,ele1,el2,...)           连接两个或更多的数组，                不修改
+                                      并返回结果。
+         注意： 如果无参，相当复制数组，做了深拷贝
+
+         
+     -->
+
+    <script>
+        //1. sort()
+        var arr=[9,12,30,5];
+        arr.sort();
+        console.log(arr);//[12, 30, 5, 9]   ascII码排序
+       //1.1  sort(函数名)  升序
+        function fn(a,b){
+            return a-b;
+        }
+        arr.sort(fn);
+        console.log(arr);//[5, 9, 12, 30]
+
+        //1.2  sort(函数名)  降序
+        function fn1(a,b){
+            return b-a;
+        }
+        arr.sort(fn1);
+        console.log(arr);//[30, 12, 9, 5]
+
+        //2. reverse()
+        //  var arr1=['red','blue','green','orange'];
+        //  arr1.reverse();
+        //  console.log(arr1);//['orange', 'green', 'blue', 'red']
+
+
+         //3.concat
+         var arr1=['red','blue','green','orange'];
+         //3.1
+         var newArr= arr1.concat();//  深拷贝
+         newArr[0]='purle'
+         console.log(arr1,newArr);
+         //3.2
+         var arr0=[10,20]
+        var arr2= arr1.concat(arr1,arr0,arr0,'nice','hello');
+        console.log(arr2,arr1);
+
+
+          
+
+    </script>
+</body>
+</html>

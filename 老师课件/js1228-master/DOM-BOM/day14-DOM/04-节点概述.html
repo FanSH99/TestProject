@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            文档(document)：一个页面就是一个文档，
+            元素(element)：页面中的所有标签都是元素，
+            节点(node)：网页中的所有内容都是节点（标签、属性、文本、注释等）
+
+            节点类型：元素节点，属性节点，文本节点。一般我们都是操作元素节点。
+            节点是对象:有名字、类型、节点值
+            元素节点的值 null
+            文本节点的值是文本。
+        */
+    </script>
+
+    <ul>123
+        <li>富士山下</li>33
+        <li>好久不见</li>222
+        <li>K歌之王</li>
+        <li>浮夸</li>
+    </ul>
+    <script>
+        let ul = document.querySelector('ul');
+        console.dir(ul);
+        // 1. 获取所有的子节点
+        console.log(ul.childNodes);
+
+        // 2. 节点的名字、类型、值
+        console.log(ul.childNodes[0].nodeName);
+        console.log(ul.childNodes[1].nodeName);
+        console.log(ul.childNodes[0].nodeType);
+        console.log(ul.childNodes[1].nodeType);
+        console.log(ul.childNodes[0].nodeValue);
+        console.log(ul.childNodes[1].nodeValue);
+    </script>
+</body>
+
+</html>

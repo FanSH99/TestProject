@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+       1. JSON: JavaScript Object Notation(JavaScript 对象表示法)
+       2.JSON 是存储和交换文本信息的语法，   前后端数据转换
+       3.JSON中允许的值
+          (1)字符串（2）数值（3）布尔（4）null (5)对象 （6）数组
+           函数和undefined 不能用
+       4.JS中的对象只有JS自己认识，其它语言不认识
+       5.JSON就是一个特殊格式的字符串，这个字符串可以被任意语言所识别，并可以转换为任意语言
+       6.JSON分类
+         (1)对象
+        （2）数组
+
+       注意： JSON 格式的对象  属性名和字符类型的值必须有双引号
+     -->
+
+     <script>
+        //1.
+         var obj='{"name":"韩梦歌","age":18,"no":"1001"}';
+         console.log(obj,typeof obj);
+
+        //  如何把JSON格式转为js对象 JSON.parse(参数)
+        console.log(JSON);
+       var obj1=  JSON.parse(obj);
+       console.log(obj1);
+       console.log(obj1.name,obj1.age,obj1.no);
+       for(var key in obj1){
+        console.log(obj1[key]);
+       }
+
+
+    //  如何把js对象格式转为JSON对象 JSON.stringify(参数)
+
+     var obj2={name:"韩梦歌",age:18,no:"1001"};
+     console.log(obj2);
+      var obj3= JSON.stringify(obj2);
+      console.log(obj3,typeof obj3);
+
+      //2.
+      var arr='[10,20,30,"hello"]';
+      console.log(arr);
+     var arr1= JSON.parse(arr);
+     console.log(arr1);
+
+     var arr2=   JSON.stringify(arr1);
+     console.log(arr2);
+
+
+    //  兼容性的了解 ie7以下不认识 JSON
+    // eval()方法
+
+    var str='alert("hello")';
+    console.log(str);
+    eval(str);
+
+    var json='{"name":"悟空","age":18,"gender":"男"}';
+    // 转为js对象
+    // eval(json)
+   
+   var newobj= eval("("+json+")");
+   console.log(newobj);//{name: '悟空', age: 18, gender: '男'}
+
+
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            /* overflow: hidden; */
+            position: relative;
+        }
+
+        ul {
+            width: calc(600px * 5);
+            height: 100%;
+            list-style: none;
+            display: flex;
+            position: relative;
+            left: 0px;
+            /* transition: all 0.3s; */
+        }
+
+        li {
+            width: 600px;
+            height: 100%;
+        }
+
+        span {
+            position: absolute;
+            background: rgba(43, 11, 11, 0.575);
+            padding: 20px 10px;
+            top: 40%;
+            z-index: 666;
+        }
+
+        .zuo {
+            left: 0;
+        }
+
+        .you {
+            right: 0;
+        }
+
+        section {
+            /* border-top: 3px solid #bbb;
+            border-bottom: 3px solid #bbb; */
+            height: 5px;
+            position: relative;
+            bottom: 11px;
+        }
+
+        section>p {
+            height: 5px;
+            background: linear-gradient(to right, rgb(167, 10, 10), rgb(240, 227, 43), rgb(14, 187, 86), rgb(75, 125, 235), rgb(150, 57, 168));
+            width: 0;
+            /* float: right; */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="zuo">上</span>
+        <ul>
+            <li style="background:rgb(167, 10, 10)"></li>
+            <li style="background:rgb(240, 227, 43)"></li>
+            <li style="background:rgb(14, 187, 86)"></li>
+            <li style="background:rgb(75, 125, 235)"></li>
+            <li style="background:rgb(150, 57, 168)"></li>
+        </ul>
+        <span class="you">下</span>
+        <section>
+            <p></p>
+        </section>
+    </div>
+</body>
+<script>
+    // 获取li的宽度(用来设置ul的left的偏移)
+    var liWidth = $('ul li').width();
+    $('.zuo').click(function () {
+        // last()最后一个标签 prpendTo()将前者标签追加到后者标签的开始位置
+        // parent()找到当前标签父元素设置偏移量
+        $('ul li').last().prependTo('ul').parent().css('left', -liWidth)
+            .stop(true).animate({ left: 0 }, 1000);
+
+        $('p').css('float', 'left').stop(true, true).animate({ width: liWidth }, 1000, function () {
+            $(this).css('width', 0);
+        });
+    });
+    
+    function auto() {
+        $('ul').stop(true, true).animate({ left: -liWidth }, 1000, function () {
+            $('ul').css('left', 0).children().first().appendTo('ul');
+        });
+        $('p').css('float', 'right').stop(true, true).animate({ width: liWidth }, 1000, function () {
+            $(this).css('width', 0);
+        });
+    }
+    var time = setInterval(auto, 3500);
+    $('.you').click(function () { auto() })
+    $('div').hover(function () {
+        clearInterval(time)
+    }, function () {
+        time = setInterval(auto, 3500);
+    });
+
+</script>
+
+</html>

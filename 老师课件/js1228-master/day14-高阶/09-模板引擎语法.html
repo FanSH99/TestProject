@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/art-template@4.13.2/lib/template-web.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script type="text/html" id="tpl">
+        <!-- 1. 获取基本数据类型 -->
+    <div>{{game}}</div>
+    <!-- 2. 获取对象 -->
+    <div>{{hero.name}}</div>
+    <!-- 3. 逻辑运算 -->
+    <div>{{hero.level +10}}</div>
+    <!-- 4. 文本渲染 -->
+    <div>{{text}}</div>
+    <!-- 5. H5 代码渲染 -->
+    <div>{{@text}}</div>
+    <!-- 6. 分支语法 -->
+    {{if hero.sex == true}}
+    男
+    {{else if hero.sex == false}}
+    女
+    {{else}}
+    未知
+    {{/if}}
+
+    <!-- 7. 循环 -->
+    {{each students}}
+        <h2>{{$value.name}}--{{$value.age}}--{{$value}}--{{$index}}</h2>
+    {{/each}}
+
+    <div>彭于晏</div>
+    </script>
+    <script>
+        /* 
+            模板引擎 ：数据和显示的分离。
+            使用步骤：
+                1. 引入 js
+                2. 创建模板
+                3. 提供数据
+                4. 给模板绑定数据
+        */
+        const students = [
+            { name: '剑圣', age: 20, sex: '男' },
+            { name: '吕布', age: 22, sex: '男' },
+            { name: '虞姬', age: 18, sex: '女' }
+        ];
+
+        let result = template("tpl", {
+            game: "王者荣耀",
+            hero: {
+                name: "后裔",
+                skill: "多重箭矢",
+                level: 18,
+                sex: false
+            },
+            students,
+            text: "<strong>加粗</strong>"
+        });
+
+        $('div').html(result);
+
+    </script>
+</body>
+
+</html>

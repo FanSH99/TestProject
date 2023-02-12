@@ -1,0 +1,87 @@
+body {
+  max-width: 540px;
+  min-width: 320px;
+  margin: 0 auto;
+  font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei",
+    STXihei, hei;
+  color: #000;
+  background: #f2f2f2;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+/* goBack */
+.goBack {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  background: url(../upload/back.png) no-repeat;
+  background-size: 38px 38px;
+}
+
+/* focus */
+
+.focus {
+  position: relative;
+  /* 溢出隐藏 */
+  overflow: hidden;
+}
+
+.focus img {
+  width: 100%;
+}
+
+.focus ul {
+  /* 清除浮动 */
+  overflow: hidden;
+  /* 装 5 张图片 */
+  width: 500%;
+  /* 移动后，显示第一张图片 */
+  margin-left: -100%;
+}
+
+.focus ul li {
+  /* 横向浮动 */
+  float: left;
+  /* 5张图片 */
+  width: 20%;
+}
+
+.focus ol {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  /* 替换默认值 */
+  margin: 0;
+}
+
+.focus ol li {
+  /* 在一行显示 */
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+  /* 去掉默认的圆点样式 */
+  list-style: none;
+  /* 圆角 */
+  border-radius: 2px;
+  /*  */
+  transition: all 0.3s;
+}
+
+.focus ol li.current {
+  width: 15px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.str.charAt(index)	返回在指定位置的字符。
+        2.str.charCodeAt(index)	返回在指定的位置的字符的 Unicode 编码。    ascii码
+
+        3.str.concat(str0,str1,'5',8.....)	连接两个或更多字符串，并返回新的字符串。
+          var str='hello'
+          var str0='nice'
+          str=str+str0
+
+        4.indexOf('h',start)	    
+         返回某个指定的字符串值在字符串中首次出现的位置。存在返回位置，不存在返回-1
+    
+    -->
+
+    <img src="./images/role-y .png" alt="">
+    <script>
+        var str='hello';
+
+        //1.charAt(index)	
+      var char=  str.charAt(1);
+      console.log(char);//e
+
+      //2.charCodeAt(index);
+      console.log(str.charCodeAt(4));  //o------111
+
+      //3.concat
+      var str0= str.concat(str,'nice',5,8);
+      console.log(str0);
+
+      //4. indexOf
+      var str='hello woreld e';
+    //  var idx= str.indexOf('e');
+    //  var idx= str.indexOf('e',2);//9   包含2索引号，向后搜索
+    var idx= str.indexOf('eld',2);//9     字符串中包含eld 返回第一个字符的位置 
+     console.log(idx);
+
+
+     //使用场景
+    var img=  document.querySelector('img');
+   var url= img.src;
+   console.log(url);//file:///D:/ftp/2022-7-5%E5%BC%80%E5%A7%8Bjs/js20220705/10day/images/role-y%20.png
+
+    if(url.indexOf('y1.png')!=-1){
+        console.log('包含');
+    }else{
+        console.log('不包含');
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        prototype  原型。 如果放到函数后面例如Person.prototype  就成为了属性。但是它本身也叫做对象，所以称为原型对象。
+     只要是构造函数就有prototype
+
+     costructor  构造器，
+     只要是对象就有constructor  Person.prototype也有constructor
+
+     __proto__ 对象的原型，隐式原型---真正的原型链的查找机制，沿着此属性来查找的。
+
+     
+    -->
+
+    <script>
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.test = function () {
+                console.log(this.name + 'is testing');
+            }
+        }
+        Person.prototype.say = function () {
+            console.log(this.name + 'is saying:你好呀');
+        }
+
+        console.log(Person.prototype);//{say: ƒ, constructor: ƒ}
+        console.log(Person.prototype.constructor);
+        /* ƒ Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.test = function () {
+                console.log(this.name + 'is testin… */
+        var p1 = new Person('小明', 8, '男');
+        console.log(p1);//Person {name: "小明", age: 8, sex: "男", test: ƒ}age: 8name: "小明"sex: "男"test: ƒ ()__proto__: Object
+        console.log(p1.constructor);
+        /* 
+        ƒ Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.test = function () {
+                console.log(this.name + 'is testin… */
+        console.log(p1.prototype);//undefined
+        console.log(Person.prototype.constructor == p1.constructor);//true
+        console.log(p1.__proto__);//{say: ƒ, constructor: ƒ}
+        console.log(p1.__proto__ == Person.prototype.__proto__);//false
+        console.log(p1.__proto__ == Person.prototype);//true
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 200px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        }
+    </style>
+    <!-- 引入动画 -->
+    <script src="animate.js"></script>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+
+    <script>
+        /* 
+            需求:
+                 1. 鼠标接触侧边栏，div 动画， span 内容变化.
+                 2. 鼠标离开侧边栏，div 再次动画，span 内容变化。
+        */
+        let sliderbar = document.querySelector('.sliderbar');
+        let span = document.querySelector('span');
+        let con = document.querySelector('.con');
+
+        sliderbar.addEventListener('mouseenter', function () {
+            span.innerHTML = "—>";
+            animate(con, -160);
+        });
+        sliderbar.addEventListener('mouseleave', function () {
+            span.innerHTML = "<—";
+            animate(con, 0);
+        });
+    </script>
+</body>
+
+</html>

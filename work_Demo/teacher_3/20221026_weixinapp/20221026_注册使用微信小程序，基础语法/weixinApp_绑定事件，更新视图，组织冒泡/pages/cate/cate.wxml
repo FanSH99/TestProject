@@ -1,0 +1,37 @@
+<!--pages/cate/cate.wxml-->
+<text>分类页面</text>
+
+<!-- 微信小程序中的双向数据绑定  v-model-->
+<view>
+  微信小程序中的双向数据绑定{{msg}}
+</view>
+<input type="text" model:value="{{msg}}" />
+
+<view>
+微信小程序中绑定事件
+</view>
+<!-- bind+事件名称 tap触屏事件，相当于点击 -->
+<button bindtap="clickMe">绑定事件</button>
+<button bindtouchmove="move">手指触摸后移动事件</button>
+<!-- 小程序中不能以下面这种方法传参 -->
+<!-- <button bindtap="sendnum(1)">事件传递参数</button> -->
+
+<!-- 事件传参，绑定一个自定义属性名，data是写死的， 必须data- 后面id不是写死的-->
+<button bindtap="sendnum" data-id="10" data-name='张三'>事件传递参数</button>
+
+<view>
+<view wx:for="{{list}}" wx:key="index" bindtap="remove" data-id="{{item.id}}">
+{{item.name}}---{{item.price}}
+</view>
+</view>
+
+<!-- 阻止事件冒泡 --catch+事件名绑定事件代替bind+事件名来阻止事件
+点击子标签先子标签事件后父标签事件。
+-->
+<view class="parent" bindtap="parentEvent">
+父标签
+<!-- catch+事件名可以阻止事件冒泡 -->
+  <view class="child" catchtap="childEvent">
+子标签
+</view>
+</view>

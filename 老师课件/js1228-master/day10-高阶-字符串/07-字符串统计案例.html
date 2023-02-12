@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 有一个对象 来判断是否有该属性 对象['属性名']
+        let obj = {
+            age: 18,
+            sex: true
+        }
+        let temp = 'age';
+        if (obj[temp]) {
+            console.log('ok');
+        } else {
+            console.log('no');
+        }
+
+        // 判断一个字符串 'abcoefoxyozzopp' 中出现次数最多的字符，并统计其次数。
+        /* 
+            对象 info
+            info.a = 1
+            info.b = 1
+            info.c = 1
+            info.o = 2
+        */
+        let result = 'abcabaea';
+        let info = {};
+        for (let i = 0; i < result.length; i++) {
+            // 当前字符
+            let char = result[i];
+            // 对象的属性是否存在
+            if (info[char]) {
+                // 存在则自加1
+                info[char]++;
+            } else {
+                // 不存在则，赋值为1
+                info[char] = 1;
+            }
+        }
+        console.log(info);
+        // 遍历对象的属性和值
+        let max = 0;
+        let ch = '';
+        for (let k in info) {
+            console.log(k, info[k]);
+
+            if (info[k] > max) {
+                max = info[k];
+                ch = k;
+            }
+        }
+        console.log(ch, max);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <button onclick="changeName()">改变</button>
+
+</body>
+<script>
+    let user = {
+        name: "张三",
+        age: "18"
+    }
+    document.querySelector('h1').innerHTML = user.name;
+
+    // 注意，原生js的onclick事件里面必须加小括号,function也必须加。。
+
+    let myobj = new Proxy(user, {
+        // get劫持数据。初次渲染就调用get方法。调用proxy时会调用set方法。
+        get(a, b) {
+            console.log(a, b);
+            console.log('get调用了');
+        },
+        // set设置
+        set(target, property, value) {
+            console.log(target, property, value);//{name: '张三', age: '18'} 'name' '李四'
+            target[property] = value;//{name:"李四"，, age: '18'}
+            document.querySelector('h1').innerHTML = value;
+        }
+    })
+    console.log(myobj);//Proxy {name: '张三', age: '18'}
+
+    function changeName() {
+        myobj.name = "李四"
+        console.log(user);//{name: '张三', age: '18'}
+    };
+    myobj.name;
+
+</script>
+
+</html>

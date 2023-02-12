@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        span {
+            /* 动画一定要加定位 */
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn'>开启500</button>
+    <div>一路向北</div>
+    <script>
+        /* 
+            需求：点击按钮，div 移动，移动速度逐渐变慢，直到降为 0
+
+            步长取整: 步长小于 1 px，就会出现各种问题。
+        */
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+
+        btn.addEventListener('click', function () {
+            console.log('div 开始移动');
+            // div.style.left = div.offsetLeft + 0.6 + 'px';
+            animate(div, 500);
+        });
+
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(() => {
+                let left = obj.offsetLeft;
+                if (left > target) {
+                    clearInterval(obj.timer);
+                    return;
+                }
+                // 步长 = (目标位置 - 当前位置) / 10
+                let step = target - left;
+                step = step / 10;
+                // 向上取整
+                step = Math.ceil(step);
+                obj.style.left = left + step + "px";
+            }, 200);
+        }
+        /*
+            缓慢动画的原理:  起始位置 0   目标位置 100
+                时间       当前位置         步长
+                0             0           (100 - 0) / 10 = 10
+                1             10          (100 - 10) / 10 = 9
+                2             19          (100 - 19) / 10 = 8.1
+                .....
+                x             95          (100 - 95) / 10 = 0.5
+                              495         (500 - 495) / 10 =  0.5
+        */
+    </script>
+</body>
+
+</html>

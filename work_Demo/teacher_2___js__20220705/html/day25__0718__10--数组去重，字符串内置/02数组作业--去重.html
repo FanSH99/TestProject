@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 4, 4, 4, 1, 1, 'M', 'e', 'r', 'r', 'y'];
+        // 方法1
+        function demo1(arr) {
+            arr = new Set(arr);
+            arr = [...arr];
+            console.log(arr);
+            arr2 = [...new Set(arr)];
+            console.log(arr2);
+        }
+        demo1(arr);
+        /* 方法2 暴力去重--双循环
+        ---拿出数组中的每个元素，和他后面所有元素对比一遍，发现有相同的话，删除后面的元素，
+        --弊端，元素组会少了一个元素，
+        --不想错过元素，索引号-- */
+
+        function demo2(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = i + 1; j < arr.length; j++) {
+
+                    if (arr[i] === arr[j]) {
+                        //删除后面的元素
+                        arr.splice(j, 1);
+                        //保证不跳过元素，改变位置后在遍历一遍
+                        j--;
+                    }
+                }
+            }
+            console.log(arr);
+        }
+        demo2(arr);
+
+
+        // 方法3，includes()方法去重
+
+        function demo3(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (!newArr.includes(arr[i])) {
+                    newArr.push(arr[i]);
+                }
+            }
+            console.log(newArr);
+        }
+        demo3(arr);
+
+
+
+    </script>
+</body>
+
+</html>

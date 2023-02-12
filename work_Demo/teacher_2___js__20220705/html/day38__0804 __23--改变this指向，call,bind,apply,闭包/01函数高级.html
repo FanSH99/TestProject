@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        2022年8月4日09:19:36
+
+        函数分类
+        1.命名函数 function fn(){} fn()
+        2.匿名函数 function(){}
+        (1)先赋值再执行
+        var fn=function(){}
+        fn();
+        (2)自我执行
+        (function{})()
+
+        函数调用
+        1。普通函数  函数名()
+        2.字面量对象方法  函数名.方法()
+        3.构造函数
+        4.绑定事件后面的函数。 btn.onclick=fn
+        5.定时器里面的函数  setInterval(fn,1000)   setInterval('fn()',1000)
+        6.自执行函数  (function(){})()
+
+
+        this指向
+        1.fn()  window.fn()     ---this指向window
+        2.obj.fn()      ---this指向方法的调用者(obj)
+        3.构造函数  var fn1=new Fn()    ---this指向实例对象Fn
+        4.btn.onclick=fn    事件的触发者或调用者（btn)
+        5.定时器    ---指向window
+        6.自执行函数（立即执行函数）    ---指向window
+
+        
+
+
+        改变this指向的3中方法
+        1.
+
+        new做了那些事情？
+        1.创建了空对象
+        2.实例化对象
+        3、将事件和方法绑定到实例对象上
+        
+     -->
+
+    <script>
+        var fn1 = new Function('a', 'b', 'console.log(a+b)');
+
+        fn1(1, 2);//3
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            提问：面向对象的理解及特性。(封装、继承、多态)。
+            封装:函数是封装了一段可以重复执行的代码，隐藏了内部的实现细节，对外暴露一个函数名。类似笔记本的一键开机。
+            继承:继承父类的成员(属性和方法)。Object 是超类。可以实现代码的复用。
+            多态:"做什么" 和 "谁去做" 以及 "怎样去做" 分开. 
+                  https://segmentfault.com/q/1010000003056336
+
+            ES6 之前没有关键字 extends 继承。我们是通过构造函数 + 原型对象模拟实现继承，被称为组合继承
+            1. 借用构造函数继承父类的属性。想使用父构造函数的属性，调用父构造函数的即可。
+                核心原理：通过 call() 调用 Father 构造函数，
+                         并把 Father 构造函数的 this 指向 Son 构造函数中的 this，
+                         就可以实现构造函数属性的继承。
+        */
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Son(name, age, sex, address) {
+            // this.name = name;
+            // this.age = age;
+            // this.sex = sex;
+
+            // 函数就是封装了一段可以重复执行的代码
+            // 两个函数的执行逻辑一样，因此可以调用 Father 的构造函数
+            // Father(name,age,sex);
+
+            // Father 构造函数的 this 指向 Father 的实例对象
+            // Son    构造函数的 this 指向 Son    的实例对象
+
+            // 因此，调用 Father 的构造函数时，要修改 this 指向
+
+            // 目的：实现了继承。通过 call 手动调用 Father 构造函数，且修改 this 指向
+            Father.call(this, name, age, sex);
+
+            this.address = address;
+        }
+    </script>
+</body>
+
+</html>

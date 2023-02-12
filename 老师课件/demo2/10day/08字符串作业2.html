@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 4.去掉字符串中的空格
+/* 
+ 1. var str='    he   ll  o    ';
+  建议  replace的方法  + 遍历
+
+2.遇到非空格的话，拼接字符串，形成一个没空格的字符串
+
+*/
+var str='    he   ll  o    ';
+console.log(str.length);//18
+// 这个方法，去除所有的空格，有bug  后面去不掉
+var j=str.length;
+for(var i=0;i<j;i++){
+ str= str.replace(' ','');
+ }
+ console.log(str);
+//  str=str.replace(/\s+/g,'');
+// console.log(str);
+
+// // str= str.replaceAll(' ','');
+// // console.log(str);
+// var str0='';
+// for(var i=0;i<str.length;i++){
+//     if(str[i]!=' '){
+//         str0+=str[i]
+//     }
+
+// }
+
+// console.log(str0);
+
+// 5.字符串首字母改大写
+/* 
+1.首字母取出来 charAt     str[0]
+2. 改大写  toUpperCase
+3. 遍历   +拼接
+
+*/
+// 方法一： 
+// var str='hello';
+// var char=str.charAt(0).toUpperCase();
+// console.log(char);//H
+
+// var str0='';
+// for(var i=0;i<str.length;i++){
+//     if(i==0){
+//         str0+=char;
+//     }else{
+//         str0+=str[i]
+//     }
+
+// }
+
+// console.log(str0);
+
+// 方法二：
+// var char=str.charAt(0).toUpperCase();
+// console.log(char);//H
+
+//  var str1= str.substring(1);// slice    substr
+//  str1=char+str1;
+// console.log(str1);
+
+// 6.去字符串头尾空格     （用原生和不原生（内置方法）两种方法来做）
+
+// 内置方法
+// var str='   he     llo   '
+// str=str.trim();
+// console.log(str);
+
+
+//原生
+// 两个循环  正向    倒向
+// 1.去头部
+// for(var i=0;i<str.length;i++){
+//     if(str[i]!=' '){
+//         // 遇到非空格的话，从h向后截取所有的字符，substring 并且结束循环
+//        str= str.substring(i);
+//        break;
+//     }
+  
+// }
+// console.log(str);
+
+// //2.去尾部 'he     llo   '
+
+// for(var i=str.length-1;i>=0;i--){
+//     if(str[i]!=' '){ 
+//         // 遇到非空格的话   substring    start>end   交换位置
+//        str= str.substring(0,i+1);
+//        break;
+//     }
+  
+// }
+// console.log(str);
+
+// 方法二：
+
+// function trimHead(str){
+//     // 1.去头部
+// for(var i=0;i<str.length;i++){
+//     if(str[i]!=' '){
+//         // 遇到非空格的话，从h向后截取所有的字符，substring 并且结束循环
+//        str= str.substring(i);
+//        break;
+//     }
+  
+// }
+//  return str;
+// }
+
+// var str='    hel     lo    ';
+// str=trimHead(str);
+// console.log(str);
+// // 反转字符串      -----转为数组-----反转-----转为字符串
+
+// str=str.split('').reverse().join('');
+// console.log(str);
+// str=trimHead(str);
+// console.log(str);
+// str=str.split('').reverse().join('');
+// console.log(str);
+
+// 7.删除字符串中所有的数字（用原生和不原生（内置方法）两种方法来做）
+
+// 内置方法
+//  var str='afjasoeigjs123sgdhedhhe456osddhnofd789';
+// str=str.replace(/\d+/g,'');
+// console.log(str);
+
+//原生
+// var str0='';
+//  for(var i=0;i<str.length;i++){
+//     if(str[i]>=0&&str[i]<=9){
+//            continue;
+//     }
+//     str0+=str[i]
+//  }
+//  console.log(str0);
+
+
+
+// 8.反转字符串
+// // 方法一：
+//  var str='hello';
+// //  str=str.split('').reverse().join('');
+// //  console.log(str);
+
+// // 方法二：
+// var str0='';
+//  for(var i=str.length-1;i>=0;i--){
+//     str0+=str[i]
+
+//  }
+//  console.log(str0);
+
+
+    </script>
+</body>
+</html>

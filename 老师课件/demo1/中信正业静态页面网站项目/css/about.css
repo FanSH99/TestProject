@@ -1,0 +1,315 @@
+.banner{
+    position: relative;
+}
+.banner img{
+    width: 100%;
+    display: block;
+}
+.banner_gx{
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-100%);
+
+}
+/* 公司简介公用部分 */
+
+.banner .banner_gx .left{
+    width: 600px;
+    /* height: 200px; */
+    /* background: red; */
+    float: left;
+}
+.banner .banner_gx .left h2{
+    font-size: 30px;
+    font-weight: normal;
+    color: #333;
+    
+}
+.banner .banner_gx .left p{
+    font-size: 16px;
+    color: #666;
+    margin-top: 45px;
+    /* height: 12em; */
+    line-height: 2em;
+    /* display: block; */
+    display: -webkit-box;
+    /* 设置弹性盒子 */
+    -webkit-box-orient: vertical;
+    /* 文字垂直排 */
+    /* line-clamp: 6; */
+    -webkit-line-clamp: 6;
+    /* 内容显示六行 */
+    overflow: hidden;
+    /* 超出的部分省略 */
+    text-overflow: ellipsis;
+    /* 超出的文本出现省略号 */
+
+
+}
+.banner .banner_gx .left a{
+    width: 180px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    display: block;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 38px;
+    text-decoration: none;
+    color:#ffffff;
+    margin-top: 35px;
+}
+.banner .banner_gx .left a:hover{
+    background: red;
+    border-color: red;
+}
+/* 公司简介公用部分结束 */
+.numb{
+    width: 1200px;
+    height: 120px;
+    background: #ffffff;
+    position: absolute;
+    left:50%;
+    bottom: 0px;
+    transform: translate(-50%,50%);   
+    padding: 40px 0; 
+}
+.numb ul li{
+    width: 239px;
+    height: 120px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    float: left;
+}
+.numb ul li h1{
+    /* font-size: 70px; */
+    color: #d7000f;
+}
+.numb ul li h1 sup{
+    font-size: 30px;
+    vertical-align: text-top;
+}
+.numb ul li h1 span{
+    font-size: 18px;
+    color: #666;
+    font-weight: normal;
+
+}
+.numb ul li p{
+    color: #666;
+}
+.dsz{
+   
+    /* height: 600px; */
+    /* text-align: center; */
+    background: url(../img/16.jpg);
+}
+.dsz .dsz_wz{
+    width: 1280px;
+    padding: 210px 0 160px 0;
+    margin: auto;
+}
+.dsz .dsz_wz h1{
+    font-size: 32px;
+    font-weight: normal;
+    color: #212121;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.dsz .dsz_wz p{
+    color: #666;
+    font-size: 14px;
+    line-height: 2em;
+    width: 985px;
+    margin: auto;
+    padding-top: 20px;
+}
+.dsz .dsz_wz p:nth-child(5) {
+    text-align: right;
+}
+/* 董事长至此结束 */
+
+/* 党委开始 */
+.dw1{
+    width: 1280px;
+    margin: auto;
+    padding: 140px 0;
+    position: relative;
+}
+
+.dw1 .dwfz1 a img{
+   border:2px solid #ebe9e9 ;
+   float: left;
+}
+.dw1 .dwfz1 a img:hover,.dw1 .zzjg1 a img:hover{
+    border-bottom: 2px solid #d7000f;
+}
+.dw1 .dwfz1 p{
+    font-size: 24px;
+    color: #464646;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+}
+.dw1 .zzjg1 a img{
+    border:2px solid #ebe9e9;
+    float:right;
+}
+.dw1 .zzjg1 p{
+    font-size: 24px;
+    color: #464646;
+    position: absolute;
+    top: 50%;
+    right: 20%;
+}
+/* 党委结束 */
+
+/* 公司简介界面开始  */
+.gsjj,.zzjg,.dwbz{
+    padding: 40px 0 120px 0;
+    border-top: 3px solid rgb(232, 238, 235);
+}
+.gsjj .gsjj_star,.zzjg .zzjg_star,.dwbz .dwbz_star{
+    width: 1280px;
+    margin: auto;
+
+}
+.gsjj .gsjj_star .gsjj_top h2,.zzjg .zzjg_star .zzjg_top h2,.dwbz .dwbz_star .dwbz_top h2{
+    color: #464646;
+    font-size: 32px;
+    font-weight: normal;
+}
+.gsjj .gsjj_star .gsjj_top h6,.zzjg .zzjg_star .zzjg_top h6,.dwbz .dwbz_star .dwbz_top h6{
+    width: 80px;
+    border-bottom:2px solid #a2a2a2;
+    padding-top: 32px;
+    
+}
+.gsjj .gsjj_star .gsjj_tupian{
+    float: left;
+    padding-top: 80px;
+}
+.gsjj .gsjj_star .gsjj_wz{
+    width: 665px;
+    float: right;
+    padding-top: 80px;
+}
+.gsjj .gsjj_star .gsjj_wz p{
+    font-size: 16px;
+    color:#666;
+    line-height: 2em;
+    margin-bottom: 50px;
+}
+/*  公司简介界面结束  */
+
+/* 党委班子开始 */
+.dwbz .dwbz_star .dwbz_lm{
+    width: 1280px;
+    height: 190px;
+    margin-top: 110px;
+    background: #f4f4f4;
+    padding: 25px 0;
+    position: relative;
+
+}
+.dwbz .dwbz_star .dwbz_lm img{
+    position: absolute;
+    top: 25px;
+    left:50%;
+    transform: translateX(100%);
+}
+.dwbz .dwbz_star .dwbz_lm h2{
+    font-size: 24px;
+    color: #d7000f;
+    font-weight: normal;
+    padding-left: 400px;
+}
+.dwbz .dwbz_star .dwbz_lm p{
+    color: #666;
+    font-size: 16px;;
+    padding-left: 400px;
+    line-height: 1.75em;
+}
+.dwbz .dwbz_star .dwbz_lm p:nth-child(3) {
+    margin-top: 30px;
+}
+.dwbz .dwbz_star .dwbz_four{
+    margin-top: 25px;
+    /* height: 600px; */
+    /* border: 1px solid #333; */
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xlf{
+    width: 564px;
+    height: 190px;
+    /* border: 1px solid #333; */
+    float: left;
+    padding: 25px 20px 25px 36px;
+    background: #f4f4f4;
+   
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xlf .dwbz_xlf_wz{
+    float: left;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xlf .dwbz_xlf_wz h2{
+    font-size: 24px;
+    color: #d7000f;
+    font-weight: normal;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xlf .dwbz_xlf_wz p{
+    color: #666;
+    font-size: 16px;;
+    line-height: 1.75em;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xlf .dwbz_xlf_wz p:nth-child(4){
+    margin-top: 25px;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xlf img{
+    float: right;
+}
+.dwbz .dwbz_star .dwbz_four .zjh,
+.dwbz .dwbz_star .dwbz_four .tj{
+    margin-top: 20px;
+}
+
+.dwbz .dwbz_star .dwbz_four .dwbz_xah{
+    float: right;
+    width: 564px;
+    height: 190px;
+    /* border: 1px solid #333; */
+    padding: 25px 20px 25px 36px;
+    background: #f4f4f4;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xah .dwbz_xah_wz{
+    float: left;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xah .dwbz_xah_wz h2{
+    font-size: 24px;
+    color: #d7000f;
+    font-weight: normal;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xah .dwbz_xah_wz p{
+    color: #666;
+    font-size: 16px;;
+    line-height: 1.75em;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xah .dwbz_xah_wz p:nth-child(4){
+    margin-top: 25px;
+}
+.dwbz .dwbz_star .dwbz_four .dwbz_xah img{
+    float: right;
+}
+
+
+
+/* 党委班子结束 */
+
+
+/* 组织结构开始 */
+.zzjg .zzjg_star .zzjg_top img{
+    width: 100%;
+    height: 100%;
+    padding-top:60px;
+}
+
+/* 组织结构结束 */

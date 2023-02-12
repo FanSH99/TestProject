@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+
+        .class1 {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a href="{{url}}">百度一下</a><!-- 不起作用 -->
+        <!-- v-bind绑定属性，属性值不再是字符串二十data中的数据。 
+        v-bind可以绑定元素的任意属性
+        -->
+        <a v-bind:href="url">百度一下</a>
+        <div v-bind:class="classname" v-bind:id="id" v-bind:data-index="index">握不住的沙就扬了吧</div>
+        <!-- v-bind可以省略v-bind而只写冒号-->
+        <div>
+            <img :src="src" alt="">
+        </div>
+        <label for="use"><input type="checkbox" name="" id="use" v-model="use">点击选择</label>
+        <div v-html="msg" :class="{'class1':use}">{{msg}}</div>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月2日10:19:22 */
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "<p>等不到的雪月风花，我们的爱也有时差</p>",
+            url: "https://www.baidu.com",
+            id: "msg",
+            index: 12,
+            classname: "blue",
+            src: "./bin/1.gif",
+            class1: 'black',
+            use: false,
+        }
+    })
+</script>
+
+</html>

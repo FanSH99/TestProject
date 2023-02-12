@@ -1,0 +1,20 @@
+需求：
+    没有外键约束，可以随意删除部门。
+
+添加外键(建表时)：
+   -- 员工表
+  CREATE table emp (
+    id int PRIMARY key auto_increment,
+    name varchar(20),
+    age int,
+    dep_id int,
+    -- 	添加外键约束
+    CONSTRAINT fk_emp_dept FOREIGN KEY(dep_id) REFERENCES dept(id)
+  );
+   注意：先创建主表，再创建从表。先给主表添加数据，再给从表添加数据。
+删除外键：
+    alter table emp drop FOREIGN key fk_emp_dept;
+添加外键(建表后)：
+    alter table emp add CONSTRAINT fk_emp_dept FOREIGN KEY(dep_id) REFERENCES dept(id);
+
+

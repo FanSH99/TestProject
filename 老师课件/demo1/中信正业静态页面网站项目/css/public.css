@@ -1,0 +1,141 @@
+*{
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.clear{
+    clear: both;
+}
+.top_shadow{
+    width: 100%;
+    box-shadow: 0 10px 15px #f3f3f3 ;
+    z-index: 2;
+    position: relative;
+}
+.top{
+    width: 1280px;
+    height: 160px;
+    /* border: 1px solid #333; */
+    margin: auto;
+
+}
+.top .top_yinying{
+    margin: 20 auto;
+    width: 100%;
+    box-shadow: 0px 10px #f3f3f3;
+    z-index: 3;
+    position: relative;
+}
+.top .logo{
+    width: 146px;
+    height: 47px;
+    float: left;
+    padding-top: 35px;
+    
+}
+.top .top-r{
+    /* width: 700px; */
+    /* height: 28px; */
+    /* line-height: 28px; */
+    /* border: 1px solid #333; */
+    position: relative;
+    float: right;
+    padding-top: 32px;
+}
+.top .top-tr ul li{
+    /* height: 26px; */
+    float: right;
+}
+.top .top-r .top-tr ul li input{
+   width: 125px;
+   height: 24px;
+   border: 1px solid #666;
+   padding-left: 5px;
+   outline: none;
+   /* 文本框去掉 */
+   
+
+}
+.top .top-r .top-tr ul li button{
+    border: none;
+    background: none;
+    position: absolute;
+    right: 0px;
+    top: 35px;
+    padding-right: 10px;
+    cursor: pointer;
+    /* 鼠标指针变小手 */
+}
+.top .top-r .top-tr ul li a{
+    /* font-size: 24px; */
+    text-decoration:none;
+    color: #666;
+    margin: 0px 15px;
+
+}
+.top .top-r .top-tr ul li:nth-child(3){
+    border-right: 1px solid #999;
+}
+.top .top-r .top-tr ul li a:hover{
+    color: red;
+}
+.nav{
+    padding-top: 20px;
+}
+.nav dl{
+    float: left;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+
+}
+.nav dl dd{
+    border: 1px solid #999;
+    padding: 10px; 
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* transition: all 1s; */
+    display: none;
+    
+
+}
+.nav dl:hover dd{
+    text-align: center;
+    background: #ffffff;
+    display: block;
+    /* transition:  he 1s; */
+}
+.nav dl dd a{
+    display:inline-block;
+    /* 转换成行内块 */
+    white-space: nowrap;
+    /* 文字强制不换行 */
+    
+    color: #999;
+    text-decoration: none;
+    padding: 5px 0;
+    border-bottom: 1px solid transparent;
+    /* transparent文字变透明 */
+    /* 或者用rgba 设置透明度也可以 */
+    
+    
+}
+.nav dl dd a:hover{
+    color: red;
+    border-bottom: 1px solid red;
+}
+.nav dl dt{
+    padding-bottom: 4px;
+}
+.nav dl dt a{
+    color: #333;
+    text-decoration: none;
+}
+.nav dl dt a:hover{
+    color: red;
+}
+
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        原型链   查找属性方法的一种查找机制
+               沿着原型在查找
+
+        // 调用方法的时候 会先从自己本身找
+        // 本身找不到 就从自己的原型当中
+        // 原型当中找不到
+        // 就找自己的原型的原型
+        // 直到找到为止
+        // 如果一直找不到 
+        // 就报错
+
+     -->
+    <script>
+
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+            this.say=function(){
+                console.log(this.name+'is saying~~~~~1');
+            }
+        }
+        // Person.prototype.say=function(){
+        //     console.log(this.name+'is saying~~~~~11');
+        // }
+        Person.prototype.walk=function(){
+            console.log(this.name+'is walking~~~~~12');
+        }
+
+        function Student(name,age,no){
+            this.name=name;
+            this.age=age;
+            this.no=no;
+            this.say=function(){
+                console.log(this.name+'is saying~~~~~2');
+            } 
+        }
+        // 原型上的方法被继承过来
+         Student.prototype=Object.create(Person.prototype);
+         Student.prototype.constructor=Student;
+
+        //  Student.prototype.say=function(){
+        //     console.log(this.name+'is saying~~~~~21');
+        // }
+       Student.prototype.test=function(){
+            console.log(this.name+'is testing~~~~~22');
+        }
+
+
+        function ManStudent(name,age,no,gender){
+            this.name=name;
+            this.age=age;
+            this.no=no;
+            this.gender=gender;
+            // this.say=function(){
+            //     console.log(this.name+'is saying~~~~~3');
+            // } 
+        }
+
+        // 原型上的方法被继承过来
+        ManStudent.prototype=Object.create(Student.prototype)
+        ManStudent.prototype.constructor=ManStudent;
+
+        // ManStudent.prototype.say=function(){
+        //     console.log(this.name+'is saying~~~~~31');
+        // }
+       ManStudent.prototype.test=function(){
+            console.log(this.name+'is testing~~~~~32');
+        }
+
+        var m1= new ManStudent('王子兴',18,'1001','男');
+        console.log(m1.name,m1.age,m1.no,m1.gender);
+
+        // 方法  继承  原型链的查找问题
+        m1.say();
+
+    </script>
+
+
+<!-- 
+
+    上面的例子没有考虑  借用构造函数来实现继承
+
+     原型链
+
+     // 调用方法时，先从自身来查找
+        如果自身查不到，向自身原型上查找
+        如果原型上也找不到，向原型的原型上查找
+        直接查到为止
+        如果查不到，就报错
+
+
+
+ -->
+</body>
+</html>

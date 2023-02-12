@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+<script>
+    // 2022年9月15日15:08:46
+    $.ajax({
+        url:"https://suggest.taobao.com/sug?code=utf-8&q=水杯",
+        method:"get",
+        // 解决跨域问题 ---并非万能，只能跨域get请求，如果是post请求不能解决跨域。
+        dataType:"jsonp",
+        success(res){
+            console.log(res);
+        },
+        error(err){
+            console.log(err);
+        }
+    })
+
+</script>
+</html>

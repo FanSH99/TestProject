@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form>span {
+            display: block;
+            float: left;
+            width: 70px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="./07表单的属性.html" method="get" onsubmit="return false">
+        <span>用户名：</span> <input type="text" id="user" value="请输入用户名"><br>
+        <span>密码：</span> <input type="password" id="pwd" placeholder="请输入密码"><br>
+        <span>性别：</span><input type="radio" name="sex" id="male" value="male" checked>男<input type="radio" name="sex"
+            value="female" id="female">女<br>
+        <span>爱好：</span><input type="checkbox" name="ah" checked id="cbx">游泳 <input type="checkbox" name="ah">打球<input
+            type="checkbox" name="ah">敲代码<br>
+        <span>文件：</span><input type="file" id="file"><br><br>
+        <span>留言：</span><textarea id="area" cols="30" rows="10"></textarea><br>
+
+        <span>家乡：</span><select id="slt">
+            <option value="hn">河南省</option>
+            <option selected value="hb">河北省</option>
+        </select><br>
+
+        <input type="submit" value="提交" id="btn">
+
+    </form>
+    <script>
+        //1. 查
+
+        var user = document.querySelector('#user');
+        var pwd = document.querySelector('#pwd');
+        var male = document.querySelector('#male');
+        var female = document.querySelector('#female');
+        var cbx = document.querySelector('#cbx');
+        var file = document.querySelector('#file');
+        var area = document.querySelector('#area');
+        var slt = document.querySelector('#slt');
+        var btn = document.querySelector('#btn');
+
+        btn.onclick = function () {
+            console.log(user.value);//请输入用户名   ---如果输入内容则显示为输入的内容  123
+            console.log(pwd.value);//123
+            console.log(male.value);//male  
+            console.log(male.checked);//true  或者false   如果要确认单选框选中状态，用checked，选中为true否则为false
+
+            console.log(cbx.checked);//true或者false
+            setTimeout(function () {
+                btn.disabled = false;
+            }, 1000)
+
+            if (male.checked) {
+                console.log('你的性别是男');
+            }
+            if (female.checked) {
+                console.log('你的性别是女');
+            }
+            console.log(file.value);//C:\fakepath\CSS参考手册.docx  ---没有提交文件的话为空，
+            console.log(area.value);//123  ---没有留言的话为空
+            console.log(slt.value);//hn  或者hb   ----选择那个就显示那个的value  ---最好每个下拉项都设置value
+
+            console.log(btn.value);//提交
+            console.log(btn.disabled);//false
+
+        }
+
+    </script>
+
+</body>
+
+</html>

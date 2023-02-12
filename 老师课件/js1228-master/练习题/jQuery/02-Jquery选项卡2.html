@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        div {
+            width: 1000px;
+            height: 600px;
+            border: 4px solid #666;
+            margin: 50px auto;
+        }
+
+        .top {
+            width: 100%;
+            height: 50px;
+            background: #999;
+        }
+
+        .top>li {
+            width: 100px;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+            float: left;
+
+        }
+
+        .bottom {
+            width: 100%;
+            height: 550px;
+            /* background: #000; */
+            position: relative;
+        }
+
+        .bottom>li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .bot1 {
+            background: wheat;
+            display: none;
+        }
+
+        .bot2 {
+            background: brown;
+            display: none;
+        }
+
+        .bot3 {
+            background: skyblue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="top">
+            <li class="top1">wheat</li>
+            <li class="top2">brown</li>
+            <li class="top3">skyblue</li>
+        </ul>
+        <ul class="bottom">
+            <li class="bot1"></li>
+            <li class="bot2"></li>
+            <li class="bot3"></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    // each(function(index,item)) 循环遍历
+    // 回调函数的参数1 index是索引值,参数2 item是得到的dom对象
+    $('.top>li').each(function (index, item) {
+        $(this).click(function () {
+            console.log(index)
+            $(this).css('background', '#fff').siblings().css('background', '');
+            $('.bottom li').eq(index).css('display', 'block').siblings().css('display', 'none')
+        });
+    });
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 回顾 call
+        let lvbu = {
+            name: "吕布",
+            play() {
+                console.log(this);
+                console.log("天崩地裂");
+            }
+        }
+        let libai = {
+            name: "李白"
+        }
+        lvbu.play.call(libai);
+
+        // 通过 call() 李白调用了 lvbu 的方法
+
+        var obj = {
+            name: "Tom",
+            age: 18,
+            toString(){
+                console.log("重写");
+                return 123;
+            }
+        };
+        console.log(obj.toString());  
+        // 如果不重写，则返回 [object 类名]
+        console.log(lvbu.toString()); //"[object Object]"
+
+        let arr = [];
+        // 大部分对象都对 toString() 进行了重写
+        console.log(arr.toString()); 
+
+        // 让 arr 调用 object 的方法
+        console.log(Object.prototype.toString.call([]));
+        console.log(Object.prototype.toString.call(new Date()));
+        console.log(Object.prototype.toString.call(new Function()));
+    </script>
+</body>
+
+</html>

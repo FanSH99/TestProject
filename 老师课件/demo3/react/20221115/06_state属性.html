@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    class App extends React.Component{
+        // 设置state 类组件中state属性用来存放当前组件的私有数据
+        // state= {
+        //     name:"张三",
+        //     age:18
+        // }
+        // name = 'zhangsan '
+        // num=0
+        constructor(){
+            super();
+            this.state = {
+                name:"张三",
+                age:18,
+                list:["张三","王武","赵六"],
+                num:0,
+                people:{
+                    name:"嘿嘿嘿"
+                }
+            }
+        }
+        render(){
+            console.log("渲染啦")
+             let {name,age,list,people} = this.state;
+            return (
+                <div>
+                 <h1>{name}----{age} - {people.name}</h1>
+                 <ul>
+                    {
+                        list.map((item,index)=>{
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+                <h1>{this.state.num}</h1>
+                <button onClick={()=>{
+                    // reatc 是单向数据流 改变数据视图不会更新 若想要更新试图 必须调用this.setState更新数据更新试图
+                    // 每调用一次setState render就会重新渲染
+                    this.state.num++;
+                    console.log(this)
+                    console.log(this.state.num)
+                    list[1] = '哈哈哈哈'
+                    people.name = '啦啦啦啦'
+                    this.setState({
+                        num:this.state.num,
+                        list:list,
+                        people:people
+                    })
+                }}>++</button>
+                </div>  
+            )
+        }
+   
+    }
+    // console.log(<App/>)
+    ReactDOM.render(<App/>,document.getElementById("app"))
+
+    
+</script>
+</html>

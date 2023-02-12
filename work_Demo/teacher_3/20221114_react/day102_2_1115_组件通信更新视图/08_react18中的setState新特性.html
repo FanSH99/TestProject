@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react18.js"></script>
+<script src="../js/react_dom18.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    /* 2022年11月15日23:41:17 */
+
+    let root = ReactDOM.createRoot(document.getElementById("app"))
+
+    class App extends React.Component {
+        state = {
+            num: 1,
+            name: "白浅",
+            sex: "男"
+        }
+        render() {
+            console.log("渲染调用了");
+            return (
+                <div>
+                    <h1>react18中setState特性</h1>
+                    <p>{this.state.name}--{this.state.sex}--{this.state.num}</p>
+                    <button onClick={() => {
+                        this.setState({
+                            name: "悠然"
+                        })
+                        this.setState({
+                            num: 100
+                        })
+                        this.setState({
+                            sex: "女"
+                        })
+                    }}>改变数据</button>
+                    <button onClick={() => {
+                        // 这里setState合并更新值调用一次
+                        setTimeout(() => {
+                            this.setState({
+                                name: "悠然"
+                            })
+                            this.setState({
+                                num: 100
+                            })
+                            this.setState({
+                                sex: "女"
+                            })
+                        }, 1000)
+                    }}>change</button>
+                </div>
+            )
+        }
+    }
+
+    root.render(<App />)
+    /*
+    在react18中setState其他特性和react17一样，唯一改版的是
+    在不受react控制的事件爱你中，连续调用多次setState会合并更新，依然只调用一次render方法，即
+    */
+</script>
+
+</html>

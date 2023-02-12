@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 箭头函数
+    let play = function () {
+      console.log('今晚吃鸡');
+    }
+    play();
+    let game = () => {
+      console.log('王者农药');
+    }
+    game();
+
+    // 1. 如果形参只有一个，小括弧可以省略
+    // let add = (num) => {
+    let add = num => {
+      num++;
+      console.log(num);
+    };
+    add(12);
+
+    // 2. 如果逻辑体只有一行代码, return 和 {} 都可以省略
+    let ball = score => score = score + 5;
+    console.log(ball(10));
+
+    // 3. this 上下文的 this, 定义箭头函数位置的 this 
+    const cook = function () {
+      console.log(this);
+      return () => {
+        console.log(this);
+      }
+    };
+    let temp = cook();
+    temp();
+
+    console.log('--------------案例2----------');
+    function Star(sex, age) {
+      this.sex = sex;
+      this.age = age;
+      console.log(this);
+      this.run = () => {
+        console.log(this);
+        console.log('就这么跑来跑去');
+      }
+    }
+    let lee = new Star('男', 22);
+    lee.run();
+  </script>
+</body>
+
+</html>

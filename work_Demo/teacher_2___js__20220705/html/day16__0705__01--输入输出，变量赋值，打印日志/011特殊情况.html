@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        变量特殊情况。
+        1.没有写var ，直接对变量赋值，
+            不会报错，可以正常输出，但是不建议
+        2.先输出，在定义。先var但是不赋值，
+            undefined ----变量声明没有赋值时不会报错，但是不能输出正常结果提示unddfined.，
+        3.先输出,后面赋值不加var 也就是不声明不赋值，
+        Uncaught ReferenceError: d is not defined
+     -->
+
+
+
+    <!-- 
+
+        var a √
+        var 1 ×
+        var age18 √
+        var 18age ×
+
+        var userName √
+        var $narrie √
+        var _sex √
+        var &sex ×
+
+        var theWorld √
+        var the world ×
+        var the_world √
+        var for ×
+        
+
+      -->
+
+    <script>
+        a = 10;
+        console.log(a);
+        console.log(b);
+        var b = 20;
+
+        var c;
+        console.log(c);
+        c = 20;
+
+        /*  console.log(d);
+         d = 10; 
+         报错*/
+
+        console.log(2 + 3 + 8 + 9 + 1);
+        /* 纯数字专字符串，在前面加上''  遇到''字符串标志就会转换成字符串输出。 */
+        console.log(2 + 5 + '8' + 9 + 1);//7891
+        console.log('2' + 5 + 8 + 9 + 1);//8891
+    </script>
+</body>
+
+</html>

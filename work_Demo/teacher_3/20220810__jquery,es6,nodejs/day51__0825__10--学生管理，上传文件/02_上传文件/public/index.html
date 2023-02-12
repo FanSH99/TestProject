@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年8月25日14:58:16 -->
+    <h1>form表单上传文件</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="myfile" id="" accept="*">
+        <button>上传</button>
+    </form>
+    <h1>ajax上传文件</h1>
+    <input type="file" name="myfile" id="myfile" accept="*">
+    <button>上传</button>
+    <p></p>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        // 获取输入框中的文件信息与对象
+        $("#myfile").change((e) => {
+
+            console.log(e);//S.Event {originalEvent: Event, type: 'change', target: input#myfile, currentTarget: input#myfile, isDefaultPrevented: ƒ, …}
+
+            // 获取文件对象信息
+            let file = e.target.files[0];
+            console.log(file);
+            /* 
+            File
+lastModified: 1660981198198
+lastModifiedDate: Sat Aug 20 2022 15:39:58 GMT+0800 (中国标准时间) {}
+name: "茶.png"
+size: 10129
+type: "image/png"
+webkitRelativePath: ""
+[[Prototype]]: File
+            */
+            let data = new FormData();
+            data.append("myfile", file);
+            $.ajax({
+                url: "/upload",
+                method: "post",
+                data: data,
+                /* 下面两个必填 */
+                // 设置不允许ajax更改配置
+                processData: false,
+                // 阻止ajax设置内容类型
+                contentType: false,
+                success(res) {
+                    console.log(res);
+                    $("p").html(res);
+                },
+                error(err) {
+                    console.log(err);
+                }
+
+            })
+        })
+        /**
+        *.文件以数据流的形式传递，需要用到fromData对象*/
+
+        // let dataFrom = new FormData();
+        // // 给FromData对象中添加属性  表单属性
+        // dataFrom.append("name", "白浅");
+        // console.log(dataFrom);
+        //存取到FromData之后看不到，打印也不显示，需要用get方法来将数据获取出来。
+        // console.log(dataFrom.get("name"));//白浅
+
+    </script>
+</body>
+
+</html>

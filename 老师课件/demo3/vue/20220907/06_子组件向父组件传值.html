@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            width: 100%;
+            height: 300px;
+            background: red;
+            color: #fff;
+        }
+        .child{
+            width: 300px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <template id="parent">
+        <div class="parent">
+            <h3>父组件{{mymsg}} {{num}}</h3>
+            <child @getmsg="getValue" @sennum="getnum"></child>
+        </div>
+    </template>
+    <template id="child">
+        <div class="child"> 
+            <h4>子组件</h4> 
+            {{msg}}
+            <button @click="sendMsg">向父组件传递数据</button>
+            <h2>{{num}}</h2>
+            <button @click="num++;$emit('sennum',num)">num++</button>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let child = {
+        template:"#child",
+        data() {
+            return {
+                msg:{
+                    name:"张三"
+                },
+                num:0
+            }
+        },
+        created() {
+            this.$emit("sennum",this.num)
+        },
+        methods: {
+            sendMsg(){
+                console.log(this)
+                // 发送自定义事件 emit 发射 参数一自定义事件名称 参数二就是你要传递的数据 要穿传递的数据可以是任意数据类型
+                // 注意：自定义事件名称不要使用驼峰命名
+                this.$emit("getmsg",this.msg)
+                /* 
+                子组件向父组件传值：
+                1.子组件使用this.$emit()发送一个自定义事件
+                2. 在父组件中的子组件标签上接收子组件发送的自定义事件
+                */
+            }
+        },
+    }
+    let parent = {
+        template:"#parent",
+        components:{
+            child
+        },
+        data() {
+            return {
+                mymsg:"",
+                num:""
+            }
+        },
+        methods:{
+            getValue(value){
+                console.log("我被调用了")
+                // value形参就是子组件传递过来的数据
+                console.log(value)
+                this.mymsg = value;
+            },
+            getnum(num){
+                this.num = num
+            },
+          
+        }
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            parent
+        },
+      
+    })
+</script>
+</html>

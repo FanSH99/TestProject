@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2.继承
+      利用构造函数 来实现继承
+
+    
+    -->
+    <script>
+        // 人类
+          function Person(name,age,gender){
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+            this.say=function(){
+                console.log(this.name+'is saying');
+            }
+        }
+    
+        Person.prototype.walk=function(){
+            console.log(this.name+'is walking');
+        }
+      // 学生类      学生也属于人
+        function Student(name,age,gender,no){
+         //  继承的方法，把人构造函数内的属性和方法被学生继承过程
+        //               this对象 ，指向是 new Student() 构造出来的对象  指向Student内部的this
+        //                 name,age,gender 借用父构造函数中的参数
+            Person.call(this,name,age,gender);
+            // 自己特有
+            this.no=no;
+    
+        }
+
+       var s1= new Student('王子兴',18,'男', '1001');
+       console.log(s1.name,s1.age,s1.gender,s1.no);
+       s1.say();
+       s1.walk();// 报错  在原型上的方法或属性 无法 继承
+
+    //    不足的地方 原型上的方法或属性 无法 继承
+    </script>
+</body>
+</html>

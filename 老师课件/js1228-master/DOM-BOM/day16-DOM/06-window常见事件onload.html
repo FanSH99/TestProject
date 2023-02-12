@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./demo.js"></script>
+    <script>
+        /*
+            load：当文档内容完全加载完成会触发该事件（包括图像，脚本文件，css文件等），
+                  就调用的处理函数
+            DOMContentLoaded: 不包含 CSS 样式和图片。
+        */
+        // window.addEventListener('load', function () {
+        window.addEventListener('DOMContentLoaded', function () {
+            let btn = document.querySelector('button');
+            btn.addEventListener('click', function () {
+                console.log(this);
+            });
+        });
+    </script>
+    <button>陈奕迅</button>
+</body>
+
+</html>

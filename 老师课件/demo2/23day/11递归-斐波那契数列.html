@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 利用递归求斐波那契数列 
+        0、 1、1、2、3、5、8、13、21...
+         fn(n)=fn(n-2)+fn(n-1)
+         规律： 第三个数是前两个数的和
+
+    -->
+    <script>
+        // 原生的方法 
+        // 求第38个的数值，以及前38个数的和
+        // function feibonaqi(n) {
+
+        //     var one = 0;
+        //     var two = 1;
+        //     var three;
+        //     var sum = 1;
+        //     for (var i = 2; i < 38; i++) {
+        //         three = one + two;
+        //         one = two;
+        //         two = three;
+        //         sum += three;
+
+        //     }
+
+        //     console.log('第38个数的值是' + three, 'sum=' + sum);
+        // }
+
+        // feibonaqi(38)
+
+        // 递归的方法
+        // 出口   前两个数  one=  0   two = 1
+
+         function feibonaqi1(n){
+            if(n<0){
+                return 'n不能小于0';
+            }else if(n==0||n==1){
+                return 0;
+            }else if(n==2){
+                return 1;
+            }else{
+                return  feibonaqi1(n-2)+feibonaqi1(n-1)
+            }
+         }
+
+       var num= feibonaqi1(5) ;
+            //    feibonaqi1(3)+feibonaqi1(4)
+            // feibonaqi1(1)+ feibonaqi1(2)+feibonaqi1(2)+feibonaqi1(3)
+            //     0    +1                    +1         +feibonaqi1(1)+feibonaqi1(2)
+            //                  2                       +       0   +1
+            //                   3
+       console.log(num);
+
+       // 求前n项的和
+
+         function getSum(n){
+            if(n<0){
+                return 'n不能小于0';
+
+            }else if(n==0||n==1){
+                return 0;
+
+            }else if(n==2){
+              return  1
+            }else{
+                return getSum(n-1)+feibonaqi1(n)
+            }
+            
+        
+         }
+        var sum= getSum(5);
+        console.log(sum);
+        // getSum(4)+feibonaqi1(5)
+        // getSum(3) +feibonaqi1(4)  +feibonaqi1(5)
+        // getSum(2)+feibonaqi1(3) +feibonaqi1(4)  +feibonaqi1(5)
+        //   1       + 1    + 2
+    </script>
+</body>
+
+</html>

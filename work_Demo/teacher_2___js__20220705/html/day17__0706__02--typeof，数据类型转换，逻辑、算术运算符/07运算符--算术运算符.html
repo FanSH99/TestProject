@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        运算符的操作
+
+        有5中运算符。
+
+        1.算术运算符。 
+         +  -  *  /   %（取模--取余数)       -----二目运算符 ，或二元运算符。 两边都有参数。
+         ++（自增运算符） --（自减运算符）      ----  一目运算符，或一元运算符。一边有参数。
+
+         2.比较运算符。
+         >  >=  <  <=  ==（）   === （） !=（不等）  !==(不全等)
+         比较结果是布尔值。true 或false
+
+         3.逻辑运算符。
+         &&  ||  ！（取反）
+         结果可能是布尔值，也可能不是。
+
+
+         4.赋值运算符
+         =  +=  -=  *=  /=  %=
+         优先级比较低，基本最后才进行赋值。
+
+         5.条件运算符   -----三元运算符，或三目运算符。
+         表达式？表达式1:表达式2
+         问表达式是否为真，如果真的话，输出表达式1 ，否则输出表达式2.
+     -->
+
+    <script>
+
+        //1.算术运算符
+        var a = 10;
+        var b = 20;
+        var c = a + b;
+        console.log("a=", a);
+        console.log("b=", b);
+        console.log("c=a+b=", c);
+
+        d = a - b;
+        console.log("d=a-b=", d);
+        e = a * b;
+        console.log("e=a*b=", e);
+        f = a / b;
+        console.log("f=a/b=", f);
+        h = a % b;
+        console.log("h=a%b=", h);
+
+        console.log("1%3=", 1 % 3);
+        console.log("10%3=", 10 % 3);
+        console.log("5%2=", 5 % 2);
+        console.log("10%5=", 10 % 5);
+
+
+        //2.++
+        var num = 1;
+        console.log("num=", num);
+        num++;//num=num+1;
+
+        console.log("num++=", num);
+        num++;
+        num++;
+        console.log("num++三次", num);
+
+        var num1 = 10;
+        console.log("num1=", num1);
+        num1--;
+        num1--;
+        num1--;
+        console.log("num1--三次", num1);
+
+        /* 
+        ++自增，或自减参与别的运算。
+        后置，先赋值在运算。（自增，自减）
+        */
+
+        var aa = 10;
+        console.log("var aa=10");
+        var bb = aa++;
+        console.log("var bb=aa++");
+        console.log("aa=", aa);//11
+        console.log("bb=aa++=", bb);//10
+
+        var cc = 10;
+        console.log("var cc=10;");
+        var dd = ++cc;
+        console.log("var dd=++cc;");
+        console.log("cc=", cc);
+        console.log("dd=++cc=", dd);
+
+
+        var ee = cc--;
+        console.log(ee, cc);
+
+
+        //5.自增，自减。
+        var a1 = 10;
+        console.log("a1=10\t", "a1++:", a1++);//10先赋值后运算。
+        console.log("a1++:", a1++);//11
+        console.log("++a1:", ++a1);//13
+
+
+        //出题
+        var a = 10;
+        var b = 5;
+        var c = a++ + a + b + b++;
+        console.log(a, b, c);//a=11 ,b=6, c=31
+
+
+        var a = 10;
+        var b = 5;
+        /*   var c = a++ + a + b + b++; */
+        var a1 = a++; //a1=10 a=11
+        var a2 = a + b; // a2=11+5=16
+        var b1 = b++; //b1=5  b=6
+        var c = a1 + a2 + b1; //c = 10 + 11 + 5;
+        console.log(a, b, c);
+
+
+    </script>
+</body>
+
+</html>

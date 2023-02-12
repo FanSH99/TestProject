@@ -1,0 +1,4 @@
+<!--components/two/two.wxml-->
+<view class="two">two组件
+<button bindtap="sendMsg">向one组件发消息</button>
+</view>

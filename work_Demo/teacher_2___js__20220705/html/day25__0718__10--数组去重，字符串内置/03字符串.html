@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        基本包装类型
+        String      Number   Boolean
+        'hello'     123         true
+        new String()    new Number()    new Boolen()
+        对象才会有属性的方法：
+        （1） 字符串长度
+        str.length  ---长度 ----汉字和英文字母都是占一个字符长度
+        （2）取值，访问   
+        str[索引号] 索引号也是从0开始
+        （3）遍历字符串
+        for(var i in str)---不建议
+        for(var i=0;i<str.length;i++)
+        for(var item of str)---item是字符
+        （4）添加或修改
+        不能通过索引号来进行修改和添加元素。
+        （5）内置方法
+        <1> string HTML包装方法
+        <2>charAt(index)  ---返回在指定位置的元素
+        <3>charCodeAt(index) ----返回指定位置元素的Unicode码  ascII码
+        <4>concat(str0,str1,'5','8',……)----连接两个或多个字符串，并返回新的字符串
+        <5>indexOf('item',start)  返回某个指定的元素在字符串中首次出现的位置，存在返回位置，不存在返回-1
+        
+     -->
+    <img src="img/02.jpg" alt="">
+    <script>
+        var str = 'hello';
+        console.log(str, typeof str);
+
+        str = new String(str);
+        console.log(str, typeof str);
+
+        /* 
+        平时不用new String()来转对象，但是基本类型的字符串也能用对象的属性和方法
+
+        */
+
+        var str1 = 'hello大家上午好';
+        console.log(str1, str1.length);
+
+        var str1_3 = str1[6];
+        console.log(str1_3);
+        console.log(str1[3], str1[7]);
+
+        // 遍历
+        for (var i = 0; i < str1.length; i++) {
+            console.log(i, str1[i]);
+        }
+
+        for (var i in str1) {
+            console.log(i, str1[i]);
+        }
+        //key是字符串中的元素。
+        for (var item of str1) {
+            console.log(item);
+        }
+
+        // 添加或修改
+        str[0] = 'w';
+        console.log(str);//hello 无法修改成功
+
+        // 包装方法--了解
+
+        document.write('hello word<br>');
+        var str2 = 'hello word'
+        var str2_1 = str2.bold();
+        console.log(str2);
+        console.log(str2_1);//<b>hello word</b>
+        document.write(str2_1 + '&emsp;');
+
+        var str2_2 = str2.fontcolor('red');
+        console.log(str2_2);
+        document.write(str2_2);//<font color="red">hello word</font>
+
+        //charAt(index)
+        var char = str1.charAt(4);
+        console.log(char);//o
+
+        //charCodeAt(index)
+        var char2 = str2.charCodeAt(4);
+        console.log(char2);//o ---111
+
+        //concat()
+
+        var str3 = str.concat(str, str2, 'nice', 8);
+        console.log(str3);//str3-----hellohellohello wordnice8
+
+        //indexOf('item',start)----从start位置向后搜索，包含start位置
+        var index1 = str3.indexOf('o');
+        console.log(index1);//4
+        var index2 = str3.indexOf('o', 4);
+        console.log(index2);//4
+        var index3 = str3.indexOf('o', 5)
+        console.log(index3);//9
+        var index4 = str3.indexOf('等');
+        console.log(index4);//-1
+
+
+        var img = document.querySelector('img');
+        var url = img.src;
+        console.log(url);//file:///D:/work/work_Demo/teacher%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5js/html/day25--7.16(10)/img/02.jpg
+        if (url.indexOf('2.jpg') != -1) {
+            console.log('包含');
+        } else {
+            console.log('不包含');
+        }
+
+        if (url.indexOf('1.jpg') != -1) {
+            console.log('包含');
+        } else {
+            console.log('不包含');
+        }
+
+
+
+    </script>
+</body>
+
+</html>

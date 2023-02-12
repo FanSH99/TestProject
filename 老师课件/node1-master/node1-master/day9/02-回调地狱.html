@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 网址引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button id="get">GET测试</button><br>
+    <div id='lol'></div>
+
+    <script>
+        /* 
+            异步调用：
+                1. 定时器
+                2. ajax
+                3. 事件        
+        */
+        // $('#get').on('click', function () {
+        //     let temp = 'temp';
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: 'http://localhost:8080/data1',
+        //         success: function (result) {
+        //             temp = result;
+        //         }
+        //     });
+        //     // 1. 结果是 temp，temp的值为改变
+        //     console.log(temp);
+        // });
+
+        // $('#get').on('click', function () {
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: 'http://localhost:8080/data2',
+        //         success: function (result) {
+        //             console.log(result);
+        //         }
+        //     });
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: 'http://localhost:8080/data3',
+        //         success: function (result) {
+        //             console.log(result);
+        //         }
+        //     });
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: 'http://localhost:8080/data1',
+        //         success: function (result) {
+        //             console.log(result);
+        //         }
+        //     });
+        // });
+
+        // 2. 异步调用顺序和发起请求执行的顺序不一定一致
+        //    如果异步调用之间存在依赖关系，需要嵌套，如下
+
+        $('#get').on('click', function () {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8080/data1',
+                success: function (result) {
+                    console.log(result);
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:8080/data2',
+                        success: function (result) {
+                            console.log(result);
+                            $.ajax({
+                                type: 'GET',
+                                url: 'http://localhost:8080/data3',
+                                success: function (result) {
+                                    console.log(result);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+      
+        /* 
+          3. 此时嵌套层数太多，可读性差，维护性差，陷入回调地狱。
+          4. Promise: 一种异步编程的解决方案，它是一个对象，可以异步获取操作的消息
+                作用：解决了回调地狱问题; 异步操作更加便捷
+        */
+    </script>
+</body>
+
+</html>

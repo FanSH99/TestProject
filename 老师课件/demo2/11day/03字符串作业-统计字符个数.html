@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. 查找字符串出现最多的字符和个数 -->
+    <script>
+        // var str='adfgfgdfkkdfkkdkkkkeeeeedaadfdafa';
+        /* 
+        1.  字符和 个数有联系
+          {
+            a:5,
+            d:6,
+            k:8
+          }
+        2.
+        for(var key in obj)
+        key ----a  d  k
+        obj[key]----5  6   8
+
+        3.求最大值
+        */
+        var str='adfgfgdfkkdfkkdkkkkeeeeedaadfdafa';
+         var obj={};
+        for(var i=0;i<str.length;i++){
+            // charAt
+             var char=str[i];// 每一个字符   
+            // 向空对象中添加数据 属性名 char是变量
+            // obj[char] 属性不存在  输出undefined   假
+            if(obj[char]){
+                obj[char]++;//   obj[char]  值是  1    i=1;初始值  i++
+
+            }else{
+                obj[char]=1; // 初始化
+            }
+           
+
+        }
+        console.log(obj);
+// 求最多字符数及字符
+var c=''// 保存字符
+var  max=0;// 假设0为最大值
+  for(var key in obj){
+    //  console.log(key);// a  d  f...
+    //  console.log(obj[key]); //   5  6  
+     if(max<obj[key]){
+        max=obj[key];
+        c=key;
+     }
+
+  }
+  console.log(c,max);
+
+
+
+
+
+    // var stu={age:18};// 注意值不要赋0 
+    // if(stu['age1']){
+    //     console.log('真，属性存在，有值');
+    // }else{
+    //     console.log('属性不存在，没值');
+    // }
+    </script>
+</body>
+</html>

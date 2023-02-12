@@ -1,0 +1,7 @@
+<view class="myswiper">
+    <swiper	indicator-dots 	indicator-color="#b4b4b4"	indicator-active-color='#fff' autoplay interval='{{3000}}' circular="{{true}}">
+<swiper-item wx:for="{{bannerList}}" wx:key="index">
+    <image src="{{item.pic}}" mode="widthFix"></image>
+</swiper-item>
+</swiper>
+</view>

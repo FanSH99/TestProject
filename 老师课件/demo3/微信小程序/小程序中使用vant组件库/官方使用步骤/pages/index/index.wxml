@@ -1,0 +1,11 @@
+<view>
+小程序中使用vant组件库
+</view>
+<van-button type="default">默认按钮</van-button>
+<van-button type="info">信息按钮</van-button>
+<van-button type="warning">警告按钮</van-button>
+<van-button type="danger">危险按钮</van-button>
+<view>
+    <van-button type="info" bindtap="open">打开</van-button>
+</view>
+<van-popup show="{{ show }}">内容</van-popup>

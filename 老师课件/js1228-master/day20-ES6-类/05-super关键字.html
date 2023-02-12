@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Father {
+            // 1. 把父类的无参构造函数继续了重新。
+
+            // 2. 一个类里面只能有一个构造函数
+            //    函数的实参和形参的个数可以不一致，
+            //    此时编译器无法判断调用的是哪一个构造函数
+            // constructor(sex) {
+            //     this.sex = sex;
+            // }
+            constructor(age, sex) {
+                this.age = age;
+                this.sex = sex;
+            }
+            play() {
+                console.log('father 在赚钱');
+                return 100;
+            }
+        }
+        class Son extends Father {
+            /* 
+                Must call super constructor in derived class 
+                before accessing 'this' or returning from 
+                derived constructor
+                子类的构造函数添加属性时，必须通过 super 调用父类的构造函数
+            */
+            constructor(age, sex, school) {
+                // 4. 子类继承父类后，构造函数中，必须先调用父类的构造函数
+                super(age, sex);
+                this.school = school;
+                // this.age = 22;
+                // 5. 构造函数中必选先调用父类的构造函数，再执行自己的逻辑
+                //    防止代码冲突，违反了就近原则
+                // super(age, sex);
+            }
+            game() {
+                // this.play();
+                // 3. 调用父类的方法 super
+                let money = super.play();
+                if (money > 10) {
+                    console.log('我要买装备');
+                }
+                console.log('son 打电脑游戏');
+            }
+        }
+
+        let eason = new Son(22, '男', '郑州大学');
+        console.log(eason);
+        eason.game();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // map：保存键值对的对象
+
+        // 1. 创建 map
+        let map = new Map();
+
+        // 2. 保存键值对  key value
+        //    key 唯一,  value 可以重复
+        map.set("hero", "剑圣");
+        map.set("age", 22);
+        map.set('address', "郑州");
+        map.set("hero", "吕布");
+        map.set("lvbu", "吕布");
+
+        // 3. 获取数据
+        let hero = map.get('hero');
+        console.log(hero);
+
+        // 4. size 属性
+        console.log(map.size);
+
+        // 5. has(key) 判断是否有某个 key
+        console.log(map.has('hero'));
+        console.log(map.has('hero1'));
+
+        // 6. delete(key) 删除 key 
+        map.delete('age');
+
+        // 7. clear() 清空
+        // map.clear();
+
+        // 8. for of 遍历数组(迭代器)
+        let arr = [11, 22, 33, 44, 55];
+
+        // for (const temp of arr) {
+        //     console.log(temp);
+        // }
+
+        console.log('------------------');
+
+        // 9. 获取 map 的 key 的集合
+        let keys = map.keys();
+        // console.log(keys);
+        for (const iterator of keys) {
+            console.log(iterator);
+        }
+
+        // 10. 获取 map 的 value 的集合
+        let values = map.values();
+        console.log(values);
+
+        // 11. map.entries() 键值对的迭代器
+        console.log(map.entries());
+        for (const iterator of map.entries()) {
+            // console.log(iterator);
+            // 是一个数组，第一个元素是 key, 第二个元素是 value
+            console.log(iterator[0], iterator[1]);
+        }
+
+        // 12. forEach 遍历 map，参数是一个函数
+        // 参数1：value
+        // 参数2：key
+        // 参数3：map 本身
+        console.log('--------------------');
+        map.forEach((v,k,item) => {
+            console.log(v,k,item);
+        });
+
+        console.log(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lol {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .lol .lol_item {
+            width: 120px;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav div {
+            width: 22%;
+            padding: 10px 0;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+
+        .active::after {
+            content: "";
+            width: 16px;
+            height: 2px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -8px;
+        }
+
+        .skins {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="nav">
+            <div v-for="(item,index) in navList" :key="index" @click="goNav(index)" :class="{active:active===index}">
+                {{item}}
+            </div>
+        </div>
+        <br>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
+    <template id="home">
+        <div class="lol">
+            <div class="lol_item" v-for="(item,index) in list" :key="index" @click="goInfo(item.heroId)">
+                <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png`" alt="">
+                <p>{{item.title}}</p>
+            </div>
+        </div>
+    </template>
+    <template id="info">
+        <div v-if="info">
+            <div>
+                <img :src="info.skins[0].mainImg" alt="">
+            </div>
+            <div style="padding: 5px;">
+                <div v-for="(item,index) in info.spells" :key="index">
+                    <img :src="item.abilityIconPath" alt="" class="skins">
+                    <h4>
+                        {{item.name}}
+                    </h4>
+                    <p>{{item.description}}</p>
+                </div>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="../../bin/vue-2.7.10.js"></script>
+<script src="../../bin/vue-router-3.5.0.js"></script>
+<script>
+    let home = {
+        template: "#home",
+        data() {
+            return {
+                list: []
+            }
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.list = res.hero;
+                }
+            }
+        },
+        methods: {
+            goInfo(id) {
+                this.$router.push({
+                    path: "/info/" + id
+                })
+            }
+        }
+    }
+    let cart = {
+        template: "<h1>购物车</h1>",
+        created() {
+            console.log("购物车组件创建后")
+        },
+    }
+    let cate = {
+        template: "<h1>分类</h1>",
+        created() {
+            console.log("分类组件创建后")
+        }
+    }
+    let mine = {
+        template: "<h1>我的</h1>",
+        created() {
+            console.log("我的组件创建后")
+        }
+    }
+
+    let info = {
+        template: "#info",
+        data() {
+            return {
+                info: null
+            }
+        },
+        // 组件激活后
+        activated() {
+            // 清空数据，重新渲染
+            this.info = null
+            let id = this.$route.params.id;
+            console.log(id)
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", `//game.gtimg.cn/images/lol/act/img/js/hero/${id}.js`);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.info = res;
+                }
+            }
+        }
+    }
+    let router = new VueRouter({
+        routes: [
+            {
+                path: "/",
+                name: "首页",
+                component: home
+            }, {
+                path: "/cate",
+                name: "分类",
+                component: cate
+            }, {
+                path: "/cart",
+                name: "购物车",
+                component: cart
+            }, {
+                path: "/mine",
+                name: "我的",
+                component: mine
+            }, {
+                path: "/info/:id",
+                name: "详情",
+                component: info
+            }
+        ]
+    })
+    Vue.use(router)
+    new Vue({
+        el: "#app",
+        router,
+        data: {
+            navList: ["首页", "购物车", "分类", "我的"],
+            active: 0
+        },
+        methods: {
+            goNav(index) {
+                this.active = index;
+                switch (index) {
+                    case 0:
+                        this.$router.push({
+                            path: "/"
+                        })
+                        break;
+                    case 1:
+                        this.$router.push({
+                            path: "/cate"
+                        })
+                        break;
+                    case 2:
+                        this.$router.push({
+                            path: "/cart"
+                        })
+                        break;
+                    default:
+                        this.$router.push({
+                            path: "/mine"
+                        })
+                        break;
+                }
+            }
+        },
+    })
+</script>
+
+</html>

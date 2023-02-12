@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: brown;
+    }
+  </style>
+</head>
+
+<body>
+  <div>相信党和国家</div>
+  <script>
+    /* 
+      CSS 操作
+          1. CSS("属性", value); 对象属性重新赋值
+          2. CSS('属性')         对象属性值的获取
+          3. CSS(对象)           一次修改多个属性
+    */
+    $(function () {
+      // 样式的赋值 setAttribute()
+      $('div').css('color', 'blue');
+      // 读取样式   getAttribute()
+      console.log($('div').css('backgroundColor'));
+
+      // 对象传值
+      $('div').css({
+        width: 400,
+        height: 400,
+        backgroundColor: 'skyblue'
+      });
+    });
+  </script>
+</body>
+
+</html>

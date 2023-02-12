@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        while(判断条件){
+            循环体;
+        }
+        执行规则： 判断条件成立（true），执行循环体， 条件不成立，结束循环
+
+
+        // while 和for 循环的使用
+        （1）两个循环互相转换
+        （2）如果循环次数不明确的话，建议while          while(true)  合适的条件，结束循环break
+             如果循环次数明确的话，建议for
+
+     -->
+</head>
+
+<body>
+
+    <script>
+        //输出3个hello world
+        // var i=0;
+        //  while(i<3){
+        //     document.write(i+ 'hello world <br>');
+        //      i++;
+        //  }
+        // var i = 0;
+        // while (true) {
+        //     i++;
+        //     if (i > 3) {
+        //         break;
+        //     }
+        //     document.write(i + 'hello world <br>');
+        // }
+
+
+
+        //1. 猜谜底游戏，谜底为50，如果大了，提示猜大了;  小了，提示猜小; 否则中奖了
+        // var miDi = 50;
+
+        // while (true) {
+        //     var num = prompt('请输入您猜的数');
+        //     if (num > miDi) {
+        //         alert('猜大了')
+        //     } else if (num < miDi) {
+        //         alert('猜小了')
+        //     }else if(num==miDi){
+        //         alert('中奖了');
+        //         break;
+        //     }
+
+        // }
+
+
+        // 2.有1020个西瓜，第一天卖一半多两个，以后每天卖剩下的一半多两个，问几天可以卖完，请编程计算
+        var count = 0;// 统计天数
+        var total = 1020;// 瓜的总数   剩余的瓜
+        while (true) {
+            total = total / 2 - 2; 
+            count++;
+            if (total <= 0) {
+                break;
+            }
+           
+        }
+
+        console.log(count);//8
+
+
+        // while (total >0) {
+        //     count++;
+        //     total = total / 2 - 2;
+            
+        // }
+
+        // console.log(count);//8
+
+
+    </script>
+</body>
+
+</html>

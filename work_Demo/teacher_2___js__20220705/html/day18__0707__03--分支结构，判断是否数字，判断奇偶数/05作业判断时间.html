@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        var date = new Date();
+        console.log(date);
+        var time = date.getHours;
+        console.log(hours);
+
+
+        var time = prompt('请输入一个时间数字');
+
+        if (time >= 0 && time < 5) {
+            console.log('凌晨了，该休息了');
+        } else if (time < 7 && time >= 5) {
+            console.log('早上好');
+        } else if (time < 11) {
+            console.log('上午好，祝你心情愉快');
+        } else if (time < 13) {
+            console.log('中午好');
+        } else if (time < 17) {
+            console.log('下午好');
+        } else if (time < 21) {
+            console.log('晚上好');
+        } else if (time < 24) {
+            console.log('夜深了，注意身体呦');
+        } else {
+            console.log('请输入正确的时间');
+        }
+
+
+    </script>
+
+</body>
+
+</html>

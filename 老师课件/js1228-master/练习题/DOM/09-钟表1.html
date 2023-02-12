@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-clocks=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .clocks {
+            width: 500px;
+            height: 500px;
+            border: 5px solid rgb(88, 88, 88);
+            background: rgb(63, 63, 63);
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 100px auto;
+            border-radius: 250px;
+            position: relative;
+        }
+
+        ul {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* background: #minute; */
+            position: relative;
+            list-style: none;
+        }
+
+        li {
+            width: 500px;
+            height: 4px;
+            position: absolute;
+            top: 248px;
+            /* background:#333; */
+            left: 0;
+        }
+
+        li>span {
+            width: 20px;
+            height: 4px;
+            background: rgba(0, 255, 255, 1);
+            border-radius: 1px;
+        }
+
+        li>span:first-child {
+            float: left;
+            margin-left: 20px;
+        }
+
+        li>span:last-child {
+            float: right;
+            margin-right: 20px;
+        }
+
+        section {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            /* background: #minute111; */
+            left: 0;
+            top: 0;
+        }
+
+        .indicator {
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+
+        .hour {
+            width: 20px;
+            height: 500px;
+            /* background: #666; */
+            position: absolute;
+            top: 0px;
+            left: 240px;
+        }
+
+        .hour>span {
+            width: 20px;
+            height: 200px;
+            margin-top: 100px;
+            background: rgb(146, 104, 104);
+            display: block;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)
+        }
+
+        .minute {
+            width: 10px;
+            height: 500px;
+            /* background: #333; */
+            position: absolute;
+            top: 0;
+            left: 245px;
+        }
+
+        .minute>span {
+            width: 10px;
+            height: 270px;
+            margin-top: 50px;
+            background: rgb(206, 37, 37);
+            display: block;
+            border-radius: 2px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)
+        }
+
+        .second {
+            width: 4px;
+            height: 500px;
+            position: absolute;
+            left: 248px;
+            top: 0;
+            /* transition: 1s linear; */
+            /* background: #999; */
+        }
+
+        .second>span {
+            display: block;
+            width: 4px;
+            height: 340px;
+            margin-top: 30px;
+            background: #000;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clocks">
+        <ul>
+            <li><span></span><span></span></li>
+            <li><span></span><span></span></li>
+            <li><span></span><span></span></li>
+            <li><span></span><span></span></li>
+            <li><span></span><span></span></li>
+            <li><span></span><span></span></li>
+        </ul>
+        <section>
+            <!-- 指针 -->
+            <div class="indicator">
+                <div class="hour"><span></span></div>
+                <div class="minute"><span></span></div>
+                <div class="second"><span></span></div>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    var ul = document.querySelector('ul');
+    var lis = document.querySelectorAll('li');
+    var num = 0;
+    var xzz = '';
+
+    for (var k = 0; k < lis.length; k++) {
+        if (num <= k) {
+            num++;
+            var xz = 'rotate(30deg)';
+            xzz += xz;
+        }
+        // console.log('----', num);
+
+        lis[k].style.transform = xzz;
+    }
+
+    var hour = document.querySelector('.hour');
+    var minute = document.querySelector('.minute');
+    var second = document.querySelector('.second');
+
+    var i = 6;
+    var deg = 'rotate(6deg)';
+    console.log(deg);
+
+    var nnn1 = '';
+    var nnn2 = '';
+    var nnn3 = '';
+
+    setInterval(function () {
+        nnn1 = nnn1 + deg;
+        second.style.transform = nnn1;
+    }, 1000);
+
+    setInterval(function () {
+        nnn2 = nnn2 + deg;
+        minute.style.transform = nnn2;
+    }, 60 * 1000);
+
+    setInterval(function () {
+        nnn3 = nnn3 + deg;
+        hour.style.transform = nnn3;
+    }, 12 * 60 * 1000);
+</script>
+
+</html>

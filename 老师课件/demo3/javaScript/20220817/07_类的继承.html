@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // function People(name,age){
+    //     this.name = name;
+    //     this.age = age
+    // }
+    // let p = new People("张三",18);
+    // function Stu(name,age,sex){
+    //     People.call(this,name,age);
+    //     this.sex = sex;
+    // }
+
+    // let s = new Stu("李四",18,"男")
+    // console.log(s)
+
+    class People{
+        constructor(name,age){
+            this.name = name;
+            this.age = age
+        }
+        say(){
+            console.log("好好学习天天向上")
+        }
+    }
+    let p =new People("张三",18);
+    // extends 关键字实现类的继承
+    class Student extends People{
+        constructor(name,age,sex){
+            // 完成继承
+            super(name,age)
+            this.sex = sex;
+        }
+    }
+
+    let s = new Student("王五",18,"男");
+    console.log(s)
+</script>
+</html>

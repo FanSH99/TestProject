@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>虞姬</div>
+    <br />
+    <div>项羽</div>
+    <br />
+    <div>貂蝉</div>
+    <script>
+        // 1. 删除事件
+        var divs = document.querySelectorAll('div');
+        divs[0].onclick = function () {
+            console.log(this);
+            // 把事件的处理逻辑清空。
+            divs[0].onclick = null;  // 内存地址清空，自动的垃圾回收。
+        }
+
+        // 2. removeEventListener 删除事件
+        divs[1].addEventListener('click', fn);
+        function fn() {
+            console.log(this);
+            divs[1].removeEventListener('click', fn);
+        }
+
+        // 3. detachEvent  ie 8 以下
+        divs[2].attachEvent('onclick', fn1);
+
+        function fn1() {
+            alert(33);
+            console.log('貂蝉');
+            divs[2].detachEvent('onclick', fn1);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arry = [0,1,2,3];
+    // 扩展运算符
+    console.log(...arry)
+   let arry2 = [9,8,7];
+//   将两个数组合并到同一个数组中 
+let myarry = [...arry,...arry2];
+console.log(myarry)
+   let user = {
+    name:"张三",
+    age:18,
+    sex:"男"
+   }
+   // 扩展运算符使用在对象中
+   console.log({...user})
+   let myuser = {...user};
+   user.name = '李四'
+   console.log(user)
+   console.log(myuser)
+   let a = {
+    like:"哈哈哈哈"
+   }
+   console.log({...a,...user})
+//    扩展运算符属于 浅拷贝 ?
+   console.log({...user}===user)
+    
+   
+</script>
+</html>

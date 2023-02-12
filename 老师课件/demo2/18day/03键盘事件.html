@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        onkeypree  ---按下 ， 但是不识别 小键盘上键  比如方向键
+        onkeydown  ---按下    主要例用这个按下
+        onkeyup  ----松开键盘
+
+        e.keyCode  键盘上键的 ascII码    
+     -->
+     <input type="text" id="search">
+     <script>
+        // 绑定在document  按下键盘   
+        // 不用onkeypress
+        //  document.onkeypress=function(e){
+        //     console.log(e);
+
+        //  }
+
+        //  document.onkeydown=function(e){
+        //     console.log(e);
+        //     console.log(e.keyCode,e.which);
+
+        //  }
+
+        // 模拟京东按键输入内容 
+        /* 
+        1.按下键盘上的s键， 让搜索框自动获焦
+        2.自动获焦的方法 focus()
+         */
+
+    var search=document.querySelector('#search');
+    // onkeydown 不足的地方， 键的字母在输中入框中存中，如果不要，需要onkeydown   onkeyup
+    //  document.onkeydown=function(e){
+    //     // console.log(e.keyCode);// s  ---   83
+    //     if(e.keyCode==83){
+    //         search.focus();
+    //     }
+
+    //  }
+
+    document.onkeyup=function(e){
+        // console.log(e.keyCode);// s  ---   83
+        if(e.keyCode==83){
+            search.focus();
+        }
+
+     }
+
+     </script>
+</body>
+</html>

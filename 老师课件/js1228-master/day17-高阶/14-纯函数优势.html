@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        纯函数的好处
+            1. 可缓存(见下面案例,后期有类似工具(lodash)帮普通函数变成缓存函数)
+                因为纯函数对相同输入始终有相同的结果，所以可以把纯函数的结果缓存起来
+            2. 可测试(开发后期都是模块化测试)
+                纯函数让测试更方便
+            3. 并行处理
+                在多线程环境下并行操作分享的内存数据很可能出现意外情况
+                纯函数不需要访问共享的内存数据
+        */
+        // 求圆面积 
+        function getArea(r) {
+            console.log(r);
+            return Math.PI * r * r;
+        }
+
+        console.log(getArea(5));
+        console.log(getArea(5));
+        console.log(getArea(5));
+
+        function memorize(fn) {
+            // 缓存对象
+            let cache = {};
+            function temp() {
+                let key = JSON.stringify(arguments);
+                cache[key] = cache[key] || fn.apply(fn, arguments);
+                return cache[key];
+            }
+            return temp;
+        }
+        console.log('----------------------------------------');
+        let getAreaWithMemory = memorize(getArea);
+        console.log(getAreaWithMemory(6));
+        console.log(getAreaWithMemory(6));
+        console.log(getAreaWithMemory(6));
+    </script>
+</body>
+
+</html>

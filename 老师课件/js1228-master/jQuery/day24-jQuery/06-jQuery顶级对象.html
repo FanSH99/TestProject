@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    // 1. 入口函数
+    // $(function () {
+    //   $('div').hide();
+    // });
+
+    // 2. $ 是 jQuery 的简写
+    jQuery(function (){
+      $('div').hide();
+    });
+
+    // 3. jQuery 的顶级对象是 $
+    /* 
+      DOM 操作的顶级对象是 document
+      BOM 操作的顶级对象是 window
+      DOM 是 BOM 的一个属性。
+    */
+  </script>
+</body>
+
+</html>

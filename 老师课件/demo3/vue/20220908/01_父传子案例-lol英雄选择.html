@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            width: 1000px;
+            margin:  0 auto;
+            /* border:  1px solid red; */
+            min-height: 400px;
+        }
+        .header{
+            width: 1000px;
+            margin:0 auto;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 15px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            background: slateblue;
+            color: #fff;
+            display: flex;
+        
+        }
+        .header div{
+            font-size: 13px;
+            margin-right: 10px;
+        }
+        .hero{
+            width: 120px;
+            text-align: center;
+            margin-right: 20px;
+        }
+        .lol{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .mian{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <template id="parent">
+        <div class="parent">
+            <div class="header">
+                    <div v-for="(item,index) in navList" :key="index">
+                        <input type="radio" :checked="activeIndex===index" @click="getType(index)"> {{item.name}}
+                    </div>
+            </div>
+            <div class="mian">
+                <!-- 绑定一个自定义属性 -->
+                <lol-hero :herotype="heroType"></lol-hero>
+            </div>
+        </div>
+    </template>
+    <template id="lol">
+        <div class="lol">                                              <!-- 绑定一个自定义属性 -->
+             <hero-info v-for="(item,index) in getList" :key="index" :info="item"></hero-info>
+        </div>
+    </template>
+    <template id="hero">
+        <div class="hero">
+            <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${info.alias}.png`" alt="">
+            <p>{{info.title}}</p>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+    let heroInfo = {
+        template:"#hero",
+        // 使用props接收自定义属性
+        props:{
+            info:Object
+        },
+        data() {
+            return {
+                
+            }
+        },
+    }
+
+    let lolHero = {
+        template:"#lol",
+        data() {
+            return {
+                list:[]
+            }
+        },
+        props:{
+            herotype:String
+        },
+        components:{
+            heroInfo
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get","https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState ===4){
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.list = res.hero
+                }
+            }
+        },
+        computed:{
+            getList(){
+                if(this.herotype==='all'){
+                return this.list;
+             }else{
+                let newArry = this.list.filter(item=>{
+                    return item.roles.join("").includes(this.herotype);
+                })
+                return newArry;
+             }
+            }
+        }
+    }
+
+    let myComponent = {
+        template:"#parent",
+        data() {
+            return {
+                navList: [
+                {
+                    name: "所有英雄",
+                    type: "all",
+                }, {
+                    name: "法师",
+                    type: "mage"
+                }, {
+                    name: "战士",
+                    type: "fighter"
+                }, {
+                    name: "坦克",
+                    type: "tank"
+                }, {
+                    name: "刺客",
+                    type: "assassin"
+                }, {
+                    name: "射手",
+                    type: "marksman"
+                }, {
+                    name: "辅助",
+                    type: "support"
+                }
+            ],
+            activeIndex:0,
+            heroType:"all"
+            }
+        },
+        components:{
+            lolHero
+        },
+        methods: {
+            getType(index){
+                this.activeIndex=index
+                // 获取当前点击的英雄类型
+                this.heroType = this.navList[index].type;
+            }
+        },
+    }
+
+    new Vue({
+        el:"#app",
+        components:{
+            myComponent
+        }
+    })
+</script>
+</html>

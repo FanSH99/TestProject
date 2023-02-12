@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        表单提交 
+    </h1>
+    <!--触发表单中button按钮表单就会自动提交 -->
+    <!-- action 表单提交得地址 method 提交方式:get post -->
+    <form action="/login" method="get">
+        <label for="">用户名:</label>
+        <!-- name属性就是get请求传递得参数属性名 -->
+        <!-- get请求将请求参数拼接到请求路径上 -->
+        <input type="text" name="username">
+        <br>
+        <label for="">密码:</label>
+        <input type="text" name="password">
+        <br>
+        <button>提交</button>
+    </form>
+    <h3>表单提交post请求</h3>
+    <form action="/user/like" method="post">
+        <label for="">喜欢:</label>
+        <input type="text" name="like">
+        <br>
+        <label for="">年龄:</label>
+        <input type="text" name="age">
+        <br>
+        <button>提交</button>
+    </form>
+    <!-- 请求头:
+    1. application/x-www-form-urlencoded 表示请求参数为表单数据
+    2. application/json  普通请求头
+    3. multipart/form-data 上传文件请求头
+    -->
+    <!-- 
+        post请求和get请求区别:
+        1.get请求参数拼接到请求路径上而post请求参数携带在请求体中
+        2.post请求更安全
+        3.get请求传递得参数有大小限制 最大不能超过4kb post请求没有大小限制
+        4.get请求要比post更快
+
+        1b = 1024 字节
+        1kb = 1024 b
+        1个汉字 = 2个字节
+        1字母 = 1字节
+     -->
+</body>
+</html>

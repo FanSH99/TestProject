@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 2022年8月10日10:15:12
+     -->
+
+    <h1>好好学习天天向上</h1>
+    <button onclick="updateH1()">修改内容</button>
+    <ul>
+        <li>打游戏要节制</li>
+        <li>写代码真的累</li>
+    </ul>
+    <button onclick="updateHtml()">修改内容</button><br>
+    <input type="text" id="name">
+    <button onclick="getvalue()">获取表单内容</button>
+    <button onclick="updateVal()">修改表单内容</button>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        var msg = $('h1').text();//好好学习天天向上 text()不能单独使用，获取的是纯文本
+        console.log(msg);
+        var htmmsg = $('ul').html();//html()不能单独使用，或者的是连标签内容一起的文本
+        /* 
+         <li>打游戏要节制</li>
+        <li>写代码真的累</li>
+        */
+        console.log(htmmsg);
+
+
+        function getvalue() {
+            var value = $('#name').val();
+            console.log(value);
+        }
+
+        function updateH1() {
+            $('h1').text('学啥学')
+        }
+
+        function updateHtml() {
+            $('ul').html('<h3>不学习没钱花啊</h3>')
+        }
+
+        function updateVal() {
+            $('#name').val('O(∩_∩)O哈哈~')
+        }
+
+
+        /*
+        text()  之火去文本，不包含标签   innerText
+        html()  获取修改所有内容，包含标签    innerHtml
+        val()  获取表单内容
+        */
+    </script>
+</body>
+
+</html>

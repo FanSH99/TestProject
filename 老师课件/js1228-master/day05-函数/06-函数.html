@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            函数：
+                1. 封装了一段可以重复执行的代码，对外暴露一个函数名，隐藏了函数内部的细节。
+                2. 使用时，调函数名即可。
+                3. 函数不调用，不执行。调用一次，执行一次。
+                4. 先声明，再使用。和变量一样。
+                5. 某个人做了某件事情。某个事情就是函数。
+                6. 函数就是某个动作，函数名用动词。函数名命名规则是小驼峰。
+                7. 函数、方法、API、接口 同一个事物，不同的名字。
+                8. 执行顺序： 
+            
+            语法结构
+                function 函数名 () {
+                    函数体;
+                }   
+            调用 :
+                函数名();     
+        */
+        let age = 20
+        function buy() {
+            if (age > 18) {
+                console.log('给你的啤酒');
+            } else {
+                console.log('请喝可乐');
+            }
+        }
+
+        buy();
+        buy();
+
+    </script>
+</body>
+
+</html>

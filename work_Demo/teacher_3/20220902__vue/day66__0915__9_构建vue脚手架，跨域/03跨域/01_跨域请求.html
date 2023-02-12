@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域请求</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+/** // 2022年9月15日14:54:04
+//如果看到 Access-Control-Allow-Origin ，就代表跨域
+什么是跨域？
+受浏览器同源策略的影响，服务端不允许客户端随便请求访问，原因是为了减少服务器的压力，同时也是为了保障数据安全。
+同源策略：
+1.域名 127.0.0.1  taobao.com 等这些是域名
+2.协议  http  https
+3.端口 https默认端口是443
+三者有一个不一样，就是跨域，不能访问。
+https://www.baidu.com 访问  https://www.baidu.com/login 即不存在跨域。
+https://www.taobao.com 访问 https://www.js.com即存在跨域。
+
+解决跨域的方案
+1.jsonp跨域，（ajax独享的）
+2.script 脚本跨域
+3.反向代理跨域
+4.后端解决跨域 ---服务端开启cors支持。---这种不安全。
+*/
+let xhr=new XMLHttpRequest();
+xhr.open("get","https://suggest.taobao.com/sug?code=utf-8&q=水杯");
+xhr.send();
+xhr.onreadystatechange(()=>{
+    if(xhr.readyState===4){
+        console.log(xhr.response);
+    }
+})
+</script>
+</html>

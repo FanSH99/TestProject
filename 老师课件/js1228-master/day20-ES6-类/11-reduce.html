@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 3, 5, 7];
+        // arr.forEach((current, index, array) => {
+        //     console.log(current, index, array);
+        // });
+
+        console.log('-----------------------------');
+
+        // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+        /* 
+            语法：
+                arr.reduce(callbackFn,initValue);
+        */
+        // 1. 无初始值
+        let temp1 = arr.reduce((previous, current, index, array) => {
+            // console.log(previous, current, index, array);
+            // return 1;
+            return previous + current;
+        });
+        console.log(temp1);
+
+        // 2. 有初始值
+        let temp2 = arr.reduce((previous, current, index, array) => {
+            console.log(previous, current, index, array);
+            // return 1;
+            return previous + current;
+        }, 10);
+
+        console.log(temp2);
+
+        /*
+            总结：
+                1. previous 上一次调用 callbackFn 时的返回值。
+                2. 返回值：使用 reduce 回调函数遍历整个数组后的结果。
+                3. initValue : 遍历的初始值
+        */
+
+    </script>
+</body>
+
+</html>

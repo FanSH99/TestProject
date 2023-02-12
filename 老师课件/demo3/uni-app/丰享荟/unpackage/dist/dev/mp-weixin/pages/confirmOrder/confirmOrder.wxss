@@ -1,0 +1,49 @@
+
+page.data-v-048afac6 {
+	width: 100%;
+	height: 100%;
+	background-color: #f1f1f1;
+}
+.address.data-v-048afac6,
+.goodslist.data-v-048afac6,
+.paytype.data-v-048afac6,
+.price.data-v-048afac6,
+.sendbtn.data-v-048afac6 {
+	width: 95%;
+	margin: 20rpx auto;
+	padding: 15rpx;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 10rpx;
+}
+.userinfo.data-v-048afac6 {
+	font-size: 30rpx;
+	margin: 20rpx 0;
+}
+.detail.data-v-048afac6 {
+	font-size: 27rpx;
+	color: #b4b4b4;
+}
+.title.data-v-048afac6 {
+	font-size: 28rpx;
+	color: #666;
+}
+.goods.data-v-048afac6 {
+	margin: 20rpx 0;
+}
+.payname.data-v-048afac6{
+	width: 100%;
+	height: 60rpx;
+	line-height: 60rpx;
+	text-align: center;
+	font-size: 27rpx;
+	color: #b4b4b4;
+	border-radius: 10rpx;
+	margin: 15rpx 0;
+	border: 1px solid #f1f1f1;
+}
+.activepay.data-v-048afac6{
+	border-color: #ff6034;
+	color: #ff6034 !important;
+}
+

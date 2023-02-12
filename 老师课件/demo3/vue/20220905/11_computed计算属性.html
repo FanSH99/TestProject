@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        单价： <input type="text" v-model="price"> * 数量 <input type="text" v-model="num"> = 商品总价： {{getsum}}
+        methods:{{getSum()}}
+        <div>
+            {{msg}}
+        </div>
+        <button @click="msg='哈哈哈哈'">change</button>
+        {{getnumadd}}
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num: 0,
+            price: 0,
+            msg: "嘿嘿嘿"
+        },
+        methods: {
+            getSum() {
+                console.log("methods 方法被调用啦")
+                return this.price * this.num
+            },
+        },
+        // 计算属性
+        computed: {
+            // 可以定义多个计算属性
+            // 定义计算属性
+            // 计算属性两个特点：1. 必须要有return值 2.当计算属性所依赖的数据发生改变时就会自动调用 3.使用时和data中的属性使用方法一样
+            getsum() {
+                console.log("计算属性被调用了")
+                let sum = this.num * this.price;
+                return sum
+            },
+            
+            getnumadd(){
+                return this.num*10
+            }
+        }
+        /* 
+         computed计算属性和 methods方法的区别：
+         1. methods 方法依赖于页面渲染，只要页面发生渲染methods就会重新调用。
+         2. computed 计算属性依赖于浏览器缓存只用当其依赖的数据发生改变时才会重新调用
+         3. computed必须要有return值
+        */
+    })
+</script>
+
+</html>

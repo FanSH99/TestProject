@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            width: 500px;
+            margin: 0 auto;
+            min-height: 600px;
+            border: 1px solid #e4e4e4;
+        }
+
+        .box {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background: pink;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+
+            <input type="text" name="name" id="name" placeholder="请输入星座" @input="getList" v-model="name">
+        </div>
+        <div v-for="(item,index) in getList()" :key="index">
+            <img :src="item.url" alt="">
+        </div>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            list: [
+                { name: "白羊座", url: "./img/baiyang.png" },
+                { name: "处女座", url: "./img/chunv.png" },
+                { name: "金牛座", url: "./img/jinniu.png" },
+                { name: "巨蟹座", url: "./img/juxie.png" },
+                { name: "摩羯座", url: "./img/moxie.png" },
+                { name: "射手座", url: "./img/sheshou.png" },
+                { name: "狮子座", url: "./img/shizi.png" },
+                { name: "双鱼座", url: "./img/shuangyu.png" },
+                { name: "双子座", rl: "./img/shuangzi.png" },
+                { name: "水瓶座", url: "./img/shuiping.png" },
+                { name: "天秤座", url: "./img/tiancheng.png" },
+                { name: "天蝎座", url: "./img/tianxie.png" },
+
+            ],
+            name: "",
+            newList: [],
+        },
+        methods: {
+            getList() {
+                let newList = this.list.filter(item => item.name.includes(this.name));
+                return newList;
+            }
+        }
+    })
+</script>
+
+</html>

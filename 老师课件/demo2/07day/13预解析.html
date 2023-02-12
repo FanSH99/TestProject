@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.预解析
+      js解析器在运行JavaScript代码时分两步
+        （1）预解析   "var  和 function”  进行提前声明或者定义
+        （2）代码执行 从上到下执行JS语句
+
+    -->
+    <script>
+    //  1.变量预解析（即变量提升）
+    // 变量提升： 变量的声明会被提升到当前作用域的最上面，变量的赋值不会提升
+        // console.log(num);// undefined
+        // var num=10;
+        // var b=20;
+
+
+        // 解析成下面的代码
+        // var num;
+        // var b;
+        // console.log(num);
+        // num=10;
+        // b=20;
+
+    //2. 函数预解析  （即函数提升）
+    // show1();
+    // show();
+    //  function show(){
+    //     console.log('run');
+    //  }
+    //  function show1(){
+    //     console.log('nice');
+    //  }
+
+    //  解析成下面的形式
+    //  function show(){
+    //     console.log('run');
+    //  }
+    //  function show1(){
+    //     console.log('nice');
+    //  }
+    //  show1();
+    //  show();
+
+
+    // var  function
+
+     var a=10;
+     show();
+     console.log(a);
+     function show(){
+        console.log('good');
+     }
+     console.log('a='+a);
+     
+// 解析
+ var a;
+ function show(){
+    console.log('good');
+ };
+ a=10;
+ show();
+ console.log(a);
+ console.log('a='+a);
+
+
+//  函数表达式
+fn();// 报错
+ var fn=function(){
+    console.log('very good');
+ }
+
+//  解析 成下面的
+// var fn;
+// fn();
+// fn=function(){
+//     console.log('very good');
+//  }
+
+    </script>
+</body>
+</html>

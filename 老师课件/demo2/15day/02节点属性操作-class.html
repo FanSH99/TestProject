@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pic1{
+            width: 300px;
+            border: 2px solid red;
+        }
+        .pic2{
+            width: 500px;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/role-ty.png" alt="" title=""  id="" class="" data-name="ty" >
+    <script>
+        //1.查
+       var img= document.querySelector('img');
+       console.log(img);
+
+       //2.设置 class
+        // img.className='pic1';
+        // img['className']='pic2'
+
+        // 没有特例
+          img.setAttribute('class','pic1')
+
+      //3. 获取属性
+
+    //    console.log(img.className);
+    //    console.log(img['className']);
+    console.log(img.getAttribute('class'));
+
+
+
+    // 第三种 方法，更适于自定义属性
+
+    // 4.自定义属性   索引号             
+       img.setAttribute('index',0);
+       img.setAttribute('data-name','ty');
+
+       img._index='1';//  在标记表现不出来，但是也是生效的，不直观  在内存中
+
+    //    data-*
+
+    //5.a获取自定义属性
+
+ console.log( img.getAttribute('index'));
+ console.log(img._index);//1
+    </script>
+</body>
+</html>

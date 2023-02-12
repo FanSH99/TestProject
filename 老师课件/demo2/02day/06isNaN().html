@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- isNaN(参数)  
+
+    参数  不是一个数字是话，返回 true
+              是一个数的话，返回flase 
+
+    Number()转换后仍不是一个数字，返回真
+    --> 
+    <script>
+        var a=10;
+        console.log(isNaN(a));//false
+        console.log(isNaN('123'));//false      隐式转换   0   Number()
+        console.log(isNaN(''));//false         隐式转换   0
+        console.log(isNaN('     '));//false       0
+        console.log(isNaN(true));//false          1
+        console.log(isNaN(false));//false         0
+        console.log(isNaN(null));//false           0
+
+        console.log('------------------');
+        console.log(isNaN(undefined));//true    NaN
+        console.log(isNaN(NaN));//true    NaN
+        console.log(isNaN('123hello'));//true
+     
+
+    </script>
+</body>
+</html>

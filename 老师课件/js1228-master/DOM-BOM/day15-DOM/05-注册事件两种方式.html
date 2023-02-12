@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>ie9 attachEvent</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+
+        // 1. 传统注册事件的方式
+        //       赋值就会覆盖，只能绑定一个事件。
+        btns[0].onclick = function () {
+            console.log('王一博');
+        };
+
+        btns[0].onclick = function () {
+            console.log('张艺兴');
+        };
+
+        // 2. 事件监听的方式注册事件 addEventListener
+        btns[1].addEventListener('click', function () {
+            console.log('王一博');
+        });
+        btns[1].addEventListener('click', function () {
+            console.log('张艺兴');
+        });
+
+        // 3. ie 的写法
+        btns[2].attachEvent('onclick',function (){
+            console.log('ie 的写法');
+        });
+    </script>
+</body>
+
+</html>

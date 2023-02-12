@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 用jsx创建虚拟dom
+    let dom = <div id="box">哈哈哈哈</div>;
+    console.log(dom);
+    let div = (<ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>)
+    console.log(div);
+    // 将虚拟dom渲染到页面,注意ReactDom不要写错成react
+    let app = document.getElementById("app")
+    ReactDOM.render(div, app)
+</script>
+<script>
+    /*
+    2022年11月14日19:40:49
+    jsx是js的扩展语言，兼容所有js语法。里面可以写js语法，js里面不能兼容jsx
+    jsx的出现就是为了给react提供使用，解决react命令式创建dom的麻烦。
+    一般使用声明式创建虚拟dom
+    react语法采用的是指令式语法创建dom
+    浏览器只能编译js语法，不能识别jsx语法。要想让浏览器编译，需要将jsx语法转化为js语法。
+    可以借助babel.js库将jsx语法转化为js语法。
+    */
+
+
+</script>
+
+</html>

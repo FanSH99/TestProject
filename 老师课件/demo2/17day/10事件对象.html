@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <!-- 事件对象
+        event  或 e
+
+        低版本不认识e或event   
+        认识 window.event
+     -->
+</head>
+<body>
+    <button id="btn">单击</button>
+    <script>
+       var btn= document.getElementById('btn');
+        // btn.onclick=function(event){
+        //     console.log(event);// 事件对象
+
+        // }
+
+        btn.onclick=function(e){
+            // console.log(e);// 事件对象  高版本认识
+            //  console.log(window.event);//低版本认识的
+            //  if(e){
+            //     e=e;
+            //  }else{
+            //     e=window.event;
+            //  }
+            // if(!e){
+            //     e=window.event;
+            // }
+            //兼容性方案的写法
+            e=e||window.event;
+
+            console.log(e.clientX,e.clientY);
+            console.log(e.pageX,e.pageY);
+            console.log(e.screenX,e.screenY);
+          
+
+        }
+    </script>
+</body>
+</html>

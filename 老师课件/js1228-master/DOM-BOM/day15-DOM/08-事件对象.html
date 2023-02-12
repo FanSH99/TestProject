@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>七里香</div>
+    <script>
+        /* 
+            一切皆对象，元素是对象。
+            自定义对象。Array Object String
+            
+            1. e 就是事件对象，也可以写成 event，作为函数的形参。
+            2. 系统自动创建的，
+            3. 里面可以查看很多属性，比如坐标
+            4. ie 678 有兼容性问题。
+        */
+        var div = document.querySelector('div');
+        div.addEventListener('click', function (e) {
+            console.log(arguments);
+            // 查看事件对象
+            console.log(e);
+        });
+        // 自己查看都有哪些属性。
+    </script>
+</body>
+
+</html>

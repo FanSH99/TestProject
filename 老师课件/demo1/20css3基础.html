@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: myFirstFont;
+            src: url(fonts/汉仪娃娃篆简.ttf);
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #333;
+            margin: 80px auto;
+            /* box-shadow:x轴偏移量 y轴偏移量 羽化值（模糊度） 阴影颜色 ;
+       盒子阴影 ：不占用盒子空间
+    
+    */
+            box-shadow: 10px 20px 5px transparent;
+            padding: 20px;
+            /* background: url(img/gwc.jpg) no-repeat; */
+            /* background-origin: border-box; */
+            font-family: "myFirstFont";
+            /* transform: rotate(45deg); */
+            transition: all 0.5s;
+            /* 允许用户调整盒子大小  
+            resize: both;
+            overflow: auto;*/
+            /* resize: both;
+            overflow: auto; */
+        }
+
+        /* .box:hover{ */
+        /* transform: rotate(45deg); */
+        /* transform: scale(1,2); */
+        /* transform: scale(0.5); */
+        /* transform: skew(45deg); */
+
+        /* } */
+
+        /* 标准模型：
+        盒子宽度外观：
+        border-left+border-right+padding-left+padding-right+width */
+
+
+        /* 
+        盒子怪异模型：
+        盒子宽度外观：width
+        */
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            width: 100px;
+            height: 120px;
+            border: 1px solid #333;
+            margin: auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav dt {
+            background: green;
+            height: 40px;
+            line-height: 40px;
+
+        }
+
+        .nav dd {
+            /* display: none; */
+            position: absolute;
+            width: 100%;
+            /* 规定被嵌套元素呈3D展示效果 */
+            transform-style: preserve-3d;
+            perspective: 500px;
+        }
+
+      
+
+        .nav dd a {
+            display: block;
+            background: red;
+            border-bottom: 1px solid #fff;
+            height: 40px;
+            line-height: 40px;
+            transform: rotatey(-45deg);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        .nav:hover dd a {
+            opacity: 1;
+            transform: rotatey(0);
+        }
+        .nav dd a:nth-child(2){
+            /* 动画的延迟时间 */
+            transition-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">你好</div>
+    <!-- <div class="box"></div> -->
+
+    <div class="box1"></div>
+    <dl class="nav">
+        <dt>一级导航</dt>
+        <dd>
+            <a href="#">二级导航</a>
+            <a href="#">二级导航</a>
+        </dd>
+    </dl>
+</body>
+
+</html>

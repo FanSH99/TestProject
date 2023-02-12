@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>localStorage</h1><br>
+  <input type="text" />
+  <button class="set">存储数据</button>
+  <button class="get">获取数据</button>
+  <button class="remove">删除数据</button>
+  <button class="del">清空所有数据</button>
+  <script>
+    /* 
+      localStorage: 
+          1. 多个页面共享数据
+          2. 手动删除，则数据消失
+    */
+    var input = document.querySelector("input");
+    var set = document.querySelector(".set");
+    var get = document.querySelector(".get");
+    var remove = document.querySelector(".remove");
+    var del = document.querySelector(".del");
+
+    // 存储数据
+    set.addEventListener("click", () => {
+      localStorage.setItem("hero", "吕布");
+      localStorage.setItem("value", input.value);
+    });
+    // 获取数据
+    get.addEventListener("click", () => {
+      var result = localStorage.getItem("hero");
+      console.log(result);
+      console.log(localStorage.getItem("value"));
+    });
+    // 删除指定的数据
+    remove.addEventListener("click", () => {
+      localStorage.removeItem("hero");
+    });
+    // 清除所有数据
+    del.addEventListener("click", () => {
+      localStorage.clear();
+    });
+  </script>
+</body>
+
+</html>

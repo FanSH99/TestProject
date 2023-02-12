@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    history 是 window 的一个属性。
+    history 的数据类型是对象。
+    history 作用: 记录用户的浏览器的历史信息。
+    <br />
+    <div>当前页面 index </div>
+    <a href="list.html">点击我去往列表页</a>
+    <button>前进</button>
+    <script>
+        // 需求: 通过点击按钮，前进到 list 页面
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            // history.forward();
+            history.go(1);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 40px;
+            margin: 200px;
+            position: relative;
+        }
+        .box input{
+            width: 200px;
+            height: 40px;
+            border:1px solid #222;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+        :focus{
+            outline: none;
+        }
+        .box img{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%) scale(0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+      <input type="password"  placeholder="请输入密码">
+      <img src="./images/close.png" alt="">  
+    </div>
+
+    <script>
+        // 1.
+        var ipt= document.querySelector('input');
+       var img= document.querySelector('img');
+
+      // 2.加事件
+      var flag=1;
+       img.onclick=function(){
+        if(flag){
+         //2.1 闭着眼变睁开， 换图片路径
+           this.src='./images/open.png'
+        //2.2 显示密码   type="password" 改 text   
+           ipt.type='text'
+           flag=0;
+        }else{
+            this.src='./images/close.png'
+            ipt.type='password'
+           flag=1;
+        }
+           
+        
+       } 
+    </script>
+    
+</body>
+</html>

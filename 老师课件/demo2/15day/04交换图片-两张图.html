@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./images/role-ty.png" alt="" id="pic1">
+    <button id="btn">交换</button>
+    <img src="./images/role-y.png" alt="" id="pic2">
+
+    <script>
+        // src 属性  路径
+        //1.查
+        var pic1 = document.querySelector('#pic1');
+        var pic2 = document.querySelector('#pic2');
+        var btn = document.querySelector('#btn');
+
+        //2.加事件
+        //  放在外面取
+        // var url1= pic1.src;
+        // console.log(url1);//file:///D:/ftp/2022-7-5%E5%BC%80%E5%A7%8Bjs/js20220705/15day/images/role-ty.png
+        // var url2= pic2.src;
+        // console.log(url2);
+        // btn.onclick=function(){
+
+        //     if(pic1.src==url1){
+        //         pic1.src='./images/role-y.png';
+        //         pic2.src='./images/role-ty.png';
+
+        //     }else{
+        //         pic1.src='./images/role-ty.png';
+        //         pic2.src='./images/role-y.png';
+        //     }
+
+
+
+        //  }
+
+        // 方法二:    indexOf   includes
+
+        // btn.onclick = function () {
+        //    var url1= pic1.src;//file:///D:/ftp/2022-7-5%E5%BC%80%E5%A7%8Bjs/js20220705/15day/images/role-ty.png
+
+        //     if (pic1.src =='file:///D:/ftp/2022-7-5%E5%BC%80%E5%A7%8Bjs/js20220705/15day/images/role-ty.png') {
+        //         pic1.src = './images/role-y.png';
+        //         pic2.src = './images/role-ty.png';
+
+        //     } else {
+        //         pic1.src = './images/role-ty.png';
+        //         pic2.src = './images/role-y.png';
+        //     }
+
+
+
+        // }
+
+
+        btn.onclick = function () {
+        //    var url1= pic1.src;//file:///D:/ftp/2022-7-5%E5%BC%80%E5%A7%8Bjs/js20220705/15day/images/role-ty.png
+
+            if (pic1.src.indexOf('ty.png')!=-1) {
+                pic1.src = './images/role-y.png';
+                pic2.src = './images/role-ty.png';
+
+            } else {
+                pic1.src = './images/role-ty.png';
+                pic2.src = './images/role-y.png';
+            }
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

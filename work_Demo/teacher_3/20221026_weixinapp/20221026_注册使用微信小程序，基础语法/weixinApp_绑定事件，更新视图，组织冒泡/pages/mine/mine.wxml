@@ -1,0 +1,5 @@
+<!--pages/mine/mine.wxml-->
+<text>我的页面--{{like}}</text>
+<!-- 自定义组件在使用之前必须在JSON配置文件中引入注册。 -->
+<myheader wx:if="{{isshow}}"></myheader>
+<button bindtap="changeShow">切换</button>

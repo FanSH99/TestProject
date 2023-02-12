@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="dingyue()">订阅公众号</button>
+    <button onclick="fabu()">管理员发消息</button>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+
+<script>
+
+    // 2022年9月8日10:17:36
+    // 创建一个微信公众号，也就是创建一个对象  用户必须调用公众号里面的方法才可订阅成功。
+    let public = {
+        // 用来存放订阅者回调函数。
+        list: [],
+        // 用户定义方法
+        subscribe(callback) {
+            // console.log("有新用户订阅");
+            this.list.push(callback);
+            callback("有新用户订阅")
+        },
+        // 发布者发布消息
+        sendmsg(msg) {
+            this.list.forEach(callback => {
+                callback(msg)
+            })
+            console.log("管理员发送消息", msg);
+        }
+    }
+    function dingyue() {
+        public.subscribe((msg) => {
+            console.log("收到消息", msg);
+        });
+    }
+    function fabu() {
+        public.sendmsg("好好学习，天天向上");
+    }
+</script>
+
+</html>

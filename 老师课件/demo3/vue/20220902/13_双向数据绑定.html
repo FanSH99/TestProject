@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 双向数据绑定就是视图更新数据改变 数据改变试图更新 -->
+        <!-- v-model双向数据绑定指令 -->
+        <!-- v-model只能作用在表单标签上 -->
+        <div>
+            {{username}}
+        </div>
+        <input type="text" placeholder="请输入姓名" v-model="username">
+        <button @click="getValue">获取输入框内容</button>
+        <p>{{content}}</p>
+        <textarea  cols="30" rows="10" v-model="content"></textarea>
+        <input type="radio" v-model="isValue" value="张三">
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            username:"张三",
+            content:"",
+            isValue:"张三"
+        },
+        methods: {
+            getValue(){
+                console.log(this.username)
+            }
+        },
+    })
+</script>
+</html>

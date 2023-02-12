@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月11日10:46:32
+        用each(obj,function(key,value){
+
+        })来遍历对象，其中key是属性名，value 是属性值。
+
+        each(arr,function(index,value){
+
+        })来遍历数组，其中index是下标，value是值。
+     -->
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        var obj = {
+            name: '白子画',
+            age: '18',
+            sex: '男',
+            like: '摄影'
+        }
+        $.each(obj, function (key, value) {
+            console.log(key);//name, age sex like ---属性名
+            console.log(value);// 白子画 18 男 摄影  ---属性值。
+        })
+        var arr = ['白浅', '白子画', '海绵宝宝', '派大星']
+        $.each(arr, function (index, value) {
+            console.log(index);
+            console.log(value);
+        })
+    </script>
+</body>
+
+</html>

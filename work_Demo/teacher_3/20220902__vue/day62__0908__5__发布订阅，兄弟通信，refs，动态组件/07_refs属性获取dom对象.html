@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <h1 ref="box">{{msg}}</h1>
+            <!-- 变色可以绑定类名，点击切换类名即可。也可以绑定refs属性来操作dom，vue不建议直接操作dom-->
+            <button @click="changeColor">变色</button>
+        </div>
+
+    </div>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月8日14:43:58 */
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "东风夜放花千树，更吹落，星如雨。"
+
+        },
+        methods: {
+            changeColor() {
+                console.log(this);
+                console.log(this.$refs.box);
+                this.$refs.box.style.color = 'red';
+            }
+        }
+    })
+</script>
+
+</html>

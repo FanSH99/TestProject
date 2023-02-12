@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            数组去重 ['blue', 'green', 'blue'] 要求去除数组中重复的元素。
+            1. 遍历数组
+            2. 判断当前元素是否存在新数组
+            3. 添加
+        */
+        var arr = ['blue', 'green', 'blue'];
+        var newArr = new Array();
+        for (var i = 0; i < arr.length; i++) {
+
+            if (newArr.indexOf(arr[i]) == -1) {
+                newArr.push(arr[i]);
+            }
+        }
+
+        console.log(newArr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

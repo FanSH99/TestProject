@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <script>
+    // 有一个按钮,点击后禁用, 3s后开启
+    let btns = document.querySelectorAll('button');
+
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].onclick = function () {
+        this.disabled = true;
+
+        // setTimeout(() => {
+        //   this.disabled = false;
+        // }, 3000);
+
+        setTimeout(function () {
+          console.log(this);
+          this.disabled = false;
+        }.bind(this), 3000);
+      }
+    }
+
+
+    /*
+      call  apply bind 总结
+      相同点:都可以改变函数内部 this 的指向
+      不同点:
+          1. call 和 apply 会立即手动调用函数
+          2. apply 参数是数组
+          3. bind 不会调用函数,返回新的函数
+      主要应用场景:
+          1. call 经常用于继承
+          2. apply 经常根数组有关,结合内置函数 Math
+          3. bind 不调用函数,但是需要改变 this 指向,比如定时器       
+    */
+  </script>
+</body>
+
+</html>

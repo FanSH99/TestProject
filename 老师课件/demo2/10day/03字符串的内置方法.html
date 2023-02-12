@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 基本包装类型
+    String、Number Boolean
+    'hello'   123   true false
+
+    new String()      new Number()   new Boolean()
+
+    对象才会有属性的方法
+
+    1. 属性  length 长度
+
+    2.取值  ，访问  索引号也是 从0 开始的
+     str[索引号]
+
+    3. 遍历
+     尽量 采取普通for          for...in     for...  of
+
+    4. 添加或（修改） （无法通过索引号修改 添加）
+       str[0]='h';// 修改不了 ，不能用
+
+    5.内置方法
+    String HTML 包装方法  了解
+
+
+
+    -->
+    <script>
+    //     var str='hello';
+    //     console.log(str,typeof str);
+
+    //    str= new String(str);
+    //    console.log(str,typeof str);
+
+    //    但时平时，不用new String()来转对象，但是基本类型的 字符串也能用  对象的属性和方法
+    // 原因    属于包装类型的对象   简单数据类型包装成为复杂数据类型，这样基本数据类型就有了属性和方法。
+
+  //1.length
+
+  var str='hello大家上午好';
+  console.log(str.length);//10
+
+  //2.取值  索引号
+   console.log(str[5],str[0]);
+
+   //3.遍历
+    for(var i=0;i<str.length;i++){
+        console.log(i,str[i]);
+     }
+
+    // 不推荐 ，可以用
+    // for(var i in str){
+    //     console.log(i,str[i]);
+    // }
+
+    // for(var key of str){
+    //     console.log(key);// key 对应的是每个字符
+    // }
+
+    //4.添加或修改
+    // str[0]='W';// 无法修改
+    // console.log(str);
+
+    //5.String HTML 包装方法  了解
+    var str='hello大家上午好';
+   var str1= str.bold();
+    console.log(str1);//<b>hello大家上午好</b>
+    document.write(str1)
+
+    document.write(str.fontcolor('red'))
+    </script>
+</body>
+</html>

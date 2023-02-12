@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        ul {
+            list-style: none;
+            font-size: 50px;
+        }
+
+        span {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ul>(li>i.fa*5)*3 -->
+    <ul>
+        <li>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <span></span>
+        </li>
+        <li>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <span></span>
+        </li>
+        <li>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <span></span>
+        </li>
+    </ul>
+</body>
+
+</html>
+<script>
+    var arr = ['非常差', '差', '一般', '满意', '非常满意'];
+
+    $('i').mouseenter(function () {
+        a(this);
+    });
+
+    $('li').mouseleave(function () {
+        // $(this).children('.aaa').removeClass('fa-star').addClass('fa-star-o')
+
+        $(this).children('i').removeClass('fa-star').addClass('fa-star-o');
+        $(this).children('.aaa').removeClass('fa-star').addClass('fa-star-o');
+        var inn = $(this).children('.aaa').length;
+        console.log(inn);
+        if (inn) {
+            $(this).children('span').text(arr[inn - 1]);
+        } else {
+            $(this).children('span').text(' ');
+        }
+    });
+
+    $('i').click(function () {
+        var dian = 1;
+        a(this, dian);
+    });
+
+    function a(e, d) {
+        var ind = $(e).index() + 1;
+        $(e).parent().children('i').removeClass('fa-star').addClass('fa-star-o');
+        $(e).parent().children(`i:lt(${ind})`).removeClass('fa-star-o').addClass('fa-star');
+        $(e).siblings('span').text(arr[ind - 1]);
+        if (d == 1) {
+            $(e).parent().children('i').removeClass('aaa')
+            $(e).parent().children(`i:lt(${ind})`).addClass('aaa')
+            //    attr('title',true); // attr是添加属性('属性名','属性值')
+        }
+    }
+</script>

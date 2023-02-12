@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" id="selAll">全选/全不选
+    <input type="checkbox" id="selRev">反选
+    <h2>项目</h2>
+    <div class="box">
+        <input type="checkbox" name="interst" id="" class="cbx">游泳
+        <input type="checkbox" name="interst" id="" class="cbx">爬山
+        <input type="checkbox" name="interst" id="" class="cbx">看书
+        <!--  <input type="checkbox" name="" id=""> -->
+    </div>
+
+    <script>
+        // 全选，
+        var selAll = document.querySelector('#selAll');
+        var selRev = document.querySelector('#selRev');
+
+        var cbxs = document.querySelectorAll('.box>input.cbx');
+        console.log(cbxs);
+
+        //   onclick 可以用，尽量用change---发生改变时
+
+        selAll.onchange = function () {
+            console.log(this);
+            if (this.checked) {
+                for (var i = 0; i < cbxs.length; i++) {
+                    cbxs[i].checked = true;
+                }
+            } else {
+                for (var i = 0; i < cbxs.length; i++) {
+                    cbxs[i].checked = false;
+                }
+            }
+        }
+
+        /*  selAll.onchange = function () {
+             for (var i = 0; i < cbxs.length; i++) {
+                 cbxs[i].checked = this.checked;
+             }
+         } */
+
+
+        selRev.onchange = function () {
+            for (var i = 0; i < cbxs.length; i++) {
+                cbxs[i].checked = !cbxs[i].checked;
+            }
+        }
+
+        // 如果全选中则上面的
+        for (var i = 0; i < cbxs.length; i++) {
+            cbxs[i].onchange = function () {
+                selAll.checked = true;
+                for (var j = 0; j < cbxs.length; j++) {
+                    if (!cbxs[j].checked) {
+                        selAll.checked = false;
+                    }
+                }
+
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

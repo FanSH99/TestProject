@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- v-for指令用来列表循环渲染，item表示遍历的到的每一项，index是索引。item和index可以更改名称 -->
+            <!-- 在使用 v-for时通常要给遍历得到的每一个节点绑定一个key值，即添加唯一标识。-->
+            <li v-for="(item,index) in list">
+                {{item}}----{{index}}
+            </li>
+        </ul>
+        <dl>
+            <!-- in 10 标识遍历数字，遍历10次 -->
+            <li v-for="(item,index) in 10">
+                {{item}}
+            </li>
+        </dl>
+        <ul>
+            <li v-for="(item,index) in userList">
+                {{item.name}}---{{item.age}}--{{item}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月2日10:00:45 */
+    new Vue({
+        el: "#app",
+        data: {
+            list: [0, 1, 3, 4, 5],
+            userList: [
+                {
+                    name: "白浅",
+                    age: 19
+                },
+                {
+                    name: "夜华",
+                    age: 18
+                }
+            ]
+        }
+    })
+</script>
+
+</html>

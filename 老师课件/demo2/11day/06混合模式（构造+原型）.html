@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  混合模式创建
+      构造函数  +原型对象prototype
+    -->
+    <script>
+        function  Student(name,age,gender,no){
+            // this.name  这个name是属性名    =name    值 ，其实是形参的变量
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+            this.no=no;
+            this.say=function(){
+                console.log(this.name+'is saying');
+            }
+            // 在构造函数内部属于私有
+        }
+        //  Student.prototype  公共
+        Student.prototype.test=function(){
+            console.log(this.name+'is testing');
+
+        }
+
+     var s1=new Student('刘晨',18,'男','1001');
+     var s2=new Student('宋志伟',18,'男','1002');
+     console.log(s1.name,s1.age,s1.gender,s1.no);
+     s1.say();
+     s2.say();
+     console.log(s1.say===s2.say);//false
+
+     s1.test();
+     s2.test();
+
+    //  好处
+    console.log(s1.test===s2.test);//true
+
+
+    // 建议
+    //  方法 绑定到原型上       属性写在构造函数里
+
+    </script>
+</body>
+</html>

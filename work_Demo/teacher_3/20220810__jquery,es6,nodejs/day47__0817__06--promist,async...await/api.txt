@@ -1,0 +1,49 @@
+获取文章分类：
+http://106.12.150.223:8000/v1_0/channels
+
+网址：
+http://106.12.150.223:8000/app/index.html#/
+
+课件
+https://gitee.com/azdzqc/209-courseware
+
+http://106.12.150.223:8000/v1_0/articles/8080
+
+
+ <!-- <div class="col content">
+                <div class="topnew">
+                    <div class="title">
+                        <h3>这是一个用来测试的例子</h3>
+                    </div>
+                    <div class="titleimg">
+                        <img src="./img/18.jpg" alt="">
+                    </div>
+                </div>
+                <p><span>樊樊</span><span>2</span><span>3年前</span>
+                </p>
+                <div class="newStudy">
+                    <span class="btn">&times;</span>
+                    <div class="txt">356432</div>
+                </div>
+            </div> -->
+
+
+
+               let news = `
+                    <div class="col list">
+                        <div class="topnew">
+                            <div class="title">
+                                <h3>${res.data.title}</h3>
+                            </div>
+                            <div class="titleimg">
+                                <img src="${img}" alt="">
+                                 <img src="${img}" alt="">
+                                  <img src="${img}" alt="">
+                            </div>
+                        </div>
+                        <p><span>${res.data.aut_name}</span><span>${res.data.read_count}阅读</span><span>${time}年前</span>
+                        </p>
+                    </div>
+                    `;
+                    $(".mainlist .news").append(news);
+                    let imglist = "";

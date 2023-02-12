@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    class App extends React.Component{
+        state = {
+            mycontent:"<h1>哈哈哈哈</h1> <img src='https://img30.360buyimg.com/popWaterMark/jfs/t1/99602/14/23159/74584/62189375E49a7e6f1/2c361fc9bcc46e95.jpg' alt='' />"
+        }
+        render(){
+            console.log(this)
+            return (
+                <div>
+                    <h1>dangerouslySetInnerHTML属性的使用</h1>
+                     {
+                    // 渲染html 富文本标签 固定格式 类似于vue中的v-html
+                     }
+                    <div dangerouslySetInnerHTML={
+                        {
+                            __html:this.state.mycontent
+                        }
+                    }></div>
+                </div>
+            )
+        }
+        componentDidMount(){
+            //组件渲染后
+            // 发送http请求 
+            let xhr = new XMLHttpRequest();
+            xhr.open("get",`https://apif.java.crmeb.net/api/front/product/detail/356?type=normal`);
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                 if(xhr.readyState === 4){
+                    let data = JSON.parse(xhr.response)
+
+                    console.log(data)
+                    this.setState({
+                        mycontent:data.data.productInfo.content
+                    })
+                 }
+            }
+        }
+    }
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // prototype 的属性和方法是实例对象共享的
+        // 原型对象的应用,扩展内置对象方法
+        console.log(Array.prototype);
+
+        let arr = [1, 3, 5, 7, 9];
+        // arr.sum();
+
+        Array.prototype.sum = function () {
+            // console.log(this);
+            let result = 0;
+            for (let i = 0; i < this.length; i++) {
+                result = result + this[i];
+            }
+            return result;
+        }
+
+        console.log(arr.sum());
+
+        // 这些写会把之前的方法覆盖掉
+        // Array.prototype = {
+        //     constructor: Array,
+        //     sum: function () {
+        //         let result = 0;
+        //         for (let i = 0; i < this.length; i++) {
+        //             result = result + this[i];
+        //         }
+        //         return result;
+        //     }
+        // }
+
+        // console.log(Array.prototype);
+        // console.log(arr.sum());
+    </script>
+</body>
+
+</html>

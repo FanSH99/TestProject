@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        字符类
+     1.   [] 方括号
+
+         [abc]  查找方括号之间的任何字符。  相当于 / a|b|c /     在正则中 | 是或者
+         [^abc]  查找任何不在方括号之间的字符。
+         [0-9]   查找任何从 0 至 9 的数字。
+         [a-z]  查找任何从小写 a 到小写 z 的字符。
+         [A-Z]   查找任何从大写 A 到大写 Z 的字符
+         [A-z]  查找任何从大写 A 到小写 z 的字符。  相当于  [a-zA-Z]
+
+     -->
+     <script>
+        // 校验
+        //需求：只要包含有a 或者 包含有b 或者包含有c 都返回为true
+        //1.
+        var patt=/[abc]/g;
+        //    patt=/a|b|c/g;
+
+        // var str='adef';
+        //  console.log(patt.test(str));//true
+
+        //  console.log(patt.test('b789'));//true
+
+        //  console.log(patt.test('adcbred'));//true
+
+         //2.精确匹配 ^   $    三选一 只有是a 或者是 b  或者是c 这三个字母才返回 true
+         var patt1=/^[abc]$/
+
+         console.log(patt1.test('a'));//true
+         console.log(patt1.test('b'));//true
+         console.log(patt1.test('c'));//true
+
+         console.log(patt1.test('abc'));//false
+
+         //3.   26个英文字母任何一个字母返回 true     - 表示的是a 到z 的范围  精确匹配
+
+          var patt2=/^[a-z]$/
+
+          console.log(patt2.test('a'));// true
+          console.log(patt2.test('ab'));// false
+
+          //4  字符组合  字母和数字  [a-zA-Z0-9]     [A-z0-9]  任何一个
+          var patt3=/^[a-zA-Z0-9]$/
+          console.log(patt3.test('9'));//true
+          console.log(patt3.test('a'));// true
+          console.log(patt3.test('Z'));//true
+          console.log(patt3.test('Z12'));//false
+     </script>
+</body>
+</html>

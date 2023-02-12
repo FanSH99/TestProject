@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月11日11:19:24
+     -->
+    <div class="box"></div>
+    <button class="slideDown">下滑</button>
+    <button class="slideUp">上滑</button>
+    <button class="toggle">切换</button>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $('.box').css({
+            'width': '200px',
+            'height': '200px',
+            'background': 'red',
+            'display': 'none'
+        })
+        $('.slideDown').on('click', function () {
+            $('.box').slideDown(1000, function () {
+                console.log('动画结束');
+            })
+        })
+        $('.slideUp').on('click', function () {
+            $('.box').slideUp(1000, function () {
+                console.log('动画结束');
+            })
+        })
+        $('.toggle').on('click', function () {
+            $('.box').slideToggle(1000, function () {
+                console.log('动画结束');
+            })
+        })
+    </script>
+</body>
+
+</html>

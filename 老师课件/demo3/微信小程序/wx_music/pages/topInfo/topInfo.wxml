@@ -1,0 +1,15 @@
+<scroll-view class="pagescroll" scroll-y="{{true}}">
+<view wx:if='{{list.length !==0}}'>
+    <myheader imgurl='{{imgurl}}' bindrandomPlay='randomPlay'></myheader>
+    <view class="songList">
+        <view class="song" wx:for="{{list}}" wx:key="index" bindtap="goPlayer" data-index='{{index}}'>
+            <view>{{item.name}}</view>
+            <view class="songname">{{item.al.name}} - 
+                <text wx:for="{{item.ar}}" wx:for-index='i' wx:for-item='ar' wx:key="i">{{ar.name}}<text wx:if="{{i!==item.ar.length-1}}">、</text>
+                </text> 
+             </view>
+        </view>
+    </view>
+</view>
+<myloading wx:else></myloading>
+</scroll-view>

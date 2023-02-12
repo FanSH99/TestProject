@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+            倒计时效果
+            1. 获取两个时间点(构造函数)。
+            2. 转化为时间戳，并相减。
+            3. 结果转化为时分秒。
+        */
+        // 转换公式如下： 
+        //  d = parseInt(总秒数/ 60/60 /24);    //  计算天数
+        //  h = parseInt(总秒数/ 60/60 %24)   //   计算小时
+        //  m = parseInt(总秒数 /60 %60 );     //   计算分数
+        //  s = parseInt(总秒数%60);            //   计算当前秒数
+
+        // 某个时间到当前的倒数计时
+        function countDown(date) {
+            let date1 = Date.now();
+            let date2 = date.valueOf();
+
+            let sub = date2 - date1;
+            sub = sub / 1000;
+
+            d = parseInt(sub / 60 / 60 / 24);  //  计算天数
+            h = parseInt(sub / 60 / 60 % 24)   //   计算小时
+            m = parseInt(sub / 60 % 60);       //   计算分数
+            s = parseInt(sub % 60);            //   计算当前秒数
+
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+
+            return `${h}:${m}:${s}`;
+        }
+        let result = countDown(new Date('2022-02-23 11:00:00'));
+        console.log(result);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    // 所谓的状态提升就是子组件先将数据传递给父组件 父组件再将数据传递给另一个子组件
+    class App extends React.Component{
+        state= {
+            mynum:""
+        }
+        render(){
+            return (
+                <div>
+                   我是一个父组件  
+                   <One fun={(num)=>{
+                    console.log(num)
+                    this.setState({
+                        mynum:num
+                    })
+                   }}/>
+                   <Two mynum={this.state.mynum}/>  
+                </div>
+            )
+        }
+    }
+
+    class One extends React.Component{
+        state={
+            num:0
+        }
+        render(){
+            return (
+                <div>
+                    我是一个子组件
+                    <button onClick={()=>{
+                        this.state.num++
+                        this.props.fun(this.state.num)
+                    }}>向另一个子组件传值</button>
+                </div>
+            )
+        }
+    }
+    class Two extends React.Component{
+        render(){
+            return (
+                <div>
+                    我也是一个子组件 {this.props.mynum}
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

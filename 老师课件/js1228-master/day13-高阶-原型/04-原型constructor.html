@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 显式/隐式原型都有一个属性 constructor 属性，
+        // constructor 我们称为构造函数，因为它指向构造函数本身。
+        // 说明对象是如何被创建的。
+
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        let eason = new Star("eason", 22);
+
+        console.log(eason.__proto__);
+        console.log(eason.__proto__.constructor === Star);
+    </script>
+</body>
+
+</html>

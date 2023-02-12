@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月8日14:54:21
+
+        https://www.runoob.com/jsref/jsref-obj-regexp.html
+
+       
+        \w 查找数字、字母和下划线，相当于[A-Za-z]
+        \W
+        \d 匹配0-9的数字
+        \D 朝招非数字字符
+        \s 查找空白字符
+        \S 查找和非空白字符
+        \b 匹配单词边界
+        \B 匹配飞单词边界
+        \n 换行符
+        \f 换页符
+        \r 回车符
+        \xxx 八进制
+        \xdd 十六进制
+        \uxxx 十六进制Unicode 字符
+
+
+        search 查找  ---返回第一次出现的位置，如果找不到返回-1
+        match 匹配  ---返回一个数组。找不到的话返回null
+        replace 替换
+        split 
+        test 校验正则 ---重点
+     -->
+
+    <script>
+        var str = 'abcdaabcd';
+        // 是否包含bc
+        var index = str.search(/bc/);
+        console.log(index);//1
+        var index1 = str.search(/aa/g)
+        console.log(index1);//4
+        var index2 = str.search(/b1/g);
+        console.log(index2);//-1
+
+        var m1 = str.match(/bc/ig);
+        console.log(m1);//['bc', 'bc']
+        var m2 = str.match(/bd/);
+        console.log(m2);//null
+        var r1 = str.replace('bc', '');
+        console.log(r1);//adaabcd ---主要用来做敏感词汇过滤
+        var str1 = '你妈有病，净显你能'
+        str1 = str1.replace('你妈', '**');
+        console.log(str1);//**有病，净显你能
+
+
+        var patt = /\w{5,13}/g
+        console.log(patt.test('991109_fan'));//true
+        console.log(patt.test('991109'));//false
+        console.log(patt.test('1109_f'));//true
+        console.log(patt.test('110_f'));//false
+        console.log(patt.test('19991109_fan30gghhh'));//true
+        console.log(patt.test('19991109@fan'));//false
+
+        var patt2 = / ^ [a - zA - Z]\w{ 5, 13 } $/;
+        console.log(patt2.test('19991109_fan30gghhh'));//false
+        console.log(patt2.test('1109_f'));//false
+        console.log(patt2.test('991109_fan'));//false
+        console.log(patt2.test('19991109_fan3'));//false
+        console.log(patt2.test('19991109_fan'));//true
+        console.log(patt2.test('19991109@fan'));//false
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arry = [1,2,3,4,5,6];
+  let a =  arry.forEach((item,index)=>{
+        // item 表示遍历得到的每一项
+        // index 表示索引
+        console.log(`${item}----------------${index}`)
+        // 不能有return值
+        // return "张三"
+    })
+    console.log(a)
+    // 使用 map 遍历数组  map和froEach最大区别就是存在return值而forEach不存在;
+   let b = arry.map((item,index)=>{
+      // item 表示遍历得到的每一项
+        // index 表示索引
+        console.log(`${item}----------------${index}`)
+        return "哈哈哈"
+    })
+    console.log(b)
+
+    // sort排序
+    let arr2 = [23,345,5,2,4,7]
+    let arry3 = [
+        {
+            name:"张三",
+            age:18
+        },{
+            name:"李四",
+            age:20
+        }
+    ]
+    let newAge = arry3.sort((a,b)=>{
+        return b.age - a.age
+    })
+    console.log(newAge)
+    // console.log(arr2)
+    let newArry = arr2.sort((a,b)=>{
+       return b-a
+    })
+    console.log(newArry)
+
+    // 判断数组中是否存在某一项
+    let stu = ["侯磊",'任剪剪','冯家宝','张三','冯家宝']
+    // 判断是否包含满足某个条件,若满足则返回当前满足条件的这一项 找到第一个满足条件的元素就结束循环
+    let num = stu.find((item,index)=>{
+        return item == '冯家宝'
+    })
+    console.log(num)
+    
+    let list = [
+        {
+            name:"张三",
+            age:18
+        },
+        {
+            name:"李四",
+            age:20,
+        
+        },{
+            name:"王五",
+            age:30
+        },{
+            name:"赵六",
+            age:40
+        }
+    ]
+    // 查询第一个满足条件的元素所对应索引
+    let index = list.findIndex((item,index)=>{
+        return item.age>=30
+    });
+    console.log(index)
+    //  过滤数组 将满足条件的元素返回到一个新的数组中 得到一个新数组
+
+    let newList = list.filter((item,index)=>{
+            return item.age>20
+    })
+    console.log(newList)
+    // 判断数组中是否有满足条件的元素 只要有一个元素满足则返回true
+    let isHas = list.some((item,index)=>{
+        return item.age>40
+    }) 
+    console.log(isHas)
+    // 判断数组中的每一项是否都满足某个条件若都满足则返回true 若只有一个满足则返回false;
+    let isHave = list.every((item,index)=>{
+        return item.age>=18
+    })
+    console.log(isHave)
+
+    let newArrys = list.map((item,index)=>{
+        return item.age>18
+    })
+    console.log(newArrys)
+</script>
+</html>

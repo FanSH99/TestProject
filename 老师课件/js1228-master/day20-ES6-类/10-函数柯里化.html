@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- https://www.bilibili.com/video/BV1Cy4y1q7xz/?spm_id_from=333.788 -->
+    <script>
+        function add() {
+            // 缓存函数
+            // 伪数组转化为数组
+            let cache = Array.from(arguments);
+            let temp = function () {
+                // 解构伪数组
+                cache.push(...arguments);
+                return temp;
+            }
+            // console.log(temp());
+            // toString() 隐式转换的特性(对象的输出或取值时，会隐式转换)
+            // return 一个函数，会默认转换成 string 类型，因此需要 toString()
+            temp.toString = function () {
+                let result = 0;
+                cache.forEach(i => {
+                    result = result + i;
+                });
+                return result;
+            }
+
+            return temp;
+        }
+
+        let a = add(1, 2, 3);
+        let b = add(1)(2)(3);
+        console.log(a);
+        console.log(b);
+        console.log(a === 6);
+        console.log(b === 6);
+
+        function abc(){
+            console.log(123);
+        }
+        console.log(abc === 6);
+
+    </script>
+</body>
+
+</html>

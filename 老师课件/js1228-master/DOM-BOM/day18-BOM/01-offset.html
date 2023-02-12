@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            position: relative;
+            width: 200px;
+            height: 180px;
+            background-color: skyblue;
+            border: 2px solid red;
+            padding: 5px;
+            margin: 150px;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            margin-left: 45px;
+        }
+
+        .janna {
+            /* width: 300px; */
+            height: 200px;
+            background-color: skyblue;
+            margin: 0 auto 200px;
+            padding: 10px;
+            border: 15px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">father
+        <div class="son">son</div>
+    </div>
+    <div class="janna">娜迦</div>
+    <script>
+        /* 
+            轮播图的移动: 当前距离 + 若干像素，重新赋值。
+
+            offset 抵消;弥补;补偿
+
+            1. offsetLeft: 元素左侧的偏移量
+            2. offsetTop:  元素上侧的偏移量
+            3. offsetLeft、 offsetTop 是以父级为参考物。父级必须有定位，否则就是 body 为参考系。
+            4. 没有 右侧和下侧的偏移量。
+            
+            5. offsetWidth  = width + border + padding
+            6. offsetHeight = height + border + padding
+            7. offsetWidth  可以动态地获取元素的尺寸
+            8. offsetParent 获取有父级定位的元素节点。
+        */
+        let father = document.querySelector('.father');
+        let son = document.querySelector('.son');
+
+        console.log(father.offsetLeft);  // 150
+        console.log(father.offsetTop);   // 150
+        console.log('-------son--------------');
+        console.log(son.offsetLeft);   // 45  197 =  150 + 2 + 45
+
+        console.log(father.offsetWidth);  // 214 = 200 + 2 *2 + 5 *2
+        console.log(father.offsetHeight); // 194 = 180 + 2*2 + 5*2
+
+        console.log('--------janna----------------');
+        var janna = document.querySelector('.janna');
+        console.log(janna.offsetWidth); // 350 = 300 + 15*2 + 10 *2
+
+        console.log(son.parentNode);   // 获取的亲爸爸
+        console.log(son.offsetParent); // 获取有定位的父级元素
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- key 表示遍历得到得每个节点得唯一标识 -->
+            <!-- v-for 列表循环中必须要绑定一个key:
+             1. vue中一个特点那么就是大量使用了虚拟dom,好处就是增加编译速度
+             虚拟dom:故名思意假得dom不是真实得dom,实际上就是使用js描述一个对象,对象中存在着vue编译所依赖得个个属性. 
+             2. key标识节点唯一标识,当数据发生改变视图更新时vue会生成一个新得虚拟dom树有利于diff算法得快速计算.
+            -->
+            <!-- 
+                diff算法就是vue中为我们提供得新旧虚拟dom树得一个对比
+             -->
+            <li v-for="(item,index) in userList" :key="index">
+                {{item.name}}--------{{item.age}} --------- {{item.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // console.dir(document.getElementById("app"))
+
+    new Vue({
+        el: "#app",
+        data: {
+            userList: [
+                {
+                    name: "张三",
+                    age: 18,
+                    sex: "男"
+                }, {
+                    name: "王五",
+                    age: 30,
+                    sex: "女"
+                }
+            ]
+        }
+    })
+</script>
+
+</html>

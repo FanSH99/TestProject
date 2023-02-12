@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" style="width: 800px; height: 200px; font-size: 180px;">
+
+    <script>
+        /* 
+             需求: 页面中按下 S 键，表单获取光标 
+        */
+        let input = document.querySelector('input');
+
+        document.addEventListener('keyup', function (e) {
+            if (e.key == 's' || e.key == 'S') {
+                console.log('ok');
+                input.focus();
+            } else {
+                console.log('no');
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

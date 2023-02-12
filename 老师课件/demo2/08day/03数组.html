@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        统计班级学生的姓名
+        var stuName=prompt('请输入学生姓名');
+
+        1.数组：在一个变量中存在一组数据
+
+        （1）声明数组
+             先声明，再添加
+                 1.1  var arr=new Array();//[]
+
+                 1.2字面量声明 数组
+                 var  arrr=[]
+
+             声明同时，即添加
+                 1.1  var arr=new Array(10，20，30);// 表示是数组中的数据
+                      var arr=new Array(10)// 表示数组的长度是 10 ，如果只有一项表示长度
+                  1.2   var arr=[10,20,30];;;// 表示是数组中的数据
+                        var arr=[10]// 表示是数组中的数据
+
+          (2)添加数据
+             数组名[索引号]=值    ;  索引号从0 开始
+          (3)获取数据  访问数据
+            
+               数组名[索引号]
+          (4)一次取出所有数组，遍历（循环）
+             for(var i=0;i<arr.length;i++){
+                console.log(i);//表示索引号
+                 console.log(arr[i])//索引号的位置的值
+             }
+             for....in
+             for(var i in arr){
+                console.log(i)
+                 console.log(arr[i])
+             }
+
+          (5)数组有一个属性 length; 数组的长度（数据的个数）， 注意： 长度永远比最大的索引号大1
+              arr.length    有助于在数组末尾添加数据
+
+          （6） 修改数据     （如果已有值了，修改，覆盖的作用）
+                 数组名[索引号]=新值 
+
+            (7)删除数据     
+              delete arr[索引号]   表现空值，   数组长度没有修改
+             arr.length=4;   删除尾部的数据
+             更好的处理： 去学习内置方法
+        （8）如何检测数组的类型
+            基本数据类型  5种   typeof
+            引用类型      Array      instanceof  
+
+             arr instanceof Array   返回值  true  false
+
+
+     -->
+    <script>
+        //1. 声明数组
+        var arr = new Array();
+        console.log(arr);
+
+        //2.添加数据    
+        arr[0] = 10;
+        arr[1] = 20;
+        console.log(arr);
+
+        //    如果添加  不按正常顺序来添加，也没问题
+        arr[5] = 'hello';
+        console.log(arr);//[10, 20, empty × 3, 'hello']
+        arr[2] = 'nice'
+        console.log(arr);
+
+        //3. 获取数据
+        console.log(arr[0]);
+        console.log(arr[5]);
+        console.log(arr[3]);//undefined
+
+
+        //4.数组的长度 length
+        console.log(arr.length);//6
+        console.log('------------------------------------------------');
+        //5. 遍历数组
+        // for (var i = 0; i < arr.length; i++) {
+        //     console.log(i)
+        //     console.log(i + ':   ' + arr[i]);
+
+        // }
+        //  空值时，索引号取不出来,值也出不来（undefined 也输不出来）
+        for (var i in arr) {
+            console.log(i, arr[i]);
+        }
+       //6. 修改数据
+       arr[5]='very good';
+       console.log(arr);
+
+       //7.删除数据   表现空值，   数组长度没有修改
+        delete arr[5];
+        console.log(arr);
+
+        arr.length=4;
+        console.log(arr);
+
+        //8. 检测数组  引用类型
+         console.log(arr instanceof Array);//true
+
+
+    </script>
+</body>
+
+</html>

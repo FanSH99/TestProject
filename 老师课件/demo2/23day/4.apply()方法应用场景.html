@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+</head>
+<body>
+    <!-- apply 的主要应用 比如说我们可以利用 apply 借助于数学内置对象求数组最大值 
+    Math.max(10,20,60)
+    var arr=[10,20,60]
+    
+    -->
+
+    <script>
+        var arr=[10,20,60,100,18];
+        // 求数组中的最大值
+      var max=  Math.max.apply(Math,arr);
+      console.log(max);
+    </script>
+</body>
+</html>

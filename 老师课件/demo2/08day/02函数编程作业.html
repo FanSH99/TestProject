@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1、接收用户输入的数据，若接收到数据，则在页面上显示接收到了数据，否则显示无数据（用函数实现）
+        //   function demo1(data){
+        //       var str;
+        //     if(data==''||data==null){
+        //         str= '无数据'
+        //     }else{
+        //         str=  '有数据'
+        //     }
+        //     return str;
+
+        //   }
+        //   var data=prompt('请输入一个数据');//   '12eee'  '    '   '' 确定    null取消 
+        //   console.log(demo1(data));  
+
+
+        // 2、超市迎国庆，回馈新老客户，消费满1000元，商品打9.5折；满500元，打9.8折，根据用户消费金额，计算找零信息( 用函数实现)
+        //思考   一种商品    单价  数量      花费的钱数    封装
+        //       多种 商品  （循环 ，合适结循环的条件）   不断调用  一种花的钱数    累加      最后总共花多钱  和1000     请付钱数，找零（调用）
+        //找零  减法   封装函数
+
+        // 1. 一种商品，可能是多件，花费的钱数    单价   数量
+        function oneMoney(price, num) {
+            var money = price * num;
+            return money;
+
+        }
+
+        //2.买多种商器消费的总钱数   比如  商品已经全部结完了， 输入一个'enter' 结束循环
+
+        function totalMoney() {
+            // 输入多件商器 循环  while
+            var endMoney = 0;// 赋初值必要的   一定循环在外面
+            while (true) {
+                var goodsName = prompt('请入商品的名称,如里没有商品了，请输入“enter”');
+                if (goodsName === 'enter') {
+                    break;
+                }
+                var price = prompt('请入' + goodsName + '商品的价格');
+                var num = prompt('请入' + goodsName + '商品的数量');
+                endMoney += oneMoney(price, num);
+
+                //   判断 是否打折
+                if (endMoney >= 1000) {
+                    endMoney = endMoney * 0.95
+                } else if (endMoney >= 500) {
+                    endMoney = endMoney * 0.98
+                } else {
+                    endMoney = endMoney
+                }
+            }
+            return endMoney;
+
+        }
+        // var endMoney = totalMoney();
+        // console.log(endMoney);
+
+      function zhaoLing(money1,money2){
+       
+           return Math.abs(money1-money2)
+
+      }
+ var endMoney=totalMoney();
+var money=  prompt('您消费了'+endMoney+'元,请输入您的支付金额');
+ var free=zhaoLing(money,endMoney);
+ console.log(free);
+
+
+    </script>
+</body>
+
+</html>

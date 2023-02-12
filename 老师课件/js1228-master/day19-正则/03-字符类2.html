@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 4. 26 个大小写字母，数字 _ - 均可
+        let reg2 = /^[a-zA-Z0-9_-]/;
+
+        console.log(reg2.test('a'));
+        console.log(reg2.test('Z1'));
+        console.log(reg2.test('A'));
+        console.log(reg2.test('0'));
+        console.log(reg2.test('_'));
+        console.log(reg2.test('-'));
+        console.log(reg2.test('!'));
+
+        console.log("--------------^ 表示取反------------------------");
+        // 5. [] 里面的 ^ 表示取反，不能包含
+        let rg5 = /[^a-z]/;
+        console.log(rg5.test('a'));
+        console.log(rg5.test('ab'));
+        console.log(rg5.test('A'));
+    </script>
+</body>
+
+</html>

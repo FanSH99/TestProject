@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2.比较运算符    结果是布尔值  true false
+    >  >=（有一个成立即成立）  <  <=   == 等于    ===全等（真等）   !=（不等于）   !==不全等 
+
+    ==和===区别
+
+    ==   只保证数字大小相等即可（数据类型会转换）
+    ===  保证大小和数据类型都要一致（不会转数据类型）
+
+ -->
+   <script>
+     var a=10;
+     var b=20;
+     var c=a<b;
+     console.log(c);//true
+
+     console.log(a>=b);//flase
+     console.log(5=='5');//true
+     console.log(5==='5');//false
+     console.log('5'>=5);// true
+     console.log(8>=5);//true
+
+
+    //  特殊  '5' >'16'
+
+    console.log('5'>'16');//true  比较的是ascII  一位位      注意 
+    console.log('5'>16);//false
+
+    console.log('hello'<'world');//true  比较的是ascII  不建议
+    console.log('hello'==='world');//false
+
+    console.log(undefined==='undefined');//true 理解
+    console.log(typeof 123==='number');//true   理解
+
+
+    console.log(undefined===undefined);//true
+    console.log(undefined==null);//true    记住
+
+// 如果undefined 参与大小比较   不参与 >    < 的比较，  可以参与===   ==的比较
+ console.log(undefined>10,undefined>10);//false false   ---没有意义
+ //null
+ console.log(null<1); // 0 <1
+
+ //true  false
+ console.log(true>2,true<2);   1>2
+
+//  NaN 和谁不都等，连自己都不等
+console.log(NaN==NaN);//false    记住
+
+
+
+// !=  是  ==取反     ！==    是===取反
+console.log('5'!=5);// false
+console.log('5'!==5);//true
+
+
+// 留下问题 自己查一下
+console.log([]==[]);//false
+console.log({}=={});//false
+console.log({}!={});//true
+console.log([]!=[]);//true
+console.log(![]==[]);//true----    false==[] ----0==[]-----0==[].toString()----0==''---0==0
+console.log(!{}=={});//false       false=={}----0=={}----0={}.toString()----0==NaN
+console.log(undefined===null);//flase
+   </script>
+
+
+</body>
+</html>

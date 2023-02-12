@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="peng">彭于晏</div>
+    <div id="lee">李小龙</div>
+    <p>
+        我是周杰伦
+        <strong>耍一套双截棍</strong>
+    </p>
+    <script>
+        /* 
+            innerHTML : 对 H5 的代码进行渲染.
+            innerText : 只识别文本。
+        */
+        let p = document.querySelector('p');
+        console.dir(p);
+
+        // 读
+        console.log(p.innerHTML);
+        console.log(p.innerText);
+        // 写
+        let peng = document.querySelector('#peng');
+        let lee = document.querySelector('#lee');
+
+        peng.innerHTML = '<strong>耍一套双截棍</strong>';
+        lee.innerText = '<strong>耍一套双截棍</strong>';
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开启</button>
+    <br />
+    <button>停止</button>
+    <div>一路向北</div>
+
+    <script>
+        // 点击按钮，div 往右移动，某个位置后停止。
+        
+        let btns = document.querySelectorAll('button');
+        let div = document.querySelector('div');
+
+        let timer;
+        btns[0].addEventListener('click', function () {
+            console.log('开始移动');
+
+            timer = setInterval(function () {
+                let left = div.offsetLeft;
+                div.style.left = left + 20 + 'px';
+            }, 500);
+        });
+
+        btns[1].addEventListener('click', function () {
+            console.log('stop');
+            clearInterval(timer);
+        });
+
+    </script>
+</body>
+
+</html>

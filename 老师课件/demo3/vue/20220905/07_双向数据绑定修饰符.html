@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+            {{msg}}
+        </h1>
+        <!-- 数据懒加载 相当于chang事件失去焦点时才改变数据 -->
+        <input type="text" v-model.lazy="msg">
+        <!-- .trim修饰符 自动去除输入框中两端的空格  -->
+        <input type="text" v-model.trim="username">
+        <!-- .number 修饰符 将字符串转化为number 只是数字 -->
+        <input type="text" v-model.number= 'num'>
+        <button @click="login">登录</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习天天向上",
+            username:"",
+            num:""
+        },
+        methods: {
+            login(){
+                console.log(this.username)
+                console.log(this.num)
+            }
+        },
+    })
+</script>
+</html>

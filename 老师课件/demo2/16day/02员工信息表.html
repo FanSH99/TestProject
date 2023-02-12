@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #222;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #222;
+            text-align: center;
+            height: 50px;
+        }
+
+        caption {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    编号： <input type="text" id="id">
+    姓名： <input type="text" id="username">
+    年龄： <input type="text" id="age">
+    <input type="button" value="添加" id="btn"><br><br>
+    <script>
+        // 头部
+        var tab = document.createElement('table');
+        //1.caption
+        var cap = document.createElement('caption');
+        cap.innerHTML = '员工信息表'
+        tab.appendChild(cap);
+        //2. thead
+        var thead = document.createElement('thead');
+        var thead_tr = document.createElement('tr');
+        var th1 = document.createElement('th');
+        th1.innerHTML = 'ID';
+        var th2 = document.createElement('th');
+        th2.innerHTML = '姓名';
+        var th3 = document.createElement('th');
+        th3.innerHTML = '年龄';
+        var th4 = document.createElement('th');
+        th4.innerHTML = '<span>操作</span>';
+
+        thead_tr.appendChild(th1);
+        thead_tr.appendChild(th2);
+        thead_tr.appendChild(th3);
+        thead_tr.appendChild(th4);
+        thead.appendChild(thead_tr);
+        tab.appendChild(thead);
+        //3.
+        var tbody = document.createElement('tbody');
+        tbody.id = 'tbody_box'
+
+
+        tab.appendChild(tbody)
+
+        document.body.appendChild(tab);
+
+        //4.添加数据  单击添加按钮 加事件
+
+        // 4.1查
+        var id = document.querySelector('#id');
+        var username = document.querySelector('#username')
+        var age = document.querySelector('#age')
+        var btn = document.querySelector('#btn')
+        btn.onclick = function () {
+            //4.3 注意
+            if (id.value.trim().length == 0 || username.value.trim().length == 0 || age.value.trim().length == 0) {
+                alert('不能为空')
+            } else {
+
+                var tr = document.createElement('tr');
+                var td1 = document.createElement('td');
+                // var v1=id.value;
+                //   td1.innerHTML=v1;
+                td1.innerHTML = id.value;
+                var td2 = document.createElement('td');
+                td2.innerHTML = username.value;
+                var td3 = document.createElement('td');
+                td3.innerHTML = age.value;
+                var td4 = document.createElement('td');
+                var link = document.createElement('a');
+                // link.innerHTML = '<a href="javascript:;">删除</a>';
+                link.href='javascript:;';
+                link.innerHTML='删除'
+                link.onclick = function () {
+                    //4.2  注意
+                    if (confirm('您真的要删除吗？')) {
+                        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+                    }
+
+                }
+                td4.appendChild(link);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tbody.appendChild(tr)
+               
+            }
+            //4.4 再清空
+            id.value=''
+            username.value=''
+            age.value=''
+
+        }
+    </script>
+</body>
+
+</html>

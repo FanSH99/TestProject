@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+</body>
+<script src="./jquery.js"></script>
+<script>
+    var div = $("<div></div>");
+    div.text("好好学习天天向上");
+    $("body").append(div)
+    div.css({
+        background:"red",
+        border:"2px solid yellow",
+        padding:"5px"
+    })
+    // 获取元素得高度 获取到得标签的高度不包含边框和内边距
+     console.log( $("div").height())
+    //  获取元素得宽度
+     console.log($('div').width())
+    //  获取元素得高度不包含边框包含内边距
+    console.log($('div').innerHeight())
+    // 不包含边框 包含内边距
+    console.log($('div').innerWidth())
+</script>
+</html>

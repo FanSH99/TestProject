@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 1. 把一个字符串转化为驼峰写法（例如：margin - left=> marginLeft）
+
+        // 找到-位置（indexOf)，把-删掉(replace)，l的位置==-的位置  去除l转为大写 charAt()  toUpperCase()  拼接起来。
+
+        function demo1(str) {
+            var index = str.indexOf('-');
+            console.log(index);//6
+            str = str.replace('-', '');
+            console.log(str);//marginleft
+            var char = str.charAt(index);
+            console.log(char);//l
+            char = char.toUpperCase();
+            console.log(char);//L
+            var str1 = '';
+            for (var i = 0; i < str.length; i++) {
+                if (i == index) {
+                    //把L拼接进来。否则，拼别的字符
+                    str1 += char;
+                }
+                else {
+                    //拼接别的字符
+                    str1 += str[i];
+                }
+            }
+            console.log(str1);//marginLeft
+        }
+        var str = 'margin-left';
+        demo1(str);
+
+
+
+        // 2. 查找字符串出现最多的字符和个数
+
+
+        //     3.返回一个只包含数字类型的数组（例如：afjasoeigjs123sgdhedhhe456osddhnofd789 => [123, 456, 789]）（用原生和不原生两种方法来做）
+
+        /* 连续的数字保存为数组的一项，   ----遇到数字，把它拼接成一个字符串。然后，遇到不是数字的话，推入数组。
+        如果判断时一个数字？  正则表达式。  取出ascII码，str[i]<=9&&str[i]>=0
+        */
+        var str2 = 'afjasoeigjs123sgdhedhhe456osddhnofd789';
+        demo2(str2);
+        // 方法1，原生方法。
+        function demo2(str) {
+            var str0 = '';
+            var arr0 = [];
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] <= 9 && str[i] >= 0) {
+                    str0 += str[i];
+                } else {
+                    
+                    if (str0 != '') {
+                        arr0.push(+str0);//如果想转成数组，在str0前面加一个加号
+                    }//推入数组之后，情况那个str0的内容，重新拼接新串。
+                    str0 = '';
+                }
+            }
+            if (str != '') {
+                arr0.push(+str0); //如果想转成数组，在str0前面加一个加号
+            }
+            console.log(arr0);
+        }
+
+        // 方法2，match()方法
+        demo2_2(str2);
+        function demo2_2(str) {
+            var arr = str.match(/\d+/g);  //  \d表示数字， +表示1个或多个数字
+            //  console.log(arr);
+            for (var i in arr) {
+                arr[i] = +arr[i];//将字符串转换成数字
+            }
+            console.log(arr);
+        }
+
+
+        //     4.去掉字符串中的空格
+
+        //     5.字符串首字母改大写
+
+        //     6.去字符串头尾空格     （用原生和不原生（内置方法）两种方法来做）
+
+        //     7.删除字符串中所有的数字（用原生和不原生（内置方法）两种方法来做）
+
+        //     8.反转字符串
+    </script>
+</body>
+
+</html>

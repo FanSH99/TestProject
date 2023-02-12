@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Star {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                // 构造函数里的 this ：当前对象
+                // (构造函数的目的就是为了给当前对象进行属性初始化)
+                console.log(this);
+            }
+            sing() {
+                // 函数里面的 this ：当前对象
+                // 当前对象调用了 sing() 函数
+                console.log(this);
+                console.log('唱歌');
+            }
+        }
+
+        let eason = new Star('eason', 25);
+        eason.sing();
+        /*
+            总结：
+                1. 构造函数里面的 this 是当前对象
+                2. 函数里面的 this 也是当前对象。
+                3. 某个人做了某件事 this 某个人
+                4. console.log(); 即可
+        */
+    </script>
+
+</body>
+
+</html>

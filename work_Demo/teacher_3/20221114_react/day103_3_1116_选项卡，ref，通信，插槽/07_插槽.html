@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header,
+        footer {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 14px;
+            width: 100%;
+            background-color: red;
+            color: #fff;
+        }
+
+        footer {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月16日16:10:39
+    class App extends React.Component {
+
+        render() {
+
+            return (
+                <div>
+                    <h1>插槽的使用</h1>
+                    <Child >
+                        <header>我是头部</header>
+                        <footer>我是底部</footer>
+                        9999
+                        <Son />
+                    </Child>
+                </div>
+            )
+        }
+
+    }
+
+    class Child extends React.Component {
+        render() {
+            return (
+                <div>
+                    {/* 如果有多个插槽，则this.props.children就变成了数组。直接使用的话也可以但位置不能自定义 */}
+                    {this.props.children[0]}
+                    <h4>我是一个子组件--{this.props.children[2]}</h4>
+                    {this.props.children[1]}
+                    {this.props.children[3]}
+                </div>
+            )
+        }
+    }
+
+    class Son extends React.Component {
+        render() {
+            return (
+                <h5>我是孙子组件</h5>
+            )
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

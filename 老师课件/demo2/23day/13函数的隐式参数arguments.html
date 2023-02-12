@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        arguments 隐式参数
+        本身也叫对象
+        在函数内部，是以实参的形式的身份来用
+        对象  ： length 记录实参的个数
+                 callee  指向函数本身
+     -->
+     <script>
+        function show(a,b){
+            console.log(a,b);
+            console.log(arguments);
+            console.log(arguments.length,arguments.callee);
+
+            console.log(arguments[0],arguments[1],arguments[2]);
+        }
+        // show();// 没有传参
+        // show(10)
+        // show(10,20)
+        show(10,20,30)
+
+     
+     </script>
+   
+   
+</body>
+</html>

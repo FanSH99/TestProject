@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let result = {
+            '张三': { js: 100, python: 120 },
+            '张三': { js: 99, python: 110 }
+        }
+        // 问题：对象的属性名相同，值进行了覆盖
+        console.log(result);
+    </script>
+    <script>
+        let user1 = "李四";
+        let user2 = "李四";
+        let result1 = {
+            // 在对象中，变量用 []，否则当作字符串
+            [user1]: { js: 100, python: 120 },
+            [user2]: { js: 99, python: 110 }
+        }
+        console.log(result1);
+    </script>
+    <script>
+        let hero1 = Symbol('吕布');
+        let hero2 = Symbol('吕布');
+
+        // 通过 Symbol 表示字符串的唯一性
+        let result2 = {
+            [hero1]: { js: 100, python: 120 },
+            [hero2]: { js: 99, python: 110 }
+        }
+        console.log(result2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.1 父构造函数
+        function Father(name, age) {
+            // this 指向 父构造函数的实例
+            this.name = name;
+            this.age = age;
+        }
+        let father = new Father('father', 50);
+
+        Father.prototype.money = function () {
+            console.log('打工赚钱');
+        }
+
+        // 1.2 子构造函数
+        function Son(name, age, address) {
+            // thisn 指向 子构造函数的实例
+            Father.call(this, name, age);
+            this.address = address;
+        }
+
+        // 2 让子构造函数的原型对象指向父构造函数的原型对象
+        Son.prototype = Father.prototype;
+        
+        let son = new Son('son', 22, '开封');
+
+        son.money();
+
+        Son.prototype.game = function () {
+            console.log('今晚吃鸡');
+        }
+
+        son.game();
+        father.game();
+
+        // 父构造函数和子构造函数是同一个原型对象。
+        // 修改子构造函数的额原型对象，也就是修改了父构造函数原型对象
+
+        // 需求：只给子构造函数添加共享的方法？
+    </script>
+</body>
+
+</html>

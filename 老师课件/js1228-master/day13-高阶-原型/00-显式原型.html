@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            回顾
+                1. 基本数据类型,存放的是值,
+                2. 复杂数据类型,存放的是内存地址.
+                3. 每个 JavaScript 函数实际上都是一个 Function 对象
+        */
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            this.play = function () {
+                console.log('我要开演唱会-------');
+            }
+        }
+        let eason = new Star('eason', 22);
+        let jay = new Star('jay', 20);
+
+        console.log(Star instanceof Function); // true
+        eason.play();
+        jay.play();
+
+        console.log(eason.play === jay.play);  // false
+        // 每个对象都有一个独立的 play 函数，
+        // 如果有一百个对象，则有 100 个 play 函数，就造成了内存空间的极大浪费。
+
+        /*
+            js 规定：
+                1. 构造函数(对象/实例),有一个 prototype 属性，prototype 的是一个对象。
+                2. prototype 这个对象的所有属性和方法是构造函数的实例化的对象，所共享。
+        */
+        console.log('---------------------------');
+        console.dir(Star);
+        console.dir(Star.prototype);
+
+        Star.prototype.country = '中国';
+        Star.prototype.game = function () {
+            console.log('今晚吃鸡---');
+        }
+
+        console.dir(eason);
+        console.log(eason.country);  // 中国
+        eason.game();
+
+        console.log(jay.country);
+        jay.game();
+
+        console.log(jay.game === eason.game);
+    </script>
+</body>
+
+</html>

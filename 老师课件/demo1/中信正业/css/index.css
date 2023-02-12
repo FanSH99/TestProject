@@ -1,0 +1,268 @@
+.banner{
+    /* width: 100%; */
+    min-width: 1200px;
+    overflow: hidden;
+    position: relative;
+}
+.banner li img{
+    width: 100%;
+    min-width: 1200px;
+    display: block;
+}
+.banner .circle{
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+}
+
+.banner .circle a{
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    display: block;
+    border-radius: 50%;
+    float: left;
+    margin: 0 5px;
+}
+.banner .circle a:hover{
+    background: #ddd;
+}
+
+.about_bg{
+    background: url(../img/ab_bg.jpg);
+   padding: 80px 0;
+   background-size: 100%;
+   min-width: 1200px;
+}
+.about{
+    width: 1200px;
+    margin: auto;
+}
+.about .left{
+    width: 300px;
+   
+    float: left;
+}
+.about .left h1{
+    margin-bottom: 20px;
+}
+.about .left p{
+    color: #fff;
+    height: 12em;
+    line-height: 2em;
+    /* 改变盒子属性 */
+    display: -webkit-box;
+    /* 盒子中的内容垂直排布 */
+    -webkit-box-orient:vertical ;
+    /* 文子排列6行 */
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    /* 超出的文本以省略号显示 */
+    text-overflow: ellipsis;
+   /* overflow: hidden; 不会隐藏padding-bottom 区域 */
+    margin-bottom: 30px;
+}
+.about .right{
+    width: 300px;
+    /* height: 400px;
+    background: green; */
+    float: right;
+    text-align: right;
+    color: #d7000f;
+}
+
+.about .right h5,.about .right h2{
+padding-right: 30px;
+}
+
+
+
+/* rem 是以最开始网页的字体大小为基础     em是以父级元素的字体大小为基础 */
+
+.business_bg{
+    background: url(../img/img33.jpg);
+    padding: 140px 0;
+   
+}
+.business{
+    width: 1200px;
+    margin: auto;
+}
+.busi_top ul li{
+width: 594px;
+height: 338px;
+float: left;
+margin-top: 12px;
+position: relative;
+}
+.busi_top ul li:nth-child(2n+1){
+    margin-right: 12px;
+}
+.busi_top ul li img{
+    width: 100%;
+    height: 100%;
+ 
+}
+.busi_top ul li h2{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: #fff;
+    z-index: 2;
+    transition: all 0.5s;
+}
+.busi_top ul li:hover h2{
+    bottom: 30px;
+}
+
+.busi_top ul li .black_bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: all 0.5s;
+}
+.busi_top ul li:hover .black_bg{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.busi_top ul li:nth-child(2){
+    text-align: right;
+}
+.busi_top ul li p{
+    padding-left: 100px;
+    text-align: left;
+}
+.but_business{
+    float: right;
+    border-color: #666;
+    color: #666;
+    margin-top: 20px;
+}
+.invest_bg{
+    min-width: 1200px;
+    background: url(../img/img06.jpg);
+    /* background-size: 宽度  高度; */
+
+     /* background-size: 100%; 以盒子宽度等比例缩放背景图*/
+     /* background-size: cover; 以盒子高度等比例缩放背景图*/
+    padding: 60px 0;
+}
+
+.invest{
+    width: 360px;
+    height: 350px;
+    background: rgba(215,0,15,0.8);
+    float: right;
+    margin-right: 150px;
+    color: #fff;
+    padding: 50px 40px;
+}
+.invest h1{
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+.invest ul{
+    font-size: 20px;
+    height: 2em;
+    overflow: hidden;
+}
+.invest ul li{ 
+    line-height: 2em;
+}
+.invest .text{
+    font-size: 18px;
+    color: #ddd;
+    line-height: 2em;
+}
+.invest .text span{
+    display: block;
+    float: left;
+    width:90px;
+}
+.invest .text em{
+    display: block;
+    float: left;
+    width: 270px;
+    height: 4em;
+    overflow: hidden;
+    font-style: normal;
+   
+}
+
+/* .but a是指but中的所有后代a标签样式 
+
+.but>a是指but的子级（儿子）元素a的样式，孙子重孙不包含
+*/
+/* .but>a{
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+} */
+
+.but .but1 a{
+    width: 24px;
+    height: 24px;
+    display: block;
+    float: right;
+    margin: 7px 0;
+    background: url(../img/btn_r.png);
+}
+.but .but1 a:nth-child(2){
+    background-image: url(../img/btn_l.png);
+    margin-right: 5px;
+}
+.but .but1 a:hover{
+    background-image: url(../img/btnH_r.png);
+}
+.but .but1 a:nth-child(2):hover{
+    background-image: url(../img/btnH_l.png);
+}
+
+.news_index{
+    width: 1200px;
+    margin:80px auto;
+}
+.news_index h1{
+    font-weight: normal;
+    color: #444;
+    margin-bottom: 40px;
+}
+.but_news{
+    font-size: 16px;
+}
+.news_index .left{
+    width: 450px;
+    height: 440px;
+    float: left;
+    background: url(../img/img07.png) no-repeat center bottom #ddd;
+    padding: 60px;
+}
+.news_index .left img{
+    width: 100%;
+    height: 260px;
+    /* 设置固定宽高时，保证图片不变形 */
+    object-fit: cover;
+}
+.news_index .right{
+    width: 530px;
+    float: right;
+}
+.news_index .right ul li{
+    border-top: 2px solid #999;
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+.news_index .right ul li h4 a{
+    padding-left: 10px;
+    background: url(../img/list_item_type.jpg) no-repeat left center;
+}
+.news_index .right ul li h4 a:hover{
+    background-image: url(../img/list_item_typeH.jpg);
+}

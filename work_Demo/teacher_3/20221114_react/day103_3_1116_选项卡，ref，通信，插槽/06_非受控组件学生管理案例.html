@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    #app {
+        width: 1000px;
+        margin: 0px auto;
+    }
+
+    .addStu {
+        margin: 20px 0;
+    }
+</style>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    class App extends React.Component {
+        nameRef = React.createRef()
+        ageRef = React.createRef()
+        sexRef = React.createRef()
+        phoneRef = React.createRef()
+        state = {
+            list: [
+                {
+                    name: "张三",
+                    age: 18,
+                    sex: "男",
+                    phone: 110
+                }, {
+                    name: "李四",
+                    age: 20,
+                    sex: "女",
+                    phone: 120
+                }
+            ],
+            userInfo: {
+                name: "",
+                age: "",
+                sex: "",
+                phone: ""
+            },
+            stuIndex: null
+        }
+        render() {
+            return (
+                <div>
+                    <div className='addStu'>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={() => {
+                            this.setState({
+                                stuIndex: null,
+                                userInfo: {
+                                    name: "",
+                                    age: "",
+                                    sex: "",
+                                    phone: ""
+                                }
+                            })
+                        }}>添加学生</button>
+                    </div>
+                    <div>
+                        <table className="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>性别</th>
+                                    <th>年龄</th>
+                                    <th>联系方式</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.list.map((item, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{item.name}</td>
+                                                <td>{item.sex}</td>
+                                                <td>{item.age}</td>
+                                                <td>{item.phone}</td>
+                                                <td>
+                                                    <button type="button" className="btn btn-danger btn-sm" onClick={() => {
+                                                        this.state.list.splice(index, 1)
+                                                        this.setState({
+                                                            list: this.state.list
+                                                        })
+                                                    }}>删除</button>
+                                                    &nbsp; &nbsp;
+                                                    <button type="button" className="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" onClick={
+                                                        () => {
+                                                            // 获取当前要编辑的学生信息
+                                                            let stuInfo = this.state.list[index];
+                                                            this.nameRef.current.value = stuInfo.name;
+                                                            this.ageRef.current.value = stuInfo.age;
+                                                            this.sexRef.current.value = stuInfo.sex;
+                                                            this.phoneRef.current.value = stuInfo.phone
+                                                            this.setState({
+                                                                stuIndex: index,
+                                                            }, () => {
+                                                                console.log(this.state.stuIndex)
+                                                            })
+                                                        }
+                                                    }>编辑</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {
+                        // 模态框
+                    }
+
+                    <div className="modal fade" id="myModal">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h4 className="modal-title">{this.state.stuIndex !== null ? '编辑信息' : "添加学生"}</h4>
+                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="input-group mb-3">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">姓名</span>
+                                        </div>
+                                        <input type="text" className="form-control" ref={this.nameRef} />
+                                    </div>
+                                    <div className="input-group mb-3">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">年龄</span>
+                                        </div>
+                                        <input type="text" className="form-control" ref={this.ageRef} />
+                                    </div>
+                                    <div className="input-group mb-3">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">性别</span>
+                                        </div>
+                                        <input type="text" className="form-control" ref={this.sexRef} />
+                                    </div>
+                                    <div className="input-group mb-3">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">联系方式</span>
+                                        </div>
+                                        <input type="text" className="form-control" ref={this.phoneRef} />
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-success" data-dismiss="modal" onClick={this.addStu.bind(this)}>{this.state.stuIndex === null ? '确认添加' : "确认修改"}</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div >
+            )
+        }
+        addStu() {
+            if (this.state.stuIndex !== null) {
+                // 编辑学生信息;
+
+                let stuInfo = this.state.list[this.state.stuIndex]
+                stuInfo.name = this.nameRef.current.value
+                stuInfo.age = this.ageRef.current.value
+                stuInfo.sex = this.sexRef.current.value
+                stuInfo.phone = this.phoneRef.current.value
+                this.setState({
+                    list: this.state.list,
+
+                })
+                return
+            }
+
+            let obj = {
+                name: this.nameRef.current.value,
+                age: this.ageRef.current.value,
+                sex: this.sexRef.current.value,
+                phone: this.phoneRef.current.value,
+            }
+            this.state.list.push(obj);
+            this.setState({
+                list: this.state.list,
+            })
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+</script>
+
+</html>

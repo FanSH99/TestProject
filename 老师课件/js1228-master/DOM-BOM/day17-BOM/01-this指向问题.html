@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        // 函数就是做某件事件。
+        // 完成事件，需要依赖某个人。某个人做了某件事。
+        // 谁做了这个事情，this 就是谁。
+
+        // 1. 全局作用域或者普通函数中 this 指向全局对象 window
+        //    定时器是 window 的方法，this 是 window
+        console.log(this);
+
+        function fn() {
+            console.log(this);
+        }
+        // fn();
+        window.fn();
+        window.setTimeout(function () {
+            console.log(this);
+        }, 1000);
+
+        // 2. 方法调用中谁调用this指向谁
+        var o = {
+            sayHi: function () {
+                console.log(this); // this指向的是 o 这个对象
+            }
+        }
+        o.sayHi();
+
+        // 3. 事件中的 this 是绑定的对象
+        var btn = document.querySelector('button');
+        // btn.onclick = function() {
+        //     console.log(this); // this指向的是btn这个按钮对象
+        // }
+        btn.addEventListener('click', function () {
+            console.log(this); // this指向的是btn这个按钮对象
+        });
+
+        // 4. 构造函数中this指向构造函数的实例
+        function Hero(name) {
+            this.name = name;  // 构造函数的目的就是创建对象，给当前对象添加属性。
+            console.log(this); // this 指向的是 janna 实例对象
+        }
+        // 构造函数，new，开辟新的内存空间，创建一个空对象，this 指向这个对象
+        // Hero() 实例化之后，赋值给 janna
+        var janna = new Hero("娜迦");
+
+        // 5. 箭头函数  this对象，就是定义该函数时所在的作用域指向的对象
+        console.log(this);
+        setInterval(() => {
+            console.log(this);
+        }, 2000);
+
+        // 6. 总结: 打印即可
+
+        // 7. 把 发短信的案例中哪些 btn 可以改为 this
+    </script>
+</body>
+
+</html>

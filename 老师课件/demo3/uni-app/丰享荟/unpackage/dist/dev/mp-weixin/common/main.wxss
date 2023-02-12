@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+/*每个页面公共css */
+.con ._img{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+

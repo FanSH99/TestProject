@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue插槽</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-component>
+            <!-- v-slot:自定义名称即为定义插槽名称，可以嵌套在template模板中。 想在具名插槽中获取slot传递的内容在名称后面用="自定义名称" 来接收即可。-->
+            <template v-slot:study="myprops"><span>我想学习{{myprops}}</span></template>
+            <template v-slot:game>
+                <h2>不学了打游戏</h2>
+            </template>
+            <!-- 具名插槽可以简写为#加插槽名称 -->
+            <template #sty="props">
+                <h3>时光追不上白马---{{props}}---{{props.msg}}</h3>
+            </template>
+        </my-component>
+    </div>
+    <template id="mycom">
+
+        <div class="box">
+            <!-- vue内置组件--slot组件，用来接收组件中所携带的内容，插槽组件 
+            组件内部所携带的内容，合适展示展示到那里，都是由slot来决定的。
+            默认所有携带的内容会展示到一块
+            用:自定义名称="值"将信息传递给插槽模板。
+            -->
+            <h1>
+                <!-- name属性是插槽名称，表示接收那个插槽。 -->
+                <slot name="study" :msg="msg" :title="title"></slot>我是一个组件<slot name="game"></slot>
+            </h1>
+            <p>啦啦啦啦啦----</p>
+            <slot name="sty" :msg="msg"></slot>
+        </div>
+    </template>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月9日15:45:57*/
+    let myComponent = {
+        template: "#mycom",
+        data() {
+            return {
+                msg: "啦啦啦啦啦",
+                title: "首页"
+            }
+        }
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            myComponent,
+        }
+    })
+
+    let arr = ["111", "aaa"];
+    let str = arr.join("");
+    console.log(arr, str);
+
+    let obj1 = { id: "1245", name: "小红" };
+    console.log(obj1);
+    let str1 = "";
+    for (let key in obj1) {
+        console.log(obj1[key]);
+        str1 = str1 + key + obj1[key];
+    }
+    console.log(str1);
+
+    let obj2 = { id: "1245", name: "小红" };
+    let str2 = JSON.stringify(obj2);
+    console.log(str2);
+
+
+    let key = 123456;
+    let str3 = `uid=${key}`;
+    console.log(str3);
+
+
+
+
+</script>
+
+</html>

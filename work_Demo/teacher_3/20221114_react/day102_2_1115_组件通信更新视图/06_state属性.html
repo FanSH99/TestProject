@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    //    2022年11月15日22:27:28
+    class App extends React.Component {
+        // state用来存放私有数据。
+        // state = {
+        //     name: "张三",
+        //     age: 18
+        // }
+        num = 0;
+        constructor() {
+            super();
+            this.state = {
+                name: "张三",
+                age: 19,
+                list: ["海绵宝宝", "派大星", "扎尕"],
+                num1: 0,
+                people: { name: "白浅", age: 132 },
+            }
+        }
+        render() {
+            // console.log(this);
+            console.log("渲染了");
+            let { name, age, list, people, num } = this.state;
+            return (
+                <div>
+                    <h1>{name}--{age}--{people.name}</h1>
+                    <ul>
+                        {
+                            list.map((item, index) => {
+                                return <li key={index}>{item}</li>
+                            })
+                        }
+                    </ul>
+                    <p>{this.num}</p>
+                    <button onClick={() => {
+                        // react是单向数据流，改变数据视图不更新
+                        this.num++//视图不更新
+                        console.log(this.num, this.state.num1);//更改
+                        this.setState({
+                            num: this.num
+                        })
+                    }}>num++</button>
+                    <p>{this.state.num1}</p>
+                    <button onClick={() => {
+                        // react是单向数据流，改变数据视图不更新,如果想要更新视图，调用this.setState,
+                        // 没调用功能一次setState，render就会重新渲染
+                        this.state.num1++//视图不更新
+                        list[2] = "章鱼哥"
+                        people.name = "无畏"
+                        console.log(this.state.num1, this.num);//更改
+                        this.setState({
+                            num: this.state.num1,//这里仅仅state.num改变
+                            list: list,
+                            people: people,
+                        })
+                    }}>state.num++</button>
+                </div>
+            )
+        }
+
+    }
+
+    // console.log(<App />);
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

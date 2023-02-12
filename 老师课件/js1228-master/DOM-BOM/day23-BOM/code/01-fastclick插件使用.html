@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+    </style>
+    <!-- 引入自己的项目 -->
+    <script src="fastclick.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /* 
+            放大屏幕后，双击，返回默认的屏幕尺寸大小。
+            如何判断单击还是双击？
+
+            1.	禁用缩放功能。浏览器禁用默认的双击缩放行为，并且去掉300ms的延迟。
+                <meta name="viewport" content="user-scalable=no">
+            2.	利用touch事件，自己封装函数解决300ms延迟
+                原理:  1. 当我们手指触摸屏幕，记录当前触摸的时间
+                       2. 当我们手指离开屏幕，用离开的时间减去触摸的时间
+                       3. 如果时间小于150ms，并且没有滑动过屏幕， 那么我们就定义为点击。(即如果点击在150ms内完成，视为点击。) 
+                缺点:每个函数都要先调用这个函数。不能全局解决。      
+        */
+        /* 
+            fastclick : 解决 移动端点击300ms 的延时问题。
+                1. github 下载对应的代码
+                    https://github.com/ftlabs/fastclick/blob/main/lib/fastclick.js
+                2. 引入自己的项目
+                3. 引入下面的代码
+        */
+        // fastclick 的初始化    
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+
+        let div = document.querySelector('div');
+        div.addEventListener('click', function () {
+            console.log(`点击事件`);
+        });
+    </script>
+</body>
+
+</html>

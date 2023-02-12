@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let data = [
+      {
+        id: 1,
+        gname: "家电",
+        goods: [
+          {
+            id: 11,
+            gname: "冰箱",
+            goods: [
+              {
+                id: 111,
+                gname: "海尔",
+              },
+              {
+                id: 112,
+                gname: "美的",
+              },
+            ],
+          },
+          {
+            id: 12,
+            gname: "洗衣机",
+          },
+        ],
+      },
+      {
+        id: 2,
+        gname: "服饰",
+      },
+    ];
+
+    // 需求: 我们想要做输入 id 号,就可以返回的数据对象
+
+    // 1. 利用 forEach 去遍历里面的每一个对象
+    function getId(data, id) {
+      let obj = {};
+      data.forEach(item => {
+        // console.log(item);
+        if (item.id == id) {
+          obj = item;
+        } else if (item.goods && item.goods.length > 0) {
+          // 递归遍历内层的数据
+          obj = getId(item.goods, id);
+        }
+      });
+
+      return obj;
+    }
+
+    console.log(getId(data, 12));
+    console.log(getId(data, 112));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            字符串 ：引号。
+                1. 特殊字符,用转义符
+                2. length 获取字符串的长度
+                3. + 可以进行字符串的拼接
+                4. 字符串拼接其它数据类型后还是字符串
+                5. 字符串和变量拼接: 引引加加 
+        */
+
+        let address = '郑\'州\n河南';
+        console.log(address);
+
+        console.log(address.length);
+
+        let subject = 'h5';
+        let subject1 = 'js';
+        let result = 'h5' + 'js';
+        console.log(result);
+        console.log(subject + subject1);
+
+        let star = '孙红雷';
+        // star = star + 28;
+        star = star + true;
+        console.log(typeof star);
+
+        let dota = '刀塔';
+        console.log('王者荣耀' + dota + '吃鸡');
+    </script>
+</body>
+
+</html>

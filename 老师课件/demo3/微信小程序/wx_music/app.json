@@ -1,0 +1,49 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/player/player",
+    "pages/singer/singer",
+    "pages/mine/mine",
+    "pages/topInfo/topInfo",
+    "pages/mvInfo/mvInfo",
+    "pages/singerInfo/singerInfo",
+    "pages/search/search"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#222",
+    "navigationBarTitleText": "网易 Music",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+      "color": "#919191",
+      "selectedColor": "#ffcd32",
+      "backgroundColor": "#333",
+      "list": [
+          {
+              "pagePath": "pages/index/index",
+              "text": "推荐",
+              "iconPath": "./image/home-1.png",
+              "selectedIconPath": "./image/home-2.png"
+          },{
+              "pagePath": "pages/player/player",
+              "text": "正在播放",
+              "iconPath": "./image/rank-1.png",
+              "selectedIconPath": "./image/rank-2.png"
+          },{
+              "pagePath": "pages/singer/singer",
+              "text": "音乐厅",
+              "iconPath": "./image/singer-1.png",
+              "selectedIconPath": "./image/singer-2.png"
+          },{
+              "pagePath": "pages/mine/mine",
+              "text": "我的",
+              "iconPath": "./image/my.png",
+              "selectedIconPath": "./image/my-1.png"
+          }
+      ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes":["audio", "location"]
+}

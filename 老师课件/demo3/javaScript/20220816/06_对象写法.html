@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+     let user = {
+        name:"张三",
+        age:18,
+        sex:"男"
+     }
+     let {name,age,sex} = user;
+     console.log(name,age,sex)
+
+     let price = 1999;
+     let color = 'red';
+    //  在es6中若属性名与属性值相同时可省略一个
+     let cart = {
+        color,
+        price
+     }
+     console.log(cart)
+    //  es6中对象函数的写法
+    let goods ={
+        name:"包",
+        pric:"1999",
+        data(){
+            console.log("生产日期为：xxxxx")
+        },
+        // data:function(){
+
+        // }
+        corlor:()=>{
+            console.log("我是红色的")
+        }
+    }
+    // es6 写法更简便
+    
+</script>
+</html>

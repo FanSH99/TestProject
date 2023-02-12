@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./axios.js"></script>
+    <script>
+        /* 
+            请求拦截器
+                在请求发出之前，设置一些信息
+                axios ————> 请求拦截器  ————> 服务器
+        */
+        axios.interceptors.request.use(function (config) {
+            console.log(config.url);
+            // 模拟：某些 url 设置 token
+            // 见 F12 的 network
+            config.headers.mytoken = "Bearer qwer";
+            // 一定要返回
+            return config;
+        }, function (err) {
+            // 处理响应的错误信息
+            console.log(err);
+        });
+        axios.get("http://127.0.0.1:8080/axios").then(function (result) {
+            console.log(result);
+        });
+    </script>
+</body>
+
+</html>

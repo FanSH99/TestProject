@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            需求：求和，且函数的参数不确定
+                add(1)(2)(3) = 6;
+                add(1, 2, 3)(4) = 10;
+                add(1)(2)(3)(4)(5) = 15;
+        */
+        function add() {
+            let args = Array.from(arguments);
+
+            // 将参数都放入 args
+            let inner = function () {
+                args.push(...arguments);
+                let sum = 0;
+                args.forEach((value) => {
+                    sum = sum + value;
+                });
+                return sum;
+            }
+            return inner;
+        }
+
+        console.log(add(1));
+        console.log(add(1)(3));
+        // 此时报错，返回值不是一个函数
+        console.log(add(1)(3)(5));
+    </script>
+    <script>
+        console.log('--------改进后-------------');
+        function add1() {
+            // 类数组转数组
+            // arguments 调用数组的 slice() 方法
+            let args = Array.prototype.slice.call(arguments);
+
+            let inner = function () {
+                args.push(...arguments);
+                return inner;  // 递归返回函数
+            }
+
+            // 当我们直接将函数参与其他的计算时，函数会默认调用 toString 方法，
+            // 直接将函数体转换为字符串参与计算
+            inner.toString = function () {
+                console.log("这瓜保熟吗？");
+                let result = 0;
+                args.forEach((value) => {
+                    result = result + value;
+                });
+                return result;
+            }
+            return inner;
+        }
+        let result = add1(1)(3)(5)(7);
+        // 把函数(内容)作为字符串输出
+        console.log(typeof result);
+        console.log(result);
+        console.log('---------------------------------');
+        console.log("结果是" + result);
+        console.log(result * 2);
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+b {
+    font-weight: normal;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background-color: #211310;
+}
+
+.cdkey {
+    width: 500px;
+    height: 600px;
+    background-color: #211310;
+    margin: 0 auto;
+    position: relative;
+}
+
+.cdkey .cdkey-top b {
+    font-weight: normal;
+    position: absolute;
+    top: 20px;
+    right: 230px;
+    color: #fff;
+
+}
+
+.cdkey .cdkey-top .top-a {
+    display: block;
+    text-decoration: none;
+    color: #F7DF39;
+    position: absolute;
+    top: 20px;
+    right: 130px;
+}
+
+.cdkey .cdkey-top .top-w {
+    display: block;
+    text-decoration: none;
+    color: #F7DF39;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.cdkey .cdkey-cen {
+    width: 306px;
+    height: 293px;
+    background-color: #E2CCA3;
+    margin: 0 auto;
+}
+
+.cdkey .cdkey-cen ul {
+    width: 306px;
+    height: 293px;
+    padding: 1px;
+
+}
+
+.cdkey .cdkey-cen ul li {
+    width: 300px;
+    height: 30px;
+    margin: 20px;
+    position: relative;
+}
+
+.cdkey .cdkey-cen ul li b {
+    width: 100px;
+    height: 30px;
+    padding-bottom: 3px;
+    font-size: 12px;
+    display: block;
+    float: left;
+    text-align:right;
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+
+}
+
+.cdkey .cdkey-cen ul li input {
+    white-space: nowrap;
+    width: 120px;
+    height: 30px;
+    float: left;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.cdkey .cdkey-cen ul li img {
+    position: absolute;
+    top: 0;
+    left: 110px;
+    
+}
+.cdkey .cdkey-cen ul li a img{
+    width: 150px;
+margin-top: 20px;
+}
+ .cdkey-bot{
+width: 1000px;
+height: 100px;
+background-color: #211310;
+margin:  0 auto;
+}
+ .cdkey-bot ul {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+
+
+}
+.cdkey-bot ul li{
+    width: 700px;
+    height: 30px;
+    background-color: #211310;
+    margin:  0 auto;
+    font-size: 12px;
+
+}
+ .cdkey-bot ul li  a {
+    display: block;
+    float: left;
+    color: #51392F;
+}
+ .cdkey-bot ul li  a p {
+    display: block;
+    float: left;
+    color: #51392F;
+}
+.cdkey-bot ul .dl p
+{
+    display: block;
+  margin-left: 200px;
+  color: #51392F;
+}
+.cdkey-bot ul .dl2 p
+{
+    display: block;
+  margin-left: 300px;
+  color: #51392F;
+}

@@ -1,0 +1,21 @@
+.song{
+    margin: 50rpx 0;
+}
+.songList{
+    width: 100%;
+    background-color: #222;
+    padding: 0 50rpx;
+    color: #a3a3a3;
+    font-size: 33rpx;
+    position: absolute;
+    top: 500rpx;
+    z-index: 999;
+    box-sizing: border-box;
+}
+.songname{
+    margin-top: 20rpx;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

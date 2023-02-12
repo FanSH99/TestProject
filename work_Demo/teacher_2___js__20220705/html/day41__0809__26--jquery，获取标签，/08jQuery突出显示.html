@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 1000px;
+            height: 200px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: row;
+            background: #fff;
+            justify-content: space-between;
+
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #333;
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月9日11:42:08
+     -->
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </ul>
+
+    <!-- 
+        需求，经过li让其他兄弟不透明度变为0.5，自身变为1，离开时，全部不透明度为1
+      -->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+
+            $('ul>li').on('mouseenter', function () {
+                $(this).css('opacity', '1').siblings('li').css('opacity', '0.5')
+            })
+
+            $('ul').find('li').on('mouseleave', function () {
+                $('ul>li').css('opacity', '1');
+            })
+        })
+    </script>
+</body>
+
+</html>

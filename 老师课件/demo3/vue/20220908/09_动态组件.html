@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .nav{
+            width: 100%;
+            display: flex;
+            background-color: #f1f1f1;
+            position: fixed;
+            bottom: 0;
+        }
+        .nav div{
+            width: 25%;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 13px;
+        }
+        .active{
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+     <div id="app">
+        <!-- 在vue中有一个内置组件  component-->
+        <!-- is 属性可以将component组件当作某个组件 is属性值为组件名称 -->
+        <component :is="mycom"></component>
+        <!-- <div :is="mycom"></div> -->
+        <div class="nav">
+            <div :class="{active:active===index}" v-for="(item,index) in navList" :key="index" @click="changCom(index)">
+                {{item}}
+            </div>
+        </div>
+     </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let home = {
+        template:"<h1>首页组件</h1>"
+    }
+    let mine = {
+        template:"<h1>个人中心组件</h1>"
+    }
+    let cart = {
+        template:"<h1>购物车组件</h1>"
+    }
+    let cate = {
+        template:"<h1>分类组件</h1>"
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            home,
+            mine,
+            cart,
+            cate
+        },
+        data:{
+            navList:["首页",'分类','购物车','我的'],
+            active:0,
+            mycom:"home"
+        },
+        methods: {
+            changCom(index){
+    
+                this.active = index;
+                switch(index){
+                    case 0:
+                        this.mycom = "home";
+                        break;
+                    case 1:
+                        this.mycom = 'cate';
+                        break;
+                    case  2:
+                        this.mycom = 'cart';
+                        break;
+                    default:
+                        this.mycom = 'mine';
+                }
+            }
+        },
+    })
+</script>
+</html>

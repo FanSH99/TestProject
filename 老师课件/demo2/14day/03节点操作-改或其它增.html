@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        克隆节点
+           var obj= node.cloneNode(true)  ;// true  （连同子节点一块克隆）   false(不写)（只克隆当前元素）
+              parartNode.appendChild(obj)
+        插入节点
+         parentNode.insertBefore(newnode,existingnode)
+         父节点                  新节点   存在节点
+
+
+        替换节点
+
+        parendNode.replaceChild(newnode,oldnode)
+
+
+      
+
+
+     -->
+     <div class="box">
+         <p class="one">我是段落1</p>
+         <p>我是段落2</p>
+         <p class="three">我是段落3</p>
+         <p>我是段落4</p>
+     </div>
+
+     <script>
+        //1. 克隆节点
+          //1.1 查找节点
+        //   var box= document.getElementsByClassName('box');
+        //   console.log(box);//HTMLCollection [div.box]
+        //   console.log( box[0]);// 节点
+        //  //1.2 克隆  参数  true  连同子节点一块克隆  false (默认 不写) ，节点克隆成功
+        // var cloneBox=  box[0].cloneNode(true);//暂存内存
+        // console.log(cloneBox);
+
+        //   //1.3 追加
+        //   document.body.appendChild(cloneBox);
+
+
+    // 2.插入节点
+        // //2.1  创建一节点，插入
+        // var img=  document.createElement('img');
+        // console.log(img);
+        // // src 属性  
+        //  img.src="./images/role-ty.png";
+
+        // var box= document.getElementsByClassName('box')[0];// 父节点
+        //  var p= document.getElementsByTagName('p')[0];// 存在的节点
+          
+        //  box.insertBefore(img,p);
+
+
+        //2.1  在文档找到一个节点 剪掉，移到别一个位置
+        //   var three=  document.querySelector('.three');// 想移动
+        //  var one= document.querySelector('.one');// 存在的
+        //   var box= document.getElementsByClassName('box')[0];
+        //   box.insertBefore(three,one)
+
+        //3. 替换节点
+
+          var newimg=  document.createElement('img');// 新节点
+        // src 属性  
+         newimg.src="./images/role-ty.png";
+         console.log(newimg);
+
+         var one= document.querySelector('.one');// 旧节点
+
+      var box= document.getElementsByClassName('box')[0];// 父节点
+       box.replaceChild(newimg,one)
+
+     </script>
+</body>
+</html>

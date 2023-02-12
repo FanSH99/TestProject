@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 4.将数组中重复的元素去掉,其中数组元素均为基本类性 arr1=[1,2,2,3,4,4,4,4]; arr2=[1,2,'M','e','r', 'r', 'y'];
+//1.方法  es6的方法  new Set()
+
+// var arr1=[1,2,2,3,4,4,4,4,1,2,'M','e','r', 'r', 'y'];
+//    arr1= new Set(arr1);// 去过重了，但是是一个对象{}，还不一个数组   []
+//    arr1=[...arr1];//[1, 2, 3, 4, 'M', 'e', 'r', 'y']
+//     arr1=[...new Set(arr1)]
+//    console.log(arr1);
+
+
+//2. 方法   双重for循环  +splice 方法
+/* 
+  拿到数组中的每个元素，和它后面所有元素都在对比一遍，发现有相同的话，删除后面的元素
+  弊端 ：原数组会少了一个元素，不想错过元素 ,索引号 --的操作
+
+*/
+
+// var arr1=[1,2,2,3,4,4,4,4,1,2,'M','e','r', 'r', 'y'];
+//  for(var i=0;i<arr1.length;i++){
+//       for(var j=i+1;j<arr1.length;j++){
+//         if(arr1[i]===arr1[j]){
+//             //删除后面的元素
+//             arr1.splice(j,1);
+//             j--;
+//         }
+
+//       }
+//  }
+//  console.log(arr1);
+
+
+ //3. 方法   includes()去重法
+ var arr=[1,2,2,3,4,4,4,4,1,2,'M','e','r', 'r', 'y'];
+   var newArr=[];// 保存去重后的元素
+  for(var i=0;i<arr.length;i++){
+    if(!newArr.includes(arr[i])){
+        // 不包含
+        newArr.push(arr[i])
+    }
+
+  }
+
+  console.log(newArr);
+
+  // indexOf     filter方法
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <ul class="nav">
+    <li>榴莲</li>
+    <li>臭豆腐</li>
+    <li>鲱鱼罐头</li>
+    <li>大猪蹄子</li>
+  </ul>
+  <script>
+    // 闭包应用-点击 li 输出当前 li 的索引号
+    let lis = document.querySelectorAll('li');
+
+    for (var i = 0; i < lis.length; i++) {
+      lis[i].index = i;
+      lis[i].onclick = function () {
+        // console.log(i);
+        console.log(this.index);
+      }
+    }
+
+    // 2. 利用闭包的方式打印当前 li 的索引号
+    // onclick 一直在异步进程处理器中，点击发生时，将函数放入消息队列。
+    // onclick 保持在内存中， 因此它的父函数——立即执行函数也一直保持。
+    // index 就可以一直使用。
+    // 立即执行函数又成为小闭包，内部的任何函数都可以使用它的变量
+
+    for (var i = 0; i < lis.length; i++) {
+      (function (index) {
+        console.log(index);
+        lis[index].onclick = function () {
+          console.log(index);
+        }
+      })(i);
+    }
+
+  </script>
+</body>
+
+</html>

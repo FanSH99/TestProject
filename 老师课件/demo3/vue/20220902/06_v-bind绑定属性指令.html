@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind绑定属性 属性值不在是字符串而是data中数据 -->
+        <a v-bind:href="url">百度一下</a>
+        <!-- v-bind 可以绑定元素任意属性 -->
+        <div v-bind:class="className" v-bind:user-id="id">好好学习天天向上</div>
+        <!-- v-bind 可以简写为: 省略 v-bind -->
+        <img :src="src" alt="">
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            url:"https://www.baidu.com",
+            className:"blue",
+            id:110,
+            src:"https://sponsors.vuejs.org/images/xitujuejinjishushequ.png"
+        }
+    })
+</script>
+</html>

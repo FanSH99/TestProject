@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Hero {
+            constructor(name) {
+                this.name = name;
+            }
+            age = 12
+            play = () => {
+                console.log('play');
+            }
+            run = function () {
+                console.log('run');
+            }
+            eat() {
+                console.log('今晚吃鸡');
+            }
+        }
+        let h = new Hero("剑圣");
+        console.log(h);
+        console.log(h.age);
+        console.log(h.name);
+        h.play();
+        h.run();
+        h.eat();
+        // eat 是实例的方法，其它都是实例的属性，属性的值是匿名函数
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(){
+            super();
+            this.state = {
+                list:[
+                    {
+                        name:"辣条",
+                        price:0.5,
+                        num:1
+                    },{
+                        name:"巧克力",
+                        price:2,
+                        num:1
+                    },{
+                        name:"奶茶",
+                        price:5,
+                        num:1
+                    },{
+                        name:"烤箱",
+                        price:999,
+                        num:1
+                    }
+                ],
+                classname:""
+            }
+        }
+        render(){
+            return (
+                <div>
+                 <h3>购物车案例</h3>  
+                 <table border="1">
+                  <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>价格</th>
+                        <th>数量</th>
+                        <th>操作</th>
+                    </tr>   
+                 </thead>
+                    <tbody>
+                        {
+                            this.state.list.map((item,index)=>{
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.name}</td>
+                                        <td>{item.price}</td>
+                                        <td>
+                                            <button onClick={()=>this.reduce(index)} className={item.num<=0?'red':""}>-</button>
+                                            {item.num}
+                                            <button onClick={()=>this.addNum(index)} className={item.num>=10?'red':''}>+</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={()=>{
+                                                this.state.list.splice(index,1);
+                                                this.setState({
+                                                    list:this.state.list
+                                                })
+                                            }}>删除</button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                 </table>  
+                 <h4>商品总价：{this.getSum()}</h4>
+                </div>
+            )
+        }
+        // 商品总价
+        getSum(){
+            let sum = 0;
+            this.state.list.forEach(item=>{
+                let price = item.num * item.price;
+                sum+=price;
+            })
+            console.log(sum)
+            return sum;
+        }
+        addNum(index){
+            console.log(index)
+            if(this.state.list[index].num>=10){
+                return   
+            }
+            // 根据索引找到当前商品
+            this.state.list[index].num++;
+           
+            this.setState({
+                list:this.state.list
+            })
+        }
+        reduce(index){
+            if(this.state.list[index].num<=0){
+                return
+            }
+            this.state.list[index].num --;
+            this.setState({
+                list:this.state.list
+            })
+        }
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"));
+</script>
+</html>

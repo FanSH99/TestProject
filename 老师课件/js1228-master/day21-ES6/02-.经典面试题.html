@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>经典面试题</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		let arr = [];
+		for (var i = 0; i < 2; i++) {
+			// 给数组添加元素, 元素的值是一个匿名函数
+			arr[i] = function () {
+				console.log(i);
+			}
+		}
+
+		console.log(i);
+		// 函数的作用域没有 i， 上一层查找，即全局作用域。
+		// 此时循环已结束，i = 2
+		// console.log(i);
+
+		arr[0](); // 2
+		arr[1]();
+
+		console.log('----------------------------');
+
+	    // let 声明的变量有相互独立的作用域。 
+		// 执行的时候，查找 j，也就是当前块级作用域的 j
+		let arr1 = [];
+		for (let j = 0; j < 2; j++) {
+			// 给数组添加元素, 元素的值是一个匿名函数
+			arr1[j] = function () {
+				console.log(j);
+			}
+		}
+
+		// j is not defined
+		// console.log(j);
+
+		arr1[0]();  // 0
+		arr1[1]();  // 1
+	</script>
+</body>
+
+</html>

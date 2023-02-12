@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // async-await 和promise一样都是解决异步回调地狱的方案 基于promise 看起来更像同步代码 回调函数更少
+    // async 异步 await 等待
+    // async 声明函数为异步函数 默认会返回一个成功状态的promise
+    async function getUser() {
+        return "哈哈哈哈哈"
+    }
+    console.log(getUser())
+    getUser().then(res => {
+        console.log(res)
+    })
+
+    function geTmsg() {
+        return new Promise((reslove, rejcet) => {
+            setTimeout(() => {
+                reslove("好好学习")
+            }, 2000)
+        });
+    }
+    async function sendMsg() {
+        // await 必须在async函数内部使用 必须和async结合使用
+        // await 后面通常会有一个promise的异步操作 等待后面异步代码执行完毕后在执行下面的代码
+        // 当await 后面的promise对象状态改变之后才会执行下面的代码
+        let res = await geTmsg();
+        console.log(res)
+        console.log("天天向上")
+    }
+    sendMsg();
+    // async await 就是promise的语法糖
+
+    function getnum() {
+        return new Promise((reslove, reject) => {
+            let num = Math.floor(Math.random() * 10);
+            if (num >= 5) {
+                reslove("num>=5")
+            } else {
+                reject("num<5")
+            }
+        })
+    }
+    let sum = async () => {
+
+        // 使用try catch来捕获await后面异常问题
+        try {
+            // 判断代码是否执行错误若执行错误则进入catch回调将错误信息传递给catch
+            let res = await getnum();
+            console.log(res)
+        }catch(err){
+            console.log(err)
+        }
+    }
+    sum();
+
+    try {
+        console.a(123123)
+    }catch(err){
+        console.log(err)
+    }
+</script>
+
+</html>

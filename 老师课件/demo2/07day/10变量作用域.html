@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+       变量作用域：
+       变量的作用范围，根据变量作用域的不同，分为全局变量和局部变量
+
+       （1）全局变量，在全局范围内都生效的变量。
+                     生命周期较长，从声明变量开始，到页面关闭变量才会销毁。 占内存时间较长。
+                     特殊情况：函数内没有用var 的变量，也可能会升格的全局变量
+                     
+       （2）局部变量，在函数内部声明的变量或者函数的参数都是局部变量。
+                     生命周期短，一旦调用函数，函数被销毁，里面的变量也没有存在的意义，标了垃圾，
+                     会被回收，及时释放内存
+
+                     也不会造成全局作用域的污染。
+
+     -->
+
+    <script>
+        //1.全局变量
+        //     var a=20;// 全局变量
+        //     if(a>=10){
+        //         console.log(a);//20
+        //     }else{
+        //         console.log(a+1);
+        //     }
+
+        // //    i 也是全局变量
+        //     for(var i=0;i<5;i++){
+        //       console.log(i);// 0  1  2  3  4
+        //     }
+        //     console.log('i='+i);//  5
+
+
+        //2.全局 或局部   函数
+        // var a=10;// 全局变量
+        //  function show(){
+        //     var b=20;// 局部变量
+        //     console.log(b);//20
+        //     console.log(a);//10
+
+        //  }
+        //  show();
+        //  console.log(a);//10
+        //  console.log(b);// error
+
+
+
+        // var a = 10;// 全局变量
+        // function show() {
+        //     a = 80;// 对全局变量做了一个重新赋值
+        //     var b = 20;// 局部变量
+        //     console.log(b);//20
+        //     console.log(a);//80
+
+        // }
+        // show();
+        // console.log(a);//80
+        // console.log(b);// error
+
+
+        // 关注一下，函数内部的a没有写var  *******
+        // function show() {
+        //     a = 80;// 升级了全局变量
+        //     var b = 20;// 局部变量
+        //     console.log(b);//20
+        //     console.log(a);//80
+
+        // }
+        // show();
+        // console.log(a);//80
+        // console.log(b);// error
+
+
+        // 关注一下，函数内部的a没有写var   考虑的是就近原则
+        // var a='hello'; // 全局变量
+        // function show() {
+        //   var a = 60;// 局部变量
+        //       a = 80;// 重新赋值，考虑的是就近原则
+        //     var b = 20;// 局部变量
+        //     console.log(b);//20
+        //     console.log(a);//80
+
+        // }
+        // show();
+        // console.log(a);//'hello'
+        // console.log(b);// error
+
+
+        var a='hello'; // 全局变量
+        function show(a) {
+            // 注意： 函数的参数部分也叫局部变量
+              a = 80;// 重新赋值，考虑的是就近原则
+            var b = 20;// 局部变量
+            console.log(b);//20
+            console.log(a);//80
+
+        }
+        show('good');
+        console.log(a);//'hello'
+        console.log(b);// error
+
+    </script>
+</body>
+
+</html>

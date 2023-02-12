@@ -1,0 +1,24 @@
+<swiper vertical="{{true}}" current="{{current}}" bindchange='currentChange'>
+ <swiper-item wx:for="{{mvList}}" wx:key="index">
+ <view class="mvitem">
+    <video src="{{item.playUrl}}" controls="{{true}}" id="myvideo{{index}}"></video>
+    <view class="mvname">
+    {{item.name}}
+    </view>
+    <view class="btns">
+        <view class="item-btn">
+            <image src="../../image/like.png" class="icon"></image>
+            <view>0</view>
+        </view>
+        <view class="item-btn">
+            <image src="../../image/msg.png" class="icon"></image>
+            <view>0</view>
+        </view>
+        <view class="item-btn">
+            <image src="../../image/share.png" class="icon"></image>
+            <view>0</view>
+        </view>
+    </view>
+ </view>
+ </swiper-item>
+</swiper>

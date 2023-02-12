@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "myCom":"../../components/myCom/mycom",
+      "one":"../../components/one/one",
+      "two":"../../components/two/two"
+  }
+}

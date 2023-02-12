@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue插槽</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-component>
+            <!-- v-slot:自定义名称即为定义插槽名称，可以嵌套在template模板中 -->
+            <template v-slot:study><span>我想学习</span></template>
+            <template v-slot:game>
+                <h2>不学了打游戏</h2>
+            </template>
+            <!-- 具名插槽可以简写为#加插槽名称 -->
+            <template #sty>
+                <h3>时光追不上白马</h3>
+            </template>
+        </my-component>
+    </div>
+
+    <template id="mycom">
+
+        <div class="box">
+            <!-- vue内置组件--slot组件，用来接收组件中所携带的内容，插槽组件 
+            组件内部所携带的内容，合适展示展示到那里，都是由slot来决定的。
+            默认所有携带的内容会展示到一块
+            -->
+            <h1>
+                <!-- name属性是插槽名称，表示接收那个插槽。 -->
+                <slot name="study"></slot>我是一个组件<slot name="game"></slot>
+            </h1>
+            <p>啦啦啦啦啦----</p>
+            <slot name="sty"></slot>
+
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月9日15:32:57*/
+
+    let myComponent = {
+        template: "#mycom"
+    }
+    new Vue({
+        el: "#app",
+        data: {
+
+
+        },
+        components: {
+            myComponent,
+        }
+
+    })
+</script>
+
+</html>

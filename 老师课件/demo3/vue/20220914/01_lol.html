@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+        }
+
+        .nav div {
+            width: 25%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+        }
+
+        .active::after {
+            content: "";
+            width: 20px;
+            height: 3px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -10px;
+        }
+
+        .active {
+            color: red;
+        }
+        .lol{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .lol div{
+            width: 120px;
+            text-align: center;
+        }
+        p{
+            margin: 5px;
+        }
+        .lolimg{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
+    <template id="home">
+        <div>
+            <div class="nav">
+                <div v-for="(item,index) in navList" :key="index" :class="{active:active===index}"
+                    @click="goNav(index)">{{item}}</div>
+            </div>
+            <router-view></router-view>
+        </div>
+    </template>
+    <template id="info">
+        <div  v-if="info">
+            <div>
+                 <img :src="info.skins[0].mainImg" alt="" class="lolimg">
+            </div>
+            <div>
+                 <div v-for="(item,index) in info.spells" :key="index">
+                    <img :src="item.abilityIconPath" alt=""> 
+                    <p>{{item.description}}</p>
+                 </div>
+            </div>
+        </div>
+    </template>
+    <template id="lol">
+        <div class="lol">
+            <div v-for="(item,index) in heroList" :key="index" @click="goInfo(item.heroId)">
+                <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png`" alt="">
+                <p>{{item.title}}</p>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script src="../vue-router.js"></script>
+<script>
+    let home = {
+        template: "#home",
+        data() {
+            return {
+                navList: ["首页", "分类", "购物车", "我的"],
+                active: 0
+            }
+        },
+        methods: {
+            goNav(index) {
+                this.active = index;
+                switch (index) {
+                    case 0:
+                        this.$router.push({
+                            path: "/nav/home"
+                        })
+                        break;
+                    case 1:
+                        this.$router.push({
+                            path: "/nav/cate"
+                        })
+                        break;
+                    case 2:
+                        this.$router.push({
+                            path: "/nav/cart"
+                        })
+                        break;
+
+                    default:
+                        this.$router.push({
+                            path: "/nav/mine"
+                        })
+                        break;
+                }
+            }
+        },
+    }
+    let info = {
+        template: "#info",
+        data() {
+            return {
+                info:null
+            }
+        },
+        // 组件激活后请求数据
+        activated(){
+            this.info = null;
+            // 获取动态路由动态参数
+            let id = this.$route.params.id;
+            console.log(id)
+            // 获取英雄详情信息
+            let xhr = new XMLHttpRequest();
+            xhr.open("get",`https://game.gtimg.cn/images/lol/act/img/js/hero/${id}.js`);
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState === 4){
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.info = res;
+                }
+            }
+        }
+
+    }
+    let heroLol = {
+        template: "#lol",
+        data() {
+            return {
+                heroList:[]
+            }
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get",'https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js');
+            xhr.send();
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState === 4){
+                    let res = xhr.response;
+                    res = JSON.parse(res);
+                    console.log(res.hero)
+                    this.heroList = res.hero;
+                }
+            }
+        },
+        methods:{
+            goInfo(id){
+                this.$router.push({
+                    path:"/info/"+id
+                })
+            }
+        }
+    }
+    let cate = {
+        template: "<h1>分类组件</h1>"
+    }
+    let cart = {
+        template: "<h1>购物车组件</h1>"
+    }
+    let mine = {
+        template: "<h1>我的</h1>"
+    }
+    let router = new VueRouter({
+        routes: [
+            {
+                path: "/",
+                name: "home",
+                component: home,
+                // 路由重定向
+                redirect: "/nav/home",
+                children: [
+                    {
+                        path: "/nav/home",
+                        name: "lol",
+                        component: heroLol
+                    }, {
+                        path: "/nav/cate",
+                        name: "cate",
+                        component: cate
+                    }, {
+                        path: "/nav/cart",
+                        name: "cart",
+                        component: cart
+                    }, {
+                        path: "/nav/mine",
+                        name: "mine",
+                        component: mine
+                    }
+                ]
+            }, {
+                name: "info",
+                // 定义动态路由 
+                path: "/info/:id",
+                component: info
+            }
+        ]
+    })
+    Vue.use(router);
+    new Vue({
+        el: "#app",
+        router
+    })
+</script>
+
+</html>
+
+<!-- 
+  问题：
+  1. 详情位置
+  2. 路由划分
+  3. 进入详情报错
+  4. 详情数据正常渲染 控制台报错
+  5. xhr请求
+ -->

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user{
+            width: 50%;
+            height: 100px;
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <!-- v-on:事件名称标识绑定事件 -->
+        <button v-on:click="add">++</button>
+        <div class="user" v-on:mouseenter="moveEnter">
+            {{user.name}} ---- {{user.age}}
+        </div>
+        <!-- 可以使用@代替v-on: 绑定事件 -->
+        <!-- @+事件名称也可以绑定事件 -->
+        <button @click="addnum(5,10)">+n</button>
+        <!-- $event 表示当前的事件对象 -->
+        <button @click="getE($event,10)">获取事件对象</button>
+        <!-- 不推荐这样做  当方法在{{}}中调用时只要视图更新那么这个方法就会重新调用 重复调用浪费性能所以我们并不推荐真么使用-->
+        <h1>{{getStr()}}</h1>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let obj = {
+        name:"张三",
+        age:18
+    }
+    console.log(obj)
+    // 在vue中 data中定义数据以及methods定义的方法都会全部挂载到vue实例上 可通过this相互访问
+   let vm =  new Vue({
+        el:"#app",
+        // 在data中定义的数据全部都是响应式的,所谓的响应式就是只要数据改变视图就会更新
+        data:{
+            num:0,
+            user:{
+                name:"张三",
+                age:18
+            }
+        },
+        // methods 方法 用来存放当前vue实例中所用到的方法
+        methods: {
+            add(){
+                // this 指向当前构造出来的vue实例
+                console.log(this)
+                console.log(this.num)
+                this.num++
+                console.log("点俺干啥")
+            },
+            moveEnter(){
+                console.log(this.user)
+                this.user.name = '王五';
+                this.user.age=20
+            },
+            addnum(n,m){
+                this.num += n;
+                this.num +=m
+            },
+            getE(e,num){
+                console.log(num)
+                console.log(e)
+                console.log(this)
+                this.moveEnter();
+            },
+            getStr(){
+                console.log("121212")
+                return "好好学习天天向上"
+            }
+            
+        },
+    })
+    console.log(vm)
+</script>
+</html>

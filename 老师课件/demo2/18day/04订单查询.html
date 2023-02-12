@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+
+        .con {
+            /* 先隐藏 */
+            display: none;
+            position: absolute;
+            top: -40px;
+            width: 171px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+            padding-left: 5px;
+        }
+
+        .con::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+        .danhao{
+            height: 32px;
+            padding-left:5px ;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请输入您的快递单号" class="danhao">
+    </div>
+<!-- 案例2： 模拟快递单号查询
+需求：当我们在文本框中输入内容时，文本框上面自动显示大字号的内容。 
+-->
+<!-- 
+    1.输入框输入文字 取出文字 danhao.value   放入div里面  innerHTML
+    2. 键盘事件 onkeydown  onkeyup   绑定给danhao输入框上即可
+
+    3.如果框中有内容，获焦时，div是显示，失焦时，div不显示
+    4.如果框中没有内容，获焦， div也是不显示
+ -->
+ <script>
+    //1.
+  var div=  document.querySelector('.con');
+    var danhao= document.querySelector('.danhao');
+
+    //2.onkeydown  慢一个字符 不合适
+    // danhao.onkeydown=function(e){
+    //   div.innerHTML=  danhao.value;
+
+    // }
+    danhao.onkeyup=function(e){
+        if(this.value!=''){
+          div.style.display="block";
+          div.innerHTML=  this.value; 
+
+        }else{
+            div.style.display="none";
+        }
+      
+
+    }
+
+    danhao.onfocus=function(){
+        if(this.value!=''){
+            div.style.display="block";
+        }else{
+            div.style.display="none";
+        }
+
+    }
+    danhao.onblur=function(){
+        div.style.display="none";
+
+    }
+ </script>
+</body>
+
+</html>

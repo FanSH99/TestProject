@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-size: 0;
+        }
+
+        body {
+            background: #f0f0f0;
+        }
+
+        .box {
+            width: 1000px;
+            height: 550px;
+            margin: 100px auto;
+            background: #fff;
+        }
+
+        .left {
+            float: left;
+            width: 800px;
+            height: 550px;
+            position: relative;
+        }
+
+        .right {
+            float: right;
+            width: 200px;
+            height: 550px;
+            /* background: #000; */
+        }
+
+        section {
+            width: 600px;
+            height: 400px;
+            margin: 80px auto;
+            background: #000;
+        }
+
+        section>img {
+            width: 100%;
+        }
+
+        span {
+            width: 50px;
+            height: 80px;
+            background: #d0d0d0;
+            position: absolute;
+            top: 250px;
+        }
+
+        .spanr {
+            right: 30px;
+        }
+
+        .spanl {
+            left: 30px;
+        }
+
+        ul {
+            margin-top: 150px;
+            width: 200px;
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+            /* border: 1px solid #666; */
+        }
+
+        li {
+            float: left;
+            width: 80px;
+            margin-bottom: 10px;
+            margin-right: 8px;
+        }
+
+        li>img {
+            width: 80px;
+            border: 5px solid #fff;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left">
+            <!-- 左按钮 -->
+            <span class="spanl"></span>
+            <!-- 当前图片 -->
+            <section><img src="" alt=""></section>
+            <!-- 右按钮 -->
+            <span class="spanr"></span>
+        </div>
+        <div class="right">
+            <!-- 图片列表 -->
+            <ul>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let imgs = ['http://www.jq22.com/demo/jqueryxiangce201808052307/img/a1.png',
+        'http://www.jq22.com/demo/jqueryxiangce201808052307/img/a2.png',
+        'http://www.jq22.com/demo/jqueryxiangce201808052307/img/a3.png',
+        'http://www.jq22.com/demo/jqueryxiangce201808052307/img/a4.png',
+        'http://www.jq22.com/demo/jqueryxiangce201808052307/img/a5.png',
+        'http://www.jq22.com/demo/jqueryxiangce201808052307/img/a1.png',];
+
+    // 图片列表 
+    let lis = document.querySelectorAll('li>img');
+    // 右按钮
+    let spanR = document.querySelector('.spanr');
+    // 左按钮
+    let spanL = document.querySelector('.spanl');
+    // 当前图片
+    let sec = document.querySelector('section>img');
+
+    for (let i = 0; i < lis.length; i++) {
+        // 图片列表赋值
+        lis[i].src = imgs[i];
+        lis[i].index = i;
+
+        // li 绑定点击事件
+        lis[i].onclick = function (e) {
+            // 获取索引号
+            let index = e.target.index;
+            // 切换为当前轮播图
+            sec.src = imgs[index];
+
+            // 其它背景样式变化
+            for (let k = 0; k < lis.length; k++) {
+                lis[k].style.borderColor = '#fff'
+            }
+            // 当前 li 样式变化
+            e.target.style.borderColor = 'red';
+        }
+    }
+
+    // 默认图片和样式
+    sec.src = imgs[0];
+    lis[0].style.borderColor = 'red';
+
+    // 当前图片的计数器(索引号)
+    let num = 0;
+
+    function toggleR() {
+        num++;
+        if (num == lis.length - 1) {
+            num = 0;
+        }
+        // 背景样式变化
+        for (let k = 0; k < lis.length; k++) {
+            lis[k].style.borderColor = '#fff';
+        }
+        // 当前样式变化
+        lis[num].style.borderColor = 'red';
+        // 当前图片赋值
+        sec.src = imgs[num];
+    }
+
+    function toggleL() {
+        num--;
+        if (num < 0) {
+            num = 5;
+        }
+        // 背景样式变化
+        for (let k = 0; k < lis.length; k++) {
+            lis[k].style.borderColor = '#fff'
+        }
+        // 当前样式变化
+        sec.src = imgs[num];
+        // 当前图片赋值
+        lis[num].style.borderColor = 'red'
+    }
+
+    // 绑定事件
+    spanR.onclick = function () {
+        toggleR();
+    }
+
+    spanL.onclick = function () {
+        toggleL();
+    }
+</script>

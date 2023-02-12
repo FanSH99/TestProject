@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 1问  
+        // console.log(num);  // num is not defined
+
+
+        // 2问
+
+        console.log(num1); // undefined  
+        var num1 = 10;
+
+
+        // 3问  
+        function fn() {
+            console.log(11);
+        }
+        fn();
+
+
+        // 4问
+
+        skill();
+
+        var skill = function () {
+            console.log(22);
+        }
+
+        /*
+            1. js 执行引擎运行代码分两步：先预解析，再执行代码。
+                预解析： 遇到var function 关键字的声明，把声明提升到当前作用域的最前面。
+                然后，代码从上往下执行。
+            2. 预解析分为变量预解析(变量提升)和函数预解析(函数提升)    
+                变量提升：遇到 var 声明的变量，把声明提升到当前作用域的最前面，而不提升赋值。
+                函数提升：遇到 function 声明的函数，把声明提升到当前作用域的最前面，不调用。
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

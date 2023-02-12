@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function People(name,age){
+        console.log("我是一个构造函数")
+        console.log(this)
+        this.name =name;
+        this.age = age;
+    }
+    // protoType 原型属性
+    People.prototype.say = function(){
+        console.log("我会说")
+    }
+    People.prototype.like = '哈哈哈'
+    // 构造用来创建对象 字面量创建 构造函数创建
+    let p = new People("张三",'18');
+    console.log(p)
+    // new 关键字做了什么:1. 创建一个空对象 2.更改了this指向指向这个空对象  3. 确定了空对象的各个属性级对象原型 4.将创建的对象返回出来
+    // let obj = {};
+    // obj.b ='sdasd'
+
+    let p1 = new People("李四",'20');
+    // console.log(p1.sex)
+
+</script>
+</html>

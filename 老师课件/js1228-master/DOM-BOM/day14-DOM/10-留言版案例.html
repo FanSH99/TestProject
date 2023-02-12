@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 100px;
+        }
+
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid skyblue;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            margin-top: 50px;
+        }
+
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+    <script>
+        /* 
+            需求:点击按钮，获取表单的值，创建li，把li追加到ul
+        */
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+
+        btn.onclick = function () {
+            var value = document.querySelector('textarea').value;
+            console.log(value);
+
+            if (value == '') {
+                alert('不能为空');
+                // 在函数中，return 之后的代码，不再执行。
+                return;
+            }
+            // console.log(123);
+            var li = document.createElement('li');
+            li.innerHTML = value;
+            ul.appendChild(li);
+            // 清空表单
+            document.querySelector('textarea').value = '';
+        }
+    </script>
+</body>
+
+</html>

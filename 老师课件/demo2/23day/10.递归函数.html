@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 递归函数：函数内部自己调用自己, 这个函数就是递归函数 
+
+        以相反顺序结束，结束的地方，就是一出口
+    
+    
+    -->
+    <!-- <script>
+        var num=1;
+        function fn(){
+            console.log(num+'nice'); 
+            if(num==6){
+                return;// 递归里面必须加退出条件
+            }
+            num++;
+           
+            fn()
+        }
+
+        fn()
+    </script> -->
+
+    <script>
+        // 利用递归求1~n的阶乘   
+        // 10      1*2*3*4*.....*10
+       //  10*9*8*7*。。。。*1
+       //  10*(10-1)*(9-1)   出口1
+
+       function getJieCheng(n){
+
+             if(n<=0){
+                return '不数输入小于等于0的数，请输入大于0的整数'
+             }else if(n==1){
+                return 1;
+             }else{
+               return n*getJieCheng(n-1);
+            
+             }
+       }
+
+     var num=  getJieCheng(5);
+     console.log(num);
+
+     var num1=  getJieCheng(10);
+     console.log(num1);
+        
+        //    5*getJieCheng(4)
+        //    5*4*getJieCheng(3)
+        //    5*4*3*getJieCheng(2)
+        //    5*4*3*2*getJieCheng(1)
+        //    5*4*3*2*1
+    </script>
+</body>
+</html>

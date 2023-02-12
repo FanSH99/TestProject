@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "js",
+        "target": "ES6"
+    },
+    "exclude": [
+        "03_ts配置介绍"
+    ]
+}

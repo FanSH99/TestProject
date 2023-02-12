@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>王者荣耀</li>
+        <li id='xy'>项羽</li>
+    </ul>
+    <div class="test">周杰伦</div>
+    <script>
+
+        // 1. 创建元素
+        // let li = document.createElement('li');
+        // li.innerHTML = "";
+        let li = $('<li>吃鸡</li>');
+        let div = $('<div class="test">李小龙</div>');
+
+        // 2. 元素内部，头部插入元素
+        $('ul').prepend(li);
+
+        // 3. 元素内部追加元素  appendChild
+        // $('ul').append(li);
+
+        // 4. after 元素的后面添加元素
+        // $('div').after(div);
+
+        // 5. before 元素的前面插入元素
+        $('div').before(div);
+
+        // 6. 元素的删除
+        $('#xy').remove();
+
+        // 7. 清空元素
+        $('ul').empty();
+
+        // 8. 通过空字符串重新赋值，清空元素
+        $('ul').html("");
+    </script>
+</body>
+
+</html>

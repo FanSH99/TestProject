@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+    <!-- 页面头部内容 -->
+    <header>
+        <div class="header_main">
+            <div class="header_left">
+                北游论坛
+            </div>
+            <div class="header_right">
+                <div>
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div>
+                <div class="login">
+                    <span class="glyphicon glyphicon-user"></span> 登录
+                </div>
+                <div class="user">
+                    <span class="glyphicon glyphicon-user"></span> <span class="username"></span>
+                    <div class="mtbtn">
+                        <div>上传邮箱</div>
+                        <div>我的论坛</div>
+                        <div class="outlogin">退出</div>
+                    </div>
+                </div>
+                <div class="myphoto">
+                    <img src="./header/default.png" alt="" class="photo">
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+<script src="./js/jquery.js"></script>\
+<script src="./js/ajax.js"></script>
+<script>
+    $(".login").click(() => {
+        window.location.href = './page/login.html'
+    })
+    isLogin();
+    // 判断用户是否登录
+    function isLogin() {
+        request("/islogin", "get").then(res => {
+            console.log(res)
+            if (res.code == 0) {
+                $(".login").hide()
+                $(".username").text(res.data.username)
+                $(".user").show();
+                $(".myphoto").show();
+                $(".photo").attr("src", res.data.img_url);
+            } else {
+                $(".login").show()
+                $(".user").hide();
+                $(".myphoto").hide();
+            }
+        })
+    }
+    // 退出登录
+    $(".outlogin").click(() => {
+        request("/outLogin", "get").then(res => {
+            if (res.code == 0) {
+                alert("退出成功");
+                isLogin();
+            }
+        })
+    })
+
+    
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    月份：<input type="text" name="" id="m" placeholder="请输入你的出生月份"><br>
+    日期：<input type="text" name="" id="d" placeholder="请输入你的出生日期"><br>
+    <button>计算</button>
+    <span>距离你的生日还有</span><input type="text" name="" id="res" placeholder="请输入你的出生日期"><span>天</span>
+    <script>
+        var m = document.querySelector('#m');
+        var d = document.querySelector('#d');
+        var btn = document.querySelector('button');
+        var res = document.querySelector('#res');
+        var span = document.querySelector('span');
+        btn.onclick = function () {
+            var v1 = m.value;
+            var v2 = d.value;
+            console.log(v1, v2);
+
+            // 拼成日期
+            var date = new Date();
+            var y = date.getFullYear();
+            bir1 = y + '-' + v1 + '-' + v2 + ' ' + '23:59:59';
+            console.log(bir1);
+
+            var date1 = +date;
+            bir1 = +new Date(bir1);
+            console.log(date1, bir1);
+            var diff = (bir1 - date) / 1000;//秒
+            var day = parseInt(diff / 60 / 60 / 24);
+            if (day > 0) {
+                res.value = day;
+            } else {
+                span.innerHTML = '您的生日已过';
+                res.value = -day;
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

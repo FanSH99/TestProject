@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <span>span</span>
+  <script>
+    // 面向对象：某个人做了某件事儿。
+
+    let div = document.querySelector('div');
+
+    // js 获取的是 js 原生对象
+    // div.style.display = 'none';
+    // 1. dom 对象不能使用 jQuery 对象的方法
+    // div.style.hide();
+
+    // jQuery 语法获取的是 jQuery 对象
+    $('div').hide();
+    // 2. jQuery 对象不能使用 dom 对象的属性和方法
+    // $('div').style.display = 'none';
+
+    // 总结：
+    //    1. 每个对象都有自己的属性和方法，
+    //    2. jQuery 只能使用jQuery的属性和方法，
+    //    3. DOM 也只使用DOM对象的属性和方法，不能混用。
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>对象解构</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		/* 
+			对象结构：
+				1. 变量的名字匹配对象的属性
+				2. 匹配成功将属性值赋值给变量
+				3. 解构变量顺序和对象属性无关
+				4. { : }  冒号左边匹配属性，成功后给右边的变量 
+				    给变量取了别名
+
+			总结: 此时的 []  {} 是解构的意思		
+		*/
+
+		let person = { address: '郑州', age: 30, sex: '男' };
+
+		// let { address, sex, age } = person;
+		// let { address1, sex, age } = person;
+		let { address: address1, sex, age } = person;
+
+		console.log(address1, sex, age);
+
+	</script>
+</body>
+
+</html>

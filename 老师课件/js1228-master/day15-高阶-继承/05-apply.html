@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let hero = {
+      name: '吕布',
+      age: 22
+    }
+
+    function sum(a, b, c) {
+      console.log(a, b, c);
+      console.log(a + b + c);
+      console.log(this);
+    }
+
+    sum(2, 4, 6);
+    sum.call(hero, 2, 4, 6);
+    sum.apply(hero, [2, 4, 6]);
+
+    // apply() 作用
+    //    1. 调用函数，修改 this 指向
+    //    2. 参数必须时数组(伪数组),数组解构为函数的形参
+
+    console.log('-----------------------');
+    console.log(Math.max(11, 22, 12, 1));
+    let arr = [11, 22, 12, 1];
+    console.log(Math.max(arr));
+
+    // 原函数要求传递多个 number 类型的参数，
+    // 使用 apply() 之后,传递的参数是一个数组
+    console.log(Math.max.apply(Math, arr));
+
+  </script>
+</body>
+
+</html>

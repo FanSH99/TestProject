@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        touchstart
+    </div>
+    <script>
+        /* 
+            移动端的事件对象
+                e:                事件对象
+                e.type            事件类型
+                e.touches         触摸屏幕的触点列表
+                e.targetTouches   触摸元素的触点列表
+                e.changedTouches  涉及当前事件的触点列表(触发事件的触点列表)
+        */
+        let div = document.querySelector('div');
+        div.addEventListener('touchstart', function (e) {
+            console.log('手指触摸屏幕');
+            console.log(e.type);
+            console.log(e.touches);
+            console.log(e.targetTouches);
+            console.log(e.changedTouches);
+        });
+    </script>
+</body>
+
+</html>

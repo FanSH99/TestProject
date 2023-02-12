@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 5、用构造函数来完成
+
+// 相亲交友: 
+        // 有个男的叫古天乐，有个女的叫迪丽热巴，现在他们要相亲
+        // 男方要求: 
+        // 1.女方的身高不能低于170 
+        // 2.女方的体重不能超过90 
+        // 3.女方的年龄不能比自己大
+        // 4.女方的年龄不能大于25 
+        // 5.女方必须是女的 
+        // 女方要求: 
+        // 1.男的必须比自己大
+        // 2.男的身高必须比自己高7CM以上
+        // 3.男方的税后工资必须大于2万 
+        // 4.男方的存款必须大于200w 
+        // 5.男方的房子面积必须大于140 
+        // 6.对方必须是男的
+
+        function Person(name,height,weight,age,gender,sarlay,money,houseArea){
+             // 属性
+              this.name=name;
+              this.height=height;
+              this.weight=weight;
+              this.age=age;
+              this.gender=gender;
+              this.sarlay=sarlay;
+              this.money=money;
+              this.houseArea=houseArea;
+              // 方法
+              //男交女朋友
+              this.makeGirlFriend=function(girl){
+                 if(girl.height<170){
+                    console.log('女孩个子有点矮');
+                    return false;
+                 }else if(girl.weight>90){
+                    console.log('女孩有点胖');
+                    return false;
+                 }else if(girl.age>this.age||girl.age>25){
+                    console.log('女孩年龄有点大');
+                    return false;
+                 }else if(girl.gender!='女'){
+                    console.log('女孩不是女的');
+                    return false;
+                 }else{
+                    console.log('中意对方');
+                    return true;
+                 }
+
+              }
+
+            //女交男朋友
+            this.makeBoyFriend=function(boy){
+                if(boy.age<this.age){
+                    console.log('男孩有点小');
+                    return false;
+                }else if(boy.height-this.height<7){
+                    console.log('男孩个子有点矮');
+                     return false;
+
+                }else if(boy.sarlay<2){
+                    console.log('男孩工资有点低');
+                    return false;
+                }else if(boy.money<200){
+                    console.log('男孩家底薄');
+                    return false;
+                }else if(boy.houseArea<140){
+                    return false;
+                }else if(boy.gender!='男'){
+                    console.log('男孩不是男的');
+                    return false;
+                } else{
+                    console.log('中意对方');
+                    return true;
+                }       
+            }
+        }
+
+       var TaiLe= new Person('古天乐',185,140,30,'男',3,300,150);
+       var ReBa=new  Person('迪丽热巴',175,80,21,'女',3,300,150);
+
+      var v1=  TaiLe.makeGirlFriend(ReBa);
+      var v2=ReBa.makeBoyFriend(TaiLe)
+
+      console.log(v1,v2);
+      if(v1==true&&v2==true){
+        console.log('相亲成功');
+      }else{
+        console.log('相亲失败');
+      }
+
+    </script>
+</body>
+</html>

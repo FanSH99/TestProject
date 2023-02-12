@@ -1,0 +1,31 @@
+<view class="btns">
+<view class="btn" bindtap="changeState">
+ <i class="icon-random" wx:if="{{palyState===0}}"></i>
+ <i class="icon-sequence" wx:elif="{{palyState===1}}"></i>
+ <i class="icon-loop" wx:else></i>
+</view>
+<view class="btn" bindtap="prePlay">
+ <i class="icon-prev"></i>
+</view>
+<view class="btn" bindtap="playOrPause">
+ <i class='{{isPlay?"icon-pause":"icon-play"}}'></i>
+</view>
+<view class="btn" bindtap="nextPlay">
+ <i class="icon-next"></i>
+</view>
+<view class="btn" bindtap="showPlayList">
+ <i class="icon-playlist"></i>
+</view>
+</view>
+
+<view class="{{isShowPlaylist?'playList show':'playList hied'}}">
+<view class="title">
+ 播放列表 <i class="icon-close" bindtap="close"></i>
+</view>
+<scroll-view class="playListScroll" scroll-y="{{true}}" scroll-into-view="active{{playIndex}}" 	scroll-with-animation="{true}{}">
+    <view class="{{playIndex===index?'song active':'song'}}" wx:for="{{playList}}" wx:key="index" id="active{{index}}" bindtap="playMusic" data-index='{{index}}'>
+        {{item.name}} - <text wx:for="{{item.ar}}" wx:for-item='ar' wx:for-index='i' wx:key="i" class="{{playIndex===index?'song active':'song'}}">{{ar.name}} <text wx:if="{{i!==item.ar.length-1}}">、</text> </text> 
+        <image src="../../../image/playing.gif" wx:if="{{playIndex===index}}" class="playing" mode="widthFix"></image>
+    </view>
+</scroll-view>
+</view>

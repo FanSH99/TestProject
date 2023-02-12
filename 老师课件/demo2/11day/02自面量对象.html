@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 名值对   键值对之间用：隔开，每项之间以逗号分隔  最后一项不用加 逗号 -->
+    <script>
+        // 声明的同时，即赋值了
+        var obj = {
+            name: '李瑞雪',
+            gender: '男', 
+            age: 18, 
+            say: function (a,b) {
+                console.log(this.name+'is saying'+a+b)
+
+            }
+        }
+        console.log(obj);
+        console.log(obj.name,obj.age,obj.gender);
+        obj.say(10,20)
+    </script>
+</body>
+
+</html>

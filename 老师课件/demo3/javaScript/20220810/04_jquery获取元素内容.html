@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        好好学习天天向上
+    </h1>
+    <button onclick="updateH1()">修改h1内容</button>
+    <ul>
+        <li>好好学习天天游戏</li>
+        <li>
+            学习使我快乐
+        </li>
+    </ul>
+    <button onclick="updateHtml()">修改ul中内容</button>
+    <input type="text" id="name">
+    <button onclick="getValue()">获取输入狂内容</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+//  document.querySelector('h1').innerText
+// 获取标签文本内容
+var msg = $('h1').text();
+console.log(msg)
+// 获取标签所有内容(包括html标签内容)
+var htmmsg = $('ul').html();
+console.log(htmmsg)
+// 获取表单内容
+function getValue(){
+    let value = $('#name').val();
+    console.log(value)
+}
+function updateH1(){
+    // 修改元素中的内容
+    $("h1").text("学啥学")
+}
+function updateHtml(){
+    $('ul').html("<h3>不学习没钱花呀</h3>")
+}
+// 修改表单输入框内容
+$('#name').val("嘿嘿嘿嘿")
+/* 
+jquery 获取元素修改元素的内容:
+text() 只获取修改文本不包含html标签  类似于原生js中innerText
+html() 获取修改所有内容包含html标签  类似于原生js中innerHtml
+val()  修改获取表单内容              类似于原生js中value
+*/
+</script>
+</html>

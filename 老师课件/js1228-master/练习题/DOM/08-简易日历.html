@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* body{
+            position: relative; */
+
+        div {
+            width: 620px;
+            /* height: 600px; */
+            background-color: gray;
+            margin: 0 auto;
+            padding: 8px;
+        }
+
+        #div1 {
+            width: 120px;
+            height: 140px;
+            background-color: black;
+            display: inline-block;
+            margin: 8px;
+            /* margin-top: 10px;
+        margin-left: 2px; */
+            text-align: center;
+        }
+
+        #div1>a {
+            text-decoration: none;
+            font-size: 50px;
+            color: wheat;
+            /* margin-left:40px;     */
+        }
+
+        section {
+            background: #eee;
+            margin: 0 8px;
+            padding: 10px;
+        }
+
+        .action {
+            background: #fff !important;
+        }
+
+        .action>a {
+            color: red !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="div1" class="action">
+            <a href="">1 </a>
+            <a href="">JAN</a>
+        </div>
+        <div id="div1">
+            <a href="">2 </a>
+            <a href="">FER</a>
+        </div>
+        <div id="div1">
+            <a href="">3 </a>
+            <a href="">MAR</a>
+        </div>
+        <div id="div1">
+            <a href="">4 </a>
+            <a href="">APR</a>
+        </div>
+        <div id="div1">
+            <a href="">5 </a>
+            <a href="">MAY</a>
+        </div>
+        <div id="div1">
+            <a href="">6 </a>
+            <a href="">JUN</a>
+        </div>
+        <div id="div1">
+            <a href="">7 </a>
+            <a href="">JUL</a>
+        </div>
+        <div id="div1">
+            <a href="">8 </a>
+            <a href="">AUG</a>
+        </div>
+        <div id="div1">
+            <a href="">9 </a>
+            <a href="">SEP</a>
+        </div>
+        <div id="div1">
+            <a href="">10 </a>
+            <a href="">OCT</a>
+        </div>
+        <div id="div1">
+            <a href="">11 </a>
+            <a href="">NOV</a>
+        </div>
+        <div id="div1">
+            <a href="">12 </a>
+            <a href="">DEC</a>
+        </div>
+        <section>
+            <h2>
+                <strong>1</strong> 月节日
+            </h2>
+            <p>元旦: 放假三天</p>
+        </section>
+    </div>
+</body>
+<script>
+    var div1 = document.querySelectorAll('#div1'); //[div,div,div]
+    // div1[0];
+    var h2 = document.querySelector('h2');
+    var p = document.querySelector('p');
+    var strong = document.querySelector('strong');
+
+    var arr = ['元旦:放假三天',
+        '春节:放假七天',
+        '妇女节:没有假期',
+        '愚人节:没有假期',
+        '劳动节:一天假期',
+        '儿童节:放假一天',
+        '端午节:放假三天',
+        '建军节:不放假',
+        '情人节:没有假期',
+        '国庆节:放假七天',
+        '光棍节:没有假期',
+        '圣诞节:么有假期'
+    ];
+
+    for (var i = 0; i < div1.length; i++) {
+        // i:  0 - 11   div1[i]
+        div1[i].onmouseenter = function (e) {
+            div1.forEach(function (item, index) {
+                item.className = "";
+            })
+            e.target.className = "action";
+            for (var k = 0; k < div1.length; k++) {
+                // console.log(div1[k].className);
+                if (div1[k].className == 'action') {
+                    console.log(k);
+                    p.innerHTML = arr[k];
+                    strong.innerHTML = k + 1;
+                    // if(k == 0){
+                    //     h2.innerHTML = "1月节日";
+                    //     p.innerHTML = "元旦: 放假三天"
+                    // }else if(k == 1){
+
+                    // }else if(k == 2){
+
+                    // }
+                }
+            }
+        }
+    }
+
+
+</script>
+
+</html>

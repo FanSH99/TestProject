@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 案例1:5秒钟之后自动跳转页面 -->
+    <button>单击跳转</button>
+    <div id="box"></div>
+
+    <script>
+          document.querySelector('button').onclick=function(){
+             location.href='http://www.baidu.com'
+        }
+        //  5秒钟之后  倒计时  过程  setInterval
+        // 自动跳转页面   location.href='页面地址'
+      
+      var box= document.querySelector('#box');
+
+      var time=5;
+    //   box.innerHTML='您将在' + time + '秒钟之后跳转到百度'
+       setInterval(function(){
+        if(time==0){
+            location.href='http://www.baidu.com'
+
+        }else{
+         time--;
+        box.innerHTML='您将在' + time + '秒钟之后跳转到百度' 
+        }
+      
+
+       },1000)
+
+    </script>
+</body>
+</html>

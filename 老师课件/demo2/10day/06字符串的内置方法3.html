@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+      13.  split()	把字符串分割为字符串数组。
+
+      注意： 对比 join   把数组转为字符串
+            split()
+            split('')-----最常用
+            split(spe)
+
+     14.match()	查找找到一个或多个正则表达式的匹配。
+        找到 返回值是一个数组，找不到返回   null 
+        /规则/g    ---正则表达式   g 全局
+     15.replace()	在字符串中查找匹配的子串，并替换与正则表达式匹配的子串。
+
+
+     16.replaceAll()	在字符串中查找匹配的子串，并替换与正则表达式匹配的所有子串。
+     17.search()	查找与正则表达式相匹配的值。    如果找到返回第一次位置，找不到返回-1
+        相当于   indexOf  
+     -->
+    <script>
+    //    //1.split()
+    //     var str='helloworldhelllllo';
+    //     var arr=str.split();//['helloworldhelllllo']
+
+    //     arr=str.split('');//['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd', 'h', 'e', 'l', 'l', 'l', 'l', 'l', 'o']
+    //     console.log(arr);
+    //  var arr0=   str.split('l');// l 必须中字符串中存在
+    //  console.log(arr0);//['he', '', 'owor', 'dhe', '', '', '', '', 'o']
+
+    //  如果出现连续的字符，第一个作为分隔符被去掉，后面的一样字符转为了 空串''
+
+
+    //2.match
+    //    var str='redorangedredorange'
+    //  var arr= str.match(/red/g);// ['red', 'red']
+    //  arr= str.match(/red1/g);// null
+    //  console.log(arr);
+
+    // console.log(/ed/g);// 规则  字符串是否有 ed 这两个字符
+
+
+
+    //3.replace()
+    var str='redorangedredorange'
+    //需求： 把字符串的 'e' 换成 '*'
+     str=str.replace('e','*');//r*dorangedredorange     只能替换第一个
+    //  str=str.replace(/e/g,'*');//r*dorang*dr*dorang*
+    for(var i=0;i<str.length;i++){
+        str=str.replace('e','*');
+    }
+     console.log(str);
+
+    //6. replaceAll  新方法   去掉 'e'
+
+    // var str='redorangedredorange'
+    // str=  str.replaceAll('e','');//rdorangdrdorang
+    // console.log(str);
+
+    //7. search
+    var str='redorangedredorange'
+    var index= str.search(/red/g); //g 无效的
+     index= str.search(/red1/g);
+    console.log(index);
+    </script>
+</body>
+</html>

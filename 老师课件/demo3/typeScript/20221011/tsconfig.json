@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "outDir": "js",
+        "lib": ["ES6","ES2015","DOM"]
+    }
+}

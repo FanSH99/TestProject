@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border: 10px solid red;
+            padding: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /* 
+            client 和 offsetWidth 最大的区别就是 是否包含 border
+            clientWidth = width + padding
+            clientTop = border
+        */
+        var div = document.querySelector('div');
+
+        // 242 = 200 + 10 * 2 + 11 *2
+        // offsetWidth = width + border + padding
+        console.log(div.offsetWidth);
+        // 8  有定位的父级的距离
+        console.log(div.offsetLeft);
+
+        // 222 = 200 + 11 * 2
+        // clientWidth = width + padding
+        console.log(div.clientWidth);
+          // 222 = 200 + 11 * 2
+        // clientHeight = height + padding
+        console.log(div.clientHeight);
+
+        // 10  border
+        console.log(div.clientTop);
+        console.log(div.clientLeft);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" value="eason" id="aa">
+    <script>
+        /* 
+            变量 ：存储单个数据的容器。
+            先声明,后使用。
+        */
+        // 1. 关键字 var 声明变量   variable
+        //     age  变量名 19 变量的值
+        var age = 19;
+
+        // 2. =  赋值,将后面的值,给前面的变量名。
+        //    对变量进行重新赋值,对之前的值进行了覆盖。
+        age = 22;
+
+        // 3. 参与运算的是,变量的值
+        console.log(age);
+        console.log(age + 5);
+
+        // 4. 只声明,未赋值的变量是 undefined
+        var num;
+        console.log(num);  // undefined
+
+        // 5. var 声明的变量名可以重复,但是不推荐
+        var age = 30;
+
+        // 6. let 关键字声明, 变量名不能重复
+        let score = 99;
+        score = 100;
+        console.log(score);
+
+    </script>
+</body>
+
+</html>

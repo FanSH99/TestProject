@@ -1,0 +1,5 @@
+<view class="header">
+ 我是一个header组件 
+ <view>{{num}}</view>
+ <button bindtap="add" data-id='1110'>++</button>
+</view>

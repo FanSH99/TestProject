@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            // 函数已经封装好了，不建议再次修改
+            // this.country = '中国';
+            this.sing = function () {
+                console.log('我要开演唱会');
+            }
+        }
+
+        let jay = new Star('周杰伦', 22);
+        let eason = new Star('陈奕迅', 18);
+        let sun = new Star('孙红雷', 21);
+
+        // js 动态给对象添加属性
+        // jay.country = '中国';
+        // eason.country = '中国';
+        // sun.country = '中国';
+        // 问题：如果有100对象，怎么办？如果中国改为 china 怎么办？
+
+        // console.log(eason.country);
+
+        Star.country = '中国';
+        console.log(Star.country);
+        console.log(eason.country);
+        // 通过对象查找构造函数(原型)。
+
+        // country 是静态成员，所有对象都可以通过构造函数共享
+        // age name 是普通成员，每个对象私有的属性。
+        // 作用：
+        //      当我们的属性是提供给所有的实例化对象使用的，
+        //      我们就可以把这个属性设置为静态属性，能节省内存占用
+
+ 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100%;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-component>
+            
+           <!-- 插槽就是组件内部所携带内容 何时展示展示到哪儿都是由slot 组件决定 -->
+            <span>我想学习</span>
+            <span>学习是我快了</span>
+        </my-component>
+    </div>
+    <template id="mycom">
+        <div class="box">
+            <!-- vue 内置slot组件 用来接收组件携带的内容 -->
+            <h1>我是一个组件   <slot></slot></h1>
+            
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let myComponent = {
+        template:"#mycom"
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            myComponent
+        }
+    })
+</script>
+</html>

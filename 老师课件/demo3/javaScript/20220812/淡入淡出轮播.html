@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 800px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+        }
+        img{
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+          <!-- 第四 -->
+  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4cfa4e9a0f10a79ed068f26adf846bfa.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+    <!-- 第三 -->
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d5bcaeb5b2c0d8853a1f26036951364c.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+    
+  <!-- 第二张图 -->
+  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2efa4236c5c3bf48f1d1243bbc48c99f.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+  <!-- 第一张图 -->
+  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8b453cdd97372b524915a86fed01ede5.jpg?w=2452&h=920" alt="">
+
+
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+   let playIndex = 0;
+   function play(){
+    playIndex ++;
+    if(playIndex>=4){
+        playIndex = 0
+    }
+    $('img').eq(playIndex).fadeIn(2000).siblings().fadeOut(2000);
+   }
+
+   function autoPlay(){
+     setInterval(play, 2000);
+   }
+   autoPlay();
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>原生js xhr发送http请求</h1>
+    <button onclick="xhrGet()">热映</button>
+    <button onclick="xhrGetParams()">待映</button>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    xhrGet();
+    function xhrGet(){
+        // 创建xhr请求实例
+        let xhr = new XMLHttpRequest();
+        console.log(xhr)
+        // 设置请求方式请求地址 参数一请求方式 参数二请求地址
+        xhr.open("get",'/hot/move');
+        // 发送请求
+        xhr.send();
+        // 监听http请求状态码改变
+        xhr.onreadystatechange = ()=>{
+            console.log(xhr.readyState)
+            // 5中状态码
+            /* 
+             0 表示当前实例已初始化完毕但open方法还未调用
+             1 表示open方法已调用但是还有没有发送请求
+             2 表示send方法已调用服务已经接收到前端请求但还没有返回数据
+             3 表示后端开始给客户端返回数据但数据还没有完全返回
+             4 表示后端已经完全返回给前端数据请求结束
+            */
+           if(xhr.readyState === 4){
+            //请求成功 后端已经完全返回数据
+            // 获取服务端返回得数据
+            let res = xhr.response;
+            res = JSON.parse(res)
+            console.log(res)
+            let html = `<div>
+                <img src=${res.url} />
+                <p>${res.name}</p>
+                </div>`
+            document.getElementById("box").innerHTML = html;
+           }
+
+        }
+    }
+
+    function xhrGetParams(){
+        let type =2;
+        let xhr = new XMLHttpRequest();
+        // xhr get请求传递参数可以直接将参数以?得形式拼接到路径上 多个参数使用&链接符分割
+        xhr.open("get",`/hot/move?mytype=${type}&name=张三`);
+        xhr.send();
+        xhr.onreadystatechange = ()=>{
+            if(xhr.readyState === 4){
+            //请求成功 后端已经完全返回数据
+            // 获取服务端返回得数据
+            let res = xhr.response;
+            res = JSON.parse(res)
+            console.log(res)
+            let html = `<div>
+                <img src=${res.url} />
+                <p>${res.name}</p>
+                </div>`
+            document.getElementById("box").innerHTML = html;
+           }
+        }
+    }
+    // let xhr = new XMLHttpRequest();
+    //     // xhr get请求传递参数可以直接将参数以?得形式拼接到路径上 多个参数使用&链接符分割
+    //     xhr.open("get",`http://106.12.150.223:8000/v1_0/channels`);
+    //     xhr.send();
+    //     console.log(xhr)
+    // ajax是jquery对xhr得封装 axjax得核心就是xhr
+</script>
+</html>

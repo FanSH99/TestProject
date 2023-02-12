@@ -1,0 +1,529 @@
+body,html, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,  form, fieldset, legend, input, textarea, p, th, td, button {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 重置样式表 */
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li,ol{
+    list-style: none;
+}
+h1,h2,h3,h4,h5,h6,em,i,b,strong{
+    font-size: 100%;
+    font-weight: normal;
+    font-style: normal;
+}
+img,fieldset{
+    border:0 none;
+}
+table{
+    /* 边线重叠  可以制作细线表格*/
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+button,input,select,textarea{font-size:100%;}
+:focus{
+    outline: none;
+}
+
+/* 超链接 */    
+a{
+color: #9e663c;
+text-decoration: none;
+}
+a:hover{
+    color: #9e663c;
+}
+
+/* 万能清除浮动法 */
+.clearfix::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right
+}
+
+/* 版心 */
+.wrap{
+    width: 1300px;
+    margin: 0 auto;
+}
+body{
+    font-family: "微软雅黑",Arial;
+    font-size: 14px;
+    color: #9e663c;
+    /* 最小宽度1300px */
+    min-width: 1300px;
+    /* 防止横向滚动条出现 */
+    overflow-x: hidden;
+}
+
+/* topbar style */
+
+/* nav style */
+
+/* 底部通道 style */
+
+/* footer style */
+.clearfix::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}.box{
+    width: 100%;
+    height: 44px;
+    position: relative;
+}
+.box ul{
+    width: 991px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    
+
+}
+/* 第一段导航 */
+.box ul .box-noe{
+     width: 120px;
+    height: 100%; 
+    float: left;
+    z-index: 200;
+    position: relative;
+}
+.box ul .box-two{
+     width: 275px;
+    height: 100%; 
+    float: left;
+}
+.box ul .box-sui{
+    width: 300px;
+    height: 42px;
+    float: right;
+    line-height: 45px;
+    position: relative;
+    z-index: 1000;
+     
+}
+.box ul .box-sui b{
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url(../images/title_sprite.png) no-repeat -36px -6px;
+    float: left;
+    margin-top: 13px;
+
+    
+}
+.box ul .box-sui a{
+    display: block;
+    color:black;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+    margin-right: 20px;
+}
+.box ul .box-sui em{
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-color: red;
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    margin-top: -12px;
+    background: url(../images/title_sprite.png)no-repeat 0 -3px;
+    transform: rotate(90deg);
+    opacity: 0.4;
+}
+.box ul .box-sui .text{
+display: block;
+}
+.box-sui .test:hover .nav-one{
+visibility: visible;
+}
+.box-sui .test .nav-one{
+width: 300px;
+height: 800px;
+display: block;
+position: absolute;
+right:37px;
+top: 43px;
+font-size: 50px;
+visibility: hidden;
+background-color: bisque;
+
+}
+
+.box ul .box-two span{
+    width: 1221px;
+    height: 190px;
+    display: block;
+    /* background-color: cornflowerblue; */
+    background: url(../images/zhuqiu.jpg) no-repeat;
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    display: none;
+    z-index: 1001;
+}
+
+.box ul .box-two:hover span{
+    display: block;
+}
+.box-1{
+    width: 100%;
+    height: 100px;
+    background-color: #E6D3AE;
+}
+.box-1 ul{
+width: 1050px;
+height: 100%;
+
+margin: 0 auto;
+position: relative;
+}  
+.box-1 ul li{
+    width: 100px;
+    height: 80px;
+    float: left;
+    position: relative;
+    margin-right: 10px;
+   
+}
+.box-1 ul li a{
+    
+    width: 100px;
+    height: 80px;
+  
+ color:     #8A5B33;
+ display: block;
+ font-size: 16px;
+ text-align: center;
+ line-height: 30px;
+
+ 
+}
+
+.box-1 ul li i{
+    width: 73px;
+    height: 23px;
+    display: block;
+    background: url(../images/sprite.png) no-repeat -700px -140px;
+    margin: 10px auto 1px;
+    visibility: hidden;
+   
+   
+}
+.box-1 ul li span{
+    display: block;
+    font-weight: 300;
+    line-height: 20px;
+    font-size: 5px;
+    color: #8A5B33;
+    display: none;
+}
+.box-1 ul li.on a{
+    font-size: 18px;
+    font-weight: 900;
+
+}
+
+.box-1 ul li em{
+    width: 26px;
+    height: 26px;
+    display: block;
+    background-color: cornflowerblue;
+    position: absolute;
+    right: -13px;
+    top: 38px;
+    background: url(../images/nav-line.png) no-repeat;
+}
+.box-1 ul li.on span{
+    display: block;
+    
+}
+.box-1 ul li.on i{
+    visibility: visible;
+    
+}
+.box-1 ulli:hover>a{
+    font-weight: 800;
+    font-size: 18px;
+
+}
+.box-1 ul li:hover a{
+    font-weight: 800;
+    font-size: 18px;
+}
+.box-1 ul li:hover span{
+    display: block;
+}.box-1 ul li:hover i{
+    visibility: visible;
+}
+.box-1 ul li b{
+    width: 140px;
+    height: 50px;
+    display: block;
+    float: left;
+    background-color: darkmagenta;
+    background: url(../images/sprite.png) no-repeat -718px -307px;
+    text-indent: -9999px;
+    margin-top: 17px;
+    margin-left: 10px;
+}
+.box-1 ul li:last-child{
+
+    display: block;
+    position: relative;
+}
+.box-1 ul>li:last-child::after{
+    display: block;
+    content: '';
+    width: 100px;
+    height: 100px;
+    background: url(../images/kfQr.jpg) no-repeat;
+    background-size: 100px 100px;
+    position: absolute;
+    right: -30px;
+    top: 80px;
+    display: none;
+}
+.box-1 ul li:last-child:hover::after{
+    display: block;
+
+}
+.box-1 ul li .banner{
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    display: none;
+}
+.box-1 ul li .banner li{
+    width: 100px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+    
+
+}
+.box-1 ul li .banner li a{
+    display: block;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 300;
+  
+}
+.box-1 ul li .banner li img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -100% ;
+    left: -100px;
+    display: none;
+}
+.box-1 ul li .banner li:hover img{
+    display: block;
+}
+.box-1 ul li .banner li:hover a{
+    color: #C7A560;
+}
+.box-1 ul li:nth-child(7):hover .banner {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+.section-bottom{
+    width: 100%;
+    height: 280px;
+    background-color: #0C1E1D;
+    padding: 1px;
+    margin: 0 auto;
+    
+   
+}
+.section-bottom .section-img{
+    margin-top: 30px;
+    margin-left: 30px;
+    margin: 30px;
+    float: left;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.section-bottom .section-article{
+    width:700px;
+    height: 170px;
+    float: right;
+    margin-top: 50px;
+    margin-right: 150px;
+    line-height: 20px;
+    font-size: 14px;
+  color: #707070;
+    display: block; 
+}
+
+.section-bottom .section-article p a{
+    color: #707070;
+    font-size: 12px; 
+}
+.section-bottom .section-article p .article-o{
+    width: 5px;
+    height: 10px;
+    background: url(../images/gswj.png) no-repeat;
+    padding-left: 20px;
+}
+.section-bottom .section-article p .article-t{
+    width: 5px;
+    height: 10px;
+    background: url(../images/icplogo.png) no-repeat;
+    padding-left: 20px;
+}
+.bottom-bar{
+    width: 1250px;
+    height: 190px;
+    margin-bottom: -40px;
+    /* background-color: #E6D3AE; */
+    margin: 0 auto;
+}
+.bottom-bar ul
+{
+    width: 100%;
+    height: 100%;
+}
+.bottom-bar ul li{
+    width: 273px;
+    height: 100px;
+    background-color: blue;
+    float: left;
+    margin-right: 50px;
+    background: url(../images/qr-bg.png) no-repeat;
+    position: relative;
+}
+.bottom-bar ul li h3{
+    font-size: 25px;
+    color: #9A6238;
+    font-weight: 600;
+    margin-top: -20px;
+}
+.bottom-bar ul li img{
+    width: 130px;
+   position: absolute;
+   left: -130px;
+   top: 0;
+   opacity: 0;
+   transition: all 0.5s ease;
+}
+.bottom-bar ul li:hover img{
+    opacity: 1;
+     left: 65px;
+     
+ }
+.bottom-bar ul li:last-child{
+    margin-right: 0;
+    float: right;
+}
+.bottom-bar ul li span
+{
+    display: block;
+    width: 90px;
+    height: 70px;
+    background-color: brown;
+    background: url(../images/sprite.png) no-repeat -768px -577px; 
+    position: absolute;
+    top: 40px;
+    left: 195px;
+}
+
+.bottom-bar ul li:nth-child(2) span
+{
+    display: block;
+    width: 90px;
+    height: 70px;
+    background-color: brown;
+    background: url(../images/sprite.png) no-repeat -897px -475px; 
+    position: absolute;
+    top: 40px;
+    left: 195px;
+}
+.bottom-bar ul li:nth-child(3) span
+{
+    display: block;
+    width: 93px;
+    height: 75px;
+    background-color: brown;
+    background: url(../images/sprite.png) no-repeat -894px -572px; 
+    position: absolute;
+    top: 40px;
+    left: 195px;
+}
+.bottom-bar ul li:nth-child(4) span
+{
+    display: block;
+    width: 90px;
+    height: 70px;
+    background-color: brown;
+    background: url(../images/sprite.png) no-repeat -763px -478px; 
+    position: absolute;
+    top: 40px;
+    left: 195px;
+}
+.bottom-bar ul li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #AE7144;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+.bottom-bar ul li p{
+    margin-top: 10px;
+}
+
+
+.bottom-bar ul li:nth-child(1):hover {
+    background: transparent;
+}
+.bottom-bar ul li:nth-child(4):hover {
+    background: transparent;
+}
+.bottom-bar ul li:nth-child(1):hover a .text{
+    display: none;
+}
+.bottom-bar ul li:nth-child(4):hover a .text{
+    display: none;
+}
+.bottom-bar ul li:nth-child(1):hover a span{
+    display: none;
+}
+.bottom-bar ul li:nth-child(4):hover a span{
+    display: none;
+}

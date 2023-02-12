@@ -1,0 +1,6 @@
+/* components/two/two.wxss */
+.two{
+    width: 100%;
+    /* height: 200rpx; */
+    background-color: blue;
+}

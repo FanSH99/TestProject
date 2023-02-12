@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .parent {
+            width: 1000px;
+            margin: 0 auto;
+            min-height: 400px;
+        }
+
+        .header {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            height: 50px;
+            line-height: 50px;
+            background: #4f3655;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .main {
+            width: 100%;
+            margin-top: 10px
+        }
+
+        .header div {
+            font-size: 13px;
+            margin-right: 10px
+        }
+
+        .hero {
+            width: 120px;
+            height: 160px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .lol {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <template id="parent">
+        <div class="parent">
+            <div class="header">
+                <div v-for="(item,index) in navList">
+                    <input type="radio" name="" id="" :checked="activeIndex===index"
+                        @click="getType(index)">{{item.name}}
+                </div>
+            </div>
+            <div class="main">
+                <lolhero :herotype="heroType"></lolhero>
+            </div>
+        </div>
+
+    </template>
+    <template id="lol">
+        <div class="lol">
+            <hero-info v-for="(item,index) in getList" :key="index" :info="item"></hero-info>
+        </div>
+    </template>
+    <template id="hero">
+        <div class="hero">
+            <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${info.alias}.png`" alt="">
+            <p>{{info.title}}</p>
+        </div>
+
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+
+<script>
+    /* 2022年9月8日09:17:53 */
+    let heroInfo = {
+        template: '#hero',
+        props: {
+            info: Object
+        },
+        data() {
+            return {
+
+            }
+        },
+    }
+
+    let lolhero = {
+        template: '#lol',
+        props: {
+            herotype: String,
+        },
+        data() {
+            return {
+                list: []
+            }
+        },
+        components: {
+            heroInfo
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res)
+                    this.list = res.hero;
+                }
+            }
+        },
+        computed: {
+            getList() {
+                console.log(this.list, this.herotype);
+                if (this.herotype === "all") {
+                    return this.list;
+                };
+                let newArr = this.list.filter(item => {
+                    return item.roles.join("").includes(this.herotype)
+                })
+                return newArr
+            }
+        }
+    }
+    let myComponent = {
+        template: "#parent",
+        data() {
+            return {
+                navList: [
+                    {
+                        name: "所有英雄",
+                        type: "all",
+                    }, {
+                        name: "法师",
+                        type: "mage"
+                    }, {
+                        name: "战士",
+                        type: "fighter"
+                    }, {
+                        name: "坦克",
+                        type: "tank"
+                    }, {
+                        name: "刺客",
+                        type: "assassin"
+                    }, {
+                        name: "射手",
+                        type: "marksman"
+                    }, {
+                        name: "辅助",
+                        type: "support"
+                    }
+                ],
+                activeIndex: 0,
+                heroType: "all"
+            }
+        },
+        components: {
+            lolhero,
+        },
+        methods: {
+            getType(index) {
+                this.activeIndex = index;
+                this.heroType = this.navList[index].type;
+            }
+        }
+
+    }
+    new Vue({
+        el: "#app",
+        components: {
+            myComponent,
+        },
+
+    })
+</script>
+
+</html>

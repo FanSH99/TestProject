@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        特殊情况
+        1. 没声明 ，没有写var ，直接对变量赋值了，不报错，可以正确输出，但是不建议
+        2.
+     -->
+     <script>
+    //1.
+    //    a=10;
+    //    console.log(a);
+  //2.
+    // console.log(a);//undefined
+    // var a=10;
+
+    // var a;// 变量声明，未赋值,输出是undefined
+    // console.log(a);// undefined;
+    // a=10;
+
+    //3.
+    // console.log(a);//Uncaught ReferenceError: a is not defined
+    // a=10;
+
+
+// console.log(a);// 报错
+// var b;
+// console.log(b);
+// c=10;
+// console.log(c);
+
+
+// 为作业提示
+
+console.log(2+5+'8'+9+1);//7891
+console.log('8'+8+9+1);//8891
+
+var num=+prompt('请输入一个数字');// 纯数字字符串转数字   在前面 +        +'8' ---->8
+console.log(num);
+     </script>
+</body>
+</html>

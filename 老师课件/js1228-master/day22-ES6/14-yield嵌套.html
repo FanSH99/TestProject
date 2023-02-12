@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            yield * 表达式
+            如果在 Generator 函数内部，调用另一个 Generator 函数，
+            则需要在前者函数体内部，自己手动完成遍历
+        */
+        // function* chen() {
+        //     yield "陈1";
+        //     yield "奕2";
+        //     yield "迅3";
+        // }
+        // function* li() {
+        //     yield "李a";
+        //     for (let i of chen()) {
+        //         console.log(i);
+        //     }
+        //     yield "宗b";
+        //     yield "盛c";
+        // }
+
+        // for (let i of li()) {
+        //     console.log(i);
+        // }
+        /* 
+            上面的代码，chen 和 li 都是 Generator 函数，在 li 中调用了 chen
+            就需要手动遍历 chen
+            如果有多个 Generator 函数嵌套，则写起来非常麻烦。
+            ES6 提供了 yield * 表达式解决此问题。
+            用来在一个 Generator 函数中执行另一个 Generator 函数
+        */
+        // function* chen() {
+        //     yield "陈1";
+        //     yield "奕2";
+        //     yield "迅3";
+        // }
+        // function* li() {
+        //     yield "李a";
+        //     yield* chen();
+        //     yield "宗b";
+        //     yield "盛c";
+        // }
+
+        // for (let i of li()) {
+        //     console.log(i);
+        // }
+
+        // console.log("------------等效写法----------");
+        // function* li() {
+        //     yield "李a";
+        //     yield "陈1";
+        //     yield "奕2";
+        //     yield "迅3";
+        //     yield "宗b";
+        //     yield "盛c";
+        // }
+
+        // for (let i of li()) {
+        //     console.log(i);
+        // }
+
+        console.log("------------等效写法----------");
+        function* chen() {
+            yield "陈1";
+            yield "奕2";
+            yield "迅3";
+        }
+        function* li() {
+            yield "李a";
+            for (let i of chen()) {
+                yield i;
+            }
+            yield "宗b";
+            yield "盛c";
+        }
+
+        for (let i of li()) {
+            console.log(i);
+        }
+    </script>
+</body>
+
+</html>

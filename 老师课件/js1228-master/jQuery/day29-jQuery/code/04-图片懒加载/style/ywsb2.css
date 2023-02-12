@@ -1,0 +1,65 @@
+.box-2 {
+    width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
+}
+.sb-wz{
+    width: 1300px;
+    height: 800px;
+    margin: 0 auto;
+}
+.sb-top a{
+    display: block;
+  width: 200px;
+  height: 60px;
+  background: url(../images/inside-sprite.png) no-repeat -211px -211px;
+}
+.sb-wz .center h3{
+    width: 430px;
+    height: 30px;
+    display: block;
+    margin:  0 auto;
+    font-size: 28px;
+    color: #000;
+    font-weight: 600;
+  
+}
+.sb-wz .center h4{
+    width: 200px;
+    height: 50px;
+    color: #AAAAAA;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: 600px;
+}
+.sb-wz .center ul{
+    width: 100%;
+    height: 100%;
+}
+.sb-wz .center ul li p{
+    font-family: 300;
+    font-size: 16px;
+    width: 1200px;
+    color: #774621;
+    margin-left: 100px;
+
+
+}
+.sb-wz .center ul li p:nth-child(2){
+   
+   text-indent: 2em;
+}
+.sb-wz .center ul li p:nth-child(3){
+    margin-top: 50px;
+}
+.sb-wz .center ul li p:nth-child(4){
+    margin-top: 50px;
+}.sb-wz .center ul li p:nth-child(7){
+    margin-top: 50px;
+}
+.sb-wz .center ul li p:nth-child(14){
+    margin-top: 50px;
+}

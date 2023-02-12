@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log({name:"白浅",age:18}),console.log("等不到的雪月风花，我们的爱也有时差")})();

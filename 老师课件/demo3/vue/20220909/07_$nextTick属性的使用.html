@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 在vue中vue为了提高渲染性能所以vue中的dom更新是一个异步的过程 -->
+        <h1 v-if="isShow" ref="myh1">{{msg}}</h1>
+        <my-component v-if="isShow" ref="mycom"></my-component>
+        <button @click="show">显示</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+    let myComponent = {
+        template:"<h1>我是一个组件</h1>"
+    }
+
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习天天向上",
+            isShow:false
+        },
+        components:{
+            myComponent
+        },
+        methods: {
+            show(){
+                this.isShow = true
+            //    setTimeout(()=>{
+            //     console.log(this.$refs.myh1)
+            //    },500)
+             
+            //    this.$nextTick 当所有dom异步更新结束后才会进入回调
+               this.$nextTick(()=>{
+                console.log(this.$refs.myh1)
+                console.log(this.$refs.mycom)
+               })
+            }
+        },
+    })
+</script>
+</html>

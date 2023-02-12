@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        /* 视图窗口的百分百   vh是根据可视窗口计算的高度,1vh == 可视窗口高度的1%;*/
+        /* body{height:100vh;}  */
+        div {
+            position: absolute;
+            /* box-shadow 是设置阴影 */
+            box-shadow: 0 0 45px red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 1.点击屏幕,在点击的位置上显示一个div;
+    // 给body 添加点击事件,默认宽是100%  高为0;需要从新设置高
+    // $('body').click(function(){
+    // alert('456')
+    // })
+
+    // 给window添加点击事件 默认宽高就是可视窗口
+    $(window).click(function (e) {
+        // 2. 获取当前鼠标点击的位置或偏移量来设置生成div的位置
+        // 获取鼠标当前的坐标
+        // var xx = e.originalEvent.x;  
+        // var yy = e.originalEvent.y;
+        // 获取鼠标相对于浏览器视图窗口的位置(left/top的偏移量)
+        var xx = e.clientX;
+        var yy = e.clientY;
+        // console.log(xx,yy)
+
+        // 声明一个宽为随机数  最小为20 最大到150 随机生成
+        var width = Math.floor(Math.random() * 150 + 20);
+        var left = Math.floor(Math.random() * ($(window).width() - width));
+        var top = Math.floor(Math.random() * ($(window).height() - width));
+        // console.log(width)
+
+        // 创建标签到body下面
+        $('<div></div>').css({
+            width: width,
+            height: width,
+            // 因为设置的位置是已鼠标位置为中心的右下角创建出来的圆,所以可以通过left top/2 进行折叠的方法 
+            // 达到创建出来的圆以鼠标坐标为中心创建
+            left: xx - width / 2,
+            top: yy - width / 2,
+            // 3. 给div 设置动画  可通过回调函数 
+        }).appendTo('body').animate({ left: 0, top: 0 }, 2000, function () {
+            // console.log($(this))// 指向的是当前div
+            // console.log($(this))
+            tx(this);
+
+            // setInterval(Function(){},2000)
+            // $(this).animate({left:800,top:500},2000,function(){
+            //     console.log($(this))// 指向当前div
+            // })
+        });
+    });
+
+    function tx(item) {
+        // ($(window).width() 获取可视窗口的宽度  -  $(item).width()为div的宽度,以免超出当前可视窗口
+        var left = Math.floor(Math.random() * ($(window).width() - $(item).width()));
+        var top = Math.floor(Math.random() * ($(window).height() - $(item).width()));
+        console.log(left);
+        console.log(top);
+        // 因为是jquert的封装方法所以需要加上$( )调用
+        $(item).animate({ left: left, top: top }, 2000, function () {
+            // console.log($(item))
+            tx(item);
+        });
+    }
+</script>

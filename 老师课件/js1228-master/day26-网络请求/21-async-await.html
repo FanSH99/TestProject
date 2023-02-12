@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./axios.js"></script>
+    <script>
+        /* 
+            async/await 处理异步操作
+                async/await 是 ES7 引入的新语法，可以更加方便的进行异步操作
+                async 关键字用于函数上(async 函数的返回值是 Promise 的实例对象)
+                await 关键字用于 async 函数内部, 修饰 Promise 对象(await 可以得到异步的结果)
+                优势：
+                    1. 不再通过 then() 函数处理结果。
+                    2. 方便多个异步操作
+        */
+
+        // 之前的 axios
+        axios.defaults.baseURL = "http://127.0.0.1:8080/";
+        // axios.get("/axios").then((result) => {
+        //     console.log(result.data);
+        // });
+
+        // 1. async 修饰函数(此函数内部可以发起异步请求)
+        async function queryData() {
+            // 2. await 修饰 Promise 实例
+            let result = await axios.get("/axios");
+            // 3. 可以直接(获取)操作异步请求的结果
+            //     不再需要 then() 及其回调函数
+            // console.log(result);
+            // console.log(result.data);
+            // 4. 函数的返回值是 Promise
+            return result.data;
+        }
+        // queryData();
+        queryData().then(data => {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

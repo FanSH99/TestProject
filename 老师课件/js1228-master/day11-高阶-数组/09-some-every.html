@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+            some()
+                1. 用于判断数组中是否有满足条件的元素
+                2. 返回是布尔值,存在则返回true,不存在则返回 false
+                3. 如果找到第一个满足条件的元素,则终止循环.不再继续寻找
+        */
+
+        var arr = [10, 30, 15, 22];
+        // 需求：数组中是否有大于 20 的 数
+        let flag = arr.some(function (value) {
+            console.log(value);
+            if (value > 20) {
+                return true;
+            }
+        });
+        console.log(flag);
+
+        /* 
+            some:只要其中一个为true 就会返回true的，
+            every:方法必须所有都返回true才会返回true，
+            every:一假即假
+            some:一真即真 
+        */
+        console.log('****************************');
+        var arr2 = [1, 3, 5, 17, 9, 10];
+        var b = arr2.every(function (val, index, arr) {
+            console.log(val);
+            // return true,代表某个元素符合了条件。
+            return val <= 10;
+        })
+        console.log(b)
+
+        // map 自学：
+        // map()方法返回一个新数组，数组中的元素为原始数组元素调用函数处理的后值.
+
+        var array1 = [1, 4, 9, 16];
+        const map1 = array1.map((x) => {
+            // return 的意思是，将元素加工后，放入新的数组
+            return x * 2;
+        }
+        );
+        console.log(map1);
+
+        // 1. filter:返回是新数组,遍历全部
+        // 2. some、every: 返回布尔值,满足条件即终止循环。添加 break;
+        // 3. 自学 map
+        // 4. 作业: 自己封装 some 、every 、filter、map 函数
+    </script>
+</body>
+
+</html>

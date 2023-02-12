@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        Math 算数对象
+        属性和方法 
+        PI
+
+    -->
+    <script>
+        // console.log(PI);
+        console.log(Math.PI);
+
+        // 方法
+        // 1.ceil(x)	  对数进行上舍入。  向上取整   天花板
+
+        var num=2.18;
+        // num=2.98;
+        console.log(Math.ceil(num));//3
+
+        //2. floor(x)	对 x 进行下舍入。  向下取整   地板
+        console.log(Math.floor(num));//2
+
+        //3.round(x)	四舍五入。
+        console.log(Math.round(num));
+
+
+        //4.abs(x)	返回 x 的绝对值。  |-8|   |8|
+        var num1=-8;
+        console.log(Math.abs(num1));
+
+        //5.max(x,y,z,...,n)	返回 x,y,z,...,n 中的最高值。
+        console.log(Math.max(8,15,20));//20
+        console.log(Math.max('8','15','20'));//20   隐式的就转为数字
+
+        //6.min(x,y,z,...,n)	返回 x,y,z,...,n中的最低值。
+
+        console.log(Math.min(8,15,20));//8
+        console.log(Math.min('8','15','20'));//8   隐式的就转为数字
+
+        //7.pow(x,y)	返回 x 的 y 次幂。  2的3次方
+        console.log(Math.pow(2,3));
+
+        // 
+        var height=1.8;
+        console.log(height*height);
+        console.log(Math.pow(height,2));
+
+        //8.sqrt(x)	返回数的平方根。
+        console.log(Math.sqrt(16)); 
+
+        //9.random()	返回 0 ~ 1 之间的随机数。   -----特别注意的
+                     //[0  1)
+
+        // console.log(Math.random());
+
+        // 返回 0-3之间机数  [0  3]    [最小值   最大值]
+
+        //   Math.floor(Math.random() * (max - min + 1) ) + min;
+        //   parseInt(Math.random() * (max - min + 1) ) + min;
+console.log('------------------------------------------');
+          for(var i=0;i<10;i++){
+            console.log( Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
+          } 
+    </script>
+</body>
+</html>

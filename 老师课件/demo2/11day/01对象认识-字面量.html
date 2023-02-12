@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        对象
+    1.    面向对象    OOP==Object oriented programming
+
+        es5 没有类的概念               es6 就有了 类的概念  class   
+        利用函数来模拟类
+        比如  function  Dog() {} 
+              function  Star(){}
+        非正统  怪异
+    2. 对象：都有自己的属性和方法
+               属性：区别别的对象的特征   ： 身高，体重 姓名 年龄
+               方法： 动作和功能   函数   ： 走路   说话   测试  打游戏
+
+   3.万物皆对象，对象是一个具体的事物，看得见摸得着的实物。
+
+   4.创建对象有三种方式
+     （1）自面量  
+          var obj={};// 空对象
+
+          1.1 先声明，再添加数据
+          1.2 声明的同时，添加了数据    var obj={属性名：属性值, 属性名：属性值，方法名：function(){}};
+      （2）添加属性
+        对象.属性名=属性值;    
+
+     （3）添加方法
+        对象.方法名=函数;
+
+     (4)访问属性，调用方法
+       consoloe.log(对象.属性名)    得到的是属性后面的值
+       obj.方法名（）
+
+    (5) 修改
+    对象.属性名=新属性值;
+
+    (6)删除
+     delete  对象.属性名
+    输出时，虽然属性没有了，但是不报错   结果undefined
+    //变量  console.log(a);//  报错
+
+    （7）遍历对象 for...in    
+      对象没有length 属性         
+     属性名：值       称为   名值对    键值对   key:value
+       for(var key in obj){
+         console.log(key);// 属性名
+         console.log(obj[key]);// 属性名后面对应的值
+       }
+
+    （8）注意事项
+       添加属性名     取属性值的时候
+       obj.gender='男'   console.log(obj.gender);// 男
+
+       obj['age']=18      console.log(obj['age']);// 18
+       obj['123']=123;
+
+       var j='hello';
+       obj[j]='world'
+
+    (9) 属性名 --命名规范
+     同变量的命名规范，但是  属性的命名规范 稍微宽泛一下 ，如果特殊符号，数字  obj['123']=123;
+
+     -->
+    <script>
+
+        //1. 先声明对象，再添回数据
+        var obj = {};
+        console.log(obj);//{}
+
+        //2. 添加属性   一个人
+        obj.name = '杨铭';
+        console.log(obj);//{name: '杨铭'}
+        obj.age = 18;
+        obj.no = '10001';
+        console.log(obj);//{name: '杨铭', age: 18, no: '10001'}
+
+        //3. 添加方法  无参  有参  带返回值
+        obj.say = function () {
+            // console.log(obj.name + 'is saying');
+            console.log(this.name + 'is saying');// 谁调用 say方法，this就指向谁   obj
+
+        }
+        obj.walk = function () {
+            // console.log(obj.name + 'is walking');
+            console.log(this.name + 'is walking');
+        }
+        console.log(obj);
+
+        //4.访问属性和调用方法
+         console.log(obj.name,obj.age,obj.no);//杨铭 18 10001
+         obj.say();
+         obj.walk();
+
+         //5.修改
+         obj.name = '张永秀';
+         console.log(obj);
+
+         //6. 删除
+          delete  obj.age;
+          console.log(obj);
+          console.log(obj.age);//undefined    属性不存在，不报错，是undefined
+
+
+        //   对比以前的变量
+        //    console.log(age);// 报错
+           console.log(obj.gender);//undefined    对象的属性 没有定义，直接输出不报错，是undefined
+
+       //7.遍历对象 for...in
+    //    console.log(obj);
+    //    console.log(obj.length);// undefined  没有length 属性
+    // 对象  属性名：值   名值对    键值对      key只是变量用 i也可以
+        for(var key in obj){
+           console.log(key,obj[key]);//属性名, 值
+    
+        }
+
+        //8. 注意的问题
+            // 添加属性和 取值时有两种方法
+             obj.gender='女';
+             console.log(obj.gender);
+
+            //  常用是第一种方法，但是第二种方法，更自由 ，如果出现特殊，属性名，或者变时，此时用[]
+             obj['age']=20;
+             console.log(obj['age']);
+
+             //比如：
+            //obj.123=123// 报错
+             obj['123']=123;// 不报错 正常的
+
+             var b='hello';
+             obj[b]='world';// 变量时，不加引号
+
+
+
+             
+         
+
+
+      
+
+    </script>
+</body>
+
+</html>

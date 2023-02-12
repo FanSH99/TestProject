@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var arr = ['red', 'green', 'blue', 'skyblue', 'purple'];
+
+        // 翻转数组
+        function reverse(arr) {
+            if(arr instanceof Array){
+
+            }else{
+                console.log('当前参数,不合法');
+                return;
+            }
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                newArr[arr.length - 1 - i] = arr[i];
+            }
+            return newArr;
+        }
+        console.log(reverse(arr));
+        console.log(reverse(true));
+
+        // 1. 判断当前对象是否为某个实例
+        console.log(arr instanceof Array);
+        console.log(arr instanceof Date);
+        let date = new Date();
+        console.log(date instanceof Date);
+
+        // 2. 判断是否为数组
+        console.log(Array.isArray(arr));
+        console.log(Array.isArray(date));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

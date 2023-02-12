@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        HTML5 新增的属性
+        data-*
+
+       1. 获取或设置属性  尽量自定义的方法
+       node. setAttribute('data-name','kuai')
+
+       2.新的用法 dataset       element.dataset	ie 11 才开始支持  了解
+
+
+        
+
+
+
+     -->
+     <div data-hover="h"   data-job-index="1" ></div>
+     <script>
+       var div=  document.querySelector('div');
+        //   div.setAttribute('data-name','kuai');
+        //   console.log( div.getAttribute('data-hover'));
+        //   console.log( div.getAttribute('data-name'));
+
+        // 新方法 dataset
+        //    1.设置
+         div.dataset.name='kuai1';
+
+         console.log(div.dataset.hover,div.dataset.name);
+
+         //2. 特殊情况   data-job-index     驼峰的写法
+          console.log(div.dataset.jobIndex);
+          div.dataset.jobIdx='0'
+          
+     </script>
+</body>
+</html>

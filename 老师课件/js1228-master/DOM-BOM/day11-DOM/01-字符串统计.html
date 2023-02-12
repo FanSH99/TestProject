@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 判断对象是否有某个属性？ 对象['属性名']
+        // 通过判断属性对应的值是否存在
+        let info = {
+            name: '剑圣',
+            skill: '无敌斩'
+        }
+        // sex age address
+        let temp = 'sex';
+        info.sex;
+        info.temp;
+        info['sex'];
+        info[temp];
+        // 条件表达式，表达式都有一个返回值，返回值会隐式转化为布尔值
+        if (info[temp]) {
+            console.log('存在');
+        } else {
+            console.log('no');
+        }
+
+        // 判断一个字符串 'abcdabcaba' 中出现次数最多的字符，并统计其次数。
+        /*
+            obj.a = 10;
+            obj.b = 9;
+            obj.c = 3;
+        */
+        let obj = {};
+        let str = 'abcdabcaba';
+        for (let i = 0; i < str.length; i++) {
+            console.log(str[i]);
+            let char = str[i];
+            if (obj[char]) {
+                obj[char]++;
+            } else {
+                obj[char] = 1;
+            }
+        }
+        console.log(obj);
+
+        // 遍历对象 obj
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

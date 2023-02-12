@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div>青花瓷</div>
+    <div>轨迹</div>
+    <div>东风破</div>
+    <div>发如雪</div>
+
+    <span>11</span>
+    <span>22</span>
+    <span>33</span>
+
+    <script>
+        $(function () {
+            // 需求：给 DIV 进行不同的样式操作
+            let arr = ['red', 'blue', 'green', 'purple'];
+
+            // jQuery 返回的数组，进行不同的操作。
+            $('div').each(function (index, value) {
+                console.log(index, value);
+                $(value).css('color', arr[index]);
+            });
+
+            // 需求：span 文本求和
+            var sum = 0;
+            $('span').each(function (index, value) {
+                console.log($(value).html());
+                sum = sum + parseInt($(value).html());
+            });
+            console.log(sum);
+        });
+    </script>
+</body>
+
+</html>

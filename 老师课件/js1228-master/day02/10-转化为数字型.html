@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 整型 : integer 浮点数 : float 
+        let score = '98.5';
+
+        // 1. 字符串转化为 number
+        score = parseFloat(score);    // 98.5
+        // score = parseInt(score);   // 98
+        console.log(score);         // 98
+        console.log(typeof score);  // number
+
+        // 2. not a number
+        score = parseInt('剑圣');  // NaN
+        console.log(score);
+
+        // 3. 强制转化为 number
+        let age = Number('123');
+        console.log(typeof age);  // number
+    </script>
+</body>
+
+</html>

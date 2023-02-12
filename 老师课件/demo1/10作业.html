@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.news{
+    width: 380px; height:366px; background: #b9b9b9; padding-left: 20px;
+}
+.news li{
+    height:60px; line-height: 60px; list-style: none; border-bottom: 1px  solid #ddd; padding-left:20px;
+    background: url(img/icon02.png) no-repeat left center;
+}
+.news li a{
+    color:#333; font-size:14px; text-decoration:none;
+}
+.news li span{
+    float: right;
+}
+.news li div{
+float: right;
+}
+#box{
+    width: 200px;
+    height: 200px;
+    background: blue;
+}
+.box1{
+    /* width: 100px;
+    height: 100px; */
+    background: red;
+    /* text-align: center;
+    line-height: 100px;
+    color: #fff; */
+}
+/* div{
+    width: 200px;
+    height: 200px;
+    background: black !important;
+} */
+.box2{
+    /* width: 100px;
+    height: 100px; */
+    background: green;
+    /* text-align: center;
+    line-height: 100px;
+    color: #fff; */
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- 类名  id名 -->
+    <!-- 
+类名：在标签中用class表示  ，在css用用“.”表示
+     同一个class中能同时放多各类名，他们之间用空格空开
+     同一个类名在页面中能多以使用
+
+     -->
+    <ul class="news">
+        <li >
+            <div>2022-01-18</div>
+            <a href="#">2022年少儿舞蹈班开始报名……</a>
+          
+        </li>
+        <li>
+            <a href="#" >2022年少儿舞蹈班开始报名……</a>
+             <div>2022-01-18</div>
+        </li>
+        <li >
+            <a href="#" >2022年少儿舞蹈班开始报名……</a>
+             <span>2022-01-18</span>
+        </li>
+        <li >
+            <a href="#" >2022年少儿舞蹈班开始报名……</a>
+             <span>2022-01-18</span>
+        </li>
+
+        <li >
+            <a href="#">2022年少儿舞蹈班开始报名……</a>
+             <span>2022-01-18</span>
+        </li>
+        <li>
+            <a href="#">2022年少儿舞蹈班开始报名……</a>
+             <span>2022-01-18</span>
+        </li>
+    </ul>
+
+ <div class="box1 box">123</div>
+ <div class="box2 box">456</div>
+
+<!-- 具有唯一性 -->
+ <!-- <div id="box">789</div> -->
+
+
+ <!-- css优先级：
+
+  !important>行内式>id>class>标签选择器
+-->
+
+
+<!-- 命名规则：
+不能用中文
+
+不能纯数字
+
+不能数字开头
+
+不能标签名命名
+
+不能特殊字符
+
+
+尽量语义化
+-->
+ <div class="box box1" id="box" style="background: palevioletred;"></div>
+</body>
+</html>

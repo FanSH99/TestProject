@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: brown;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    // 高阶函数 ：
+    //        对其它函数进行操作的函数，
+    //        它接收函数作为参数，或把函数作为返回值输出
+
+    // 函数也是一种数据类型，是 Function 的实例对象。父类是 Object。
+
+    // 1. 函数(实例)作为参数
+    function fn(a, b, callback) {
+      console.log(a + b);
+      callback && callback();
+    }
+
+    function callback() {
+      console.log('我是回调函数');
+    }
+    fn(2, 5, callback);
+
+    // 2. 函数(实例)作为返回值
+    function cook() {
+      console.log('今晚吃什么？');
+      function game() {
+        console.log('打游戏');
+      }
+      return game;
+    }
+
+    let result = cook();
+    result();
+
+
+    // 3. 回调函数多是高阶函数
+    $("div").animate({ left: 400 }, function () {
+      $("div").css("backgroundColor", "purple");
+    });
+
+    $("div").click(function () {
+      console.log("为了部落");
+    });
+
+    $("div").on("click", function () {
+      console.log("为了联盟");
+    });
+
+    setTimeout(function () {
+      console.log("定时器");
+    }, 1000);
+
+      // 自己封装的动画函数
+  </script>
+</body>
+
+</html>

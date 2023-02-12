@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 作用域链
+    根据在内部函数可以访问外部函数变量的这种机制，用链式查找决定哪些数据能被内部函数访问，就称作作用域链 
+    
+    //查找机制
+    首先先从当前作用域查，如果找到，当识别当前用用域的变量，如果当前作用域查不到变量，继续向上层作用域上查找，直接查到全局为止，如果都不到，会报错。
+
+    作用域链：采取就近原则的方式来查找变量最终的值。
+    -->
+    <script>
+        function f1() {
+            // var num = 123;// 局部变量
+            function f2() {
+                // var num = 0;// 局部变量
+                console.log(num); // 站在目标出发，一层一层的往外查找
+            }
+            f2();
+        }
+        // var num = 456;// 全局变量
+        // var num;
+        // num=456;
+        f1();
+    </script>
+</body>
+
+</html>

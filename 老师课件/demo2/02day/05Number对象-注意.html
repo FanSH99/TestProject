@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Number对象
+    1.精度丢失
+
+    2. 十进制  二进制   十六进制  八进制
+  
+
+
+
+    
+    -->
+    <script>
+        //1.精度丢失
+        console.log(0.2+0.1);//0.30000000000000004
+        // 十进制    二进制
+       //2. 了解
+        console.log(18);//十进制
+        console.log(011);// 二进制-----十进制   9
+        console.log(071);// 八进制  ----十进制  57
+
+        console.log(0xA);// 十六进制-----十进制   10
+
+
+     //3.Number 属性
+    //  MAX_VALUE    Number.MAX_VALUE  最大值
+    //  MAX_VALUE    Number.MIN_VALUE  最小值   不能小于等0
+    //  Infinity  无穷大    -Infinity 负无穷
+
+
+    // Number.NaN	非数字
+    console.log(Number.MAX_VALUE);//1.7976931348623157e+308
+    console.log(Number.MIN_VALUE);//5e-324
+
+    console.log(Number.MAX_VALUE*2);//Infinity
+    console.log(-Number.MAX_VALUE*2);
+
+    console.log(Number.NaN,typeof NaN);//NaN   'number'
+
+    //4.NaN    注意：undefined 参加运算   不会转数据类型
+
+    var a;
+    console.log(a);//undefined
+
+    console.log(a*2);//NaN
+    console.log(a-2);//NaN
+    console.log(a+a);//NaN
+    console.log(a+true);////NaN
+    console.log(a+null);//NaN
+
+    console.log('-----------');
+    console.log(a+'hello');//'undefinedhello'
+    console.log('hello'+a);//'helloundefined'
+
+
+    // null   会转数据类型
+    console.log(null+'hello');//'nullhello'
+    console.log(null+1);// 0+1=1
+    console.log(null+true);//0 +1=1
+
+
+    //5.Number方法    toFixed()方法   保留几位小数
+    var b=3.1415926788;
+    b= b.toFixed(2);
+    console.log(b,typeof b);//3.14 string
+
+
+
+
+    </script>
+</body>
+</html>

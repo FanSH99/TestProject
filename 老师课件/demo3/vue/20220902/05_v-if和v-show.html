@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>
+            {{user.name}}---------
+            <!-- v-if指令表示条件判断 当满足条件是才会渲染 -->
+            <span v-if="user.age>=18">
+                成年
+            </span>
+            <span v-else>
+                未成年
+            </span>
+            <span v-if="user.sex ==0">
+                美男子
+            </span>
+            <span v-else-if="user.sex==1">
+                小女孩
+            </span>
+            <span v-else>
+                不男不女
+            </span>
+        </h1>
+        <!-- v-show指令可以控制元素得显示与隐藏 当条件为true显示 为fasle隐藏 -->
+        <h1 v-show="istrue">好好学习天天向上</h1>
+        <h2 v-if="istrue">好好学习天天游戏</h2>
+
+        <!-- 
+            v-if和v-show得区别：
+            1.v-if和v-show都可以控制元素得显示与隐藏。
+            2.v-if是通过插入删除dom元素节点实现元素得显示与隐藏，v-show通过控制元素得css样式display来实现元素得显示与隐藏。
+            3.频繁切换使用v-show 一次性渲染使用v-if
+
+         -->
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            user:{
+                name:"张三",
+                age:16,
+                sex:2
+            },
+            istrue:false
+        }
+    })
+</script>
+</html>

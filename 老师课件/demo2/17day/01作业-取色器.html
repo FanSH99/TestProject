@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1、DOM节点样式
+    做个取色器 -->
+    
+    <div id="color-box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    
+    <div id="show-box">
+       点击上面不同的div,这里 显示对应的颜色
+    
+    </div>
+    <script>
+          var divs= document.querySelectorAll('#color-box>div');
+         
+           for(var i=0;i<divs.length;i++){
+              divs[i].style.width="50px";
+              divs[i].style.height="50px";
+              divs[i].style.float="left";
+              divs[i].style.margin="10px";
+              divs[i].style.border="1px solid red";
+            //   最大 255  最小  Math.random()  [0 1);
+             var a=70,b=30;
+              divs[i].style.backgroundColor="rgb("+255*Math.random()+","+a*Math.random()*2+","+b*3+")";
+
+            //   加事件
+             divs[i].onclick=function(){
+            //   var bg=  this.style.backgroundColor;
+           var bg= window.getComputedStyle(this,null).backgroundColor;
+              show.style.backgroundColor=bg;
+              show.innerHTML=bg;
+
+
+             }
+           }
+
+           var show= document.querySelector('#show-box');
+          show.style.width="500px";
+          show.style.height="500px";
+          show.style.clear="both";
+          show.style.border="1px solid red";
+          show.style.color="#fff"
+
+          
+
+    </script>
+</body>
+</html>

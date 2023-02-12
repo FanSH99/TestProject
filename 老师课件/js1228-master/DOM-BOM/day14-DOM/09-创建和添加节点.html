@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>王一博</li>
+        <li>肖战</li>
+        <li>剑圣</li>
+    </ul>
+    <ol></ol>
+    <script>
+        /* 
+            属性操作：
+            样式操作:
+            元素查询：
+            父子兄节点：
+            删除元素:
+            修改元素内容:        
+        */
+        // 1. 创建元素。
+        let li = document.createElement('li');
+        li.innerHTML = '孙红雷';
+
+        let ul = document.querySelector('ul');
+        // 2. 追加节点
+        // ul.appendChild(li);
+
+        // 3. 在指定位置添加元素。
+        ul.insertBefore(li, ul.children[1]);
+    </script>
+</body>
+
+</html>

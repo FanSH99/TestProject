@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let age = 22;
+
+        console.log(typeof age); // number
+
+        // 1. number 转化为 字符串
+        age = age.toString();
+        console.log(typeof age); // string
+
+        // 2. 强制转化
+        let score = String(100);
+        console.log(typeof score);  // string
+
+        // 3. prompt() 接收的数据作为字符串
+        let temp = prompt('请输入一句话');
+        console.log(typeof temp); // string
+    </script>
+</body>
+
+</html>

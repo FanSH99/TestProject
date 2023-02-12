@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <button class="fedin">淡入</button>
+    <button class="fedout">淡出</button>
+    <button class="qh">切换</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+       $(".box").css({
+        width:"100px",
+        height:"100px",
+        background:"red",
+        display:"none"
+    })
+    $(".fedin").click(function(){
+        // 淡入动画 参数一 动画时间 参数二:动画结束后得回调函数
+        $('.box').fadeIn(2000,function(){
+            console.log("动画做完啦")
+        })
+    })
+    $(".fedout").click(function(){
+        $(".box").fadeOut(1000);
+    })
+
+    $(".qh").click(function(){
+        $('div').fadeToggle(1000 )
+    })
+</script>
+</html>

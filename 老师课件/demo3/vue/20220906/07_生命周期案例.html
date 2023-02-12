@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="myCarousel" class="carousel slide">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>   
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div :class="{item:true,active:index==0}" v-for="(item,index) in list" :key="index">
+                    <img :src="item.picUrl" alt="First slide">
+                    <div class="carousel-caption">{{item.title}}</div>
+                </div>
+            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div> 
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:[]
+        },
+        beforeCreate() {
+            
+        },
+        // 在vue中通常在 created生命周期发送http请求 在这个生命周期最早可以操作data中数据和methods中方法
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get",'https://api.it120.cc/xiaochengxu/banner/list');
+            xhr.send();
+            // let that = this;
+            // xhr.onreadystatechange = function(){
+            //     if(xhr.readyState === 4){
+            //         let res = JSON.parse(xhr.response)
+            //         console.log(res)
+            //         that.list = res.data;
+            //     }
+            // }
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState ===4){
+                    let res = JSON.parse(xhr.response);
+                    this.list = res.data;
+                }
+            }
+        },
+        beforeMount() {
+            
+        },
+        mounted() {
+            
+        },
+        
+        
+    })
+</script>
+</html>

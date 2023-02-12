@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            color: #999;
+            height: 50px;
+            width: 300px;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="手机">
+    <script>
+
+        /* 
+            需求：
+                1. 获取焦点，如果value是默认值("手机")，清空value，字体颜色加深。
+                2. 失去焦点，如果是空，则添加默认值，字体颜色变淡。
+        */
+        let input = document.querySelector('input');
+
+        input.onfocus = function () {
+            if (this.value == "手机") {
+                this.value = "";
+            }
+            this.style.color = '#333';
+        }
+
+        input.onblur = function () {
+            if (input.value == "") {
+                this.value = "手机";
+            }
+            input.style.color = "#999"
+        }
+    </script>
+
+</body>
+
+</html>

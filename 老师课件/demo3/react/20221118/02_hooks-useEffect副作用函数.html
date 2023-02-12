@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    let {useEffect,useState} = React;
+
+    function App(){
+        let [list,setList] =useState([]);
+        let [num,setNum]=useState(0)
+        // useEffect Hooks类似于react生命周期 通常函数式组件请求数据会在useEffect中请求
+        // 参数一 会调用回调函数 参数二是一个数组 若为空数组则只会执行一次不依赖任意状态 若不为空数组,数组中属性就是该副作用函数所依赖项，当依赖项发生改变时副作用函数就会自动调用
+        useEffect(()=>{
+            console.log("调用来")
+            //  发送请求获取lol英雄列表
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", `https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js`);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let data = JSON.parse(xhr.response);
+                    console.log(data.hero)
+                    setList(data.hero)
+                }
+            }
+        },[]) // []表示不依赖任意状态 只会执行一次 [num,list] 表示依赖num状态只要num发生改变那么副作用函数就会调用
+
+        return (
+            <div>
+            <h3>lol英雄列表 {num} 
+                <button onClick={()=>{
+                    num++
+                    setNum(num)
+                }}>++</button>
+            </h3>   
+            <div>
+                    {
+                        list.map((item,index)=>{
+                            return (
+                                <div key={index}>
+                                    <img src={`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png`} alt="" />
+                                    <div>{item.title}</div>
+                                </div>
+                            )
+                        })
+                    }
+            </div> 
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+</html>

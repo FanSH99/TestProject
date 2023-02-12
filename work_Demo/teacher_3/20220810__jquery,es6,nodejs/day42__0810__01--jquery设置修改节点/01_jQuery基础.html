@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月10日09:22:57
+        jQuery是什么？
+        jquery 是一个轻量级的js库，用原生js封装的
+
+        为什么要学jQuery?
+        极大的简化了原生js的编写方式。
+        非常方便快捷。
+
+        什么时候用jQuery？
+        当我们到公司需要使用原生js开发项目时，为了提高开发速度，我们就可以使用jQuery
+
+        引入jQuery？
+        引入之后全局会有一个$属性。
+        浏览器内核分为两部分：
+        1.渲染引擎  ---负责html、css的渲染工作。
+        2.js加载引擎 ---加载js
+        
+     -->
+
+    <ul>
+        <h3 id="title">静夜思</h3>
+        <li class="li1">床前明月光</li>
+        <li>疑是地上霜</li>
+        <li>举头望明月</li>
+        <li>低头思故乡</li>
+        <div>李白字太白</div>
+    </ul>
+    <script>
+        // console.log($);//报错 ---一定要先引入jQuery
+    </script>
+
+    <script src="../../js/jquery-3.6.0.min.js">
+
+    </script>
+
+    <script>
+
+        $(function () {
+            // 原生获取
+            // var li = document.querySelector('h3');
+            console.log($('h3'));
+            //jQuery获取的dom是一个jQuery对象，是一个数组。不能混用--因为原型对象封装的是jQuery的方法，只能调用jQuery方法属性。
+            // 1.根据id  $('#id')
+            let title = document.getElementById('title');
+            console.log(title);
+            console.log($(title));
+            // js转换为jQuery ---加上$符号即可。
+            // 2.根据class $('.class')
+            console.log($('.li1'));
+            console.log($('.li1')[0])
+            // jQuery可以转换为js  ---价格中括号，下标序号即可。
+
+            console.log($('ul li'));//一个数组 
+            console.log($('ul>div'));
+            console.log($('ul li').first());//ƒ (){return this.eq(0)}
+            console.log($('ul li:odd'));//偶数
+            console.log($('ul li:even'));//奇数个
+
+
+
+        })
+    </script>
+</body>
+
+</html>

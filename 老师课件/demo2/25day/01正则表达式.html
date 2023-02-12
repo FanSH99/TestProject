@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+       一、 创建正则表达式两种方式
+       1、构造函数 RegExp
+         var patt= new RegExp(pattern,modifiers)
+          var patt=  new RexExp('a','gi');
+          //校验  一串字符串中，是否存在a字符，不区分大小，全局搜索
+          g 全局   i 不区分大小写 m 换行
+
+        2.字面量的方式
+         /pattern/modifiers
+
+         var patt=/a/ig  
+            / / 之间，是字符串的话，不带引号    ig 修饰符不分顺序
+
+        3.校验的方法
+         test()
+     var flag=    patt.test(str);
+                  规则       字符串
+
+         返回值是真，校验成功 ，否则校检验不成功
+
+     -->
+
+     <script>
+    //1.构造函数
+    //   var patt=  new RegExp('a','gi');
+    //   console.log(patt);//   /a/gi
+   // 2.字面量方式创建， 用的较多
+   var patt= /a/ig;
+   console.log(patt);
+
+   //3.校验字符串是否合规范 test()
+   var str='abc123';
+    //   str='bc123'
+   var flag= patt.test(str);
+   console.log(flag);//true
+
+   
+     </script>
+</body>
+</html>

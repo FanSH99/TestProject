@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.什么是闭包
+        函数套函数，内部函数可以访问外部函数作用域中的变量或参数
+        会把内部函数返回
+
+        一个作用域可以访问另外一个函数内部的局部变量
+
+        问题：  导致变量，一直驻扎内存，不能及时被销毁，造成内存泄露
+     -->
+     <script>
+         function show(){
+            var count=0;
+            return function(){
+                 count++;
+                 console.log(count);
+            }
+
+         }
+        var b= show();
+        console.log(b);
+        b();
+        b();
+        b();
+        b();
+     </script>
+</body>
+</html>

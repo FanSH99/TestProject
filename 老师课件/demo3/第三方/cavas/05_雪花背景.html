@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #mycanvas{
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas">
+
+    </canvas>
+</body>
+<script>
+    let cav = document.getElementById("mycanvas");
+    console.dir(cav)
+    // 获取canvas绘画实例
+    let ctx = cav.getContext("2d");
+    cav.height = document.documentElement.clientHeight;
+    cav.width = document.documentElement.clientWidth;
+    //  定义雪花个数
+    let numList = [];
+    for(let i=0;i<500;i++){
+        let obj = {
+            // 雪花x坐标
+            x:Math.random()*document.documentElement.clientWidth,
+            // y坐标
+            y:Math.random()*document.documentElement.clientHeight,
+            // 移动的距离
+            z:Math.random()*7
+        }
+        numList.push(obj)
+    }
+    console.log(numList)
+    // 设置雪花颜色
+    ctx.fillStyle="#fff";
+    // 渲染雪花
+    let render = ()=>{
+        // 清空画布
+        ctx.clearRect(0,0,document.documentElement.clientWidth,document.documentElement.clientHeight);
+        // 开始画线
+        ctx.beginPath()
+        numList.forEach(item=>{
+        // 雪花动起来 就改变雪花y轴位置
+        item.y=item.y>document.documentElement.clientHeight?0:(item.y+item.z)
+            ctx.rect(item.x,item.y,3,3)
+        })
+        ctx.fill();
+        // 开启动画帧不断调用render
+        requestAnimationFrame(render)
+    }
+    render();
+    // setInterval(() => {
+    //     render();
+    // }, 50);
+</script>
+</html>

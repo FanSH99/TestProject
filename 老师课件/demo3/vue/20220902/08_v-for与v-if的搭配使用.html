@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 在vue2中 vue 不推荐 v-for指令与v-if指令作用在同一个元素 -->
+            <!-- 原因就是 在vue2中v-for指令的优先级要高于v-if 如果使用在同一个dom上那么就会浪费vue渲染性能 -->
+            <li v-for="(item,index) in userList" :key="index">
+                <div v-if="item.age>20">
+                {{item.name}} ----------- {{item.age}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            userList:[
+                {
+                    name:"张三",
+                    age:18,
+                    sex:"男"
+                },{
+                    name:"王五",
+                    age:30,
+                    sex:"女"
+                }
+            ]   
+        }
+    })
+</script>
+</html>

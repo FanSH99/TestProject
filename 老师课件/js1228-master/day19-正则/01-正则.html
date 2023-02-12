@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            引入: 邮箱、手机号不合法。
+                  可以通过字符串的 charCodeAt,返回 ascii 码，但是复杂，且效率太低。
+            正则表达式(Regular Expression)：一个对象，用于匹配字符串中字符的组合模式。
+            作用:
+                1. 校验字符串合法性。(读取不合法/特定的字符串)         
+                2. 替换敏感词。(读取的字符串进行写)
+            场景：多用于表单的验证。    
+        */
+
+        // 1. 利用 RegExp 对象来创建正则表达式
+        let regEXp = new RegExp(/123456/);
+
+        // 2. 利用字面量创建正则表达式
+        let rg = /123/;
+
+        // 3. test 方法来检测字符串是否符合正则表达式的要求规范
+        //   输入、处理、输出
+        console.log(rg.test(123));
+        console.log(rg.test(1234));
+        console.log(rg.test(456));
+
+    </script>
+</body>
+
+</html>

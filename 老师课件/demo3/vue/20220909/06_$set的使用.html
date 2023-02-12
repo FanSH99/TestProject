@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{user.name}}--------{{user.age}}------{{user.sex}}</h1>
+        <button @click="add">添加sex属性</button>
+        <ul>
+            <li v-for="(item,index) in list" :key="index">
+                {{item}}
+            </li>
+        </ul>
+        <button @click="getTimo">提莫</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            user:{
+                name:"张三",
+                age:18,
+            },
+            list:["卡特",'亚索','盖伦','赵信']
+        },
+        methods: {
+            add(){
+                // vue 不会对对象新增的属性进行数据劫持
+                // this.user.sex = "男"
+                // console.log(this.user)
+                console.log(this)
+                // 若视图渲染后给对象里面添加新的属性必须使用this.$set()实现视图的强制更新
+                // 参数一将要给哪个对象添加新的属性 参数二新的属性名 参数三：属性值
+                this.$set(this.user,"sex","男")
+            },
+            getTimo(){
+                // this.list[1] = "提莫"
+                this.$set(this.list,1,'提莫')
+                // this.list[1]='提莫';
+                // this.list = this.list.concat([])
+            }
+        },
+    })
+
+    let obj = [1,2,4]
+    console.log(obj)
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .box {
+            width: 1000px;
+            height: 374px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        img {
+            width: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4cfa4e9a0f10a79ed068f26adf846bfa.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+            alt="" class="img4">
+
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/36b45c624f42fa81732457e3f9773dbd.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+            alt="" class="img3">
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b6f6c0c0eb8ede475c8858bc1370cfe9.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+            alt="" class="img2">
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9925ba8af7a6fe8d88d9804aba08cec1.jpg?w=2452&h=920" alt=""
+            class="img1">
+
+    </div>
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+
+    var playIndex = 0;
+    function play() {
+        playIndex++;
+        if (playIndex >= 4) {
+            playIndex = 0;
+        }
+        var imgOn = $('img').eq(playIndex);
+        imgOn.fadeIn(2000).siblings().fadeOut(2000)
+    }
+    function autoPlay() {
+        setInterval(play, 2000);
+    }
+
+    autoPlay();
+
+</script>
+
+</html>

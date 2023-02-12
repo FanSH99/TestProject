@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>cookie存储</h1>
+    <button class="set">设置cookie</button>
+    <button class="get">获取cookie</button>
+    <button class="remove">删除cookie</button>
+    <h1>本地存储</h1>
+    <button class=localSave>本地存储数据</button>
+    <button class="localGet">获取本地存储的指定数据</button>
+    <button class="localRemove">删除本地存储的数据</button>
+    <h1>会话存储</h1>
+    <button class="sessionSave">存储数据</button>
+    <button class="sessionGet">获取会话存储的数据</button>
+    <button class="sessionRemove">删除数据</button>
+</body>
+<script src="./jquery.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script>
+    let username = '12312312';
+    $(".set").click(()=>{
+        // 前端给浏览器设置cookie 参数一 cookie名 参数二 cookie值
+        $.cookie("username","admin")
+    })
+
+    $(".get").click(()=>{
+        // 获取cookie
+        console.log($.cookie("token"))
+    })
+
+    $(".remove").click(()=>{
+        $.removeCookie("username")
+    })
+    /* 
+     cookie 不仅可以传输在客户端还可以传输到服务端
+    */
+
+   $(".localSave").click(()=>{
+    //   console.log(window)
+    // 设置本地存储数据参数一 属性名 参数二 要存储的值（必须是字符串若不是则会自动转化为字符串存储，当存储对象时需要使用JSON.stringify转化）
+    localStorage.setItem("user",JSON.stringify({name:"张三",age:18}))
+    localStorage.setItem("sex",'男')
+   })
+   $(".localGet").click(()=>{
+    // 获取本地存储的数据 获取到的是字符串
+    console.log(localStorage.getItem("user"))
+   })
+
+   $(".localRemove").click(()=>{
+    localStorage.removeItem("sex")
+   })
+
+   $(".sessionSave").click(()=>{
+    sessionStorage.setItem("token",'哈哈哈');
+    sessionStorage.setItem("msg",JSON.stringify({msg:"嘿嘿嘿"}))
+   })
+
+   $(".sessionGet").click(()=>{
+    console.log(   sessionStorage.getItem("msg"))
+   })
+   $(".sessionRemove").click(()=>{
+    sessionStorage.removeItem("msg")
+   })
+
+   /* 
+   cookie sessionStorage localStorage 三者之间的区别?
+   1. 都是用来在客户端存储数据。
+   2. sessionStorage 会话存储 当关闭浏览器时数据会自动删除 cookie 可以通过设置有效期删除cookie localStorage 本地存储 数据存储在本地只要不手动删除永远存在
+   3. 每条cookie存储的大小不能超过 4kb 追多20条  sessionStorage每条数据大小不能超过5M 最多20条 localStorage每条不能超过5M 但可以存储任意条。
+   4. cookie可以通过http请求自动传递到服务端但是其他两者不行（cookie不仅可以存储到客户端还可以传输到服务端）
+   */
+</script>
+</html>

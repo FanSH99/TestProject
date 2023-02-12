@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            body{
+                margin: 0;
+            }
+            #cav{
+              
+              background:#000;
+            }
+        </style>
+    </head>
+    <body>
+        <body>
+            <!-- 2022年11月10日16:25:15 -->
+            <canvas id="cav"></canvas> 
+            
+        </body>
+    </body>
+    <script>
+        // 2022年11月10日16:45:20
+        let cav=document.getElementById("cav");
+        console.dir(cav);
+        let ctx=cav.getContext("2d");
+        cav.height=document.documentElement.clientHeight;
+        cav.width=document.documentElement.clientWidth;
+        let numList=[];
+        for(let i=0;i<500;i++){
+            let obj={
+                // 雪花x坐标
+                x:Math.random()*document.documentElement.clientWidth,
+                // 雪花y坐标
+                y:Math.random()*document.documentElement.clientHeight,
+                // 定义雪花移动距离
+                z:Math.random()*5,
+            }
+            numList.push(obj);
+        }
+        console.log(numList);
+        // 设置雪花颜色
+        ctx.fillStyle="#fff";
+        // 渲染雪花
+        let render=()=>{
+            ctx.clearRect(0,0,document.documentElement.clientWidth,document.documentElement.clientHeight)
+            ctx.beginPath();
+            numList.forEach(item=>{
+                // 每次调用之前清空画布，否则很丑有痕迹。
+                
+                item.y=item.y>document.documentElement.clientHeight?0:item.y+item.z;
+            ctx.rect(item.x,item.y,3,3);
+            })
+            // 雪花动起来
+            // 
+             // 矩形画出来之后需要填充
+            ctx.fill();
+            // 动画针，最后不要用计时器，很浪费内存
+            requestAnimationFrame(render)
+        }
+        render();
+       
+       // setInterval(()=>{
+       // render();    
+       // },1000)
+    </script>
+</html>

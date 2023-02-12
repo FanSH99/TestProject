@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>find方法</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let arr = [
+      { id: 1, name: "项羽" },
+      { id: 2, name: "剑圣" },
+      { id: 3, name: "盲僧" },
+      { id: 4, name: "末日使者" },
+      { id: 2, name: "兽王" }
+    ];
+
+    /* 
+        数组的 find() : 查找第一个符合条件的数组元素,如果没有返回 undefined;
+            箭头函数:
+              参数1: 元素
+              参数2: 索引号
+            return true:  表示找到了符合条件的元素,并返回该元素.同时停止遍历.
+
+    */
+    let result = arr.find((item, index) => {
+      console.log(item, index);
+      if (item.id == 21) {
+        return true;
+      }
+    });
+    console.log(result);
+  </script>
+</body>
+
+</html>

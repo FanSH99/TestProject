@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    let url = 'https://img1.baidu.com/it/u=3009731526,373851691&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1668531600&t=4d64175b640d744bda7bd7150220d223'
+    // 只允许有一个根节点
+    let a = 'https://www.baidu.com'
+    // 在jsx中必须有结束标签
+    let classname='red'
+    let style = {
+        color:"red",
+        fontSize:"50px",
+    }
+    let dom = (
+        <div>
+            <a href={a}>百度一下</a>
+           <img src={url} alt="" />
+          {
+            //jsx中使用小驼峰命名发定义多单词属性 例如类名 className
+          }
+           <div className={classname} style={{fontSize:"30px"}}>
+            绑定类名
+            </div>
+            <div style={style}>
+                绑定style
+            </div>
+        </div>
+    )
+    
+    ReactDOM.render(dom,document.getElementById("app"));
+</script>
+
+</html>

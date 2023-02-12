@@ -1,0 +1,35 @@
+<!--pages/cate/cate.wxml-->
+<view>分类页面</view>
+<view>
+微信小程序中的双向数据绑定
+</view>
+<view>
+{{msg}} {{num}}
+</view>
+<!-- 双向数据绑定 -->
+<input type="text" model:value='{{msg}}'/>
+<!-- 微信小程序中的事件系统 -->
+<view>
+微信小程序中绑定事件
+</view>
+<!-- bind+事件名称 绑定事件  tap:触屏事件（点击事件）-->
+<button bindtap="clickMe">绑定事件</button>
+<button bindtouchmove='move'>手指触摸后移动事件</button>
+<!-- 小程序中事件传递参数 -->
+<!-- data-属性名=属性值 绑定一个自定义属性名 -->
+<button bindtap="sendparams" data-id='10' data-name='张三'>事件传递参数</button>
+<view>
+  <view wx:for="{{list}}" wx:key="index" bindtap="remove" data-id="{{item.id}}">
+   {{item.name}} ----- {{item.price}}
+  </view>
+</view>
+
+<!-- 微信小程序中如何阻止事件冒泡呢？ -->
+<view class="present" bindtap="presentEven">
+ 父标签
+ <!-- catch+事件名 进行绑定事件 -->
+ <!-- catch 绑定事件可以阻止事件冒泡 -->
+  <view class="child" catchtap="childEven">
+  子标签
+  </view>
+</view>

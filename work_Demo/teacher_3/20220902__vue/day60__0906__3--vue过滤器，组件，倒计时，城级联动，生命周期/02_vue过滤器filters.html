@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中的过滤器</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h3>{{msg.replace("照亮","指引")}}</h3>
+        <h1>{{msg | filterMsg}} ------{{num | changenum}}</h1>
+        <h2>{{msg | filterMsg("少年")}}---------{{num |changenum("人民币")}}</h2>
+    </div>
+    <!-- 全局过滤器可以作用在任意vue中，-->
+    <div id="box">
+        <h1>{{msg | filterMsg}}</h1>
+    </div>
+</body>
+<script src="../bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月6日09:23:35 
+    vue中的过滤器就是用来过滤处理渲染到页面上的数据。{{}}里面的数据。
+        分为全局过滤器和局部过滤器。
+    全局过滤器可以作用在任意vue实例中，
+        全局过滤器必须定义在vue实例创建之前 
+    局部过滤器只能作用在当前vue实例中
+    */
+    //    定义全局过滤器  参数1过滤器名称（自定义），参数2回调函数，调用后执行的函数。
+    Vue.filter("filterMsg", (text, value) => {
+        // text就是要处理的数据 ,value就是传递过来的参数。
+        if (!value) {
+            value = '啦啦啦啦'
+        }
+        console.log(text, value);
+        let newText = text.replace("照亮", "指引");
+        // 过滤器必须有return值
+        return newText;
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            msg: '你本就是光，无需他人照亮',
+            num: 100000,
+        },
+        //    定义局部过滤器 因为可以有多个过滤器，所以过滤器名字是filters，是一个对象。
+        filters: {
+            // 过滤器名称 括号跟的参数1是要处理的数据，参数2是
+            changenum(text, value) {
+                if (!value) {
+                    value = '人民币'
+                }
+                console.log(text, value);
+                return text / 10000 + '万' + value
+            }
+        }
+
+    })
+
+    function Vue2(data, name) {
+        this.data = data;
+        this.name = name;
+    }
+    let v2 = new Vue2("白浅", 19)
+
+    new Vue({
+        el: "#box",
+        data: {
+            msg: '照亮他人的不仅仅是光，更是希望',
+        },
+
+    })
+</script>
+
+</html>

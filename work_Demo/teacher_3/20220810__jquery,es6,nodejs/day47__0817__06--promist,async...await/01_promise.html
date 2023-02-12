@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- 2022年8月17日09:09:27 -->
+</body>
+
+
+<script>
+    /* 异步回调地狱问题 */
+    // $.ajax({
+    //     url: "./1.json",
+    //     success(res) {
+    //         console.log(res);
+    //         $.ajax({
+    //             url: ".2/json",
+    //             success(data) {
+    //                 console.log(data);
+    //                 $.ajax({
+    //                     url: "./3.json",
+    //                     success(result) {
+    //                         console.log(result);
+    //                     }
+    //                 })
+    //             }
+    //         })
+    //     }
+    // })
+    /* 
+        // promise是一种解决回调地狱的方案
+        // 创建爱你promise对象  ---里面必须传递一个函数 *
+        
+        promise拥有三种状态，两个过程。
+        三种状态：
+            pending(等待状态)
+            success(成功状态)
+            error(失败状态)
+        两个过程：
+            等待状态 =>成功装填
+            等待装填 =>失败状态
+        状态一旦发生改变，就不会再改变状态，不可逆的。
+    
+        */
+
+    let p0 = new Promise((reslove, reject) => {
+        reject();//将等待状态变为失败状态  Promise {<rejected>: undefined}
+    })
+    console.log(p0);
+    let p = new Promise((reslove, reject) => {
+        reslove();//将等待状态变为成功状态 Promise {<fulfilled>: undefined}
+    });
+    console.log(p);
+
+
+
+
+</script>
+
+</html>

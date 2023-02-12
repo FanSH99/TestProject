@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    第一个数：<input type="text" id="txt1">
+    <select id="slt">
+        <option value="+" selected>+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    第二个数：<input type="text" id="txt2">
+    <button id="btn">=</button>
+    结果:<input type="text" id="txt3">
+    <script>
+        // 查找元素
+        // 条件语句 选择运算符  switch   
+        // 从input 框取值   
+        // 单击事件
+        // 赋值 ，运算结果赋值第三个框
+        // 1.查找元素  通过选择器
+        var txt1 = document.querySelector('#txt1');
+        console.log(txt1);
+        var txt2 = document.querySelector('#txt2');
+        var txt3 = document.querySelector('#txt3');
+        var btn = document.querySelector('#btn');
+        var slt = document.querySelector('#slt');
+        var res;
+        //2. 单击事件 onclick   
+        btn.onclick = function () {
+            // 2.1 取值 txt1的值  
+            var v1 = txt1.value;
+            console.log(v1, typeof v1);// string
+            var v2 = txt2.value;
+
+            //2.2 取出 +  -  *  /  %
+            var fuhao = slt.value;
+            console.log(fuhao);
+            switch (fuhao) {
+                case '+':
+                    res = parseFloat(v1) + parseFloat(v2);
+                    break;
+                case '-':
+                    res = v1 - v2;
+                    break;
+                case '*':
+                    res = v1 * v2;
+                    break;
+                case '/':
+                    res = v1 / v2;
+                    break;
+                case '%':
+                    res = v1 % v2;
+                    break;
+                default:
+                    res = parseFloat(v1) + parseFloat(v2);
+                    break;
+            }
+
+         // console.log(res);
+          //2.3 赋值给第三个框   txt3.value
+           txt3.value=res;
+        }
+    </script>
+</body>
+
+</html>

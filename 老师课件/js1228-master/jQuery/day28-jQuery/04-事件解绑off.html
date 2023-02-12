@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div>eason</div>
+    <ul>
+        <li>黑色毛衣</li>
+        <li>可爱女人</li>
+        <li>东风破</li>
+        <li>七里香</li>
+    </ul>
+    <button>解除事件绑定</button>
+    <p>周杰伦</p>
+    <script>
+        $('div').on('click mouseenter mouseleave', function () {
+            console.log(this);
+        });
+
+        $('ul').on('click', 'li', function () {
+            console.log(this);
+        });
+
+        // 解除事件绑定
+        $('button').click(function () {
+            console.log(this);
+            // 1. 解除全部的事件绑定
+            // $('div').off();
+
+            // 2. 解除指定的事件
+            $('div').off('mouseleave');
+
+            // 3. 委托事件的解除绑定
+            $('ul').off('click', 'li');
+        });
+
+        // 4. 触发一次自带解除绑定
+        $('p').one('click', function () {
+            console.log(this);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 当前项     on   active    current */
+        .on{
+          background-color: red;
+          color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 
+     需求：单击某一项，单击的这一项加上on,其它项移除on
+      排他思想
+     -->
+     <button class="on">按钮1</button> <button>按钮2</button> <button>按钮3</button> <button>按钮4</button>
+     <script>
+        //1. 查找
+       var btns=  document.querySelectorAll('button');
+       // 2. 加事件（每个按钮都要加事件），遍历 btns
+        for(var i=0;i<btns.length;i++){
+            //2.1 加事件
+             btns[i].onclick=function(){
+                // 排它思想。 
+                //1.先移除所有on
+                  for(var i=0;i<btns.length;i++){
+                    btns[i].className=''
+                  }
+
+                 //2. 当项前加上on
+                //  console.log(i);//4 
+                //  console.log(btns[i]);// 没有这一项
+                this.className='on'
+
+             }
+        }
+     </script>
+
+
+</body>
+</html>

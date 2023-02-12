@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 2022年8月24日16:10:07 -->
+
+<body>
+    <div></div>
+</body>
+
+<script src="./template.js"></script>
+<!-- 定义html渲染模板，一个页面可以有多个模板 -->
+<script id="tem" type="text/html">
+    <h1>{{name}}</h1>
+    <h2>{{sex}}</h2>
+    <!-- 遍历数组得到每一项 like是数组名  item--遍历得到的每一项，index是下标-->
+    {{each like item index}}
+    <h3>{{item}}----{{index}}</h3>
+    {{/each}}
+    {{if age>18}}
+    <h4>成年----{{age}}</h4>
+    {{else}}
+    <h4>{{age}}----未成年</h4>
+    <!-- <h4>{{age}}}</h4> -->
+    {{/if}}
+</script>
+
+<script id="msg" type="text/html">
+    <h1>{{msg}}</h1>
+</script>
+<script>
+
+    let obj = {
+        name: "白浅",
+        sex: "男",
+        like: ["打游戏", "敲代码", "绘画"],
+        age: 16
+    }
+    //获取动态模板标签字符串， 参数1--模板id，参数2--将要渲染到模板上的数据。参数2必须是对象。
+    let html = template("tem", obj);
+    console.log(html);
+    document.querySelector("div").innerHTML = html;
+
+
+    let p = template("msg", { msg: "好好学习，天天向上。" })
+    document.querySelector("p").innerHTML = p;
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            border: 10px solid red;
+            background-color: aqua;
+            overflow: auto;
+        }
+
+        #box .son{
+            width: 300px;
+            height: 1000px;
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body style="height:2000px">
+    <!-- 
+        元素的滚动   overflow:auto;     overflow:scroll;
+        页面的滚动   document.onscroll=funciton(){}
+                     window.onscroll=funciton(){}
+        ele.scrollTop;    被卷去的距离    常用
+        ele.scrollLeft;  被卷去的距离    常用
+
+        element.scrollWidth  返回自身实际的宽度，不含边框，返回数值不带单位
+        element.scrollHeight   返回自身实际的高度
+           
+     -->
+     <div id="box">
+         <div class="son">
+            身实际的宽度身实际的宽度身实际的宽度身实际的宽度身实际的宽度身实际的宽度身实际的宽度
+         </div>
+     </div>
+
+     <script>
+       var box= document.querySelector('#box');
+       var son= document.querySelector('.son');
+
+      console.log(box.scrollHeight);
+      // 了解 ： son的高度>box的高度box.scrollHeight  是 box的高度
+    //    son的高度<box的高度  box.scrollHeight  是 son的高度
+
+
+    // 滚动事件
+     box.onscroll=function(){
+         console.log(box.scrollTop);// 卷进起的距离   内容的高度- 可视高度
+         console.log(box.scrollHeight);//滚动内容的高度
+         console.log(box.clientHeight);//500
+    }
+
+    //页面卷进去的距离  window.pageYOffset   document.documentElement.scrollTop   document.body.scrollTop
+       document.onscroll=function(){
+        // console.log(window.pageYOffset,document.documentElement.scrollTop,document.body.scrollTop);
+        var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+        console.log(y);
+       }
+
+     </script>
+</body>
+</html>

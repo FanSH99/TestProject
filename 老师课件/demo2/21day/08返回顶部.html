@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            width: 100%;
+            height: 60px;
+            background-color: black;
+        }
+
+        .banner {
+            width: 100%;
+            height: 500px;
+            background-color: brown;
+            margin-top: 20px;
+        }
+
+        .con {
+            margin-top: 20px;
+            width: 100%;
+            height: 1000px;
+            background-color: #666666;
+        }
+
+        .pic {
+            position: fixed;
+            right: 0;
+            top: 200px;
+            display: none;
+        }
+
+        .backTop {
+            width: 80px;
+            height: 63px;
+            position: fixed;
+            right: 0;
+            bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav">nav</div>
+    <div class="banner">banner</div>
+    <div class="con">con</div>
+    <!-- 右侧固定图片 -->
+    <img src="./images/kv-nav.png" alt="" class="pic">
+    <!-- 返回顶部的图片 -->
+    <a href="javascript:;" class="backTop">
+        <img src="./images/top.png" alt="">
+    </a>
+
+    <script>
+        // 1.滚动一定的距离，让pic  backTop 显示
+        //  页面卷进去的距离(window.pageYOffset)>400(con.offsetTop)
+
+        var con = document.querySelector('.con');
+        var pic = document.querySelector('.pic');
+        var backTop = document.querySelector('.backTop');
+        var ct = con.offsetTop;
+        console.log(ct);
+
+        document.onscroll = function () {
+            var y = window.pageYOffset;
+            console.log(y);
+            if (y >= ct) {
+                pic.style.display = "block"
+                backTop.style.display = "block"
+            } else {
+                pic.style.display = "none"
+                backTop.style.display = "none"
+            }
+        }
+
+        //2. 单击返回顶部 滚动到顶部 window.scrollTo(0,0)
+
+        backTop.onclick = function () {
+           animate(document,0)
+        }
+
+
+
+
+        function animate(obj, end, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // (end-header)/10   速度 或者偏移量
+                var speed = (end - window.pageYOffset) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+
+                if (window.pageYOffset == end) {
+                   
+                    clearInterval(obj.timer);
+                    callback && callback()
+                }
+
+                var newTop = window.pageYOffset + speed;
+                // obj.style.left = newL + 'px';
+                window.scrollTo(0, newTop)
+            }, 15)
+        }
+   console.log(Math.floor(-0.5));
+    </script>
+</body>
+
+</html>

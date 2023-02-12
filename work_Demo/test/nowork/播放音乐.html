@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>audio功能开发</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .music-range {
+            width: 350px;
+            height: 10px;
+            background: #2386e4;
+            border-radius: 5px;
+            -webkit-appearance: none;
+            margin: 0 auto;
+            cursor: pointer
+        }
+
+        .music-range::-webkit-slider-thumb {
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border: 1px solid #f18900;
+            cursor: pointer;
+            border-radius: 5px;
+            -webkit-appearance: none
+        }
+
+        a {
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music-all">
+        <audio class='music-audio' controls>
+            <source src="../video/黄诗扶 - 九万字 (念白版).mp3" type="audio/mpeg">
+        </audio>
+        <div>总时间
+            <span class='music-max'></span>
+        </div>
+        <div>时间
+            <span class='music-cur'></span>
+        </div>
+        <input class='music-range' type="range" min=0 max=100 value=0 />
+        <div>音量<span class="music-voice">1</span></div>
+        <button class='music-play'>播放</button>
+        <button class='music-no'>停止</button>
+        <button class="music-btnd">声小</button>
+        <button class="music-btne">声大</button>
+        <div class="music-animation"><span class="music-span"></span></div>
+
+        <div class="music-list"></div>
+    </div>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/audio.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var audios = document.getElementsByClassName("music-audio")[0];
+        var vol = audios.volume;
+        audios.controls = false;
+        $('.music-play').on('click', function () {
+            audios.play();
+            var duration = audios.duration;
+            $('.music-max').html(timeleng(duration));
+            $(".music-animation").addClass("play-an");
+            $(".music-range").attr({
+                'max': duration
+            });
+
+            function timer() {
+                var t = parseInt(Math.round(audios.currentTime));
+                $(".music-range").val(t);
+                $('.music-cur').text(timeleng(t));
+                t = parseInt(audios.currentTime);
+                if (t < duration) {
+                    setTimeout(timer, 1000);
+                } else {
+                    clearTimeout(timer);
+                }
+            }
+            timer();
+        });
+        $('.music-no').on('click', function () {
+            audios.pause();
+            $(".music-animation").removeClass("play-an");
+        })
+
+
+        audios.onended = function () {
+            $(".music-animation").removeClass("play-an")
+        };
+        $('.music-btnd').click(function () {
+            vol = vol > 0 ? (vol * 10 - 1) / 10 : 0;
+            audios.volume = vol;
+            console.log(vol)
+            $(".music-voice").html(vol)
+        })
+        $('.music-btne').click(function () {
+            vol = vol < 1 ? (vol * 10 + 1) / 10 : 1;
+            audios.volume = vol;
+            console.log(vol)
+            $(".music-voice").html(vol)
+        })
+        $(".music-range").on('change', function () {
+            audios.currentTime = this.value;
+            console.log(this.value)
+            $(".music-range").val(this.value);
+        });
+
+        function timeleng(time) {
+            var m = 0,
+                s = 0,
+                ms = '00',
+                ss = '00';
+            time = Math.floor(time % 3600);
+            m = Math.floor(time / 60);
+            s = Math.floor(time % 60);
+            ss = s < 10 ? '0' + s : s + '';
+            ms = m < 10 ? '0' + m : m + '';
+            return ms + ":" + ss;
+        }
+        $(".music-qd").on("click", function () {
+            var nameid = $(".input-text").val();
+            console.log(nameid)
+            $.ajax({
+                type: "get",
+                dataType: 'jsonp',
+                success: function (d) {
+                    console.log(d)
+                },
+                error: function (d) {
+                    console.log(d);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

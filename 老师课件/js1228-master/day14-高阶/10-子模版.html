@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/art-template@4.13.2/lib/template-web.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script type="text/html" id="header">
+        <h3>公共的头部---gitee  开源软件  我的仓库</h3>
+        {{hero}}
+        {{skill}}
+    </script>
+
+    <script type="text/html" id="content">
+        <!-- {{include 'header'}} -->
+        <!-- 2. 子模板插入并绑定数据 -->
+        <%
+            include('header',{
+                hero:'后裔',
+                skill:"多重箭矢"
+            });
+        %>
+        <h3>主体内容</h3>
+        <div>{{game}}</div>
+
+        <!-- 1. 子模版的插入  -->
+        {{include 'footer'}}
+    </script>
+
+    <script type="text/html" id="footer">
+        <h3>公共的底部---gitee  git 大全 版权所有</h3>
+    </script>
+
+    <script>
+        let result = template('content', {
+            game: 'lol'
+        });
+
+        $('div').html(result);
+    </script>
+
+</body>
+
+</html>

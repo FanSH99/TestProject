@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="selAll">全选/全不选     <input type="checkbox" id="selRev">反选
+    <h2>项目</h2>
+     <div class="box">
+        <input type="checkbox">游泳<input type="checkbox">爬山<input type="checkbox">看书
+     </div>
+
+     <script>
+        // 1. 全选/全不选 
+        /* 
+          全选/全不选 被勾选     box中所有的复选框都要勾选 
+         全选/全不选 不被勾选     box中所有的复选框都不勾选 
+        */
+
+        //1.1 查
+        var selAll= document.querySelector('#selAll');
+       var selRev =document.querySelector('#selRev');
+       var ipts=   document.querySelectorAll('.box>input');
+
+
+       //1.2 加事件  selAll   onclick        onchange(当发生改变) 单选 复选 下拉式
+        // selAll.onchange=function(){
+        //     // console.log(this);
+        //     if(this.checked){
+        //         for(var i=0;i<ipts.length;i++){
+        //             ipts[i].checked=true;
+        //         }
+
+        //     }else{
+        //         for(var i=0;i<ipts.length;i++){
+        //             ipts[i].checked=false;
+        //         }
+        //     }
+            
+        // }
+         // 简化为下面的代码
+        selAll.onchange=function(){
+            for(var i=0;i<ipts.length;i++){
+                ipts[i].checked=this.checked;
+            }
+        }
+
+
+        //2. 反选
+        // 2.1 加事件
+         selRev.onchange=function(){
+            for(var i=0;i<ipts.length;i++){
+                // 如果选中的话，变为不复中
+                 ipts[i].checked= !ipts[i].checked
+
+            }
+            // 复制过来的
+            var  flag=true;//假设全选是选中
+             for(var j=0;j<ipts.length;j++){
+                // 如果有子项有一项未选项，全选就不能被选中
+                if(!ipts[j].checked){
+                    flag=false;
+                    break;
+                }
+
+             }
+            //  if(flag){
+            //     selAll.checked=true;
+            //  }
+            selAll.checked=flag;
+
+            // 复制过来的结束
+
+         }
+
+      //3. 选中所有的子项，让全选项选中 ，如果有一个项未选，全选就不能选中
+    //    for(var i=0;i<ipts.length;i++){
+    //        ipts[i].onchange=function(){
+    //         // 假设 全选按钮是选中的，如果再次遍历子项，发现有一项未选中，全选就不能被选中
+    //            selAll.checked=true;
+    //            for(var j=0;j<ipts.length;j++){
+    //                  if(!ipts[j].checked){
+    //                     selAll.checked=false;
+    //                  }
+    //            }
+
+    //        }
+
+    //    }
+
+//  取反法
+    for(var i=0;i<ipts.length;i++){
+        ipts[i].onchange=function(){
+            var  flag=true;//假设全选是选中
+             for(var j=0;j<ipts.length;j++){
+                // 如果有子项有一项未选项，全选就不能被选中
+                if(!ipts[j].checked){
+                    flag=false;
+                    break;
+                }
+
+             }
+            //  if(flag){
+            //     selAll.checked=true;
+            //  }
+            selAll.checked=flag;
+
+        }
+    }
+
+
+// 还有小瑕疵，大家试一下反选  ，可以处理一下
+     </script>
+</body>
+</html>

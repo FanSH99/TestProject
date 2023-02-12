@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 1. 把一个字符串转化为驼峰写法（例如：margin-left=>marginLeft）
+/* 
+ 1.1 - 的位置   indexOf
+ 1.2 删除-      replace('-','') ---  marginleft      l的位置===-的位置
+ 1.3 取出l  -----转为大小   charAt()     toUpperCase
+ 1.4 遍历的方法，拼接完成  
+*/
+//  function demo1(str){
+//     var index=str.indexOf('-');
+//     // console.log(index);//6
+//     str=str.replace('-','');
+//     // console.log(str);//marginleft
+//   var char=  str.charAt(index);
+//    char= char.toUpperCase();//L
+// //   console.log(char);
+//    var str0='';
+//   for(var i=0;i<str.length;i++){
+//        if(i===index){
+//         // 把大写的L拼到字符串中
+//         str0+=char;
+//        }else{
+//          //把别的字符拼接进去
+//          str0+=str[i];
+//        }
+//   }
+//   console.log(str0);//marginLeft
+
+//  }
+// var str='margin-left';
+// str='background-color'
+// demo1(str);//backgroundColor
+
+// 2. 查找字符串出现最多的字符和个数
+
+// 3.返回一个只包含数字类型的数组（例如：afjasoeigjs123sgdhedhhe456osddhnofd789=>[123,456,789]）（用原生和不原生两种方法来做）
+
+/* 
+ 连续的 数字，保存在数组的一项   ，想办法，遇到数字，拼接成一个字符串
+ 然后，遇到不是数的话，推入数组
+
+ 如何判断是一个数字
+  str[i]<=9&& str[i]>=0
+
+*/
+
+// 方法一：原生的方法
+// var str='afjasoeigjs123sgdhedhhe456osddhnofd789';
+// var str0='';// 保存连续的数字
+// var arr0=[];// 保存连续的数字，组成的数组
+// for(var i=0;i<str.length;i++){
+//      if(str[i]<=9&&str[i]>=0){
+//         // 条件成立，把连续的数字，拼成一个字符串 
+//         str0+=str[i]
+//      }else{
+//         //  如果 str0 不为空时，才推入数组, 如果不加判断 ，会推入 很多  ' '     afjasoeigjs
+//         if(str0!=''){
+//            arr0.push(+str0); 
+//         }
+//         // 推入数组之后，清除str0的内容，重新拼接一个新串,如果不重新置空的话，  123  sgdhedhhe   123456 osddhnofd
+//          str0='';   
+//      }
+// }
+// // 注意的问题 '789' 字符串拼好了，但是，它后面没有字符了，所有else没有执行，'789'推不进了，解决的办法
+// if(str0!=''){
+//     arr0.push(+str0); 
+// }
+
+// console.log(str0);
+// console.log(arr0);//['123', '456', '789']     ----[123, 456, 789]
+
+// 方法二：
+
+var str='afjasoeigjs123sgdhedhhe456osddhnofd789';
+var arr=str.match(/\d+/g)  ;//  \d表示数字  + 1个或1个以上的数字
+console.log(arr);//['123', '456', '789']  -------[123, 456, 789]
+// 遍历数组  
+for(var i in arr){
+    arr[i]=+arr[i]
+};
+console.log(arr);//[123, 456, 789]
+
+
+
+    </script>
+</body>
+</html>

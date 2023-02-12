@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div>青花瓷</div>
+    <div>轨迹</div>
+    <div>东风破</div>
+    <div>发如雪</div>
+    <script>
+        let arr = ["red", "blue", "green", "purple"];
+        // 1. jQuery 遍历数组 each()
+        $.each(arr, function (index, ele) {
+            console.log(index, ele);
+        });
+
+        // 2. 遍历对象  属性和值
+        let hero = {
+            name: "coco",
+            skill: '无敌斩',
+            level: 18
+        }
+        $.each(hero, function (key, value) {
+            console.log(key, value);
+        });
+
+        // 3. 遍历数组
+        $('div').each(function (index, ele) {
+            // ele 是 DOM 的原生对象
+            console.log(index, ele);
+        });
+    </script>
+</body>
+
+</html>

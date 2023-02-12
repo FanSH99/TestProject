@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        .change {
+            background-color: purple;
+            color: #fff;
+            font-size: 30px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="first">文本</div>
+    <script>
+        // 1. element.style 获得修改元素行内样式  
+      let div = document.querySelector('div');
+      div.onclick = function (){
+        // div.style.color = '#fff';
+        // div.style.fontSize = '30px';
+        // div.style.marginTop = '100px';
+        // div.style.backgroundColor = 'purple';
+
+        // 2. 通过类名修改样式
+        div.className = 'first change';
+      }
+
+    </script>
+</body>
+
+</html>

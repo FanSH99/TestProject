@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "sk-container": "/uni_modules/skeleton-ui/components/container",
+    "sk-swiper": "/uni_modules/skeleton-ui/components/swiper",
+    "sk-menu": "/uni_modules/skeleton-ui/components/menu",
+    "sk-waterfall": "/uni_modules/skeleton-ui/components/waterfall",
+    "myswiper": "/components/home/myswiper",
+    "goods": "/components/home/goods"
+  }
+}

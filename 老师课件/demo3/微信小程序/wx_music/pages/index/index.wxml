@@ -1,0 +1,27 @@
+<scroll-view class="pagescroll" scroll-y="{{true}}">
+    <view wx:if="{{!isloading}}">
+        <mySearch></mySearch>
+        <myswiper bannerList="{{bannerList}}"></myswiper>
+        <view>
+            <view class="title">
+                热门榜单推荐
+            </view>
+            <view wx:for="{{topList}}" wx:key="index">
+                <myTop item="{{item}}"></myTop>
+            </view>
+        </view>
+        <view>
+            <view class="title">
+                热门MV推荐
+            </view>
+            <view class="mv">
+                <view class="itemmv" wx:for="{{mvList}}" wx:key="index" bindtap="goInfo" data-index="{{index}}">
+                <image mode="widthFix" src="{{item.cover}}" class="mvCover"></image>
+                <view class="name">{{item.name}}</view>
+                <view class="artistName">{{item.artistName}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <myloading wx:else></myloading>
+</scroll-view>

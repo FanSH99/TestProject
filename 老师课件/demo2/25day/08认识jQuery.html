@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin: 10px;
+        }
+    </style>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        // window.onload=function(){
+        //       // 代码;
+        // }
+        //   $(document).ready(function(){
+        //     // 代码;
+
+        //   });
+        // 入口函数
+        $(function () {
+            // console.log($('#btn1'));
+            $('#btn1').click(function(){
+              
+                $('div').css('border',"1px solid red");
+
+            });
+
+            $('#btn2').click(function(){
+              
+              $('div').text('我是文本');
+
+          });
+            
+           
+        });
+
+        $(function(){
+            console.log('我是另一个入口函数');
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 需求：点击按钮给三个div设置边框和文本 -->
+    <button id="btn1">设置边框</button>
+    <button id="btn2">设置文本</button>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <!-- <script>
+       var btn1= document.querySelector('#btn1');
+       var btn2= document.querySelector('#btn2');
+        var divs=document.querySelectorAll('div')
+        btn1.onclick=function(){
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.border="1px solid red"
+            }
+
+        }
+        btn2.onclick=function(){
+            for(var i=0;i<divs.length;i++){
+                divs[i].innerHTML='我是文本'
+            }
+
+        }
+    </script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月10日11:20:06
+
+        add 添加
+        remove 删除
+        toggle 切换，有则删除，无则添加。
+        replace 更改
+        
+        更改类名很重要，排他思想和选项卡等会用到。
+
+     -->
+    <button class="add">添加类名</button>
+    <button class="add2">添加类名2</button>
+    <button class="remove">删除类名</button>
+    <button class="toggle">toggle类名</button>
+    <div>好好学习天天向上</div>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.add').on('click', function () {
+            $('div').addClass('red');
+        })
+
+        $('.add2').on('click', function () {
+            $('div').addClass('blue margin20 a b c');
+        })
+
+        $('remove').on('click', function () {
+            $('div').removeClass('blue a');
+        })
+
+        $('toggle').on('click', function () {
+            $('div').toggleClass('red top');
+        })
+
+        /*
+        作业：
+        1.选项卡
+        2.跑马灯
+        3.选中变色
+        4.双向数据绑定
+        */
+
+    </script>
+</body>
+
+</html>

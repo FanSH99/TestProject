@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+        <style>
+            body{
+                margin: 0;
+            }
+            #cav{
+                width: 400px;
+                height: 300px;
+                border: 1px solid red;
+            }
+        </style>
+    <body>
+        <canvas id="cav"></canvas>
+    </body>
+    <script>
+        // 2022年11月10日14:05:47
+        // 获取节点
+        let cat=document.getElementById("cav");
+        // 创建绘画实例
+        let ctx=cav.getContext("2d");
+        console.log(ctx);
+        // 设置画笔颜色
+        ctx.strokeStyle="#ff4b3c";
+        // 设置线宽
+        ctx.lineWidth=1;
+        // 初始化路径
+        ctx.beginPath();
+        // 起始点
+        ctx.moveTo(10,10)
+        // 结束点
+        ctx.lineTo(100,10);
+        // 结束
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        // 起始点
+        ctx.moveTo(100,60)
+        // 结束点
+        ctx.lineTo(200,40);
+         ctx.stroke();
+        
+        
+    </script>
+</html>

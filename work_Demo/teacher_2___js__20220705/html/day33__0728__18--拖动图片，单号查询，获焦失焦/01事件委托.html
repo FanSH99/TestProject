@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        冒泡机制
+        优势：动态增加的的元素，如果添加事件，容易事件成功不了。利用冒泡机制的优点，可以用事件委托的方法来解决。
+        事件委托原理：不是每个子节点单独设置事件监听器，而是事件监听器设置到父节点上，然后利用冒泡呀努力影响设置每个子节点
+    
+        本来改到子节点的事件，把事件添加道祖辈元素上，让祖辈代替子节点执行，
+
+    
+    -->
+
+    <ul>
+        <li>我是列表项1</li>
+        <li class="red">我是列表项2</li>
+        <li>我是列表项3</li>
+        <li>我是列表项4</li>
+        <button>添加</button>
+    </ul>
+
+    <!-- 
+    1.对每个li添加单击事件
+    2.单击添加按钮，还可以添加li,动态新增的li也要有事件 
+
+-->
+    <script>
+        var ul = document.querySelector('ul')
+        var lis = document.querySelectorAll('ul>li');
+        var btn = document.querySelector('button');
+
+
+
+        /* ul.onclick = function (e) {
+            console.log('nice');
+            console.log(e.target, this);
+            if (e.target.className == 'red') {
+                e.target.style.color = 'red'
+            }
+        } */
+
+        ul.onclick = function (e) {
+            var li = document.createElement('li');
+            li.innerHTML = '我是新增的列表项5'
+            ul.appendChild(li);
+            console.log(e.target);
+            console.log(e.target, this);
+            if (e.target.className == 'red') {
+                e.target.style.color = 'red'
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

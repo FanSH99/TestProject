@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="jay">周杰伦</button>
+    <button id="eason">陈奕迅</button>
+    <br />
+    <img src="images/jay.jpg" alt="" title="周杰伦">
+
+    <script>
+        // 修改元素属性: ele.属性 = value  如 src, title, id, name, href
+        let jay = document.querySelector('#jay');
+        let eason = document.querySelector('#eason');
+        let img = document.querySelector('img');
+        console.log(img.src);
+        console.log(img.title);
+        jay.onclick = function (){
+            img.src = 'images/jay.jpg';
+            img.title = '周杰伦';
+        }
+
+        eason.onclick = function (){
+            img.src = 'images/eason.jpg';
+            img.title = '陈奕迅';
+        }
+
+    </script>
+</body>
+
+</html>

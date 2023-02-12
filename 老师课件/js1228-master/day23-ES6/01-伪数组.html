@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>黑色幽默</li>
+    <li>黑色毛衣</li>
+    <li>七里香</li>
+    <li>发如雪</li>
+  </ul>
+  <script>
+    /* 
+      伪数组 (arrayLike/类数组)
+         是一种按照索引存储数据且具有 length 属性的对象。
+         因为是对象，所以不能调用数组的方法，比如 forEach()、push() 等。
+
+      类数组对象(伪数组)满足一下条件：
+        1. 对象必须有属性，并指定数组的长度，否则转化后就是空数组
+        2. 数组对象的属性必须是数值或数值型字符串，并且从0，1，2，3，
+    */
+
+    // 普通对象
+    let hero = {
+      age: 22,
+      name: "貂蝉",
+      sex: true,
+    };
+
+    // 伪数组对象
+    let arr = {
+      0: "张飞",
+      1: "吕布",
+      2: "孙红雷",
+      3: "齐天大圣",
+      4: "刘华强",
+      length: 5
+    }
+
+    function sum() {
+      let lis = document.querySelectorAll('li');
+      console.log(lis);
+      console.log(lis instanceof Array); // false
+      // 报错 
+      lis.push("张飞");
+    }
+    sum(1, 2, 3, 4, 5);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月16日10:18:09
+        js数据分为两大类，基本数据类型和引用数据类型
+
+        存储在内存里的，基本数据类型在栈内存，引用数据类型在堆内存
+
+        无论是深拷贝还是浅拷贝，都是针对引用数据类型，
+
+        浅拷贝只拷贝一层，补考呗更深层次。指向的是原来的地址，，
+        深拷贝指向的是新地址。
+        赋值是最简单的浅拷贝。
+
+
+        ... 扩展运算符在之拷贝一层的时候是深拷贝，但是数据比较复杂的时候就是浅拷贝。
+        比较复杂的对象深拷贝方法：
+        1.Json方法 let newMyuser = JSON.parse(JSON.stringify(myuser))
+        2.递归
+     -->
+</body>
+<script>
+    let user = {
+        name: "花千骨",
+        age: 18,
+    }
+    let msg = user;
+    msg.name = "白子画";
+    console.log(msg, user);
+    console.log(msg == user);//true
+    let obj = {
+        name: "李星云",
+        age: 18,
+    }
+
+    let obj1 = {
+        name: "海绵宝宝",
+        age: 18,
+        like: {
+            title: "打篮球"
+        }
+    }
+    let obj2 = {
+        name: "无心法师",
+        age: 18,
+        like: {
+            title: "捉妖"
+        }
+    }
+    let newObj = { ...obj };
+    newObj.name = "张子凡";
+    console.log(obj, newObj);
+    console.log(obj == newObj);
+
+    let newObj1 = { ...obj1 };
+    newObj1.name = "派大星";
+    console.log(obj1, newObj1);
+    console.log(obj1 == newObj1);
+
+    let newObj2 = { ...obj2 };
+    newObj2.name = "杨柳欣";
+    newObj2.like.title = "打游戏"
+    console.log(obj2, newObj2);//false
+    console.log(obj2 == newObj2);//false
+    console.log(obj2.like == newObj2.like);//true
+
+
+    let a = {};
+    let b = {
+        name: "冯宝宝",
+        age: 18,
+        like: {
+            title: "埋人"
+        }
+    }
+    let b2 = {
+        name: "伍仟",
+        age: 18,
+        like: {
+            title: "画画"
+        }
+    }
+    for (let key in b) {
+        console.log(key);
+        a[key] = b[key]
+    }
+    a.name = "张楚岚";
+    a.like.title = "喜欢冯宝宝"
+    console.log(a, b);
+
+
+
+    let c = {};
+    Object.assign(c, b2);
+    c.name = "洛阳";
+    c.like.title = "登封来";
+    console.log(c, b2);
+
+
+    let myuser = {
+        name: "卧蚕",
+        age: 18,
+        like: {
+            title: "呜呜呜"
+        }
+    }
+    let newMyuser = JSON.parse(JSON.stringify(myuser))
+    newMyuser.name = "美人鱼";
+    newMyuser.like.title = "哈哈哈"
+    console.log(newMyuser, myuser);
+
+    let objdeep = {
+        name: "伍仟",
+        age: 18,
+        like: {
+            title: "画画"
+        }
+    }
+    function deepCopy(obj) {
+
+        var newObj = obj instanceof Array ? [] : {};
+        for (let key in obj) {
+            console.log(key);
+            newObj[key] = deepCopy(obj[key])
+        }
+        return newObj;
+    }
+    var newObj = deepCopy(objdeep);
+    console.log(newObj, objdeep);
+</script>
+
+</html>

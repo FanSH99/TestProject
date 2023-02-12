@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用组件  我是一个组件-->
+        <mycomponent></mycomponent>
+    </div>
+    <div id="box">
+        <mycomponent></mycomponent>
+        <!-- <mycomponenta></mycomponenta> -->
+    </div>
+    <!-- <div id="app2">
+        <mycomponent></mycomponent>
+    
+    </div>  不起作用。没有用到vue-->
+    <div id="box2">
+        <mycomponent2></mycomponent2>
+        <mycomponenta></mycomponenta>
+        <!-- 使用组件myoneCom---如果用<myoneCom></myoneCom>会报错 -->
+        <myone-com></myone-com>
+
+    </div>
+    <!-- 组件模板 -->
+    <template id="one">
+        <div>
+            <a href="#">百度一下</a>
+            <h1>哈哈哈哈</h1>
+        </div>
+    </template>
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月6日15:37:11
+    vue组件分为两种，全局组件和局部组件。
+    组件就是可以复用的vue实例。
+    一个页面可以有多个组件。
+    vue组件可以使用所有data和methods方法
+    */
+    //    component组件，成分
+    // 创建全局组件。每一个组件都有一个组件名称。参数1是组件名称（是自定义的），参数2是组件对象信息。
+    Vue.component("mycomponent", {
+        //template模板，组件所对应的html模板。 组件模板必须只能有一个跟标签。
+        // template: "<h1>我是一个组件</h1><h2>呵呵哈哈哈</h2>",  ---报错 ，如果想使用，需要添加父盒子。
+        template: "<div><h1>我是一个全局组件</h1><h2>呵呵哈哈哈</h2></div>"
+    })
+    // 创建全局组件方法2
+    let mycomponent2 = {
+        template: "<h1>我是一个全局组件2</h1>"
+    }
+    // 注册组件
+    Vue.component("mycomponent2", mycomponent2);
+
+    let mycomponenta = {
+        template: "<h1>我是一个局部组件2</h1>"
+    }
+    new Vue({
+        el: "#app",
+        data: {
+
+        }
+    })
+    new Vue({
+        el: "#box",
+        data: {
+
+        }
+    })
+    let myoneCom = {
+        template: "#one"
+    }
+    console.log(myoneCom);
+    /* Object
+        template: "#one"
+        _Ctor: { 0: ƒ } */
+    new Vue({
+        el: "#box2",
+        data: {
+
+        },
+        // 局部组件名称
+        // components: {
+        //     "mycomponenta": mycomponenta,
+        // }
+        // 名称一致时可省略为
+        components: {
+            mycomponenta,
+            /* 如故组件名称为驼峰命名法，使用组件的时候需要将大写变小写，中间用-连接 */
+            myoneCom,
+        }
+    })
+</script>
+
+</html>

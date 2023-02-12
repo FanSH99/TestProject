@@ -1,0 +1,8 @@
+<view class="two">
+two组件 {{myname}}
+<button bindtap="senMsg">向one组件发布消息</button>
+<view>{{num}} 
+{{ang}}</view>
+<button bindtap="add">++</button>
+
+</view>

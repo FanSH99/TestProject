@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <button>js隐藏</button>
+  <button>jQuery隐藏</button>
+  <div></div>
+  <script>
+    // 获取的是一个数组，元素都是 jQuery 对象
+    $('div');
+    console.log($('div'));
+
+    let btns = document.querySelectorAll('button');
+    let div = document.querySelector('div');
+
+    btns[0].addEventListener('click', function () {
+      // div.style.display = 'none';
+      // 1. jQuery 对象转化为 JS 对象
+      // $('div')[0].style.display = 'none';
+
+      // 2. jQuery 对象转化为 JS 对象
+      $('div').get(0).style.display = 'none';
+    });
+
+    btns[1].addEventListener('click', function () {
+      // $('div').hide();
+      // 3. dom 对象转化为 jQuery 对象
+      $(div).hide();
+    });
+  </script>
+</body>
+
+</html>

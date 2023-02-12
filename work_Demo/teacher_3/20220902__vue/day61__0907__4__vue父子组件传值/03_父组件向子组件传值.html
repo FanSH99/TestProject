@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父组件向子组件传值</title>
+    <style>
+        .move {
+            width: 85px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 父组件 向子组件传值
+        （1）在父组件的子组件标签上绑定一个自定义属性
+        （2）在子组件中使用props接收父组件传递过来的属性。
+    
+    -->
+    <div id="app">
+
+        <move-component v-for="(item,index) in heroList" :key="index" :heroitem="item" :mymsg="msg"></move-component>
+
+    </div>
+    <!-- 子组件 -->
+    <template id="move">
+        <div class="move">
+            <!-- <p>{{heroItem}}</p>报错，不能用小驼峰命名法You should probably use "hero-item" instead of "heroItem". -->
+            <!-- <h2>{{msg}}</h2>Property or method "msg" is not defined -->
+            <img :src="`https://game.gtimg.cn/images/lol/act/img/champion/${heroitem.alias}.png`" alt="">
+            <p>{{heroitem.title}}</p>
+            <p>{{mymsg}}</p>
+
+        </div>
+    </template>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月7日14:10:09 */
+
+    /* 每个组件都是独享的，在其他组件不能调用。 */
+    let moveComponent = {
+        template: "#move",
+        /* 第一个方案，用数组来接收， */
+        props: ["heroitem", "mymsg"],
+    }
+    new Vue({
+        el: "#app",
+        data: {
+            msg: '电影秦时明月',
+            heroList: [],
+        },
+        components: {
+            moveComponent,
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res);
+                    this.heroList = res.hero;
+                }
+            }
+
+
+        }
+
+
+    })
+</script>
+
+</html>

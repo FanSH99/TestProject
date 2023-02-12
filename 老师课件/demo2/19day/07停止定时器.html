@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        clearInterval(timer) 
+        clearTimeout(timer)
+    
+    -->
+    <button>停止定时器</button>
+    <script>
+        var timer;
+       timer= setTimeout(function(){
+            console.log('爆炸了~~~~~');
+
+        },5000);
+
+        document.querySelector('button').onclick=function(){
+            console.log('sss');
+            clearTimeout(timer)
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 2022年11月15日21:51:12
+
+    // 定义一个类组件跟组件，类组件名称首字母也必须大写。
+    // class类组件具有私有数据
+    class App extends React.Component {
+        name = "张三"
+        constructor() {
+            console.log("构造器调用了");
+            // 如果使用了构造器constructor，super必须写，这个是继承，不写报错。
+            super();
+            this.age = 20
+            this.list = ["海绵宝宝", "派大星", "章鱼哥"]
+        }
+        // 必须写，页面渲染时调用
+        render() {
+            console.log("渲染页面啦");
+            return (
+                <div>
+                    {/* 直接name不能用，必须this.xx来使用私有属性。 */}
+                    <h1>我是一个class类组件,{this.name}---{this.age}</h1>
+                    <button onClick={this.clickMe}>点我下试试</button>
+                    <ul>
+                        {
+                            this.list.map((item, index) => {
+                                return <li key={index}>{item}</li>
+                            })
+                        }
+                    </ul>
+                    <Child />
+                </div>
+            )
+        }
+        clickMe() {
+            console.log("点你咋的");
+        }
+    }
+
+    class Child extends React.Component {
+        render() {
+            return (
+                <div>
+                    <p>我是一个子组件</p>
+                </div>
+            )
+        }
+    }
+
+    console.log(<App />);
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

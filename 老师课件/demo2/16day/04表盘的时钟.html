@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #clock {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            background: url(./clock/clockface.jpg) no-repeat top center;
+            position: relative;
+        }
+
+        #clock img {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <img src="./clock/hourhand.png" alt="" id="h">
+        <img src="./clock/minhand.png" alt="" id="m">
+        <img src="./clock/sechand.png" alt="" id="s">
+    </div>
+    <script>
+        //1. 查
+
+        var h = document.querySelector('#h');
+        var m = document.querySelector('#m');
+        var s = document.querySelector('#s');
+        function showTime(){
+             //2. 获取时间
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        console.log(hours, minutes, seconds);;//11 43 5
+
+        //3.旋转表针  样式 
+
+        //  角度
+        /*  
+         时针  转一圈  360度    12格    每一格1时    多少度   360/12==30deg
+         分针  转一圈  360度    60小格   每一小格1分  多少度   360/60==6deg
+         秒针  转一圈  360度    60小格   每一小格1分  多少度   360/60==6deg
+
+         11*30=330deg
+         43*6=
+         5*6=
+
+         偏移量
+        
+      分针    60分钟                     minutes
+    ------------------=------------------------               x=minutes/2
+      时针    30度                       x时针多少度
+
+     秒     60秒                              seconds
+    -------------------------------------------------         y=seconds/10
+            6度                               y 分针 多少度                   
+        */          
+        //    注意：
+        h.style.transform = "translateX(-50%) rotate(" + (hours * 30+minutes/2) + "deg)";
+        m.style.transform = "translateX(-50%) rotate(" + (minutes * 6+seconds/10) + "deg)"
+        s.style.transform = "translateX(-50%) rotate(" + (seconds * 6) + "deg)"
+
+        }
+        showTime();
+        // setInterval(showTime,1000)
+        setInterval("showTime()",1000);// 不推荐，但是可以使用
+       
+ 
+    </script>
+</body>
+
+</html>

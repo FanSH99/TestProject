@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    let name = "张三";
+    let age = 18;
+    let like = ["学习", "打游戏"];
+    let isShow = true;
+    let dog = { name: "小黑", age: 19 }
+    // react中只允许有一个根节点。
+    // 数据绑定
+    let dom = (
+        <div>
+            <ol>
+                {/*数据绑定，大括号中也可以写注释或者js表达式*/}
+                <li>{name}</li>
+                <li>{name.substr(0, 1)}</li>
+                <li>{age >= 18 ? "成年" : "不成年"}</li>
+                {/* jsx中默认会将数组拼接成为字符串如学习打游戏 ,默认会将布尔值渲染为空，但是可以用布尔判断*/}
+                <li>{like}</li>
+                <li>{isShow}</li>
+                {/* 直接渲染对象报错，可以转化成字符串 */}
+                <li>{dog.name}</li>
+            </ol>
+        </div>
+    )
+    ReactDOM.render(dom, document.getElementById("app"));
+</script>
+
+</html>

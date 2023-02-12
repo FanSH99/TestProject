@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+// 会员卡四位数(开头不为0)求和，会员卡四位数求和大于20时将返利50元，否则不返利
+//  根据用户输入的会员卡卡号(四位数)，判断是否返利
+/* 
+   1234   
+   1  +2  +3  +4  >20
+   拆分:
+   个位数   4
+   十位数   3
+   百位数   2
+   千位数   1
+
+*/
+var cardNum=prompt('请输入会员卡号（四位数，开头不为0）');
+console.log(cardNum,typeof cardNum);//1234 string
+  var a=parseInt(cardNum/1000);
+  var b=parseInt(cardNum/100)%10;
+  var c=parseInt(cardNum/10)%10;
+  var d=cardNum%10; // 个位
+  var sum=a+b+c+d;
+  if(sum>20){
+    console.log('返利50');
+  }else{
+    console.log('不返利');
+  }
+
+
+
+    </script>
+
+</body>
+
+</html>

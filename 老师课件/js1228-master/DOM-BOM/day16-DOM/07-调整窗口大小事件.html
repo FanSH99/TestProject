@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 引入：网页变化，京东的样式自动变化
+        /* 
+            需求: 浏览器的尺寸发生变化，div 跟随显示和隐藏。
+            思路：
+                1. 给浏览器添加事件。
+                2. 判断浏览器的尺寸。
+                3. div 的显示和隐藏
+        */
+        window.addEventListener('load', function () {
+            let div = document.querySelector('div');
+            // 监听浏览器尺寸的变化
+            window.addEventListener('resize', function () {
+                // 获取浏览器尺寸
+                let width = window.innerWidth;
+                console.log(width);
+                if (width < 800) {
+                    div.style.display = 'none';
+                } else {
+                    div.style.display = 'block';
+                }
+            });
+        });
+    </script>
+    <div></div>
+</body>
+
+</html>

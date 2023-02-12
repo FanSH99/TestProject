@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        input {
+            width: 50px;
+        }
+
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询:
+        <input type="text" class="start"> -
+        <input type="text" class="end">
+        <button class="search-price">搜索</button>
+        按照商品名称查询:
+        <input type="text" class="product">
+        <button class="search-pro">查询
+        </button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // 1. 模拟从后台获取数据，渲染
+        let data = [{ id: 1, pname: '小米', price: 1000 },
+                    { id: 2, pname: 'oppo', price: 2000 },
+                    { id: 3, pname: '荣耀', price: 3000 },
+                    { id: 4, pname: '华为', price: 4000 }];
+
+        // 手动渲染
+        setData(data);
+        // 渲染数据
+        function setData(myData) {
+            // 清空数据
+            $('tbody').html('');
+
+            myData.forEach(element => {
+                let tr = $(`<tr>
+                                <td>${element.id}</td>
+                                <td>${element.pname}</td>
+                                <td>${element.price}</td>
+                            </tr>`);
+                $('tbody').append(tr);
+            });
+        }
+
+        // 按照价格筛选数据
+        $('.search-price').click(function () {
+            let start = $('.start').val();
+            let end = $('.end').val();
+            console.log(start, end);
+
+            let result = data.filter(value => {
+                if (value.price >= start && value.price <= end) {
+                    return true;
+                }
+            });
+
+            setData(result);
+        });
+
+        // 按照名字筛选数据
+        $('.search-pro').click(function () {
+            let temp = $('.product').val();
+
+            let arr = [];
+            data.some(value => {
+                if (value.pname == temp) {
+                    arr.push(value);
+                    // 表示找到了符合条件的数据
+                    return true;
+                }
+            });
+
+            setData(arr);
+        });
+    </script>
+</body>
+
+</html>

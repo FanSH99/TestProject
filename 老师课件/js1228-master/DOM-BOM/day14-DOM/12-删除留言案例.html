@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 100px;
+        }
+
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid skyblue;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            margin-top: 50px;
+        }
+
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        li a {
+            float: right;
+        }
+
+        div {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul>
+
+    </ul>
+    <!-- <a href="javascript:;">删除</a> -->
+    <script>
+        // 点击按钮，获取表单的内容，创建 li，li 填充内容，追加到 ul
+        // 清空表单，删除功能
+        let textarea = document.querySelector('textarea');
+        let btn = document.querySelector('button');
+        let ul = document.querySelector('ul');
+
+        btn.onclick = function () {
+            // 获取表单内容
+            let value = textarea.value;
+            // 创建节点
+            let li = document.createElement('li');
+            // 填充元素内容
+            li.innerHTML = `${value}<a href="javascript:;">删除</a>`;
+            // 追加节点
+            ul.append(li);
+            textarea.value = '';
+
+            let as = document.querySelectorAll('a');
+            console.log(as);
+            for (let i = 0; i < as.length; i++) {
+                // 绑定 点击事件
+                as[i].onclick = function () {
+                    // 删除节点
+                    ul.removeChild(this.parentNode);
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

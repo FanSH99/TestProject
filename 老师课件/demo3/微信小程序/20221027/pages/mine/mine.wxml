@@ -1,0 +1,53 @@
+<view>
+    scroll-view
+</view>
+<view class="nums">
+    <view wx:for="{{10}}" wx:key="index" class="item" bindtap="goTo" data-index='{{item}}'>{{item}}</view>
+</view>
+<!-- 滚动组件 -->
+<scroll-view class="scrollcontent" scroll-y="{{true}}" scroll-into-view='id{{to}}' scroll-with-animation>
+    <view wx:for="{{100}}" wx:key="index" class="num" id="id{{item}}">
+        {{item}}
+    </view>
+</scroll-view>
+<!-- 轮播图组件 -->
+<swiper	indicator-dots="{{true}}" 	indicator-color="red" 	indicator-active-color='blue' autoplay="{{true}}" current="{{1}}" interval="{{2000}}" circular="{{true}}" vertical="{{true}}"> 
+    <swiper-item>
+        <image src="https://api.java.crmeb.net/crmebimage/public/content/2022/08/04/0f78716213f64bfa83f191d51a832cbf73f6axavoy.jpg" mode="widthFix"></image>
+    </swiper-item>
+    <swiper-item>
+        <image src="https://api.java.crmeb.net/crmebimage/public/content/2022/10/09/d637283002694f0abd3140a6667235d9vos4hdwse4.jpg" mode="widthFix"></image>
+    </swiper-item>
+</swiper>
+<view>
+<icon type="success" size="50" color="blue"></icon>
+</view>
+<view>
+<progress percent="{{80}}" show-info border-radius='10' font-size='20' stroke-width='20' activeColor='red' backgroundColor='#b4b4b4' active></progress>
+</view>
+<view>
+    rich-text渲染富文本字符串 
+    <rich-text nodes="<h1>好好学习</h1>"></rich-text>
+</view>
+<view>
+<!-- 文本组件类似于span标签 -->
+<text>哈哈哈</text>
+<text>嘿嘿</text>
+</view>
+<button size="mini" type='primary'  loading="{{true}}">按钮</button>
+<view>
+请选择您的国家：
+<checkbox-group bindchange='checkChange'>
+<checkbox value="1">中国</checkbox>
+<checkbox value="2">美国</checkbox>
+<checkbox value="3">日本</checkbox>
+</checkbox-group>
+</view>
+<picker mode='selector' range="{{range1}}" range-key='name' value="{{1}}" bindchange='changSelector'>
+请您选择专业：{{name}}
+</picker>
+<picker mode='region' level='region' bindchange="getcity">
+请您选择地址：
+</picker>
+<navigator url='/pages/info/info'>跳转页面</navigator>
+<!-- <camera	device-position="front" style="width: 100%;height: 500rpx;"></camera> -->

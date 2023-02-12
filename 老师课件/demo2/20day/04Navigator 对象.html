@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- navigator 
+       最常用的是userAgent 
+       // 判断浏览器是是移动端 自动移动端的网站  m.zhubaojie.com     www.zhubaojie.com
+    -->
+    <script>
+        console.log(window.navigator);
+        console.log(navigator);
+
+
+        // (phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone) 移动端的浏览器的关键字
+        //1.
+         var str= navigator.userAgent;
+        console.log(str);
+        //2.
+      var arr=   str.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/ig);
+      // 可能有两个结果 ['','']    null
+
+      console.log(arr);
+       //3.
+       if(arr){
+          location.href='http://m.zhubaojie.com'
+        }else{
+            location.href='http://www.zhubaojie.com'
+        }
+
+        // 综合性
+        // if(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/ig)){
+        //     location.href='http://m.zhubaojie.com'
+        // }else{
+        //     location.href='http://www.zhubaojie.com'
+        // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/* 
+			let 声明变量
+				1. 变量名不能重复。
+				2. 有块级作用域
+					if for 的 {} 都属于块级作用域
+				3. 没有变量提升，必须先声明，后使用。
+				4. 代码块使用变量，就近原则
+		*/
+		// 3. 没有变量提升
+		// console.log(color);
+
+		let color = 'red';
+		// 1. 变量名不能重复
+		// let color = 'red';
+
+		let num = 22;
+		if (true) {
+			let num = 10;
+			// 4. 就近原则
+			console.log(num);
+		}
+
+		// 2. 有块级作用域
+		// console.log(num);
+	</script>
+</body>
+
+</html>

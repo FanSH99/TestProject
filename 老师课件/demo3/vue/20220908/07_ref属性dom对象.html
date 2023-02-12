@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div ref="div">{{msg}}</div>
+        <button @click="changeColor">变色</button>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"好好学习天天向上"
+        },
+        methods: {
+            changeColor(){
+                console.log(this)
+                // ref属性就是用来获取dom标签
+                // 使用this.$refs.属性名获取dom对象
+                console.log(this.$refs.div)
+                this.$refs.div.style.color = 'red';
+            }
+        },
+    })
+</script>
+</html>

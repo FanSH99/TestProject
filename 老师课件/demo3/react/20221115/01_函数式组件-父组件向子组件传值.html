@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+ 
+    function App(){
+        let name = '张三'
+        return (
+            <div>
+                <h1>我是一个父组件</h1>
+                 {
+                    //在父组件中的子组件标签上绑定自定义属性
+                 }
+                <Child msg="好好学习天天向上" username={name}/>
+            </div>
+        )
+    }
+
+    function Child(props){
+        //在函数式组件中的函数形参props接收父组件传递的值。
+        console.log(props)
+        let {msg,username} = props;
+        return (
+            <div>我是一个子组件{msg}-{username}</div>
+        )
+    }
+
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+
+</html>

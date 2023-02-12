@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            width: 400px;
+        }
+        /* 动画进入之前 */
+        .v-enter{
+            transform: translateY(100px);
+        }
+        /* 动画结束位置 */
+        .v-leave-to{
+            transform: translateY(100px);
+        }
+        /* 进入动画执行中 */
+        .v-enter-active{
+            transition: 0.3s;
+        }
+        /* 动画离开过程中 */
+        .v-leave-active{
+            transition: 0.3s;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .box-enter,.box-leave-to{
+            transform: rotate(360deg);
+        }
+        .box-enter-active,.box-leave-active{
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <transition>
+            <h1 v-show="isShow">好好学习天天向上</h1>
+        </transition>
+        <button @click="isShow=!isShow">切换</button>
+        <!-- name表示指定的动画类名 若不写则默认为v- -->
+        <!-- mode 动画模式 out-in 表示先出后进  in-out 先进后出-->
+        <transition name="box" mode="in-out">
+            <div class="box" v-show="isShow">
+
+            </div>
+        </transition>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+     new Vue({
+        el:"#app",
+        data:{
+            isShow:false
+        }
+     })
+</script>
+</html>

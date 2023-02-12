@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log({name:"白浅",age:18},"男")})();

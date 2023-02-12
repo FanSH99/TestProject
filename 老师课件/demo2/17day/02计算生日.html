@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2、创建一个文本框，在一个文本框中，让用户输入他的出生月份，第二个文本框中输入月份中的日期，编写一个JavaScript程序，在第三个文本框中打印距离用户生日还有多少天。 -->
+    月份：<input type="text" placeholder="请输入月份" id="m">
+    日期：<input type="text" placeholder="请输入日期" id="d">
+    <button>计算</button>
+    <span>距离生日还有</span><input type="text" id="res">天
+    <script>
+        //1.查
+       var m=  document.querySelector('#m');
+       var d=  document.querySelector('#d');
+       var res=  document.querySelector('#res');
+       var btn=  document.querySelector('button');
+       var span=  document.querySelector('span');
+
+       //2.加事件
+       btn.onclick=function(){
+        // 取值
+       var v1= m.value;
+      var v2= d.value;
+      console.log(v1,v2);
+
+    // 拼成一个日期   '2022-7-27 23:59:59'
+     var date=new Date();//今天的日期
+     var y= date.getFullYear();
+
+     // 拼成一个生日的日期
+     bir1=y+'-'+v1+'-'+v2+' '+'23:59:59'
+     console.log(bir1);//2022-7-31 23:59:59
+
+         date=+date;// 今天距 1970年1月1日 毫秒
+         bir1 = +new Date(bir1);// 生日距1970年1月1日 毫秒
+
+      var diff=(bir1-date)/1000;// 秒
+
+      var day=  parseInt(diff/60/60/24);
+
+        if(day>=0){
+               res.value=day;
+        }else{
+            span.innerHTML='您的生日已过';
+            res.value=-day+1;
+        }
+
+
+       }
+    </script>
+</body>
+</html>

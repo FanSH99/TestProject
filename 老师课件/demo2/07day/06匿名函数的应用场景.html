@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 应用场景
+      1. 单击事件的后面
+
+      2. 定时器 
+       setInterval(回调函数，时间)  时间按毫秒
+
+       回调函数：一般都是匿名函数的形式出现
+    -->
+    <button>单击</button>
+    <script>
+    //    var btn= document.querySelector('button');
+    //    console.log(btn);
+    //     // btn.onclick=function(){
+    //     //     console.log('run');
+    //     // }
+
+    //     // btn.onclick= show()//  不合适的
+    //     btn.onclick= show;//  才正确    ********
+
+    //      function show(){
+    //         console.log('run');
+    //      }
+
+        //  console.log(show);
+
+        //  匿名函数 ，   在这里，也称为回调函数，回头再调用意思
+
+
+        //  setInterval(function(){
+        //     console.log('nice~~~');
+
+        //  },1000)
+
+        function callback(){
+            console.log('nice~~~');
+        }
+        // setInterval(callback,1000);// 常用的写法
+
+        setInterval('callback()',1000)
+    </script>
+</body>
+</html>

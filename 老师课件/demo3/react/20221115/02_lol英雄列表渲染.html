@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        margin: 0;
+      }
+      .box{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .hero{
+        width: 120px;
+        margin-right: 20px;
+        text-align: center;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+
+function App(props){
+    console.log(props)
+        return (
+            <div className='box'>
+                  {
+                    props.list.map((item,index)=>{
+                        return (
+                            <div key={index} className='hero'>
+                                <HeroItem  hero={item}/>
+                            </div>
+                        )
+                    })
+                  }
+            </div>
+        )
+    }
+function HeroItem(props){
+    return (
+        <div>
+            <img src={`https://game.gtimg.cn/images/lol/act/img/champion/${props.hero.alias}.png`} alt="" />
+            <div>{props.hero.title}</div>
+        </div>
+    )
+}
+   // 获取英雄列表
+    function sendHttp(){
+        return new Promise((reslove,reject)=>{
+            let xhr = new XMLHttpRequest();
+            xhr.open("get","https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange=()=>{
+                if(xhr.readyState ===4){
+                    let data = JSON.parse(xhr.response)
+                    reslove(data.hero)
+                }
+            }
+        })
+    }
+    async function getList(){
+        let res = await sendHttp();
+//   向 App跟组件传值
+    ReactDOM.render(<App list={res}/>,document.getElementById("app"))
+    }
+    getList();
+   
+</script>
+
+</html>

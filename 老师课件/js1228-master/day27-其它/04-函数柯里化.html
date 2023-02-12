@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            柯里化，英语：Currying，
+                是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，
+                并且返回接受余下的参数的新函数的技术。
+            柯里化的好处：
+                1. 参数复用(函数复用和高阶函数的特性)
+                2. 延迟执行(类似 bind() 函数)
+        */
+        // 未柯里化
+        // 协议，主机地址，请求路径
+        function getUrl(protocol, hostname, pathname) {
+            return protocol + "://" + hostname + pathname;
+        }
+        getUrl("https", "taobao.com", "login.html");
+        getUrl("https", "jd.com", "goods.html");
+
+
+        // 柯里化后
+        getUrl("https")("taobao.com")("login.html");
+
+        // 求和函数
+        sum(1, 3, 5);
+        // 柯里化后
+        sum(1)(3)(5);
+
+        // 正则表验证
+        check(/\d+/, '456');
+        // 柯里化后
+        check(/\d+/)('456');
+        check(/\d+/)('abc');
+
+        // 2. 延时执行，比如：js 中 bind 方法的原理
+        //     返回的新函数，延时执行
+        Function.prototype.bind = function (obj, ...args) {
+            return () => {
+                return this.apply(obj, args);
+            }
+        }
+
+        let hero = {
+            "name": "吕布",
+            age: 18
+        }
+        function play() {
+            console.log(this.name, this.age);
+        }
+
+        // 返回值是一个函数
+        let temp = play.bind(hero);
+        // 函数延时执行
+        temp();
+
+    </script>
+</body>
+
+</html>

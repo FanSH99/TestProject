@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Symbol : 符号、象征
+            字符串： apple  apple  orange  apple
+            作用 : 标识字符串的唯一性
+        
+            基本数据类型 ：number string boolean object(null) undefined 
+            ES 6 : 新增 symbol
+        */
+        // 1. 创建    
+        let address1 = Symbol('郑州');
+        let address2 = Symbol('郑州');
+
+        console.log(address1);
+        console.log(address1 === address2);
+        console.log("郑州" === "郑州");
+
+        // 2. 数据类型是 symbol   而不是对象
+        console.log(typeof address1);  // symbol
+
+        // 3. 获取 symbol 的描述 
+        console.log(address1.description);
+
+    </script>
+
+</body>
+
+</html>

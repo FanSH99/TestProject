@@ -1,0 +1,9 @@
+.title{
+  color: fff;
+  font-size: 40rpx;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  height: 500rpx;
+  background-color: #ee3f4d;
+}

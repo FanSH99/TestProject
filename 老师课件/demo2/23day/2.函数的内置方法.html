@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+      1.  函数的内置方法有三个
+         call()
+         apply()
+         bind()
+     2. 如何改变this指向的，上面三个方法异同点
+
+        相同点： 都可以改变this 指向
+               call()方法未传参时，this仍然指向window 等同于 函数的调用
+                apply()方法未传参时，this仍然指向window 等同于 函数的调用
+            
+         不同点： 传参  ，第一个参数必传，是对象，后面的参数根据方法来决定
+           
+                如果第一个对象 null   向window
+             call()  如果第一个对象传的有对象值， this指向你传的对象，后面的实参以逗号分隔依次传进去
+             apply() 如果第一个对象传的有对象值， this指向你传的对象，后面的实参以数组的形式传进去
+
+        
+       特殊： bind()方法未传参时，输出是一个函数，必须再加（）调用才能出结果
+             bind()传参   this指向你传的对象，后面的实参以逗号分隔依次传进去
+     -->
+     <script>
+        function show(a,b){
+            console.log(this);
+            console.log('a='+a,'b='+b);
+        }
+        // show(10,20);
+        // window.show(10,20)
+    //1.函数的内置方法   没有传参
+        // show.call();
+        // show.apply();
+        // // var fn=show.bind(); 
+        // // fn()
+        // // console.log(fn);
+        // show.bind()()
+
+     var obj1={name:'王子兴',age:18}
+     var obj2={name:'魏一凡',age:18}
+
+    // 2.传参
+    show.call(null,10,20);// this 还是window
+    show.call(obj1,10,20);// this 指向是obj1
+    show.apply(obj2,[30,80]);// this 指向是obj2
+
+    show.bind(obj1,80,90)()
+       
+
+     </script>
+</body>
+</html>

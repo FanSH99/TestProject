@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #mycanvas{
+            width: 400px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas">
+
+    </canvas>
+</body>
+<script>
+    let cav = document.getElementById("mycanvas");
+    console.dir(cav)
+    // 获取canvas绘画实例
+    let ctx = cav.getContext("2d");
+    console.log(ctx)
+    // 设置画笔颜色
+    ctx.strokeStyle="#ff4b3c"
+    // 设置线条宽度
+    ctx.lineWidth = 1;
+    // 初始化路径
+    ctx.beginPath();
+    // 起始点
+    ctx.moveTo(10,10)
+    // 结束点
+    ctx.lineTo(100,10)
+    ctx.closePath();
+    // // 填充绘画路径
+    // ctx.fill()
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(10,100);
+    ctx.lineTo(100,200)
+    ctx.stroke();
+</script>
+</html>

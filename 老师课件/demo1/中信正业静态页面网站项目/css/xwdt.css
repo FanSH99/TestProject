@@ -1,0 +1,340 @@
+/* 新闻动态开始 */
+.xt{
+    padding: 0px 0 120px 0;
+    /* margin: auto; */
+    border-top: 3px solid #ccc;
+}
+.xt_a{
+    width: 1280px;
+    border: 1px solid #ffff;
+    margin: auto;
+    margin-top:90px;
+    
+}
+
+.xt_a .xt_t h2{
+    font-size: 32px;
+    color: #212121;
+    font-weight: normal;
+    float: left;
+
+}
+.xt_a .xt_t a{
+    display: block;
+    color: #666;
+    width: 160px;
+    height: 38px;
+    border: 1px solid #999;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 38px;
+    text-decoration: none;
+    float: right;   
+}
+.xt_a .xt_t a:hover{
+    color: #ffffff;
+    background: red;
+    border-color: red;
+}
+.xt_a .xt_t_l{
+    width: 600px;
+    height: 330px;
+    /* border: 1px solid #333; */
+    margin-top:35px;
+    position: relative;
+    display: block;
+    float: left;
+}
+.xt_a .xt_t_l img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    float: left;
+}
+.xt_a .xt_t_l h4{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-weight: normal;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.xt_a .xt_t_l h4 a{
+    margin-left: 20px;
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+}
+.xt_a .xt_t_l .xt_jiantou{
+    
+    /* font-size: 60px; */
+    line-height: 55px;
+    position:absolute;
+    right: 0;
+    bottom: 0;
+}
+.xt_a .xt_t_l .xt_jiantou a{
+    color:#aaa;
+    /* font-size: 30px; */
+    text-decoration: none;
+}
+.xt_a .xt_t_l .xt_jiantou a:hover{
+    color: #ffffff;
+}
+.xt_a .xt_t_l .xt_jiantou a i{
+    font-size: 30px;
+}
+.xt_a .xt_t_r{
+    width: 616px;
+    /* height: 330px; */
+    margin-top: 35px;
+    border: 1px solid #ffffff;
+    display: block;
+    float: right;
+   
+}
+
+.xt_a .xt_t_r ul li{
+    /* width: 550px; */
+    padding:18px 0;
+    border-bottom: 1px dashed #d2d2d2;
+   
+    /* width: 517px; */
+}
+.xt_a .xt_t_r ul:nth-child(1) li{
+    padding-top: 0px;
+}
+.xt_a .xt_t_r ul li a{
+   width: 614px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #464646;
+    /* display: block; */
+}
+
+.xt_a .xt_t_r ul li:hover a{
+    color: #d7000f;
+}
+.xt_a .xt_t_r ul li span{
+    float: right;
+    font-size: 14px;
+    color: #999;
+    padding: 0px;
+
+}
+.xt_a .xt_t_r ul li:hover span{
+    color: #d7000f;
+}
+.xt_a .xt_t_r ul li i{
+    height: 66px;
+    color: #a2a2a2;
+}
+.xt_a .xt_t_r ul li:hover i{
+    color: #d7000f;
+}
+/* 新闻动态结束 */
+
+/* 新闻动态查看更多1开始 */
+.look{
+    
+    padding: 40px 0px 150px 0px;
+    border-top: 3px solid #ccc;
+}
+.look-s{
+    width: 1280px;
+    /* height: 1300px; */
+    /* background: #ccc; */
+    margin: auto;
+}
+.look-s h2{
+    font-size: 32px;
+    font-weight: normal;
+    padding-bottom: 34px;
+    color: #464646;
+    border-bottom: 2px solid #a2a2a2;
+}
+/* 顶部结束 */
+.look-s .look-l{
+    width: 800px;
+    /* height: 1180px; */
+    /* background: #999; */
+    margin-top: 80px;
+    float: left;
+}
+
+.look-s .look-l .look-lt ul li{
+    border-bottom: 2px solid #e2e2e2;
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+.look-s .look-l .look-lt ul:nth-child(1) li{
+    margin-top: 0px;
+}
+.look-s .look-l .look-lt ul li a{
+    font-size: 24px;
+    text-decoration: none;
+    color: #333;
+    font-weight:1000;
+}
+.look-s .look-l .look-lt ul li a:hover{
+    color: #d7000f;
+}
+.look-s .look-l .look-lt ul li h3{
+    font-size: 16px;
+    color: #666;
+    font-weight: normal;
+    margin-top: 15px;
+}
+.look-s .look-l .look-lt ul li p{
+    font-size: 14px;
+    line-height: 2.28em;
+    color: #666;
+    margin-top:10px;
+}
+/* 下左结束 */
+
+.look-s .look-r{
+    width: 420px;
+    /* height: 1200px; */
+    /* background: #666; */
+    margin-top: 80px;
+    float: right;
+}
+.look-s .look-r .look-rt{
+    /* width: 100%; */
+    height: 470px;
+    padding: 20px 25px 40px 25px;
+    background:#e2e2e2;
+}
+.look-s .look-r .look-rt h4{
+    color: #212121;
+    font-size: 24px;
+    font-weight: normal;
+}
+.look-s .look-r .look-rt .jtdt{
+    width: 370px;
+    height: 200px;
+    margin-top: 20px;
+    /* background: #666; */
+    position: relative;
+}
+.look-s .look-r .look-rt .jtdt img{
+    width: 100%;
+    height: 100%;
+}
+.look-s .look-r .look-rt .jtdt h2{
+    /* height: 20px; */
+    width: 360px;;
+    padding: 10px 0px 10px 10px;    
+    font-size: 14px;
+    color: #ffff;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+} 
+.look-s .look-r .look-rt ul li{
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #aaa;
+    line-height: 16px;
+    margin-top: 18px;
+}
+.look-s .look-r .look-rt ul li a i{
+    color: #464646;
+}
+.look-s .look-r .look-rt ul li a i:hover{
+    color: #d7000f;
+}
+.look-s .look-r .look-rt ul li a{
+    text-decoration: none;
+    color: #464646;
+   
+    font-size: 14px;
+   
+}
+
+/* 下右上结束 */
+.look-s .look-r .look-rb{
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 0px;
+
+}
+.look-s .look-r .look-rb .jtdt{
+    width: 420px;
+}
+.look-s .look-r .look-rb .jtdt a h2{
+    width: 410px;
+    
+}
+/* 下右下结束 */
+.look-s .look-i1,
+.look-s .look-i0{
+    margin-top: 60px;
+    text-align: center;
+   
+}
+.look-s .look-i1 a,
+.look-s .look-i0 a{
+    width: 32px;
+    height: 32px;
+    color: #333;
+    border: 1px solid #ccc;
+    float: left;
+    text-decoration: none;
+    line-height: 32px;
+    margin-left:20px;
+}
+.look-s .look-i1 a:hover,
+.look-s .look-i0 a:hover{
+    background: #d7000f;
+    color: #ffffff;
+}
+.look-s .look-i0 a{
+    
+    margin-left:200px;
+}
+/* 新闻动态查看更多1结束 */
+
+
+/* 公告开始 */
+.xwdt-2-gonggao{
+    padding-bottom: 120px;
+}
+.xwdt-2-gonggao .look-s{
+    width: 1280px;
+    margin: auto;
+    
+}
+.xwdt-2-gonggao .look-s img{
+    width: 60%;
+    margin: auto;
+    display: block
+}
+
+.xwdt-2-gonggao .look-s .fanhui{
+    float: right;
+}
+.xwdt-2-gonggao .look-s .fanhui a{
+    text-decoration: none;
+    color: #999;
+    font-size: 16px;
+}
+.xwdt-2-gonggao .look-s .fanhui a:hover,.xwdt-2-gonggao .look-s .xiayiji a:hover{
+    color: #d7000f;
+}
+.xwdt-2-gonggao .look-s .xiayiji{
+    border-top: 1px solid #aaa;
+    padding-bottom: 20px;
+}
+.xwdt-2-gonggao .look-s .xiayiji a{
+    margin-top: 20px;
+   text-decoration: none;
+   color: #666;
+   font-size: 16px;
+    display: block;
+}
+/* 公告结束 */

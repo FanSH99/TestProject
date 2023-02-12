@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let p = new Promise((reslove,reject)=>{
+        let num = Math.floor(Math.random()*10);
+            console.log(num)
+            if(num>=5){
+                reslove(num+"大于五");
+            }else{
+                reject(num+"小于5")
+            }
+    })
+    console.log(p)
+    p.then((res)=>{
+        console.log(res+'-------------'+"success")
+    }).catch((err)=>{
+        console.log(err+'--------------'+'err')
+    }).finally(()=>{
+        // 无论状态是成功还是失败都会调用
+        console.log("无论状态是成功还是失败都会调用")
+    })
+   
+</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user {
+            width: 50%;
+            height: 100px;
+            background: red;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2022年9月2日14:36:07 -->
+    <div id="app">
+        <h1>{{num}}</h1>
+        <!-- v-on:事件名称  表示绑定事件 -->
+        <button v-on:click="add">++</button>
+        <div class="user" v-on:mouseenter="moveEnter">
+            {{user.name}}---{{user.age}}
+        </div>
+        <!-- 可以使@关键字来代替v-on: 绑定事件  @+事件名称 -->
+
+        <button @click="addnum(5,10)">+n</button>
+        <button @click="getE($event)">+n</button>
+        <!-- 不推荐用大括号来调用方法，原因是每次刷新都会调用一次，浪费性能。 -->
+        <h1>{{getStr()}}</h1>
+
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    let obj = {
+        name: "小乔",
+        age: 18,
+    }
+    /* 
+    在vue中用data定义的数据以及methods定义的方法全部挂载到vue实例上，可以用this.名字来调用和使用。
+    */
+    new Vue({
+        el: "#app",
+        data: {
+            /*  //data里面定义的数据全部都是响应式的。 
+            所谓的响应式指的是只要数据改变，试图就会更新。
+            */
+            num: 0,
+            user: {
+                name: "小乔",
+                age: 18,
+            }
+        },
+        /* 用来存放当前vue实例中所用到的方法 */
+        methods: {
+            /* Obserenter响应式 */
+            add() {
+                console.log(this);//指向当前vue实例。
+                console.log(this.num);//0
+            },
+            moveEnter() {
+                console.log(this);
+                console.log(this.user);
+                this.user.name = "蝴蝶";
+                this.user.age = 20;
+            },
+            addnum(n, m) {
+                this.num += n;
+                this.num += m;
+            },
+            getE(e, num) {
+                console.log(e);
+                console.log(num);
+                this.moveEnter();
+            },
+            getStr(){
+                return "通往成功的阶梯"
+            }
+        }
+    })
+
+</script>
+
+</html>

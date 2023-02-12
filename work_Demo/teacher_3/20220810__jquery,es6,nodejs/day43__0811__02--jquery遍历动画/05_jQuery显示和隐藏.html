@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月11日11:04:45
+        hide()
+        hide(500,function(){
+        })
+        show()
+        show('slow',function(){
+
+        })
+        toggle()
+        show()
+        show('normal',function(){
+
+        })
+        参数1，时间（毫秒数)  还可以写成'fast' 'normal' 'slow'
+        参数2，回调函数。
+        两个参数均为可选，第一个参数不写的时候默认为normal 
+        
+
+     -->
+    <div class="box"></div>
+    <button class="hide">隐藏</button>
+    <button class="show">显示</button>
+    <button class="toggle">切换</button>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.box').css({
+            'width': '200px',
+            'height': '200px',
+            'background': 'red'
+        })
+        $('.hide').on('click', function () {
+            $('.box').hide(500, function () {
+                console.log('隐藏成功');
+            })
+        })
+
+        $('.show').on('click', function () {
+            $('.box').show('slow', function () {
+                console.log('显示成功');
+            })
+        })
+        $('.toggle').on('click', function () {
+            $('.box').toggle(function () {
+                console.log('操作成功');
+            })
+        })
+
+    </script>
+</body>
+
+</html>

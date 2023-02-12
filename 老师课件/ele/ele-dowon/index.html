@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<body>
+		 <div id="qrcode">
+			 
+		 </div>
+	</body>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+	<script src="./qr.js"></script>
+		<script>
+			var qrcode = new QRCode(document.getElementById("qrcode"), {    // 显示二维码的元素或该元素的 ID
+			     text: "http://106.12.150.223:3000/ely/ely.apk",   // 内容可以是文字，链接，邮箱
+			     width: 200,          //设置宽度
+			     height: 200,        // 设置高度
+			     colorDark : "red",        // 设置前景色
+			     colorLight : "#c0c1c1",        // 设置背景色
+			     correctLevel : 1 ,     // 设置容错级别，上面有介绍，
+				 src:"https://api.java.crmeb.net/crmebimage/public/maintain/2022/10/09/c458aeb218ab453685165afe30690ab0uxbo0z1zoz.png"
+			 });
+		</script>
+</html>

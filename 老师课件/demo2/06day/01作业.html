@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.打印水仙花数（三位数），（153=1*1*1+5*5*5+3*3*3）每位数字的立方和等于等于该数即水仙花数，打印出所有水仙花数。
+        // for(var i=100;i<1000;i++){
+        //     // i=153   分解    1   5   3
+        //      var a=parseInt(i/100);
+        //      var b=parseInt(i/10)%10;
+        //      var c=i%10;
+        //      if(i==Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3)){
+        //         console.log(i+'是水仙花数');
+        //      }
+
+        // }
+        /* 
+        153是水仙花数
+        370是水仙花数
+        371是水仙花数
+        407是水仙花数
+         */
+        // 2.求10的阶乘   1*2*3*4*5*。。。。*10
+        // var chengJi=1;
+        // for(var i=1;i<=10;i++){
+        //     chengJi*=i; //chengJi=chengJi*i;
+
+        // }
+        // console.log(chengJi);//3628800
+
+        // 3.珠峰海拔8848米，现在有足够大的纸，厚度是0.01米，折多少次高度可以超过珠穆朗玛峰。
+        var hou = 1;
+        var height = 884800;
+        var count = 0;
+        // while (true) {
+        //     hou *= 2;//hou=hou*2
+        //     count++;
+        //     if (hou >= height) {
+        //         break;
+        //     }
+            
+        // }
+        // console.log(count);//20
+
+        while (hou < height) {
+            hou *= 2;//hou=hou*2
+            count++;
+           
+            
+        }
+        console.log(count);//20
+
+
+    </script>
+</body>
+
+</html>

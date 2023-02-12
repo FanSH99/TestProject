@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <a href="http://www.baidu.com" title="都挺好">都挺好</a>
+    <input type="checkbox" name="" id="" checked>
+    <div index="1" data-index="22" data-score="99" id="zhangsan">我是div</div>
+    <span>123</span>
+    <script>
+        // 元素的属性操作。
+
+        let div = document.querySelector('div');
+        // 获取系统自带属性
+        console.log(div.id);
+        // 自定义属性
+        console.log(div.getAttribute('index'));
+        // data- 开头的自定义属性
+        console.log(div.dataset);
+
+        console.log('------------jQuery-----------');
+
+        // 1. 获取系统自带属性
+        console.log($('div').prop('id'));
+        // 2. 给属性赋值，参考 CSS
+        $('div').prop('id', 'lisi');
+        // 3. 获取自定义属性
+        console.log($('div').attr('data-index'));
+         // 4. data- 开头的自定义属性
+        console.log($('div').data());
+        console.log($('div').data().score);
+        console.log($('div').data()['score']);
+    </script>
+</body>
+
+</html>

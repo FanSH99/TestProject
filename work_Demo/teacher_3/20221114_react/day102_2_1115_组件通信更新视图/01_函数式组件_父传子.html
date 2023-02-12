@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 2022年11月15日21:00:39 --白天未听课
+
+    function App() {
+        let name = "张三";
+        return (
+            <div>
+                <h1>我是父组件</h1>
+                {/* 在父组件中的子组件标签上绑定自定义属性 */}
+                <Child msg="好好学习天天向上" username={name} />
+            </div>
+        )
+    }
+
+    function Child(props) {
+        console.log(props);
+        // 在子组件定义参数props用对象接收props。接收后的数据可直接使用。
+        let { msg, username } = props;
+        return (
+            <div>
+                <p>我是一个子组件--{msg}---{username}</p>
+            </div>
+        )
+    }
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

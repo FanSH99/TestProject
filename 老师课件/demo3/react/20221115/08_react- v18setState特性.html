@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    console.log(ReactDOM)
+
+    let root = ReactDOM.createRoot(document.getElementById("app"));
+    class App extends React.Component{
+        state={
+            num:1,
+            name:"张三",
+            sex:"男"
+        }
+        render() {
+            console.log("渲染啦")
+            console.log(this)
+            return (
+                <div>
+                    <h1>   v18setState新特性</h1>
+                     <h2>{this.state.name}--{this.state.sex}--{this.state.num}</h2>
+                     <button onClick={()=>{
+                        this.setState({
+                            num:100
+                        })
+                        console.log(this.state.num)
+                        this.setState({
+                            name:"李四"
+                        })
+                        this.setState({
+                            sex:"女"
+                        })
+                     }}>改变</button>
+                    <button onClick={()=>{
+                        setTimeout(()=>{
+                            this.setState({
+                            num:100
+                        })
+                        console.log(this.state.num)
+                        this.setState({
+                            name:"李四"
+                        })
+                        this.setState({
+                            sex:"女"
+                        })
+                        },500)
+                    }}> change</button>
+                </div>
+            )
+        }
+    }
+    root.render(<App/>)
+    // 在react18  中版本setState其他特性和react17一样，唯一发生改变的是，在不受react控制的事件中，连续调用多次setState react18会将setState合并更行，render只会执行一次，而react17不能合并更新
+</script>
+</html>

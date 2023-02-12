@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1. 每一个构造函数都有一个 prototype 属性.(显式原型)。
+               显式原型是一个对象，该对象的属性和方法是构造函数实例化对象所共享
+            2. 对象都有一个隐式原型 __proto__
+               隐式原型指向了构造函数的显式原型。
+            3. 原型都有一个 constructor 属性。
+               该属性，指向了构造函数本身。
+        */
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        let eason = new Star('eason', 22);
+
+        // 隐式原型指向了构造函数的显式原型。
+        console.log(eason.__proto__ == Star.prototype);
+
+        // Star.prototype 也是一个对象
+        // 对象都有一个 __proto__
+        // 指向了 Object 的显式原型
+        console.log(Star.prototype.__proto__);
+        console.log(Star.prototype.__proto__ == Object.prototype);
+
+        // 原型都有一个 constructor 属性
+        // 指向了 object
+        console.log(Object.prototype.constructor);
+
+        // Object.prototype 是一个对象，
+        // 对象都有一个 __proto__
+        // null
+        console.log(Object.prototype.__proto__);
+
+        /*
+            Object 是所有类的根类。
+            作用：
+                当前对象如果没有这个成员(属性和方法)，
+                查看构造函数(类)的原型对象是否有该方法。
+                子构造函数(子类)可以继承父构造函数(父类)的属性和方法。
+                如果子构造函数(子类)没有这个属性或方法，则查找父构造函数(父类)是否有这个成员
+                这条查找成员的路线，就是原型链。
+        
+            核心：    
+                子构造函数(子类)继承父构造函数(父类)的属性和方法，
+                对象使用属性和方法，就近原则。        
+        */
+        /*
+           原型链 ：
+               当访问一个对象的属性时，会在这个对象本身属性上查找。
+               如果没有，则查找它的 __proto__ 隐式原型,构造函数的显式原型。
+               如果还没有，就会在 构造函数的显式原型 的 __proto__  上查找。
+               这样一层一层向上找，形成一个链式解构，我们称为原型链。
+ 
+           原型链的作用：
+             1. 属性共享，节约内存空间。
+             2. 实现继承。
+        */
+
+    </script>
+</body>
+
+</html>

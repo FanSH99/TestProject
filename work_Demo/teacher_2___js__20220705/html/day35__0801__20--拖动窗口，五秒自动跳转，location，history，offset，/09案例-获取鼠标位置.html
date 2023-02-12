@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            /*    border: 1px solid #444; */
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            color: #fff;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月1日15:20:48
+        案例：获取鼠标在盒子中的位置。
+     -->
+    <div id="box"> </div>
+    <script>
+        /* 鼠标在盒子内移动，移动之后得到鼠标在盒子内的坐标
+        鼠标的位置 e.payeX e.pageY
+        盒子距离父元素（定位）的偏移量  offsetLeft
+        */
+        var box = document.querySelector('#box');
+
+        box.onmousemove = function (e) {
+            e = e || window.event;
+            var x = e.pageX;
+            var y = e.pageY;
+            // console.log(x, y);//鼠标在页面内的位置 
+            var l = box.offsetLeft;
+            var t = box.offsetTop;
+            console.log(l, t);//100 100  ---如果哦添加margin会改变例如120 120
+
+            var x0 = x - l;
+            var y0 = y - t;
+            console.log(x0, y0);
+            box.innerHTML = 'x0=' + x0 + 'px' + '<br>' + 'y0=' + y0 + 'px';
+
+
+        }
+    </script>
+</body>
+
+</html>

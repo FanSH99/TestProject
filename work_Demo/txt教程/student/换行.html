@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换行</title>
+
+    <style>
+        .box {
+            width: 800px;
+            height: 400px;
+            padding: 15px;
+            margin: 40px auto;
+            border: 1px solid red;
+            line-height: 1.5em;
+        }
+
+        .wrap1 p {
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .wrap2 p {
+            /*  */
+            word-wrap: break-word;
+            word-wrap: normal;
+        }
+
+        .wrap3 p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 刚开始文本没有放到p中，导致有问题。 */
+        .wrap4 p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            line-clamp: 6;
+            -webkit-line-clamp: 6;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+
+        }
+
+        .wrap5 p {
+            position: relative;
+            line-height: 1.5em;
+            height: 9em;
+            overflow: hidden;
+        }
+
+         .wrap5 p {
+            position: relative;
+            line-height: 1.5em;
+            height: 9em;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box wrap1">
+        <p>
+
+            评教作为教学质量的检测指标，在教务管理中有着举足轻重的地位。设计一个合理的网上教务评教系统，不仅可以有效的提高评教工作的效率，还可以节约成本，对之后的信息维护也有很大帮助。在对系统进行可行性分析和功能、性能分析后，进行了总体设计和详细设计，并实现了系统的基础功能。通过黑盒测试等方法对系统进行了多方面测试。本次系统划分了三类用户，即学生、教师、管理员。主要采用SSM框架，使用B/S三层架构，能够完成基础的选课和评教功能。另外，本次系统还添加了作业的提交和批改的功能。
+            As a test index of teaching quality, evaluation of teaching plays a pivotal role in the management of
+            academic
+            affairs.
+            Designing a reasonable online teaching evaluation system can not only effectively improve the efficiency of
+            the
+            evaluation work, but also save costs, and also be of great help to the subsequent information maintenance.
+            After
+            the
+            feasibility analysis and functional and performance analysis of the system, the overall design and detailed
+            design were
+            carried out, and the basic functions of the system were realized. The system was tested in many ways by
+            methods
+            such as
+            black box testing. The system is divided into three categories of users, namely students, teachers, and
+            administrators.
+            Mainly using the SSM framework, using B/S three-tier architecture, it can complete the basic course
+            selection
+            and
+            evaluation functions. In addition, the system has also added the function of submitting and grading jobs.
+        </p>
+
+    </div>
+
+
+    <div class="box wrap2">
+        <p>
+
+            评教作为教学质量的检测指标，在教务管理中有着举足轻重的地位。设计一个合理的网上教务评教系统，不仅可以有效的提高评教工作的效率，还可以节约成本，对之后的信息维护也有很大帮助。在对系统进行可行性分析和功能、性能分析后，进行了总体设计和详细设计，并实现了系统的基础功能。通过黑盒测试等方法对系统进行了多方面测试。本次系统划分了三类用户，即学生、教师、管理员。主要采用SSM框架，使用B/S三层架构，能够完成基础的选课和评教功能。另外，本次系统还添加了作业的提交和批改的功能。
+            As a test index of teaching quality, evaluation of teaching plays a pivotal role in the management of
+            academic
+            affairs.
+            Designing a reasonable online teaching evaluation system can not only effectively improve the efficiency of
+            the
+            evaluation work, but also save costs, and also be of great help to the subsequent information maintenance.
+            After
+            the
+            feasibility analysis and functional and performance analysis of the system, the overall design and detailed
+            design were
+            carried out, and the basic functions of the system were realized. The system was tested in many ways by
+            methods
+            such as
+            black box testing. The system is divided into three categories of users, namely students, teachers, and
+            administrators.
+            Mainly using the SSM framework, using B/S three-tier architecture, it can complete the basic course
+            selection
+            and
+            evaluation functions. In addition, the system has also added the function of submitting and grading jobs.
+        </p>
+
+    </div>
+
+
+
+    <div class="box wrap3">
+        <p>
+
+            评教作为教学质量的检测指标，在教务管理中有着举足轻重的地位。设计一个合理的网上教务评教系统，不仅可以有效的提高评教工作的效率，还可以节约成本，对之后的信息维护也有很大帮助。在对系统进行可行性分析和功能、性能分析后，进行了总体设计和详细设计，并实现了系统的基础功能。通过黑盒测试等方法对系统进行了多方面测试。本次系统划分了三类用户，即学生、教师、管理员。主要采用SSM框架，使用B/S三层架构，能够完成基础的选课和评教功能。另外，本次系统还添加了作业的提交和批改的功能。
+            As a test index of teaching quality, evaluation of teaching plays a pivotal role in the management of
+            academic
+            affairs.
+            Designing a reasonable online teaching evaluation system can not only effectively improve the efficiency of
+            the
+            evaluation work, but also save costs, and also be of great help to the subsequent information maintenance.
+            After
+            the
+            feasibility analysis and functional and performance analysis of the system, the overall design and detailed
+            design were
+            carried out, and the basic functions of the system were realized. The system was tested in many ways by
+            methods
+            such as
+            black box testing. The system is divided into three categories of users, namely students, teachers, and
+            administrators.
+            Mainly using the SSM framework, using B/S three-tier architecture, it can complete the basic course
+            selection
+            and
+            evaluation functions. In addition, the system has also added the function of submitting and grading jobs.
+        </p>
+
+    </div>
+    <div class="box wrap4">
+        <p>
+            评教作为教学质量的检测指标，在教务管理中有着举足轻重的地位。设计一个合理的网上教务评教系统，不仅可以有效的提高评教工作的效率，还可以节约成本，对之后的信息维护也有很大帮助。在对系统进行可行性分析和功能、性能分析后，进行了总体设计和详细设计，并实现了系统的基础功能。通过黑盒测试等方法对系统进行了多方面测试。本次系统划分了三类用户，即学生、教师、管理员。主要采用SSM框架，使用B/S三层架构，能够完成基础的选课和评教功能。另外，本次系统还添加了作业的提交和批改的功能。
+            As a test index of teaching quality, evaluation of teaching plays a pivotal role in the management of
+            academic
+            affairs.
+            Designing a reasonable online teaching evaluation system can not only effectively improve the efficiency of
+            the
+            evaluation work, but also save costs, and also be of great help to the subsequent information maintenance.
+            After
+            the
+            feasibility analysis and functional and performance analysis of the system, the overall design and detailed
+            design
+            were
+            carried out, and the basic functions of the system were realized. The system was tested in many ways by
+            methods
+            such
+            as
+            black box testing. The system is divided into three categories of users, namely students, teachers, and
+            administrators.
+            Mainly using the SSM framework, using B/S three-tier architecture, it can complete the basic course
+            selection
+            and
+            evaluation functions. In addition, the system has also added the function of submitting and grading jobs.
+        </p>
+
+    </div>
+</body>
+
+</html>

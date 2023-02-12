@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .box {
+            width: 190px;
+            height: 240px;
+            background-color: #f6f6f6;
+            margin: 200px;
+        }
+
+        .box ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box ul li {
+            float: left;
+            width: 33.33%;
+            height: 60px;
+            text-align: center;
+        }
+
+        .box ul li span {
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+            <li>
+                <span></span>
+                <p>话费</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var spans = document.querySelectorAll('.box li span');
+        console.log(spans);
+
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].style.background = "url(./images/sprite.png) no-repeat 0 -" + i * 44 + "px"
+        }
+    </script>
+</body>
+
+</html>

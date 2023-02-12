@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 解构赋值: 按照一定解构获取值
+     let arry  = [1,2,3,4,5];
+     let [a,b,c,d,e] = arry;
+     console.log(a,b,c,d,e)
+     let arry2 = [[2,3],[6,5]];
+     let [[n,m],[u,i]] = arry2;
+     console.log(n,m,u,i)
+    //  对象的解构 解构的变量名必须和对象中的属性名一样
+     let user = {
+        name:"张三",
+        age:18,
+        arrys:[1]
+     }
+     let {name,age,arrys} = user;
+     console.log(name,age,arrys)
+
+     let obj = {
+        name:"张三",
+        age:18
+     }
+     
+</script>
+</html>

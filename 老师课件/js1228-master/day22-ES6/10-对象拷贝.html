@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 对象的浅拷贝： 将 参数2，参数3，及后面的对象的属性拷贝给 参数1
+        //    Object.assign(参数1，参数2，参数3，参数4...) 
+        let game = { red: '红色', price: 99 };
+        let obj = { name: '剑圣', game};
+        let obj1 = { score: 100 };
+        let target = { age: 22 };
+        Object.assign(target, obj, obj1);
+
+        console.log(target);
+        game.red = 'blue';
+        console.log(target);
+    </script>
+</body>
+
+</html>

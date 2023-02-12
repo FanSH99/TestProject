@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <!-- 2022年8月24日10:20:31 -->
+    <h1>原生js发送post请求</h1>
+    <button onclick="xhrPost()">热们电影</button>
+    <button onclick="xhrPostParms()">经典电影(传参）</button>
+
+</body>
+
+<script>
+    function xhrPost() {
+        // 创建请求实例
+        let xhr = new XMLHttpRequest();
+        console.log(xhr);
+        // 设置请求方式和请求地址  ---参数1，请求方式，参数2请求地址
+        xhr.open("post", "/hot/movie");
+        // 发送请求
+        xhr.send();
+        // 监听http请求状态码改变
+        xhr.onreadystatechange = () => {
+            console.log(xhr.readyState);
+
+            if (xhr.readyState === 4) {
+                // 请求成功，数据已经完全返回到前端。
+                // 获取服务端返回的数据
+                let res = xhr.response;
+                res = JSON.parse(res);
+                console.log(res);
+                // document.querySelector('.box').innerHTML = `<div>
+                //     <img src=${res.url}/>
+                //     <p>${res.name}</p>
+                //     <div>`
+            }
+        }
+    }
+
+
+    function xhrPostParms() {
+        let type = "hot";
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", `/hot/movie`);
+        // 设置请求头 post请求必须要设置请求头。
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        // 将请求参数以字符串形式放到请求体。
+        xhr.send(`type=${type}&name=白浅`);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                let res = xhr.response;
+                res = JSON.parse(res);
+                console.log(res);
+                // document.querySelector('.box').innerHTML = `<div>
+                //     <img src=${res.url}/>
+                //     <p>${res.name}</p>
+                //     <div>`
+            }
+        }
+    }
+
+</script>
+
+</html>

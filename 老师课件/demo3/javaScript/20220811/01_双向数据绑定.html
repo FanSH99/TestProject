@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <input type="text" value="学习使我快乐">
+</body>
+<script src="./jquery.js"></script>
+<script>
+    //  让h1标签的内容等于 input输入框的值
+    // 获取输入框值
+    var msg = $('input').val();
+    console.log(msg)
+    // h1标签内容为msg
+    $('h1').text(msg)
+    // 绑定input事件 每次输入框改变都会调用
+    $('input').on("input",function(){
+        // 获取输入框最新值
+         var value = $('input').val();
+        // 讲h1标签中的内容变为最新输入框值
+        $("h1").text(value)
+    })    
+</script>
+</html>

@@ -1,0 +1,138 @@
+.media{
+    width: 1300px;
+    height: 1073px;
+    
+    margin: 0 auto;
+}
+.box-2 {
+    width: 100%;
+    height: 1080px;
+    margin: 0 auto;
+    background: url(../images/kv.jpg) no-repeat top center;
+}
+
+
+
+.media .media-top{
+    width: 500px;
+    height: 90px;
+    background: url(../images/css-sprites.png) no-repeat -140px -543px;
+    margin: 0 auto;
+
+    
+}
+.media .media-size{
+    width: 500px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.media .media-size ul{
+    width: 500px;
+    height: 100px;
+}
+.media .media-size ul li{
+    width: 70px;
+    height: 30px;
+    float: left;
+    margin-left: 90px;
+    margin-top: 30px;
+
+}
+.media .media-size ul li a{
+    width: 100px;
+    height: 20px;
+    font-size: 26px;
+    display: block;
+    float: left;
+    border-right: 1px   solid   #ECECEC;
+    color: #A4693F;
+    font-weight: 300;
+    line-height: 20px;
+}
+.media .media-size ul li:nth-child(3) a{
+    border: none ;
+} 
+.media .media-size ul li:hover a{
+    color: #A4693F;
+    font-weight: 900;
+}
+.media .media-size ul .on a{
+    font-weight: 900;
+    color: #A4693F;
+}
+.media .medialist{
+  width: 1300px;
+  height: 160px;
+  margin: 0 auto;
+  position: relative;
+}
+.media .medialist ul {
+    width: 1500px;
+    height: 160px;  
+}
+.media .medialist ul li{
+    width: 290px;
+  height: 160px;  
+  float: left;
+  position: relative;
+  margin-right: 50px;
+  margin-bottom: 70px;
+}
+
+
+
+.media .medialist ul li::after {
+    content: "";
+    display: block;
+  width: 290px;
+  height: 162px;   
+  float: left; 
+  background: url(../images/img-border3.png) no-repeat ;
+  background-size: 284px 163px;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+
+}
+.media .medialist ul li  a{
+    width: 290px;
+    height: 160px;
+    display: block;
+    float: left;
+}
+
+.media .medialist ul li:hover a{
+    transition: all 0.3s ease;
+    transform: scale(1.1);
+
+}
+.media .medialist ol{
+    width: 500px;
+    height: 70px;
+    position: absolute;
+    top: 620px;
+    left: 500px;
+
+}
+.media .medialist ol li{
+    width: 60px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+}
+.media .medialist ol li:nth-child(1){
+    width: 10px;
+border-bottom: 1px solid red;
+}
+.media .medialist ol li:nth-child(5){
+    width: 60px;
+border-bottom: 1px solid red;
+}
+
+.bottom-bar{
+    margin-top:100px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" style="width: 800px; height: 200px; font-size: 180px;">
+
+    <script>
+        /* 
+            ascii码:每一个按键，都有一个数值对应。
+            keypress: 不能触发功能键。
+            只有 keypress 可以区分大小写。
+        */
+        let str = 'abc';
+        console.log(str.charCodeAt(0));
+        document.addEventListener('keyup', function (e) {
+            console.log(`--------keyup---`);
+            console.log(`e.key:---${e.key}-e.keyCode---${e.keyCode}`);
+        });
+        document.addEventListener('keydown', function (e) {
+            console.log(`--------keydown---`);
+            console.log(`e.key:---${e.key}-e.keyCode---${e.keyCode}`);
+        });
+        document.addEventListener('keypress', function (e) {
+            console.log(`--------keypress---`);
+            console.log(`e.key:---${e.key}-e.keyCode---${e.keyCode}`);
+        });
+    </script>
+</body>
+
+</html>

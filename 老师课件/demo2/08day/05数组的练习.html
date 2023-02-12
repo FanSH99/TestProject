@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.数组的拷贝    浅拷贝   
+        //   var arr=[10,20,30]
+        //   var arr1=[];
+        //   arr1=arr;
+        //   arr[0]='hello'
+        //   console.log(arr1,arr);
+
+          //2.数组的拷贝  深拷贝
+          var arr=[10,20,30]
+          var arr1=[];//数组的长度永远索引号大1
+          for(var i=0;i<arr.length;i++){
+             arr1[arr1.length]=arr[i];// 永远在数组的末尾添加数据
+            // arr1[i]=arr[i]
+          }
+          arr[0]='hello'
+          console.log(arr,arr1);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            闰年：
+                普通闰年：公历年份是4的倍数,且不是100的倍数的,为闰年（如2004年、2020年等就是闰年）。
+                世纪闰年：公历年份是整百数的,必须是400的倍数才是闰年（如1900年不是闰年,2000年是闰年）。
+            总结:
+                % 取余
+                && ||
+                ()
+                if   else    
+        */
+        let year = prompt('请输入年份');
+
+        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 100 == 0 && year % 400 == 0)) {
+            console.log(`${year}是闰年`);
+        } else {
+            console.log(`${year}是平年,2月份有28天`);
+        }
+        console.log('---------game over--------------');
+    </script>
+</body>
+
+</html>

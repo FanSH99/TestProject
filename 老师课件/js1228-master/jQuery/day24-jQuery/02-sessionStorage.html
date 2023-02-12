@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>sessionStorage</h1><br>
+  <input type="text" />
+  <button class="set">存储数据</button>
+  <button class="get">获取数据</button>
+  <button class="remove">删除数据</button>
+  <button class="del">清空所有数据</button>
+  <script>
+    /* 
+         浏览器存储数据：
+             1. 数据存储在浏览器中
+             2. 会话存储大约 5M,本地存储大约 20M
+             3. 只能存储 json 字符串   K——V
+             4. 使用时需要转化
+
+         sessionStorage: 会话存储 
+              1. 数据只能在单页面中使用   
+              2. 生命周期和页面同步
+    */
+    let input = document.querySelector("input");
+    let set = document.querySelector(".set");
+    let get = document.querySelector(".get");
+    let remove = document.querySelector(".remove");
+    let del = document.querySelector(".del");
+
+    let hero = {
+      name: "剑圣",
+      sex: "男"
+    }
+    // 存储数据
+    set.addEventListener('click', function () {
+      // 可以理解成给 sessionStorage 这个对象动态地添加属性。
+      sessionStorage.setItem('address', '郑州');
+      sessionStorage.setItem('value', input.value);
+      sessionStorage.setItem("jugg", JSON.stringify(hero));
+    });
+
+    // 获取数据
+    get.addEventListener('click', function () {
+      // 获取属性
+      let address = sessionStorage.getItem("address");
+      let value = sessionStorage.getItem("value");
+      console.log(address);
+      console.log(value);
+    });
+
+    // 删除指定数据
+    remove.addEventListener('click', function () {
+      // 删除属性
+      sessionStorage.removeItem("value");
+    });
+
+    // 清空(全部)数据
+    del.addEventListener('click', function () {
+      // 删除指定的全部属性
+      sessionStorage.clear()
+    });
+  </script>
+</body>
+
+</html>

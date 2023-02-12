@@ -1,0 +1,9 @@
+<view>
+one组件
+<button bindtap="looklook">look</button>
+<view wx:for="{{list}}" wx:key="index">
+{{item}}
+</view>
+<input type="text" placeholder="请输入学生姓名" model:value='{{name}}'/>
+<button bindtap="addUser">添加学生</button>
+</view>

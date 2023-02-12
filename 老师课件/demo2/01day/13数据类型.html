@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        一、js是一门弱类型的语言或者动态语言 ，声明变量时，没有确定数据类型，由赋值的值来决定
+       //  app 牛客
+       二、数据类型
+         两大类：
+         1.基本数据类型（简单） 五种
+          Number(数值)类型
+          String(字符串)类型   ""  ''  由单引号或双引号包裹起来的内容，原样输出  \ 转义   \\   \n  '\''
+          Boolean(布尔)类型   true  false
+          Undefined 类型    声明变量，未赋值        未定义
+          Null            空值  是一个无效的地址   null空值
+
+
+         2.引用类型（复杂）
+          Object对象   Date 日期对象  Array 数组对象  RegExp 正则   Function 函数
+
+
+         3.检测基本数据类型的方法 
+           typeof 数据或变量名    返回值
+
+           'number'  'string'  'boolean'   'undefined'  'object'
+
+        特例：   'function'  函数
+
+         4. 所有的数据统用的检测方法
+         Object.prototype.toString.call(参数)   返回值  [object Number]  [object String]
+         对象    原型       字符串   呼叫
+
+    -->
+    <script>
+        //1.
+        var a=10;
+        console.log(a);
+        console.log(typeof a);
+        console.log(a,typeof a);//10 'number'
+
+        //2.
+        var str='hello';
+        str='886';
+        
+        console.log(str);
+        console.log(str,typeof str);
+
+        //3.
+        var flag=true;
+        flag=false;
+        console.log(flag);
+        console.log(flag,typeof flag);//false 'boolean'
+
+        //4.
+         var b;
+        //  b=undefined;
+         console.log(b);//undefined
+
+         console.log(b,typeof b);
+
+         //5.
+         var c=null;
+         console.log(c);//null
+         console.log(c,typeof c);//null 'object'
+
+         //6.特例
+         function show(){
+            console.log('hello');
+         }
+         show();
+
+         console.log(show,typeof show);   //'function'
+
+
+         //7.
+         console.log(Object.prototype.toString.call(123));//[object Number]
+         console.log(Object.prototype.toString.call('hello'));//[object String]
+         console.log(Object.prototype.toString.call(true));//[object Boolean]
+         console.log(Object.prototype.toString.call(undefined));//[object Undefined]
+         console.log(Object.prototype.toString.call(null));//[object Null]
+         console.log(Object.prototype.toString.call(show));//[object Function]
+
+    </script>
+</body>
+</html>

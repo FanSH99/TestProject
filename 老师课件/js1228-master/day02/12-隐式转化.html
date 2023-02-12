@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 隐式转化：
+        //         不同的数据类型做运算时，运算符两边的数据类型不同时，
+        //         并不会报错，js引擎会做隐式转换之后进行正常的运算。
+
+        // 1. 字符串拼接
+        let result = '为了部落' + true;
+        console.log(typeof result);
+
+        // 2. - * / 运算符隐式转化为 number
+        age = '123' - 100;
+        console.log(age);   // 23
+    </script>
+</body>
+
+</html>

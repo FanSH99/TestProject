@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月17日16:22:33
+    class App extends React.Component {
+
+        constructor() {
+            super();
+            console.log("构造函数");
+            this.state = {
+                name: "张三"
+            }
+            this.age = 18;
+            this.lookthis = this.lookthis.bind(this);
+        }
+        render() {
+
+            return (
+                <div>
+                    <h1>app组件--{this.state.name}</h1>
+                    <button onClick={this.lookthis}>this指向</button>
+                    {
+                        this.state.name == "张三" && <Child />
+                    }
+                </div>
+            )
+        }
+        componentDidMount() {
+            console.log("组价你渲染后，可以发送http请求");
+            let xhr = new XMLHttpRequest();
+            // xhr.open("get", "https://apif.java.crmeb.net/api/front/product/detail/356?type=normal");
+            xhr.open("get", `https://apif.java.crmeb.net/api/front/product/detail/2?type=normal`);
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.response);
+                    let data = JSON.parse(xhr.response);
+                    this.setState({
+                        mycontent: data.data.productInfo.content
+                    })
+                }
+            }
+        }
+        lookthis() {
+            console.log(this);
+            this.setState({
+                name: "李四"
+            })
+        }
+
+        componentDidUpdate() {
+            console.log("组件更新后");
+        }
+        componentWillUnmount() {
+            console.log("组件销毁后触发");
+        }
+    }
+
+    class Child extends React.Component {
+
+        render() {
+            return (
+                <div>子组件</div>
+            )
+        }
+        componentDidMount() {
+            window.onresize = () => {
+                console.log("窗口改变了");
+            }
+            this.timer = setInterval(() => {
+                console.log(111);
+            }, 1000)
+        }
+        componentWillUnmount() {
+            console.log("组件销毁了");
+            clearInterval(this.timer);
+            window.onresize = null;
+        }
+    }
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+
+    /*
+    函数式组件和class类组件区别：
+    函数式组件又称为无状态组件，函数式组件通常用来做一些数据渲染。16.8以前没有生命周期
+    class类组件由状态组件，通常用来吸血复杂的业务逻辑
+    
+    
+    生命周期:描述组件从创建爱你到销毁的过程
+    1。运行阶段
+    1.1constructor:
+        当类组件创建时就会立即执行。注意，constructor必须有super()否则报错。
+        改钩子函数通常定义state状态，类属性，绑定函数this指向。
+        这个钩子函数不能用this.setState来更新状态会报错，
+        通常不会在这个钩子函数请求数据。
+    1.2render()
+      里面写要渲染的模板。this.setState不能写在模板前面即不能写在render函数的开头。
+      不能发送请求，里面可以写纯渲染的逻辑，如渲染State和props， props是其他组件传递过来的值。
+    1.3componentDidMount()
+        组件渲染后，这个函数里面可以写任意业务逻辑，通常在改生命周期发送http请求。
+    2.更新阶段
+    3.销毁阶段
+    
+    */
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 边界符： ^  匹配行首的文本(以谁开始)
+        // 边界符:  %  匹配行尾的文本(以谁结尾) 
+
+        // 1. 只要包含 abc 即可
+        let rg = /abc/;
+        console.log(rg.test('abc'));
+        console.log(rg.test('abcabc'));
+        console.log(rg.test('abcd'));
+
+        // 2. 123 开始即可
+        let rg2 = /^123/;
+        console.log(rg2.test('123'));
+        console.log(rg2.test('123456'));
+        console.log(rg2.test('0123'));
+
+        // 3. 精确匹配，必须为 abc 开头，abc 结尾。
+        let rg3 = /^abc$/;
+        console.log(rg3.test('abc'));
+        console.log(rg3.test('abcabc'));
+        console.log(rg3.test('abcd'));
+
+    </script>
+</body>
+
+</html>

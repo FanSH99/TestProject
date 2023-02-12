@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <!-- 数据绑定 -->
+        <h1>{{msg}}</h1>
+        <h2>{{user}}</h2>
+    </div>
+    
+</body>
+<script src="../vue.js"></script>
+<script>
+    /* 
+     vue(双向数据流轻量级框架)  react (单项数据流)  
+    */
+    /* 
+     当前vue主流版本为vue3.x  我们现在要学得版本是vue2.x
+     当前很多企业依旧使用得是vue2 也不排除也有部分企业使用得是vue3.x
+
+    */
+   /* 
+    vue核心：1. 数据驱动(只要数据改变视图就要更新)  2. 组件系统(组件)
+    vue是一款MVVM框架，M(model-数据模型) v(view-视图模型) vm(viewmodel连接数据与视图得桥梁)
+    当数据发生改变通过viewModel来更新视图，当视图发生改变时通过viewModel来更改数据。
+   */
+//   console.log(Vue)
+    //创建vue实例对象 vue2基于选项api(option api)
+    let vm = new Vue({
+        // el是element 简写 表示当前vue实例所作用得元素。 其值是选择器名称
+        el:"#box",
+        // 存放当前vue实例中响应式数据 可以提供给标签使 直接添加到vue实例中
+        data:{
+            msg:"初识vue！！！",
+            user:"张三"
+        }
+    });
+    console.log(vm)
+</script>
+</html>

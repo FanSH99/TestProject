@@ -1,0 +1,92 @@
+header {
+    width: 100%;
+    height: 60px;
+    background: #222;
+    min-width: 1200px;
+}
+
+.header_main {
+    width: 80%;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 60px;
+    color: #fff;
+}
+
+.header_left {
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.header_left:hover {
+    text-decoration: underline;
+}
+
+.header_right {
+    color: #b4b4b4;
+    display: flex;
+}
+
+.header_right > div:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.header_right > div {
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+.biaodan {
+    width: 1200px;
+    margin: 20px auto;
+}
+
+.photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.login {
+    display: none;
+}
+
+.mtbtn {
+    width: 70px;
+    background: #222;
+    margin: 0 !important;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
+}
+
+.user {
+    position: relative;
+    display: none;
+}
+
+.user:hover .mtbtn {
+    display: block;
+}
+
+.mtbtn div {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    padding: 0 5px;
+    font-size: 13px;
+}
+
+.mtbtn div:hover {
+    background-color: #525252;
+}
+
+.myphoto {
+    display: none;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/* 4、.根据当前的时间，提示用户要做的事情。 
+		5-7点		早上好
+		7-11点		上午好，祝您心情愉快
+		11-13点		中午好
+		13-17点		下午好
+		17-21点		晚上好
+		21-23点		夜深了，注意身体哟
+		其它情况	凌晨了，该休息了 */
+
+		//  0~23：59：59
+		// var date=new Date();// 日期对象
+		// console.log(date);
+		// var hours=date.getHours();// 获得小时方法
+		// console.log(hours);
+
+		var time = prompt('请输入一个时间数字');
+		if (time < 5 && time >= 0) {
+			console.log('凌晨了，该休息了');
+		} else if (time < 7) {
+			console.log('早上好');
+		} else if (time < 11) {
+			console.log('上午好，祝您心情愉快');
+		} else if (time < 13) {
+			console.log('中午好');
+		} else if (time < 17) {
+			console.log('下午好');
+		} else if (time < 21) {
+			console.log('晚上好');
+		} else if (time < 23) {
+			console.log('夜深了，注意身体哟');
+		} else if (time < 24) {
+			console.log('凌晨了，该休息了');
+		} else {
+			console.log('请输入一个正确的时间');
+		}
+
+	/* 5、根据BMI(身体质量指数)显示一个人的体型。BMI是指身高体重的一个计算公式。
+		BMI = 体重 / 身高的平方;     
+		
+			-指数-			-说明-
+			低于18.5		                 过轻
+			18.5~24.9999		正常
+			25~27.9999		过重
+			28~32			肥胖
+			高于32			非常肥胖
+		
+		编程输入身高和体重，计算BMI, 输出身体状况。
+		 */
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 3. bind() 方法  绑定
+    //      作用
+    //          1. 改变函数内部 this 的指向
+    //          2. 不会调用函数
+    //          3. 返回值是新函数，原函数不受影响。
+    //                 字符串的不可变性(字符串的所有操作都会产生新的字符串)
+    //          4. 参数不是数组
+
+    let hero = {
+      name: "吕布",
+      age: 22
+    }
+
+    function sum(a, b) {
+      console.log(a + b);
+      console.log(this);
+    }
+
+    // let result = sum.bind(hero, 2, 5);
+    let result = sum.bind(null, 2, 5);
+
+    result();
+  </script>
+</body>
+
+</html>

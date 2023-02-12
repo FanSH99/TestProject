@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li class="active">2</li>
+        <li>3</li>
+        <li class="active">4</li>
+    </ul>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    //  获取jquery对象集合中的第一个元素
+    console.log(   $("li").first())
+    $("li").first().css('color','red')
+    // 过滤获取最后一个元素
+    console.log($('li').last())
+    $('li').last().css("fontSize","30px")
+    // 根据索引来过滤元素
+    console.log($('li'))
+    $('li').eq(3).css("background",'red')
+    // 过滤相同的选择器标签
+    $('li').filter(".active").css('color','blue')
+    // 过滤吧得到没有这个选择器名称的标签
+    $('li').not(".active").css("fontSize",'50px')
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        节点操作
+    一、增(元素)
+        1. var o=document.createElement('div')
+        2. 追加元素   parentNode.appendChild(o)
+                       父节点               子节点
+
+            注意：在父节点里以最后一个元素出现
+        
+     增属性  增加文本        document.createAttribute()   document.createTextNode() 作为了解
+
+       3. 增加文本  还可以增加标记   innerHTML属性
+          
+
+         node.innerHTML='增加文本';    缺点：覆盖的作用 
+
+       4. 以文本的形式增加  innerText    标记是无法解析，仍作为文本来处理
+       node.innerText='增加文本';
+
+      5. document.write('<h2></h2>'); 解析标记
+     -->
+     <script>
+        //1. 动态增元素  document.createElement
+       var div=  document.createElement('div');// 暂时在内存中
+       console.log(div);// <div></div>
+
+       //2.追加
+       document.body.appendChild(div);
+
+       //操作 属性 和样式    （行内样式）
+        div.innerHTML='我是新创建的div';
+        div.style.width="200px";
+        div.style.height="200px";
+        div.style.border="1px solid red";
+
+    //3. 解析标记   文本和标记 都可以
+        div.innerHTML='<ul><li>我是一个li</li></ul>'
+        // div.innerHTML='纯文本'
+    //4. 无法解析标记  相当于文本
+    //   div.innerText='<p>我是一个段落<p><h2>我是标题2</h2>'
+
+        div.innerText='我是纯文本';// 可以用
+
+    //5.
+       document.write('<h2>我是标题</h2>');
+
+
+       
+
+    
+
+
+     </script>
+</body>
+</html>

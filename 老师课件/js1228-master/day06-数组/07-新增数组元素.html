@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 数组的本质：存储多个数据的容器。
+        var arr = [22, '貂蝉', true, '男'];
+        console.log(arr[3]);
+        arr[3] = '吕布';
+
+        // 1. 通过索引号，添加元素
+        arr[4] = '诸葛亮';
+        arr[7] = '张辽';
+
+        console.log(arr[5]);  // undefined，只声明，未定义的变量
+        console.log(arr[6]);
+
+        // 2. 修改索引号，添加元素
+        console.log(arr.length);
+        arr.length = 10;
+
+        console.log(arr);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

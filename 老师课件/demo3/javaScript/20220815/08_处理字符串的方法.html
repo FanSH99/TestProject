@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 字符串复制 repeat 重复
+    let str = '好好学习'
+    console.log(str.repeat(2))
+    // 判断字符是否存在字符串中 includes 包含 若存在则返回true 若不存在则返回false
+    let str2 = '好好学习,天天游戏';
+    console.log(str2.includes("哈"));
+    // 判断字符串开头是否包含某个字符 若包含则返回true
+    console.log(str2.startsWith("好好学习"))
+    // 判断字符串结尾是否包含某个字符
+    console.log(str2.endsWith("游戏"))
+
+    // 去除字符串开头和结尾的空字符
+    let str3 = "                    hello world                 ";
+    // console.log(str3.trim())
+    //结尾
+    // console.log(str3.trimStart()+"1111")
+    // 开头
+    console.log(str3.trimEnd())
+</script>
+</html>

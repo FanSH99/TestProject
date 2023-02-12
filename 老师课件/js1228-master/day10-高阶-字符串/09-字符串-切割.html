@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+          slice() 
+            方法可通过指定的开始和结束位置，提取字符串的某个部分
+          语法：
+            字符串.slice(start[, end]);
+              start (必需)：规定从何处开始选取
+              end   (可选)：规定从何处结束选取，即结束处的字符下标。          
+        */
+       var str = '0123456';
+       console.log(str.slice(1,4));
+       console.log(str.slice(2));
+
+       /* 
+          substring() 
+            方法用于提取字符串中介于两个指定下标之间的字符
+            语法如下：
+              字符串.substring(start[, stop]);  
+                start (必需)：截取字符串的起始位置。
+                stop  (可选)：截取字符串的终止位置。
+       */
+
+       console.log(str.substring(1,4));
+       console.log(str.substring(2));
+
+       /* 
+          substr() 
+              方法用于返回一个从指定位置开始的指定长度的子字符串
+            语法如下：
+                str.substr(start[, length]);
+                  start  (必需)：截取的子字符串的起始位置。
+                  length (可选)：在返回的子字符串中应包括的字符个数。
+       */
+       console.log(str.substr(1,4));
+       console.log(str.substr(2));
+    </script>
+</body>
+</html>

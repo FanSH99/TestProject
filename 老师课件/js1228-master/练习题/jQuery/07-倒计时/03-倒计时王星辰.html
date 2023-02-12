@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .d0 {
+            width: 600px;
+            height: 240px;
+            margin: 5% auto;
+            border: 2px solid;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .d1 {
+            width: 160px;
+            height: 80%;
+            box-sizing: border-box;
+            border: 3px dotted;
+            margin-top: 4%;
+            line-height: 192px;
+            text-align: center;
+            font-size: 80px;
+        }
+
+        .btn {
+            width: 200px;
+            height: 100px;
+            border: 1px solid;
+            background: green;
+            margin: 0 auto;
+            font-size: 60px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="d0">
+        <div class="d1">01</div>
+        <div class="d1">10</div>
+        <div class="d1 dd">15</div>
+    </div>
+    <div class="btn">开始</div>
+</body>
+
+</html>
+<script>
+    $(document).ready(function () {
+
+        var hour = $('.d1').first();
+        var minute = $('.d1').first().next();
+        var second = $('.d1').last();
+        var timer;
+        var btnClick = 0;
+
+        $('.btn').click(function () {
+            if (btnClick == 0) {
+                $('.btn').css('background', 'red').text('暂停');
+                btnClick = 1;
+                timer = setInterval(function () {
+                    second.text(second.text() - 1);
+                    if (parseInt(second.text()) < 10) {
+                        second.text("0" + second.text());
+                    }
+                    if (second.text() == "00" && parseInt(minute.text()) > 0) {
+                        minute.text(minute.text() - 1);
+                        if (parseInt(minute.text()) < 10) {
+                            minute.text("0" + minute.text());
+                        }
+                        second.text("59");
+                        if (minute.text() == "00" && parseInt(hour.text()) > 0) {
+                            hour.text(hour.text() - 1);
+                            if (parseInt(hour.text()) < 10) {
+                                hour.text("0" + hour.text());
+                            }
+                            minute.text("59");
+                        }
+                    }
+                    if (hour.text() == "00" && minute.text() == "00" && second.text() == "00") {
+                        $('.btn').css({ background: 'yellow', width: '260px' }).text('重新开始');
+                        clearInterval(timer);
+                        btnClick = 2;
+                    }
+                }, 1);
+            } else if (btnClick == 1) {
+                $('.btn').css('background', 'green').text('开始');
+                clearInterval(timer);
+                btnClick = 0;
+            } else {
+                location.reload();
+            }
+        });
+    });
+</script>

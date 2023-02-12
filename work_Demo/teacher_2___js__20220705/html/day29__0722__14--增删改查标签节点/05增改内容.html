@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            margin: 20px auto;
+            height: 40px;
+            border: 1px solid #444;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        克隆节点---首先要存在一个节点对象
+            node.cloneNode(true)---添加true之后子节点也会克隆
+
+            做轮播的时候会用到克隆。
+
+        插入节点  
+            ---常见一个节点，插入
+            ---找到一个节点，移动到另一个位置。
+            parentNode.insertBefore(newnode,existingnode)
+
+
+    替换节点
+         old.parentNode.replaceCihld(new,old)
+     -->
+    <ul>
+        <li>苹果：200</li>
+        <li>香蕉：300</li>
+        <li>梨：400</li>
+        <li>桃：500</li>
+    </ul>
+    <div class="main">
+        <p class="one">我是文本1</p>
+        <p>我是文本2</p>
+        <p class="three">我是文本3</p>
+        <p>我是文本4</p>
+    </div>
+    <div class="box">
+        <p>我是段落</p>
+    </div>
+
+    <script>
+        var box = document.getElementsByClassName('box');
+        console.log(box);//HTMLCollection [div.box]
+        box0 = box[0];
+        console.log(box[0]);//节点
+        // 克隆节点
+        var cloneBox = box[0].cloneNode();
+        console.log(cloneBox);
+        document.body.appendChild(cloneBox);//只克隆了节点，里面的文字等并没有克隆成功
+        var cloneBox1 = box[0].cloneNode(true);//添加true后会连同子节点一起赋值。
+        console.log(cloneBox1);
+        document.body.appendChild(cloneBox1);
+
+        // 插入节点
+        var img = document.createElement('img');
+        console.log(img);//<img>
+        img.src = './img/role-y.png';
+
+        // 插入节点
+        // var box1 = document.querySelector('.box')[0];  ---undefined
+        var box1 = document.getElementsByClassName('box')[0];
+        console.log(box1);
+        var p = document.getElementsByClassName('p')[0];
+        console.log(p);
+        box1.insertBefore(img, p);
+        var three = document.querySelector('.three');
+        var one = document.querySelector('.one');
+        var main0 = document.getElementsByClassName('main')[0];
+        main0.insertBefore(three, one);
+        var newimg = document.createElement('img');
+        newimg.src = './img/role-xn.png';
+        one.parentNode.replaceChild(newimg, one);
+        var newtxt = document.createTextNode('<h3>水果大甩卖</h3>');//createTextNode只能添加文本，不能添加标签
+        console.log(newtxt);
+        var li1 = document.querySelectorAll('li')[0];
+        li1.parentNode.replaceChild(newtxt, li1);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

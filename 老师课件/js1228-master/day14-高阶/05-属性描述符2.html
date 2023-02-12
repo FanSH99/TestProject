@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            a: 1,
+            b: 2,
+            c: 3
+        };
+        Object.defineProperty(obj, "b", {
+            configurable: false,
+            // configurable: true,
+            // enumerable: true,
+            enumerable: false,
+            value: 22,
+            writable: true
+            // writable: false
+        });
+        // delete obj.b;
+
+        obj.b = 99;
+
+        for (let key in obj) {
+            console.log(key);
+        }
+        console.log(obj);
+        // 注意：默认值
+    </script>
+</body>
+
+</html>

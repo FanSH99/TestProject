@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 2022年11月16日14:10:03
+
+    class App extends React.Component {
+
+        // 最新方案,创建一个ref对象来接收组件实例或dom对象。
+        mynewh1 = React.createRef();
+        mynewchild = React.createRef();
+        render() {
+            return (
+                <div>
+                    {/* 这种方案已经被react废弃，不建议使用。，原因是浪费性能。 */}
+                    <h1 ref="myh1">ref属性的使用</h1>
+                    <button onClick={() => {
+                        // 用refs获取dom对象
+                        console.log(this);
+                        console.log(this.refs.myh1);
+                        let box = this.refs.myh1;
+                        box.style.color = "red"
+                    }}>获取h1对象</button>
+                    <Child ref="mychild" />
+                    <button onClick={() => {
+                        console.log(this.refs.mychild);
+                        this.refs.mychild.addnum();
+                    }}>获取子组件实例</button>
+                    <h1 ref={this.mynewh1}>ref最新使用方案</h1>
+                    <button onClick={() => {
+                        console.log(this.mynewh1.current);
+                        this.mynewh1.current.style.color = "blue"
+                    }}>获取新h1dom对象</button>
+                    <Child ref={this.mynewchild} />
+                    <button onClick={() => {
+                        console.log(this.mynewchild.current);
+                    }}>获取子组件实例新</button>
+                </div>
+            )
+        }
+    }
+
+    console.log(React);
+
+    class Child extends React.Component {
+        state = {
+            msg: "我是一个子组件",
+            num: 100
+        }
+        render() {
+            return (
+                <div>
+                    <h3>{this.state.msg}--{this.state.num}</h3>
+                </div>
+            )
+        }
+        addnum() {
+            this.state.num++
+            this.setState({
+                num: this.state.num
+            })
+        }
+    }
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

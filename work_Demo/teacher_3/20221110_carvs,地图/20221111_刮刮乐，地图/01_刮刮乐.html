@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #cav {
+            background: url("./1.png");
+            background-size: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cav" width="200" height="50"></canvas>
+</body>
+<script>
+    // 2022年11月11日09:13:21
+    let cav = document.getElementById("cav");
+    let ctx = cav.getContext("2d");
+    ctx.rect(0, 0, 200, 50);
+    ctx.fillStyle = "#919191";
+    ctx.fill();
+    let isdown = false;
+    document.addEventListener("mousedown", () => {
+        // console.log("鼠标按下去");
+        isdown = true;
+        // 鼠标按下去开始刮刮乐
+    })
+    document.addEventListener("mousemove", (e) => {
+        if (isdown) {
+            // console.log("鼠标移动了");
+            // 清除一定区域
+            ctx.clearRect(e.pageX, e.pageY, 20, 20)
+        }
+    })
+
+    document.addEventListener("mouseup", () => {
+        // console.log("鼠标松开了");
+        isdown = false;
+    })
+
+
+</script>
+
+</html>

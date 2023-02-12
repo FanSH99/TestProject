@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .right {
+            color: green;
+        }
+
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="uname"> <span>请输入用户名</span>
+    <script>
+        // 需求：表单失去焦点，判断是否合法，并改变样式。
+        let reg = /^[a-zA-Z0-9_-]{2,5}$/;
+
+        let input = document.querySelector('input');
+        let span = document.querySelector('span');
+
+        input.onblur = function () {
+            if (reg.test(this.value)) {
+                console.log('ok');
+                span.className = "right";
+                span.innerHTML = "正确";
+            } else {
+                console.log('no');
+                span.className = "wrong";
+                span.innerHTML = "不合法";
+            }
+        }
+    </script>
+</body>
+
+</html>

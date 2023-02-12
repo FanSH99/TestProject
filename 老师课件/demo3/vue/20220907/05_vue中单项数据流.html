@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    <h1>{{num}}</h1>
+    <button @click="num++">add(父)</button>
+    <child :mynum="num"></child>
+    </div>
+    <template id="child">
+        <div>
+            <h3>我是子组件 {{mynum}}</h3>
+            <button @click="add">add</button>
+        </div>
+    </template>
+</body>
+<script src="../vue.js"></script>
+<script>
+    let child = {
+        template:"#child",
+        props:{
+            mynum:Number
+        },
+        // 在vue中 父组件向子组件传值的过程是一个单项数据流的过程，不允许子组件修改父组件传递过来的数据，若强制修改那么将会报错
+        methods: {
+            add(){
+                console.log(this)
+                this.mynum ++;
+            }
+        },
+        watch:{
+            mynum(newVal){
+                console.log("父组件传递过来的数据改变了",newVal)
+            }
+        }
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            child
+        },
+        data:{
+            num:0
+        }
+    })
+</script>
+</html>

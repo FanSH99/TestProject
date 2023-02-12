@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/">首页</router-link>
+        <!-- vue-router内置组件 用来跳转路由 to属性表示要跳转都哪个路由 -->
+        <router-link to="/city">影院</router-link>
+        <button @click="goMove">电影</button>
+        <!-- 用来展示路由所匹配组件 -->
+        <router-view></router-view>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<!-- 引入vue-router.js -->
+<script src="../vue-router.js"></script>
+<script>
+   let move = {
+    template:"<h1>电影组件</h1>"
+   }
+   let yingyuan = {
+    template:"<h1>影院组件</h1>"
+   }
+   let Home = {
+    template:"<h1>首页</h1>"
+   }
+    // 创建一个路由实例
+    let router = new VueRouter({
+        // 定义路由模式
+        mode:"hash",
+        /* 
+         hash：使用hash模式之后 路径上会自定带一个#号缺点不美观，优点每次访问不需要向服务器发送请求 实现页面局部更新
+         history: 使用 history模式之后 路径上不会带有#号 优点：高级美观，缺点：每次访问需要向服务端发送请求，需要后端配置，若不配置则会返回404 
+        */
+        // 定义路由匹配规则
+        routes: [
+            {
+                // 定义路由匹配路径
+                path:"/move",
+                // 路由名称；
+                name:"move",
+                // 定义路径所对应的组件 （当你访问当前路径是要展示哪个组件）
+                component:move
+            },{
+                path:"/",
+                name:"home",
+                component:Home
+            },{
+                path:"/city",
+                name:"yingyuan",
+                component:yingyuan
+            }
+        ]
+    });
+    // 使用vue-router
+    Vue.use(router)
+    console.log(router)
+   let vm =  new Vue({
+        el:"#app",
+        // 注册路由实例
+        router:router,
+        methods: {
+            goMove(){
+                console.log(this)
+                // 编程式跳转路由
+                this.$router.push({
+                    path:"/move"
+                })
+            }
+        },
+    })
+    console.log(vm)
+
+    /* 
+    路由使用：
+    1. 引入vue-router.js
+    2. 创建路由实例 new VueRouter
+    3. 定义路由匹配规则 routes:[{path,name,component}];
+    4. Vue.use使用路由
+    5. 在vue实例中注册路由
+    6. router-view 展示路由匹配到的组件
+    7. router-link 路由跳转 
+    8. this.$router.push 编程式跳转路由
+    */
+</script>
+</html>

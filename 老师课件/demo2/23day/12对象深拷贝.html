@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var data = {
+            code: 1,
+            list: [{
+                name: "詹桑",
+                title: "值",
+                arr: [2, 3, 4],
+                isShow: true,
+                obj: {
+                    name: "123"
+                }
+            }, {
+
+                name: "詹桑2",
+                title: "值2",
+                arr: [2, 3, 4],
+                obj: {
+                    name: "123"
+                }
+            }]
+        };
+
+        // 浅拷贝
+        // var obj={};
+        // var obj=data;
+        // console.log(obj,data);
+
+        // obj.code=5;
+        // console.log(obj,data);
+
+//  Object.assign(o, obj); 数据不复杂是深拷贝，数据复杂的话，浅拷贝
+
+    //  var obj={};
+    //  Object.assign(obj,data);
+    // //  console.log(obj,data);
+    //  obj.code=5;
+    // //  console.log(obj,data);
+    //  obj.list.push({name:'红红'})
+    //  console.log(obj,data);
+
+
+    // 深拷贝 封装一个函数
+    //  两层   数组 [ ] 对象{}         值 5种基本数据类值  出口
+    function deepCopy(obj){
+           if(typeof obj!='object'){
+            // obj 就是基本数据类型
+              return obj
+           }
+         var newObj=  obj instanceof Array?[]:{}
+          for(var key in obj){
+            newObj[key]=deepCopy(obj[key])
+          }
+          return newObj;
+
+    }
+
+    var data = {
+            code: 1,
+            list: [{
+                name: "詹桑",
+                title: "值",
+                arr: [2, 3, 4],
+                isShow: true,
+                obj: {
+                    name: "123"
+                }
+            }]
+        };
+   var newObj= deepCopy(data);
+   console.log(newObj,data);
+   newObj.list.push({name:'红红'})
+        //     {code:deepCopy(1),list:deepCopy([{
+        //         name: "詹桑",
+        //         title: "值",
+        //         arr: [2, 3, 4],
+        //         isShow: true,
+        //         obj: {
+        //             name: "123"
+        //         }
+        //     }])}
+
+
+        //     {code:1,list:[deepCopy({
+        //         name: "詹桑",
+        //         title: "值",
+        //         arr: [2, 3, 4],
+        //         isShow: true,
+        //         obj: {
+        //             name: "123"
+        //         }
+        //     })]}
+
+        //     {code:1,list:[{name:deepCopy("詹桑"),title:deepCopy("值"),arr:deepCopy([2, 3, 4])}]}
+        //    {code:1,list:[{name:"詹桑",title:"值",arr:[]}]}
+
+
+        // var newObj = {
+        //     code: 1,
+        //     list: [{
+        //         name: "詹桑",
+        //         title: "值",
+        //         arr: [2, 3, 4],
+        //         isShow: true,
+        //         obj: {
+        //             name: "123"
+        //         }
+        //     },{
+        //         name:'红红'
+        //     }]
+        // };
+    </script>
+</body>
+
+</html>

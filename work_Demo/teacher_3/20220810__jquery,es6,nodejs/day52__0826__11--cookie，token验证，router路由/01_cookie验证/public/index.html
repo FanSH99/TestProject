@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bin/bootstrap.min.css">
+    <style>
+        .box {
+            width: 400px;
+            height: auto;
+            margin: 100px
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2022年8月26日09:08:10 -->
+    <div class="box" id="box">
+        <form role="form" action="" type="">
+            <div class="form-group">
+                <label for="name">用户名：</label>
+                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+            </div>
+            <div class="form-group">
+                <label for="name">密码：</label>
+                <input type="text" class="form-control" id="pwd" placeholder="请输入密码">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">请打勾
+                </label>
+            </div>
+            <button type="button" class="btn btn-default" onclick="login(event)">登录</button>
+        </form>
+    </div>
+    <div style="display: none;" id="box1">
+        <h1>欢迎来到我的主页</h1>
+        <button class="out">退出</button>
+    </div>
+
+</body>
+<script src="./bin/jquery-3.6.0.min.js"></script>
+<script src="./bin/bootstrap.min.js"></script>
+
+<script>
+    function login(e) {
+        console.log(e);
+        // 阻止默认事件，还是会提交
+        // e.preventDefault();
+        $.ajax({
+            url: "/user/login",
+            method: "get",
+            data: {
+                username: $("#name").val(),
+                passward: $("#pwd").val()
+            },
+            success(res) {
+                console.log(res);
+                if (res == "登录成功") {
+                    $("#box1").show();
+                    $("#box").hide();
+                }
+            }
+
+        })
+    }
+
+    // 判断是否登录  只要浏览器存储的有cookie，那么在发送http请求的时候，浏览器会自动将cookie携带过去。
+    /*  function checkLogin() { */
+    $.ajax({
+        url: "/islogin",
+        method: "get",
+        success(res) {
+            console.log(res);
+            if (res == "已登录") {
+                $("#box").hide();
+                $("#box1").show();
+
+            } else {
+                $("#box1").hide();
+                $("#box").show();
+            }
+        }
+    })
+
+
+    $(".out").click(() => {
+        $.get("/outlogin", (res) => {
+            console.log(res);
+            if (res = "退出成功") {
+                $("#box1").hide();
+                $("#box").show();
+            }
+        })
+    })
+
+</script>
+
+</html>

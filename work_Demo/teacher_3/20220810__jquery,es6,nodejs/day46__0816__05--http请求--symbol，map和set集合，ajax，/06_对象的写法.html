@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let user = {
+        name: "白浅",
+        age: 18,
+        sex: "女"
+    }
+    let { name, age, sex } = user;//结构赋值，左边大括号里面数据必须与右边里面的变量名一致。
+    console.log(name, age, sex);//白浅 18 女
+
+    let price = 1999;
+    let color = "red";
+    let cart = {
+        color,
+        price,
+    }
+    console.log(cart);//{color: 'red', price: 1999}
+
+    /* 
+    在es6中若属性名与属性值相同时，可以省略任意一个，上面那种写法很常见。多练习。
+    es6写法更简便，要多用es6
+    */
+    let goods = {
+        name: "手机",
+        price: "2999",
+        // data:function(){}
+        data() {
+            console.log("生产日期为：XXXXXX");
+        },
+        colors: () => {
+            console.log("我是红色的");
+        }
+    }
+    console.log(goods);
+</script>
+
+</html>

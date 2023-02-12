@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+
+<script type="text/babel">
+    let user = {
+        name: "张三",
+        age: 18,
+        sex: false
+    }
+
+    let url = "https://ts3.cn.mm.bing.net/th?id=ORMS.46552f6f1c1828c9e0b2aeb71002f24b&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1.25&p=0";
+    let link = "https://www.baidu.com"
+
+    let styles = {
+        color: "blue",
+        fontWeight: "700"
+    }
+    let classname = "red"
+    let dom = (
+        <div>
+            {/* 必须有结束标签，单标签需要加反斜杠。 */}
+            <img src="https://ts3.cn.mm.bing.net/th?id=ORMS.add90f3d9c1f4a8aaa1cfcfa213167e6&pid=Wdp&w=300&h=156&qlt=90&c=1&rs=1&dpr=1.25&p=0" alt="" />
+            <img src={url} alt="" />
+            <a href={link}>百度一下</a>
+            {/* jsx中用小驼峰来定义多单词属性，如类名className */}
+            <div className={classname} style={{ fontSize: "30px" }}>
+                绑定类名
+            </div>
+            <div style={styles}>
+                绑定样式
+            </div>
+        </div>
+    )
+
+
+
+    ReactDOM.render(dom, document.getElementById("app"))
+</script>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        冒泡机制
+        优势
+        动态增加的元素，如果添加事件，容易事件成功不了， 利用（冒泡机制）优点，可以事件委托的方法，可以解决
+
+        事件委派
+        不是每个子节点单独设置事件监听器，而是事件监听器设置在其父节点上，然后利用冒泡原理影响设置每个子节点
+
+        本来该到子节点加的事件，把事件加在祖辈的元素身上，让祖辈代替子节点执行。利用冒泡原理
+        注意：e.target （响应事件目标元素）  用法       this  (绑定事件的元素)
+     -->
+     <ul>
+        <li>我是列表项1</li>
+        <li class="red">我是列表项2</li>
+        <li>我是列表项3</li>
+        <li>我是列表项4</li>
+     </ul>
+     <button>添加</button>
+
+     <!-- 1.对每个li 增加单击事件
+          2.单击添加按钮，还可以添加li, 动态新增的li也要有事件
+    -->
+    <script>
+        // 1.以前的方法
+      var ul=  document.querySelector('ul')
+      var lis=  document.querySelectorAll('ul>li');
+    //   for(var i=0;i<lis.length;i++){
+    //        lis[i].onclick=function(){
+    //         console.log('good');
+    //        }
+    //   }
+    // 事件委托
+       ul.onclick=function(e){
+           console.log('nice');
+        //如何知道打单是哪个li  e.target
+        console.log(e);
+        console.log(e.target,this);
+        if(e.target.className=='red'){
+            e.target.style.color='red';
+        }
+       }
+
+      var btn=document.querySelector('button');
+      btn.onclick=function(){
+        var li= document.createElement('li');
+        li.innerHTML='我是新增列表项5';
+         ul.appendChild(li)
+      }
+
+    </script>
+</body>
+</html>

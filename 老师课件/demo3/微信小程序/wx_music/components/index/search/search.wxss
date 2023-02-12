@@ -1,0 +1,16 @@
+.search{
+    width: 95%;
+    margin: 0rpx auto;
+    padding: 13rpx 0;
+    text-align: center;
+    font-size: 31rpx;
+    color: #ffcd32;
+    border: 1px solid #414141;
+    border-radius: 10rpx;
+}
+.search_icon{
+    width: 40rpx;
+    height: 40rpx;
+    float: right;
+    margin-right: 20rpx;
+}

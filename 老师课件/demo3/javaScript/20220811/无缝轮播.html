@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            margin: 30px auto;
+            /* border: 5px solid red; */
+            position: relative;
+            height: 187px;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+        }
+        .imgs{
+            width: 100%;
+            display: flex;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+     <div class="box">
+      <div class="imgs">
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6cdd149cb0fc40637a84b1fc5971f662.jpg?w=2452&h=920" alt="">
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b6f6c0c0eb8ede475c8858bc1370cfe9.jpg?thumb=1&w=1533&h=575&f=webp&q=90" alt="">
+        <!-- 第一张图片放到最后 -->
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6cdd149cb0fc40637a84b1fc5971f662.jpg?w=2452&h=920" alt="">
+      </div>
+     </div>
+     <button>移动</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    let playIndex =0;
+    setInterval(()=>{
+        playIndex++;
+        if(playIndex>=3){
+            // 当滚动到最后一张也就是视觉上的第一张 该百年imgs位置为0
+            // playIndex = 0
+            $('.imgs').css("left",'0')
+            playIndex = 1;
+        }
+        $('.imgs').animate({
+            left:-playIndex*500+'px'
+        })
+    },1000)
+</script>
+</html>

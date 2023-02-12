@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // number 的取值范围：±2^53 - 1 (大约17位)
+
+        // 1. 创建bigint的方法是
+        // 1.1 在整型文字的末尾加上n，
+        const big1 = 1234567890123456789012345678901234567890n;
+        // 1.2 调用函数bigint从字符串
+        const big2 = BigInt("1234567890123456789012345678901234567890");
+        // 1.3 数字等创建bigint
+        const big3 = BigInt(10); // same as 10n
+        const big4 = BigInt(12);  
+
+        // 2. 它是一种基本数据类型 
+        console.log(typeof big1);
+
+        // 3. bigint 转化为 number
+        console.log(Number(big3));
+
+        // 4. bigint 也可以使用算数运算符，但是不要和 number 混用
+        console.log(big3 + big4);
+
+        // 5. 有些浏览器的版本不支持
+
+        // 6. 和 Symbol 一样，为何不能 new，因为 它是一个普通函数，而不是构造函数
+    </script>
+</body>
+
+</html>

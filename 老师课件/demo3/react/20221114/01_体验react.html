@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <div id="box">
+
+    </div>
+</body>
+<!-- 引入react语法库  -->
+<script src="../react.development.js"></script>
+<!-- 引入react 核心dom库 用来为react提供dom操作的 基于react语法库 -->
+<script src="../react-dom.development.js"></script>
+<script>
+    // 原生js创建dom渲染页面
+    let h1 = document.createElement("h1");
+    console.dir(h1)
+    h1.innerText = '哈哈哈哈哈哈';
+    document.getElementById("app").appendChild(h1);
+    console.log(React)   
+    console.log(ReactDOM)
+    // 在html中元素由三部分组成：标签 标签内容 标签属性（id,class,title...）img(src alt..) a(herf...)
+    // react 17创建一个虚拟dom
+    let span = React.createElement("span",null,"哈哈哈哈")
+    let dom = React.createElement("h1",{id:"box"},"react真nice",span);
+    console.log(dom)
+    // 将虚拟dom 转化为真实dom渲染到页面上
+    ReactDOM.render(dom,document.getElementById("box"),()=>{
+        console.log("渲染ok")
+    })
+</script>
+</html>

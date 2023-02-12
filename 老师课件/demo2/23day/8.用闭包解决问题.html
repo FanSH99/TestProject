@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是列表1</li>
+        <li>我是列表2</li>
+        <li>我是列表3</li>
+        <li>我是列表4</li>
+    </ul>
+    <script>
+        var lis = document.querySelectorAll('ul>li');
+
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].setAttribute('_index', i)
+        //     lis[i].onclick = function () {
+        //         //   console.log(i);
+        //         var index = this.getAttribute('_index');
+        //         console.log(index);
+        //     }
+        // }
+
+        // 解决方法  闭包
+        // for (var i = 0; i < lis.length; i++) {
+        //     (function(i) {
+        //         lis[i].onclick = function () {
+        //             console.log(i);
+
+        //         }
+        //     })(i)
+
+        // }
+
+        for (var i = 0; i < lis.length; i++) {
+            (function(i) {
+                setTimeout(function () {
+                    console.log(lis[i].innerHTML);
+                })
+            })(i)
+
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //     var name1 = "The Window";
+        //     var object = {
+        //         name1: "My Object",
+        //         getNameFunc: function () {
+        //             return function () {
+        //                 return this.name1;
+        //             };
+        //         }
+        //     };
+
+        //   var fn=  object.getNameFunc();
+        //     var b= fn();// this 指向是window
+        //     console.log(b);
+
+
+        var name1 = "The Window";
+        var object = {
+            name1: "My Object",
+            getNameFunc: function () {
+                var that = this;  // 此函数的this 赋值给一个变量   ，它指向是函数的调用者  Object             
+                return function () {
+                    return that.name1;
+                };
+            }
+        };
+
+      var fn=  object.getNameFunc();
+     var b= fn();
+     console.log(b);//"My Object"
+    </script>
+</body>
+
+</html>

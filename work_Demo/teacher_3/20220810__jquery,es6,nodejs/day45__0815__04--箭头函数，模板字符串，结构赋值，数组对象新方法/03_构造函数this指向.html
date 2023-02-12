@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    2022年8月15日10:19:22
+   -->
+</body>
+<script>
+
+    function People(name, age) {
+
+        this.name = name;
+        this.age = age;
+        console.log(this);
+        console.log('啦啦啦');
+
+    }
+    People(); /* this指向window */
+
+    function Person(name, age) {
+
+        this.name = name;
+        this.age = age;
+        say = function () {
+            console.log(this);
+            console.log('我是一个构造函数');
+        }
+    }
+    Person.prototype.speak = function () {
+        console.log('我是一个原型对象');
+    }
+
+
+    var p1 = new Person('海绵宝宝', 18)//this指向Person
+    console.log(p1);
+    console.log(p1.say);
+
+    /*
+    new 关键字 做了什么？
+
+    1.创建一个空对象
+    2.更改了this指向，让this指向这个空对象。
+    3.给这个对象添加属性和方法。确定了空对象的各个属性及对象圆形。
+    4.将创建的对象返回出来。
+    */
+</script>
+
+</html>

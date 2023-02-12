@@ -1,0 +1,10 @@
+ @media screen and (max-width:1200px) and (min-width:800px) { */
+    .box{
+        border-radius: 50%;
+      background: purple;
+    }
+    .box1{
+        border-radius: 50%;
+        background: blue;
+    }
+} 

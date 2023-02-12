@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #time {
+            width: 600px;
+            height: 50px;
+            background-color: black;
+            color: #fff;
+            font-size: 25px;
+            line-height: 50px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        1.让时间动起来，要在页面固定的位置输出
+        2、星期几，数字改汉字
+        3、1位数字转2位数字
+                                               函数名
+        // 定时器  两种  周期调用  setInterval(回调函数,1000)  时间是毫秒   1秒之后，调用第一次，以后
+        每一秒调用1次
+        //              延迟调用  setTimeout(回调函数,1000)  时间是毫秒    1秒之后，只调用一次
+     -->
+    <div id="time">
+
+    </div>
+    <script>
+        var timer = document.querySelector('#time');
+        function showTime() {
+            var date1 = new Date();
+            var year = date1.getFullYear();
+            var month = date1.getMonth() + 1;
+            var day = date1.getDate();
+            var week = date1.getDay();
+            // 一周有七天
+            switch (week) {
+                case 0:
+                    week = '日';
+                    break;
+                case 1:
+                    week = '一';
+                    break;
+                case 2:
+                    week = '二';
+                    break;
+                case 3:
+                    week = '三';
+                    break;
+                case 4:
+                    week = '四';
+                    break;
+                case 5:
+                    week = '五';
+                    break;
+                case 0:
+                    week = '六';
+                    break;
+            }
+            var hours = date1.getHours();
+            var minutes = date1.getMinutes();
+            var seconds = date1.getSeconds();
+
+            //  if(hours<10){
+            //     hours='0'+hours
+            //  }
+           hours= hours<10?'0'+hours:hours;
+           minutes= minutes<10?'0'+minutes:minutes;
+           seconds= seconds<10?'0'+seconds:seconds;
+           month= month<10?'0'+month:month;
+           day= day<10?'0'+day:day;
+
+
+            var time = year + '-' + month + '-' + day + '星期' + week + ' ' + hours + ':' + minutes + ':' + seconds;
+            // document.write(time);
+            timer.innerHTML = time;
+
+
+        }
+
+        showTime();// 调用函数 ，函数不调用不执行
+        // 时间动起来
+        setInterval(showTime, 1000)
+
+        // innerHTML   内部的html    在一个标记中间增加内容
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月15日17:06:39
+
+        es6新增的处理数组新方法
+        1.forEach(function(item,index){})  item表示遍历得到的每一项，index表示下标。  forEach没有返回值。
+        2.map  ----重要, 可以有返回值，当没有返回值的时候相当于forEach，遍历。
+        3.sort 排序  sort(function(a,b){})  return a-b  从小到大排序。 return b-a从大到小排序。
+        4.find
+        5.findIndex   ---重要
+        6.fifter  --重要，过滤，返回一个新数组  
+        7.some 判断是否有满足条件的元素，只要有一个满足，就返回true.
+        8.every 判断是否全部满足条件。
+     -->
+</body>
+<script>
+    let arry = [11, 22, 33, 44, 55];
+    arry.forEach((item, index) => {
+        console.log(`${item}----------${index}`);//11----------0 ....
+    })
+    let b = arry.map((item, index) => {
+        console.log(`${item}___________${index}`);//11___________0 ...
+        return '哈哈哈'
+    })
+    /*
+    forEach和map的区别
+    1.forEach不能有return值。
+    */
+    console.log(b);//['哈哈哈', '哈哈哈', '哈哈哈', '哈哈哈', '哈哈哈']
+
+    // sort  a是上一个数 b是下一个数
+
+    let arr2 = [34, 65, 345, 236, 7];
+    console.log(arr2);
+    let new2 = arr2.sort((a, b) => {
+        return a - b;
+    })
+    console.log(new2);//[7, 34, 65, 236, 345]
+    let new3 = arr2.sort((a, b) => {
+        return b - a;
+    })
+
+    console.log(new3);// [345, 236, 65, 34, 7]
+
+    let obj = [
+        {
+            name: "海绵宝宝",
+            age: 18,
+            sex: "男"
+        },
+        {
+            name: "派大星",
+            age: 19,
+            sex: "男"
+        },
+
+        {
+            name: "闪迪",
+            age: 16,
+            sex: "女"
+        },
+    ]
+    let newobj1 = obj.sort((a, b) => {
+        return b.age - a.age
+    })
+    console.log(newobj1);
+    /*
+ 0：   {name: '派大星', age: 19, sex: '男'}
+1: {name: '海绵宝宝', age: 18, sex: '男'}
+2: {name: '闪迪', age: 16, sex: '女'}
+    */
+
+    let newobj2 = obj.sort((a, b) => {
+        return a.age - b.age
+    })
+    console.log(newobj2);
+
+    /*
+0: {name: '闪迪', age: 16, sex: '女'}
+1: {name: '海绵宝宝', age: 18, sex: '男'}
+2: {name: '派大星', age: 19, sex: '男'}
+    */
+
+
+    // find
+    let stu = ["海绵宝宝", "派大星", "张三", "海绵宝宝"];
+    let num = stu.find((item, index) => {
+        return item == "海绵宝宝"
+    })
+    console.log(num);//海绵宝宝
+    let num2 = stu.find((item, index) => {
+        return item == "张三2"
+    })
+    console.log(num2);//undefined
+
+
+    let list = [
+        {
+            name: "海绵宝宝",
+            age: 18,
+            sex: "男"
+        },
+        {
+            name: "派大星",
+            age: 19,
+            sex: "男"
+        },
+
+        {
+            name: "闪迪",
+            age: 16,
+            sex: "女"
+        },
+        {
+            name: "章鱼哥",
+            age: 30,
+            sex: "男"
+        },
+    ]
+
+    let l1 = list.find((item, index) => {
+        return item.age >= 18
+    })
+    console.log(l1);//{ name: "海绵宝宝", age: 19,  sex: "男"}
+
+    let l2 = list.findIndex((item, index) => {
+        return item.age >= 19
+    })
+    console.log(l2);//1
+
+    let newList = list.filter((item, index) => {
+        return item.age > 18
+    })
+    console.log(newList);
+    /* 
+0: {name: '派大星', age: 19, sex: '男'}
+1: {name: '章鱼哥', age: 30, sex: '男'}
+    */
+
+    // 判断数组中是否有满足条件的元素。
+    let isHas = list.some((item, index) => {
+        return item.age >= 30
+    })
+    console.log(isHas);//true  有一个满足就返回true
+    let isEve = list.every((item, index) => {
+        return item.age >= 18
+    })
+    console.log(isEve);//false  ---全部满足才返回true
+
+    let isMap = list.map((item, index) => {
+        return item.age >= 18
+    })
+    console.log(isMap);//[true, true, false, true]
+
+    let isInclu=list.includes((item,index)=>{
+        return item.name=="海绵宝宝"
+    })
+    console.log(isInclu);
+
+
+</script>
+
+
+</html>

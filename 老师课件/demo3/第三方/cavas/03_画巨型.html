@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #mycanvas{
+            width: 400px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas">
+
+    </canvas>
+</body>
+<script>
+    let cav = document.getElementById("mycanvas");
+    console.dir(cav)
+    // 获取canvas绘画实例
+    let ctx = cav.getContext("2d");
+    ctx.rect(20,20,150,100);
+    ctx.stroke();
+    ctx.fill();
+</script>
+</html>

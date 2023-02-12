@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        4.通过name查找 document.getElementsByName('password');
+
+        5.选择器   
+         docunment.querySelector('input');
+         docunment.querySelector('.pwd');
+         document.querySelector('input[type=password')
+
+         6.选择器
+         docunment.querySelectorAll('input');
+
+
+
+
+     -->
+    <input type="text" name="user"><br>
+    <input type="password" name="password"><br>
+    <input type="radio" name="sex">男
+    <input type="radio" name="sex">女<br>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+
+    <script>
+        var sexs = document.getElementsByName('sex');
+        console.log(sexs);//NodeList(2) [input, input]
+        var sex_man = sexs[0];//<input type="radio" name="sex">男
+        console.log(sex_man);
+        sex_man.checked = true;
+        var user = document.getElementsByName('user');
+        console.log(user);//NodeList [input]
+        var user0 = user[0];
+        console.log(user0);//<input type="text" name="user">
+        user0.value = '请输入账号';
+        var pwd = document.getElementsByName('password');
+        console.log(pwd);//NodeList [input]
+        var pwd0 = pwd[0];
+        var ipt = document.querySelector('input');
+        console.log(ipt);//<input type="text" name="user">
+
+        var iptpwd = document.querySelector('input[type=password');
+        console.log(iptpwd);//<input type="password" name="password">
+
+        var ipts = document.querySelectorAll('input');
+        console.log(ipts);//NodeList(4) [input, input, input, input]
+
+        var li1 = document.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
+        console.log(li1);//<li>111</li>
+
+
+
+
+
+    </script>
+</body>
+
+</html>

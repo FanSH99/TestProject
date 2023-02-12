@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        一、函数的分类
+        （1）命名函数
+         function fn(){}     fn()
+
+         (2)匿名函数  function(){}
+           两种执行方法
+            1、赋值再执行    函数表达式   
+            var fn=function(){}
+            fn();// 必须放在声明之后再调用
+            2、自我执行，自执行函数
+
+            (function(){})()
+        (3) var fn1= new Function("a","b",..,'console.log(a+b)')
+         fn1(1,2)
+
+      二、函数调用方法
+         （1）普通函数   fn()
+         （2）字面量对象方法  obj.fn()
+         （3）构造函数        new Fn()
+         （4）绑定事件函数    btn.onclick=fn    btn.onclick=function(){}
+         （5）定时器函数      setInterval(fn,1000)   setInterval(function(){},1000)    setInterval("fn()",1000)
+         （6）自执行函数      (function(){})()
+
+     三、this 指向的问题
+       1. fn()               window.fn()          this 指向window
+       2. obj.fn()           方法的调用者          this指向obj
+       3. var fn1=  new Fn()                      this指向实例对象 fn1
+        
+       4. btn.onclick=fn    事件的触发者（调用者）   this指向btn
+       5.定时器函数                                  this指向是window
+       6.自执行函数(立即执行函数)                      this指向是window
+
+     -->
+     <script>
+       var fn1= new Function('a','b','console.log(a+b)');
+       fn1(1,2)
+     </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+		 3. GET 和 POST 请求的区别
+            1. GET 请求参数在请求行，没有请求体
+            POST 请求参数在请求体
+            2. GET请求参数的大小有限制，POST 没有。
+			
+            restful 
+                1. restful 只是一种规范，解决互联网请求时 api 命名混乱问题。做到见名知义。
+                2. URL只指定资源，以HTTP方法动词进行不同的操作。
+                    每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词。
+                3. 动词规范
+                    GET（SELECT）：从服务器取出资源（一项或多项）。
+                    POST（CREATE）：在服务器新建一个资源。
+                    PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
+                    DELETE（DELETE）：从服务器删除资源 
+
+                    还有三个不常用的 HTTP 动词
+                        HEAD：获取资源的元数据。
+                        OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。
+                        PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
+                4. 案例
+                    GET     /zoos：                 列出所有动物园
+                    POST    /zoos：                 新建一个动物园
+                    GET     /zoos/ID：              获取某个指定动物园的信息
+                    PUT     /zoos/ID：              更新某个指定动物园的信息（提供该动物园的全部信息）
+                    PATCH   /zoos/ID：              更新某个指定动物园的信息（提供该动物园的部分信息）
+                    DELETE  /zoos/ID：              删除某个动物园
+                    GET     /zoos/ID/animals：      列出某个指定动物园的所有动物
+                    DELETE  /zoos/ID/animals/ID：   删除某个指定动物园的指定动物    
+                5. 状态码
+                    200      表示请求成功
+                    4**      客户端异常，如参数异常
+                    5**      服务器异常，如服务器宕机
+                6. 安全性和幂等性
+                      安全性：不会改变资源状态，可以理解为只读的；
+                      幂等性：执行1次和执行N次，对资源状态改变的效果是等价的。    
+            
+            postman 的使用          
+            
+            两种传参方式
+                1. http://www.baidu.com?name=cc&age=22
+                2. 动态传参
+                    http://www.baidu.com/cc/22
+                    后台服务器会自动解析成对应的 name = cc, age = 22  
+                    cc 和 22 只是占位符，具体解析怎么解析，看后台应用。
+        */
+    </script>
+</body>
+
+</html>

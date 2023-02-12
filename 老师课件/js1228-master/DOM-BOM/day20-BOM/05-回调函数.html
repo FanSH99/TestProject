@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn3'>开启</button>
+    <div>一路向北</div>
+    <script>
+        // 点击按钮， div 移动，到了目的地，div 颜色变化
+        let btn = document.querySelector('button');
+        let div = document.querySelector('div');
+
+        btn.addEventListener('click', function () {
+            move(div, 500,callback);
+        });
+
+        function move(obj, target, callBack) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(() => {
+                let left = obj.offsetLeft;
+                if (left == target) {
+                    clearInterval(obj.timer);
+                    // 非空判断
+                    if (callBack) {
+                        callBack();
+                    }
+
+                    return;
+                }
+                let step = target - left;
+                step = step / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                obj.style.left = left + step + "px";
+            }, 100);
+        }
+
+        function callback() {
+            div.style.backgroundColor = 'red';
+            console.log(`over`);
+        }
+
+    </script>
+</body>
+
+</html>

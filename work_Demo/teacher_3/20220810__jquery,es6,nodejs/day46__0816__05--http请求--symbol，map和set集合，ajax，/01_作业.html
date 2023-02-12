@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 40px;
+            border-collapse: collapse;
+        }
+
+        table tr,
+        th {
+            width: 120px;
+            height: 28px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div>
+        <label for="sno">学号</label>
+        <input type="text" name="" id="sno">
+    </div> -->
+    <div>
+        <label for="uname">姓名</label>
+        <input type="text" name="" id="uname">
+    </div>
+    <div>
+        <label for="">年龄</label>
+        <input type="text" name="" id="age">
+    </div>
+    <div>
+        <label for="">性别</label>
+        <input type="text" name="" id="sex">
+    </div>
+    <div>
+        <button class="add">添加</button>
+    </div>
+    <div>
+        <input type="text" name="" id="seach" placeholder="请输入查询信息">
+    </div>
+    <div>
+        <table border="1" collaspe>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+    let data = [
+        {
+            sno: "20181001",
+            name: "海绵宝宝",
+            sex: "男",
+            age: 18,
+        },
+        {
+            sno: "20181002",
+            name: "派大星",
+            sex: "男",
+            age: 16,
+        },
+        {
+            sno: "20181003",
+            name: "珊迪",
+            sex: "女",
+            age: 16,
+        },
+        {
+            sno: "20181004",
+            name: "蟹老板",
+            sex: "男",
+            age: 37,
+        },
+        {
+            sno: "20181005",
+            name: "章鱼哥",
+            sex: "男",
+            age: 46,
+        },
+        {
+            sno: "20181006",
+            name: "白浅",
+            sex: "女",
+            age: 18,
+        },
+        {
+            sno: "20181007",
+            name: "白子画",
+            sex: "男",
+            age: 34,
+        },
+        {
+            sno: "20181008",
+            name: "白凤九",
+            sex: "女",
+            age: 16,
+        },
+        {
+            sno: "2018109",
+            name: "白笙",
+            sex: "女",
+            age: 37,
+        },
+        {
+            sno: "20181010",
+            name: "小贱",
+            sex: "男",
+            age: 26,
+        },
+        {
+            sno: "20181011",
+            name: "花千骨",
+            sex: "女",
+            age: 16,
+        },
+        {
+            sno: "20181012",
+            name: "花晨宇",
+            sex: "男",
+            age: 35,
+        },
+    ]
+
+    // 封装渲染函数，参数为哪个列表九江哪个列表渲染到页面上
+    console.log(data);
+    let render = (data) => {
+        let html = "";
+        data.forEach((item, index) => {
+            let tr = `<tr><td>${item.index}</td><td>${item.name}</td><td>${item.sex}</td><td>${item.age}</td><td><button class="remove">删除</button></td></tr>`;
+            html += tr;
+            console.log(tr);
+        });
+        // console.log(html);
+        $('tbody').html(html);
+    }
+    render(data);
+
+    let idx = data.length + 1;
+    console.log(idx);
+    console.log(data);
+    let idx1 = data[length - 1].index.splice(6);
+    console.log(idx1);
+    $(".add").on("click", function () {
+        let sno = $("#sno").val()
+        let name = $("#uname").val();
+        let age = $("#age").val()
+        let sex = $("#sex").val()
+        if (name != "") {
+            let obj = {
+
+                index: sno,
+                name: name,
+                age: age,
+                sex: sex,
+            }
+            data.push(obj);
+            render(data);
+        }
+
+        console.log(name, age, sex);
+        console.log(data.length);
+        /*  let idx = data.length; */
+
+
+    })
+
+    $("#seach").on("input", () => {
+        let str = $("#seach").val();
+        let list = data.filter((item, index) => {
+            return item.name.includes(str)
+        })
+        render(list);
+    })
+  /*   $("remove").click = remove(); */
+
+    /*   function remove(index) {
+          data.splice(index, 1);
+          render(data);
+      } */
+
+</script>
+
+</html>

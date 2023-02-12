@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        /* 
+            思路：
+                1. 获取数据
+                2. 渲染数据
+                    2.1 每个对象占一行。
+                    2.2 对象的每个属性值占一列。
+                    2.3 手动补齐 删除 按钮
+                3. 删除事件
+        */
+        // 1. 变量接收请求到的数据
+        var datas = [
+            {
+                name: '肖战',
+                subject: 'js',
+                score: 100
+            },
+            {
+                name: '王一博',
+                subject: 'C',
+                score: 120
+            },
+            {
+                name: '李易峰',
+                subject: 'Python',
+                score: 99
+            }
+        ];
+
+        // 2. 动态渲染数据
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            // 2.1 行
+            var tr = document.createElement('tr');
+            // tr.innerHTML = datas[i].name;
+            // 2.2 列 对象的属性
+            for (var k in datas[i]) {
+                // console.log(k, datas[i][k]);
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+
+            // 2.3 删除按钮
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(td);
+
+            tbody.appendChild(tr);
+        }
+
+        // 3 删除事件
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                console.log(this);
+                console.log(this.parentNode);
+                console.log(this.parentNode.parentNode);
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

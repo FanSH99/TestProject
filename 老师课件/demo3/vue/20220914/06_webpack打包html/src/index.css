@@ -1,0 +1,6 @@
+#app{
+    width: 200px;
+    height: 200px;
+    background-image: url("./image/1.png");
+    background-size: cover;
+}

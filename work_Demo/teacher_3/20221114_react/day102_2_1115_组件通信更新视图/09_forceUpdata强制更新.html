@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+    // 2022年11月15日23:48:07
+    class App extends React.Component {
+
+        state = {
+            user: {
+                name: "张三",
+                age: 19
+            },
+            list: [2, 345, 34, 98]
+        }
+        render() {
+            let { user, list } = this.state
+            return (
+                <div>
+                    <p>{user.name}--{user.age}</p>
+                    <ul>
+                        {
+                            list.map((item, index) => {
+                                return <li key={index}>{item}</li>
+                            })
+                        }
+                    </ul>
+                    <button onClick={() => {
+                        list[0] = 100;
+                        // this.setState({})
+                        // 强制更新，一般不建议使用，如果没办法了 在用。
+                        this.forceUpdate();
+                    }}>改变数据</button>
+                </div>
+            )
+        }
+
+    }
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

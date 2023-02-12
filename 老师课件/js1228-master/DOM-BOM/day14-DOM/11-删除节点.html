@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>七里香</li>
+        <li>黑色幽默</li>
+        <li>青花瓷</li>
+        <li>发如雪</li>
+    </ul>
+    <script>
+        // 需求：点击删除 第一个节点 li，全部li删除完成，则按钮禁用。
+
+        let btn = document.querySelector('button');
+        let ul = document.querySelector('ul');
+
+        btn.onclick = function () {
+            // 删除节点。
+            ul.removeChild(ul.children[0]);
+
+            if (ul.children.length == 0) {
+                this.disabled = true;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

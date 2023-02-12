@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月16日10:49:26
+        es6新增了两种集合，map集合和set集合
+
+        set.has()判断集合中是否含有某个元素，若存在则返回true，否则返回false
+        set.clear()清空集合。
+        set.delete()删除集合中的某个元素
+        set.forEach(function(item){} 遍历集合
+        set.keys() 拷贝集合，可以加数字，但没有什么影响。
+        new Ser(obj)  数组去重。
+     -->
+</body>
+<script>
+    let set = new Set([0, 1, 2, 3, 4, 5])
+    console.log(set);//Set(6) {0, 1, 2, 3, 4, …}
+    console.log(set.size);//6
+    console.log(set.has(2));//true
+    console.log(set.has(10));//false
+    // set.clear();
+    // console.log(set);
+    set.delete(2);
+    console.log(set);//Set(5) {0, 1, 3, 4, 5}
+    set.forEach((item) => {
+        console.log(item);//0 1,3,4,5
+    })
+    let newKey = set.keys();
+    console.log(set, newKey);
+    /*
+    Set(5) {0, 1, 3, 4, 5}
+[[Entries]]
+0: 0
+1: 1
+2: 3
+3: 4
+4: 5
+size: 5
+[[Prototype]]: Set
+    */
+
+    /*
+    SetIterator {0, 1, 3, 4, 5}
+[[Entries]]
+0: 0
+1: 1
+2: 3
+3: 4
+4: 5
+[[Prototype]]: Set Iterator
+[[IteratorHasMore]]: true
+[[IteratorIndex]]: 0
+[[IteratorKind]]: "values"
+    */
+
+
+    let a = [0, 1, 2, 4, 555, 4, 2, 3, 333]
+    let newA = new Set(a);
+    console.log(a, newA);
+    newA2 = [...a]
+    console.log(a, newA2);//(9) [0, 1, 2, 4, 555, 4, 2, 3, 333] (7) [0, 1, 2, 4, 555, 3, 333]
+
+
+    let map = new Map();//没有这句话报错
+    map.set([1, 2], [10, 20]);
+    let key = [111, 222]
+    map.set(key, [99, 999])
+    map.set("name", "白浅");
+    map.set("sex", "女");
+    map.set("age", 18)
+    map.set({
+        like: "打游戏"
+    }, "敲代码"
+    )
+    console.log(map);//Map(3) {Array(2) => Array(2), 'age' => 18, {…} => '敲代码'}
+    /* 
+    [[Entries]]
+    0: {Array(2) => Array(2)}
+    key: (2) [1, 2]
+    value: (2) [10, 20]
+    1: {"age" => 18}
+    key: "age"
+    value: 18
+    2: {Object => "敲代码"}
+    key: {like: '打游戏'}
+    value: "敲代码"
+    size: 3
+    [[Prototype]]: Map
+    */
+
+    map.delete("age");
+    console.log(map);//Map(2) {Array(2) => Array(2), {…} => '敲代码'}
+    console.log(map.get("name"));//白浅
+    console.log(map.get([1, 2]));//undefined
+    console.log(map.get(key)); //[99,999]
+    console.log(map.has("name"));//true
+    console.log(map.has("age"));//false
+    console.log(map.set());//Map(6) {Array(2) => Array(2), Array(2) => Array(2), 'name' => '白浅', 'sex' => '女', {…} => '敲代码', …}
+    console.log(map.size);//6
+    let newMap = map.keys();
+    console.log(newMap, map);
+    /* 
+    MapIterator {Array(2), Array(2), 'name', 'sex', {…}, …} Map(6) {Array(2) => Array(2), Array(2) => Array(2), 'name' => '白浅', 'sex' => '女', {…} => '敲代码', …}
+    */
+
+    map.forEach((item) => {
+        console.log(item);
+        /* 
+        (2) [10, 20]
+03_map方法.html:116 (2) [99, 999]
+03_map方法.html:116 白浅
+03_map方法.html:116 女
+03_map方法.html:116 敲代码
+undefined
+        */
+    })
+
+    // newMap.clear()//newMap.clear is not a function
+    console.log(newMap);
+
+
+
+    let array = [1, 2, 3, 4, 4, 5, 5, 6, "吃饭", "吃饭"]
+    let array2 = [1, 2, 3, 4, 4, 5, 5, 6, "吃饭", "吃饭",
+        {
+            name: "小红",
+            age: "age",
+        },
+        {
+            name: "小红",
+            age: "age",
+        }
+    ]
+
+    function uniq(array) {
+
+        let result = []
+
+        let hash = {}
+
+        for (let i = 0; i < array.length; i++) {
+
+            hash[array[i]] = true
+
+        }
+
+        for (let key in hash) {
+
+            result.push(key)
+
+        }
+
+        console.log(result)
+
+        return result
+
+    }
+    uniq(array);//['1', '2', '3', '4', '5', '6', '吃饭']
+    uniq(array2);//['1', '2', '3', '4', '5', '6', '吃饭',"[object Object]"]   ---不能对对象去重
+</script>
+
+</html>

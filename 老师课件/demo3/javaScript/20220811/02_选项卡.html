@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .nav{
+            display: flex;
+         }
+        .nav div{
+            width: 100px;
+            text-align: center;
+            background-color: #f1f1f1;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .active{
+            background-color: red !important;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="active">首页</div>
+        <div>购物车</div>
+        <div>我的</div>
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    $(".nav div").click(function(){
+        console.log("点我了你")
+        // this指向当前点击的dom对象 dom对象可不能调用jquery的方法
+        console.log(this)
+        console.log($(this))
+        // this.addclass('active')
+        // 点击哪个div给哪个div添加一个active属性在将其兄弟标签的active类删除
+        $(this).addClass('active').siblings().removeClass('active')
+    })
+</script>
+</html>

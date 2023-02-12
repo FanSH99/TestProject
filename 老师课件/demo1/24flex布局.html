@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/adaptive.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .box{
+            background: #333;
+            display: flex;
+            display: -webkit-flex;
+            /*默认值，元素水平排布*/
+            /* flex-direction: row; */
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+
+            width: 400px;
+            height: 300px;
+/* 默认值 */
+            /* flex-wrap: nowrap; */
+            flex-wrap: wrap;
+            /* flex-wrap: wrap-reverse; */
+
+/* justify-content: flex-start; */
+            /* justify-content: flex-end; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+            /*  */
+            /* align-items: flex-start; */
+            /* align-items: flex-end; */
+            /* align-items: center; */
+            /* align-items: baseline; */
+            /* align-items: stretch; */
+
+            /* align-content: flex-start; */
+            /* align-content: flex-end; */
+            /* align-content: space-around; */
+            align-content: space-between;
+        }
+        .box span{
+            width: 50px;
+            padding: 10px;
+            margin: 10px;
+            background: yellow;
+        }
+        /* .box span:nth-child(2n){
+            padding-top: 30px;
+            height: 150px;
+        } */
+        .service{
+            background: #999;
+            display: flex;
+            justify-content: center;
+        }
+        .service ul{
+            width: 750px;
+            height:2rem;
+            border: 1px solid #333;
+            background: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+           
+        }
+        /* html{
+            font-size: 100px;
+        } */
+        .service ul li{
+            display: flex;
+            flex-direction: column;
+           align-items: center;
+        }
+        .service ul li img{
+            width: 0.9rem;
+            height: 0.9rem;
+        }
+        .service ul li p{
+            font-size: 0.36rem;
+        }
+        /* @media screen and (width:375px) {
+           html{
+            font-size: 50px;
+           }
+     
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+    </div>
+
+   <div class="service">
+    <ul >
+        <li>
+            <img src="img/icon_f1.jpg" alt="">
+            <p>餐饮美食</p>
+        </li>
+        <li>
+            <img src="img/icon_f2.jpg" alt="">
+            <p>餐饮美食</p>
+        </li>
+        <li>
+            <img src="img/icon_f3.jpg" alt="">
+            <p>餐饮美食</p>
+        </li>
+        <li>
+            <img src="img/icon_f4.jpg" alt="">
+            <p>餐饮美食</p>
+        </li>
+    </ul>
+   </div>
+</body>
+
+</html>

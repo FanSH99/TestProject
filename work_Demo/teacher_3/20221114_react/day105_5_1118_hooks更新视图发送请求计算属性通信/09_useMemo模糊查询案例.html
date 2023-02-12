@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .list>div {
+            margin-right: 10px;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+
+
+    // 2022年11月20日15:44:10
+    let { useState, useMemo, useEffect } = React;
+    function App() {
+        let [keyword, setKeyword] = useState("");
+        let [list, setList] = useState([]);
+        useEffect(() => {
+            // console.log("23456");
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "https://game.gtimg.cn/images/lol/act/img/js/heroList/hero_list.js");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res);
+                    setList(res.hero)
+                }
+            }
+        }, [])
+        let getList = useMemo(() => {
+            let newList = list.filter((item) => {
+                return item.title.includes(keyword)
+            })
+            return newList
+        }, [keyword, list])
+        return (
+            <div>
+                <div>
+                    搜索：<input type="text" value={keyword} onChange={(e) => { setKeyword(e.target.value) }} />
+                </div>
+                <div className="list">
+                    {
+                        getList.map((item, index) => {
+                            return (
+                                <div key={index}>
+                                    <img src={`https://game.gtimg.cn/images/lol/act/img/champion/${item.alias}.png`} alt="" />
+                                    <div>{item.title}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

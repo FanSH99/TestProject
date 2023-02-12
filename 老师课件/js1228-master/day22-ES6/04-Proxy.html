@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 需求:
+        //      1. 如果属性不存在，则返回 "属性不存在", 而不是 undefined
+        //      2. 如果年龄大于 100 或小于 0，则赋值 100
+        // 代理实现：不直接操作，而由别的对象完成操作。
+
+        let target = {
+            name: 'Tom',
+            age: 24
+        }
+        let handler = {
+            get: function (target, key) {
+                console.log('getting 操作 ');
+                console.log(target, key);
+                if (!(key in target)) {
+                    return "属性不存在";
+                }
+                return target[key];
+            },
+            set: function (target, key, value) {
+                console.log('setting 操作 ');
+                console.log(target, key, value);
+                if (key == "age") {
+                    if (value > 100 || value < 0) {
+                        target[key] = 100;
+                        return;
+                    }
+                }
+                target[key] = value;
+            }
+        }
+        let proxy = new Proxy(target, handler);
+        // 参数1：被代理的对象
+        // 参数2：代理时具体的操作。
+
+        // console.log(proxy.name); // 实际执行 handler.get
+        proxy.age = 110;            // 实际执行 handler.set
+        console.log(target);
+        console.log(proxy.score);
+
+        /* 
+            总结：
+                Proxy(代理) 与 Reflect(反射) 是 ES6 为了操作对象引入的 API.
+                Proxy 可以对目标对象的读取、函数调用等操作进行拦截，然后进行操作处理。
+                它不直接操作对象，而是像代理模式，通过对象的代理对象进行操作，
+                在进行这些操作时，可以添加一些需要的额外操作。
+
+            proxy的用处：
+                实现拦截和监视外部对对象的访问。
+                降低函数和类的复杂度，优雅的写出代理代码。
+                在复杂操作前对操作进行校验或对所需资源进行管理。
+
+            场景：
+                抽离校验模块。
+                私有属性。
+                访问日志。
+                预警和拦截。
+                过滤操作。
+                中断代理。    
+        */
+
+    </script>
+</body>
+
+</html>

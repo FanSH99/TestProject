@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    console.log(React)
+    // class 类组件组件名称首字母依旧要大写 
+    // class 类组件具有私有数据
+    class App extends React.Component{
+        name="张三"
+        // list=[1,2,3,4]
+        // 构造函数
+        constructor(){
+            console.log("调用啦")
+            // 继承 若写了constructor必须调用super()否则报错
+            super();
+            this.age = 20
+            this.list = ["张三","王武","赵六"]
+        }
+        // 页面渲染时调用
+        render(){
+            console.log("渲染页面啦")
+            // this指向当前类的实例对象
+            console.log(this)
+            return (
+                <div>
+                    <h1>我是一个class类组件 {this.name}--{this.age}</h1> 
+                    <button onClick={this.clickMe}>点我一下你试试</button> 
+                     <ul>
+                         {
+                            this.list.map((item,index)=>{
+                                return <li key={index}>{item}</li>
+                            })
+                         }
+                    </ul>
+                    <Child/>  
+                </div>
+            )
+        }
+        clickMe(){
+            console.log("点你咋地")
+        }
+    }
+
+    class Child extends React.Component{
+        render(){
+            return (
+                <div>
+                    我是一个子组件
+                </div>
+            )
+        }
+    }
+    // console.log(<App/>)
+    ReactDOM.render(<App/>,document.getElementById("app"))
+</script>
+
+</html>

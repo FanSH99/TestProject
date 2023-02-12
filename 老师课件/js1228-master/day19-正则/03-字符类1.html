@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var re = /abc/; // 包含 abc 即可
+        // 1. 字符串：[] 表示有一系列字符可供选择，只要匹配到任意一个即可。
+        let rg1 = /[abc]/;
+        console.log(rg1.test('a'));
+        console.log(rg1.test('b'));
+        console.log(rg1.test('c'));
+        console.log(rg1.test('d'));
+        console.log(rg1.test('coco'));
+        console.log(rg1.test('red'));
+
+        console.log('--------字符串：----------------');
+        // 2. 三选一: 只能是 a 或 b 或 c
+        let rg2 = /^[abc]$/;
+        console.log(rg2.test('a'));
+        console.log(rg2.test('ab'));
+
+        console.log("*********三选一****************");
+
+        // 3. 26 个小写字母选一
+        let rg3 = /[a-z]/;
+        console.log(rg3.test('a'));
+        console.log(rg3.test('b'));
+        console.log(rg3.test('ab'));
+        console.log(rg3.test('0'));
+
+        console.log("--------小写字母------------");
+
+    </script>
+</body>
+
+</html>

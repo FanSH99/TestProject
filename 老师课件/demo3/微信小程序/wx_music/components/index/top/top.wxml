@@ -1,0 +1,10 @@
+<view class="top" bindtap="goInfo" data-id='{{item.id}}'>
+<view class="left">
+<image src="{{item.coverImgUrl}}" mode="widthFix" class="topImg"></image>
+</view>
+<view class="right"> 
+    <view wx:for="{{item.tracks}}" wx:for-item='song' wx:key="index" class="item">
+       {{index+1}}.{{song.first}} - {{song.second}}
+    </view>
+</view>
+</view>

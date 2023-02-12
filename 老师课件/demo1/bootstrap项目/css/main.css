@@ -1,0 +1,269 @@
+.nav_top {
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid #0ba1e4;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-fixed-top {
+    position: sticky;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-brand {
+    padding: 0 15px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    font-size: 16px;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a.active {
+    color: #0ba1e4;
+}
+
+.line-xs {
+    position: absolute;
+    width: 25%;
+    height: 1px;
+    background: #0ba1e4;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1 .small,
+.h1 small,
+.h2 .small,
+.h2 small,
+.h3 .small,
+.h3 small,
+.h4 .small,
+.h4 small,
+.h5 .small,
+.h5 small,
+.h6 .small,
+.h6 small,
+h1 .small,
+h1 small,
+h2 .small,
+h2 small,
+h3 .small,
+h3 small,
+h4 .small,
+h4 small,
+h5 .small,
+h5 small,
+h6 .small,
+h6 small {
+    font-weight: 300;
+}
+
+.line-lg {
+    width: 100px;
+    height: 2px;
+    background: #0ba1e4;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.mt0 {
+    margin-top: 0;
+}
+
+.pad50 {
+    padding: 50px 0;
+}
+
+.numb {
+    font-size: 70px;
+    color: #0ba1e4;
+}
+
+.bg {
+    background: #dedede;
+}
+
+.our_ys {
+    border: 1px solid #333;
+    background: #fff;
+    padding: 15px;
+}
+
+.our-service {
+    border: 1px solid #333;
+    height: 300px;
+    background: #efefef;
+    transition: all 0.5s;
+}
+
+.our-service a {
+    background: none;
+    color: #0ba1e4;
+    border-color: #0ba1e4;
+}
+
+.our-service:hover {
+    background: #0ba1e4;
+    transform: scale(1.2);
+    position: relative;
+    z-index: 2;
+}
+
+.our-service:hover a {
+    color: #fff;
+    border-color: #fff;
+}
+
+.our-service a:hover {
+    background: #fff;
+    color: #0ba1e4;
+}
+
+.client {
+    border: 1px solid green;
+    border-radius: 8px;
+    min-height: 203px;
+    /* height: 200px; */
+    position: relative;
+    padding: 40px 20px 20px;
+
+}
+
+.client>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+
+.client p i {
+    font-style: normal;
+    background: #999;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.client p em {
+    font-size: 12px;
+    color: #999;
+    font-style: normal;
+}
+
+.client+img {
+    width: 70px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.caret1 {
+    border-width: 10px;
+    border-top-color: green;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+}
+
+.caret1::after {
+    content: "";
+    border-top: 10px solid #dedede;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    position: absolute;
+    top: -11px;
+    left: -10px;
+}
+
+.news {
+    margin-bottom: 40px;
+}
+
+.news img {
+    width: 130px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.news p {
+    margin: 0;
+    color: #777;
+}
+
+.news .media-body p:nth-child(3) {
+    height: 2em;
+    line-height: 1em;
+    display: -webkit-box;
+    box-orient: vertical;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
+.our-client img{
+    width: 100%;
+    border: 1px solid #666;
+    margin-bottom: 20px;
+    filter: grayscale(100%);
+    transition: all 0.5s;
+}
+.our-client img:hover{
+    filter: grayscale(0%);
+    border-color: #0ba1e4;
+    box-shadow: 0 0 5px #0ba1e4;
+    background: #fff;
+}
+
+.boxaaa{
+    height: 240px;
+    background-image:-webkit-linear-gradient(top,#0575a8,#53c6fc);
+}
+@media screen and (max-width:768px) {
+    .nav_top {
+        padding: 0;
+    }
+
+    .navbar-fixed-top {
+        position: static;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:992px) {
+    .numb {
+        font-size: 48px;
+
+    }
+}

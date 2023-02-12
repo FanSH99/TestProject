@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--        没有修改原数组
+        14.
+           arr. some(回调函数)            返回值  true  false    
+                                         只要有一个元素，符合条件即为真，所有的都不符合才为false
+        15.
+           arr. every(回调函数)            返回值  true  false    
+                                           所有的都符合才为true             只要有一个不符合为false
+
+        16.arr.filter(回调函数)           检测数值元素，并返回符合条件所有元素的数组。
+
+        17. arr.map(回调函数)          通过指定函数处理数组的每个元素，并返回处理后的数组
+          （1） 如果 没有 return  话，相当 forEach的用法，遍历数组
+          （2）如果 有return , 并返回处理后的数组
+
+
+        18. arr.find(回调函数)  
+         19. arr.includes(ele)   包含返回  true     不包含返回false
+            if(arr.includes(ele)){
+
+            }
+            if(arr.indexOf(ele)!=-1){
+
+            }
+    
+    20.如何判断是一个真数组
+
+    Array.isArray(对象)   true  false
+    对象 instanceof  Array     true  false
+
+
+
+     -->
+    <script>
+
+        //1. some
+         var arr=[10,20,60,80,10];
+    //   var flag=   arr.some(function(item,index){
+    //             return item>60
+
+    //      })
+
+        //  var flag=   arr.some(function(item,index){
+        //         return item>80
+
+        //  })
+
+        //  console.log(flag);//false
+
+
+        //2.every
+    //  var flag1=   arr.every(function(item){
+    //         return item>5
+
+    //     })
+    //     console.log(flag1);//true
+
+        //  flag1=   arr.every(function(item){
+        //     return item>10
+
+        // })
+        // console.log(flag1);//false
+
+   //3.filter
+//  var newArr=  arr.filter(function(item,index){
+//         return item>=60
+
+//    });
+//    console.log(newArr,arr);
+
+     //4.map
+    //   arr.map(function(item,index){
+    //       if(item>18){
+    //         console.log(item);
+    //       }
+    //   })
+
+//     var arr=[10,20,60,80,10];
+//    var newArr=   arr.map(function(item,index){
+//           return item*index
+//       });
+//       console.log(newArr);//[0, 20, 120, 240, 40]
+
+
+//5. find     返回第一个符合条件的元素 ，没有符合 返回undefined
+var arr=[10,20,60,80,10];
+// var ele=arr.find(function(item,index){
+//      return  item>10
+
+// });
+// console.log(ele);
+
+//6. includes
+ var flag2= arr.includes(80);
+ console.log(flag2);//true
+
+ if(arr.indexOf(80)!=-1) {
+    console.log('haha');
+ }else{
+    console.log('hehe');
+ }
+
+//  7. isArray
+ console.log(Array.isArray(arr));
+    </script>
+</body>
+</html>

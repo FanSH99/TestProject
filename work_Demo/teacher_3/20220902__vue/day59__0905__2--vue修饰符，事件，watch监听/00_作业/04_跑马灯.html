@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <button @click="start">开始</button>
+        <button @click="end">暂停</button>
+    </div>
+</body>
+<script src="./bin/vue-2.2.2.min.js"></script>
+<script>
+    /* 2022年9月5日09:37:27 */
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "奔跑吧少年！！！！！"
+        },
+        methods: {
+            start() {
+
+            },
+            ehd() {
+                let str0 = this.msg.substr(0, 1);
+                let str1 = this.msg.substr(1);
+                this.msg = str1 + str0;
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,4 @@
+<view>
+<button type="primary">生成海报</button>
+<poster  drawing='{{drawing}}' savebtnText='保存'  canvasbg='black'/>
+</view>

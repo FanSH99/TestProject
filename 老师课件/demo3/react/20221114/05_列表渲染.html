@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="../react.development.js"></script>
+<script src="../react-dom.development.js"></script>
+<!-- babel.js 用来将jsx编译为js -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<!-- 告诉script标签在里面可以写任意代码 写完后可以使用babel进行编译 -->
+<script type="text/babel">
+    let list = ["张三","王武","赵六"]
+    let dogs = [
+        {
+            name:"小花",
+            color:"红色"
+        },{
+            name:"小黑",
+            color:"黑色"
+        }
+    ]
+    // 只允许有一个根节点
+    let dom = (
+        <div>
+            <div>
+                <ul>
+                    
+                    {
+                        /* 使用map来实现列表渲染 */
+                        list.map((item,index)=>{
+                            // 列表循环必须绑定key 就是为了使diff算法更好的计算
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>    
+            </div>
+            <div>
+                <ul>
+                    {
+                        dogs.map((item,index)=>{
+                            return <li key={index}>{item.name}---- {item.color}</li>
+                        })
+                    }
+                </ul>
+            </div>
+        </div>
+    )
+    console.log(dom)
+    ReactDOM.render(dom,document.getElementById("app"));
+
+    // let map1 =   list.map((item,index)=>{
+    //     console.log(item,index)
+    //     item = 1;
+    //     return item
+    //  })
+    //  console.log(map1)
+    //  let user=[
+    //   {
+    //     name:"张三"
+    //   }
+    //  ]
+    //  user.forEach((item,index)=>{
+    //      item.name = '李四'
+    //  })
+    //  console.log(user)
+    /* 
+     map和forEach 的区别：
+     1.map和forEach都可以用来遍历数组
+     2. forEach没有return值 map可以有return 会得到一个新的数组
+     3. map不能改变原数据 forEach可以改变原数组
+     4. map要比forEach更快
+    */
+</script>
+
+</html>

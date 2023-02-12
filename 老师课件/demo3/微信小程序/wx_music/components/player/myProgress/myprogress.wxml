@@ -1,0 +1,11 @@
+<view class="myslider">
+<view class="time">
+{{currentTime}}
+</view>
+<view class="sliders">
+    <slider activeColor="#ffcd32" block-size='12' block-color='#ffcd32' value="{{percent}}" active='{{true}}' active-mode='forwards' bindchange='percentChange'></slider>
+</view>
+<view class="time times">
+{{duration}}
+</view>
+</view>

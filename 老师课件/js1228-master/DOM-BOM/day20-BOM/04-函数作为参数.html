@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            函数的参数，数据类型没有限制。
+            既然没有限制，参数也可以是一个函数。
+            每个 JavaScript 函数实际上都是一个 Function 对象(实例)。
+            instanceof ： 判断一个对象是否为类的一个实例(实例)。
+
+            callbak ：回调函数。
+            回调函数: 回头调用的函数，符合了某个条件才调用的函数。
+                1. 定时器
+                2. 事件
+                3. load
+
+            总结: 函数可以作为函数的参数。    
+        */
+        function cook(hero, callBack) {
+            console.log(`${hero}买鱼`);
+            console.log(`${hero}烤鱼`);
+            console.log(`${hero}吃鱼`);
+            callBack();
+        }
+
+        cook(`张飞`, callBack);
+        console.log(typeof cook);
+        console.log(cook instanceof Function);
+
+        function callBack() {
+            console.log(`收拾餐具，出去遛弯`);
+        }
+    </script>
+</body>
+
+</html>

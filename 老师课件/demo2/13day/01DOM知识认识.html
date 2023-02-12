@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+      一、  js知识三部分
+           1. js核心语法（ECMAScript）---重点
+           2. DOM(document object model)---重点  （网站）
+           3.BOM(browser objece model)
+
+     二、DOM 文档对象模型
+        目的：让开发人员利用js操作页面（HTML  XML）
+                                      官方  自定义标签     <age>18</age>
+                                      标签
+     三、树状结构（倒立的树） 
+     
+     HTML DOM (文档对象模型)
+      对象 三大种（主要操作是这三种）
+
+      元素（节点对象）   <h1></h1>
+      属性  （属性节点） <a href="#"></a>   href  属性
+      文本 （文本节点） <h1>我是文本</h1>
+
+
+      //window  窗口   -----document文档----元素  （html标签）
+                                            元素或节点对象）
+      DOM树中 关系    父子关系    兄弟关系   
+      
+    四、 节点对象 Node  
+
+       常见的节点有三种 ：元素节点对象  Node.ELEMENT_NODE     1               node.nodeType==1
+                         属性节点     Node.ATTRIBUTE_NODE   2
+                         文本节点     Node.TEXT_NODE         3
+
+        节点约12种
+
+     -->
+   <script>
+ console.log(Node);//ƒ Node() { [native code] }  对象
+//  属性和方法
+   console.log( Node.ELEMENT_NODE);//1
+   console.log(Node.ATTRIBUTE_NODE);//2
+   console.log(Node.TEXT_NODE);//3
+
+   console.log(document.body.nodeType);//1
+   console.log(document.body.nodeType===1);// body 是元素节点
+   </script>
+</body>
+</html>

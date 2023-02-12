@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES6 新增，异步编程解决方案2：
+            Generator 生成器函数
+                特点：1. function 关键字与函数名之间有一个星号
+                     2. 函数体内部使用 yield 表达式，定义不同的内部状态。
+                         yield —— 产出，只能在 生成器函数中使用 
+        */
+        function* play() {
+            console.log(1);
+            yield "王者荣耀1";
+            console.log(2);
+            yield "英雄联盟2";
+            console.log(3);
+            yield "刀塔3";
+            console.log(4);
+            return "今晚吃鸡4";
+        }
+
+        /*
+            使用：
+                1. 函数调用时，不会立即执行函数体;
+                2. 返回值是一个迭代器。
+                3. next(); 方法则继续往后执行
+                4. 遇到 yield 关键字就暂停，并返回值。
+                5. 返回值是一个对象，value 是结果，done 表示是否已结束
+        */
+        let result = play();
+
+        // console.log(result.next());
+        // console.log(result.next());
+        // console.log(result.next());
+        // console.log(result.next());
+        // console.log(result.next());
+
+        console.log('-------for of 遍历-------------');
+        for (let item of result) {
+            console.log(item);
+        }
+    </script>
+</body>
+
+</html>

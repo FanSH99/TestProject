@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 对数组['关羽', '张飞', '程咬金', '张飞', '吕布'],进行去重，
+        // 得到新的数组：['关羽', '张飞', '程咬金', '吕布'];
+        // 遍历老数组，判断如果新数组中该元素不存在，则添加
+
+        var arr = ['关羽', '张飞', '程咬金', '张飞', '吕布'];
+        var arr1 = [];
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i]);
+            // 判断新数组中元素是否存在
+            var hero = arr[i];
+            // 标识符，默认不存在
+            var flag = false;
+            for (var j = 0; j < arr1.length; j++) {
+                if (hero == arr1[j]) {
+                    console.log("元素存在");
+                    flag = true;
+                }
+            }
+
+            // 如果不存在，则添加
+            if (!flag) {
+                arr1[arr1.length] = arr[i];
+            }
+        }
+        console.log(arr1);
+
+        // 判断数组中元素是否存在
+        var hero = "张飞"
+        for (var j = 0; j < arr.length; j++) {
+            if (hero == arr[j]) {
+                console.log("元素存在");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

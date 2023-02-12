@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    
+    let p = new Promise((reslove,reject)=>{
+        $.ajax({
+            url:"./data/1.json",
+            success(res){
+                reslove(res)
+            }
+        })
+    })
+    p.then(res=>{
+        console.log(res);
+        // 在.then方法中return 出来的内容默认会包裹一层promise对象 那么就可以接着使用.tnen实现链式调用
+        // return '231231'
+        return new Promise((reslove,reject)=>{
+            $.ajax({
+            url:"./data/2.json",
+            success(data){
+                reslove(data) 
+            }
+        })
+        })
+        
+    }).then(res=>{
+        console.log(res)
+        $.ajax({
+            url:"./data/3.json",
+            success(data){
+                console.log(data)
+            }
+        })
+    })
+    // 使用promise 封装ajax实现 一次请求 1.json 2.json 3.json
+</script>
+</html>

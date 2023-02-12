@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+
+
+        }
+
+        .box {
+            width: 1000px;
+            height: 374px;
+            border: 2px solid #333;
+            overflow: hidden;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .imgs {
+            width: 100%;
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: -1000px;
+
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .dot ul {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -50px;
+
+        }
+
+        .dot ul li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #786e6e;
+            text-indent: -999px;
+            cursor: pointer;
+        }
+
+        .dot ul li.active {
+            background: #f30;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 50%;
+            line-height: 50px;
+            text-align: center;
+            font-size: 28px;
+            color: #fff;
+            transform: translateY(-50%);
+            display: none;
+        }
+
+        .lbtn {
+            left: -10px;
+        }
+
+        .rbtn {
+            right: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        2022年8月12日09:09:19
+     -->
+
+    <!-- 视图窗，专门用来展示当前轮播的图片 -->
+    <div class="box">
+        <!-- 改变位置展示不同的图片 -->
+        <div class="imgs">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f8ada12981fd19a9f4190a1d16e01d10.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+                alt="" class="img5">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9925ba8af7a6fe8d88d9804aba08cec1.jpg?w=2452&h=920"
+                alt="" class="img1">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b6f6c0c0eb8ede475c8858bc1370cfe9.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+                alt="" class="img2">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/36b45c624f42fa81732457e3f9773dbd.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+                alt="" class="img3">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4cfa4e9a0f10a79ed068f26adf846bfa.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+                alt="" class="img4">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f8ada12981fd19a9f4190a1d16e01d10.jpg?thumb=1&w=1533&h=575&f=webp&q=90"
+                alt="" class="img5">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9925ba8af7a6fe8d88d9804aba08cec1.jpg?w=2452&h=920"
+                alt="" class="img1">
+        </div>
+        <div class="lbtn btn">&lt;</div>
+        <div class="rbtn btn">&gt;</div>
+        <div class="dot">
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>
+    // 定义一个播放索引号。
+    var playIndex = 1;
+    var imgW = $('img').width();
+    console.log(imgW);
+    var idx = 0;
+    function play() {
+
+        playIndex++;
+        idx++;
+        if (idx >= 5) {
+            idx = 0;
+            // $('.dot ul li').eq(0).addClass('active').siblings().removeClass('active');
+        }
+        $('.dot ul li').eq(idx).addClass('active').siblings().removeClass('active');
+        // 如果大于最大播放索引，那么就从第一章开始。
+        if (playIndex >= 7) {
+            $('.imgs').css('left', -imgW + 'px');
+            playIndex = 2;
+        }
+
+        $('.imgs').animate({
+            left: -playIndex * imgW + 'px'
+        })
+
+    }
+    function playPre() {
+        playIndex--;
+        idx--;
+        if (idx < 0) {
+            idx = 4;
+        }
+        $('.dot ul li').eq(idx).addClass('active').siblings().removeClass('active');
+        if (playIndex <= 0) {
+            $('.imgs').css('left', - 6 * imgW + 'px');
+            playIndex = 5;
+        }
+        // 如果大于最大播放索引，那么就从第一章开始。
+        $('.imgs').animate({
+            left: -playIndex * imgW + 'px'
+        })
+    }
+    var timer = null;
+    function autoPlay() {
+        timer = setInterval(play, 2000)
+    }
+    autoPlay();
+    $('.dot ul').hover(function () {
+        clearInterval(timer);//暂停轮播，并且将timer清空。
+        timer = null;
+    }, function () {
+        autoPlay();//继续轮播
+    })
+    $('.dot ul li').click(function () {
+        // var index = $(this).index();//获取当前索引。
+        idx = $(this).index() - 1;
+        playIndex = idx + 1;
+        $(this).addClass('active').siblings().removeClass('active');
+        play();
+    })
+
+    $('.box').hover(function () {
+        $('.btn').show();
+    }, function () {
+        $('.btn').hide();
+    })
+
+    $('.btn').hover(function () {
+        clearInterval(timer);//暂停轮播，并且将timer清空。
+        timer = null;
+    }, function () {
+        autoPlay();//继续轮播
+    })
+
+    $('.lbtn').click(function () {
+        playPre();
+    })
+    $('.rbtn').click(function () {
+        play();
+    })
+
+</script>
+
+</html>

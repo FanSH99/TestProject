@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function father() {
+      let num = 10;
+      function son() {
+        num++;
+        console.log(num);
+      }
+      // son();
+
+      return son;
+    }
+
+    let temp = father();
+    temp();
+    temp();
+
+    // 释放内存
+    temp = null;
+
+    /*
+      分析：
+          在这段代码中，temp 实际上就是 son 函数。
+          这证明了，函数 father 中的局部变量 num 一直保存在内存中，并没有在 
+          father 调用后被自动清除。
+
+      为什么会这样呢？
+          原因就在于 father 是 son 的父函数，而 son 被赋给
+      了一个全局变量，这导致 son 始终在内存中，
+      而 son 的存在依赖于 father(对象的成员有属性和方法)，因此 father 
+      也始终在内存中，不会在调用结束后，
+      被垃圾回收机制（garbage collection）回收。(儿子还在，父亲也得在)
+  
+      要点：
+          由于闭包会使得函数中的局部变量都被保存在内存中，内存消耗很大，
+      所以不能滥用闭包，否则会造成网页的性能问题，
+      在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的
+      局部变量全部删除。
+
+      在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。
+
+    */
+  </script>
+</body>
+
+</html>

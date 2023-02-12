@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+    <!-- 页面头部内容 -->
+    <header>
+        <div class="header_main">
+            <div class="header_left">
+               <span class="header_title"> 北游论坛</span>
+               <input type="text" placeholder="请输入关键字查询" class="search">
+            </div>
+            <div class="header_right">
+                <div onclick="goSendMsg()">
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div>
+                <div class="login">
+                    <span class="glyphicon glyphicon-user"></span> 登录
+                </div>
+                <div class="user">
+                    <span class="glyphicon glyphicon-user"></span> <span class="username"></span>
+                    <div class="mtbtn">
+                        <div onclick="upload()">上传头像</div>
+                        <div>我的论坛</div>
+                        <div class="outlogin">退出</div>
+                    </div>
+                </div>
+                <div class="myphoto">
+                    <img src="./header/default.png" alt="" class="photo">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">评论话题</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">内容：</label>
+                        <textarea class="form-control content" rows="10" placeholder="请输入评论内容" ></textarea>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="goPinglun()">评论</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</body>
+<script src="./js/jquery.js"></script>
+<script src="./js/ajax.js"></script>
+<script src="./js/template.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script id="main" type="text/html">
+    {{each data item index}}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <img src="{{item.img_url}}" alt="" class="img_url" onclick="goUser('{{item.username}}')"> <span>{{item.username}}</span> <span>{{item.time}}</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel_content">
+            {{item.content}}
+            <div class="pl">
+             <button type="button" class="btn btn-success" onclick="pinglun('{{index}}')">评论</button>
+            </div>
+          </div>
+          {{if username == item.username}}
+          <div class="remove" onclick="remove('{{index}}')">
+            <span class="glyphicon glyphicon-trash"></span> 删除
+          </div>
+          {{/if}}
+          {{if item.list.length !=0}}
+          <div class="list_pl">
+            <div class="title">
+               评论列表：
+            </div>
+             {{each item.list value i}}
+             <div class="pinglun">
+                <div>
+                    <img src="{{value.img_url}}" alt="" onclick="goUser('{{value.username}}')">
+                </div>
+                <div class="right">
+                    <div class="username">
+                        {{value.username}}
+                    </div>
+                    <div class="right_content">
+                        {{value.content}}
+                    </div>
+                    <div class="time">
+                        {{value.time}}}
+                    </div>
+                </div>
+            </div>
+             {{/each}}
+         </div>
+          {{/if}}
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script id="noData" type="text/html">
+    <div style="text-align: center; color: #b4b4b4b4; font-size: 17px;">
+        暂无论坛信息~~
+    </div>
+</script>
+<script>
+    $(".login").click(() => {
+        window.location.href = './page/login.html'
+    })
+    let username;
+    // 获取论坛信息列表
+    let getDataList = async () => {
+        let isLogin = await request("/islogin", 'get');
+        if (isLogin.code == 0) {
+            $(".login").hide()
+            $(".username").text(isLogin.data.username)
+            username = isLogin.data.username;
+            $(".user").show();
+            $(".myphoto").show();
+            $(".photo").attr("src", isLogin.data.img_url)
+            // 将当前用户信息存储到本地
+            localStorage.setItem("userInfo", JSON.stringify(isLogin.data))
+        } else {
+            $(".login").show()
+            $(".user").hide();
+            $(".myphoto").hide();
+            localStorage.removeItem("userInfo")
+        }
+        let res = await request("/get/list", "get");
+        if (res.data.length == 0) {
+            let html = template("noData")
+            $("main").html(html)
+        } else {
+            let html = template("main", { data: res.data, username: username })
+            $("main").html(html)
+        }
+
+    }
+    getDataList();
+    // 判断用户是否登录
+    // function isLogin(){
+    //     request("/islogin","get").then(res=>{
+    //     console.log(res)
+    //     if(res.code==0){
+    //         $(".login").hide()
+    //         $(".username").text(res.data.username)
+    //         username = res.data.username;
+    //         $(".user").show();
+    //         $(".myphoto").show();
+    //         $(".photo").attr("src",res.data.img_url)
+    //         // 将当前用户信息存储到本地
+    //         localStorage.setItem("userInfo",JSON.stringify(res.data))
+    //     }else{
+    //         $(".login").show()
+    //         $(".user").hide();
+    //         $(".myphoto").hide();
+    //         localStorage.removeItem("userInfo")
+    //     }
+    //     })
+    // }
+    // 退出登录
+    $(".outlogin").click(() => {
+        request("/outLogin", "get").then(res => {
+            if (res.code == 0) {
+                alert("退出成功");
+                getDataList();
+            }
+        })
+    })
+    function upload() {
+        window.location.href = './page/upload.html'
+    }
+
+    function goSendMsg() {
+        window.location.href = './page/sendmsg.html'
+    }
+    async function remove(index) {
+        let res = await request("/remove/msg", "get", { index: index });
+        console.log(res)
+        if (res.data.length == 0) {
+            let html = template("noData")
+            $("main").html(html)
+        } else {
+            let html = template("main", { data: res.data, username: username })
+            $("main").html(html)
+        }
+    }
+    // 当前要评论得论坛索引
+    let index;
+    // 评论
+    async function pinglun(i){
+        let res = await  request("/islogin","get");
+        if(res.code==0){
+            $("#myModal").modal("show")
+            index=i;
+        }else{
+             location.href = './page/login.html'
+        }
+    }
+   async  function goPinglun(){
+        console.log(username);
+        let time = getTime();
+        let img_url = JSON.parse(localStorage.getItem("userInfo")).img_url;
+        let content = $(".content").val();
+        if(!content){
+            alert("请您先输入评论内容")
+            return
+        }
+        let data = {
+            username,
+            index,
+            time,
+            content,
+            img_url
+        }
+        let res = await request("/pinglun/msg",'post',data);
+        console.log(res)
+        if(res.code==0){
+            $(".content").val("");
+            $("#myModal").modal("hide")
+            getDataList();
+        }
+    }
+
+    // 个人中心
+    function goUser(username){
+        location.href = './page/userprofile.html?username='+username
+    }
+</script>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        main {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .marin_left {
+            width: 180px;
+            text-align: center;
+            background-color: #f8f0f0;
+            padding: 25px 0;
+            border-radius: 5px;
+            height: 200px;
+        }
+
+        .marin_left img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .marin_left p {
+            margin-top: 10px;
+        }
+
+        .main_right {
+            width: 80%;
+        }
+
+        @media screen and (max-width: 750px) {
+            main {
+                display: block;
+            }
+            .marin_left{
+                margin: 0 auto;
+            }
+            .main_right{
+                width: 100%;
+                margin: 10px auto;
+            }
+        }
+        .nodeData{
+            width: 100%;
+            text-align: center;
+            color: #b4b4b4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 页面头部内容 -->
+    <header>
+        <div class="header_main">
+            <div class="header_left">
+                <span class="header_title"> 北游论坛</span>
+            </div>
+            <div class="header_right">
+                <div>
+                    <span class="glyphicon glyphicon-plus"></span> 发表
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="marin_left">
+            <img src="../header/default.png" alt="" class="user_photo">
+            <p class="user_username">admin</p>
+            <p>
+                <span class="label label-success">供0篇</span>
+            </p>
+        </div>
+        <div class="main_right">
+
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/template.js"></script>
+<script id="main" type="text/html">
+    {{if data.length==0}}
+        <div class="nodeData">
+            暂无论坛信息~~
+        </div>
+    {{/if}}
+    {{each data item index}}
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <img src=".{{item.img_url}}" alt="" class="img_url" onclick="goUser('{{item.username}}')"> <span>{{item.username}}</span> <span>{{item.time}}</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel_content">
+            {{item.content}}
+            <!-- <div class="pl">
+             <button type="button" class="btn btn-success" onclick="pinglun('{{index}}')">评论</button>
+            </div> -->
+          </div>
+          <!-- {{if username == item.username}}
+          <div class="remove" onclick="remove('{{index}}')">
+            <span class="glyphicon glyphicon-trash"></span> 删除
+          </div>
+          {{/if}} -->
+          {{if item.list.length !=0}}
+          <div class="list_pl">
+            <div class="title">
+               评论列表：
+            </div>
+             {{each item.list value i}}
+             <div class="pinglun">
+                <div>
+                    <img src=".{{value.img_url}}" alt="" onclick="goUser('{{value.username}}')">
+                </div>
+                <div class="right">
+                    <div class="username">
+                        {{value.username}}
+                    </div>
+                    <div class="right_content">
+                        {{value.content}}
+                    </div>
+                    <div class="time">
+                        {{value.time}}}
+                    </div>
+                </div>
+            </div>
+             {{/each}}
+         </div>
+          {{/if}}
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script>
+    // 获取路径传递得用户名
+    let username = location.search.split("=")[1];
+    //  发送请求请求当前用户得论坛信息
+    request(`/user/msg?username=${username}`, "get").then(res => {
+        if (res.code == 0) {
+            console.log(res)
+            $('.user_username').text(username);
+            $(".label-success").text(`共${res.data.length}篇`)
+            $(".user_photo").attr("src", `.${res.img_url}`)
+            let html = template("main", { data: res.data });
+            console.log(html)
+            $(".main_right").html(html)
+        }
+    })
+    // 将字符串转码
+    let a = encodeURI("李志琦");
+    
+    console.log(decodeURI(a))
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/* 
+			1. set 的常见方法
+				 1. add(value)     添加某个值，返回set本身
+				 2. delete(value)  删除某个值，返回布尔值，是否删除成功
+				 3. has(value)     返回布尔值，是否有这个成员
+				 4. clear()		  清除所有成员，没有返回值
+
+			2. foreach 遍历
+
+			3. 解构和转化为数组
+		*/
+
+		const set4 = new Set([1, 2, 3]);
+		set4.add('猴子').add('剑圣');
+		console.log(set4);
+
+		console.log(set4.delete(2));
+		console.log(set4);
+
+		console.log(set4.has(2));
+
+		// set4.clear();
+		console.log(set4);
+
+		console.log('----------遍历------------------');
+		// set4.forEach(item => { console.log(item); });
+
+		console.log('------------解构----------------');
+		console.log(...set4);   // 解构
+		const arr = [...set4];  // 转化为数组
+		console.log(arr);
+
+		// 作业：禁止重复弹幕
+	</script>
+</body>
+
+</html>

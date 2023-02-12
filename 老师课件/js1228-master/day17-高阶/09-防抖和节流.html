@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        let div = document.querySelector("div");
+
+        // 值是匿名函数或函数名
+        // div.onmousemove = move;
+        // 返回值是一个函数
+        let temp = debounce(move, 1000);
+        div.onmousemove = temp;
+
+        function move(e) {
+            console.log(123);
+            console.log(this);
+            console.log(e);
+        }
+
+        //防抖函数
+        function debounce(fn, delay) {
+            // 直接执行
+            // fn();
+
+            /* 
+            // 返回值是一个函数，函数体内有定时器，延时执行
+            // return function () {
+            //     setTimeout(function () {
+            //         fn();
+            //     }, delay);
+            // }
+            */
+
+            /* 
+            // 再次改进
+            // 闭包：保证多次点击，内存中只有一个 t
+            // let t = null;
+            // return function () {
+            //     if (t) {
+            //         // 清空之前的定时器，不再执行
+            //         clearTimeout(t);
+            //     }
+            //     // 当前定时器是最新定时器
+            //     t = setTimeout(function () {
+            //         fn();
+            //     }, delay);
+            // }
+            */
+
+            // 处理 e, this 的 问题
+            let t = null;
+            return function () {
+                // div 鼠标移动事件绑定了返回的这个函数
+                // 因此，此时的 this 和 e 是 div 是鼠标移动事件
+                // console.log(this);
+                // console.log(e);
+
+                // 函数形参的个数不确定，可以使用 arguments
+                // console.log(arguments);
+                // console.log(arguments[0]);
+                if (t) {
+                    clearTimeout(t);
+                }
+                // 每个函数都有自己的 arguments 因此两个 arguments 不一致，处于不同函数
+                // t = setTimeout(function () {
+                //     fn(arguments);
+                // }, delay);
+
+                // 箭头函数没有 arguments
+                t = setTimeout(() => {
+                    // 函数是window的函数，变量是window的属性
+                    // move 没有事件绑定，因此是 window 的函数，因此需要修改 this。
+                    // fn(arguments);
+                    // 也可以使用 apply，自动解构
+                    fn.call(this, ...arguments);
+                }, delay);
+            }
+        }
+    </script>
+</body>
+
+</html>

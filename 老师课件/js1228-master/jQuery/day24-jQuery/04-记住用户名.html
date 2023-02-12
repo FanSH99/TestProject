@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="username" />
+  <input type="checkbox" name="" id="remember" /> 记住用户名
+  <script>
+    /* 
+      需求:
+          1. 刷新页面，如果有用户名，则渲染到页面。
+          2. 点击按钮，则保存用户名到浏览器。
+    */
+    let username = document.querySelector('#username');
+    let remember = document.querySelector('#remember');
+
+    let value = localStorage.getItem('username');
+
+    //  如果有用户名，则渲染到页面。
+    if (value != null) {
+      username.value = value;
+      remember.checked = true;
+    }
+
+    // 是否记住用户名
+    remember.addEventListener('change', function () {
+      if (this.checked) {
+        localStorage.setItem('username', username.value);
+      } else {
+        localStorage.removeItem('username');
+      }
+    });
+
+  </script>
+</body>
+
+</html>

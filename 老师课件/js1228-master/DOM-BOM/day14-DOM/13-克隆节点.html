@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>七里香</li>
+        <li id= 'jay'>黑色幽默</li>
+        <li>青花瓷</li>
+        <li>发如雪</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        var li1 = ul.cloneNode();
+        var li2 = ul.cloneNode(true);
+        console.log(li1);
+        console.log(li2);
+        /* 
+            克隆：输入、处理、输出
+                1. node.cloneNode(); 括号为空或者里面是false 浅拷贝 只复制标签不复制里面的内容
+                2. node.cloneNode(true); 括号为true 深拷贝 复制标签复制里面的内容
+        */
+    </script>
+</body>
+
+</html>

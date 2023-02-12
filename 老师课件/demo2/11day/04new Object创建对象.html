@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- new Object() 
+    
+     Object函数名  构造函数   对象类    
+     new Object() 调用函数   实例化一个实例对象
+1.声明对象
+
+var obj=new Object();// 空对象    var obj={}
+
+
+    -->
+    <script>
+        var obj=new Object();
+        console.log(obj);//{}
+
+        // 添加属性和方法
+        obj.name='程强';
+        obj.age=18;
+        obj['gender']='男';
+        obj['8hello']='hello';// 可以这样属性，但是不建议，尽量同变量名的规则
+        console.log(obj);
+
+        obj.play=function(){
+            console.log(this.name+this.age+'is playing');
+        }
+
+        // 取属性
+        console.log(obj.name,obj.age,obj.gender);
+        console.log(obj['8hello']);
+        obj.play()
+
+        
+        // 检测引用类型，   创建出来的是对象是哪个对象  Object
+         console.log(obj instanceof  Object);//true
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1、数组录入班级学生姓名，当遇到exit结束录入，输出所有学生的姓名
+        // function demo1(){
+        //    var arr=[];// 保存学生名字
+        //    while(true){
+        //     var stuName=prompt('请录入班级学生姓名');
+        //     if(stuName=='exit'){
+        //         break;
+        //     }
+        //     arr[arr.length]=stuName;// 永远在数组的末尾添加
+
+        //    }
+        //    console.log(arr);
+
+        //    for(var i=0;i<arr.length;i++){
+        //      console.log(i,arr[i]);
+        //    }
+        // }
+        // demo1();
+
+        // 2、计算数组中奇数的和（数组自己定义） var arr=[10,28,15,23]
+        // function demo2(arr){
+        //     var sum=0;
+        //     for(var i=0;i<arr.length;i++){
+        //         // arr[i]  数组中的数据
+        //         if(arr[i]%2==1){
+        //             sum+=arr[i]
+
+        //         }
+        //     }
+        //     return sum;
+        // }
+        // var arr0=[10,28,15,23,75]
+        // console.log(demo2(arr0));
+
+        // 3、将数组中所有的字符串输出  typeof arr[i]==='string'
+        // function demo3(arr) {
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (typeof arr[i] === 'string') {
+        //             console.log(arr[i]);
+
+        //         }
+        //     }
+        // }
+        // var arr0 = ['10', '28', '15', 23, 75, 'hello', true];
+        // demo3(arr0)
+// 4、在数组的末尾添加一个数据（修改原数组）
+// 浅拷贝
+    //    var arr0 = ['10', '28', '15', 23, 75, 'hello', true];
+    //    arr0[arr0.length]='nice';
+    //    console.log(arr0);
+  
+
+// 5、在数组的末尾添加一个数据（不修改原数组）
+// 深拷贝
+// var arr0 = ['10', '28', '15', 23, 75, 'hello', true];
+// var newArr=[];
+// for(var i=0;i<arr0.length;i++){
+//     newArr[newArr.length]=arr0[i]
+// }
+// newArr[0]='good'
+// console.log(newArr,arr0);
+
+
+// 6、在数组的头部插入一个数据，不修改原数组
+// var arr0 = ['10', '28', '15', 23, 75, 'hello', true];
+// var newArr=['world'];
+// for(var i=0;i<arr0.length;i++){
+//     newArr[newArr.length]=arr0[i]
+// }
+// console.log(arr0,newArr);
+
+// 7、查找数组元素第一次出现的位置，如果存在返回位置，不存在返回-1（写成函数形式）
+/* 
+arr      item 项  元素 ele
+  
+
+*/
+function demo7(arr,item){
+    for(var i in arr){
+        if(arr[i]===item){
+            return i;
+        }
+        // else{
+        //     return -1
+        // }  //这个不能要，是错误
+    }
+    // 上面把元素在数组全部对比一遍
+    return -1
+
+}
+var arr0 = ['10', '28', '15', 23, '15', 'hello', true];
+console.log(demo7(arr0,'15'));//2
+
+console.log(demo7(arr0,15));//-1
+    </script>
+</body>
+
+</html>

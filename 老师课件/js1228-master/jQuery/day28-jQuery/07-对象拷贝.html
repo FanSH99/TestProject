@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            /* 
+                语法结构: $.extend([deep], target, object1, [object2]);
+                对象拷贝：把 object1、object2 拷贝给 target。
+                        原来的相同属性给覆盖掉，不同的属性保留。
+                    1. 第一个参数：默认 false，或省略，则是浅拷贝；true：深拷贝
+                        浅拷贝：被拷贝对象中复杂数据类型中的地址拷贝给目标对象。本质指向同一个对象。
+                        深拷贝：会把数据给目标对象，相同属性覆盖，不同属性添加。 拷贝后对象互相独立。 
+                    2. 第二个参数：接收属性的对象
+                    3. 第三个参数：目标对象1，所有的属性将会拷贝给 target。   
+                    4. 第四个参数：目标对象2，可省略 
+
+                extend  延申、扩展、继承       
+            */
+            let targetObj = {
+            };
+            let obj = {
+                id: 18,
+                name: 'andy',
+                address: '开封'
+            };
+            let obj1 = {
+                id: 22,
+                school: '北大'
+            };
+
+            // $.extend([deep], target, object1, [object2]);
+            // 1. 把 obj copy 到 targetObj
+            $.extend(targetObj, obj);
+            console.log(targetObj);
+
+            // 2. 会把 targetObj，原来的相同属性给覆盖掉,不同的属性保留,没有则添加
+            $.extend(obj1, obj);
+            console.log(obj1);
+
+            // 3. 浅拷贝：被拷贝对象中复杂数据类型中的地址拷贝给目标对象
+            //    基本数据类型存放的值，复杂数据类型存放的是内存地址。
+            let jay = {
+                id: 0,
+                address: '郑州',
+                msg: {
+                    sex: '男'
+                }
+            };
+            let eason = {
+                id: 18,
+                name: 'andy',
+                msg: {
+                    age: 12,
+                    sex: '男'
+                }
+            };
+            // $.extend(jay, eason);
+            // console.log(jay);
+            // jay.msg.sex = '精灵';
+            // console.log(eason);
+            // // 拷贝的是内存地址
+            // console.log(jay.msg == eason.msg);
+
+            console.log('-------------------');
+            // true 深拷贝
+            $.extend(true, jay, eason);
+            console.log(jay);
+            jay.msg.sex = '精灵';
+            console.log(eason);
+            console.log(jay.msg == eason.msg);
+
+
+            $.extend(targetObj, obj, obj1);
+            console.log(targetObj);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

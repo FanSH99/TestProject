@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1、迎双旦，某加油站特推出回馈客户的活动，每逢周五优惠，92号汽油每升优惠3毛，95号汽油每升优惠5毛（92号汽油原价 6.78元/升，95号汽油原价：7.28元/升）根据车主的加油量，计算客户的油费
+       */
+        /* 
+        加油量   变量
+        油费     变量
+        星期     变量
+        几号油   变量
+        油价      变量
+        
+        
+        */
+        var price92 = 6.78;
+        var price95 = 7.28;
+        var week = prompt('请输入今天是周几  如： 周五');
+        var oil = prompt('请问您加几号油  如： 92   95');
+        var count = prompt('请问您加多少升油');
+        var money=0;
+        if (oil == 92) {
+            if (week == '周五') {
+             money=  (price92-0.3)*count 
+
+            } else {
+                money=  price92*count 
+            }
+
+        } else if (oil == 95) {
+            if (week == '周五') {
+                money=  (price95-0.5)*count
+            } else {
+                money=  price95*count 
+            }
+
+        }else{
+            alert('没有这个油号，只有 92 和95');
+          
+        }
+
+        console.log('您的油费是'+money.toFixed(2)+'元');
+    </script>
+</body>
+
+</html>

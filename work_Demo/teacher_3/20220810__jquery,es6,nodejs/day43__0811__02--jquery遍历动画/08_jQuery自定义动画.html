@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        2022年8月11日11:22:59
+        animate，第一个参数是对象，定义样式通常改变元素的位置。
+     -->
+    <div class="box"></div>
+    <button>运动</button>
+
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $('.box').css({
+            width: '100px',
+            height: '100px',
+            background: 'red',
+            borderRadius: '50%',
+            position: 'absolute',
+            top: 0,
+            left: '100px',
+        })
+        $('button').click(function () {
+            $('.box').animate({
+                marginLeft: '100px',
+                width: '50px',
+                height: '50px',
+                top: '500px',
+                left: '500px',
+
+            }, function () {
+                console.log('执行完成');
+                $('.box').animate({
+                    top: 0,
+                    left: '100px'
+                })
+            })
+        })
+        /*
+        作业，
+        1.淡入淡出轮播
+        2.无缝轮播
+        3.动态导航切换
+        */
+    </script>
+</body>
+
+</html>

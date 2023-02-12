@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" name="check" id="" value="check1" class="check">复选框1
+    <input type="checkbox" name="check" id="" value="check2" class="check">复选框2
+    <input type="checkbox" name="check" id="" value="check3" class="check">复选框3
+    <input type="checkbox" name="check" id="" value="check4" class="check">复选框4
+    <button class="btn">获取复选框的值</button>
+    <div class="msg"></div>
+</body>
+<script>
+    document.querySelector(".btn").onclick = function () {
+        let checks = document.querySelectorAll(".check:checked");
+        console.log(checks);
+        let arr = [];
+        checks.forEach(item => {
+            arr.push(item.value)
+        })
+
+        console.log(arr);
+        let str = arr.join(",");
+        console.log(str);
+        document.querySelector(".msg").innerHTML = str;
+
+    }
+
+
+</script>
+
+</html>

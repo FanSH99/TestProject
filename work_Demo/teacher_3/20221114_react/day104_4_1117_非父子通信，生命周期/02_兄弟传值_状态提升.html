@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+</body>
+<script src="../js/react17.js"></script>
+<script src="../js/react_dom17.js"></script>
+<!-- 引入babel.js将jsx转化为js -->
+<script src="../js/babel7_min.js"></script>
+<script type="text/babel">
+    // 2022年11月17日13:24:32
+    class App extends React.Component {
+        state = {
+            mynum: ""
+        }
+
+        render() {
+
+            return (
+                <div>
+                    <h1>我是一个父组件</h1>
+                    < One fun={(num) => {
+                        console.log(num);
+                        this.setState({
+                            mynum: num
+                        })
+                    }} />
+                    <Two mynum={this.state.mynum} />
+                </div>
+            )
+        }
+
+    }
+
+    class One extends React.Component {
+        state = {
+            num: 2,
+        }
+        render() {
+            return (
+                <div>
+                    <h2> 我是一个子组件</h2>
+                    <button onClick={() => {
+                        // this.state.num++
+                        this.props.fun(this.state.num)
+                    }}>兄弟传值</button>
+                </div>
+            )
+        }
+    }
+
+    class Two extends React.Component {
+        render() {
+            return (
+                <div>我是另一个子组件---{this.props.mynum}</div>
+
+            )
+        }
+    }
+
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+</script>
+
+</html>

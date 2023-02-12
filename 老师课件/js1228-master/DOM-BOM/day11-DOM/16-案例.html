@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div,
+        p {
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            color: red;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示当前系统时间</button>
+    <div>某个时间</div>
+    <script>
+        // 需求:当我们点击了按钮，div 里面的文字会发生变化
+        /* 
+            1. 获取按钮
+            2. 绑定事件
+            3. 获取当前时间，并格式化
+            4. 修改对应 div 的内容
+        */
+        let btn = document.querySelector('button');
+        btn.onclick = function () {
+            let result = format();
+            let div = document.querySelector('div');
+            div.innerHTML = result;
+        }
+        function format() {
+            let d2 = new Date();
+            let year = d2.getFullYear();
+            let month = d2.getMonth() + 1;
+            let date = d2.getDate();
+            let day = d2.getDay();
+            var week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+
+            console.log(year);
+            console.log(month);
+            console.log(date);
+            console.log(week[day]);
+
+
+            console.log("今天是" + year + '年' + month + '月' + date + '日' + week[day]);
+            return "今天是" + year + '年' + month + '月' + date + '日' + week[day];
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "musicSwiper":"../../components/player/musciSwiper/musicSwiper",
+        "myslider":"../../components/player/myProgress/myprogress",
+        "mybtn":"../../components/player/mybtn/btn"
+    }
+}

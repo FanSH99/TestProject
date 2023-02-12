@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* 
+             九九乘法表:双重for循环
+
+             *
+             **
+             ***
+             ****
+
+             i    num(j 的最大值)
+             0     1
+             1     2
+             2     3
+             
+             i + 1 = num
+        */
+        for (let i = 1; i <= 9; i++) {
+
+            let star = '';
+            for (let j = 1; j < i + 1; j++) {
+                star = star + (i + "*" + j + "=" + i * j) + "  ";
+            }
+            console.log(star);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
