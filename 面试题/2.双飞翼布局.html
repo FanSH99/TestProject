@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #header,
+        #footer {
+            height: 50px;
+            background-color: cadetblue;
+            clear: both;
+            line-height: 50px;
+        }
+
+        #left,
+        #right,
+        #center {
+            height: 300px;
+            line-height: 300px;
+            float: left;
+        }
+
+        #left,
+        #right {
+            width: 150px;
+        }
+
+        #left {
+            background-color: bisque;
+            margin-left: -100%;
+        }
+
+        #right {
+            background-color: chocolate;
+            margin-left: -150px;
+        }
+
+        #center {
+            width: 100%;
+            background-color: crimson;
+        }
+
+        #middle {
+            padding: 0 150px;
+        }
+
+        pre {
+            color: #ccc;
+            line-height: 1.5;
+            width: 400px;
+            background-color: #50556B;
+            margin: 30px auto;
+        }
+
+        .ct {
+            color: aquamarine
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>双飞翼布局</p>
+    <pre>
+<code>
+这里是源码
+    </code>
+    <button id="copy" onclick="copyText()">点击复制源码</button>
+    </pre>
+    <div class="main">
+        <div id="header">#header</div>
+        <div id="center">
+            <div id="middle">#center</div>
+        </div>
+        <div id="left">#left</div>
+        <div id="right">#right</div>
+        <div id="footer">#footer</div>
+    </div>
+
+</body>
+
+<script>
+
+    let str = document.getElementsByClassName("main")[0].innerHTML;
+    console.log(str);
+    let code = str.replace((/[<>]/ig), function (text) {
+        // console.log(text);
+        if (text === "<") {
+            return ("<span class='ct'>&lt;</span>")
+        }
+        else {
+            return ("<span class='ct'>&gt;</span>")
+        }
+    })
+    console.log(code);
+    document.getElementsByTagName("code")[0].innerHTML = code;
+    function copyText() {
+        // console.log("点击复制");
+        //复制，成功返回提示 
+        navigator.clipboard.writeText(str).then(() => {
+            alert('复制成功');
+        });
+    }
+
+</script>
+
+</html>

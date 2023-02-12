@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            float: left;
+            width: 400px;
+            height: 400px;
+            margin: 30px;
+            background-color: brown;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+        }
+
+        .c1 {
+            margin: 150px;
+        }
+
+        .f2,
+        .f3,
+        .f4 {
+
+            position: relative;
+        }
+
+        .c2 {
+            width: 200px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0
+        }
+
+        .c3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 150px;
+            margin-left: 150px;
+        }
+
+        .c4 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .f5 {
+            float: none;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .c5 {
+            width: 200px;
+            display: inline-block;
+            /* vertical-align: middle; */
+        }
+
+        .f6 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .c6 {
+            width: 200px;
+        }
+
+        .cell {
+            float: none;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            /* width: 400px;
+            height: 200px; */
+            border: 1px solid #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father f1">
+        <div class="child c1">
+            子margin计算宽高差
+        </div>
+    </div>
+
+    <div class="father f2">
+        <div class="child c2">
+            子绝对定位+margin:auto+绝对定位四个方位设为0
+        </div>
+    </div>
+    <div class="father f3">
+        <div class="child c3">
+            子绝对定位+margin左上移位
+        </div>
+    </div>
+    <div class="father f4">
+        <div class="child c4">
+            子绝对定位+上左方位50%，tranfrom上左移位-50%，
+        </div>
+    </div>
+    <div class="father f5">
+        <div class="child c5">
+            display: table-cell;<br>
+            vertical-align: middle;<br>
+            text-align: center;<br>
+            备注：不能添加浮动、定位、table-row否则无效
+        </div>
+    </div>
+    <div class="father f6">
+        <div class="child c6">
+            最常用<br>
+            display:flex<br>
+            justify-content: center;<br>
+            align-items
+        </div>
+    </div>
+    <div class="cell father">
+        <p>我爱你</p>
+        <p>亲爱的中国</p>
+        <div style="width:100px;height:50px;border:1px solid #ccc;display:inline-block">div(inline-block)</div>
+    </div>
+</body>
+
+</html>

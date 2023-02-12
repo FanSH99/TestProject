@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+<style>
+    body {
+
+        text-align: center;
+        min-width: 600px;
+        font-size: 14px;
+        font-weight: bold;
+
+    }
+
+    #container {
+        overflow: hidden;
+        padding: 0 200px
+    }
+
+    #left,
+    #right,
+    #center {
+        float: left;
+        height: 300px;
+        line-height: 300px;
+        color: white;
+    }
+
+    #left,
+    #right {
+        width: 200px;
+
+    }
+
+    #center {
+        background-color: rgb(45, 54, 54);
+        width: 100%;
+    }
+
+    #left {
+        background-color: burlywood;
+        position: relative;
+        margin-left: -100%;
+        right: 200px;
+
+    }
+
+    #right {
+        background-color: chocolate;
+        position: relative;
+        margin-right: -100%;
+        /* right: 200px; */
+    }
+
+    #header,
+    #footer {
+        height: 50px;
+        width: 100%;
+        line-height: 50px;
+        background-color: blueviolet;
+    }
+</style>
+
+<body>
+
+    <p>圣杯：两侧内容宽度固定，中间自适应填充整个布局。标题和页脚宽度占满</p>
+
+    <textarea style="height: 100px;width: 500px;resize: none;">
+        <div id="header">#header</div>
+
+        <div id="container">
+            <div id="center" class="column"> #center</div>
+            <div id="left" class="column">#left</div>
+            <div id="right" class="column">#right</div>
+        </div>
+
+        <div id="footer">#footer</div>
+
+        </textarea>
+    <div id="header">#header</div>
+
+    <div id="container">
+        <div id="center" class="column"> #center</div>
+        <div id="left" class="column">#left</div>
+        <div id="right" class="column">#right</div>
+
+    </div>
+
+    <div id="footer">#footer</div>
+</body>
+
+</html>
