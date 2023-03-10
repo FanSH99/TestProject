@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>li2</title>
+    <style>
+        nav .li {
+            color: orange;
+            /* 权重1+10=11 */
+        }
+
+        li.li1 {
+            color: red
+                /* 权重1+10=11 */
+        }
+
+        li:first-child {
+            color: blue;
+            /* 权重1+10=11 权重相同时后面的样式会覆盖前面的*/
+        }
+
+        li:target {
+            color: pink;
+            /* 权重1+10=11 权重相同时后面的样式会覆盖前面的*/
+        }
+
+        li.li2 {
+            color: cadetblue
+                /* 权重1+10=11 权重相同时后面的样式会覆盖前面的*/
+        }
+
+        li.li1 {
+            font-size: 28px;
+            /* 权重1+10=11 */
+        }
+
+        nav>li {
+            font-size: 14px;
+            /* 权重1+1=2 */
+        }
+
+        li::first-letter {
+            font-size: 24px;
+            /* 权重1+1=2 */
+        }
+
+        a[title] {
+            color: purple;
+        }
+
+
+        a[href*="li"] {
+            font-size: 44px;
+            color: blue;
+            font-style: normal;
+
+        }
+
+        a[title$="2"] {
+            font-style: italic;
+        }
+
+
+        nav .link {
+            font-size: 22px;
+        }
+
+        li p {
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        li:nth-of-type(2) {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        li:nth-child(1) {
+            font-weight: small;
+            font-style: italic;
+        }
+
+        div>p:nth-child(1) {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        
+     -->
+    <nav>
+        <a href="#li2" class="link" title="li2">li2</a>
+        <li class="li li1">
+            <span>li1</span>
+            <p class="p1">p1</p>
+        </li>
+        <p class="p2">p</p>
+        <li class="li li2" id="li2">li2</li>
+        <li class="li li3">li3</li>
+    </nav>
+
+    <div>
+        <p><span>0000</span>11111</p>
+        <span>22222</span>
+        <span>2223343</span>
+        <p>33333</p>
+    </div>
+</body>
+
+</html>

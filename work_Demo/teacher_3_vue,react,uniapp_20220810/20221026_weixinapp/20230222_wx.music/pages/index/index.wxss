@@ -1,0 +1,8 @@
+/**index.wxss**/
+.title{
+  width: 100%;
+  text-align: center;
+  color:#ffbd32;
+  font-size: 35rpx;
+  margin: 40rpx 0;
+}

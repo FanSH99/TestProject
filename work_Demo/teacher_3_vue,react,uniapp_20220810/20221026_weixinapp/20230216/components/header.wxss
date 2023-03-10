@@ -1,0 +1,6 @@
+/* components/header.wxss */
+.header{
+  width: 100%;
+  min-height: 200rpx;
+  background-color: cadetblue;
+}

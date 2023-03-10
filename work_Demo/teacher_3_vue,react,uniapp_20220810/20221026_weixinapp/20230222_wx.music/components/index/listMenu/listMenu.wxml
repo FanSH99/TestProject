@@ -1,0 +1,9 @@
+<!--components/index/listMenu/listMenu.wxml-->
+<view class="listMenu">
+  <view class="left">
+    <image src="{{list.coverImgUrl}}" mode="heightFix" class="listImage"></image>
+  </view>
+  <view class="right">
+    <view wx:for="{{list.tracks}}" wx:key="index" wx:for-item="song" class="listTitle">{{index+1}}.{{song.first}}-{{song.second}}</view>
+  </view>
+</view>

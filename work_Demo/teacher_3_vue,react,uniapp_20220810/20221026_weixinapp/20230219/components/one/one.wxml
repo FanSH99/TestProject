@@ -1,0 +1,3 @@
+<!--components/one/one.wxml-->
+
+<view class="one">我是one组件__{{msg}}</view>

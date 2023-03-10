@@ -41,6 +41,7 @@
             <h4>我是子组件{{mynum}}</h4>
             <h5>{{msg==''?"我是默认值":msg}}</h5>
             <h6>{{message}}</h6>
+            <h6>{{typeStr}}</h6>
         </div>
     </template>
 
@@ -63,6 +64,12 @@
                 default: function () {
                     return "哈哈哈哈"
                 }
+            },
+            typeStr: {
+                type: String,
+                default: function () {
+                    return "默认类型"
+                }
             }
         }
     }
@@ -75,7 +82,8 @@
             return {
                 num: 0,
                 msg: "",
-                message: undefined
+                message: "今天天气很好",
+                typeStr: undefined,
             }
         }
     }

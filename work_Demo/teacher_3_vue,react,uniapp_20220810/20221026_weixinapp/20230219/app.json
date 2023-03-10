@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/watch/watch",
+    "pages/mine/mine",
+    "pages/info/info",
+    "pages/behaver/behaver"
+  
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "组件通信"
+      },
+      {
+        "pagePath": "pages/watch/watch",
+        "text": "数据监听"
+      },
+      {
+        "pagePath":"pages/behaver/behaver",
+        "text": "behavior"
+      },
+      {
+        "pagePath":"pages/mine/mine",
+        "text": "常用组件"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

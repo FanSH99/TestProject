@@ -1,0 +1,8 @@
+<!--components/index/swiper/swiper.wxml-->
+<view class="myswiper">
+  <swiper indicator-dots="{{true}}" indicator-color="#949494" indicator-active-color="#fff" autoplay="{{true}}" interval="{{3000}}" circular="{{ture}}">
+    <swiper-item wx:for="{{bannerList}}" wx:key="index">
+      <image src="{{item.pic}}" mode="widthFix"></image>
+    </swiper-item>
+  </swiper>
+</view>

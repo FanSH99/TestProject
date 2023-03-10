@@ -1,0 +1,19 @@
+<!--pages/video/video.wxml-->
+<!-- <text>pages/video/video.wxml</text> -->
+<view class="btn" bindtouchstart="startVideo" bindtouchend="endVideo">录音</view>
+
+<button type="primary" wx:if="{{url}}" bindtap="playVideo">播放录音</button>
+<button bindtap="playMusic" type="primary" data-src="http://dl.stream.qqmusic.qq.com/C4000046mgx23IOIWx.m4a?guid=3436420225&vkey=C87B6BAD64ED813C21212D2BB26040BFA16A90B63C8407644916878982B906C15ED12980CE9B0FC352DB0CAD64D2EC25AB01F6113D039D41&uin=&fromtag=120032" data-title="羡慕">播放羡慕</button>
+<button bindtap="endMusic">暂停播放</button>
+<button bindtap="playMusic" type="primary" data-src="http://dl.stream.qqmusic.qq.com/RS0206108IQp3HF6BZ.mp3?guid=2326675232&vkey=761FAC0641A60B71B99AB388ED0FDCB6DFDB7574D04D5706DFB09DF5D3C5EC1ECF92F3B79DBBF44BCA13184D1746D75DF2F538A379CF2996&uin=&fromtag=120052" data-title="难却">播放难却</button>
+<button bindtap="playMusic" data-src="http://dl.stream.qqmusic.qq.com/C400002pyV5z0unOns.m4a?guid=3293375299&vkey=D1348ED4DA3742A9FDCA29B46827715E47890024A9B88311FF0D0615CB65208D1FE159483BCD6E4A238DD553563D3A132AC6EF8237553278&uin=&fromtag=120032" data-title="此去半生">播放此去半生</button>
+
+<button type="primary" bindtap="getUserInfo">获取用户信息</button>
+<view wx:if="{{user}}">
+  <view>1111</view>
+  <image src="{{user.avatarUrl}}"></image>
+</view>
+
+<button bindtap="getAddress">获取收货地址</button>
+<button bindtap="openMap" type="primary">打开内置地图</button>
+<button bindtap="chooseLocation">选择位置</button>

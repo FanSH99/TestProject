@@ -1,0 +1,10 @@
+/* components/two/two.wxss */
+.two{
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  background-color: #d087ec;
+}
+button{
+  margin: 20rpx;
+}

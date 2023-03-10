@@ -1,0 +1,7 @@
+/* components/child/child.wxss */
+.mychild {
+  width: 100%;
+  height: 300rpx;
+  margin: 30rpx 0;
+  background-color: aqua;
+}

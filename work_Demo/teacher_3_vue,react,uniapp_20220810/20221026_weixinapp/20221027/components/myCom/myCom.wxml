@@ -1,9 +1,0 @@
-<!--components/myCom/myCom.wxml-->
-<view class="child">
-  <view >
-我是一个子组件 {{mymsg}} 
-{{mylist}}
-</view>
-<view wx:for="{{mylist}}" wx:key="index">{{item}}</view>
-<button bindtap="sendData">向父组件传值</button>
-</view>

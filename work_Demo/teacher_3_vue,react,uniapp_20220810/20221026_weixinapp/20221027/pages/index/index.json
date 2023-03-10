@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "myCom":"../../components/myCom/myCom",
-    "one":"../../components/one/one",
-    "two":"../../components/two/two"
-  }
-}

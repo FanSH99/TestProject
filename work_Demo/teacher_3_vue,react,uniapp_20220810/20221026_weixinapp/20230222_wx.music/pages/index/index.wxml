@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view wx:if="{{!loading}}">
+  <scroll-view scroll-y="{{true}}" class="pageScroll">
+    <view>
+      <mySearch></mySearch>
+      <mySwiper bannerList="{{bannerList}}"></mySwiper>
+      <view>
+        <view class="title">热门榜单推荐</view>
+        <view class="" wx:for="{{hotList}}" wx:key="index">
+          <listMenu list="{{item}}"></listMenu>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view wx:else>
+  <loading></loading>
+</view>

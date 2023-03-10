@@ -1,0 +1,19 @@
+<!--pages/cart/cart.wxml-->
+<text>pages/cart/cart.wxml</text>
+<view>购物车页面</view>
+
+<!-- 
+作业，有一组数据列表，隔行换色渲染，点击那个数据即删除那个数据
+ -->
+<view style="color:red">作业：隔行换色+删除:</view>
+ <view class="table">
+请输入姓名：<input type="text" model:value="{{name}}"/>
+请输入年龄：<input type="text" model:value="{{age}}"/>
+请输入性别：<input type="text" model:value="{{sex}}"/>
+<button bindtap="add">点击添加</button>
+ <view wx:for="{{person}}" wx:key="index" class="tabItem" bindtap="remove" id="{{index}}">
+ <text>{{item.name}}</text>
+ <text>{{item.age}}</text>
+ <text>{{item.sex}}</text>
+ </view>
+ </view>

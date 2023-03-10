@@ -1,0 +1,42 @@
+<!-- 2023年2月16日17:31:22 -->
+<!-- 小程序组件：view视图组件，块标签相当于div -->
+<view class="title">列表循环，条件判读，引入模板</view>
+<view class="study" ><text wx:for="{{tag}}" class="tag">{{item}}</text></view>
+<!-- 绑定数据：双大括号，可以写表达式 -->
+<view>{{msg}}</view>
+<view>{{num>10?"num大于10":"num小于10"}}</view>
+<!-- 列表循环 注意不同于vue中的v-for，而是：wx:for="{{数组名}}" 默认遍历的每一项为item，索引为index 和vue一样必须绑定一个key-->
+<view wx:for="{{list}}" wx:key="index">
+{{item}}--{{index}}
+</view>
+<!-- 使用wx:for-item来自定义每一项名称，使用wx:for-index来自定义索引，一般用于内层嵌套遍历 -->
+<view wx:for="{{goods}}" wx:key="name">
+{{item.name}}--{{item.price}}元一斤--{{item.num}}
+<text wx:for="{{item.tag}}"  wx:for-item="tag" wx:for-index="i" class="tag" wx:key="i">{{tag}}</text>
+</view>
+
+<!-- 条件判断wx:if  wx:elif  wx:else 与vue差不多  vue是 v-if,v-elif,v-else-->
+<view wx:if="{{n>5}}">n>5___{{n}}</view>
+<view wx:elif="{{n<5}}">n小于5___{{n}}</view>
+<view wx:else="{{n==5}}">中奖了n=5————{{n}}</view>
+
+<!-- 显示与隐藏  hidden绑定的值为true时隐藏，否则显示
+wx:if与hidden 原理与vue一样
+wx:if之间的模板也包含数据绑定，wx:if条件值切换时会销毁dom，初始为false时什么也不做，第一次为真时才渲染
+hidden组件始终会渲染，只是控制显示或隐藏。
+一般来说，wx:if有更高的切换消耗，所以频繁切换用hidden，初次判断渲染用wx:if
+-->
+<view hidden="{{isShow}}"> 红红火火恍恍惚惚</view>
+<!-- 定义模板 -->
+<template name="mymsg">
+  <view>我是一个模板___<text>{{msg}}</text></view>
+</template>
+
+<!-- 使用模板 is绑定模板名称来使用
+模板中不能直接使用data中的数据，想使用需要用data属性加双大括号传递-->
+<template is="mymsg" data="{{msg}}"></template>
+<!-- 引入组件 用src来绑定 -->
+<include src="./footer.wxml"></include>
+
+<view>like:{{like}}</view>
+<view wx:for="{{10}}" wx:key="index">{{item}}</view>

@@ -1,0 +1,5 @@
+<!--components/mycom/mycom.wxml-->
+<!-- 使用父组件中的数据 -->
+<view class="mycom">我是一个子组件 {{mymsg}}
+</view>
+<view class="mycom" wx:for="{{mylist}}" wx:key="index">{{item}}</view>

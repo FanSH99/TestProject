@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "myheader":"../../components/header"
+  },
+  "navigationBarBackgroundColor": "#126bae",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的",
+  "navigationStyle": "default",
+  "enablePullDownRefresh": false
+}

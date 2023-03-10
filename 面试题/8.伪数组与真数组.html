@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+        </ul>
+    </nav>
+</body>
+<script>
+    // 将伪数组转换为真数组
+    // 常见的伪数组有nodeList对象
+    //方法一：es6中的Array.from(arr).forEach(Funtion(item)=>{})
+    let eleLis = document.querySelectorAll("li");
+    // console.dir(eleLis);
+    console.log(eleLis.length, eleLis[1]);//3,<li>222</li>--伪数组有length属性和索引，可根据索引取值
+    for (let key in eleLis) {
+        // console.log(key);
+        // eleLis.push(33) --报错，伪数组没有push方法和pop方法
+        //伪数组可以根据for of来遍历，for……in会出错。
+    }
+    // console.log(eleLis);
+
+    let noArr = [];
+    Array.from(eleLis).forEach(item => {
+        noArr.push(item)
+    });
+    console.log(noArr);//[li,li,li]
+    //方法二：es6中的Array.from(arr).forEach(Funtion(item)=>{})
+
+    let noArr2 = [];
+    noArr2.slice.call(eleLis).forEach(item => {
+        noArr2.push(item)
+    })
+    console.log(noArr2);//[li,li,li]
+    // 方法三直接forEach
+    let noArr3 = []
+    eleLis.forEach(item => {
+        noArr3.push(item)
+    })
+    console.log(noArr3);//[li,li,li]
+    let noArr4 = [];
+    //方法四for of
+    for (let item of eleLis) {
+        // console.log(item);
+        noArr4.push(item)
+    }
+    console.log(noArr4);//[li,li,li]
+
+    //Object.keys()方法遍历自身可枚举的属性(可枚举，非继承属性),和使用for..in遍历该对象时返回的顺序一致,区别是for..in还会枚举其原型链上的属性）
+    console.log(Object.keys(eleLis));//['0','1','2']
+    console.log(Object.keys([111, "222", 333]));//['0','1','2']
+    console.log(Object.keys({ name: "张三", age: 14 }));//["name","age"]
+    //Object.getOwnPropertyNames()方法遍历自身的所有属性(可枚举，不可枚举，非继承属性)，该方法返回一个由指定对象的所有自身属性组成的数组(包括不可枚举属性但不包括Symbol值作为名称的属性
+    console.log(Object.getOwnPropertyNames({ name: "张三", age: 14 }).sort());//["age","name"]
+    console.log(Object.getOwnPropertyNames({ c: [11, 22], a: [33, 44], b: [55] }).sort());//[ 'a', 'b','c']
+    console.log(Object.keys({ c: [11, 22], a: [33, 44], b: [55] }).sort());//['a', 'b','c']
+
+    //根据Object.keys将对象进行排序。
+    let citys = { c: [11, 22], a: [33, 44], b: [55] };
+    // console.log(citys.c);
+    let newKey = Object.keys(citys).sort();
+    let newCity = []
+    console.log(citys.c, citys["b"]);
+    newKey.forEach(item => {
+        let obj = {
+            title: item,
+            list: citys[item]
+        }
+        newCity.push(obj)
+    })
+    console.log(newCity);
+
+</script>
+
+</html>

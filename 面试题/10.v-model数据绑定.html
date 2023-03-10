@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{sex}}
+        <input type="radio" name="sex" id="" v-model="sex" value="women" />women
+        <input type="radio" name="sex" id="" v-model="sex" value="men" />men<br>
+        <input type="checkbox" name="check" id="" v-model="like" value="read" />读书
+        <input type="checkbox" name="check" id="" v-model="like" value="painting" />绘画
+        <input type="checkbox" name="check" id="" v-model="like" value="photo" />摄影
+        <input type="checkbox" name="check" id="" v-model="like" vvalue="game" />游戏
+    </div>
+</body>
+<script src="./bin/vue-2.7.10.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            sex: "women",
+            like: ["read", "painting"]
+        }
+    })
+    console.log(Vue);
+</script>
+
+</html>

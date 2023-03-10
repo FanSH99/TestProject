@@ -1,0 +1,5 @@
+<!--pages/mine/mine.wxml-->
+<text>pages/mine/mine.wxml</text>
+<button bindtap="sendGetHttp" type="warn">发送get请求</button>
+<button bindtap="sendPostHttp" type="primary">发送post请求</button>
+<button bindtap="sendCode">设置请求头</button>

@@ -1,0 +1,15 @@
+/* pages/video/video.wxss */
+
+.btn{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #f1a965;
+  text-align: center;
+  line-height: 100rpx;
+  position: fixed;
+  bottom:0;
+  left:50%;
+  transform: translateX(-50%);
+}

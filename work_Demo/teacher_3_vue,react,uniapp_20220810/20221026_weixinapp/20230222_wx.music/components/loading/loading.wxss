@@ -1,0 +1,14 @@
+/* components/loading/loading.wxss */
+
+
+.loading{
+  width: 100%;
+  padding: 20rpx 0;
+  font-size: 35rpx;
+  color:#919191;
+  text-align: center;
+}
+
+.loadingImg{
+  width: 40rpx;
+}

@@ -1,0 +1,28 @@
+.title{
+  background-color: #f1f1f1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color:red;
+  /* 小程序中不用px,而用rpx,1rpx=1.75px 可以适配 */
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.study{
+  background-color: #126bae;
+  color:#fff;
+  display: flex;
+  flex-wrap:wrap ;
+  padding: 10rpx;
+}
+.study .tag{
+  font-size: 30rpx;
+}
+.tag{
+  padding:5rpx 12rpx;
+margin:  10rpx;
+border-radius: 10rpx;
+color:#fff;
+  font-size: 24rpx;
+  background-color: #e485a9;
+}

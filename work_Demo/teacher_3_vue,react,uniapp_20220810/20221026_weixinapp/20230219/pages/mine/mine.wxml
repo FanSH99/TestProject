@@ -1,0 +1,81 @@
+<!--pages/mine/mine.wxml-->
+<text>pages/mine/mine.wxml</text>
+<view style="color: red;padding: 10rpx ;">常用内置组件</view>
+
+<view>scroll-view 滚动组件</view>
+<!-- 
+  1.用scroll-view包裹内容
+  2.在要滚动的部分添加scroll-y（允许纵向滚动）scroll-into-view绑定id（滚动到该元素
+  3.给滚动内容的每一项添加id与scroll-into-view中一致。
+  4.给tab标题添加点击事件，更改scroll-into-view中绑定的id值即可滚动到钙元素
+ -->
+<view class="nums">
+  <view wx:for="{{10}}" wx:key="index" class="item" bindtap="toScroll" data-index="{{index}}"> {{item}}</view>
+</view>
+<scroll-view class="scrollContainer" scroll-y="{{true}}" scroll-into-view="id{{to}}">
+  <view wx:for="{{10}}" wx:key="index" class="num" id="id{{item}}">{{item}}</view>
+</scroll-view>
+<view>轮播图组件</view>
+<swiper indicator-dots="{{true}}" indicator-color="#f1f1f1" indicator-active-color="red" autoplay="{{true}}" current="{{1}}" interval="{{2000}}" circular="{{true}}" vertical="{{true}}">
+  <swiper-item>
+    <image src="https://img.youpin.mi-img.com/ferriswheel/f9e992cd_8a4b_4c54_81b8_a1e11ce05c06.jpeg@base@tag=imgScale&F=webp&h=1080&q=90&w=2560" alt="" mode="widthFix" />
+  </swiper-item>
+  <swiper-item>
+    <image src="https://img.youpin.mi-img.com/ferriswheel/40e9e799_93a6_43a2_b758_9c91c6ed726c.jpeg?w=2560&h=1080" alt="" mode="widthFix" />
+  </swiper-item>
+  <swiper-item>
+    <image src="https://img.youpin.mi-img.com/ferriswheel/e5395cf8_3fa0_473b_a2d1_645272e66e6b.jpeg?w=2560&h=1080" alt="" mode="widthFix" />
+  </swiper-item>
+</swiper>
+<!--
+  icon图标
+  type设置类型
+   size设置大小，数字或者字符串类型 
+   color设置颜色
+-->
+<icon type="success" size="20" color="#62ee7a"></icon>
+<!-- 进度条组件
+percent所占百分比
+show-into是否显示百分比
+border-radius 圆角，number/string, 默认0
+font-size右侧百分比文字大小，number/string 默认16
+stroke-width进度条宽度，number/string,默认6
+activeColor 已经完成的进度条颜色，
+backgroundColor:没有完成的进度条颜色
+ -->
+<progress percent="{{50}}" show-info="{{true}}" border-radius="10" font-size="12" stroke-width="14" activeColor="#62ee7a" backgroundColor="#f1f1f1"></progress>
+
+<!-- 渲染富文本 -->
+<rich-text>
+  <h1>富文本</h1>
+</rich-text>
+<rich-text nodes="{{nodes}}"></rich-text>
+
+<button type="primary" color="#62ee7a" size="mini" loading="{{true}}">按钮</button>
+
+<button type="primary" size="mini" plain disabled="{{true}}">禁用按钮</button>
+<view></view>
+<!-- 复选框，value绑定选定的值，change事件中写逻辑。 -->
+<checkbox-group bindchange="changeCheck">
+  <checkbox checked="{{true}}" value="摄影">摄影</checkbox>
+  <checkbox value="看书">看书</checkbox>
+  <checkbox value="游戏">游戏</checkbox>
+</checkbox-group>
+
+<picker mode="selector" range="{{range1}}">
+请您选择专业
+</picker>
+<picker range="{{range2}}" range-key="name" value="{{1}}" bindchange="changeSelect">请选择专业:{{name}}</picker>
+
+<picker mode="region" level="sub-district" bindchange="changeCity">
+请您选择地址:{{city}}</picker>
+
+<!-- 不能跳转到tab页 -->
+<navigator url="/pages/info/info">跳转页面</navigator>
+<!-- 摄像头 device-position默认是后置-->
+<!-- <camera device-position="front" style="width:100%;height:500rpx"></camera> -->
+
+<!-- live-player直播 -->
+
+<!-- 地图 -->
+<!-- <map name=""></map> -->

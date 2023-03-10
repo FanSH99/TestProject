@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view>微信小程序api</view>
+<button bindtap="getSystem" type="primary">获取系统信息</button>
+<button bindtap="getSystemAsync">同步获取系统信息</button>
+<view>跳转页面</view>
+<button bindtap="goCart">跳转到tab页面cart</button>
+<button bindtap="goLaunch" type="primary">跳转任意页面reLaunch</button>
+<button bindtap="goRedirectTo">跳转非tab页面redirectTo</button>
+<button bindtap="goNavigator" type="primary">保留当前页面跳转</button>
+
+<button bindtap="showMenus">显示转发按钮</button>
+<button bindtap="sharePhoto" type="primary">分享图片</button>

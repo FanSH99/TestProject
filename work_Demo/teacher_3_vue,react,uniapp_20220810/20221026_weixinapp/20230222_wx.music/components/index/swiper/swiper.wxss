@@ -1,0 +1,13 @@
+/* components/index/swiper/swiper.wxss */
+image{
+  width: 100%;
+}
+
+.myswiper{
+  width: 100%;
+  margin: 20rpx auto;
+}
+
+swiper{
+  height: 300rpx;
+}

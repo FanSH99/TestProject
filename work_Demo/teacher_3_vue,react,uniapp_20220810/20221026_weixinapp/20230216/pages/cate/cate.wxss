@@ -1,0 +1,28 @@
+/* pages/cate/cate.wxss */
+
+input{
+  border: 2rpx #f1f1f1 solid;
+  width: 400rpx;
+}
+.study{
+padding: 20rpx;
+background-color: #5b9cda;
+color:#fff
+}
+button{
+  margin: 10rpx;
+}
+
+.parent{
+  width:100%;
+  height:300rpx;
+  padding:50rpx;
+  background-color: #5b9cda;
+}
+.child{
+  width:100%;
+  height:80rpx;
+  margin:50rpx;
+  background-color: bisque;
+  clear: both;
+}

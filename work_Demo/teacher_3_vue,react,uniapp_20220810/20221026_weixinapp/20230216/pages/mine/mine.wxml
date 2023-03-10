@@ -1,0 +1,23 @@
+<!--pages/mine/mine.wxml-->
+<text>pages/mine/mine.wxml</text>
+<view>我的页面</view>
+<view>可以在每个页面进行单独配置</view>
+<view>like:{{like}}</view>
+<view class="comment">
+  {
+  "usingComponents": {},
+  //导航栏背景颜色
+  "navigationBarBackgroundColor": "#126bae",
+  //导航栏字体颜色 white或者black，默认是black
+  "navigationBarTextStyle": "white",
+ //导航栏字体
+  "navigationBarTitleText": "我的",
+  //导航栏配置默认或者custom（这个需要自己配置导航栏麻烦一般不用）
+  "navigationStyle": "default",
+  //是否开启下拉刷新
+  "enablePullDownRefresh": false
+  }
+</view>
+<!-- 自定义组件，不能套在其他标签中，另外必须现在JSON文件中的useringComponent中注册 -->
+<myheader wx:if="{{isShow}}"></myheader>
+<button bindtap="changeShow">切换组件</button>

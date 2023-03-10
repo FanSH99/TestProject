@@ -1,0 +1,8 @@
+<!--components/cartone/one.wxml-->
+<view>我是cart中one组件</view>
+<button bindtap="looklook">查看</button>
+<view wx:for="{{list}}" wx:key="name">{{item.name}}--{{item.age}}--{{item.sex}}</view>
+<input type="text" placeholder="请输入学生姓名" model:value="{{name}}"/>
+<input type="text" placeholder="请输入学生年龄" model:value="{{age}}"/>
+<input type="text" placeholder="请输入学生性别" model:value="{{sex}}"/>
+<button bindtap="addUser">添加学生</button>

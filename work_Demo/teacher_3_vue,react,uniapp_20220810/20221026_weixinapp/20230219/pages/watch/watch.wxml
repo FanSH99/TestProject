@@ -1,0 +1,5 @@
+<!--pages/watch/watch.wxml-->
+<text>pages/watch/watch.wxml</text>
+<one class="onecom"></one>
+<two class="twocom"></two>
+<button bindtap="getOneCom" type="primary">获取子组件one实例</button>

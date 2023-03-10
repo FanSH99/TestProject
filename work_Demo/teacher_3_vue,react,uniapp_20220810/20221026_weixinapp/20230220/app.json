@@ -1,0 +1,44 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/mine/mine",
+    "pages/info/info",
+    "pages/cart/cart",
+    "pages/cate/cate",
+    "pages/video/video"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "路由跳转"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "界面设置"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "发送请求"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "录音器"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息用于快速录入检查地点"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

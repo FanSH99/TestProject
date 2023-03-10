@@ -1,0 +1,4 @@
+<!--components/index/search/search.wxml-->
+<view class="search" bindtap="goSearch">请输入歌手名、歌曲名搜索
+<image src="../../../image/search-2.png" class="search_icon"></image>
+</view>

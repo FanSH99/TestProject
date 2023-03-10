@@ -1,9 +1,0 @@
-<view class="btn" bindtouchstart="startVideo" bindtouchend="endVideo">
-录音
-</view>
-<button type="primary" wx:if="{{url}}" bindtap="playVideo">播放录音</button>
-<button bindtap="playMusic">播放音乐</button>
-<button bindtap="getInfo">获取用户信息</button>
-<button bindtap="getAdress">获取微信收货地址</button>
-<button bindtap="openMap">打开内置地图</button>
-<button bindtap="selLoation">选择位置</button>

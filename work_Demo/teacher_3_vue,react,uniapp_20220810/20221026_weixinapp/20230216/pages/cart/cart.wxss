@@ -1,0 +1,16 @@
+/* pages/cart/cart.wxss */
+
+text{
+  padding: 20rpx;
+}
+
+.table{
+  margin: 30rpx;
+}
+.tabItem:nth-child(2n){
+color:red;
+}
+
+.tabItem:nth-child(2n+1){
+  color:blue;
+  }

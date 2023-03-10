@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue生命周期</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <button @click="msg='一愿郎君千岁，二愿妾身长健，'">改变msg</button>
+        <h2 ref="h2">要切换的对象</h2>
+        <!-- display:none不影响vue的生命周期，原理如下，隐藏后没有触发生命周期钩子函数 -->
+        <button @click="hiddenH2">隐藏</button>
+    </div>
+
+    <button onclick="destroyVue()">销毁vue实例</button>
+
+</body>
+<script src="../bin/vue-2.7.10.js"></script>
+<script>
+    /* 2022年9月6日14:12:03
+    声明周期，描述vue实例从创建到销毁的一个过程。
+    特点，在不同的时候短，生命周期钩子函数会自动调用。
+    */
+    document.querySelector(".hidden")
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "东风夜放花千树，更吹落，星如雨。"
+        },
+        // vue实例创建之前生命周期钩子函数。创建之前自动调用。
+        beforeCreate() {
+            // vue实例创建前，vue实例初始化了，但是vue实例中的data和methods方法还没有初始化，此时不能访问操作data,methods属性等数据，
+            console.log("vue创建之前生命周期钩子函数。");
+            console.log(this.msg);//undefined
+            //this.getMsg();//报错
+        },
+        // 创建之后生命周期钩子函数。
+        created() {
+            console.log("vue创建之后声明周期狗子函数。");
+            // vue差UN固件后,vue实例已经初始化，data等数据也初始化，可以访问data等数据，但是数据还没有渲染。
+            this.getMsg();//最早可以访问数据。
+            console.log(document.querySelector("h1").innerText);//{{msg}}
+        },
+
+        // vue实例渲染之前生命周期钩子函数。mount设置装裱渲染
+        beforeMount() {
+            // 数据均已初始化，vue开始渲染数据，已经生成了虚拟dom,但还未吧虚拟dom转换为真实dom
+            console.log("vue渲染之前生命周期狗子函数。");
+            // 验证是否生成真实dom，获取以下
+            console.log(document.querySelector("h1").innerText);//{{msg}}
+        },
+        mounted() {
+            // 渲染后vue将虚拟dom转换为真实dom，并渲染到页面上。
+            console.log("vue渲染之后声明周期钩子函数。");
+            console.log(document.querySelector("h1").innerText);//东风夜放花千树，更吹落，星如雨。
+            // 
+        },
+        // 更新前后的钩子函数不会自动调用，必须视图更新才会自动调用。 
+        beforeUpdate() {
+            // 生成了虚拟dom.还没有将虚拟dom转换为真实dom。挂载在页面上。
+            console.log("视图更新之前生命周期 钩子函数。");
+            console.log(document.querySelector("h1").innerText);//东风夜放花千树，更吹落，星如雨。
+        },
+        updated() {
+            console.log("视图更新之后生命周期 钩子函数。");
+            console.log(document.querySelector("h1").innerText);//一愿郎君千岁，二愿妾身长健，
+        },
+        // 将真实dom渲染到页面上。
+        beforeDestroy() {
+            console.log("vue销毁之前生命周期钩子函数。");
+        },
+        destroyed() {
+            console.log("vue销毁之后声明周期钩子函数");
+        },
+        methods: {
+            getMsg() {
+                console.log("哈哈哈哈");
+            },
+            hiddenH2() {
+                this.$refs.h2.style.display = "none"
+            }
+        }
+
+    })
+    console.log(vm);
+
+    function destroyVue() {
+        // 销毁vue实例 ，，销毁vue实例之后页面渲染的数据不会改变。但是不能在使用vue方法，不能点击更改vue内容了。
+        vm.$destroy();
+
+    }
+</script>
+
+</html>

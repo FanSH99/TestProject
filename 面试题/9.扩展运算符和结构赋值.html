@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [11, 22];
+    let arr2 = 33;
+    let arr3 = [{ 44: "44", 55: "55" }]
+    let newArr = [...arr, arr2, ...arr3];
+    console.log(newArr);
+
+    let obj1 = [{ name: "张三", age: 18 }, { name: "李四", age: 20 }];
+    let obj2 = [{ name: "王五", age: 19 }, { name: "赵六", age: 20 }];
+    let newObj = [...obj1, ...obj2];
+    console.log(newObj);
+
+    let arrList = [111, 222, 333, 555];
+    [numArr1, ...numArr2] = arrList;
+    console.log(numArr1, numArr2);//111, [222,333,444]
+    // [...numArr3,...numArr4]=arrList; ---报错，扩展运算符在解构的时候必须放在参数的最后一个位置。
+    //可以通过扩展运算符将字符串分割为数组
+
+    console.log([..."hello"]);//['h', 'e', 'l', 'l', 'o']
+    [strArr, strArr2] = ["111", "222", "333", "444"]
+    console.log(strArr, strArr2);//111,222
+    [strArr3, strArr4, ...strArr5] = ["111", "222", "333", "444"];
+    console.log(strArr3, strArr4, strArr5);//111,222,["333","444"]
+
+
+</script>
+
+</html>

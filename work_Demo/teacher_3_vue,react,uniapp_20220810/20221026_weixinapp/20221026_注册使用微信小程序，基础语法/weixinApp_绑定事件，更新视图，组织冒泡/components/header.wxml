@@ -1,6 +1,0 @@
-<!--components/header.wxml-->
-<text>components/header.wxml</text>
-<view class="header">
-我是一个header组件{{num}}
-<button bindtap="add" data-id='119'>num++</button>
-</view>

@@ -1,0 +1,5 @@
+<!--components/two/two.wxml-->
+
+<view class="two">我是two组件 {{num}}  twoNum:{{twoNum}}<button bindtap="sendMsg">向one组件发消息</button>
+{{ang}}
+</view>

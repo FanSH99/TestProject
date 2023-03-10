@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 基本数据类型5种，字符串String，数值Number，null,undefined,Boolean(布尔值真假)
+    //typeof用来检测基本数据类型--不能检测null
+    //el instanceof 类型 ---用来检测对象数组和函数，不能检测基本数据类型
+    let a = "111"
+    let b = 123;
+    let c = null;
+    let d = undefined;
+    let e = true;
+    let f = [];
+    let g = {};
+    let h = Function()
+    console.log(typeof a, typeof b, typeof c, typeof d, typeof e);//string number object undefined boolean
+    //typeof不能检测null,可以全等判断
+    console.log(c === null);//true
+    console.log(Object.prototype.toString.call(a), Object.prototype.toString.call(b), Object.prototype.toString.call(c), Object.prototype.toString.call(d), Object.prototype.toString.call(e));//[object String] [object Number] [object Null] [object Undefined] [object Boolean]
+    console.log(a instanceof String, b instanceof Number, e instanceof Boolean);//false,false,false
+    // console.log(c instanceof null); --报错
+    // console.log(d instanceof undefined);--报错
+    console.log(f instanceof Array, g instanceof Array, g instanceof Object, h instanceof Function);//true,false,true,true
+    console.log(Object.getPrototypeOf(a), Object.getPrototypeOf(b), Object.getPrototypeOf(e), Object.getPrototypeOf(h));//String,Number,Boolean,f()
+    console.log(Object.getPrototypeOf(f), Object.getPrototypeOf(g));//Array(0) Object
+    // console.log(Object.getPrototypeOf(c), Object.getPrototypeOf(d));//报错
+</script>
+
+</html>

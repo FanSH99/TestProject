@@ -1,0 +1,37 @@
+<!--pages/cate/cate.wxml-->
+<text>pages/cate/cate.wxml</text>
+<view>分类页面</view>
+<view class="study">双向数据绑定和点击事件以及阻止冒泡</view>
+<!-- model:value来绑定数据 -->
+<input type="text" model:value="{{msg}}" />
+<!-- button自带有样式  bind+名称来绑定事件 bindtap是触屏事件即点击事件-->
+<button bindtap="clickMe" type="warn" size="mini">绑定事件</button>
+<button size="mini" bindtouchmove="move">手指触摸后移动事件</button>
+<!-- 事件传参不能写在事件内，而是要绑定一个自定义属性data-自定义名称，data是写死的。-->
+<button  type="warn" bindtap="sendNum" data-id="12" data-name="张三">事件传参</button>
+
+<view wx:for="{{list}}" wx:key="index" bindtap="remove" data-id="{{item.id}}">
+{{item.name}}----{{item.price}}----{{item.id}}
+</view>
+<!-- 
+  事件冒泡：点击子标签同时触发父标签事件（先触发子标签事件后父标签事件）
+  事件委托：点击父标签会触发子标签事件。
+  如何阻止事件冒泡呢？
+  不再用bind+事件名称，而用catch+事件名称
+  -->
+<view class="parent" bindtap="clickParent">父标签
+<view class="child" bindtap="clickChild">子标签</view>
+<view class="child" catchtap="clickChild">子标签二</view>
+</view>
+
+<!-- 
+touchstart  触摸开始
+touchmove  触摸后移动
+touchcancel  触摸动作被打断如来电提醒和弹窗等
+touchend  触摸动作结束
+tap 触摸后马上离开即点击事件
+longpress 长触摸，此事件将不再触发tap事件
+longtap 推荐上面的longpress
+transitionend   wx:createdAnimation动画结束后触发
+
+ -->

@@ -1,0 +1,5 @@
+<!--pages/behaver/behaver.wxml-->
+<text>pages/behaver/behaver.wxml</text>
+<view>behaviors相当于minis混入，里面的数据会自动合并到data中</view>
+<cartone></cartone>
+<carttwo></carttwo>

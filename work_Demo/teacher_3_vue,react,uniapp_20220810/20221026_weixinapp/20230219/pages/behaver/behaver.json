@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cartone":"../../components/cartone/one",
+    "carttwo":"../../components/carttwo/two"
+  }
+}

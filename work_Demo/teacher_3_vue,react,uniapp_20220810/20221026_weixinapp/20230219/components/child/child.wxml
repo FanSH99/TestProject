@@ -1,0 +1,8 @@
+<!--components/child.wxml-->
+
+<view class="mychild">
+  <text>components/child/child.wxml</text>
+<view>我是另一个子组件</view>
+<!-- 子组件向父组件传值 -->
+<button bindtap="sendData">向父组件传值</button>
+</view>

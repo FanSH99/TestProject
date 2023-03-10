@@ -66,11 +66,12 @@
         template: "#child",
         data() {
             return {
-                mynum: "",
+                mynum: 0,
                 msg: "这一生太漫长",
             }
         },
         created() {
+            console.log("爷爷的数字", this.$parent.$parent.num);
             // 使用bus实例监听自定义事件接收消息。，参数1自定义事件名称，参数2回调函数，
             bus.$on("sendnum", (value) => {
                 console.log("收到爷爷发来的消息了：", value);

@@ -1,0 +1,58 @@
+{
+  "entryPagePath":"pages/index/index",
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/cate/cate"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ee3f4d",
+    "homeButton":true,
+    "navigationBarTextStyle":"black",
+    "navigationBarTitleText": "初始微信小程序",
+    "navigationStyle":"default",
+    "enablePullDownRefresh":true,
+    "backgroundColor":"#c35691",
+    "backgroundTextStyle":"light"
+  },
+  "tabBar":{
+    "color":"#b4b4b4",
+    "selectedColor":"#ee3f4d",
+    "backgroundColor":"#f1f1f1",
+    "borderStyle":"white",
+    "position":"bottom",
+    "list":[
+     {
+      "pagePath":"pages/index/index",
+     "text":"首页",
+     "iconPath":"imgs/home-o.png",
+     "selectedIconPath":"imgs/home.png"
+     },
+     {
+      "pagePath":"pages/cate/cate",
+      "text":"分类",
+      "iconPath":"imgs/cate-o.png",
+      "selectedIconPath":"imgs/cate.png"
+     },
+     {
+      "pagePath":"pages/cart/cart",
+      "text":"购物车",
+      "iconPath":"imgs/chat-o.png",
+      "selectedIconPath":"imgs/chat.png"
+     },
+     {
+      "pagePath":"pages/mine/mine",
+      "text":"我的",
+      "iconPath":"imgs/mine-o.png",
+      "selectedIconPath":"imgs/mine.png"
+     }
+    ]
+   
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+  
+}

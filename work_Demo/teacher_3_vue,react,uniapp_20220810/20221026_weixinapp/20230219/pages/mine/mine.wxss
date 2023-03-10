@@ -1,0 +1,38 @@
+/* pages/mine/mine.wxss */
+
+.scrollContainer{
+  width: 100%;
+  height: 300rpx;
+  background-color:#999999 ;
+  color:#62ee7a
+}
+.nums{
+  display: flex;
+}
+.item{
+  padding:10rpx;
+  background-color: #dd8080;
+  margin-right: 10rpx;
+}
+.num{
+  padding:10rpx 0;
+  border-bottom: 2rpx #ffffff solid;
+}
+
+swiper{
+  height: 300rpx;
+}
+
+image{
+  width: 100%;
+}
+
+img{
+  height: 100rpx;
+  width: 100%;
+}
+
+picker{
+  margin: 20rpx;
+  border-bottom:2rpx #999999 solid;
+}
