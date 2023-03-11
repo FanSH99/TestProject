@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        // 生成的js文件要保存的位置--当名称不存在会自动创建。
+        "outDir": "js",
+        // 定义符合es6规范，否则不能使用es6里面新增的属性方法，比如let声明编译后会换成var
+        "target": "ES6",
+    },
+    // // 要编译那些文件
+    // "include": [
+    //     "ts/**/*"
+    // ],
+    // // 不编译那些文件
+    // "exclude": []
+}

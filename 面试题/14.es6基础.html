@@ -93,9 +93,7 @@
         let nArr4 = [...oArr1, ...oArr2]
         console.log(oArr1, nArr1, oArr2, nArr2, nArr4);
 
-        let oStr = "hello";
-        let nStr1 = [...oStr];
-        console.log(oStr, nStr1);
+        console.log([..."1||2||3||4"] ); //['1', '|', '|', '2', '|', '|', '3', '|', '|', '4']
 
         function threeDot(str1, str2, ...str3) {
             console.log(str1, str2, str3);
@@ -140,25 +138,57 @@
         console.log([1, 2, 3, 4, 5].copyWithin(0, 3)); // 将从 3 号位直到数组结束的成员（4 和 5），复制到从 0 号位开始的位置，结果覆盖了原来的 1 和 2
         // [4, 5, 3, 4, 5] 
         console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4)); //[4,2,3,4,5]
-        
-        
-      
-        
-        function isCopy(arr){
-            let newArr=[...arr];
-            const index=newArr.indexOf(newArr.shift());
+
+
+
+
+        function isCopy(arr) {
+            let newArr = [...arr];
+            const index = newArr.indexOf(newArr.shift());
             // console.log(index);
-           const copyNum=arr.length/(index+1);
-           // console.log(copyNum)
-           const copyStr=arr.slice(0,index+1).join("").repeat(copyNum);
-          // console.log(copyStr);
-            const oArrStr=arr.join("");
-            console.log(copyStr===oArrStr);
+            const copyNum = arr.length / (index + 1);
+            // console.log(copyNum)
+            const copyStr = arr.slice(0, index + 1).join("").repeat(copyNum);
+            // console.log(copyStr);
+            const oArrStr = arr.join("");
+            console.log(copyStr === oArrStr);
         }
-        isCopy([111,222,111,222,111,333]);//false
-        isCopy([111,222,333,111,222,333])//false
-        isCopy([111,333,444,111,222,444])//false
-        
-        
+        isCopy([111, 222, 111, 222, 111, 333]); //false
+        isCopy([111, 222, 333, 111, 222, 333]) //false
+        isCopy([111, 333, 444, 111, 222, 444]) //false
+
+        console.log([1, [22, 333],
+            [4444, [55555, 666666, 7777777]], 14.5, "15.1234"
+        ].toString()); //1,22,333,4444,55555,666666,7777777,14.5,15.1234
+        console.log([1, [22, 333],
+            [4444, [55555, 666666, 7777777]], 14.5, "15.1234"
+        ].toLocaleString()); //1,22,333,4,444,55,555,666,666,7,777,777,14.5,15.1234
+        console.log([1, [22, 333],
+            [4444, [55555, 666666, 7777777]], 14.5, "15.1234"
+        ].join()); //1,22,3333,4444,55555,666666,7777777,14.5,15.1234
+        console.log([1111, 2222, 3333, 4444].join()); //1111,2222,3333,4444
+        console.log([1111, 2222, 3333, 4444].toString()); //1111,2222,3333,4444
+        console.log([1111, 2222, 3333, 4444].toLocaleString()); //1,111,2,222,3,333,4,444
+        console.log(new Date()) //Sat Mar 11 2023 14:42:33 GMT+0800 (中国标准时间)
+        console.log(new Date().toString()) //Sat Mar 11 2023 14:05:23 GMT+0800 (中国标准时间)
+        console.log(new Date().toLocaleString()) //2023/3/11 14:05:51
+        // console.log(new Date().join()) //报错
+
+        console.log(new Date().toDateString()) //Sat Mar 11 2023
+        console.log(new Date().toLocaleDateString()) //2023/3/11
+        console.log(new Date().toLocaleTimeString()) //14:09:11
+        console.log(["red", "green", "blue"].join()) //red,green,blue
+        console.log(["red", "green", "blue"].toString()) //red,green,blue
+        console.log(["red", "green", "blue"].toLocaleString()) //red,green,blue
+        console.log(["red", "green", "blue"].join("")) //redgreenblue
+        console.log(["red", "green", "blue"].join("||")) //red||green||blue
+        console.log(["red", "green", "blue"].toString("||")) //red,green,blue
+        console.log(["red", "green", "blue"].toLocaleString("||")) //red,green,blue
+        console.log(["red", "green", "blue"].toString().replace(/,/gi, '||')); //red||green||blue
+        console.log(["red", "green", "blue"].toLocaleString().replace(/,/gi, '||')); //red||green||blue
+        console.log("1==2==3== 4== 5".split("==")) // ['1', '2', '3', ' 4', ' 5']
+        console.log("12,23,45,76".split(",")) //["12","23","34","76"]
+        console.log("12,23,45,76".split()) //["12,23,45,76"]
+        console.log([6666, 88888888].toLocaleString()); //6,666,88,888,888
     </script>
 </html>
