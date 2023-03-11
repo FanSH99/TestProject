@@ -12,7 +12,9 @@
     <div id="app">
         <h1 v-color="'red'">{{msg}}</h1>
         <h3 v-color="'blue'">风吹雨成花</h3>
-        <input type="text" value="时间追不上白马" v-color="color"></input>
+        <input type="text" value="lllll"><br><br>
+        <input type="text" value="时间追不上白马" v-color="color"  v-focus=""></input>
+        
         <my-component></my-component>
     </div>
 
@@ -55,20 +57,30 @@
         // 当指令插入dom时触发
         inserted(el, data) {
             // el表示当前指令所作用的dom对象。
-            console.log(el);
+            // console.log(el);
             // data表示当前指令信息对象。 其中data.value为指令值。
-            console.log(data);
+            // console.log(data);
             el.style.color = data.value;
-            el.classList.add("red")
-            console.log("当指令插入到dom时触发");
+            // el.classList.add("red")
+            // console.log("当指令插入到dom时触发");
 
         }
+    })
+    
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive('focus', {
+      // 当被绑定的元素插入到 DOM 中时……
+      inserted: function (el) {
+        // 聚焦元素
+        
+        el.focus()  // 页面加载完成之后自动让输入框获取到焦点的小功能
+      }
     })
     new Vue({
         el: "#app",
         data: {
             msg: "长河落日圆",
-            color: "pink",
+            color: "#333",
         },
         components: {
             myComponent,

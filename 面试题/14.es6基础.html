@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <p>let,var,const区别</p>
+        <ol>
+            <li>var存在变量提升，let和const不存在</li>
+            <li>var不是块级作用域，let和const是块级作用域</li>
+            <li>var可以重复声明，let和const不可以 </li>
+            <li> var和let可以修改变量，const不可以</li>
+            <li>能用const的情况尽量使用const，其他情况下大多数使用let，避免使用var</li>
+        </ol>
+        <div class="box2">
+            <p>扩展运算符作用</p>
+            <ol>
+                <li>将字符串变成数组</li>
+                <li>将伪数组变为真数组</li>
+                <li>数组变成逗号分隔的字符串（可用于log打日志以及函数传参）</li>
+                <li>当用于函数列表中，需要用到最后一个参数上，可以将多余传递的参数转换成数组</li>
+                <li>复制数组，一维数组（不含对象）可以深拷贝，复杂的数组是浅拷贝</li>
+                <li>合并数组，[...arr1,...arr2]</li>
+                <li>与扩展运算符一起用，可解构数组,:const [first, middle, ...last] = [1, 2, 3, 4, 5];</li>
+            </ol>
+
+        </div>
+        <div>
+            <p>Array.form</p>
+            <ol>
+                <li>将伪数组转换为真数组(类似数组的对象，节点对象，map和set方法)</li>
+                <li>第二个参数写回调函数，回调函数中处理原数组，将返回一个新数组</li>
+            </ol>
+            <p>Array.of</p>
+            <ul>
+                <li>将字符串转换为数组</li>
+            </ul>
+        </div>
+        <div>
+            <p>copyWithin</p>
+            <ol>
+                <li>一个参数时：从第一个数开始数x位数，复制插入到x-1位上，最后的x位数则删除</li>
+                <li>两个参数时：参数1，要复制到的位置，参数2，替换数据的位置（注意从该位置到最后）。</li>
+            </ol>
+
+        </div>
+
+
+    </body>
+    <script>
+        var _var = "var_aa";
+        let _let = "let_bb";
+        var _var = "var_aaaa" //
+        // let _var="let_aa"; //报错
+
+        console.log(_var, _let); //var_aaaa,let_bb
+        function getData() {
+            let _var = "aaaa"
+            let _let = "bbbb"
+            console.log(_var, _let); //aaaa,bbbb
+
+        }
+        getData();
+
+        console.log(var_null) // undefined
+        // console.log(let_null); ---报错
+        var var_null = "var_null";
+        let let_null = "let_null"
+
+        {
+            var var_div = 10;
+            let let_div = 10;
+        }
+        console.log(var_div); //10
+        // console.log(let_div); //报错let_div is not defined
+
+        let li_all = document.querySelectorAll("li");
+        let arr_li = [...li_all];
+        console.log(li_all, arr_li);
+
+        let oArr1 = [1, 2, 3];
+        let oArr2 = [100, 200, {
+            age: "100"
+        }]
+        let nArr1 = [...oArr1];
+        let nArr2 = [...oArr2];
+        // let nArr3=...[1,2,3]; //报错
+        // console.log(nArr3); 
+        console.log(...[1, 2, 3]);
+        nArr1[0] = 0;
+        nArr2[2].age = "10";
+        let nArr4 = [...oArr1, ...oArr2]
+        console.log(oArr1, nArr1, oArr2, nArr2, nArr4);
+
+        let oStr = "hello";
+        let nStr1 = [...oStr];
+        console.log(oStr, nStr1);
+
+        function threeDot(str1, str2, ...str3) {
+            console.log(str1, str2, str3);
+        }
+        threeDot(...[{
+            name: "李华",
+            age: 19
+        }, {
+            name: "aa",
+            age: 10
+        }, {
+            aa: "aa"
+        }, {
+            bb: "bb"
+        }]) //{name: '李华', age: 19}, {name: 'aa', age: 10}
+        threeDot(...[1, 2, 3, 4]) //1,2
+
+
+        let lis = document.querySelectorAll(".box2 li");
+        let newLis = Array.from(lis);
+        console.log(lis, newLis);
+        let arrayLike = {
+            '0': 'a',
+            '1': 'b',
+            '2': 'c',
+            length: 3
+        };
+        let newArr2 = Array.from(arrayLike); // ['a', 'b', 'c']
+        console.log(arrayLike, newArr2);
+        let numArr1 = [1, 2, 3, 4]
+        let numArr2 = Array.from(numArr1, (x) => x * x)
+        console.log(numArr1, numArr2);
+        // [1, 4, 9]
+
+        let arrOf1 = Array.of() // []
+        let arrOf2 = Array.of(3) // [3]
+        let arrOf3 = Array.of(3, 11, 8) // [3, 11, 8]
+        console.log(arrOf1, arrOf2, arrOf3);
+
+        console.log([1, 2, 3, 4, 5, 6, 7, 8].copyWithin(3)); //[1, 2, 3, 1, 2, 3, 4, 5]
+        console.log([1, 2, 3, 4, 5].copyWithin(2)); //[1,2,1,2,3 ]
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3)); // 将从 3 号位直到数组结束的成员（4 和 5），复制到从 0 号位开始的位置，结果覆盖了原来的 1 和 2
+        // [4, 5, 3, 4, 5] 
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4)); //[4,2,3,4,5]
+        
+        
+      
+        
+        function isCopy(arr){
+            let newArr=[...arr];
+            const index=newArr.indexOf(newArr.shift());
+            // console.log(index);
+           const copyNum=arr.length/(index+1);
+           // console.log(copyNum)
+           const copyStr=arr.slice(0,index+1).join("").repeat(copyNum);
+          // console.log(copyStr);
+            const oArrStr=arr.join("");
+            console.log(copyStr===oArrStr);
+        }
+        isCopy([111,222,111,222,111,333]);//false
+        isCopy([111,222,333,111,222,333])//false
+        isCopy([111,333,444,111,222,444])//false
+        
+        
+    </script>
+</html>

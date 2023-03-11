@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            .parent{
+                background-color: antiquewhite;
+                width: 100%;
+                height: 500px;
+                 
+            }
+            .child{
+                background-color: firebrick;
+                width: 80%;
+                box-sizing: border-box;
+                height: 200px;
+                margin: 50px 0 0 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <parent />
+        </div>
+        <template id="child">
+            <div class="child">
+                title:<input v-model.lazy="newtitle" @change="changeTitle"/>
+                <p>index:{{index}}___{{name}}</p>
+               <!-- <input  v-model="nTitle"/> -->
+           <!--     数据总是从父组件传到子组件，子组件没有权利修改父组件传过来的数据，只能请求父组件对原始数据进行修改。这样会防止从子组件意外改变父组件的状态，从而导致你的应用的数据流向难以理解。
+                注意： 在子组件直接用 v-model 绑定父组件传过来的 props 这样是不规范的写法，开发环境会报警告。
+                如果实在要改变父组件的 props 值可以再data里面定义一个变量，并用 prop 的值初始化它，之后用$emit 通知父组件去修改。 -->
+        
+            </div>
+        </template>
+        <template id="parent" > 
+           <div class="parent">
+               <p :font_size.camel="20">{{title}}--{{name}}</p>
+               <!-- 父组件更改子组件的值后不能引起子组件中值的同步更改，需要用到ref属性 -->
+               <button @click="changeChildName">更改子组件传递过来的值</button>
+             <input id="uid" title="title" style="width: 300px;" value="prop修饰符可以隐藏html元素上的自定义属性" disabled :index.prop="index"/>
+               <!-- sync修饰符可以用于父传子的数据实现双向数据绑定，即更改子组件中props值父组件原数据也更改，
+               1.父组件中字符键标签传递的自定义属性后加.sync :name.sync
+              2.子组件中props接收父组件的数据（自定义属性名接收）
+              3.子组件中change事件中写this.$emit("update:name",newname)
+                -->
+                <child :ntitle.sync="title" :index="index" @sendname="getName" ref="childRef"></child>
+           </div>
+        </template>
+    </body>
+    <script src="./bin/vue-2.7.10.js"></script>
+    <script>
+        let child={
+            template:"#child",
+            props:["ntitle","index"],
+            data(){
+              return{
+                  name:"子组件数据",
+                  newtitle:this.ntitle,  
+              }
+            },
+            created(){
+              console.log(this.ntitle,this.index);  
+              this.$emit("sendname",this.name)
+            },
+            methods:{
+                changeTitle(){
+                    // this.$emit("update:ntitle",this.nTitle)
+                    this.$emit("update:ntitle",this.newtitle);
+                    // this.$emit("update:index","12345")
+                },
+                
+            }
+                
+        }
+       let parent={
+           template:"#parent",
+           data(){
+               return{
+                   title:"父组件中原始title",
+                   index:"index.....",
+                   name:""
+               }
+               
+           },
+           methods:{
+               getName(value){
+                   console.log(value);
+                   this.name=value;
+               },
+               changeChildName(){
+                   this.name="newname";
+                   this.$refs.childRef.name=this.name;
+               }
+           },
+           components:{
+               child,
+           }
+       }
+        new Vue({
+        el:"#app",
+        components: {
+            parent
+        },
+        }
+        )
+        
+    </script>
+</html>

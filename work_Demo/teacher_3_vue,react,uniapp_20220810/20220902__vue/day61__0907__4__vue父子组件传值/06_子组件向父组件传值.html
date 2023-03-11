@@ -30,8 +30,8 @@
 
     <template id="parent">
         <div class="parent">
-            <h3>父组件</h3>
-            <child @getmsg="getValue" @sendnum="getnumValue"></child>
+            <h3>父组件{{title}}</h3>
+            <child @getmsg="getValue" @sendnum="getnumValue" ref="childRef" :ntitle.sync="title"></child>
             <p>{{mynum}}----{{mymsg}}</p>
             <button @click="mynum++">mynum++</button>
 
@@ -42,9 +42,10 @@
     <template id="child">
         <div class="child">
             <h5>子组件</h5>
-            {{msg}}----{{num}}
+            {{msg}}----{{num}}---{{ntitle}}
             <button @click="sendMsg">向父组件传递数据</button>
             <button @click="num++">num++</button>
+            <button @click="changeTitle">更改父组件传递过来的title</button>
         </div>
     </template>
 </body>
@@ -56,6 +57,7 @@
 
     let child = {
         template: "#child",
+        props:["ntitle"],
         data() {
             return {
                 msg: "天亮了就出发",
@@ -63,7 +65,8 @@
             }
         },
         created() {
-            this.$emit("sendnum", this.num)
+            this.$emit("sendnum", this.num);
+            console.log(this);
         },
         methods: {
             sendMsg() {
@@ -71,7 +74,10 @@
                 // 发送自定义事件  参数1自定义名称 参数2要传递的数据； 注意自定义名称不要使用驼峰命名法否则报错。最好全部小写。
                 this.$emit("getmsg", this.msg);
             },
-
+            changeTitle(){
+                // this.title="更改后的title";
+                this.$emit("update:ntitle","更改后的title")
+            }
             /* 
             子组件向父组件传值。
             1子组件使用this.$emit()发送一个自定义事件，自定义么名称需要是全部小写。
@@ -92,9 +98,17 @@
         },
         data() {
             return {
+                title:"title.....",
                 mymsg: "",
                 mynum: '',
             }
+        },
+        created(){
+            // this.$refs获取ref组件实例，需要在mounted即视图更新后获取，或者$nextTick
+            this.$nextTick(()=>{
+                console.log(this.$refs.childRef.msg,this.$refs.childRef.num); 
+            })
+           
         },
         methods: {
             getValue(value) {

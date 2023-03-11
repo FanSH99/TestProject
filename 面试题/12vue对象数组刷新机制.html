@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,td{
+            
+           padding:5px 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    {{arr}}{{obj}}<br>
+    <button @click="arrChange">直接更改数组</button><span></span><br>
+    <button @click="arr2Change">直接更改数组或对象长度</button><span></span><br>
+    <button @click="setChange">set方法</button>
+    <button @click="sortChange"> 排序翻转</button>
+    
+    <p>
+        刷新机制：
+        <li>直接更改数组元素，数组不更新；直接更改数组长度，数组更新</li>
+        <LI>直接更改对象长度，对象不更新；直接更改对象元素，对象更新</LI>
+        <LI>先更改后重新赋值，视图更新</LI>
+        <li>set方法，视图更新</li>
+        <li>数组更新方法，push(末尾添加),pop(末尾删除),unshift(头部添加),shift(头部删除),splice(截取),sort(排序),reverse(翻转)</li>
+    </p>
+</div>
+</body>
+
+<script src="./bin/vue-2.7.10.js"></script>
+<script>
+
+   new Vue({
+       el:"#app",
+       data:{
+           arr:[11,12,999,13],
+           obArr:[{name1:"小红"},{name2:"小明"}],
+           obj:{
+               isShow:true,
+               _arr:["a1","b1","c1"],
+           },
+          
+           
+       },
+       methods: {
+           arrChange() {
+               console.log(this);
+               // 直接更改数组元素，视图不更新
+               this.arr[1]=0;
+               // 直接更改数组长度，视图更新
+               this.arr[3]=14;
+               console.log(this.arr);
+               // 直接更改对象元素，视图不更新
+               this.obj.isShow=false;
+               // 直接更新对象长度，视图更新
+               this.obj.obArr={sex:"女"},
+               console.log(this.obj);
+              
+           },
+           arr2Change(){
+               this.arr.push(25);
+               this.arr.unshift(02);
+               // splice截取更改原数组可更新视图，slice截取不更改原数组不能更新视图
+               this.arr.splice(2,1)
+               console.log(this.arr);
+               // this.arr.concat(19)
+               let obj2=this.obj;
+               console.log(obj2);
+               obj2.obArr={name:"小红"};
+               this.obj=obj2;
+               console.log(this.obj);
+           },
+           setChange(){
+               
+               this.$set(this.arr,0,"0");
+               this.$set(this.arr,3,45);
+               Vue.set(this.obj,"isShow",false);
+               Vue.set(this.obj,"sex","女")
+           },
+           sortChange(){
+               this.arr.sort();
+               this.arr.reverse();
+           }
+           
+       },
+       
+   })
+</script>
+
+</html>
