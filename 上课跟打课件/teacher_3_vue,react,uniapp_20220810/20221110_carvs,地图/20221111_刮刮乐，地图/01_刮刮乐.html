@@ -26,8 +26,15 @@
     // 2022年11月11日09:13:21
     let cav = document.getElementById("cav");
     let ctx = cav.getContext("2d");
-    ctx.rect(0, 0, 200, 50);
+   
     ctx.fillStyle = "#919191";
+    ctx.globalAlpha = 1;
+     ctx.fillRect(0, 0, 200, 50);
+     ctx.fillStyle = "#000";
+     ctx.font = "18px 微软雅黑";
+     ctx.textAlign = "center";
+     ctx.textBaseline = "middle";
+    ctx.fillText('刮一刮',75,25,50);
     ctx.fill();
     let isdown = false;
     document.addEventListener("mousedown", () => {

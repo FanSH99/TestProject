@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            #myCanvas {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" height="1200"></canvas>
+    </body>
+    <script>
+        const myCanvas = document.querySelector("#myCanvas");
+        const ctx = myCanvas.getContext("2d");
+
+        // 绘制矩形
+        ctx.beginPath();
+        // fillStyle可以定义图形颜色，必须在fillRect前定义，否则不起作用。
+        ctx.fillStyle = "#321574";
+        // fillRect有四个参数，参数1是x坐标（距离左边画布的距离，参数2是y坐标，距离上边画布的距离，参数3是宽度，参数4是高度。
+        ctx.fillRect(200, 120, 50, 40);
+        ctx.closePath()
+
+        //绘制三角形
+        ctx.beginPath();
+        ctx.fillStyle = "#891090"
+        ctx.beginPath();
+        ctx.moveTo(100, 160);
+        ctx.lineTo(100, 180);
+        ctx.lineTo(160, 180);
+        ctx.fill();
+        ctx.closePath()
+        
+
+        // 绘制一个笑脸
+        
+        ctx.beginPath();
+        // 圆形：参数1圆心的x坐标，参数2圆心的y坐标，参数3开始的弧度，参数4结束的弧度，参数5为true为逆时针
+        ctx.arc(75, 275, 60, 0, Math.PI * 2, true); // 绘制圆脸
+        ctx.moveTo(105, 260);
+        ctx.arc(95, 260, 10, 0, Math.PI * 2, true);//绘制右眼
+        ctx.moveTo(65, 260);
+        ctx.arc(55, 260, 10, 0, Math.PI * 2, true);//绘制左眼
+        ctx.moveTo(115, 278);
+        ctx.arc(75, 278, 40, 0, Math.PI * 1);//绘制嘴巴
+        ctx.stroke();
+        ctx.closePath()
+        
+        
+       
+      ctx.beginPath();
+         ctx.moveTo(75, 25);
+         ctx.quadraticCurveTo(25, 25, 25, 62.5);
+         ctx.quadraticCurveTo(25, 100, 50, 100);
+         ctx.quadraticCurveTo(50, 120, 30, 125);
+         ctx.quadraticCurveTo(60, 120, 65, 100);
+         ctx.quadraticCurveTo(125, 100, 125, 62.5);
+         ctx.quadraticCurveTo(125, 25, 75, 25);
+         ctx.stroke();
+         ctx.closePath();
+    </script>
+</html>
